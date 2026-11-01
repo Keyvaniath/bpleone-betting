@@ -1,20 +1,20 @@
 # EdgeStat — Tonight's Master Brief
-_Generated 2026-10-31T18:21:57 UTC_
+_Generated 2026-11-01T00:46:30 UTC_
 
 ## Slate Quality
 - **Tier:** NO_ACTION_NIGHT
-- **Score:** -46
+- **Score:** -5
 - **Advisory:** STAND DOWN. Slate has no aligned conviction. Skip betting tonight or watch only.
 - **Total LOCKs:** 0
-- **Total STRONG:** 13
-- **Total FADES:** 98
+- **Total STRONG:** 14
+- **Total FADES:** 61
 
 ## Top 5 Curated Picks
-1. **GOLF / Andrew Novak** (GOLF_PLAYER, score=201.64)
+1. **GOLF / Andrew Novak** (GOLF_PLAYER, score=203.93)
    - Play: Andrew Novak (PLAYER_STRONG)
    - Rationale: Cross-sport top pick (GOLF_PLAYER)
-2. **GOLF / Kihei Akina** (GOLF_PLAYER, score=116.71)
-   - Play: Kihei Akina (PLAYER_STRONG)
+2. **GOLF / Mackenzie Hughes** (GOLF_PLAYER, score=122.21)
+   - Play: Mackenzie Hughes (PLAYER_STRONG)
    - Rationale: Cross-sport top pick (GOLF_PLAYER)
 3. **NBA / MEM** (NBA_TEAM, score=70.0)
    - Play: MEM (TEAM_STRONG)
@@ -29,8 +29,8 @@ _Generated 2026-10-31T18:21:57 UTC_
 ## Top Events Board
 - **GOLF** / ? (TOURNAMENT_STRONG)
   - Andrew Novak top 10 finish
-  - Kihei Akina top 10 finish
-  - Matthieu Pavon top 10 finish
+  - Mackenzie Hughes top 10 finish
+  - Keita Nakajima top 10 finish
 
 ## Slate ROI Projection
 - **Picks:** 0
@@ -39,13 +39,13 @@ _Generated 2026-10-31T18:21:57 UTC_
 - **Expected P&L on $100:** $0.0
 
 ## Top Fades
-- **NBA** / lauri markkanen (PLAYER_FADE)
-  - Fade angle: PTS UNDER + PRA UNDER (multi-prop)
-- **NBA** / jaylen brown (PLAYER_FADE)
+- **NBA** / anthony edwards (PLAYER_FADE)
   - Fade angle: PTS UNDER + PRA UNDER (multi-prop)
 - **NBA** / donovan mitchell (PLAYER_FADE)
   - Fade angle: PTS UNDER + PRA UNDER (multi-prop)
-- **NBA** / anthony edwards (PLAYER_FADE)
-  - Fade angle: PTS UNDER + PRA UNDER (multi-prop)
 - **NBA** / HOU (TEAM_FADE)
+  - Fade angle: team total UNDER
+- **NBA** / SAS (TEAM_FADE)
+  - Fade angle: team total UNDER
+- **NBA** / CHA (TEAM_FADE)
   - Fade angle: team total UNDER
