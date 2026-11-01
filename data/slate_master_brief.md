@@ -1,36 +1,33 @@
 # EdgeStat — Tonight's Master Brief
-_Generated 2026-11-01T00:46:30 UTC_
+_Generated 2026-11-01T07:01:15 UTC_
 
 ## Slate Quality
 - **Tier:** NO_ACTION_NIGHT
-- **Score:** -5
+- **Score:** -6
 - **Advisory:** STAND DOWN. Slate has no aligned conviction. Skip betting tonight or watch only.
 - **Total LOCKs:** 0
 - **Total STRONG:** 14
-- **Total FADES:** 61
+- **Total FADES:** 62
 
 ## Top 5 Curated Picks
-1. **GOLF / Andrew Novak** (GOLF_PLAYER, score=203.93)
+1. **GOLF / Andrew Novak** (GOLF_PLAYER, score=219.29)
    - Play: Andrew Novak (PLAYER_STRONG)
    - Rationale: Cross-sport top pick (GOLF_PLAYER)
-2. **GOLF / Mackenzie Hughes** (GOLF_PLAYER, score=122.21)
-   - Play: Mackenzie Hughes (PLAYER_STRONG)
+2. **GOLF / Matthieu Pavon** (GOLF_PLAYER, score=190.64)
+   - Play: Matthieu Pavon (PLAYER_STRONG)
    - Rationale: Cross-sport top pick (GOLF_PLAYER)
-3. **NBA / MEM** (NBA_TEAM, score=70.0)
-   - Play: MEM (TEAM_STRONG)
-   - Rationale: Cross-sport top pick (NBA_TEAM)
-4. **WNBA / allisha gray** (WNBA_PLAYER, score=62.42)
+3. **WNBA / allisha gray** (WNBA_PLAYER, score=62.42)
    - Play: allisha gray (PLAYER_STRONG)
    - Rationale: Cross-sport top pick (WNBA_PLAYER)
-5. **WNBA / angel reese** (WNBA_PLAYER, score=60.0)
+4. **WNBA / angel reese** (WNBA_PLAYER, score=60.0)
    - Play: angel reese (PLAYER_STRONG)
    - Rationale: Cross-sport top pick (WNBA_PLAYER)
 
 ## Top Events Board
 - **GOLF** / ? (TOURNAMENT_STRONG)
   - Andrew Novak top 10 finish
-  - Mackenzie Hughes top 10 finish
-  - Keita Nakajima top 10 finish
+  - Matthieu Pavon top 10 finish
+  - Doug Ghim top 10 finish
 
 ## Slate ROI Projection
 - **Picks:** 0
@@ -39,13 +36,13 @@ _Generated 2026-11-01T00:46:30 UTC_
 - **Expected P&L on $100:** $0.0
 
 ## Top Fades
-- **NBA** / anthony edwards (PLAYER_FADE)
-  - Fade angle: PTS UNDER + PRA UNDER (multi-prop)
-- **NBA** / donovan mitchell (PLAYER_FADE)
-  - Fade angle: PTS UNDER + PRA UNDER (multi-prop)
-- **NBA** / HOU (TEAM_FADE)
+- **NBA** / ORL (TEAM_FADE)
   - Fade angle: team total UNDER
-- **NBA** / SAS (TEAM_FADE)
+- **NBA** / TOR (TEAM_FADE)
   - Fade angle: team total UNDER
-- **NBA** / CHA (TEAM_FADE)
+- **NBA** / BKN (TEAM_FADE)
+  - Fade angle: team total UNDER
+- **NBA** / LAL (TEAM_FADE)
+  - Fade angle: team total UNDER
+- **NBA** / BOS (TEAM_FADE)
   - Fade angle: team total UNDER
