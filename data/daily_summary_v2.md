@@ -1,18 +1,18 @@
 # EdgeStat Daily Summary — 2026-11-01
 
-## 🏥 Model Health: 59.2/100 [OK]
+## 🏥 Model Health: 59.5/100 [OK]
 - Operational but room to improve - check yellow components
-  - 🟢 Calibration Freshness: 100.0/100
-  - 🔴 Hit Rate Trend: 42.7/100
-  - 🔴 Brier Trend: 7.7/100
+  - 🟢 Calibration Freshness: 99.7/100
+  - 🔴 Hit Rate Trend: 34.6/100
+  - 🔴 Brier Trend: 14.2/100
   - 🟢 Pipeline Audit: 100.0/100
   - 🟡 Data Health: 77.3/100
-  - 🔴 Edge Count: 37.1/100
+  - 🔴 Edge Count: 42.9/100
 
 ## 🌐 Slate Overview
-- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.574)
+- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.582)
 - **Total games on board:** 31
-- **Strong home favorites:** 14 | **Strong road dogs:** 4
+- **Strong home favorites:** 15 | **Strong road dogs:** 4
 
 ## 🎯 Top 5 Best Bets
 1. **LOL Inspired UNDER 3.5 Kills** (78/100 ★★★★)
@@ -48,9 +48,9 @@
 - Hot teams: **9** | Cold teams: **23** | Over-heavy: 0 | Under-heavy: 50
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (171)
+## ⚠️ Anomaly Detector (172)
 - RESIDUAL_DIVERGENCE: **11**
-- STEAM_MOVE: **160**
+- STEAM_MOVE: **161**
   - Indiana Pacers (NBA): Indiana Pacers UNDERPERFORMING expected margin by 10.5pts in recent games -- model bias may persist
   - Golden State Warriors (NBA): Golden State Warriors OUTPERFORMING expected margin by 10.9pts in recent games -- model bias may persist
   - Carolina Hurricanes (NHL): Carolina Hurricanes OUTPERFORMING expected margin by 7.3pts in recent games -- model bias may persist
@@ -66,13 +66,13 @@
   - #4 [GOLF] $35 on GOLF Tom Kim TOP5 @ 636 (VidantaWorld Mexico Open) (P=14%)
   - #5 [GOLF] $20 on GOLF Brian Campbell TOP5 @ 747 (VidantaWorld Mexico Open) (P=12%)
 
-## 🎯 Convergence Picks (39 stacked games)
-- ELITE: **15** · HIGH: 10 · MED: 14
+## 🎯 Convergence Picks (32 stacked games)
+- ELITE: **14** · HIGH: 5 · MED: 13
   - [ELITE] Winnipeg Jets @ Carolina Hurricanes : 7 signals (HEAT_COLD, HEAT_COLD, HEAT_COLD, ANOMALY)
   - [ELITE] Sacramento Kings @ Memphis Grizzlies : 5 signals (HEAT_COLD, HEAT_COLD, HEAT_COLD, HEAT_COLD)
   - [ELITE] Ottawa Senators @ Anaheim Ducks : 5 signals (HEAT_COLD, HEAT_COLD, ANOMALY, ATS)
+  - [ELITE] Red Bull New York @ Nashville SC : 5 signals (PREGAME, ANOMALY, ANOMALY, ATS)
   - [ELITE] Cleveland Cavaliers @ Milwaukee Bucks : 4 signals (HEAT_COLD, HEAT_COLD, ATS, ATS)
-  - [ELITE] Brooklyn Nets @ Indiana Pacers : 4 signals (PREGAME, HEAT_COLD, HEAT_COLD, ANOMALY)
 
 ## 🏀 NBA Player Heat (2 HOT / 2 COLD)
   - 🔥 **Devin Carter** (BOS): L5 14.6/5.8/5.0 vs season 8.9/3.3/2.7 [PTS +5.7, REB +2.5, AST +2.3]
@@ -112,7 +112,7 @@
 - [NHL] FADE Edmonton Oilers (away on B2B)
 - [NHL] FADE Ottawa Senators (away on B2B)
 
-## 📈 Streak Regression Alerts (10)
+## 📈 Streak Regression Alerts (13)
 - [NBA] Boston Celtics on W4 L10 4-1 -- Boston Celtics on W4 -- no historical sample
 - [NBA] Indiana Pacers on L3 L10 1-4 -- Indiana Pacers on L3 -- no historical sample
 - [NBA] Brooklyn Nets on L5 L10 0-5 -- Brooklyn Nets on L5 -- no historical sample

@@ -1,5 +1,5 @@
 # EdgeStat — Tonight's Master Brief
-_Generated 2026-11-01T15:41:52 UTC_
+_Generated 2026-11-01T18:55:39 UTC_
 
 ## Slate Quality
 - **Tier:** NO_ACTION_NIGHT
@@ -32,11 +32,11 @@ _Generated 2026-11-01T15:41:52 UTC_
 ## Top Fades
 - **NBA** / ORL (TEAM_FADE)
   - Fade angle: team total UNDER
-- **NBA** / TOR (TEAM_FADE)
-  - Fade angle: team total UNDER
 - **NBA** / BKN (TEAM_FADE)
+  - Fade angle: team total UNDER
+- **NBA** / TOR (TEAM_FADE)
   - Fade angle: team total UNDER
 - **NBA** / LAL (TEAM_FADE)
   - Fade angle: team total UNDER
-- **NBA** / LA  (TEAM_FADE)
+- **NBA** / BOS (TEAM_FADE)
   - Fade angle: team total UNDER

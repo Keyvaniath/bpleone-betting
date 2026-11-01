@@ -31,18 +31,17 @@ _0% lineups confirmed_
    - P(top 5) 13.6% -- lower variance than outright but compelling line.
 
 ## NBA -- REGULAR
-- Portland Trail Blazers @ Utah Jazz (4-1 vs 1-5) 112-90 | P(home) 0.0% fair +0 | Final
-- Philadelphia 76ers @ Charlotte Hornets (6-1 vs 3-4) 109-104 | P(home) 0.0% fair +0 | Final
-- Atlanta Hawks @ New Orleans Pelicans (3-4 vs 2-4) 99-121 | P(home) 100.0% fair +0 | Final
-- Sacramento Kings @ Memphis Grizzlies (0-6 vs 6-0) 105-136 | P(home) 100.0% fair +0 | Final
-- Cleveland Cavaliers @ Milwaukee Bucks (4-2 vs 1-5) 136-111 | P(home) 0.0% fair +0 | Final
+- Boston Celtics @ Orlando Magic (4-1 vs 2-3)  | P(home) 16.9% fair +491 | Scheduled
+- Brooklyn Nets @ Indiana Pacers (0-5 vs 2-4)  | P(home) 72.1% fair -258 | Scheduled
+- LA Clippers @ Golden State Warriors (1-4 vs 3-3)  | P(home) 83.0% fair -489 | Scheduled
+- Toronto Raptors @ Los Angeles Lakers (3-2 vs 4-2)  | P(home) 62.0% fair -163 | Scheduled
 
 ## NHL -- REGULAR
-- Chicago Blackhawks @ Boston Bruins (0-0-0 vs 0-0-0) 4-5 | P(home) 100.0% fair +0 | Final
-- St. Louis Blues @ Detroit Red Wings (0-0-0 vs 0-0-0) 5-4 | P(home) 0.0% fair +0 | Final
-- Tampa Bay Lightning @ Nashville Predators (0-0-0 vs 0-0-0) 4-5 | P(home) 100.0% fair +0 | Final
-- Edmonton Oilers @ New York Islanders (0-0-0 vs 0-0-0) 4-0 | P(home) 0.0% fair +0 | Final
-- Buffalo Sabres @ Los Angeles Kings (0-0-0 vs 0-0-0) 3-2 | P(home) 0.0% fair +0 | Final
+- Winnipeg Jets @ Carolina Hurricanes (4-7-3 vs 11-2-2) 0-1 | P(home) 83.9% fair -521 | End of Period
+- Minnesota Wild @ Washington Capitals (9-3-3 vs 8-4-0)  | P(home) 46.4% fair +116 | Scheduled
+- Utah Mammoth @ Philadelphia Flyers (9-5-0 vs 3-8-4)  | P(home) 41.3% fair +142 | Scheduled
+- Edmonton Oilers @ New York Rangers (10-2-2 vs 7-6-1)  | P(home) 47.9% fair +109 | Scheduled
+- Ottawa Senators @ Anaheim Ducks (9-5-1 vs 5-7-1)  | P(home) 52.6% fair -111 | Scheduled
 
 ## LoL Esports -- 0 live, 7 upcoming
 - [Worlds] TOP ESPORTS vs Invictus Gaming BO5 | P(A) 23.6% fair +324/-324
