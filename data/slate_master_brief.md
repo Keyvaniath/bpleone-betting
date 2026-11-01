@@ -1,12 +1,12 @@
 # EdgeStat — Tonight's Master Brief
-_Generated 2026-11-01T07:01:15 UTC_
+_Generated 2026-11-01T15:41:52 UTC_
 
 ## Slate Quality
 - **Tier:** NO_ACTION_NIGHT
-- **Score:** -6
+- **Score:** -14
 - **Advisory:** STAND DOWN. Slate has no aligned conviction. Skip betting tonight or watch only.
 - **Total LOCKs:** 0
-- **Total STRONG:** 14
+- **Total STRONG:** 12
 - **Total FADES:** 62
 
 ## Top 5 Curated Picks
@@ -16,12 +16,6 @@ _Generated 2026-11-01T07:01:15 UTC_
 2. **GOLF / Matthieu Pavon** (GOLF_PLAYER, score=190.64)
    - Play: Matthieu Pavon (PLAYER_STRONG)
    - Rationale: Cross-sport top pick (GOLF_PLAYER)
-3. **WNBA / allisha gray** (WNBA_PLAYER, score=62.42)
-   - Play: allisha gray (PLAYER_STRONG)
-   - Rationale: Cross-sport top pick (WNBA_PLAYER)
-4. **WNBA / angel reese** (WNBA_PLAYER, score=60.0)
-   - Play: angel reese (PLAYER_STRONG)
-   - Rationale: Cross-sport top pick (WNBA_PLAYER)
 
 ## Top Events Board
 - **GOLF** / ? (TOURNAMENT_STRONG)
@@ -44,5 +38,5 @@ _Generated 2026-11-01T07:01:15 UTC_
   - Fade angle: team total UNDER
 - **NBA** / LAL (TEAM_FADE)
   - Fade angle: team total UNDER
-- **NBA** / BOS (TEAM_FADE)
+- **NBA** / LA  (TEAM_FADE)
   - Fade angle: team total UNDER

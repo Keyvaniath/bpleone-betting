@@ -1,18 +1,18 @@
 # EdgeStat Daily Summary — 2026-11-01
 
-## 🏥 Model Health: 65.6/100 [OK]
+## 🏥 Model Health: 59.2/100 [OK]
 - Operational but room to improve - check yellow components
   - 🟢 Calibration Freshness: 100.0/100
-  - 🔴 Hit Rate Trend: 46.5/100
-  - 🔴 Brier Trend: 1.8/100
+  - 🔴 Hit Rate Trend: 42.7/100
+  - 🔴 Brier Trend: 7.7/100
   - 🟢 Pipeline Audit: 100.0/100
-  - 🟢 Data Health: 95.5/100
-  - 🟡 Edge Count: 68.6/100
+  - 🟡 Data Health: 77.3/100
+  - 🔴 Edge Count: 37.1/100
 
 ## 🌐 Slate Overview
-- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.575)
-- **Total games on board:** 32
-- **Strong home favorites:** 13 | **Strong road dogs:** 5
+- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.574)
+- **Total games on board:** 31
+- **Strong home favorites:** 14 | **Strong road dogs:** 4
 
 ## 🎯 Top 5 Best Bets
 1. **LOL Inspired UNDER 3.5 Kills** (78/100 ★★★★)
@@ -33,43 +33,46 @@
 - **[LOL]** Hope OVER 4.5 Kills | MED conviction · model 61.3% fair -158
 - **[CS]** torzsi OVER 40.5 Kills (BO3) | MED conviction · model 61.0% fair -157
 
-## ⚡ Pre-Game HIGH Conviction (6)
+## ⚡ Pre-Game HIGH Conviction (9)
+- [MLS] **New England Revolution** HOME (4-0 L10) · model 73.7% fair -281
 - [UCL] **Atlético Madrid** HOME (None L10) · model 72.7% fair -267
 - [UCL] **Bodo/Glimt** HOME (None L10) · model 72.7% fair -267
 - [UCL] **LASK Linz** HOME (None L10) · model 72.7% fair -267
 - [UCL] **Manchester United** HOME (None L10) · model 72.7% fair -267
 - [NBA] **Indiana Pacers** HOME (2-4 L10) · model 72.1% fair -258
 - [NFL] **Dallas Cowboys** HOME (None L10) · model 72.0% fair -257
+- [MLS] **Vancouver Whitecaps** HOME (2-2 L10) · model 71.7% fair -253
+- [MLS] **Nashville SC** HOME (2-2 L10) · model 70.9% fair -244
 
 ## 🔥/❄️ Heat / Cold Signals
 - Hot teams: **9** | Cold teams: **23** | Over-heavy: 0 | Under-heavy: 50
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (162)
-- RESIDUAL_DIVERGENCE: **5**
-- STEAM_MOVE: **157**
-  - Sacramento Kings (NBA): Sacramento Kings UNDERPERFORMING expected margin by 7.6pts in recent games -- model bias may persist
-  - San Antonio Spurs (NBA): San Antonio Spurs OUTPERFORMING expected margin by 10.0pts in recent games -- model bias may persist
-  - Dallas Stars (NHL): Dallas Stars UNDERPERFORMING expected margin by 6.4pts in recent games -- model bias may persist
-  - Colorado Avalanche (NHL): Colorado Avalanche OUTPERFORMING expected margin by 8.5pts in recent games -- model bias may persist
-  - Chicago Fire FC (MLS): Chicago Fire FC OUTPERFORMING expected margin by 9.4pts in recent games -- model bias may persist
+## ⚠️ Anomaly Detector (171)
+- RESIDUAL_DIVERGENCE: **11**
+- STEAM_MOVE: **160**
+  - Indiana Pacers (NBA): Indiana Pacers UNDERPERFORMING expected margin by 10.5pts in recent games -- model bias may persist
+  - Golden State Warriors (NBA): Golden State Warriors OUTPERFORMING expected margin by 10.9pts in recent games -- model bias may persist
+  - Carolina Hurricanes (NHL): Carolina Hurricanes OUTPERFORMING expected margin by 7.3pts in recent games -- model bias may persist
+  - Winnipeg Jets (NHL): Winnipeg Jets OUTPERFORMING expected margin by 6.4pts in recent games -- model bias may persist
+  - Philadelphia Flyers (NHL): Philadelphia Flyers UNDERPERFORMING expected margin by 8.3pts in recent games -- model bias may persist
 
-## 💰 Today's Portfolio (10 picks)
-- Total stake: **$275.0** (27.5% of $1000 bankroll)
-- Expected EV: **$-5.53**
+## 💰 Today's Portfolio (12 picks)
+- Total stake: **$300.0** (30.0% of $1000 bankroll)
+- Expected EV: **$-7.64**
   - #1 [LOL] $35 on LOL Inspired UNDER 3.5 Kills (P=62%)
   - #2 [LOL] $35 on LOL ShowMaker OVER 3.5 Kills (P=62%)
   - #3 [LOL] $35 on LOL Peyz OVER 4.5 Kills (P=61%)
   - #4 [GOLF] $35 on GOLF Tom Kim TOP5 @ 636 (VidantaWorld Mexico Open) (P=14%)
-  - #5 [NBA] $35 on NBA San Antonio Spurs ML (3-2) vs Minnesota Timberwolves (P=71%)
+  - #5 [GOLF] $20 on GOLF Brian Campbell TOP5 @ 747 (VidantaWorld Mexico Open) (P=12%)
 
-## 🎯 Convergence Picks (28 stacked games)
-- ELITE: **7** · HIGH: 15 · MED: 6
-  - [ELITE] Real Salt Lake @ San Jose Earthquakes : 6 signals (HEAT_COLD, HEAT_COLD, ANOMALY, ANOMALY)
-  - [ELITE] Philadelphia 76ers @ Charlotte Hornets : 5 signals (HEAT_COLD, HEAT_COLD, ANOMALY, ATS)
-  - [ELITE] Minnesota Timberwolves @ San Antonio Spurs : 4 signals (HEAT_COLD, HEAT_COLD, ANOMALY, ATS)
-  - [ELITE] Tampa Bay Lightning @ Nashville Predators : 4 signals (HEAT_COLD, HEAT_COLD, ATS, ATS)
-  - [ELITE] San Diego FC @ St. Louis CITY SC : 4 signals (HEAT_COLD, HEAT_COLD, ATS, ATS)
+## 🎯 Convergence Picks (39 stacked games)
+- ELITE: **15** · HIGH: 10 · MED: 14
+  - [ELITE] Winnipeg Jets @ Carolina Hurricanes : 7 signals (HEAT_COLD, HEAT_COLD, HEAT_COLD, ANOMALY)
+  - [ELITE] Sacramento Kings @ Memphis Grizzlies : 5 signals (HEAT_COLD, HEAT_COLD, HEAT_COLD, HEAT_COLD)
+  - [ELITE] Ottawa Senators @ Anaheim Ducks : 5 signals (HEAT_COLD, HEAT_COLD, ANOMALY, ATS)
+  - [ELITE] Cleveland Cavaliers @ Milwaukee Bucks : 4 signals (HEAT_COLD, HEAT_COLD, ATS, ATS)
+  - [ELITE] Brooklyn Nets @ Indiana Pacers : 4 signals (PREGAME, HEAT_COLD, HEAT_COLD, ANOMALY)
 
 ## 🏀 NBA Player Heat (2 HOT / 2 COLD)
   - 🔥 **Devin Carter** (BOS): L5 14.6/5.8/5.0 vs season 8.9/3.3/2.7 [PTS +5.7, REB +2.5, AST +2.3]
@@ -80,8 +83,8 @@
 ## 🥊 UFC Fight Matchups (UFC Fight Night: Moicano vs. Nolan)
   - [FAVORITE] **Lucia Szabová** (13-0-0) vs Tainara Lisboa -- fair -264
   - [LEAN] **Zach Reese** (11-4-0) vs Mickey Gall -- fair -185
+  - [LEAN] **Jacobe Smith** (14-0-0) vs Randy Brown -- fair -172
   - [LEAN] **Rodrigo Sezinando** (10-2-0) vs Theodor Berggren -- fair -163
-  - [LEAN] **Jacobe Smith** (13-0-0) vs Randy Brown -- fair -162
   - [LEAN] **Joe Kropschot** (10-3-0) vs Nick Klein -- fair -153
 
 ## ⛳ Golf Player Heat (from VidantaWorld Mexico Open)
@@ -105,11 +108,16 @@
   - ❄️ **Andruw Monasterio** (BOS): L14 .083 / season .233 (-150pts) -- FADE props
   - ❄️ **Jim Jarvis** (ATL): L14 .079 / season .207 (-128pts) -- FADE props
 
-## 📈 Streak Regression Alerts (4)
-- [NBA] Memphis Grizzlies on W5 L10 5-0 -- Memphis Grizzlies on W5 -- no historical sample
-- [NBA] Sacramento Kings on L5 L10 0-5 -- Sacramento Kings on L5 -- no historical sample
-- [NBA] San Antonio Spurs on W3 L10 3-2 -- San Antonio Spurs on W3 -- no historical sample
-- [NHL] Montreal Canadiens on W4 L10 4-1 -- Montreal Canadiens on W4 -- no historical sample
+## 😴 B2B Fatigue Edges (2)
+- [NHL] FADE Edmonton Oilers (away on B2B)
+- [NHL] FADE Ottawa Senators (away on B2B)
+
+## 📈 Streak Regression Alerts (10)
+- [NBA] Boston Celtics on W4 L10 4-1 -- Boston Celtics on W4 -- no historical sample
+- [NBA] Indiana Pacers on L3 L10 1-4 -- Indiana Pacers on L3 -- no historical sample
+- [NBA] Brooklyn Nets on L5 L10 0-5 -- Brooklyn Nets on L5 -- no historical sample
+- [NBA] Golden State Warriors on W3 L10 3-2 -- Golden State Warriors on W3 -- no historical sample
+- [NBA] LA Clippers on L4 L10 1-4 -- LA Clippers on L4 -- no historical sample
 
 ## 📉 Walk-Forward Trajectory (n_windows=3d × 8 markets)
 - 📈 Improving: **1** · ➖ Flat: 4 · 📉 Degrading: **3**
