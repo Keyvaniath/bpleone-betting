@@ -6,7 +6,7 @@ _0% lineups confirmed_
 
 ## Slate
 - **0 games** scheduled
-- **13 best bets** scored: 0 DK · 0 PP · 0 NRFI · 0 SGP
+- **17 best bets** scored: 0 DK · 0 PP · 0 NRFI · 0 SGP
 
 ## Top 5 Best Bets
 1. **LOL Inspired UNDER 3.5 Kills**  (78/100 ****, edge —)
@@ -33,9 +33,9 @@ _0% lineups confirmed_
 - Washington Wizards @ Orlando Magic (3-3 vs 2-4)  | P(home) 38.0% fair +164 | Scheduled
 
 ## NHL -- REGULAR
-- Vegas Golden Knights @ Boston Bruins (9-5-1 vs 10-4-1)  | P(home) 47.9% fair +109 | Scheduled
+- Vegas Golden Knights @ Boston Bruins (9-5-1 vs 10-4-1)  | P(home) 48.0% fair +108 | Scheduled
 - Detroit Red Wings @ Florida Panthers (6-5-3 vs 8-4-2)  | P(home) 52.5% fair -111 | Scheduled
-- Colorado Avalanche @ Chicago Blackhawks (8-5-1 vs 4-9-1)  | P(home) 31.3% fair +219 | Scheduled
+- Colorado Avalanche @ Chicago Blackhawks (8-5-1 vs 4-9-1)  | P(home) 31.2% fair +220 | Scheduled
 - Calgary Flames @ San Jose Sharks (6-8-0 vs 7-7-1)  | P(home) 49.9% fair +100 | Scheduled
 
 ## LoL Esports -- 0 live, 7 upcoming
