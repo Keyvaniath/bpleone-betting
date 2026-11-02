@@ -63,6 +63,23 @@ ESPN_SB = "https://site.api.espn.com/apis/site/v2/sports/hockey/nhl/scoreboard"
 LOG_PATH = os.path.join(DATA_DIR, "nhl_starters_log.json")
 
 
+def _fold(name: Optional[str]) -> str:
+    """Case- and accent-insensitive name key: ESPN writes 'L. Merilainen',
+    the NHL API 'L. Meriläinen' (2026-11-02: scored as a wrong confirmed call)."""
+    import unicodedata
+    n = unicodedata.normalize("NFKD", str(name or ""))
+    return "".join(c for c in n if not unicodedata.combining(c)).strip().lower()
+
+
+def _flag_starter(g: Dict[str, Any]) -> Dict[str, Any]:
+    """The NHL API sometimes flags NO goalie as starter (10/29 CBJ@CAR, 10/31
+    TOR@VAN: both sides False). Then the goalie with the most TOI started."""
+    for rows in (g.get("goalies") or {}).values():
+        if rows and not any(r.get("starter") for r in rows):
+            max(rows, key=lambda r: r.get("toi") or 0)["starter"] = True
+    return g
+
+
 def _team(a: Optional[str]) -> str:
     a = str(a or "").upper()
     return NHL_TO_ESPN.get(a, a)
@@ -111,7 +128,7 @@ def parse_boxscore(b: Dict[str, Any]) -> Optional[Dict[str, Any]]:
         out["goalies"][side] = rows
     if not out["goalies"].get("home") or not out["goalies"].get("away"):
         return None
-    return out
+    return _flag_starter(out)
 
 
 def _schedule_ids(start: dt.date, end: dt.date) -> List[Tuple[int, str]]:
@@ -179,7 +196,8 @@ def grow(days: int = 5) -> int:
 
 def ordered_games(doc: Optional[Dict[str, Any]] = None) -> List[Dict[str, Any]]:
     doc = doc or load()
-    return sorted((doc.get("games") or {}).values(), key=lambda g: (g["date"], g["nhl_id"]))
+    return sorted((_flag_starter(g) for g in (doc.get("games") or {}).values()),
+                  key=lambda g: (g["date"], g["nhl_id"]))
 
 
 # ------------------------------------------------------------- features ----
@@ -248,11 +266,11 @@ class GoalieState:
         have started for this team. None if we've never seen him."""
         if not short_name:
             return None
-        nm = short_name.strip().lower()
-        ids = [g for g, n in self.name.items() if str(n or "").strip().lower() == nm]
+        nm = _fold(short_name)
+        ids = [g for g, n in self.name.items() if _fold(n) == nm]
         if not ids:
             last = nm.split()[-1]
-            ids = [g for g, n in self.name.items() if str(n or "").strip().lower().split()[-1:] == [last]]
+            ids = [g for g, n in self.name.items() if _fold(n).split()[-1:] == [last]]
         mine = [g for g in ids if g in self.starts[team]]
         return (mine or ids or [None])[0]
 
@@ -390,7 +408,7 @@ def score_probables(games: List[Dict[str, Any]]) -> Dict[str, Any]:
             log = json.load(f).get("games") or {}
     except Exception:
         return {}
-    by = {(g["date"], g["away"], g["home"]): g for g in games}
+    by = {(g["date"], g["away"], g["home"]): _flag_starter(g) for g in games}
     tally = {"confirmed": [0, 0], "expected": [0, 0]}
     misses = []
     for k, row in log.items():
@@ -404,7 +422,9 @@ def score_probables(games: List[Dict[str, Any]]) -> Dict[str, Any]:
                 continue
             rows = g["goalies"].get(sd) or []
             actual = next((r["name"] for r in rows if r["starter"]), None)
-            hit = str(actual or "").lower() == str(x.get("name") or "").lower()
+            if actual is None:
+                continue                      # no goalie recorded for that side: a data gap, not a call
+            hit = _fold(actual) == _fold(x.get("name"))
             tally[st][0] += int(hit)
             tally[st][1] += 1
             if not hit:

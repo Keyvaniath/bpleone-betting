@@ -478,10 +478,12 @@ def forward_test(sport: str, lines: Dict[str, Any]) -> Dict[str, Any]:
             bm["sum_pts"] += pts
             bm["beat"] += pts > 0
         res = p.get("result")
-        if p.get("settled") and res in ("win", "loss"):
-            w += res == "win"
-            l_ += res == "loss"
-            units += (dd - 1) if res == "win" else -1.0
+        # the ledger writes 'won' / 'lost' (2026-11-02: read as 0-0 after Week 9 settled 5-4)
+        if p.get("settled") and res in ("won", "lost", "win", "loss") and dd:
+            won = res in ("won", "win")
+            w += won
+            l_ += not won
+            units += (dd - 1) if won else -1.0
         out.append({"date": p.get("date"), "matchup": p.get("player_or_matchup"), "market": p.get("market"),
                     "logged_price": p.get("book_american"),
                     "close_price": c.get("ml_home") if side == "home" else c.get("ml_away"),
@@ -587,6 +589,13 @@ def run_sport(sport: str) -> Dict[str, Any]:
         probs = ng.espn_probables(dates)
         if probs:
             ng.log_probables(probs)
+        # P(ESPN's "Expected" goalie starts), measured from the starters log
+        # (2026-11-02: 13/21 = 62%, not the assumed 90%), lightly smoothed.
+        acc = (extra.get("goalie_model") or {}).get("espn_starter_accuracy") or {}
+        ex = acc.get("expected") or {}
+        if ex.get("n"):
+            ng.EXPECTED_P = round((ex["correct"] + 0.9 * 10) / (ex["n"] + 10), 3)
+        extra["goalie_model"]["expected_p_used"] = ng.EXPECTED_P
     for g in odds.get("games") or []:
         m = g.get("market") or {}
         if g.get("sport") != sport.upper() or g.get("status") != "pre" or m.get("ml_home") is None:
