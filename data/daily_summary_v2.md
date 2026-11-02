@@ -1,18 +1,18 @@
-# EdgeStat Daily Summary — 2026-11-01
+# EdgeStat Daily Summary — 2026-11-02
 
-## 🏥 Model Health: 59.5/100 [OK]
+## 🏥 Model Health: 64.9/100 [OK]
 - Operational but room to improve - check yellow components
-  - 🟢 Calibration Freshness: 99.7/100
-  - 🔴 Hit Rate Trend: 34.6/100
-  - 🔴 Brier Trend: 14.2/100
+  - 🟢 Calibration Freshness: 100.0/100
+  - 🔴 Hit Rate Trend: 41.4/100
+  - 🔴 Brier Trend: 16.1/100
   - 🟢 Pipeline Audit: 100.0/100
-  - 🟡 Data Health: 77.3/100
+  - 🟢 Data Health: 95.5/100
   - 🔴 Edge Count: 42.9/100
 
 ## 🌐 Slate Overview
-- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.582)
-- **Total games on board:** 31
-- **Strong home favorites:** 15 | **Strong road dogs:** 4
+- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.593)
+- **Total games on board:** 23
+- **Strong home favorites:** 11 | **Strong road dogs:** 4
 
 ## 🎯 Top 5 Best Bets
 1. **LOL Inspired UNDER 3.5 Kills** (78/100 ★★★★)
@@ -33,29 +33,26 @@
 - **[LOL]** Hope OVER 4.5 Kills | MED conviction · model 61.3% fair -158
 - **[CS]** torzsi OVER 40.5 Kills (BO3) | MED conviction · model 61.0% fair -157
 
-## ⚡ Pre-Game HIGH Conviction (9)
+## ⚡ Pre-Game HIGH Conviction (5)
 - [MLS] **New England Revolution** HOME (4-0 L10) · model 73.7% fair -281
 - [UCL] **Atlético Madrid** HOME (None L10) · model 72.7% fair -267
 - [UCL] **Bodo/Glimt** HOME (None L10) · model 72.7% fair -267
 - [UCL] **LASK Linz** HOME (None L10) · model 72.7% fair -267
 - [UCL] **Manchester United** HOME (None L10) · model 72.7% fair -267
-- [NBA] **Indiana Pacers** HOME (2-4 L10) · model 72.1% fair -258
-- [NFL] **Dallas Cowboys** HOME (None L10) · model 72.0% fair -257
-- [MLS] **Vancouver Whitecaps** HOME (2-2 L10) · model 71.7% fair -253
-- [MLS] **Nashville SC** HOME (2-2 L10) · model 70.9% fair -244
 
 ## 🔥/❄️ Heat / Cold Signals
-- Hot teams: **9** | Cold teams: **23** | Over-heavy: 0 | Under-heavy: 50
+- Hot teams: **10** | Cold teams: **21** | Over-heavy: 0 | Under-heavy: 53
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (172)
-- RESIDUAL_DIVERGENCE: **11**
+## ⚠️ Anomaly Detector (170)
+- STREAK_MISMATCH: **1**
+- RESIDUAL_DIVERGENCE: **8**
 - STEAM_MOVE: **161**
+  - Brooklyn Nets (NBA): Brooklyn Nets on L5 streak but model still favors them (65%) -- may be overvalued
   - Indiana Pacers (NBA): Indiana Pacers UNDERPERFORMING expected margin by 10.5pts in recent games -- model bias may persist
   - Golden State Warriors (NBA): Golden State Warriors OUTPERFORMING expected margin by 10.9pts in recent games -- model bias may persist
-  - Carolina Hurricanes (NHL): Carolina Hurricanes OUTPERFORMING expected margin by 7.3pts in recent games -- model bias may persist
-  - Winnipeg Jets (NHL): Winnipeg Jets OUTPERFORMING expected margin by 6.4pts in recent games -- model bias may persist
   - Philadelphia Flyers (NHL): Philadelphia Flyers UNDERPERFORMING expected margin by 8.3pts in recent games -- model bias may persist
+  - Anaheim Ducks (NHL): Anaheim Ducks OUTPERFORMING expected margin by 7.4pts in recent games -- model bias may persist
 
 ## 💰 Today's Portfolio (12 picks)
 - Total stake: **$300.0** (30.0% of $1000 bankroll)
@@ -66,19 +63,17 @@
   - #4 [GOLF] $35 on GOLF Tom Kim TOP5 @ 636 (VidantaWorld Mexico Open) (P=14%)
   - #5 [GOLF] $20 on GOLF Brian Campbell TOP5 @ 747 (VidantaWorld Mexico Open) (P=12%)
 
-## 🎯 Convergence Picks (32 stacked games)
-- ELITE: **14** · HIGH: 5 · MED: 13
+## 🎯 Convergence Picks (16 stacked games)
+- ELITE: **9** · HIGH: 2 · MED: 5
   - [ELITE] Winnipeg Jets @ Carolina Hurricanes : 7 signals (HEAT_COLD, HEAT_COLD, HEAT_COLD, ANOMALY)
-  - [ELITE] Sacramento Kings @ Memphis Grizzlies : 5 signals (HEAT_COLD, HEAT_COLD, HEAT_COLD, HEAT_COLD)
   - [ELITE] Ottawa Senators @ Anaheim Ducks : 5 signals (HEAT_COLD, HEAT_COLD, ANOMALY, ATS)
   - [ELITE] Red Bull New York @ Nashville SC : 5 signals (PREGAME, ANOMALY, ANOMALY, ATS)
-  - [ELITE] Cleveland Cavaliers @ Milwaukee Bucks : 4 signals (HEAT_COLD, HEAT_COLD, ATS, ATS)
+  - [ELITE] Brooklyn Nets @ Indiana Pacers : 4 signals (PREGAME, HEAT_COLD, HEAT_COLD, ANOMALY)
+  - [ELITE] LA Clippers @ Golden State Warriors : 4 signals (HEAT_COLD, HEAT_COLD, ANOMALY, ATS)
 
-## 🏀 NBA Player Heat (2 HOT / 2 COLD)
-  - 🔥 **Devin Carter** (BOS): L5 14.6/5.8/5.0 vs season 8.9/3.3/2.7 [PTS +5.7, REB +2.5, AST +2.3]
+## 🏀 NBA Player Heat (1 HOT / 1 COLD)
   - 🔥 **Malachi Smith** (TOR): L5 10.2/6.0/5.8 vs season 8.3/3.4/3.3 [REB +2.6, AST +2.5]
   - ❄️ **Brandon Ingram** (LAC): L5 12.0 vs season 21.5 [PTS -9.5, REB -2.4] -- FADE OVER props
-  - ❄️ **Nikola Vucevic** (ORL): L5 2.6 vs season 8.8 [PTS -6.2, REB -3.1] -- FADE OVER props
 
 ## 🥊 UFC Fight Matchups (UFC Fight Night: Moicano vs. Nolan)
   - [FAVORITE] **Lucia Szabová** (13-0-0) vs Tainara Lisboa -- fair -264
@@ -88,13 +83,14 @@
   - [LEAN] **Joe Kropschot** (10-3-0) vs Nick Klein -- fair -153
 
 ## ⛳ Golf Player Heat (from VidantaWorld Mexico Open)
-  - 🔥 T1 **Andrew Novak** (USA): -23 total -- finished T1
-  - 🔥 T2 **Matthieu Pavon** (France): -17 total -- finished T2
-  - 🔥 T3 **Doug Ghim** (USA): -16 total -- finished T3
-  - 🔥 T4 **Pierceson Coody** (USA): -15 total -- finished T4
-  - 🔥 T5 **Max Greyserman** (USA): -15 total -- finished T5
-  - ❄️ **Trent Phillips** (USA): Sunday +3.5 vs tourney avg
-  - ❄️ **Joe Highsmith** (USA): Sunday +3.0 vs tourney avg
+  - 🔥 T2 **Kristoffer Ventura** (Norway): -20 total -- finished T2, Sunday -3.0 vs tourney avg
+  - 🔥 T3 **Steven Fisk** (USA): -20 total -- finished T3, Sunday -3.0 vs tourney avg
+  - 🔥 T4 **Mackenzie Hughes** (Canada): -19 total -- finished T4, Sunday -0.2 vs tourney avg
+  - 🔥 T5 **Ben Griffin** (USA): -19 total -- finished T5
+  - 🔥 T6 **Erik van Rooyen** (South Africa): -18 total -- finished T6, Sunday -2.5 vs tourney avg
+  - ❄️ **David Skinns** (England): Sunday +4.8 vs tourney avg
+  - ❄️ **Andrew Novak** (USA): Sunday +4.2 vs tourney avg
+  - ❄️ **Matthieu Pavon** (France): Sunday +4.2 vs tourney avg
 
 ## 🔥 MLB Batter Heat (55 HOT / 68 COLD)
   - 🔥 **Nolan Arenado** (AZ): L14 .404 / season .255 (+149pts)
@@ -130,9 +126,9 @@
 - ELITE: **0** · HEALTHY: 1 · OK: 1 · DEGRADED: **0**
 
 ## 🤖 Self-Training Status
-- **NBA**: n=88 games · hit rate 62.5% · bias -2.1pp
-- **NHL**: n=92 games · hit rate 55.4% · bias -4.1pp
+- **NBA**: n=90 games · hit rate 62.2% · bias -1.1pp
+- **NHL**: n=93 games · hit rate 55.9% · bias -3.0pp
 - **WNBA**: n=6 games · hit rate 33.3% · bias -7.2pp
-- **MLS**: n=70 games · hit rate 41.4% · bias -3.4pp
-- **EPL**: n=32 games · hit rate 50.0% · bias +0.9pp
-- **MLB**: n=7 games · hit rate 57.1% · bias -13.4pp
+- **MLS**: n=72 games · hit rate 45.8% · bias -4.0pp
+- **EPL**: n=30 games · hit rate 53.3% · bias +1.4pp
+- **MLB**: n=6 games · hit rate 66.7% · bias -33.5pp
