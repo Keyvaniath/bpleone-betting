@@ -1,4 +1,4 @@
-# Tonight's Slate Brief — 2026-11-01
+# Tonight's Slate Brief — 2026-11-02
 
 ## Slate Quality: 70/100 (MEDIUM)
 _0% lineups confirmed_
@@ -6,7 +6,7 @@ _0% lineups confirmed_
 
 ## Slate
 - **0 games** scheduled
-- **20 best bets** scored: 0 DK · 0 PP · 0 NRFI · 0 SGP
+- **13 best bets** scored: 0 DK · 0 PP · 0 NRFI · 0 SGP
 
 ## Top 5 Best Bets
 1. **LOL Inspired UNDER 3.5 Kills**  (78/100 ****, edge —)
@@ -18,30 +18,25 @@ _0% lineups confirmed_
 3. **LOL Peyz OVER 4.5 Kills**  (78/100 ****, edge —)
    - Player prop quality score 1.184
    - Elite player
-4. **GOLF Tom Kim TOP5 @ 636 (VidantaWorld Mexico Open)**  (78/100 *****, edge —)
-   - P(top 5) 13.6% -- lower variance than outright but compelling line.
-5. **LOL Karmine Corp vs T1 ML @ -168**  (76/100 *****, edge —)
+4. **LOL Karmine Corp vs T1 ML @ -168**  (76/100 *****, edge —)
    - Model 62.7% (fair -168)
    - Worlds
-
-## Golf -- VidantaWorld Mexico Open
-- **Leader:** Andrew Novak (-23) at #1
-- **Field:** 120 players  |  Status: In Progress
-- **Play of the Tournament:** Tom Kim TOP5 @ +636 (model 13.6%, HIGH)
-   - P(top 5) 13.6% -- lower variance than outright but compelling line.
+5. **LOL Gen.G Esports vs LYON ML @ -298**  (76/100 *****, edge —)
+   - Model 74.9% (fair -298)
+   - Worlds
 
 ## NBA -- REGULAR
-- Boston Celtics @ Orlando Magic (4-1 vs 2-3)  | P(home) 16.9% fair +491 | Scheduled
-- Brooklyn Nets @ Indiana Pacers (0-5 vs 2-4)  | P(home) 72.1% fair -258 | Scheduled
-- LA Clippers @ Golden State Warriors (1-4 vs 3-3)  | P(home) 83.0% fair -489 | Scheduled
-- Toronto Raptors @ Los Angeles Lakers (3-2 vs 4-2)  | P(home) 62.0% fair -163 | Scheduled
+- Oklahoma City Thunder @ Cleveland Cavaliers (4-2 vs 4-2)  | P(home) 55.0% fair -122 | Scheduled
+- Detroit Pistons @ Charlotte Hornets (5-1 vs 3-4)  | P(home) 15.5% fair +545 | Scheduled
+- Atlanta Hawks @ Indiana Pacers (3-4 vs 2-5)  | P(home) 39.5% fair +153 | Scheduled
+- Brooklyn Nets @ New York Knicks (1-5 vs 2-4)  | P(home) 75.4% fair -306 | Scheduled
+- Washington Wizards @ Orlando Magic (3-3 vs 2-4)  | P(home) 38.0% fair +164 | Scheduled
 
 ## NHL -- REGULAR
-- Winnipeg Jets @ Carolina Hurricanes (4-7-3 vs 11-2-2) 0-1 | P(home) 83.9% fair -521 | End of Period
-- Minnesota Wild @ Washington Capitals (9-3-3 vs 8-4-0)  | P(home) 46.4% fair +116 | Scheduled
-- Utah Mammoth @ Philadelphia Flyers (9-5-0 vs 3-8-4)  | P(home) 41.3% fair +142 | Scheduled
-- Edmonton Oilers @ New York Rangers (10-2-2 vs 7-6-1)  | P(home) 47.9% fair +109 | Scheduled
-- Ottawa Senators @ Anaheim Ducks (9-5-1 vs 5-7-1)  | P(home) 52.6% fair -111 | Scheduled
+- Vegas Golden Knights @ Boston Bruins (9-5-1 vs 10-4-1)  | P(home) 47.9% fair +109 | Scheduled
+- Detroit Red Wings @ Florida Panthers (6-5-3 vs 8-4-2)  | P(home) 52.5% fair -111 | Scheduled
+- Colorado Avalanche @ Chicago Blackhawks (8-5-1 vs 4-9-1)  | P(home) 31.3% fair +219 | Scheduled
+- Calgary Flames @ San Jose Sharks (6-8-0 vs 7-7-1)  | P(home) 49.9% fair +100 | Scheduled
 
 ## LoL Esports -- 0 live, 7 upcoming
 - [Worlds] TOP ESPORTS vs Invictus Gaming BO5 | P(A) 23.6% fair +324/-324

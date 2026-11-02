@@ -1,25 +1,25 @@
 # EdgeStat Daily Summary — 2026-11-02
 
-## 🏥 Model Health: 64.9/100 [OK]
+## 🏥 Model Health: 61.2/100 [OK]
 - Operational but room to improve - check yellow components
-  - 🟢 Calibration Freshness: 100.0/100
+  - 🟢 Calibration Freshness: 99.9/100
   - 🔴 Hit Rate Trend: 41.4/100
   - 🔴 Brier Trend: 16.1/100
   - 🟢 Pipeline Audit: 100.0/100
-  - 🟢 Data Health: 95.5/100
+  - 🟡 Data Health: 77.3/100
   - 🔴 Edge Count: 42.9/100
 
 ## 🌐 Slate Overview
-- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.593)
+- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.597)
 - **Total games on board:** 23
-- **Strong home favorites:** 11 | **Strong road dogs:** 4
+- **Strong home favorites:** 9 | **Strong road dogs:** 6
 
 ## 🎯 Top 5 Best Bets
 1. **LOL Inspired UNDER 3.5 Kills** (78/100 ★★★★)
 2. **LOL ShowMaker OVER 3.5 Kills** (78/100 ★★★★)
 3. **LOL Peyz OVER 4.5 Kills** (78/100 ★★★★)
-4. **GOLF Tom Kim TOP5 @ 636 (VidantaWorld Mexico Open)** (78/100 ★★★★★)
-5. **LOL Karmine Corp vs T1 ML @ -168** (76/100 ★★★★★)
+4. **LOL Karmine Corp vs T1 ML @ -168** (76/100 ★★★★★)
+5. **LOL Gen.G Esports vs LYON ML @ -298** (76/100 ★★★★★)
 
 ## 🔒 Locks of the Day -- Track Record
 - All-time: **310-60** (83.8% hit rate)
@@ -33,47 +33,55 @@
 - **[LOL]** Hope OVER 4.5 Kills | MED conviction · model 61.3% fair -158
 - **[CS]** torzsi OVER 40.5 Kills (BO3) | MED conviction · model 61.0% fair -157
 
-## ⚡ Pre-Game HIGH Conviction (5)
-- [MLS] **New England Revolution** HOME (4-0 L10) · model 73.7% fair -281
+## ⚡ Pre-Game HIGH Conviction (7)
 - [UCL] **Atlético Madrid** HOME (None L10) · model 72.7% fair -267
 - [UCL] **Bodo/Glimt** HOME (None L10) · model 72.7% fair -267
 - [UCL] **LASK Linz** HOME (None L10) · model 72.7% fair -267
 - [UCL] **Manchester United** HOME (None L10) · model 72.7% fair -267
+- [NHL] **Colorado Avalanche** AWAY (3-3 L10) · model 68.7% fair -219
+- [NBA] **Portland Trail Blazers** AWAY (4-1 L10) · model 68.5% fair -218
+- [NBA] **Washington Wizards** AWAY (3-3 L10) · model 62.1% fair -164
 
 ## 🔥/❄️ Heat / Cold Signals
-- Hot teams: **10** | Cold teams: **21** | Over-heavy: 0 | Under-heavy: 53
+- Hot teams: **9** | Cold teams: **22** | Over-heavy: 0 | Under-heavy: 55
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (170)
+## ⚠️ Anomaly Detector (226)
+- RESIDUAL_DIVERGENCE: **12**
 - STREAK_MISMATCH: **1**
-- RESIDUAL_DIVERGENCE: **8**
-- STEAM_MOVE: **161**
-  - Brooklyn Nets (NBA): Brooklyn Nets on L5 streak but model still favors them (65%) -- may be overvalued
-  - Indiana Pacers (NBA): Indiana Pacers UNDERPERFORMING expected margin by 10.5pts in recent games -- model bias may persist
-  - Golden State Warriors (NBA): Golden State Warriors OUTPERFORMING expected margin by 10.9pts in recent games -- model bias may persist
-  - Philadelphia Flyers (NHL): Philadelphia Flyers UNDERPERFORMING expected margin by 8.3pts in recent games -- model bias may persist
-  - Anaheim Ducks (NHL): Anaheim Ducks OUTPERFORMING expected margin by 7.4pts in recent games -- model bias may persist
+- STEAM_MOVE: **213**
+  - Oklahoma City Thunder (NBA): Oklahoma City Thunder UNDERPERFORMING expected margin by 6.9pts in recent games -- model bias may persist
+  - Charlotte Hornets (NBA): Charlotte Hornets UNDERPERFORMING expected margin by 8.8pts in recent games -- model bias may persist
+  - Indiana Pacers (NBA): Indiana Pacers UNDERPERFORMING expected margin by 10.9pts in recent games -- model bias may persist
+  - Chicago Bulls (NBA): Chicago Bulls UNDERPERFORMING expected margin by 12.2pts in recent games -- model bias may persist
+  - Dallas Mavericks (NBA): Dallas Mavericks OUTPERFORMING expected margin by 6.2pts in recent games -- model bias may persist
 
-## 💰 Today's Portfolio (12 picks)
-- Total stake: **$300.0** (30.0% of $1000 bankroll)
-- Expected EV: **$-7.64**
+## 💰 Today's Portfolio (8 picks)
+- Total stake: **$220.0** (22.0% of $1000 bankroll)
+- Expected EV: **$-6.94**
   - #1 [LOL] $35 on LOL Inspired UNDER 3.5 Kills (P=62%)
   - #2 [LOL] $35 on LOL ShowMaker OVER 3.5 Kills (P=62%)
   - #3 [LOL] $35 on LOL Peyz OVER 4.5 Kills (P=61%)
-  - #4 [GOLF] $35 on GOLF Tom Kim TOP5 @ 636 (VidantaWorld Mexico Open) (P=14%)
-  - #5 [GOLF] $20 on GOLF Brian Campbell TOP5 @ 747 (VidantaWorld Mexico Open) (P=12%)
+  - #4 [NBA] $35 on NBA Cleveland Cavaliers ML (4-2) vs Oklahoma City Thunder (P=55%)
+  - #5 [NBA] $20 on NBA Atlanta Hawks ML (3-4) at Indiana Pacers (P=61%)
 
-## 🎯 Convergence Picks (16 stacked games)
-- ELITE: **9** · HIGH: 2 · MED: 5
-  - [ELITE] Winnipeg Jets @ Carolina Hurricanes : 7 signals (HEAT_COLD, HEAT_COLD, HEAT_COLD, ANOMALY)
+## 🎯 Convergence Picks (17 stacked games)
+- ELITE: **6** · HIGH: 5 · MED: 6
   - [ELITE] Ottawa Senators @ Anaheim Ducks : 5 signals (HEAT_COLD, HEAT_COLD, ANOMALY, ATS)
-  - [ELITE] Red Bull New York @ Nashville SC : 5 signals (PREGAME, ANOMALY, ANOMALY, ATS)
-  - [ELITE] Brooklyn Nets @ Indiana Pacers : 4 signals (PREGAME, HEAT_COLD, HEAT_COLD, ANOMALY)
+  - [ELITE] Boston Celtics @ Orlando Magic : 4 signals (HEAT_COLD, HEAT_COLD, HEAT_COLD, ATS)
   - [ELITE] LA Clippers @ Golden State Warriors : 4 signals (HEAT_COLD, HEAT_COLD, ANOMALY, ATS)
+  - [ELITE] Winnipeg Jets @ Carolina Hurricanes : 4 signals (HEAT_COLD, HEAT_COLD, HEAT_COLD, ATS)
+  - [ELITE] Red Bull New York @ Nashville SC : 4 signals (ANOMALY, ANOMALY, ATS, ATS)
 
-## 🏀 NBA Player Heat (1 HOT / 1 COLD)
+## 🏀 NBA Player Heat (8 HOT / 6 COLD)
+  - 🔥 **Maxime Raynaud** (SAC): L5 20.0/9.8/2.6 vs season 12.5/7.5/1.4 [PTS +7.5, REB +2.3]
+  - 🔥 **Brandon Miller** (CHA): L5 29.4/7.6/3.0 vs season 22.6/5.6/2.7 [PTS +6.8, REB +2.0]
+  - 🔥 **Jayson Tatum** (BOS): L5 31.4/6.4/7.0 vs season 25.3/7.8/6.6 [PTS +6.1]
+  - 🔥 **Cormac Ryan** (MIL): L5 20.2/4.8/2.4 vs season 14.3/2.5/1.7 [PTS +5.9, REB +2.3]
   - 🔥 **Malachi Smith** (TOR): L5 10.2/6.0/5.8 vs season 8.3/3.4/3.3 [REB +2.6, AST +2.5]
+  - ❄️ **Shaedon Sharpe** (POR): L5 7.2 vs season 20.8 [PTS -13.6, REB -2.7, AST -2.0] -- FADE OVER props
   - ❄️ **Brandon Ingram** (LAC): L5 12.0 vs season 21.5 [PTS -9.5, REB -2.4] -- FADE OVER props
+  - ❄️ **Lauri Markkanen** (UTAH): L5 15.4 vs season 21.1 [PTS -5.7] -- FADE OVER props
 
 ## 🥊 UFC Fight Matchups (UFC Fight Night: Moicano vs. Nolan)
   - [FAVORITE] **Lucia Szabová** (13-0-0) vs Tainara Lisboa -- fair -264
@@ -104,16 +112,11 @@
   - ❄️ **Andruw Monasterio** (BOS): L14 .083 / season .233 (-150pts) -- FADE props
   - ❄️ **Jim Jarvis** (ATL): L14 .079 / season .207 (-128pts) -- FADE props
 
-## 😴 B2B Fatigue Edges (2)
-- [NHL] FADE Edmonton Oilers (away on B2B)
-- [NHL] FADE Ottawa Senators (away on B2B)
-
-## 📈 Streak Regression Alerts (13)
-- [NBA] Boston Celtics on W4 L10 4-1 -- Boston Celtics on W4 -- no historical sample
-- [NBA] Indiana Pacers on L3 L10 1-4 -- Indiana Pacers on L3 -- no historical sample
-- [NBA] Brooklyn Nets on L5 L10 0-5 -- Brooklyn Nets on L5 -- no historical sample
+## 📈 Streak Regression Alerts (4)
 - [NBA] Golden State Warriors on W3 L10 3-2 -- Golden State Warriors on W3 -- no historical sample
 - [NBA] LA Clippers on L4 L10 1-4 -- LA Clippers on L4 -- no historical sample
+- [NHL] New York Rangers on L3 L10 1-3 -- New York Rangers on L3 -- no historical sample
+- [MLS] New England Revolution on W4 L10 4-0 -- New England Revolution on W4 -- no historical sample
 
 ## 📉 Walk-Forward Trajectory (n_windows=3d × 8 markets)
 - 📈 Improving: **1** · ➖ Flat: 4 · 📉 Degrading: **3**
@@ -126,9 +129,9 @@
 - ELITE: **0** · HEALTHY: 1 · OK: 1 · DEGRADED: **0**
 
 ## 🤖 Self-Training Status
-- **NBA**: n=90 games · hit rate 62.2% · bias -1.1pp
-- **NHL**: n=93 games · hit rate 55.9% · bias -3.0pp
+- **NBA**: n=92 games · hit rate 63.0% · bias -1.7pp
+- **NHL**: n=95 games · hit rate 55.8% · bias -3.7pp
 - **WNBA**: n=6 games · hit rate 33.3% · bias -7.2pp
-- **MLS**: n=72 games · hit rate 45.8% · bias -4.0pp
+- **MLS**: n=75 games · hit rate 46.7% · bias -2.7pp
 - **EPL**: n=30 games · hit rate 53.3% · bias +1.4pp
 - **MLB**: n=6 games · hit rate 66.7% · bias -33.5pp
