@@ -98,68 +98,98 @@ def _american(p: float) -> Optional[int]:
     return int(round(((1 / p) - 1) * 100))
 
 
+def _fullname_index() -> Dict[tuple, List[str]]:
+    """(first initial, folded last name) -> full names in the box-log file the
+    grader and the ledger's activity gate key on (the NHL API writes
+    'T. Frederic'; the grader needs 'trent frederic')."""
+    import nhl_goalies as _ng
+    idx: Dict[tuple, List[str]] = {}
+    for full in (_load(os.path.join(DATA_DIR, "nhl_player_gamelogs.json")).get("by_name") or {}):
+        parts = _ng._fold(full).split()
+        if len(parts) >= 2:
+            idx.setdefault((parts[0][:1], parts[-1]), []).append(full)
+    return idx
+
+
 def run() -> Dict[str, Any]:
+    """2026-11-02: projections from REAL per-player rates (nhl_skaters store:
+    every boxscore since 2024-25, EWMA + position-mean shrinkage, hits x
+    home/away factor) through the negative binomial whose dispersion was fitted
+    on last season. The hand-typed PLAYER_DB above is no longer read: graded on
+    real box scores it ran HITS_OVER_2.5 6-15 at ~67% predicted."""
+    import nhl_goalies as _ng
+    import nhl_skaters as ns
+    grown = ns.grow()
+    st, cal = ns.load()
+    r_h, r_b, r_p = ns.dispersion(cal, "hits"), ns.dispersion(cal, "blocks"), ns.dispersion(cal, "pim")
+    names = _fullname_index()
     state = _load(os.path.join(DATA_DIR, "nhl_state.json"))
     games = state.get("games") or state.get("events") or []
+    cutoff = (dt.date.today() - dt.timedelta(days=14)).isoformat()
+
+    by_team: Dict[str, List[str]] = {}
+    for pid, x in st.p.items():
+        if x.get("team") and str(x.get("last_date") or "") >= cutoff and x.get("gp", 0) >= 10:
+            by_team.setdefault(x["team"], []).append(pid)
 
     rows: List[Dict[str, Any]] = []
+    n_unmapped = 0
     for g in games:
         status = (g.get("status") or g.get("state") or "").lower()
-        if "final" in status: continue
+        if "final" in status or g.get("state") in ("in", "post"):
+            continue
         home = _abbr(g.get("home_team") or g.get("home") or "")
         away = _abbr(g.get("away_team") or g.get("away") or "")
-        if not home or not away: continue
+        if not home or not away:
+            continue
+        for side, team in (("home", home), ("away", away)):
+            for pid in by_team.get(_ng._team(team), []):
+                x = st.p[pid]
+                parts = _ng._fold(x.get("name")).replace(".", "").split()
+                full = names.get((parts[0][:1], parts[-1])) if len(parts) >= 2 else None
+                if not full or len(full) != 1:
+                    n_unmapped += 1          # grader can't key him -> never a pick
+                    continue
+                hits_lam = st.rate(pid, "hits", side)
+                blocks_lam = st.rate(pid, "blocks")
+                pim_lam = st.rate(pid, "pim")
+                p_hits_1 = ns.p_at_least(1, hits_lam, r_h)
+                p_hits_2 = ns.p_at_least(2, hits_lam, r_h)
+                p_hits_3 = ns.p_at_least(3, hits_lam, r_h)
+                p_hits_4 = ns.p_at_least(4, hits_lam, r_h)
+                p_blocks_1 = ns.p_at_least(1, blocks_lam, r_b)
+                p_blocks_2 = ns.p_at_least(2, blocks_lam, r_b)
 
-        for player_name, info in PLAYER_DB.items():
-            if info["team"] not in (home, away):
-                continue
-            hits_lam = info["hits_pg"]
-            blocks_lam = info["blocks_pg"]
-            pim_lam = info["pim_pg"]
+                # Same selection bands as before -- now on calibrated probabilities.
+                edge_class, best_market = "NONE", None
+                if 0.62 <= p_hits_3 <= 0.75:
+                    edge_class = "STRONG_HITS_OVER_2_5"
+                    best_market = {"market": "HITS_OVER_2.5", "p": round(p_hits_3, 3), "fair_odds": _american(p_hits_3)}
+                elif 0.62 <= p_hits_2 <= 0.75:
+                    edge_class = "STRONG_HITS_OVER_1_5"
+                    best_market = {"market": "HITS_OVER_1.5", "p": round(p_hits_2, 3), "fair_odds": _american(p_hits_2)}
+                elif 0.58 <= p_blocks_2 <= 0.72:
+                    edge_class = "STRONG_BLOCKS_OVER_1_5"
+                    best_market = {"market": "BLOCKS_OVER_1.5", "p": round(p_blocks_2, 3), "fair_odds": _american(p_blocks_2)}
 
-            # Compute over/under probabilities
-            p_hits_1 = _poisson_at_least(1, hits_lam)
-            p_hits_2 = _poisson_at_least(2, hits_lam)
-            p_hits_3 = _poisson_at_least(3, hits_lam)
-            p_hits_4 = _poisson_at_least(4, hits_lam)
-            p_blocks_1 = _poisson_at_least(1, blocks_lam)
-            p_blocks_2 = _poisson_at_least(2, blocks_lam)
-
-            # Edge classification: STRONG = 10%+ edge vs typical book lines
-            #  Hits 2.5 OVER book ~ -130 (56.5% breakeven). STRONG: p >= 0.65
-            #  Blocks 1.5 OVER book ~ +100 (50% breakeven). STRONG: p >= 0.58
-            edge_class = "NONE"
-            best_market = None
-            # Hits OVER 2.5 (3+ hits)
-            if 0.62 <= p_hits_3 <= 0.75:
-                edge_class = "STRONG_HITS_OVER_2_5"
-                best_market = {"market": "HITS_OVER_2.5", "p": round(p_hits_3, 3),
-                               "fair_odds": _american(p_hits_3)}
-            elif 0.62 <= p_hits_2 <= 0.75:
-                edge_class = "STRONG_HITS_OVER_1_5"
-                best_market = {"market": "HITS_OVER_1.5", "p": round(p_hits_2, 3),
-                               "fair_odds": _american(p_hits_2)}
-            elif 0.58 <= p_blocks_2 <= 0.72:
-                edge_class = "STRONG_BLOCKS_OVER_1_5"
-                best_market = {"market": "BLOCKS_OVER_1.5", "p": round(p_blocks_2, 3),
-                               "fair_odds": _american(p_blocks_2)}
-
-            rows.append({
-                "matchup": f"{away} @ {home}",
-                "player": player_name,
-                "team": info["team"],
-                "hits_per_game": hits_lam,
-                "blocks_per_game": blocks_lam,
-                "pim_per_game": pim_lam,
-                "p_hits_1_plus": round(p_hits_1, 3),
-                "p_hits_2_plus": round(p_hits_2, 3),
-                "p_hits_3_plus": round(p_hits_3, 3),
-                "p_hits_4_plus": round(p_hits_4, 3),
-                "p_blocks_1_plus": round(p_blocks_1, 3),
-                "p_blocks_2_plus": round(p_blocks_2, 3),
-                "edge_class": edge_class,
-                "best_market": best_market,
-            })
+                rows.append({
+                    "matchup": f"{away} @ {home}",
+                    "player": full[0],
+                    "team": team,
+                    "side": side,
+                    "games_weighted": round(x["gp"], 1),
+                    "hits_per_game": round(hits_lam, 3),
+                    "blocks_per_game": round(blocks_lam, 3),
+                    "pim_per_game": round(pim_lam, 3),
+                    "p_hits_1_plus": round(p_hits_1, 3),
+                    "p_hits_2_plus": round(p_hits_2, 3),
+                    "p_hits_3_plus": round(p_hits_3, 3),
+                    "p_hits_4_plus": round(p_hits_4, 3),
+                    "p_blocks_1_plus": round(p_blocks_1, 3),
+                    "p_blocks_2_plus": round(p_blocks_2, 3),
+                    "edge_class": edge_class,
+                    "best_market": best_market,
+                })
 
     rows.sort(key=lambda r: -(r["hits_per_game"] + r["blocks_per_game"]))
     strong = [r for r in rows if r["edge_class"].startswith("STRONG")]
@@ -168,9 +198,14 @@ def run() -> Dict[str, Any]:
         "generated_at": dt.datetime.utcnow().isoformat(timespec="seconds"),
         "n_players_projected": len(rows),
         "n_strong_edges": len(strong),
-        "n_players_in_db": len(PLAYER_DB),
-        "method_note": "Poisson on per-game hits/blocks/PIM baselines. STRONG = 10%+ edge "
-                       "vs typical book breakevens. Hits OVER 2.5 needs p>=0.62 vs -130 book.",
+        "n_unmapped_names": n_unmapped,
+        "n_boxscores_added": grown,
+        "dispersion": {"hits": r_h, "blocks": r_b, "pim": r_p},
+        "method_note": ("Real per-player rates from every NHL boxscore since 2024-25 (EWMA, position-mean "
+                        "prior, hits x home/away scorer factor), negative binomial with dispersion fitted on "
+                        "last season (calibration in nhl_skater_rates.json). STRONG bands unchanged: hits 3+ "
+                        "p 0.62-0.75, hits 2+ p 0.62-0.75, blocks 2+ p 0.58-0.72. Replaced the hand-typed "
+                        "PLAYER_DB on 2026-11-02 (it graded 6-15 on hits 3+ at ~67% predicted)."),
         "rows": rows,
         "strong_edges": strong,
     }

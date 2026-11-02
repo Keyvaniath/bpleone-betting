@@ -41,6 +41,29 @@ bpleone-site/
 
 ## Current deployment state (LIVE)
 
+- **2026-11-02 — NHL SKATER PROPS ON REAL RATES.** Season calibration by
+  source (hit rate vs predicted): HITS_OVER_2.5 33% vs 67% (n=27),
+  BLOCKS_OVER_1.5 49% vs 64% (n=47), ANYTIME_GOAL_NO 71% vs 87% (n=21); P3
+  overs / puck lines roughly calibrated. Cause: hand-typed PLAYER_DB per-game
+  rates (stale teams, inflated) through a Poisson. Grading verified against
+  NHL API boxscores (correct). New `python/nhl_skaters.py` + builder
+  `tools/build_nhl_skater_rates.py` -> `data/nhl_skater_rates.json` (3,023
+  boxscores since 2024-25 replayed in order; EWMA alpha .08 + 8-game
+  position-mean prior; hits x home/away scorer factor; NB dispersion per stat
+  chosen on 2025-26 walk-forward log loss: hits r=8, blocks 5, sog 15, pim 1,
+  goals 2, points 8; reliability bins in the file). Grown daily by
+  `ns.grow()` inside nhl_skater_hits_blocks_props. nhl_skater_hits_blocks_props
+  and nhl_anytime_goal_props now read it (all active skaters, gp >= 10, last
+  game <= 14 days; full names mapped via nhl_player_gamelogs so the grader
+  keys them; anytime-goal candidates >= 0.25 goals/g; opposing goalie = the
+  desk's confirmed/expected/projected starter). Selection bands unchanged.
+  Hand tables left in the files but unread. SOG / points modules still on
+  hand tables (no recent ledger picks) -- next if they start producing.
+  Also: forward_test W-L fixed ('won'/'lost'); goalie names accent-folded;
+  unflagged NHL starters = most TOI; ESPN Confirmed starters 43/43, Expected
+  13/21 -> EXPECTED_P measured (0.71). NFL Week 9 forward test 5-4 +1.01u,
+  v1 avg CLV +0.31 pts; BAL actually started 3rd-stringer Fagnano (the QB
+  gate had blocked it as uncertain).
 - **2026-10-29 (night) — NFL QB MODEL.** The NFL desk logged PHI +195 at WSH
   on 10/28 with Hurts out (McKee started PHI's last game): its "edges" were
   partly the market pricing backup QBs. `python/nfl_qbs.py` + seed

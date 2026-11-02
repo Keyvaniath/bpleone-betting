@@ -114,72 +114,98 @@ def _american(p: float) -> Optional[int]:
     return int(round(((1 / p) - 1) * 100))
 
 
+SCORER_MIN_GPG = 0.25    # only established scorers are candidates (a 4th-liner's "no goal" says nothing)
+
+
+def _opp_goalie_mult(desk_board: Dict[tuple, Dict[str, Any]], gstate, matchup_key, opp_side: str, opp_team: str):
+    """Goals-allowed multiplier of the opposing goalie: the desk's confirmed /
+    expected / projected starter's shrunk GSAA per shot (nhl_goalies), as
+    (1 - (lg + q)) / (1 - lg). League average when unknown."""
+    row = desk_board.get(matchup_key) or {}
+    gname = ((row.get("goalies") or {}).get(opp_side) or {}).get("projected")
+    gid = gstate.resolve(opp_team, gname) if gname else None
+    if gid is None:
+        return 1.0, gname
+    lg = gstate.lg()
+    return max(0.80, min(1.20, (1 - (lg + gstate.q(gid))) / (1 - lg))), gname
+
+
 def run() -> Dict[str, Any]:
+    """2026-11-02: real per-player goal rates (nhl_skaters store, EWMA +
+    position prior), the opposing goalie from the game-lines desk, and the
+    negative binomial fitted on last season. The hand-typed PLAYER_DB /
+    GOALIE_SV / TEAM_GOALIE tables above are no longer read: ANYTIME_GOAL_NO
+    graded 71% at 87% predicted on them."""
+    import nhl_goalies as _ng
+    import nhl_skaters as ns
+    st, cal = ns.load()
+    r_g = ns.dispersion(cal, "goals")
+    gstate = _ng.history_features(_ng.ordered_games())[1]
+    desk = _load(os.path.join(DATA_DIR, "game_lines_desk.json"))
+    desk_board = {}
+    for r in ((desk.get("sports") or {}).get("nhl") or {}).get("board") or []:
+        a, _, h = str(r.get("matchup") or "").partition(" @ ")
+        desk_board[(a.strip(), h.strip())] = r
+    from nhl_skater_hits_blocks_props import _fullname_index
+    names = _fullname_index()
     state = _load(os.path.join(DATA_DIR, "nhl_state.json"))
     games = state.get("games") or state.get("events") or []
+    cutoff = (dt.date.today() - dt.timedelta(days=14)).isoformat()
+    by_team: Dict[str, List[str]] = {}
+    for pid, x in st.p.items():
+        if x.get("team") and str(x.get("last_date") or "") >= cutoff and x.get("gp", 0) >= 10:
+            by_team.setdefault(x["team"], []).append(pid)
 
     rows: List[Dict[str, Any]] = []
     for g in games:
         status = (g.get("status") or g.get("state") or "").lower()
-        if "final" in status: continue
+        if "final" in status or g.get("state") in ("in", "post"):
+            continue
         home = _abbr(g.get("home_team") or g.get("home") or "")
         away = _abbr(g.get("away_team") or g.get("away") or "")
-        if not home or not away: continue
+        if not home or not away:
+            continue
+        key = (_ng._team(away), _ng._team(home))
+        for side, team, opp_side, opp in (("home", home, "away", away), ("away", away, "home", home)):
+            mult, opp_goalie = _opp_goalie_mult(desk_board, gstate, key, opp_side, _ng._team(opp))
+            for pid in by_team.get(_ng._team(team), []):
+                base_gpg = st.rate(pid, "goals")
+                if base_gpg is None or base_gpg < SCORER_MIN_GPG:
+                    continue
+                x = st.p[pid]
+                parts = _ng._fold(x.get("name")).replace(".", "").split()
+                full = names.get((parts[0][:1], parts[-1])) if len(parts) >= 2 else None
+                if not full or len(full) != 1:
+                    continue
+                expected_goals = base_gpg * mult
+                p_scores = ns.p_at_least(1, expected_goals, r_g)
+                p_no_goal = 1 - p_scores
 
-        for player_name, info in PLAYER_DB.items():
-            if info["team"] not in (home, away): continue
-            is_home = info["team"] == home
-            opp_team = away if is_home else home
+                edge_class, best_market = "NONE", None
+                if 0.60 <= p_scores <= 0.72:
+                    edge_class = "STRONG_YES"
+                    best_market = {"market": "ANYTIME_GOAL_YES", "p": round(p_scores, 3), "fair_odds": _american(p_scores)}
+                elif p_scores <= 0.20:
+                    edge_class = "STRONG_NO"
+                    best_market = {"market": "ANYTIME_GOAL_NO", "p": round(p_no_goal, 3), "fair_odds": _american(p_no_goal)}
 
-            # Real ESPN goals/game with hardcoded fallback (2026-05-21)
-            try:
-                from real_stats_lookup import get_player_stat
-                stat = get_player_stat("nhl", player_name, "goals_per_game", fallback=info["gpg"], min_games=5)
-                base_gpg = stat["value"]
-                gpg_source = stat["source"]
-            except Exception:
-                base_gpg = info["gpg"]
-                gpg_source = "fallback"
-            # Opposing starter's REAL SV% drives the goal environment: an elite
-            # goalie (.928) suppresses ~20%, a weak one (.895) boosts ~17%. Falls
-            # back to league-average SV% when the opponent's starter is unmapped.
-            opp_goalie = TEAM_GOALIE.get(opp_team)
-            opp_sv = GOALIE_SV.get(opp_goalie, LEAGUE_SV) if opp_goalie else LEAGUE_SV
-            opp_goalie_mult = max(0.70, min(1.30, (1 - opp_sv) / (1 - LEAGUE_SV)))
-            expected_goals = base_gpg * opp_goalie_mult
-            p_scores = 1 - math.exp(-expected_goals)
-            p_no_goal = 1 - p_scores
-
-            edge_class = "NONE"
-            best_market = None
-            # Top scorers: book ~ -110 (52%%) to -150 (60%%). STRONG_YES at 60-72%%.
-            if 0.60 <= p_scores <= 0.72:
-                edge_class = "STRONG_YES"
-                best_market = {"market": "ANYTIME_GOAL_YES", "p": round(p_scores, 3),
-                               "fair_odds": _american(p_scores)}
-            elif p_scores <= 0.20:
-                edge_class = "STRONG_NO"
-                best_market = {"market": "ANYTIME_GOAL_NO", "p": round(p_no_goal, 3),
-                               "fair_odds": _american(p_no_goal)}
-
-            rows.append({
-                "matchup": f"{away} @ {home}",
-                "player": player_name,
-                "team": info["team"],
-                "opp_team": opp_team,
-                "opp_goalie": opp_goalie,
-                "opp_sv": opp_sv,
-                "opp_goalie_mult": round(opp_goalie_mult, 3),
-                "season_gpg": round(base_gpg, 3),
-                "gpg_source": gpg_source,
-                "expected_goals": round(expected_goals, 3),
-                "p_scores": round(p_scores, 3),
-                "p_no_goal": round(p_no_goal, 3),
-                "fair_yes": _american(p_scores),
-                "fair_no": _american(p_no_goal),
-                "edge_class": edge_class,
-                "best_market": best_market,
-            })
+                rows.append({
+                    "matchup": f"{away} @ {home}",
+                    "player": full[0],
+                    "team": team,
+                    "opp_team": opp,
+                    "opp_goalie": opp_goalie,
+                    "opp_goalie_mult": round(mult, 3),
+                    "season_gpg": round(base_gpg, 3),
+                    "gpg_source": "nhl_skaters (boxscores, EWMA)",
+                    "expected_goals": round(expected_goals, 3),
+                    "p_scores": round(p_scores, 3),
+                    "p_no_goal": round(p_no_goal, 3),
+                    "fair_yes": _american(p_scores),
+                    "fair_no": _american(p_no_goal),
+                    "edge_class": edge_class,
+                    "best_market": best_market,
+                })
 
     rows.sort(key=lambda r: -r["p_scores"])
     strong = [r for r in rows if r["edge_class"].startswith("STRONG")]
@@ -188,12 +214,12 @@ def run() -> Dict[str, Any]:
         "generated_at": dt.datetime.utcnow().isoformat(timespec="seconds"),
         "n_players_projected": len(rows),
         "n_strong": len(strong),
-        "n_players_in_db": len(PLAYER_DB),
-        "method_note": "P(score) = 1 - exp(-GPG × opp_goalie_factor), where "
-                       "opp_goalie_factor = (1-opp_SV%)/(1-.910) from the opposing "
-                       "starter's real save pct (TEAM_GOALIE->GOALIE_SV). "
-                       "STRONG_YES 60-72%% (vs typical book -150 for top scorers). "
-                       "STRONG_NO when expected GPG very low for active player.",
+        "dispersion_goals": r_g,
+        "method_note": ("P(score) from real per-player goal rates (every NHL boxscore since 2024-25, EWMA + "
+                        "position prior) x the opposing goalie's goals-allowed factor (desk's confirmed / "
+                        "expected / projected starter, shrunk GSAA), negative binomial fitted on last season. "
+                        f"Candidates: scorers >= {SCORER_MIN_GPG} goals/game. STRONG_YES 60-72%, STRONG_NO when "
+                        "P(score) <= 20%. Replaced hand-typed tables 2026-11-02."),
         "rows": rows,
         "strong_edges": strong,
     }
