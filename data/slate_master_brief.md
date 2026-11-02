@@ -1,5 +1,5 @@
 # EdgeStat — Tonight's Master Brief
-_Generated 2026-11-02T20:05:03 UTC_
+_Generated 2026-11-02T22:49:08 UTC_
 
 ## Slate Quality
 - **Tier:** NO_ACTION_NIGHT
@@ -10,22 +10,22 @@ _Generated 2026-11-02T20:05:03 UTC_
 - **Total FADES:** 78
 
 ## Top 5 Curated Picks
-1. **GOLF / Ben Griffin** (GOLF_PLAYER, score=219.29)
-   - Play: Ben Griffin (PLAYER_STRONG)
+1. **GOLF / Steven Fisk** (GOLF_PLAYER, score=219.29)
+   - Play: Steven Fisk (PLAYER_STRONG)
    - Rationale: Cross-sport top pick (GOLF_PLAYER)
 2. **GOLF / Mackenzie Hughes** (GOLF_PLAYER, score=219.29)
    - Play: Mackenzie Hughes (PLAYER_STRONG)
    - Rationale: Cross-sport top pick (GOLF_PLAYER)
-3. **NBA / IND** (NBA_TEAM, score=70.0)
-   - Play: IND (TEAM_STRONG)
-   - Rationale: Cross-sport top pick (NBA_TEAM)
-4. **NBA / DAL** (NBA_TEAM, score=70.0)
+3. **NBA / DAL** (NBA_TEAM, score=70.0)
    - Play: DAL (TEAM_STRONG)
+   - Rationale: Cross-sport top pick (NBA_TEAM)
+4. **NBA / IND** (NBA_TEAM, score=70.0)
+   - Play: IND (TEAM_STRONG)
    - Rationale: Cross-sport top pick (NBA_TEAM)
 
 ## Top Events Board
 - **GOLF** / ? (TOURNAMENT_STRONG)
-  - Ben Griffin top 10 finish
+  - Steven Fisk top 10 finish
   - Mackenzie Hughes top 10 finish
   - Andrew Novak top 10 finish
 
@@ -38,11 +38,11 @@ _Generated 2026-11-02T20:05:03 UTC_
 ## Top Fades
 - **NBA** / shai gilgeous-alexander (PLAYER_FADE)
   - Fade angle: PTS UNDER + PRA UNDER (multi-prop)
-- **NBA** / anthony edwards (PLAYER_FADE)
-  - Fade angle: PTS UNDER + PRA UNDER (multi-prop)
 - **NBA** / tyrese maxey (PLAYER_FADE)
   - Fade angle: PTS UNDER + PRA UNDER (multi-prop)
-- **NBA** / BKN (TEAM_FADE)
-  - Fade angle: team total UNDER
+- **NBA** / anthony edwards (PLAYER_FADE)
+  - Fade angle: PTS UNDER + PRA UNDER (multi-prop)
 - **NBA** / WAS (TEAM_FADE)
+  - Fade angle: team total UNDER
+- **NBA** / BKN (TEAM_FADE)
   - Fade angle: team total UNDER

@@ -4,14 +4,14 @@
 
 _Pipeline health: **WARNING** (7/15 artifacts ok; 8 empty, 0 stale)._ 
 
-_Generated at 2026-11-02T20:05:12 UTC. Game lines source: **placeholder -110 (no real book today)**. Pick-em opportunities from PrizePicks._
+_Generated at 2026-11-02T22:49:16 UTC. Game lines source: **placeholder -110 (no real book today)**. Pick-em opportunities from PrizePicks._
 
 ## Self-Learning Loop
 
 | Market | n settled | Hit rate | Model implied | Bias | Correction |
 |---|---|---|---|---|---|
-| batter hits | 314 | 53.8% | 56.8% | 1.056 | 0.948 |
 | batter total bases | 69 | 33.3% | 39.4% | 1.177 | 0.862 |
+| batter hits | 314 | 53.8% | 56.8% | 1.056 | 0.948 |
 
 Cumulative graded plays: 20840. Wins: 9445. Hit rate: 45.3%.
 

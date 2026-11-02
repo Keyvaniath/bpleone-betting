@@ -1,13 +1,13 @@
 # EdgeStat Daily Summary — 2026-11-02
 
-## 🏥 Model Health: 63.8/100 [OK]
+## 🏥 Model Health: 64.0/100 [OK]
 - Operational but room to improve - check yellow components
-  - 🟢 Calibration Freshness: 99.7/100
-  - 🔴 Hit Rate Trend: 47.6/100
-  - 🔴 Brier Trend: 14.8/100
+  - 🟢 Calibration Freshness: 100.0/100
+  - 🔴 Hit Rate Trend: 47.4/100
+  - 🔴 Brier Trend: 14.7/100
   - 🟢 Pipeline Audit: 100.0/100
-  - 🟢 Data Health: 95.5/100
-  - 🔴 Edge Count: 22.9/100
+  - 🟢 Data Health: 90.9/100
+  - 🔴 Edge Count: 34.3/100
 
 ## 🌐 Slate Overview
 - **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.578)
@@ -49,10 +49,10 @@
 - Hot teams: **9** | Cold teams: **22** | Over-heavy: 0 | Under-heavy: 55
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (238)
+## ⚠️ Anomaly Detector (242)
 - RESIDUAL_DIVERGENCE: **12**
 - STREAK_MISMATCH: **1**
-- STEAM_MOVE: **225**
+- STEAM_MOVE: **229**
   - Oklahoma City Thunder (NBA): Oklahoma City Thunder UNDERPERFORMING expected margin by 6.9pts in recent games -- model bias may persist
   - Charlotte Hornets (NBA): Charlotte Hornets UNDERPERFORMING expected margin by 8.8pts in recent games -- model bias may persist
   - Indiana Pacers (NBA): Indiana Pacers UNDERPERFORMING expected margin by 10.9pts in recent games -- model bias may persist
@@ -61,7 +61,7 @@
 
 ## 💰 Today's Portfolio (12 picks)
 - Total stake: **$300.0** (30.0% of $1000 bankroll)
-- Expected EV: **$-6.97**
+- Expected EV: **$-6.94**
   - #1 [LOL] $35 on LOL Inspired UNDER 3.5 Kills (P=62%)
   - #2 [LOL] $35 on LOL ShowMaker OVER 3.5 Kills (P=62%)
   - #3 [LOL] $35 on LOL Peyz OVER 4.5 Kills (P=61%)
