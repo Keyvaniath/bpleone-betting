@@ -1,13 +1,13 @@
 # EdgeStat Daily Summary — 2026-11-03
 
-## 🏥 Model Health: 64.6/100 [OK]
+## 🏥 Model Health: 67.4/100 [OK]
 - Operational but room to improve - check yellow components
   - 🟢 Calibration Freshness: 99.6/100
-  - 🔴 Hit Rate Trend: 48.1/100
-  - 🔴 Brier Trend: 13.8/100
+  - 🔴 Hit Rate Trend: 54.1/100
+  - 🔴 Brier Trend: 16.2/100
   - 🟢 Pipeline Audit: 100.0/100
   - 🟢 Data Health: 95.5/100
-  - 🔴 Edge Count: 31.4/100
+  - 🔴 Edge Count: 42.9/100
 
 ## 🌐 Slate Overview
 - **Regime today:** BALANCED (avg P(home)=0.544)
@@ -58,9 +58,9 @@
   - Houston Rockets (NBA): Houston Rockets OUTPERFORMING expected margin by 6.3pts in recent games -- model bias may persist
   - San Antonio Spurs (NBA): San Antonio Spurs OUTPERFORMING expected margin by 9.7pts in recent games -- model bias may persist
 
-## 💰 Today's Portfolio (13 picks)
-- Total stake: **$335.0** (33.5% of $1000 bankroll)
-- Expected EV: **$-6.0**
+## 💰 Today's Portfolio (12 picks)
+- Total stake: **$315.0** (31.5% of $1000 bankroll)
+- Expected EV: **$-6.04**
   - #1 [LOL] $35 on LOL Inspired UNDER 3.5 Kills (P=62%)
   - #2 [LOL] $35 on LOL ShowMaker OVER 3.5 Kills (P=62%)
   - #3 [LOL] $35 on LOL Peyz OVER 4.5 Kills (P=61%)
