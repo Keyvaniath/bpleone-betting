@@ -1,12 +1,12 @@
 {
-  "generated_at": "2026-11-03T20:43:17",
-  "n_settled": 13465,
+  "generated_at": "2026-11-03T21:30:32",
+  "n_settled": 13464,
   "n_families_transformed": 61,
   "n_families_bucketed": 26,
   "ece_before": 0.084,
   "ece_after": 0.0116,
-  "ece_improvement": 0.0724,
-  "brier_before": 0.21344,
+  "ece_improvement": 0.0725,
+  "brier_before": 0.21345,
   "brier_after": 0.19659,
   "method_note": "Per market family, a monotonic (isotonic) curve maps the model's predicted probability to the realized hit rate, learned from settled outcomes. Bucketed for well-sampled families (preserves ranking), a family-average Bayesian blend for mid-sample, identity below that. ECE = expected calibration error (lower = the displayed % is truer). This makes the model honest at the source; it does not create edge (that needs a market price).",
   "families": [
@@ -321,44 +321,6 @@
       }
     },
     {
-      "family": "over",
-      "n": 166,
-      "method": "bucketed",
-      "avg_pred_raw": 0.6521,
-      "avg_pred_calibrated": 0.5434,
-      "realized": 0.5,
-      "ece_raw": 0.1595,
-      "ece_calibrated": 0.0472,
-      "transform": {
-        "anchors": [
-          [
-            0.5873,
-            0.4512
-          ],
-          [
-            0.599,
-            0.4745
-          ],
-          [
-            0.6089,
-            0.4745
-          ],
-          [
-            0.6189,
-            0.5857
-          ],
-          [
-            0.6664,
-            0.6409
-          ],
-          [
-            0.8308,
-            0.6492
-          ]
-        ]
-      }
-    },
-    {
       "family": "blocks_over",
       "n": 71,
       "method": "family_avg",
@@ -458,6 +420,44 @@
           [
             0.5922,
             0.4558
+          ]
+        ]
+      }
+    },
+    {
+      "family": "over",
+      "n": 165,
+      "method": "bucketed",
+      "avg_pred_raw": 0.6525,
+      "avg_pred_calibrated": 0.5419,
+      "realized": 0.497,
+      "ece_raw": 0.1629,
+      "ece_calibrated": 0.066,
+      "transform": {
+        "anchors": [
+          [
+            0.5873,
+            0.4512
+          ],
+          [
+            0.5993,
+            0.4665
+          ],
+          [
+            0.6091,
+            0.4695
+          ],
+          [
+            0.6189,
+            0.5857
+          ],
+          [
+            0.6683,
+            0.6255
+          ],
+          [
+            0.8348,
+            0.6671
           ]
         ]
       }
