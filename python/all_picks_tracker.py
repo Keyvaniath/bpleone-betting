@@ -187,6 +187,16 @@ def _price_corrections(history):
                        and any("wrong game" in str(x.get("reason") or "") for x in (p.get("resettle_log") or [])))
     n_norm = sum(1 for p in rows if p.get("stake_normalized"))
     return [
+        {"date": "2026-11-03", "label": "price provenance", "n_repriced": 0, "n_voided": 1,
+         "counts_text": "every pick now carries price_provenance (A timestamped book / B reconstructed or "
+                        "untimestamped book / C no sportsbook price); 1 curated total found with no book price, voided",
+         "curated_before": "290-243 (-0.74%, -3.92u)", "curated_after": "289-243 (-0.86%, -4.60u)",
+         "note": ("Each pick is classed by where its graded price came from. The curated record is now "
+                  "entirely class B (sportsbook prices reconstructed from pre-game snapshots, or stamped "
+                  "without a timestamp); class A -- a timestamped quote at pick time -- starts with picks "
+                  "logged from 2026-11-03. One curated MLB total (9/22 MIL @ PHI over 7.5, written in "
+                  "lower case) had been missed by the earlier pass and was graded at the model's price; no "
+                  "book posted that line, so it is voided.")},
         {"date": "2026-11-03", "label": "PrizePicks split out + flat 1u stakes", "n_repriced": 0, "n_voided": 0,
          "counts_text": (f"587 PrizePicks props moved to their own line; {n_norm} locks-history picks rescaled "
                          "from a ~0.06u stake to the flat 1u"),
@@ -394,6 +404,10 @@ def _collect_picks_from_sources() -> List[Dict[str, Any]]:
             "raw_prob": p.get("raw_prob"),
             "edge_pct": p.get("edge_pct"),
             "fair_american": p.get("fair_american"),
+            # the genuine quote the board ranked it on (2026-11-03): graded at
+            # book_american, provenance from the quote -- never the model's price
+            "book_american": p.get("book_american"),
+            "quote": p.get("quote"),
             "primary_source_module": p.get("source"),
         })
 
@@ -461,6 +475,7 @@ def _collect_picks_from_sources() -> List[Dict[str, Any]]:
                 "event_id": r.get("event_id"),
                 "desk_verdict": ("proven" if _d.get("proven") else "unproven"),
                 "desk_model": _d.get("model_version"),
+                "quote": r.get("quote"),
             })
 
     # Strong unders
@@ -1850,6 +1865,8 @@ def _collect_picks_from_sources() -> List[Dict[str, Any]]:
     # the record date. Same prop + same game -> stable pick_id -> deduped, not
     # re-added every day it's generated ahead of kickoff.
     for p in out:
+        p["price_provenance"] = _price_provenance(p, at_intake=True)
+        p.pop("quote", None)
         game_date = p.pop("game_date", None)
         p["date"] = game_date or date_str
         p["pick_id"] = _pick_id(p["source"], p.get("sport"), p.get("player_or_matchup"), p.get("market"), p["date"])
@@ -1916,6 +1933,60 @@ def _nhl_intake(out: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
 
 STARTED_BLOCKED: List[str] = []   # picks on games already live/final at intake
 UNPRICED_BLOCKED: List[str] = []  # picks with no real price (placeholder -110) at intake
+
+
+def _price_provenance(p: Dict[str, Any], at_intake: bool = False) -> Dict[str, Any]:
+    """Where the price a pick is graded at came from (2026-11-03, P0).
+
+      A  book_snapshot      a sportsbook price read from a TIMESTAMPED snapshot
+                            at pick time (quote.observed_at known)
+      B  reconstructed      re-priced later from a pre-game snapshot in git
+                            history (ml_reprice seeds; repriced.book / snapshot)
+      B  book_untimestamped a sportsbook price stamped at intake whose snapshot
+                            time was not recorded (history before 2026-11-03)
+      C  model_fair         the model's own fair price -- not a market quote
+      C  venue_breakeven    PrizePicks' per-leg break-even (-136)
+      C  unpriced           no price at all (voided; never paid)
+
+    A and B are genuine sportsbook prices; C is excluded from any performance
+    claim made at sportsbook prices. `inferred` = classified from existing
+    fields after the fact (backfill), not stamped at intake."""
+    q = p.get("quote") or {}
+    rp = p.get("repriced") or {}
+    base = {"inferred": not at_intake}
+    if rp and p.get("book_american") is not None:
+        return dict(base, **{"class": "B", "kind": "reconstructed", "book": rp.get("book") or "draftkings",
+                             "observed_at": rp.get("book_snapshot_at"), "reason": str(rp.get("reason") or "")[:120]})
+    if p.get("book_american") is not None:
+        if q.get("provenance") == "book_snapshot" and q.get("observed_at"):
+            return dict(base, **{"class": "A", "kind": "book_snapshot", "book": q.get("book"),
+                                 "observed_at": q.get("observed_at"), "snapshot_id": q.get("snapshot_id"),
+                                 "event_id": q.get("event_id")})
+        return dict(base, **{"class": "B", "kind": "book_untimestamped", "book": q.get("book") or "draftkings",
+                             "observed_at": None})
+    if str(p.get("market") or "").startswith("PP_") or str(p.get("sport") or "").upper() == "MLB-PP":
+        return dict(base, **{"class": "C", "kind": "venue_breakeven", "book": "prizepicks"})
+    if p.get("fair_american") is not None:
+        return dict(base, **{"class": "C", "kind": "model_fair"})
+    return dict(base, **{"class": "C", "kind": "unpriced"})
+
+
+def _backfill_provenance(rows: List[Dict[str, Any]]) -> int:
+    """Stamp `price_provenance` on rows that lack it (inferred), and move a row
+    to B/reconstructed when a seed re-prices it later. An intake-stamped A is
+    never overwritten except by a re-price (then the original is kept in
+    `price_provenance_at_intake`). Idempotent."""
+    n = 0
+    for p in rows:
+        cur = p.get("price_provenance")
+        if cur is None:
+            p["price_provenance"] = _price_provenance(p)
+            n += 1
+        elif p.get("repriced") and cur.get("kind") != "reconstructed":
+            p.setdefault("price_provenance_at_intake", cur)
+            p["price_provenance"] = _price_provenance(p)
+            n += 1
+    return n
 
 
 def _block_unpriced(picks: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
@@ -3719,6 +3790,8 @@ def _archive_evicted(picks: List[Dict[str, Any]]) -> int:
             "payout_units": p.get("payout_units"),
             "settled_at": p.get("settled_at"),
             "p_predicted": p.get("p_predicted"),
+            "price_provenance": p.get("price_provenance"),   # survives eviction (2026-11-03)
+            "repriced": p.get("repriced"),
             "origin": "evicted",
         })
         seen.add(p.get("pick_id"))
@@ -3966,6 +4039,18 @@ def run() -> Dict[str, Any]:
     n_resettled = _resettle_on_revision(history)
     n_resettled += _regrade_bball_wrong_game(history)
     n_stake_norm = _normalize_stakes(history)
+    n_prov = _backfill_provenance(history)
+    try:   # the archive is not rebuilt by the ledger: stamp it in place
+        _arch_doc = _load(ARCHIVE_PATH)
+        _n_arch_prov = _backfill_provenance(_arch_doc.get("picks") or [])
+        if _n_arch_prov:
+            with open(ARCHIVE_PATH, "w", encoding="utf-8") as _f:
+                json.dump(_arch_doc, _f, indent=2)
+        n_prov += _n_arch_prov
+    except Exception as _e:
+        print(f"  [warn] archive provenance stamp skipped: {_e!r}")
+    if n_prov:
+        print(f"  price provenance: {n_prov} row(s) stamped")
     if n_stake_norm:
         print(f"  stake normalization: {n_stake_norm} pick(s) rescaled to the flat 1u stake")
 
@@ -4089,6 +4174,27 @@ def run() -> Dict[str, Any]:
                        "experimental prop feeds, which are tracked to train the model, "
                        "not bet."),
     }
+
+    # PRICE CLASS BREAKDOWN (2026-11-03): A = timestamped book price, B =
+    # reconstructed / untimestamped book price, C = no sportsbook price.
+    def _by_class(rows):
+        out = {}
+        for p in rows:
+            k = ((p.get("price_provenance") or {}).get("class")) or "C"
+            b = out.setdefault(k, {"n": 0, "wins": 0, "losses": 0, "net_units": 0.0})
+            b["n"] += 1
+            b["wins"] += p["result"] == "won"
+            b["losses"] += p["result"] == "lost"
+            b["net_units"] += (p.get("payout_units") or 0)
+        for b in out.values():
+            b["net_units"] = round(b["net_units"], 3)     # round once, so classes sum to the headline
+            d = b["wins"] + b["losses"]
+            b["roi_pct"] = round(b["net_units"] / d * 100, 2) if d else None
+        return out
+    by_price_class = {"all": _by_class(settled), "curated": _by_class(cur),
+                      "legend": {"A": "sportsbook price from a timestamped snapshot at pick time",
+                                 "B": "sportsbook price reconstructed from a pre-game snapshot, or stamped without a timestamp",
+                                 "C": "no sportsbook price (model's own fair odds, PrizePicks break-even) -- excluded from claims at sportsbook prices"}}
 
     pp = [p for p in settled if _is_pp(p) and (_is_curated(p.get("source"))
                                                 or any(_is_curated(x) for x in (p.get("also_sources") or ())))]
@@ -4313,6 +4419,7 @@ def run() -> Dict[str, Any]:
         "calibrated_reliability": calibrated_reliability,
         "curated": curated,
         "prizepicks": prizepicks,
+        "by_price_class": by_price_class,
         "headline_basis": "all-time: working ledger + data/ledger_archive.json",
         "working_ledger_only": _working_only,
         "price_corrections": _price_corrections(history),

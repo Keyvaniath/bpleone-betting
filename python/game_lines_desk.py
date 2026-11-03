@@ -669,7 +669,12 @@ def run_sport(sport: str) -> Dict[str, Any]:
         p = _sig(_logit(p_mkt) + w * (_logit(p_elo) - _logit(p_mkt)))
         row = {"event_id": g.get("event_id"), "matchup": f"{a} @ {h}", "commence": g.get("commence_time"),
                "p_home_elo": round(p_elo, 4), "p_home_dk": round(p_mkt, 4), "p_home": round(p, 4),
-               "ml_home": m.get("ml_home"), "ml_away": m.get("ml_away"), "pick": None, "game_date": game_date}
+               "ml_home": m.get("ml_home"), "ml_away": m.get("ml_away"), "pick": None, "game_date": game_date,
+               # the snapshot the DK price was read from (2026-11-03 provenance)
+               "quote": {"provenance": "book_snapshot", "book": str(m.get("book") or "draftkings").lower(),
+                         "provider": "espn-scoreboard", "observed_at": odds.get("generated_at"),
+                         "event_id": g.get("event_id"), "scheduled_start": g.get("commence_time"),
+                         "snapshot_id": f"espn_odds@{odds.get('generated_at')}#{g.get('event_id')}"}}
         if goalies:
             row["goalies"] = goalies
         if qbs:
