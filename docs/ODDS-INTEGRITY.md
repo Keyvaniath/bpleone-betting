@@ -64,13 +64,44 @@ is not the model's ~52.4%) stops new ones.
   price or PrizePicks' break-even (no sportsbook quote) -- excluded from the
   curated headline but still in the all-picks / Alpha figures. OPEN.
 
+## Fail-closed fix (branch `integrity/odds-provenance`, 2026-11-03, NOT merged)
+
+- `python/quotes.py` -- the pricing contract: exact American->decimal (|A|<100
+  / missing -> None, never a default), binary EV, no-vig from one matched
+  two-way market, model-derived minimum acceptable price; `find_quote` reads a
+  DraftKings snapshot (`espn_odds.json`) and returns a quote with provenance
+  `book_snapshot`, book, provider, event id, scheduled start, selection, line,
+  `observed_at`, `snapshot_id`; `actionable` rejects missing, invalid, stale
+  (> 180 min), started / within 5 min of start, and non-book provenance
+  (synthetic, model_fair, venue_breakeven, reconstructed). Stable rejection
+  codes. Props -> `unsupported_market` (no sportsbook prop source).
+- `todays_top_plays.py` ranks only quoted candidates; EV at the quoted price;
+  everything else -> `projections` (actionable: false, reason) + a `funnel`
+  block. Today: 639 input -> 0 actionable (562 unsupported props, 62 game
+  lines with no current DK quote, 12 curated out, 3 ungradeable).
+- `alpha_pick_of_day.py` re-prices every candidate (incl. the book-vs-model
+  totals that assumed -110/-110) through the contract; `other_picks` flagged
+  actionable / non-actionable. `alpha_pick_record.py` rule v3 (from
+  2026-11-04): an Alpha needs a `book_american`; locked history unchanged
+  (verified byte-identical: 67-38).
+- Settlement: no price -> void "unpriced: no price on record at settlement"
+  (outcome kept), never 1.91; the two re-grade passes skip unpriced picks.
+  POD / POT / alpha-POD / outage records: no price -> no win credit / no
+  record. Evaluation (`forward_test`, `validate_curation_oos`,
+  `prob_calibration`, `durable_edge_analysis`, `family_durability`, `dow_pl`):
+  missing payout -> no win credit (was +0.91). `param_recommender` Kelly-sizing
+  rule (ROI at an assumed -110, auto-applied) disabled.
+- Tests: `python/tests/test_odds_integrity.py` (26, pass locally with pytest
+  9.1.1) + a CI step in `daily-pipeline.yml`. Real data: 0 picks newly voided,
+  curated unchanged (290-243, -3.92u).
+
 ## Open (P0)
 
-1. Selection still fail-OPEN: `todays_top_plays` / `alpha_pick_of_day` rank on
-   synthetic or model-own prices. Required: no genuine quote -> not actionable
-   (projection only).
-2. Grader + evaluation fallbacks (1.91 / 0.91) -> fail closed (no price = no
-   payout, excluded), with regression tests.
+1. (done on branch, pending merge) selection + settlement + evaluation fail closed.
+2. Remaining -110 assumptions in secondary boards: `mlb_model.py:184-185`
+   (unposted totals juice), `book_vs_model_team.py:198` (totals -110/-110 --
+   now re-priced before the Alpha uses it, but the board itself still shows
+   it), `slate_roi_projector.py`, `sharpe_ranking.py`.
 3. No per-record provenance field yet (`price_provenance`: book_snapshot /
    reconstructed / model_fair / synthetic) -- classification is inferred.
 4. Alpha record (locked days) is 70 props at the model's own price (+13.36u) +

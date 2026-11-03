@@ -92,6 +92,12 @@ MAX_SLATE = 3       # the One Pick + up to 2 diversified "alpha props" (one per 
 # differently -- a receipts channel must have an immutable past.
 V2_RULE_DATE = "2026-08-10"
 V2_MIN_EDGE = 0.02  # min calibrated EV -- clears fair-odds rounding noise, demands a real edge
+# RULE v3 (2026-11-04, P0 odds integrity, forward-only -- locked days before it
+# are never re-selected): a pick needs a REAL sportsbook price (book_american,
+# stamped from a DraftKings snapshot). The model's own fair price is not a
+# quote, so player props (no sportsbook prop source exists) cannot be the
+# Alpha; no qualifying priced pick -> an honest NO PICK.
+V3_RULE_DATE = "2026-11-04"
 
 
 def _v2_gate(raw_prob: float, dec_odds: float, market: Any):
@@ -252,7 +258,8 @@ def _flat_payout(pick: Dict[str, Any]) -> float:
     """Flat-1u P/L for a settled pick (independent of the ledger's Kelly stake)."""
     if pick.get("result") == "won":
         d = _dec(_px(pick))
-        return round((d - 1) if d else 0.91, 3)
+        # no price -> no payout (was a 0.91 = -110 fallback; no Alpha row used it)
+        return round((d - 1), 3) if d else 0.0
     if pick.get("result") == "lost":
         return -1.0
     return 0.0  # push / void / no-action
@@ -351,6 +358,8 @@ def run() -> Dict[str, Any]:
         prob, fa = p.get("prob"), p.get("fair_american")
         if prob is None or fa is None or _px(p) is None:
             continue
+        if day >= V3_RULE_DATE and p.get("book_american") is None:
+            continue                       # v3: no sportsbook quote, no candidate
         d = _dec(_px(p))
         if not d:
             continue

@@ -106,8 +106,9 @@ def run() -> Dict[str, Any]:
     n_added = 0
     if today_str not in existing_by_date:
         pod = _pick_today_pod()
-        if pod and pod.get("matchup") and pod.get("label"):
-            decimal_odds = _american_to_decimal(pod.get("market_price")) or 1.91
+        # FAIL CLOSED (2026-11-03): no market price -> no POD record today (was a 1.91 = -110 fallback)
+        if pod and pod.get("matchup") and pod.get("label") and _american_to_decimal(pod.get("market_price")):
+            decimal_odds = _american_to_decimal(pod.get("market_price"))
             # PRICE SANITY: during odds-feed outages the upstream POD can carry a
             # garbage price (2026-07-12: TEX_ML "priced" +2100 with model 52% ->
             # "edge 1053%" -> settled as a +21u phantom on the homepage record).

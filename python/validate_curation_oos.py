@@ -48,7 +48,7 @@ def net(p):
     if pu is not None:
         return float(pu)
     r = p.get("result")
-    return 0.91 if r == "won" else (-1.0 if r == "lost" else 0.0)
+    return 0.0 if r == "won" else (-1.0 if r == "lost" else 0.0)   # no payout on record -> no win credit (was a -110 0.91)
 
 
 def fams(p):

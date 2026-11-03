@@ -96,8 +96,8 @@ def _settle_leg(leg: Dict[str, Any], idx: Dict[Tuple[str, str], List[Dict[str, A
         return "pending", None
     res = best.get("result")
     if res == "won":
-        dec = _amer_to_dec(leg.get("fair_american")) or 1.91
-        return "won", round(dec - 1, 3)
+        dec = _amer_to_dec(leg.get("fair_american"))
+        return "won", (round(dec - 1, 3) if dec else 0.0)   # no price -> no credit (was 1.91)
     if res == "lost":
         return "lost", -1.0
     if res in ("push", "void"):

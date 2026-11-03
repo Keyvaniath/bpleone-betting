@@ -39,7 +39,7 @@ def _net(p):
     pu = p.get("payout_units")
     if pu is not None:
         return float(pu)
-    return 0.91 if p.get("result") == "won" else (-1.0 if p.get("result") == "lost" else 0.0)
+    return 0.0 if p.get("result") == "won" else (-1.0 if p.get("result") == "lost" else 0.0)   # no payout -> no win credit (was 0.91)
 
 
 def _roi(nets):
