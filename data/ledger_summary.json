@@ -1,36 +1,35 @@
 {
-  "generated_at": "2026-11-03T20:44:15",
+  "generated_at": "2026-11-03T21:25:18",
   "stake_assumption": "1u flat per pick",
-  "total_picks": 17648,
-  "n_settled": 21066,
-  "n_pending": 544,
-  "n_void": 1693,
-  "wins": 9690,
+  "total_picks": 17652,
+  "n_settled": 21065,
+  "n_pending": 548,
+  "n_void": 1694,
+  "wins": 9689,
   "losses": 11365,
   "pushes": 11,
   "hit_rate": 0.4602,
-  "net_units": -3538.695,
+  "net_units": -3539.371,
   "roi_pct": -16.81,
-  "n_calibrated_picks": 17504,
+  "n_calibrated_picks": 17508,
   "calibrated_reliability": {
-    "n": 15368,
-    "ece_raw": 0.0773,
+    "n": 15367,
+    "ece_raw": 0.0774,
     "ece_calibrated": 0.0112,
     "brier_raw": 0.21261,
-    "brier_calibrated": 0.19717,
+    "brier_calibrated": 0.19716,
     "note": "In-sample over the settled ledger (the isotonic transform is fit on these same outcomes); held-out 70/30 validation is in recalibration_map.json. p_predicted = raw model prob (kept untouched for the learning loop); p_calibrated = honest prob stamped per pick. Lower ECE/Brier on the calibrated column = the displayed % is truer."
   },
   "curated": {
-    "n_settled": 544,
-    "wins": 290,
+    "n_settled": 543,
+    "wins": 289,
     "losses": 243,
     "pushes": 11,
-    "hit_rate": 0.5441,
-    "net_units": -3.919,
-    "roi_pct": -0.74,
+    "hit_rate": 0.5432,
+    "net_units": -4.595,
+    "roi_pct": -0.86,
     "sources": [
       "lock_of_day",
-      "mlb_game_total_game_total_over_7.5",
       "mlb_under_alert",
       "pod",
       "rlm_strong",
@@ -58,24 +57,66 @@
     "last_date": "2026-07-09",
     "definition": "Curated PrizePicks props (Lock of the Day / Top 25), graded at PrizePicks' per-leg break-even of -136 (a 2-pick Power Play pays 3x). Not a sportsbook price, and a single leg cannot be bet alone -- so this is its own line, never part of the curated headline (split out 2026-11-03)."
   },
+  "by_price_class": {
+    "all": {
+      "C": {
+        "n": 20503,
+        "wins": 9390,
+        "losses": 11113,
+        "net_units": -3535.279,
+        "roi_pct": -17.24
+      },
+      "B": {
+        "n": 562,
+        "wins": 299,
+        "losses": 252,
+        "net_units": -4.092,
+        "roi_pct": -0.74
+      }
+    },
+    "curated": {
+      "B": {
+        "n": 543,
+        "wins": 289,
+        "losses": 243,
+        "net_units": -4.595,
+        "roi_pct": -0.86
+      }
+    },
+    "legend": {
+      "A": "sportsbook price from a timestamped snapshot at pick time",
+      "B": "sportsbook price reconstructed from a pre-game snapshot, or stamped without a timestamp",
+      "C": "no sportsbook price (model's own fair odds, PrizePicks break-even) -- excluded from claims at sportsbook prices"
+    }
+  },
   "headline_basis": "all-time: working ledger + data/ledger_archive.json",
   "working_ledger_only": {
     "all": {
-      "n_settled": 15411,
-      "wins": 6831,
+      "n_settled": 15410,
+      "wins": 6830,
       "losses": 8569,
-      "net_units": -2375.583,
+      "net_units": -2376.259,
       "roi_pct": -15.43
     },
     "curated": {
-      "n_settled": 515,
-      "wins": 275,
+      "n_settled": 514,
+      "wins": 274,
       "losses": 229,
-      "net_units": -1.147,
-      "roi_pct": -0.23
+      "net_units": -1.823,
+      "roi_pct": -0.36
     }
   },
   "price_corrections": [
+    {
+      "date": "2026-11-03",
+      "label": "price provenance",
+      "n_repriced": 0,
+      "n_voided": 1,
+      "counts_text": "every pick now carries price_provenance (A timestamped book / B reconstructed or untimestamped book / C no sportsbook price); 1 curated total found with no book price, voided",
+      "curated_before": "290-243 (-0.74%, -3.92u)",
+      "curated_after": "289-243 (-0.86%, -4.60u)",
+      "note": "Each pick is classed by where its graded price came from. The curated record is now entirely class B (sportsbook prices reconstructed from pre-game snapshots, or stamped without a timestamp); class A -- a timestamped quote at pick time -- starts with picks logged from 2026-11-03. One curated MLB total (9/22 MIL @ PHI over 7.5, written in lower case) had been missed by the earlier pass and was graded at the model's price; no book posted that line, so it is voided."
+    },
     {
       "date": "2026-11-03",
       "label": "PrizePicks split out + flat 1u stakes",
@@ -90,7 +131,7 @@
       "date": "2026-11-03",
       "label": "curated game lines at the model's price",
       "n_repriced": 32,
-      "n_voided": 28,
+      "n_voided": 29,
       "curated_before": "803-345 (+13.73%, +157.67u)",
       "curated_after": "785-335 (+13.54%, +151.66u)",
       "note": "Curated MLB moneylines and totals that had no book price stamped were graded at the model's own fair price (8/4 TOR @ HOU home at -106 when the book had -144; LAD @ CHC LAD at +107 vs -131). Each was re-priced at the real pre-game book price (same sources and rules as the placeholder pass), or voided when none is on record."
@@ -151,7 +192,7 @@
     "note": "The headline became ALL-TIME on 2026-10-23. 5,946 settled picks that the old tail-cut eviction had destroyed (May-June 2026, the 07-06 erosion and the run-up to 09-03) were rebuilt from git history at each pick's final state, with today's duplicate-wager rule re-applied, and folded back in. They are mostly the raw May-June MLB prop firehose (2,961-2,983, -1,256.9u), so the firehose ROI fell; the curated record changed by the curated picks among them. Before this date the published numbers covered the working window only -- working_ledger_only keeps that basis.",
     "n_archived_in_headline": 5655
   },
-  "n_added_this_run": 2,
+  "n_added_this_run": 4,
   "n_newly_settled_this_run": 0,
   "n_resettled_this_run": 0,
   "n_voided_this_run": 0,
@@ -287,13 +328,13 @@
       "roi_pct": -0.41
     },
     "mlb_game_total_game_total_over_7.5": {
-      "n": 18,
-      "wins": 12,
+      "n": 17,
+      "wins": 11,
       "losses": 6,
       "pushes": 0,
-      "net_units": 0.978,
-      "hit_rate": 0.6667,
-      "roi_pct": 5.43
+      "net_units": 0.302,
+      "hit_rate": 0.6471,
+      "roi_pct": 1.78
     },
     "lock_of_day": {
       "n": 398,
@@ -4098,12 +4139,12 @@
       "hit_rate": 0.57
     },
     "over": {
-      "n": 172,
-      "wins": 83,
+      "n": 171,
+      "wins": 82,
       "losses": 83,
       "pushes": 6,
-      "net_units": -12.563,
-      "hit_rate": 0.5
+      "net_units": -13.239,
+      "hit_rate": 0.497
     },
     "1_plus_xbh": {
       "n": 3252,
@@ -5084,12 +5125,12 @@
       "hit_rate": 0.57
     },
     "over": {
-      "n": 172,
-      "wins": 83,
+      "n": 171,
+      "wins": 82,
       "losses": 83,
       "pushes": 6,
-      "net_units": -12.563,
-      "hit_rate": 0.5
+      "net_units": -13.239,
+      "hit_rate": 0.497
     },
     "mlb_xbh_0.5_over": {
       "n": 3252,
@@ -6039,14 +6080,14 @@
   "by_sport": {
     "MLB": {
       "n": 14084,
-      "settled": 13788,
-      "wins": 5017,
+      "settled": 13787,
+      "wins": 5016,
       "losses": 8760,
       "pushes": 11,
       "pending": 0,
-      "void": 296,
-      "net_units": -3619.937,
-      "hit_rate": 0.3642,
+      "void": 297,
+      "net_units": -3620.602,
+      "hit_rate": 0.3641,
       "roi_pct": -26.28,
       "markets": 34
     },
@@ -6207,12 +6248,12 @@
       "markets": 1
     },
     "NFL": {
-      "n": 3013,
+      "n": 3017,
       "settled": 2489,
       "wins": 1759,
       "losses": 730,
       "pushes": 0,
-      "pending": 106,
+      "pending": 110,
       "void": 418,
       "net_units": -91.539,
       "hit_rate": 0.7067,
@@ -6275,6 +6316,19 @@
         "hit_rate": 0.7082,
         "roi_pct": -2.64,
         "label": "10/23-11/2 -- season-to-date form (judged)"
+      },
+      "form_v3": {
+        "n": 4,
+        "settled": 0,
+        "wins": 0,
+        "losses": 0,
+        "pushes": 0,
+        "pending": 4,
+        "void": 0,
+        "net_units": 0.0,
+        "hit_rate": null,
+        "roi_pct": null,
+        "label": "from 11/3 -- calibrated line selection (judged)"
       }
     },
     "note": "NFL props are judged from 10/23 forward: the simulator's form rule changed, so earlier picks are a different model. They stay on the record as their own line and never feed a family verdict."
