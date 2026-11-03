@@ -17,7 +17,7 @@ import os
 import subprocess
 
 REPO = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
-SPORTS = ("NFL", "NHL")
+SPORTS = ("NFL", "NHL", "NBA")
 KEYS = ("ml_home", "ml_away", "total", "over_price", "under_price", "spread")
 
 

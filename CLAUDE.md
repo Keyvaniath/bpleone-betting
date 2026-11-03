@@ -41,6 +41,31 @@ bpleone-site/
 
 ## Current deployment state (LIVE)
 
+- **2026-11-03 (evening) — NO PLACEHOLDER PRICES + NBA GAME-LINES DESK.**
+  Brandon: "the odds must be perfect". 481 settled picks (ledger + archive)
+  were still graded at a -110 no book posted (grader fallback 1.91 when a pick
+  has no price; boards that stamped fair -110 when a line was missing).
+  Placeholder = no price, or fair -110 with no book_american and prob not
+  ~0.5238 (a model whose fair really is -110 is kept). tools/
+  build_placeholder_audit.py -> seed E `data/ml_reprice_2026_11e.json`:
+  pre-game only (never past DK's commence time, else 16:00Z), exact line for
+  totals, DK > Odds API > Bovada -> 109 `repriced_book`; no real price (ALL
+  player props -- no sportsbook prop prices ever recorded -- and totals no
+  book showed) -> 372 `unpriced_bet` voided, wins AND losses (a loss is -1 at
+  any price, but voiding only wins would bias the record). Applied by
+  ml_reprice.apply_ledger (SEED_E) each build and directly to
+  ledger_archive.json (not rebuilt by the ledger). Curated 912-420 (+13.87%,
+  +184.81u) -> 803-345 (+13.73%, +157.67u) -- 1+ hit props were overpaid at
+  -110; all-picks -3,732u -> -3,644u (uncurated HR props were underpaid).
+  Disclosed (price_corrections "placeholder prices"). Intake `_block_unpriced`
+  never logs such a pick again. NOTE: props on every desk still have no
+  sportsbook price (free feeds carry none) -- graded at the model's own fair
+  odds and labelled as calibration; real prop prices need a paid odds feed.
+  NBA desk: game_lines_desk now runs nba (538 NBA Elo: K 20 / HFA 100 / carry
+  1/4, fitted K 30 / HFA 50; finals seed data/game_finals_nba.json 1,427
+  games from 2025-10-21; DK lines data/dk_lines_nba.json). Backtest n=107:
+  DK 0.5648 vs Elo 0.6468 -> NO EDGE, no picks; card on nba.html shows the
+  live DK board. Next lever: injury/availability inputs.
 - **2026-11-03 (later) — NBA GRADING.** 1,389 NBA picks since 10/20: 570
   voided "no outcome feed within 4 days", 417 pending, only 430 settled.
   Causes: (1) `nba_slate.upcoming_games` dated games by the UTC [:10] of

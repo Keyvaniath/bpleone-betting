@@ -23,6 +23,7 @@ SPORTS = {
     # sport: (espn path, first day of last season's regular season)
     "nfl": ("football/nfl", dt.date(2025, 9, 4)),
     "nhl": ("hockey/nhl", dt.date(2025, 10, 7)),
+    "nba": ("basketball/nba", dt.date(2025, 10, 21)),
 }
 
 

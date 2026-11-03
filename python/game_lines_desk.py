@@ -40,6 +40,9 @@ OUT = os.path.join(DATA_DIR, "game_lines_desk.json")
 PARAMS = {
     "nfl": {"k": 20.0, "hfa": 48.0, "carry": 1 / 3},
     "nhl": {"k": 8.0, "hfa": 25.0, "carry": 1 / 3},
+    # NBA (2026-11-03): 538's NBA Elo -- K 20, HFA ~100 Elo, carry-over 1/4,
+    # MOV multiplier ((MOV+3)^0.8) / (7.5 + 0.006 * winner's Elo edge).
+    "nba": {"k": 20.0, "hfa": 100.0, "carry": 0.25},
 }
 MIN_EDGE = 0.04          # 4% expected value at the DK price
 W_GRID = [i / 20 for i in range(21)]
@@ -47,7 +50,8 @@ MIN_BACKTEST_N = 60      # below this, w stays 0 (not enough evidence to lean on
 # Stamped on every logged pick (ledger `desk_model`) so the forward test can
 # score each model version on its own picks. Picks logged before a version
 # existed carry none -> "v1".
-MODEL_VERSION = {"nfl": "v2-qb (2026-10-29)", "nhl": "v2-goalie-shots-rest (2026-10-28)"}
+MODEL_VERSION = {"nfl": "v2-qb (2026-10-29)", "nhl": "v2-goalie-shots-rest (2026-10-28)",
+                 "nba": "v1-mov-elo (2026-11-03)"}
 
 
 def _load(p: str) -> Dict[str, Any]:
@@ -100,7 +104,7 @@ def _season_key(sport: str, date: str) -> int:
     """NFL season starts in September; NHL in October. Anything before the
     season-start month belongs to the previous season."""
     y, m = int(date[:4]), int(date[5:7])
-    start = 8 if sport == "nfl" else 9
+    start = 8 if sport == "nfl" else 9      # NHL + NBA open in October
     return y if m >= start else y - 1
 
 
@@ -134,7 +138,7 @@ def load_finals(sport: str) -> List[Dict[str, Any]]:
         by[k] = {"id": None, "date": d, "season": None, "season_type": 2, "neutral": False,
                  "home": k[2], "away": k[1], "home_score": int(g["home_score"]),
                  "away_score": int(g["away_score"]),
-                 "ot": max(len(hp), len(ap)) > (4 if sport == "nfl" else 3)}
+                 "ot": max(len(hp), len(ap)) > (3 if sport == "nhl" else 4)}
         added += 1
     games = sorted(by.values(), key=lambda g: (g["date"], g["home"]))
     if added:
@@ -175,6 +179,8 @@ class Elo:
         diff_w = (self._rating(h) - self._rating(a) + (0 if g.get("neutral") else self.hfa)) * (1 if res == 1 else -1)
         if self.sport == "nfl":
             mult = math.log(mov + 1) * (2.2 / (diff_w * 0.001 + 2.2)) if mov else 1.0
+        elif self.sport == "nba":
+            mult = ((mov + 3) ** 0.8) / (7.5 + 0.006 * diff_w) if mov else 1.0
         else:
             mult = (0.6686 * math.log(mov) + 0.8048) if mov >= 1 else 1.0
         delta = self.k * mult * (res - p)
@@ -515,7 +521,8 @@ def run_sport(sport: str) -> Dict[str, Any]:
     lines = grow_lines(sport)
     today = dt.date.today()
     season_start = {"nfl": f"{_season_key('nfl', today.isoformat())}-08-01",
-                    "nhl": f"{_season_key('nhl', today.isoformat())}-09-01"}[sport]
+                    "nhl": f"{_season_key('nhl', today.isoformat())}-09-01",
+                    "nba": f"{_season_key('nba', today.isoformat())}-09-01"}[sport]
     params = fit_params(sport, finals, season_start)
     gm, extra = None, {}
     if sport == "nhl":
@@ -543,6 +550,10 @@ def run_sport(sport: str) -> Dict[str, Any]:
             "starters_source": "ESPN NHL scoreboard probableStartingGoalie (Expected / Confirmed)",
             "espn_starter_accuracy": ng_score(gm),
         }
+    elif sport == "nba":
+        # v1: margin-of-victory Elo only -- no injury / rest inputs yet, and NBA
+        # prices move on star availability; the gate decides whether it bets.
+        bt = backtest(sport, finals, lines, params)
     else:
         qm = nfl_qb_model(finals, params, season_start)
         bt_base = backtest(sport, finals, lines, params)
@@ -688,7 +699,7 @@ def run() -> Dict[str, Any]:
                       "no-vig price by a walk-forward-fitted weight; picks only at >= "
                       f"{int(MIN_EDGE * 100)}% EV at the DK price."),
            "sports": {}}
-    for s in ("nfl", "nhl"):
+    for s in ("nfl", "nhl", "nba"):
         try:
             out["sports"][s] = run_sport(s)
         except Exception as e:   # a desk failure must not take the other down
