@@ -25,6 +25,10 @@ _0% lineups confirmed_
    - Model 74.9% (fair -298)
    - Worlds
 
+## Golf -- World Wide Technology Championship
+- **Leader:** Brice Garnett (E) at #1
+- **Field:** 120 players  |  Status: Scheduled
+
 ## NBA -- REGULAR
 - Philadelphia 76ers @ Detroit Pistons (7-1 vs 6-1)  | P(home) 51.2% fair -105 | Scheduled
 - Atlanta Hawks @ Washington Wizards (4-4 vs 4-3)  | P(home) 62.0% fair -163 | Scheduled

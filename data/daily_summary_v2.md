@@ -1,13 +1,13 @@
 # EdgeStat Daily Summary — 2026-11-03
 
-## 🏥 Model Health: 67.4/100 [OK]
+## 🏥 Model Health: 67.2/100 [OK]
 - Operational but room to improve - check yellow components
-  - 🟢 Calibration Freshness: 99.6/100
+  - 🟢 Calibration Freshness: 100.0/100
   - 🔴 Hit Rate Trend: 54.1/100
   - 🔴 Brier Trend: 16.2/100
   - 🟢 Pipeline Audit: 100.0/100
   - 🟢 Data Health: 95.5/100
-  - 🔴 Edge Count: 42.9/100
+  - 🔴 Edge Count: 40.0/100
 
 ## 🌐 Slate Overview
 - **Regime today:** BALANCED (avg P(home)=0.544)
@@ -22,8 +22,8 @@
 5. **LOL Gen.G Esports vs LYON ML @ -298** (76/100 ★★★★★)
 
 ## 🔒 Locks of the Day -- Track Record
-- All-time: **310-60** (83.8% hit rate)
-- Net units: **+10.38u** | ROI: **+45.5%**
+- All-time: **310-59** (84.0% hit rate)
+- Net units: **+10.39u** | ROI: **+45.6%**
 - Last 7d: 2-0 (100.0%) | net +0.04u
 
 ## 🎮 Player Play of the Day (cross-sport)
@@ -49,9 +49,9 @@
 - Hot teams: **8** | Cold teams: **24** | Over-heavy: 0 | Under-heavy: 35
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (254)
+## ⚠️ Anomaly Detector (260)
 - RESIDUAL_DIVERGENCE: **15**
-- STEAM_MOVE: **239**
+- STEAM_MOVE: **245**
   - Charlotte Hornets (NBA): Charlotte Hornets UNDERPERFORMING expected margin by 10.2pts in recent games -- model bias may persist
   - Chicago Bulls (NBA): Chicago Bulls UNDERPERFORMING expected margin by 9.8pts in recent games -- model bias may persist
   - Indiana Pacers (NBA): Indiana Pacers UNDERPERFORMING expected margin by 9.5pts in recent games -- model bias may persist
@@ -92,6 +92,13 @@
   - [LEAN] **Gabriel Lorenço** (8-1-0) vs Thomas Petersen -- fair -148
   - [LEAN] **Elijah Smith** (10-1-0) vs Davey Grant -- fair -139
 
+## ⛳ Golf Player Heat (from World Wide Technology Championship)
+  - 🔥 T1 **Brice Garnett** (USA): +0 total -- finished T1
+  - 🔥 T2 **Ben Martin** (USA): +0 total -- finished T2
+  - 🔥 T3 **Peter Malnati** (USA): +0 total -- finished T3
+  - 🔥 T4 **Joel Dahmen** (USA): +0 total -- finished T4
+  - 🔥 T5 **Justin Lower** (USA): +0 total -- finished T5
+
 ## 🔥 MLB Batter Heat (56 HOT / 71 COLD)
   - 🔥 **Nolan Arenado** (AZ): L14 .404 / season .255 (+149pts)
   - 🔥 **Geraldo Perdomo** (AZ): L14 .392 / season .262 (+130pts)
@@ -124,7 +131,7 @@
   - ⚠️ batter_rbis (Brier Δ -0.0052)
 
 ## 🧠 Training Convergence
-- ELITE: **0** · HEALTHY: 1 · OK: 0 · DEGRADED: **1**
+- ELITE: **0** · HEALTHY: 0 · OK: 2 · DEGRADED: **0**
 
 ## 🤖 Self-Training Status
 - **NBA**: n=107 games · hit rate 65.4% · bias +1.0pp

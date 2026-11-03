@@ -1,18 +1,27 @@
 # EdgeStat — Tonight's Master Brief
-_Generated 2026-11-03T18:45:01 UTC_
+_Generated 2026-11-03T20:19:15 UTC_
 
 ## Slate Quality
 - **Tier:** NO_ACTION_NIGHT
-- **Score:** -157
+- **Score:** -51
 - **Advisory:** STAND DOWN. Slate has no aligned conviction. Skip betting tonight or watch only.
 - **Total LOCKs:** 0
-- **Total STRONG:** 1
-- **Total FADES:** 161
+- **Total STRONG:** 40
+- **Total FADES:** 211
 
 ## Top 5 Curated Picks
-1. **NBA / NOP** (NBA_TEAM, score=60.0)
-   - Play: NOP (TEAM_STRONG)
-   - Rationale: Cross-sport top pick (NBA_TEAM)
+1. **GOLF / Brice Garnett** (GOLF_PLAYER, score=143.79)
+   - Play: Brice Garnett (PLAYER_STRONG)
+   - Rationale: Cross-sport top pick (GOLF_PLAYER)
+2. **GOLF / Ben Martin** (GOLF_PLAYER, score=141.14)
+   - Play: Ben Martin (PLAYER_STRONG)
+   - Rationale: Cross-sport top pick (GOLF_PLAYER)
+
+## Top Events Board
+- **GOLF** / ? (TOURNAMENT_STRONG)
+  - Brice Garnett top 10 finish
+  - Ben Martin top 10 finish
+  - Peter Malnati top 10 finish
 
 ## Slate ROI Projection
 - **Picks:** 0
@@ -27,7 +36,7 @@ _Generated 2026-11-03T18:45:01 UTC_
   - Fade angle: team total UNDER
 - **NBA** / SAS (TEAM_FADE)
   - Fade angle: team total UNDER
-- **NBA** / DET (TEAM_FADE)
-  - Fade angle: team total UNDER
 - **NBA** / TOR (TEAM_FADE)
+  - Fade angle: team total UNDER
+- **NBA** / DET (TEAM_FADE)
   - Fade angle: team total UNDER
