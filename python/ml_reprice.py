@@ -115,14 +115,18 @@ def apply_ledger(picks, side_of) -> Dict[str, int]:
                                      else (-1.0 if p.get("result") == "lost" else 0.0))
                 p["repriced"] = {"at": now, "from_payout": old, "recorded_price": p.get("fair_american"),
                                  "book": r.get("book"), "book_snapshot_at": r.get("snapshot_at"),
-                                 "reason": (f"2026-11-03: graded at a placeholder {r.get('old_fair') or -110}; "
-                                            f"re-priced at {r.get('book')}'s real pre-game price")}
+                                 "reason": ((f"2026-11-03: curated, graded at the model's own fair price {r.get('old_fair')}; "
+                                             if r.get("kind") == "model_fair" else
+                                             f"2026-11-03: graded at a placeholder {r.get('old_fair') or -110}; ")
+                                            + f"re-priced at {r.get('book')}'s real pre-game price")}
                 n["repriced_book"] += 1
             elif r["status"] == "unpriced_bet" and p.get("settled"):
                 p["voided"] = True
                 p["voided_at"] = now
-                p["voided_reason"] = ("unpriced: graded at a placeholder -110 and no real pre-game book price "
-                                      "is on record for this bet -- no honest payout")
+                p["voided_reason"] = ((f"unpriced: curated, graded at the model's own fair price {r.get('old_fair')}, "
+                                       if r.get("kind") == "model_fair" else
+                                       "unpriced: graded at a placeholder -110 and ")
+                                      + "no real pre-game book price is on record for this bet -- no honest payout")
                 n["voided_unpriced_bet"] += 1
             elif r["status"] == "unposted_total" and p.get("settled"):
                 real = r.get("real_total")

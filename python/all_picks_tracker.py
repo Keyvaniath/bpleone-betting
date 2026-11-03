@@ -179,11 +179,21 @@ def _price_corrections(history):
         vm += vr.startswith("unpriced moneyline")
         vt += vr.startswith("unpriced total")
         vu += vr.startswith("unposted total")
+    mf_rp = sum(1 for p in rows if str((p.get("repriced") or {}).get("reason") or "").startswith("2026-11-03: curated, graded at the model"))
+    mf_vd = sum(1 for p in rows if str(p.get("voided_reason") or "").startswith("unpriced: curated, graded at the model"))
     ph_rp = sum(1 for p in rows if str((p.get("repriced") or {}).get("reason") or "").startswith("2026-11-03: graded at a placeholder"))
     ph_vd = sum(1 for p in rows if str(p.get("voided_reason") or "").startswith("unpriced: graded at a placeholder"))
     nba_regraded = sum(1 for p in rows if str(p.get("sport") or "").upper() == "NBA"
                        and any("wrong game" in str(x.get("reason") or "") for x in (p.get("resettle_log") or [])))
     return [
+        {"date": "2026-11-03", "label": "curated game lines at the model's price", "n_repriced": mf_rp,
+         "n_voided": mf_vd,
+         "curated_before": "803-345 (+13.73%, +157.67u)", "curated_after": "785-335 (+13.54%, +151.66u)",
+         "note": ("Curated MLB moneylines and totals that had no book price stamped were graded at the "
+                  "model's own fair price (8/4 TOR @ HOU home at -106 when the book had -144; LAD @ CHC LAD at "
+                  "+107 vs -131). Each was re-priced "
+                  "at the real pre-game book price (same sources and rules as the placeholder pass), or "
+                  "voided when none is on record.")},
         {"date": "2026-11-03", "label": "placeholder prices", "n_repriced": ph_rp, "n_voided": ph_vd,
          "curated_before": "912-420 (+13.87%, +184.81u)", "curated_after": "803-345 (+13.73%, +157.67u)",
          "note": ("Every settled pick still graded at a -110 that no book posted -- the grader's fallback "

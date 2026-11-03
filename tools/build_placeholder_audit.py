@@ -78,6 +78,20 @@ def _utc(s):
         return None
 
 
+CURATED = ("lock_of_day", "top_25_board", "whale_", "consensus_hit", "sharp_", "mlb_under_alert", "pod")
+
+
+def curated_model_priced(p) -> bool:
+    """2026-11-03 (second pass): a CURATED MLB game line (moneyline / total)
+    graded at the model's own fair price because no book price was stamped --
+    the curated record is graded at the house price, so it needs a real one."""
+    cur = str(p.get("source", "")).startswith(CURATED) or any(str(x).startswith(CURATED) for x in p.get("also_sources") or [])
+    mk = str(p.get("market") or "")
+    game = mk.startswith(("OVER_", "UNDER_")) or "ml" in mk.lower()
+    return (cur and game and p.get("sport") == "MLB" and p.get("book_american") is None
+            and p.get("fair_american") is not None and not placeholder(p))
+
+
 def placeholder(p) -> bool:
     b, f = p.get("book_american"), p.get("fair_american")
     if b is not None:
@@ -123,7 +137,7 @@ def main(dry=False):
                 continue
             if origin == "L" and not p.get("settled"):
                 continue
-            if placeholder(p):
+            if placeholder(p) or curated_model_priced(p):
                 cand.append((origin, p))
     print("placeholder-priced settled picks:", len(cand), Counter(p.get("sport") for _, p in cand))
 
@@ -178,6 +192,7 @@ def main(dry=False):
     rows = []
     for origin, p in cand:
         r = {"pick_id": p["pick_id"], "origin": origin, "sport": p.get("sport"), "source": p.get("source"),
+             "kind": "model_fair" if curated_model_priced(p) else "placeholder",
              "date": str(p["date"])[:10], "matchup": p.get("player_or_matchup"), "market": p.get("market"),
              "old_fair": p.get("fair_american"), "result": p.get("result"), "old_payout": p.get("payout_units")}
         price, book, at = None, None, None
@@ -281,15 +296,19 @@ def main(dry=False):
         if r["status"] == "repriced_book":
             p["repriced"] = {"at": now, "from_payout": p.get("payout_units"), "recorded_price": p.get("fair_american"),
                              "book": r["book"], "book_snapshot_at": r["snapshot_at"],
-                             "reason": (f"2026-11-03: graded at a placeholder {r.get('old_fair') or -110}; "
-                                        f"re-priced at {r['book']}'s real pre-game price")}
+                             "reason": ((f"2026-11-03: curated, graded at the model's own fair price {r.get('old_fair')}; "
+                                         if r.get("kind") == "model_fair" else
+                                         f"2026-11-03: graded at a placeholder {r.get('old_fair') or -110}; ")
+                                        + f"re-priced at {r['book']}'s real pre-game price")}
             p["book_american"] = r["book_american"]
             p["payout_units"] = r["new_payout"]
         else:
             p["voided"] = True
             p["voided_at"] = now
-            p["voided_reason"] = ("unpriced: graded at a placeholder -110 and no real pre-game book price "
-                                  "is on record for this bet -- no honest payout")
+            p["voided_reason"] = ((f"unpriced: curated, graded at the model's own fair price {r.get('old_fair')}, "
+                                   if r.get("kind") == "model_fair" else
+                                   "unpriced: graded at a placeholder -110 and ")
+                                  + "no real pre-game book price is on record for this bet -- no honest payout")
         n += 1
     with open(ARCHIVE, "w", encoding="utf-8") as f:
         json.dump(arch, f, indent=2)
