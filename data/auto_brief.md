@@ -1,4 +1,4 @@
-# Tonight's Slate Brief — 2026-11-02
+# Tonight's Slate Brief — 2026-11-03
 
 ## Slate Quality: 70/100 (MEDIUM)
 _0% lineups confirmed_
@@ -6,7 +6,7 @@ _0% lineups confirmed_
 
 ## Slate
 - **0 games** scheduled
-- **17 best bets** scored: 0 DK · 0 PP · 0 NRFI · 0 SGP
+- **16 best bets** scored: 0 DK · 0 PP · 0 NRFI · 0 SGP
 
 ## Top 5 Best Bets
 1. **LOL Inspired UNDER 3.5 Kills**  (78/100 ****, edge —)
@@ -26,17 +26,18 @@ _0% lineups confirmed_
    - Worlds
 
 ## NBA -- REGULAR
-- Oklahoma City Thunder @ Cleveland Cavaliers (4-2 vs 4-2)  | P(home) 55.0% fair -122 | Scheduled
-- Detroit Pistons @ Charlotte Hornets (5-1 vs 3-4)  | P(home) 15.5% fair +545 | Scheduled
-- Atlanta Hawks @ Indiana Pacers (3-4 vs 2-5)  | P(home) 39.5% fair +153 | Scheduled
-- Brooklyn Nets @ New York Knicks (1-5 vs 2-4)  | P(home) 75.4% fair -306 | Scheduled
-- Washington Wizards @ Orlando Magic (3-3 vs 2-4)  | P(home) 38.0% fair +164 | Scheduled
+- Oklahoma City Thunder @ Cleveland Cavaliers (5-2 vs 4-3) 117-112 | P(home) 0.0% fair +0 | Final
+- Detroit Pistons @ Charlotte Hornets (6-1 vs 3-5) 124-91 | P(home) 0.0% fair +0 | Final
+- Atlanta Hawks @ Indiana Pacers (4-4 vs 2-6) 108-104 | P(home) 0.0% fair +0 | Final
+- Brooklyn Nets @ New York Knicks (1-6 vs 3-4) 90-103 | P(home) 100.0% fair +0 | Final
+- Washington Wizards @ Orlando Magic (4-3 vs 2-5) 103-94 | P(home) 0.0% fair +0 | Final
 
 ## NHL -- REGULAR
-- Vegas Golden Knights @ Boston Bruins (9-5-1 vs 10-4-1)  | P(home) 48.0% fair +108 | Scheduled
-- Detroit Red Wings @ Florida Panthers (6-5-3 vs 8-4-2)  | P(home) 52.5% fair -111 | Scheduled
-- Colorado Avalanche @ Chicago Blackhawks (8-5-1 vs 4-9-1)  | P(home) 31.2% fair +220 | Scheduled
-- Calgary Flames @ San Jose Sharks (6-8-0 vs 7-7-1)  | P(home) 49.9% fair +100 | Scheduled
+- Vegas Golden Knights @ Boston Bruins (0-0-0 vs 0-0-0) 2-3 | P(home) 100.0% fair +0 | Final
+- Detroit Red Wings @ Florida Panthers (0-0-0 vs 0-0-0) 5-3 | P(home) 0.0% fair +0 | Final
+- Colorado Avalanche @ Chicago Blackhawks (0-0-0 vs 0-0-0) 5-2 | P(home) 0.0% fair +0 | Final
+- Calgary Flames @ San Jose Sharks (0-0-0 vs 0-0-0) 2-1 | P(home) 0.0% fair +0 | Final
+- Utah Mammoth @ Toronto Maple Leafs (9-6-0 vs 8-6-2)  | P(home) 41.4% fair +141 | Scheduled
 
 ## LoL Esports -- 0 live, 7 upcoming
 - [Worlds] TOP ESPORTS vs Invictus Gaming BO5 | P(A) 23.6% fair +324/-324
