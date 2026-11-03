@@ -81,7 +81,9 @@ jobs:
         run: python espn_odds.py > /dev/null || echo "espn_odds.py" >> "$RUNNER_TEMP/failed_steps.txt"
       - name: NFL + NHL game-lines desk (confirmed NHL starters)
         working-directory: python
-        run: python game_lines_desk.py || echo "game_lines_desk.py" >> "$RUNNER_TEMP/failed_steps.txt"
+        run: |
+          python game_lines_desk.py || echo "game_lines_desk.py" >> "$RUNNER_TEMP/failed_steps.txt"
+          python today_status.py || echo "today_status.py" >> "$RUNNER_TEMP/failed_steps.txt"
       # Unified all-picks ledger (every surfaced pick across all modules)
       - name: All-picks unified ledger
         working-directory: python

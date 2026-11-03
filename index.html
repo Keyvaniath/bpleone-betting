@@ -146,6 +146,37 @@ fetch('data/data_health.json?t=' + Date.now()).then(function(r){return r.json();
     </div>
   </section>
 
+  <!-- TODAY, per sport (2026-11-03): what is on the board, what is priced, what
+       was picked and why nothing was -- counts from data/today_status.json,
+       never invented. -->
+  <section id="todayStatus" style="display:none; margin:0 0 20px; border:1px solid rgba(255,255,255,.08); border-radius:12px; padding:14px 18px; background:rgba(255,255,255,.02);">
+    <div style="display:flex; justify-content:space-between; gap:10px; flex-wrap:wrap; margin-bottom:8px;">
+      <span style="font-size:11px; letter-spacing:.6px; text-transform:uppercase; color:#8a93a6;">Today, by sport</span>
+      <span class="muted" id="todayStatusMeta" style="font-size:11px;"></span>
+    </div>
+    <div id="todayStatusRows" style="display:grid; gap:6px;"></div>
+    <p class="muted" id="todayStatusAlpha" style="font-size:12px; margin:10px 0 0;"></p>
+    <p class="muted" id="todayStatusProps" style="font-size:11px; margin:4px 0 0;"></p>
+  </section>
+  <script>
+  fetch("data/today_status.json?t=" + Date.now(), { cache: "no-cache" }).then(r => r.json()).then(d => {
+    const esc = s => String(s == null ? "" : s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+    const link = { NFL: "nfl.html", NBA: "nba.html", NHL: "nhl.html", MLB: "mlb.html" };
+    const dot = r => !r.games_on_board ? "#5b6478" : (r.picks ? "#58c878" : "#d4a04a");
+    document.getElementById("todayStatusRows").innerHTML = (d.sports || []).map(r =>
+      `<a href="${link[r.sport] || "#"}" style="display:flex; gap:10px; align-items:baseline; text-decoration:none; color:inherit; font-size:13px;">
+         <span style="width:8px; height:8px; border-radius:50%; background:${dot(r)}; display:inline-block; flex:0 0 8px;"></span>
+         <b style="width:42px; flex:0 0 42px;">${esc(r.sport)}</b><span class="muted">${esc(r.status)}</span></a>`).join("");
+    document.getElementById("todayStatusAlpha").innerHTML = d.alpha && d.alpha.has_pick
+      ? `<b>Alpha Pick:</b> ${esc(d.alpha.label)}` : `<b>Alpha Pick:</b> ${esc((d.alpha || {}).reason)}`;
+    document.getElementById("todayStatusProps").textContent = d.props_note || "";
+    const t = d.odds_snapshot_at ? new Date(d.odds_snapshot_at.replace(/Z?$/, "Z")) : null;
+    document.getElementById("todayStatusMeta").textContent = "odds: " + (d.odds_source || "") +
+      (t ? " · snapshot " + t.toLocaleString([], { month: "short", day: "numeric", hour: "numeric", minute: "2-digit", timeZoneName: "short" }) : "");
+    document.getElementById("todayStatus").style.display = "block";
+  }).catch(() => {});
+  </script>
+
   <!-- ★ ALPHA PICK OF THE DAY — homepage flagship feature (refreshes 7am PT) -->
   <section id="alphaPodHero" style="display:none; margin:0 0 20px; border:1px solid rgba(212,160,74,.32); border-radius:14px; background:linear-gradient(135deg, rgba(212,160,74,.10), rgba(212,160,74,.02)); padding:18px 22px;">
     <div style="display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap; margin-bottom:14px;">
@@ -510,7 +541,7 @@ fetch('data/data_health.json?t=' + Date.now()).then(function(r){return r.json();
       <h2 class="play-title" id="alphaTitle">Loading…</h2>
       <div class="play-grid">
         <div class="play-stat"><div class="stat-label">Model Prob</div><div class="stat-value-big" id="alphaProb">--</div></div>
-        <div class="play-stat"><div class="stat-label">Fair Odds</div><div class="stat-value-big" style="color:#d4a04a;" id="alphaOdds">--</div></div>
+        <div class="play-stat"><div class="stat-label">Book Price</div><div class="stat-value-big" style="color:#d4a04a;" id="alphaOdds">--</div></div>
         <div class="play-stat"><div class="stat-label">ROI / $1</div><div class="stat-value-big positive" id="alphaRoi">--</div></div>
         <div class="play-stat"><div class="stat-label">Type</div><div class="stat-value-big" style="font-size:14px;" id="alphaType">--</div></div>
         <div class="play-stat"><div class="stat-label">Kelly Frac</div><div class="stat-value-big" id="alphaKelly">--</div></div>
@@ -541,7 +572,7 @@ fetch('data/data_health.json?t=' + Date.now()).then(function(r){return r.json();
     <div class="card big-card parlay-card" style="background:linear-gradient(135deg,rgba(88,140,200,0.10),rgba(88,140,200,0.02));border:1px solid rgba(88,140,200,0.30);">
       <div class="card-head">
         <span class="pill" style="background:#588cc8;color:#1a1a1a;font-weight:700;">🎲 PARLAY OF DAY</span>
-        <span class="muted" id="parStamp">market-aware correlation model</span>
+        <span class="muted" id="parStamp">research only -- not a recommended bet (legs priced at the model's own odds)</span>
       </div>
       <h2 class="play-title" id="parTitle" style="font-size:16px;">Loading…</h2>
       <div class="play-grid">
@@ -1216,7 +1247,20 @@ fetch("data/today.json", { cache: "no-cache" })
   .then(r => r.json())
   .then(d => {
     const pod = d.play_of_day;
-    if (!pod) return;
+    if (!pod) {
+      // 2026-11-03: this used to `return`, leaving "Loading tonight's play..." up for good.
+      const t = document.querySelector(".play-card .play-title");
+      if (t) t.textContent = "No Play of the Day today";
+      const sm = document.getElementById("podSummary");
+      if (sm) sm.textContent = d.no_games
+        ? "The Play of the Day is drawn from the MLB slate, and there are no MLB games on the board (off-season). See \"Today, by sport\" above for NFL / NBA / NHL."
+        : "Nothing on today's slate qualified.";
+      const hm = document.querySelector(".play-card .card-head .muted");
+      if (hm) hm.textContent = (d.generated_at || "").slice(0, 10);
+      const mg = document.getElementById("mGames");
+      if (mg && d.no_games) mg.textContent = "0";
+      return;
+    }
     // Title
     const titleEl = document.querySelector(".play-card .play-title");
     if (titleEl) titleEl.innerHTML = `${pod.matchup} <span class="accent">${pod.label || ""}</span>`;
@@ -1851,13 +1895,17 @@ fetch("data/calibration_status.json?t=" + Date.now(), { cache: "no-cache" })
     .then(d => {
       const a = d.alpha_pick;
       if (!a) {
-        document.getElementById('alphaTitle').textContent = 'No alpha edge today';
+        document.getElementById('alphaTitle').textContent = 'No Alpha Pick today';
+        fetch('data/today_status.json?t=' + Date.now()).then(r => r.json()).then(t => {
+          const why = (t.alpha || {}).reason;
+          if (why) document.getElementById('alphaMarket').textContent = why;
+        }).catch(() => {});
         return;
       }
       document.getElementById('alphaTitle').textContent =
         (a.sport || '') + ' · ' + (a.player_or_matchup || '') + (a.team ? ' (' + a.team + ')' : '');
       document.getElementById('alphaProb').textContent = fmtPct(a.model_prob);
-      document.getElementById('alphaOdds').textContent = fmtOdds(a.fair_american);
+      document.getElementById('alphaOdds').textContent = fmtOdds(a.book_american != null ? a.book_american : a.fair_american);
       document.getElementById('alphaRoi').textContent = fmtSigned(a.roi_per_dollar);
       document.getElementById('alphaType').textContent = typeLabel(d.pick_type);
       document.getElementById('alphaKelly').textContent = a.kelly_fraction != null ? a.kelly_fraction.toFixed(3) : '--';
@@ -1876,6 +1924,7 @@ fetch("data/calibration_status.json?t=" + Date.now(), { cache: "no-cache" })
                 || (d.top_2_leg_parlays && d.top_2_leg_parlays[0]);
       if (!pick) {
         document.getElementById('parTitle').textContent = 'No qualifying parlay today';
+        document.getElementById('parLegs').textContent = 'Parlays are research only: their legs have no sportsbook price, and correlated legs are not independent bets.';
         return;
       }
       const legNames = (pick.legs || []).map(L => L.player_or_matchup + ' (' + (L.market||'').slice(0,18) + ')').join(' + ');
@@ -1903,6 +1952,7 @@ fetch("data/calibration_status.json?t=" + Date.now(), { cache: "no-cache" })
       const top = all[0];
       if (!top) {
         document.getElementById('beTitle').textContent = 'No book edges found today';
+        document.getElementById('beSummary').textContent = 'This board covers MLB games vs the live DraftKings line; NFL / NBA / NHL game lines are on each sport page (see "Today, by sport" above).';
         return;
       }
       const isTotal = top.total_line !== undefined;

@@ -257,3 +257,24 @@ def test_weekly_feed_merges_next_week(monkeypatch):
     assert sorted(g["event_id"] for g in games) == ["1", "2"]                # merged, deduped by id
     nxt = [g for g in games if g["event_id"] == "2"][0]
     assert nxt["status"] == "pre" and nxt["market"]["ml_home"] == -180
+
+
+# ---------------------------------------------------------- today status ----
+def test_today_status_counts_only_what_is_on_disk(tmp_path, monkeypatch):
+    import today_status as ts
+    (tmp_path / "espn_odds.json").write_text(json.dumps(_snap()))
+    (tmp_path / "game_lines_desk.json").write_text(json.dumps({"sports": {"nba": {
+        "verdict": "NO EDGE: the model adds nothing", "proven": False,
+        "board": [{"matchup": "PHI @ DET", "pick": None}]}}}))
+    (tmp_path / "today.json").write_text(json.dumps({"no_games": True}))
+    (tmp_path / "todays_top_plays.json").write_text(json.dumps({"funnel": {"n_input": 10, "rejected": {"unsupported_market": 9, "no_quote": 1}}}))
+    (tmp_path / "alpha_pick_of_day.json").write_text(json.dumps({"alpha_pick": None}))
+    monkeypatch.setattr(ts, "DATA_DIR", str(tmp_path))
+    monkeypatch.setattr(ts, "OUT", str(tmp_path / "today_status.json"))
+    out = ts.run()
+    nba = [r for r in out["sports"] if r["sport"] == "NBA"][0]
+    assert nba["games_on_board"] == 1 and nba["games_priced"] == 1 and nba["picks"] == 0
+    assert "doesn't beat DraftKings" in nba["status"]
+    mlb = [r for r in out["sports"] if r["sport"] == "MLB"][0]
+    assert mlb["status"].startswith("Off-season")
+    assert out["alpha"]["has_pick"] is False and "9 were player props" in out["alpha"]["reason"]

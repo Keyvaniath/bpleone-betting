@@ -113,6 +113,18 @@ audit) was voided. Fixed with it: the `top_25_board` collector dropped
 model's price); the game-lines desk now attaches its snapshot quote. Tests: 29
 pass.
 
+## Website honest states (branch `site/honest-states`, 2026-11-03, NOT merged)
+
+`python/today_status.py` -> `data/today_status.json` (counts only, from
+espn_odds / game_lines_desk / today / todays_top_plays / alpha_pick_of_day):
+per sport games on the DK board, priced, picks, held back, desk verdict, a
+plain-language status; the Alpha state with the funnel reason; the props
+note. index.html: "Today, by sport" strip under the hero; Play of the Day no
+longer stuck on "Loading..." (`if (!pod) return` left the placeholder up);
+Alpha card shows the reason and the BOOK price (was labelled Fair Odds);
+Book Edge / Parlay cards say why they are empty; the parlay card is labelled
+research-only. Runs in the daily late pass, the heartbeat and live-games.
+
 ## Open (P0)
 
 1. (merged a5aee8bd58, approved 11/03) selection + settlement + evaluation fail closed.

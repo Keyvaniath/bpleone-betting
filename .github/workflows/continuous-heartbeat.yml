@@ -104,6 +104,7 @@ jobs:
         run: |
           python espn_odds.py > /dev/null || echo "espn_odds.py" >> "$RUNNER_TEMP/failed_steps.txt"
           python game_lines_desk.py || echo "game_lines_desk.py" >> "$RUNNER_TEMP/failed_steps.txt"
+          python today_status.py || echo "today_status.py" >> "$RUNNER_TEMP/failed_steps.txt"
 
       # Self-learning -- update every 5 min, all day
       - name: All-picks unified ledger (settle + log)
