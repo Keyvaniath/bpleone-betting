@@ -1,5 +1,12 @@
 """
-EdgeStat -- Counter-Strike Play of the Day. Picks top 3 plays from upcoming CS matches.
+EdgeStat -- Counter-Strike model projection board (formerly "Play of the Day").
+
+NOT A PICK (2026-11-03): rows are chosen by a 0.52-0.78 model-probability band
+with no sportsbook price behind them, and the ELO model (seeded from a
+hard-coded table) is unvalidated. Field names (top_bet / runners_up) are kept
+for consumers, but every row carries is_pick=False + not_a_pick_reason,
+confidence is "UNVALIDATED" instead of a HIGH/MED/LOW band, and bet_key no
+longer embeds the model's own fair price.
 """
 from __future__ import annotations
 import os, json, datetime as dt
@@ -9,6 +16,7 @@ from typing import Any, Dict, List
 DATA_DIR = os.path.join(os.path.dirname(__file__), "..", "data")
 PROPS_PATH = os.path.join(DATA_DIR, "cs_props.json")
 OUT_PATH = os.path.join(DATA_DIR, "cs_bestbet.json")
+NOT_A_PICK_REASON = "no sportsbook price; model unvalidated"   # (2026-11-03)
 
 
 def _load(p):
@@ -23,6 +31,12 @@ def run() -> Dict[str, Any]:
     matches = props.get("predictions") or []
     cands: List[Dict[str, Any]] = []
     for m in matches:
+        # (2026-11-03) only upcoming/live series; never a placeholder team
+        if m.get("is_completed"):
+            continue
+        if str(m.get("team_a") or "").strip().upper() in ("", "TBD", "TBA") or \
+           str(m.get("team_b") or "").strip().upper() in ("", "TBD", "TBA"):
+            continue
         p_a = m.get("p_series_a") or 0.5
         best_of = m.get("best_of") or 3
         for side, prob, fair, team, opp in (
@@ -43,8 +57,10 @@ def run() -> Dict[str, Any]:
                     "best_of": best_of,
                     "tournament": m.get("tournament"),
                     "label": f"{team} ML vs {opp} (BO{best_of})",
-                    "bet_key": f"CS|{team}|ML|{fair}",
+                    "bet_key": f"CS|{team}|ML|model_projection",
                     "match_id": m.get("id") or f"{m.get('team_a')}|{m.get('team_b')}",
+                    "is_pick": False,
+                    "not_a_pick_reason": NOT_A_PICK_REASON,
                 })
     if not cands:
         payload = {
@@ -55,10 +71,14 @@ def run() -> Dict[str, Any]:
         }
     else:
         cands.sort(key=lambda c: -c["quality"])
+        # (2026-11-03) HIGH/MED/LOW removed: a band score is not a confidence
         for c in cands:
-            c["confidence"] = "HIGH" if c["quality"] >= 0.95 else "MED" if c["quality"] >= 0.70 else "LOW"
+            c["confidence"] = "UNVALIDATED"
         payload = {
             "generated_at": dt.datetime.now().isoformat(timespec="seconds"),
+            "label": "model projection -- unvalidated, no sportsbook price, not a recommendation",
+            "is_pick": False,
+            "not_a_pick_reason": NOT_A_PICK_REASON,
             "n_candidates": len(cands),
             "top_bet": cands[0],
             "runners_up": cands[1:5],
@@ -72,4 +92,6 @@ if __name__ == "__main__":
     p = run()
     if p.get("top_bet"):
         b = p["top_bet"]
-        print(f"CS POD: {b['team']} ML ({b['fair_american']}) -- P={b['prob']*100:.1f}% Q={b['quality']} ({b['confidence']})")
+        print(f"CS model projection (NOT a pick: {b['not_a_pick_reason']}): {b['team']} vs {b['opponent']} -- model P={b['prob']*100:.1f}%")
+    else:
+        print(f"CS projection: {p.get('note')}")

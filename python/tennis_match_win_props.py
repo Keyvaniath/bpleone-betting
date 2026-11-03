@@ -8,8 +8,16 @@ Method:
   P(A wins) = 1 / (1 + 10 ** ((elo_B - elo_A) / 400))
   Surface STRONG when our model probability differs from book ML by >= 5%.
 
-Player ELO ratings: top 50 ATP + top 50 WTA, snapshot from recent season.
-Surface-specific adjustments: clay/grass/hard.
+Player ELO ratings: a HARD-CODED 2025 snapshot of ~50 ATP/WTA players (not
+live, not updated by this module). Surface-specific adjustments: clay/grass/hard.
+
+(2026-11-03) NO EDGE WITHOUT A BOOK PRICE. The old rule called a match
+"STRONG" whenever the model favourite sat at 60-78%, measured against an
+ASSUMED -120 book (54.5% breakeven) -- book_p_p1/p2 were always null, so every
+"edge" was the model against a constant. Edge is now model p minus the real
+book-implied p (de-vigged when both sides are present) and is None when there
+is no book price; STRONG requires a real price and >= 5pp edge. In-progress
+matches are excluded from the upcoming board.
 
 Output: data/tennis_match_win_props.json
 """
@@ -25,8 +33,11 @@ from typing import Any, Dict, List, Optional
 DATA_DIR = os.path.join(os.path.dirname(__file__), "..", "data")
 OUT = os.path.join(DATA_DIR, "tennis_match_win_props.json")
 
-# 2025 ATP / WTA top ranked + ELO (snapshot)
+# 2025 ATP / WTA top ranked + ELO -- HARD-CODED snapshot (2026-11-03 label)
 # ELO baseline 1500. Top players ~2000+. Lower ranked ~1600-1700.
+ELO_SOURCE_LABEL = "hard-coded 2025 snapshot (~50 players), not live ratings"
+MODEL_STATUS = "unvalidated model projection -- not a recommendation"
+STRONG_EDGE_PP = 0.05   # vs a REAL book-implied probability only
 PLAYER_ELO = {
     # ATP top 25
     "jannik sinner":         {"tour": "ATP", "elo": 2240, "clay_adj": -40, "grass_adj": -10, "hard_adj": 30},
@@ -114,6 +125,10 @@ def run() -> Dict[str, Any]:
     for m in matches:
         status = (m.get("status") or m.get("state") or "").lower()
         if "final" in status or "complete" in status: continue
+        # (2026-11-03) "upcoming" means not started: drop in-progress matches
+        if status in ("in", "live", "in_progress", "in progress", "post") or \
+           str(m.get("state") or "").lower() in ("in", "post"):
+            continue
         p1_name = m.get("player1") or m.get("p1") or ""
         p2_name = m.get("player2") or m.get("p2") or ""
         if not p1_name or not p2_name: continue
@@ -128,22 +143,31 @@ def run() -> Dict[str, Any]:
         p_a_wins = 1.0 / (1 + 10 ** ((elo_b - elo_a) / 400))
         p_b_wins = 1 - p_a_wins
 
-        # Book ML if provided
+        # Book ML if provided (implied probabilities from a real sportsbook)
         book_p_a = m.get("book_p_player1") or m.get("book_p_p1")
         book_p_b = m.get("book_p_player2") or m.get("book_p_p2")
 
-        edge_class = "NONE"
+        # (2026-11-03) the assumed -120 book is gone from the edge math.
+        # De-vig when both sides are priced; edge is None without a price.
+        if book_p_a and book_p_b:
+            tot = book_p_a + book_p_b
+            fair_book_a, fair_book_b = book_p_a / tot, book_p_b / tot
+        else:
+            fair_book_a = book_p_a if book_p_a else None
+            fair_book_b = book_p_b if book_p_b else None
+        edge_p1 = round(p_a_wins - fair_book_a, 3) if fair_book_a else None
+        edge_p2 = round(p_b_wins - fair_book_b, 3) if fair_book_b else None
+
+        edge_class = "NO_BOOK_PRICE" if (edge_p1 is None and edge_p2 is None) else "NONE"
         best_market = None
-        # Determine favored side; surface STRONG if model probability >= 60%
-        # (5%+ edge vs typical -120 favorite breakeven 54.5%)
-        if 0.60 <= p_a_wins <= 0.78:
+        if edge_p1 is not None and edge_p1 >= STRONG_EDGE_PP:
             edge_class = "STRONG_A"
             best_market = {"market": "ML_PLAYER1", "p": round(p_a_wins, 3),
-                           "fair_odds": _american(p_a_wins)}
-        elif 0.60 <= p_b_wins <= 0.78:
+                           "book_p": round(fair_book_a, 3), "edge": edge_p1}
+        elif edge_p2 is not None and edge_p2 >= STRONG_EDGE_PP:
             edge_class = "STRONG_B"
             best_market = {"market": "ML_PLAYER2", "p": round(p_b_wins, 3),
-                           "fair_odds": _american(p_b_wins)}
+                           "book_p": round(fair_book_b, 3), "edge": edge_p2}
 
         rows.append({
             "matchup": f"{p1_name} vs {p2_name}",
@@ -159,6 +183,8 @@ def run() -> Dict[str, Any]:
             "fair_p2_odds": _american(p_b_wins),
             "book_p_p1": book_p_a,
             "book_p_p2": book_p_b,
+            "edge_p1": edge_p1,
+            "edge_p2": edge_p2,
             "edge_class": edge_class,
             "best_market": best_market,
         })
@@ -171,8 +197,13 @@ def run() -> Dict[str, Any]:
         "n_matches": len(rows),
         "n_strong_edges": len(strong),
         "n_players_in_db": len(PLAYER_ELO),
-        "method_note": "P(win) = 1 / (1 + 10^((elo_opp - elo_player) / 400)) with surface adj. "
-                       "STRONG when favored p in [0.60, 0.78] (5%+ edge vs -120 book).",
+        "elo_source": ELO_SOURCE_LABEL,
+        "model_status": MODEL_STATUS,
+        "n_with_book_price": sum(1 for r in rows if r["edge_class"] != "NO_BOOK_PRICE"),
+        "method_note": "P(win) = 1 / (1 + 10^((elo_opp - elo_player) / 400)) with surface adj, "
+                       "ELO from a hard-coded 2025 snapshot. Edge = model p - real book-implied p "
+                       "(de-vigged); None without a book price. STRONG only with a real price "
+                       "and >= 5pp edge. In-progress matches excluded.",
         "rows": rows,
         "strong_edges": strong,
     }
@@ -183,4 +214,5 @@ def run() -> Dict[str, Any]:
 
 if __name__ == "__main__":
     o = run()
-    print(f"[tennis-ml] {o['n_matches']} matches, {o['n_strong_edges']} strong edges -> {OUT}")
+    print(f"[tennis-ml] {o['n_matches']} upcoming matches, {o['n_with_book_price']} with a book price, "
+          f"{o['n_strong_edges']} strong edges -> {OUT}")

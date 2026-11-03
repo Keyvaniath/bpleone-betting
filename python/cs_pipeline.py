@@ -24,7 +24,10 @@ from typing import Any, Dict, List, Optional
 DATA_DIR = os.path.join(os.path.dirname(__file__), "..", "data")
 OUT_PATH = os.path.join(DATA_DIR, "cs_state.json")
 
-# HLTV top-30 baseline ELO ratings (snapshot ~May 2026, updated as matches settle)
+# Hard-coded seed ELO ratings for ~30 teams (hand-entered ~May 2026 snapshot).
+# (2026-11-03) NOT live HLTV data and NOT updated here -- the page used to call
+# this "HLTV Top 30 (current ELO)". It is published as `top_teams` with
+# top_teams_label = "seed ratings (hard-coded, not live)".
 HLTV_TOP_TEAMS = {
     "Vitality":            1740,
     "MOUZ":                1720,
@@ -214,17 +217,32 @@ def run() -> Dict[str, Any]:
         matches = _pull_bo3gg_matches()
         source = "bo3gg" if matches else "no_live_source"
 
-    # Top teams JSON (for UI display)
+    # Seed table (for UI display) -- hard-coded, not live (2026-11-03)
     top_teams = [{"name": n, "rating": r} for n, r in
                   sorted(HLTV_TOP_TEAMS.items(), key=lambda x: -x[1])][:30]
+
+    published = matches[:50]
+    # (2026-11-03) "Matches" used to be len(all rows) -- 60 -- while every
+    # published row was a COMPLETED result (dated 2020-06-15..2026-11-09).
+    # n_matches now counts only upcoming/live series; completed rows (kept for
+    # settlement) are counted separately.
+    n_upcoming = sum(1 for m in published if not m.get("is_completed"))
+    n_completed = sum(1 for m in published if m.get("is_completed"))
+    source_labels = {"liquipedia": "Liquipedia", "bo3gg": "bo3.gg",
+                     "no_live_source": "no live source"}
 
     payload = {
         "generated_at": dt.datetime.now().isoformat(timespec="seconds"),
         "data_source": source,
-        "n_matches": len(matches),
+        "data_source_label": source_labels.get(source, source),
+        "n_matches": n_upcoming,
+        "n_upcoming": n_upcoming,
+        "n_completed_rows": n_completed,
+        "n_rows_pulled": len(matches),
         "n_top_teams": len(top_teams),
-        "matches": matches[:50],
+        "matches": published,
         "top_teams": top_teams,
+        "top_teams_label": "seed ratings (hard-coded, not live)",
     }
     os.makedirs(DATA_DIR, exist_ok=True)
     with open(OUT_PATH, "w") as f:
@@ -234,6 +252,7 @@ def run() -> Dict[str, Any]:
 
 if __name__ == "__main__":
     p = run()
-    print(f"Wrote {OUT_PATH}: {p['n_matches']} matches from {p['data_source']}, {p['n_top_teams']} ranked teams")
+    print(f"Wrote {OUT_PATH}: {p['n_upcoming']} upcoming/live + {p['n_completed_rows']} completed rows "
+          f"from {p['data_source_label']}, {p['n_top_teams']} seed-rated teams (hard-coded)")
     for m in p["matches"][:8]:
         print(f"  {m['team_a']} vs {m['team_b']}  (BO{m.get('best_of',3)})")

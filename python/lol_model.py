@@ -75,6 +75,20 @@ def _baseline(league: str) -> int:
     return REGION_BASELINES.get(league, BASE_ELO)
 
 
+# PLACEHOLDER TEAMS ARE NOT TEAMS (2026-11-03). The lolesports schedule lists
+# unseeded bracket slots as "TBD" vs "TBD"; those were rated at the default
+# baseline, modeled at 50% / -100 and fed into parlays. A match is modeled only
+# when both sides are real team names.
+_PLACEHOLDER_NAMES = {"", "tbd", "tba", "tbc", "to be determined", "to be announced", "?", "-", "--"}
+
+
+def _is_placeholder(name) -> bool:
+    if name is None:
+        return True
+    n = str(name).strip().lower()
+    return n in _PLACEHOLDER_NAMES or n.startswith("tbd ") or n.startswith("winner of") or n.startswith("loser of")
+
+
 def _series_win_prob(p_map: float, best_of: int) -> float:
     """Given P(team wins a single map), return P(team wins BO-N series).
     Uses binomial: a team needs ceil(N/2) wins."""
@@ -104,7 +118,7 @@ def _update_elo_from_completed(elo_table: Dict[str, float],
     for m in completed:
         a = m["team_a"]
         b = m["team_b"]
-        if a is None or b is None:
+        if _is_placeholder(a) or _is_placeholder(b):   # (2026-11-03)
             continue
         elo_a = elo_table.get(a, _baseline(m.get("league", "")))
         elo_b = elo_table.get(b, _baseline(m.get("league", "")))
@@ -167,8 +181,8 @@ def run() -> Dict[str, Any]:
         if m["is_completed"]:
             continue
         a, b = m["team_a"], m["team_b"]
-        if not (a and b):
-            continue
+        if not (a and b) or _is_placeholder(a) or _is_placeholder(b):
+            continue          # (2026-11-03) never model a TBD placeholder row
         league = m.get("league", "")
         elo_a = elo_table.get(a, _baseline(league))
         elo_b = elo_table.get(b, _baseline(league))
@@ -202,9 +216,16 @@ def run() -> Dict[str, Any]:
         p.get("start_time", "")
     ))
 
+    n_placeholder = sum(1 for m in all_matches if not m["is_completed"]
+                        and (_is_placeholder(m.get("team_a")) or _is_placeholder(m.get("team_b"))))
     payload = {
         "generated_at": dt.datetime.now().isoformat(timespec="seconds"),
+        # (2026-11-03) ELO outputs are unvalidated and there is no sportsbook
+        # price feed for LoL; fair_*_american are the model's own break-even
+        # odds, never a line.
+        "model_status": "unvalidated model projection -- no sportsbook price, not a recommendation",
         "n_matches": len(predictions),
+        "n_placeholder_matches_skipped": n_placeholder,
         "n_teams_rated": len(elo_table),
         "predictions": predictions,
     }
@@ -215,8 +236,8 @@ def run() -> Dict[str, Any]:
 if __name__ == "__main__":
     p = run()
     print(f"Wrote {OUT_PATH}: {p.get('n_matches', 0)} predictions, {p.get('n_teams_rated', 0)} teams rated")
+    if p.get("n_placeholder_matches_skipped"):
+        print(f"  skipped {p['n_placeholder_matches_skipped']} TBD placeholder matches")
     for m in (p.get("predictions") or [])[:8]:
-        ams = (m.get("fair_a_american") or 0)
-        bms = (m.get("fair_b_american") or 0)
-        print(f"  [{m['league']:20}] {m['team_a']:22} ({ams:+5d}) vs {m['team_b']:22} ({bms:+5d}) "
-              f"BO{m['best_of']} -- P(A)={m['p_series_a']*100:5.1f}%")
+        print(f"  [{m['league']:20}] {m['team_a']:22} vs {m['team_b']:22} "
+              f"BO{m['best_of']} -- model P(A)={m['p_series_a']*100:5.1f}% (unvalidated projection)")

@@ -38,7 +38,7 @@
   .role-pill.support { background:#d4a04a; color:#fff; }
   .elite-pill { display:inline-block; padding:2px 7px; border-radius:4px; font-size:9px; font-weight:700; background:linear-gradient(90deg, #b450dc, #d4a04a); color:#fff; }
   .stat-block { display:grid; grid-template-columns: repeat(4, 1fr); gap:10px; margin-top:10px; font-size:12px; }
-  .prop-row { display:grid; grid-template-columns: 80px 80px 80px 80px 90px; gap:6px; padding:6px 0; font-family:'JetBrains Mono',monospace; font-size:11px; border-bottom:1px dashed rgba(255,255,255,0.04); }
+  .prop-row { display:grid; grid-template-columns: 110px 80px 80px; gap:6px; padding:6px 0; font-family:'JetBrains Mono',monospace; font-size:11px; border-bottom:1px dashed rgba(255,255,255,0.04); }
   .filter-bar { display:flex; gap:8px; padding:8px 16px; flex-wrap:wrap; }
   .filter-pill { display:inline-block; padding:5px 12px; border-radius:14px; background:rgba(255,255,255,0.06); cursor:pointer; font-size:11px; }
   .filter-pill.active { background:#b450dc; color:#fff; }
@@ -59,14 +59,24 @@
 
   <section class="page-head">
     <h1>League of Legends — Player Projections</h1>
-    <p id="lolPlayersStatus" class="muted">Loading 982-player roster with per-game projections + prop fair odds…</p>
+    <!-- (2026-11-03) was a hard-coded "982-player" count; the data has its own n_players (bound below) -->
+    <p id="lolPlayersStatus" class="muted">Loading player roster…</p>
+  </section>
+
+  <!-- (2026-11-03) honesty label: rosters come from the Riot lolesports API,
+       but every stat projection comes from hard-coded role baselines and a
+       named-player heuristic in python/lol_player_proj.py -- not live player
+       stats. Thresholds are the model's own, not book lines; the "Fair
+       Over/Under" columns were removed. -->
+  <section class="card" style="margin-bottom: 16px; border-left: 3px solid #888;">
+    <div class="muted" style="padding: 12px 16px; font-size: 12px;"><strong>Illustrative model projections from a hard-coded table — not live stats, not prices.</strong> Rosters are real (Riot lolesports); per-game stats come from hard-coded role baselines and a named-player heuristic; thresholds are the model's own, not sportsbook lines; probabilities are unvalidated. Not a recommendation.</div>
   </section>
 
   <section class="metric-strip">
     <div class="metric"><span class="metric-num" id="m_players">--</span><span class="metric-label">Players</span></div>
-    <div class="metric"><span class="metric-num" id="m_elite">--</span><span class="metric-label">Elite</span></div>
+    <div class="metric"><span class="metric-num" id="m_elite">--</span><span class="metric-label">Elite (hard-coded list)</span></div>
     <div class="metric"><span class="metric-num" id="m_leagues">--</span><span class="metric-label">Leagues</span></div>
-    <div class="metric"><span class="metric-num" id="m_roles">5</span><span class="metric-label">Roles</span></div>
+    <div class="metric"><span class="metric-num" id="m_roles">--</span><span class="metric-label">Roles</span></div>
   </section>
 
   <section class="card" style="margin-bottom: 24px;">
@@ -134,30 +144,25 @@ function renderRoster() {
         <div><span class="muted" style="font-size:10px;">KDA:</span> <strong style="color:${proj.kda >= 5 ? '#58c878' : 'var(--text-2)'}">${proj.kda}</strong></div>
       </div>
       <div id="${expandedId}" style="display:none; margin-top:12px;">
-        <div style="font-size:11px; text-transform:uppercase; color:#b450dc; margin-bottom:8px;">Kill Props</div>
-        <div class="prop-row" style="font-weight:700;"><span>Line</span><span>P(over)</span><span>P(under)</span><span>Fair Over</span><span>Fair Under</span></div>
+        <div style="font-size:11px; text-transform:uppercase; color:#b450dc; margin-bottom:8px;">Kills — model thresholds, not book lines</div>
+        <div class="prop-row" style="font-weight:700;"><span>Threshold</span><span>P(over)</span><span>P(under)</span></div>
         ${(p.kill_props || []).map(k => `<div class="prop-row">
-          <span>OVER ${k.line}</span>
-          <span style="color:${k.p_over >= 0.55 ? '#58c878' : '#e35a5a'};">${(k.p_over*100).toFixed(1)}%</span>
+          <span>${k.line}</span>
+          <span>${(k.p_over*100).toFixed(1)}%</span>
           <span>${(k.p_under*100).toFixed(1)}%</span>
-          <span>${fmtAmer(k.fair_over_american)}</span>
-          <span>${fmtAmer(k.fair_under_american)}</span>
         </div>`).join("")}
-        <div style="font-size:11px; text-transform:uppercase; color:#b450dc; margin:12px 0 8px;">Assist Props</div>
-        <div class="prop-row" style="font-weight:700;"><span>Line</span><span>P(over)</span><span>P(under)</span><span>Fair Over</span><span>Fair Under</span></div>
+        <div style="font-size:11px; text-transform:uppercase; color:#b450dc; margin:12px 0 8px;">Assists — model thresholds, not book lines</div>
+        <div class="prop-row" style="font-weight:700;"><span>Threshold</span><span>P(over)</span><span>P(under)</span></div>
         ${(p.assist_props || []).map(a => `<div class="prop-row">
-          <span>OVER ${a.line}</span>
-          <span style="color:${a.p_over >= 0.55 ? '#58c878' : '#e35a5a'};">${(a.p_over*100).toFixed(1)}%</span>
+          <span>${a.line}</span>
+          <span>${(a.p_over*100).toFixed(1)}%</span>
           <span>${(a.p_under*100).toFixed(1)}%</span>
-          <span>${fmtAmer(a.fair_over_american)}</span>
-          <span>${fmtAmer(a.fair_under_american)}</span>
         </div>`).join("")}
-        <div style="font-size:11px; text-transform:uppercase; color:#b450dc; margin:12px 0 8px;">Death Props</div>
+        <div style="font-size:11px; text-transform:uppercase; color:#b450dc; margin:12px 0 8px;">Deaths — model thresholds, not book lines</div>
         ${(p.death_props || []).map(d => `<div class="prop-row">
-          <span>UNDER ${d.line}</span>
-          <span style="color:${d.p_under >= 0.55 ? '#58c878' : '#e35a5a'};">${(d.p_under*100).toFixed(1)}%</span>
-          <span></span><span></span>
-          <span>${fmtAmer(d.fair_under_american)}</span>
+          <span>under ${d.line}</span>
+          <span>${(d.p_under*100).toFixed(1)}%</span>
+          <span></span>
         </div>`).join("")}
         <div style="margin-top:10px; font-size:11px; color:#888;">Skill multiplier: ${p.skill_mult} (compounds league tier + elite prior)</div>
       </div>
@@ -172,8 +177,9 @@ fetch("data/lol_player_props.json?t=" + Date.now(), { cache: "no-cache" })
     document.getElementById("m_players").textContent = d.n_players || 0;
     document.getElementById("m_elite").textContent = d.n_elite || 0;
     document.getElementById("m_leagues").textContent = Object.keys(d.by_league || {}).length;
+    document.getElementById("m_roles").textContent = new Set(allProjections.map(p => p.role).filter(Boolean)).size || '—';
     document.getElementById("lolPlayersStatus").textContent =
-      `${d.n_players} players · ${d.n_elite} elite · refresh: ${(d.generated_at || '').replace('T',' ')}`;
+      `${d.n_players || 0} players · ${d.n_elite || 0} flagged elite by a hard-coded list · illustrative projections, not live stats · generated: ${(d.generated_at || '').replace('T',' ')}`;
     renderRoster();
   })
   .catch(err => {

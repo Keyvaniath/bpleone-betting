@@ -9,7 +9,12 @@ For each game:
   - Skellam-style P(home win) via Monte Carlo (50K runs simulation)
   - Total OVER/UNDER fair line via Poisson PMF
 
-Self-learning: incorporates settled game results into rolling ELO via kbo_elo.json.
+ELO: starts from the hard-coded seed baselines in kbo_pipeline.KBO_TEAMS. The
+update loop below only sees `matches` (pre/in games), so in practice no result
+has ever been processed (processed_match_ids == 0) -- (2026-11-03) the output
+now says so ("elo_status") instead of the page calling it self-learning.
+Starting pitchers: none (the fabricated day-of-year rotation was removed
+2026-11-03; see kbo_pitcher_adj.py).
 
 Output: data/kbo_props.json + data/kbo_elo.json
 """
@@ -172,9 +177,9 @@ def run() -> Dict[str, Any]:
         "processed_match_ids": list(seen_ids)[-2000:],
     })
 
-    # Pitcher matchup adjustments
-    pitcher_adj = _load(os.path.join(DATA_DIR, "kbo_pitcher_adj.json"))
-    adj_by_matchup = {a["matchup"]: a for a in (pitcher_adj.get("adjustments") or [])}
+    # (2026-11-03) Starting-pitcher adjustment REMOVED. It came from a
+    # day_of_year % 3 pick over a static May rotation -- a fabricated input.
+    # No starter adjustment is applied until a real probable-starter feed exists.
 
     random.seed(7)
     preds: List[Dict[str, Any]] = []
@@ -185,17 +190,7 @@ def run() -> Dict[str, Any]:
         home_lambda = _expected_runs(elo_h, elo_a, is_home=True)
         away_lambda = _expected_runs(elo_a, elo_h, is_home=False)
 
-        # Apply starting-pitcher adjustment: home SP quality suppresses away_lambda
-        adj_key = f"{a} @ {h}"
-        adj = adj_by_matchup.get(adj_key) or {}
-        sp_adjustment = None
-        if adj:
-            # home SP "runs against" adjustment applies to away_lambda
-            away_lambda += (adj.get("home_runs_against_adjustment") or 0)
-            home_lambda += (adj.get("away_runs_against_adjustment") or 0)
-            away_lambda = max(1.5, away_lambda)
-            home_lambda = max(1.5, home_lambda)
-            sp_adjustment = adj.get("note")
+        sp_adjustment = None   # (2026-11-03) no starter input (see above)
 
         sim = _simulate_game(home_lambda, away_lambda, N_SIMS)
         p_home = sim["p_home_win"]
@@ -214,8 +209,16 @@ def run() -> Dict[str, Any]:
             "pitcher_matchup": sp_adjustment,
         })
 
+    n_processed = len(seen_ids)
     payload = {
         "generated_at": dt.datetime.now().isoformat(timespec="seconds"),
+        # (2026-11-03) honest labels: unvalidated, no KBO book prices, seed ELO
+        "model_status": "unvalidated model projection -- no sportsbook price, not a recommendation",
+        "elo_status": ("seed ratings (hard-coded preseason baseline; no results processed)"
+                       if n_processed == 0 else
+                       f"seed ratings + {n_processed} processed results"),
+        "n_results_processed": n_processed,
+        "starter_adjustment": None,
         "n_games": len(preds),
         "n_teams_rated": len(elo),
         "n_sims_per_game": N_SIMS,
@@ -227,8 +230,8 @@ def run() -> Dict[str, Any]:
 
 if __name__ == "__main__":
     p = run()
-    print(f"Wrote {OUT_PATH}: {p['n_games']} KBO games ({p['n_sims_per_game']} sims/game)")
+    print(f"Wrote {OUT_PATH}: {p['n_games']} KBO games ({p['n_sims_per_game']} sims/game) -- ELO: {p['elo_status']}")
     for m in p["predictions"]:
         print(f"  {m['away_team']:18} @ {m['home_team']:18} "
-              f"P(home)={m['p_home_win']*100:5.1f}% fair {m['fair_home_american']:+5d}/{m['fair_away_american']:+5d} "
-              f"Total={m['model_total']:.1f}")
+              f"model P(home)={m['p_home_win']*100:5.1f}% (unvalidated projection) "
+              f"median total={m['model_total']:.1f}")

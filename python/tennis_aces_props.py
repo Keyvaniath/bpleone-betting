@@ -10,8 +10,11 @@ Method:
     - Surface (grass +25%, hard 0, clay -20%)
     - Opponent return-game quality (poor returners = more aces)
 
-  Normal CDF at nearest 1.0 line within 3.0 of projection.
-  STRONG when 10%+ edge vs -120 book (p in [0.62, 0.72]).
+  (2026-11-03) PROJECTION ONLY. The old code invented "lines" as
+  round(projection) +/- k and called a side STRONG at its own fair price
+  (e.g. "-184") against an assumed -120 book. There is no aces book line in
+  the feed, so no line, fair price or edge is published: each row is the
+  model's projected aces (unvalidated) with edge_class "NO_BOOK_PRICE".
 
 Output: data/tennis_aces_props.json
 """
@@ -148,25 +151,10 @@ def run() -> Dict[str, Any]:
             # Sigma: serve variance ~ 2.5-3.5 aces
             sigma = max(2.8, 0.30 * projected_aces)
 
-            edge_class = "NONE"
+            # (2026-11-03) invented lines / fair prices / STRONG removed --
+            # no sportsbook aces line exists in the feed.
+            edge_class = "NO_BOOK_PRICE"
             best_market = None
-            base_line = round(projected_aces) + 0.5
-            for line_int in (base_line - 2, base_line - 1, base_line, base_line + 1, base_line + 2):
-                line = line_int
-                if line < 1.5 or line > 25.5: continue
-                if abs(projected_aces - line) > 3.0: continue
-                p_over = _p_over(projected_aces, sigma, line)
-                p_under = 1 - p_over
-                if 0.62 <= p_over <= 0.72:
-                    if not best_market or p_over > best_market["p"]:
-                        edge_class = "STRONG_OVER"
-                        best_market = {"market": f"ACES_OVER_{line}", "p": round(p_over, 3),
-                                       "fair_odds": _american(p_over), "line": line}
-                elif 0.62 <= p_under <= 0.72:
-                    if not best_market or p_under > best_market["p"]:
-                        edge_class = "STRONG_UNDER"
-                        best_market = {"market": f"ACES_UNDER_{line}", "p": round(p_under, 3),
-                                       "fair_odds": _american(p_under), "line": line}
 
             rows.append({
                 "matchup": m.get("matchup"),
@@ -193,9 +181,10 @@ def run() -> Dict[str, Any]:
         "n_player_matches": len(rows),
         "n_strong_edges": len(strong),
         "n_players_in_db": len(PLAYER_ACES),
+        "model_status": "unvalidated model projection -- no sportsbook line or price, not a recommendation",
         "method_note": "Tennis player_aces = base x surface_mult (grass +25%, clay -20%) "
-                       "x format_mult (bo5 +50%). Normal CDF, sigma 30% of projection. "
-                       "STRONG = 10%+ edge vs -120 book.",
+                       "x format_mult (bo5 +50%), sigma 30% of projection, from a hard-coded "
+                       "per-player aces table. Projection only: no book line, no price, no edge.",
         "rows": rows,
         "strong_edges": strong,
     }
@@ -206,4 +195,5 @@ def run() -> Dict[str, Any]:
 
 if __name__ == "__main__":
     o = run()
-    print(f"[tennis-aces] {o['n_player_matches']} player-matches, {o['n_strong_edges']} strong edges -> {OUT}")
+    print(f"[tennis-aces] {o['n_player_matches']} player-match projections (no book lines; "
+          f"{o['n_strong_edges']} edges) -> {OUT}")

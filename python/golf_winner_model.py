@@ -118,11 +118,47 @@ def _decimal_from_p(p: float) -> float:
     return 1 / p if p > 0 else 0
 
 
+MODEL_STATUS = ("unvalidated model projection -- no sportsbook price, "
+                "not a recommendation")
+
+
+def _pre_event_payload(t: Dict[str, Any]) -> Dict[str, Any]:
+    """(2026-11-03) Before a tournament starts there is nothing to simulate:
+    every player is "E" and the old code simulated 2 rounds off empty ESPN
+    placeholders, publishing Finau P(win) 1.8% / +5518 for a "Scheduled"
+    event. Emit no probabilities until play begins."""
+    start = (t.get("start_date") or "")[:10]
+    return {
+        "generated_at": dt.datetime.now().isoformat(timespec="seconds"),
+        "tournament": t.get("name"),
+        "is_pre_event": True,
+        "is_complete": False,
+        "starts_at": t.get("start_date"),
+        "note": (f"Tournament starts {start}; projections appear once play begins"
+                 if start else "Tournament has not started; projections appear once play begins"),
+        "n_players": 0,
+        "players": [],
+    }
+
+
+def tournament_started(t: Dict[str, Any]) -> bool:
+    """(2026-11-03) True only when ESPN reports the event in progress or
+    complete. Shared by golf_h2h / golf_makecut / golf_parlay."""
+    return bool(t.get("is_in_progress") or t.get("is_complete"))
+
+
 def run() -> Dict[str, Any]:
     state = _load(STATE_PATH)
     t = state.get("active_tournament") or {}
     field = [p for p in (state.get("field") or [])
              if not p.get("is_cut") and not p.get("is_withdrawn")]
+
+    if field and not tournament_started(t):
+        payload = _pre_event_payload(t)
+        os.makedirs(DATA_DIR, exist_ok=True)
+        with open(OUT_PATH, "w") as f:
+            json.dump(payload, f, indent=2)
+        return payload
 
     if not field:
         payload = {
@@ -238,6 +274,9 @@ def run() -> Dict[str, Any]:
         "tournament": t.get("name"),
         "rounds_left": rounds_left,
         "is_complete": False,
+        # (2026-11-03) these are simulation outputs, never sportsbook prices;
+        # fair_*_american are the model's own break-even odds, not lines.
+        "model_status": MODEL_STATUS,
         "n_players": len(players),
         "n_sims": N_SIMS,
         "players": players,
@@ -251,6 +290,8 @@ def run() -> Dict[str, Any]:
 if __name__ == "__main__":
     p = run()
     print(f"Wrote {OUT_PATH}: {p.get('n_players',0)} players, tournament: {p.get('tournament')}")
+    if p.get("note"):
+        print(f"  {p['note']}")
     if p.get("players"):
         print(f"  Rounds left: {p.get('rounds_left')}")
         print(f"  Top 5 win-probability:")

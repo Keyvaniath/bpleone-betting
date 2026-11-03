@@ -34,7 +34,7 @@
   .kind-pill.batter { background:#cf3939; color:#fff; }
   .kind-pill.pitcher { background:#5096dc; color:#fff; }
   .stat-block { display:grid; grid-template-columns: repeat(4, 1fr); gap:10px; margin-top:10px; font-size:12px; }
-  .prop-row { display:grid; grid-template-columns: 1.4fr 90px 90px 90px; gap:6px; padding:6px 0; font-family:'JetBrains Mono',monospace; font-size:11px; border-bottom:1px dashed rgba(255,255,255,0.04); }
+  .prop-row { display:grid; grid-template-columns: 1.4fr 120px; gap:6px; padding:6px 0; font-family:'JetBrains Mono',monospace; font-size:11px; border-bottom:1px dashed rgba(255,255,255,0.04); }
   .filter-bar { display:flex; gap:8px; padding:8px 16px; flex-wrap:wrap; }
   .filter-pill { display:inline-block; padding:5px 12px; border-radius:14px; background:rgba(255,255,255,0.06); cursor:pointer; font-size:11px; }
   .filter-pill.active { background:#cf3939; color:#fff; }
@@ -55,7 +55,15 @@
 
   <section class="page-head">
     <h1>KBO — Player Projections</h1>
-    <p id="kboPlayersStatus" class="muted">Loading 10-team roster of hitters + pitchers with per-game projections + props…</p>
+    <p id="kboPlayersStatus" class="muted">Loading…</p>
+  </section>
+
+  <!-- (2026-11-03) honesty label: every number below comes from a hand-entered
+       table in python/kbo_players.py (approximate season stats), not a live
+       stats feed; the "Fair YES/NO" columns were removed because model
+       break-even odds are not sportsbook prices. -->
+  <section class="card" style="margin-bottom: 16px; border-left: 3px solid #888;">
+    <div class="muted" style="padding: 12px 16px; font-size: 12px;"><strong>Illustrative model projections from a hard-coded table — not live stats, not prices.</strong> Player stats are hand-entered approximations; probabilities are unvalidated model output with no sportsbook line behind them. Not a recommendation.</div>
   </section>
 
   <section class="metric-strip">
@@ -125,12 +133,12 @@ function renderRoster() {
           <div><span class="muted" style="font-size:10px;">Exp RBI:</span> <strong>${proj.rbis}</strong></div>
         </div>
         <div id="${id}" style="display:none; margin-top:12px;">
-          <div style="font-size:11px; text-transform:uppercase; color:#cf3939; margin-bottom:8px;">Common Props (per game)</div>
-          <div class="prop-row" style="font-weight:700;"><span>Market</span><span>Probability</span><span>Fair YES</span><span>Fair NO</span></div>
-          <div class="prop-row"><span>Hits a HR</span><span style="color:${props.hit_a_hr?.p >= 0.15 ? '#58c878' : ''}">${((props.hit_a_hr?.p || 0)*100).toFixed(1)}%</span><span>${fmtAmer(props.hit_a_hr?.fair_yes)}</span><span>${fmtAmer(props.hit_a_hr?.fair_no)}</span></div>
-          <div class="prop-row"><span>2+ hits</span><span style="color:${props.two_plus_hits?.p >= 0.55 ? '#58c878' : ''}">${((props.two_plus_hits?.p || 0)*100).toFixed(1)}%</span><span>${fmtAmer(props.two_plus_hits?.fair_over)}</span><span>${fmtAmer(props.two_plus_hits?.fair_under)}</span></div>
-          <div class="prop-row"><span>1+ RBI</span><span style="color:${props.one_plus_rbi?.p >= 0.55 ? '#58c878' : ''}">${((props.one_plus_rbi?.p || 0)*100).toFixed(1)}%</span><span>${fmtAmer(props.one_plus_rbi?.fair_yes)}</span><span>${fmtAmer(props.one_plus_rbi?.fair_no)}</span></div>
-          <div class="prop-row"><span>1+ TB</span><span style="color:${props.one_plus_tb?.p >= 0.55 ? '#58c878' : ''}">${((props.one_plus_tb?.p || 0)*100).toFixed(1)}%</span><span>${fmtAmer(props.one_plus_tb?.fair_yes)}</span><span>${fmtAmer(props.one_plus_tb?.fair_no)}</span></div>
+          <div style="font-size:11px; text-transform:uppercase; color:#cf3939; margin-bottom:8px;">Model probabilities (per game, illustrative)</div>
+          <div class="prop-row" style="font-weight:700;"><span>Outcome</span><span>Model P</span></div>
+          <div class="prop-row"><span>Hits a HR</span><span>${((props.hit_a_hr?.p || 0)*100).toFixed(1)}%</span></div>
+          <div class="prop-row"><span>2+ hits</span><span>${((props.two_plus_hits?.p || 0)*100).toFixed(1)}%</span></div>
+          <div class="prop-row"><span>1+ RBI</span><span>${((props.one_plus_rbi?.p || 0)*100).toFixed(1)}%</span></div>
+          <div class="prop-row"><span>1+ TB</span><span>${((props.one_plus_tb?.p || 0)*100).toFixed(1)}%</span></div>
         </div>
       </div>`;
     } else {
@@ -155,11 +163,11 @@ function renderRoster() {
           <div></div>
         </div>
         <div id="${id}" style="display:none; margin-top:12px;">
-          <div style="font-size:11px; text-transform:uppercase; color:#5096dc; margin-bottom:8px;">Pitching Props</div>
-          <div class="prop-row" style="font-weight:700;"><span>Market</span><span>Probability</span><span>Fair Over</span><span>Fair Under</span></div>
-          <div class="prop-row"><span>K OVER 5.5</span><span>${((props.k_over_55?.p || 0)*100).toFixed(1)}%</span><span>${fmtAmer(props.k_over_55?.fair_over)}</span><span>${fmtAmer(props.k_over_55?.fair_under)}</span></div>
-          <div class="prop-row"><span>K OVER 6.5</span><span>${((props.k_over_65?.p || 0)*100).toFixed(1)}%</span><span>${fmtAmer(props.k_over_65?.fair_over)}</span><span>${fmtAmer(props.k_over_65?.fair_under)}</span></div>
-          <div class="prop-row"><span>ER UNDER 2.5</span><span>${((props.er_under_2_5?.p || 0)*100).toFixed(1)}%</span><span></span><span></span></div>
+          <div style="font-size:11px; text-transform:uppercase; color:#5096dc; margin-bottom:8px;">Model probabilities (per start, illustrative)</div>
+          <div class="prop-row" style="font-weight:700;"><span>Outcome</span><span>Model P</span></div>
+          <div class="prop-row"><span>6+ strikeouts</span><span>${((props.k_over_55?.p || 0)*100).toFixed(1)}%</span></div>
+          <div class="prop-row"><span>7+ strikeouts</span><span>${((props.k_over_65?.p || 0)*100).toFixed(1)}%</span></div>
+          <div class="prop-row"><span>2 or fewer ER</span><span>${((props.er_under_2_5?.p || 0)*100).toFixed(1)}%</span></div>
         </div>
       </div>`;
     }
@@ -175,7 +183,7 @@ fetch("data/kbo_player_props.json?t=" + Date.now(), { cache: "no-cache" })
     document.getElementById("m_pitchers").textContent = allPlayers.filter(p => p.kind === "pitcher").length;
     document.getElementById("m_teams").textContent = new Set(allPlayers.map(p => p.team)).size;
     document.getElementById("kboPlayersStatus").textContent =
-      `${d.n_players} players · refresh: ${(d.generated_at || '').replace('T',' ')}`;
+      `${d.n_players} players from a hard-coded table (illustrative, not live) · generated: ${(d.generated_at || '').replace('T',' ')}`;
     renderRoster();
   })
   .catch(err => {
