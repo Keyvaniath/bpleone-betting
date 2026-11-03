@@ -1,18 +1,18 @@
-# EdgeStat Daily Summary — 2026-11-02
+# EdgeStat Daily Summary — 2026-11-03
 
-## 🏥 Model Health: 64.0/100 [OK]
+## 🏥 Model Health: 64.9/100 [OK]
 - Operational but room to improve - check yellow components
-  - 🟢 Calibration Freshness: 100.0/100
+  - 🟢 Calibration Freshness: 99.9/100
   - 🔴 Hit Rate Trend: 47.4/100
   - 🔴 Brier Trend: 14.7/100
   - 🟢 Pipeline Audit: 100.0/100
-  - 🟢 Data Health: 90.9/100
+  - 🟢 Data Health: 95.5/100
   - 🔴 Edge Count: 34.3/100
 
 ## 🌐 Slate Overview
-- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.578)
-- **Total games on board:** 56
-- **Strong home favorites:** 17 | **Strong road dogs:** 11
+- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.574)
+- **Total games on board:** 47
+- **Strong home favorites:** 14 | **Strong road dogs:** 8
 
 ## 🎯 Top 5 Best Bets
 1. **LOL Inspired UNDER 3.5 Kills** (78/100 ★★★★)
@@ -33,7 +33,7 @@
 - **[LOL]** Hope OVER 4.5 Kills | MED conviction · model 61.3% fair -158
 - **[CS]** torzsi OVER 40.5 Kills (BO3) | MED conviction · model 61.0% fair -157
 
-## ⚡ Pre-Game HIGH Conviction (15)
+## ⚡ Pre-Game HIGH Conviction (12)
 - [UCL] **Atlético Madrid** HOME (None L10) · model 72.7% fair -267
 - [UCL] **Bodo/Glimt** HOME (None L10) · model 72.7% fair -267
 - [UCL] **LASK Linz** HOME (None L10) · model 72.7% fair -267
@@ -43,16 +43,16 @@
 - [NCAAF] **South Carolina Gamecocks** HOME (None L10) · model 70.2% fair -235
 - [NCAAF] **Florida Gators** HOME (None L10) · model 70.2% fair -235
 - [NCAAF] **Notre Dame Fighting Irish** HOME (None L10) · model 70.1% fair -234
-- [NHL] **Colorado Avalanche** AWAY (3-3 L10) · model 68.8% fair -220
+- [NCAAF] **UCLA Bruins** AWAY (None L10) · model 64.2% fair -179
 
 ## 🔥/❄️ Heat / Cold Signals
-- Hot teams: **9** | Cold teams: **22** | Over-heavy: 0 | Under-heavy: 55
+- Hot teams: **10** | Cold teams: **22** | Over-heavy: 0 | Under-heavy: 43
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (242)
+## ⚠️ Anomaly Detector (236)
 - RESIDUAL_DIVERGENCE: **12**
 - STREAK_MISMATCH: **1**
-- STEAM_MOVE: **229**
+- STEAM_MOVE: **223**
   - Oklahoma City Thunder (NBA): Oklahoma City Thunder UNDERPERFORMING expected margin by 6.9pts in recent games -- model bias may persist
   - Charlotte Hornets (NBA): Charlotte Hornets UNDERPERFORMING expected margin by 8.8pts in recent games -- model bias may persist
   - Indiana Pacers (NBA): Indiana Pacers UNDERPERFORMING expected margin by 10.9pts in recent games -- model bias may persist
@@ -76,11 +76,11 @@
   - [ELITE] Utah Jazz @ San Antonio Spurs : 6 signals (HEAT_COLD, HEAT_COLD, HEAT_COLD, ANOMALY)
   - [ELITE] Oklahoma City Thunder @ Cleveland Cavaliers : 5 signals (PREGAME, HEAT_COLD, HEAT_COLD, ANOMALY)
 
-## 🏀 NBA Player Heat (8 HOT / 6 COLD)
+## 🏀 NBA Player Heat (7 HOT / 6 COLD)
   - 🔥 **Maxime Raynaud** (SAC): L5 20.0/9.8/2.6 vs season 12.5/7.5/1.4 [PTS +7.5, REB +2.3]
-  - 🔥 **Brandon Miller** (CHA): L5 29.4/7.6/3.0 vs season 22.6/5.6/2.7 [PTS +6.8, REB +2.0]
   - 🔥 **Jayson Tatum** (BOS): L5 31.4/6.4/7.0 vs season 25.3/7.8/6.6 [PTS +6.1]
   - 🔥 **Cormac Ryan** (MIL): L5 20.2/4.8/2.4 vs season 14.3/2.5/1.7 [PTS +5.9, REB +2.3]
+  - 🔥 **Devin Carter** (BOS): L5 14.6/5.8/5.0 vs season 8.9/3.3/2.7 [PTS +5.7, REB +2.5, AST +2.3]
   - 🔥 **Malachi Smith** (TOR): L5 10.2/6.0/5.8 vs season 8.3/3.4/3.3 [REB +2.6, AST +2.5]
   - ❄️ **Shaedon Sharpe** (POR): L5 7.2 vs season 20.8 [PTS -13.6, REB -2.7, AST -2.0] -- FADE OVER props
   - ❄️ **Brandon Ingram** (LAC): L5 12.0 vs season 21.5 [PTS -9.5, REB -2.4] -- FADE OVER props
@@ -103,7 +103,7 @@
   - ❄️ **Andrew Novak** (USA): Sunday +4.2 vs tourney avg
   - ❄️ **Matthieu Pavon** (France): Sunday +4.2 vs tourney avg
 
-## 🔥 MLB Batter Heat (55 HOT / 68 COLD)
+## 🔥 MLB Batter Heat (56 HOT / 71 COLD)
   - 🔥 **Nolan Arenado** (AZ): L14 .404 / season .255 (+149pts)
   - 🔥 **Geraldo Perdomo** (AZ): L14 .392 / season .262 (+130pts)
   - 🔥 **Xander Bogaerts** (SD): L14 .354 / season .231 (+123pts)
@@ -113,7 +113,7 @@
   - ❄️ **Jordan Walker** (STL): L14 .106 / season .269 (-163pts) -- FADE props
   - ❄️ **Tristan Peters** (CWS): L14 .111 / season .265 (-154pts) -- FADE props
   - ❄️ **Andruw Monasterio** (BOS): L14 .083 / season .233 (-150pts) -- FADE props
-  - ❄️ **Jim Jarvis** (ATL): L14 .079 / season .207 (-128pts) -- FADE props
+  - ❄️ **Nick Kurtz** (ATH): L14 .114 / season .256 (-142pts) -- FADE props
 
 ## 😴 B2B Fatigue Edges (6)
 - [NBA] FADE Indiana Pacers (home on B2B)
@@ -138,9 +138,9 @@
 - ELITE: **0** · HEALTHY: 1 · OK: 1 · DEGRADED: **0**
 
 ## 🤖 Self-Training Status
-- **NBA**: n=92 games · hit rate 63.0% · bias -1.7pp
-- **NHL**: n=95 games · hit rate 55.8% · bias -3.7pp
-- **WNBA**: n=6 games · hit rate 33.3% · bias -7.2pp
+- **NBA**: n=98 games · hit rate 64.3% · bias -0.3pp
+- **NHL**: n=93 games · hit rate 50.5% · bias -0.7pp
+- **WNBA**: n=5 games · hit rate 60.0% · bias -23.7pp
 - **MLS**: n=75 games · hit rate 46.7% · bias -2.7pp
-- **EPL**: n=30 games · hit rate 53.3% · bias +1.4pp
-- **MLB**: n=6 games · hit rate 66.7% · bias -33.5pp
+- **EPL**: n=30 games · hit rate 50.0% · bias +6.7pp
+- **MLB**: n=5 games · hit rate 80.0% · bias -25.5pp

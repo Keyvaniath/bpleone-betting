@@ -1,10 +1,10 @@
-# EdgeStat Daily Brief - 2026-11-02
+# EdgeStat Daily Brief - 2026-11-03
 
 **Model Confidence: 10.3/100 [RED]** -- Calibration warming up. Research signal only; no real-money sizing yet.
 
 _Pipeline health: **WARNING** (7/15 artifacts ok; 8 empty, 0 stale)._ 
 
-_Generated at 2026-11-02T22:49:16 UTC. Game lines source: **placeholder -110 (no real book today)**. Pick-em opportunities from PrizePicks._
+_Generated at 2026-11-03T03:32:54 UTC. Game lines source: **placeholder -110 (no real book today)**. Pick-em opportunities from PrizePicks._
 
 ## Self-Learning Loop
 
