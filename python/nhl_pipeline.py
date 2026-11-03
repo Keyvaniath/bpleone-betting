@@ -35,6 +35,10 @@ def _http(url: str) -> Optional[Dict[str, Any]]:
         return None
 
 
+import board_prior as _bp
+_PRIOR = None   # set in run()
+
+
 def _winpct_to_elo(wp: float, base: float = 1500) -> float:
     if wp <= 0.01:
         return base - 250
@@ -156,6 +160,10 @@ def _parse_game(comp: Dict[str, Any], status: Dict[str, Any]) -> Dict[str, Any]:
     desk_p = _DESK_PRIOR.get(str(comp.get("id")))
     if desk_p is not None:
         p_prior = desk_p
+    # 2026-11-03: display fields (desk blend / DK no-vig / none). Props keep the
+    # desk MODEL prior above; with neither, the board shows no probability.
+    _g0 = {"id": comp.get("id")}
+    p_prior = _bp.apply(_g0, _PRIOR, p_legacy, keep_model_prior=desk_p) if _PRIOR else p_prior
 
     state = (status.get("type") or {}).get("state")
     period = (status.get("period") or 0)
@@ -191,6 +199,7 @@ def _parse_game(comp: Dict[str, Any], status: Dict[str, Any]) -> Dict[str, Any]:
         "p_home_win": round(p_home_win, 4),
         "fair_home_american": _american(p_home_win),
         "fair_away_american": _american(1 - p_home_win),
+        **{k: v for k, v in _g0.items() if k != "id"},
     }
 
 
@@ -241,6 +250,8 @@ def _scoreboard_with_today():
 
 def run() -> Dict[str, Any]:
     sb = _scoreboard_with_today()
+    global _PRIOR
+    _PRIOR = _bp.BoardPrior("nhl")
     _DESK_PRIOR.clear()
     _DESK_PRIOR.update(_load_desk_prior())
     cal_shift = _self_training_shift("nhl")
@@ -273,6 +284,7 @@ def run() -> Dict[str, Any]:
                 g["calibration_shift_pp"] = round(cal_shift * 100, 1)
                 g["fair_home_american"] = _american(shifted)
                 g["fair_away_american"] = _american(1 - shifted)
+        _bp.finalize(g, _american)
         games.append(g)
 
     season = (sb.get("season") or {}).get("year") or dt.date.today().year
@@ -336,5 +348,5 @@ if __name__ == "__main__":
     print(f"Wrote {OUT_PATH}: {p.get('n_games_today',0)} games ({p.get('season_status','?')})")
     for g in p.get("games", []):
         print(f"  {g['matchup']} ({g['away_record']} vs {g['home_record']}) "
-              f"P(home) = {g['p_home_win']*100:.1f}%  fair {g['fair_home_american']:+d}/{g['fair_away_american']:+d}  "
+              f"P(home) = {g['p_home_win']*100:.1f}%  fair {g.get('fair_home_american')}/{g.get('fair_away_american')}  "
               f"-- {g.get('status')}")

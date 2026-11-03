@@ -51,6 +51,10 @@ def _http(url: str) -> Optional[Dict[str, Any]]:
         return None
 
 
+import board_prior as _bp
+_PRIOR = None   # set in run()
+
+
 def _winpct_to_elo(wp: float, base: float = 1500) -> float:
     """Convert season win-pct to a synthetic ELO rating. A .700 team is ~+200
     ELO above league average."""
@@ -161,6 +165,11 @@ def _parse_game(comp: Dict[str, Any], status: Dict[str, Any]) -> Dict[str, Any]:
     h_elo = _winpct_to_elo(h_rec["win_pct"])
     a_elo = _winpct_to_elo(a_rec["win_pct"])
     p_prior = _elo_winprob(h_elo, a_elo)
+    # 2026-11-03: record Elo (7-game win-pct -> 94.8% / -1835) is not validated.
+    # Desk blend (NBA verdict NO EDGE -> DraftKings' no-vig number) or the DK
+    # no-vig price is the prior; record Elo only as audit/fallback.
+    _g0 = {"id": comp.get("id")}
+    p_prior = _bp.apply(_g0, _PRIOR, p_prior) if _PRIOR else p_prior
 
     state = (status.get("type") or {}).get("state")
     period = (status.get("period") or 0)
@@ -194,6 +203,7 @@ def _parse_game(comp: Dict[str, Any], status: Dict[str, Any]) -> Dict[str, Any]:
         "p_home_win": round(p_home_win, 4),     # live-adjusted if in-game
         "fair_home_american": _american(p_home_win),
         "fair_away_american": _american(1 - p_home_win),
+        **{k: v for k, v in _g0.items() if k != "id"},
     }
 
 
@@ -245,6 +255,8 @@ def _scoreboard_with_today():
 
 def run() -> Dict[str, Any]:
     sb = _scoreboard_with_today()
+    global _PRIOR
+    _PRIOR = _bp.BoardPrior("nba")
     cal_shift = _self_training_shift("nba")
     if not sb:
         out = {
@@ -267,7 +279,7 @@ def run() -> Dict[str, Any]:
             continue
         g = _parse_game(comps[0], ev.get("status") or {})
         # Apply calibration shift to pre-game predictions (not finalized scores)
-        if cal_shift != 0 and g.get("state") != "post":
+        if cal_shift != 0 and g.get("state") != "post" and not g.get("p_source"):
             raw = g.get("p_home_win")
             if raw is not None:
                 shifted = max(0.01, min(0.99, raw + cal_shift))
@@ -276,6 +288,7 @@ def run() -> Dict[str, Any]:
                 g["calibration_shift_pp"] = round(cal_shift * 100, 1)
                 g["fair_home_american"] = _american(shifted)
                 g["fair_away_american"] = _american(1 - shifted)
+        _bp.finalize(g, _american)
         games.append(g)
 
     # Aggregate season metadata from first event (if any)
@@ -339,5 +352,5 @@ if __name__ == "__main__":
     print(f"Wrote {OUT_PATH}: {p.get('n_games_today',0)} games ({p.get('season_status','?')})")
     for g in p.get("games", []):
         print(f"  {g['matchup']} ({g['away_record']} vs {g['home_record']}) "
-              f"P(home) = {g['p_home_win']*100:.1f}%  fair {g['fair_home_american']:+d}/{g['fair_away_american']:+d}  "
+              f"P(home) = {g['p_home_win']*100:.1f}%  fair {g.get('fair_home_american')}/{g.get('fair_away_american')}  "
               f"-- {g.get('status')}")

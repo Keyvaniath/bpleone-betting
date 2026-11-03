@@ -343,3 +343,20 @@ def test_nfl_fallback_refuses_ambiguity():
                             "away_score": 3, "home_score": 30}]
     assert t._grade_nfl_pick({"market": "ML_AWAY", "player_or_matchup": "DEN @ CAR",
                               "date": "2026-11-08"}, {}, twice) is None
+
+
+def test_board_never_publishes_the_record_elo(monkeypatch):
+    import board_prior as bp
+    pr = bp.BoardPrior.__new__(bp.BoardPrior)
+    pr.sport, pr.observed_at, pr.verdict = "nba", "2026-11-03T21:51:13", "NO EDGE: x"
+    pr.dk = {"1": {"ml_home": -514, "ml_away": 391}}
+    pr.desk = {}
+    priced, unpriced = {"id": "1", "state": "pre"}, {"id": "2", "state": "pre"}
+    p1 = bp.apply(priced, pr, 0.948)            # 7-game win-pct Elo said 94.8%
+    assert priced["p_source"] == "dk_no_vig" and abs(p1 - 0.804) < 0.002
+    p2 = bp.apply(unpriced, pr, 0.948)
+    assert unpriced["p_home_display"] is None and unpriced["p_home_win_record_elo"] == 0.948
+    for g, p in ((priced, p1), (unpriced, p2)):
+        g["p_home_win"] = p
+        bp.finalize(g, lambda x: round(-100 * x / (1 - x)) if x > 0.5 else round(100 * (1 - x) / x))
+    assert unpriced["fair_home_american"] is None and priced["fair_home_american"] is not None
