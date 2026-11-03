@@ -21,6 +21,22 @@ from typing import Any, Dict, List
 HORIZON_DAYS = 3   # one NBA day's slate fits comfortably; excludes far-future dumps
 
 
+def _et_day(iso: str) -> str:
+    """ESPN's `date` is UTC ('...T02:00Z' for a 10 PM ET tip). Its [:10] dated
+    every late game a day AFTER it was played (2026-11-03: POR picks recorded
+    10/29 for that night stamped 10/30, so no box score ever matched and 542 NBA
+    picks voided as 'no outcome feed'). The game's day is its US/Eastern date."""
+    try:
+        t = dt.datetime.fromisoformat(str(iso).replace("Z", "+00:00"))
+        try:
+            from zoneinfo import ZoneInfo
+            return t.astimezone(ZoneInfo("America/New_York")).date().isoformat()
+        except Exception:
+            return (t - dt.timedelta(hours=4)).date().isoformat()
+    except Exception:
+        return str(iso or "")[:10]
+
+
 def upcoming_games(state: Dict[str, Any], horizon_days: int = HORIZON_DAYS) -> List[Dict[str, Any]]:
     today = dt.date.today()
     out: List[Dict[str, Any]] = []
@@ -28,7 +44,8 @@ def upcoming_games(state: Dict[str, Any], horizon_days: int = HORIZON_DAYS) -> L
         st = (g.get("status") or g.get("state") or "").lower()
         if "final" in st or (g.get("state") or "").lower() == "post":
             continue
-        gd = (g.get("date") or g.get("start") or "")[:10]
+        raw = g.get("date") or g.get("start") or ""
+        gd = _et_day(raw) if "T" in str(raw) else str(raw)[:10]
         try:
             gdate = dt.date.fromisoformat(gd) if gd else None
         except Exception:

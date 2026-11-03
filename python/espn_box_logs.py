@@ -37,6 +37,9 @@ BASE_URL = "https://site.api.espn.com/apis/site/v2/sports"
 BASKETBALL_STATS = {
     "pts": "PTS", "reb": "REB", "ast": "AST",
     "stl": "STL", "blk": "BLK", "to": "TO", "min": "MIN", "fg3m": "3PT",
+    # 2026-11-03: FT is "made-attempted" too; FTA props (nba_ft_attempts) had
+    # no field to grade against and voided 100%.
+    "fta": "FT",
 }
 # Football: stats live under per-category blocks. (category -> {ESPN label -> field}).
 FOOTBALL_FIELDS = {
@@ -72,6 +75,14 @@ def _http(url: str) -> Optional[Dict[str, Any]]:
 def _to_int(s: Any) -> Optional[int]:
     try:
         return int(str(s).strip())
+    except Exception:
+        return None
+
+
+def _attempted(v) -> Optional[int]:
+    """'4-6' -> 6 (attempted half of a made-attempted cell)."""
+    try:
+        return int(str(v).split("-")[1])
     except Exception:
         return None
 
@@ -164,7 +175,8 @@ def _parse_basketball(summary: Dict[str, Any], date: str, stats_cfg: Dict[str, s
                 for key, col in stats_cfg.items():
                     if col in idx and idx[col] < len(stat_vals):
                         raw = stat_vals[idx[col]]
-                        rec[key] = _made(raw) if col == "3PT" else _to_int(raw)
+                        rec[key] = (_made(raw) if col == "3PT"
+                                    else _attempted(raw) if col == "FT" else _to_int(raw))
                 if any(rec.get(k) is not None for k in stats_cfg):
                     rows.append(rec)
     return rows

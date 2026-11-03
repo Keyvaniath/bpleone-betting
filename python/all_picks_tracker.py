@@ -179,7 +179,20 @@ def _price_corrections(history):
         vm += vr.startswith("unpriced moneyline")
         vt += vr.startswith("unpriced total")
         vu += vr.startswith("unposted total")
+    nba_regraded = sum(1 for p in rows if str(p.get("sport") or "").upper() == "NBA"
+                       and any("wrong game" in str(x.get("reason") or "") for x in (p.get("resettle_log") or [])))
     return [
+        {"date": "2026-11-03", "label": "NBA grading", "n_repriced": 0, "n_voided": 0,
+         "counts_text": (f"520 settled (190 had been voided as unsettleable, 330 sat pending), "
+                         f"{nba_regraded} re-graded against the right game"),
+         "record_label": "NBA picks (not part of the curated record)",
+         "curated_before": "270-160 (-25.20u), 570 void", "curated_after": "596-337 (-40.01u), 380 void",
+         "note": ("NBA picks were dated by the UTC date of tip-off, so every 10 PM ET game carried the "
+                  "next day's date: no box score matched and the pick voided as unsettleable, or, on a "
+                  "back-to-back, it was graded against the next night's game. Team-points, free-throw "
+                  "and full-name team totals had no working grader. Picks are now dated to the US/Eastern "
+                  "game day and graded by matchup; settled picks inside the box-score window were re-checked. "
+                  "Units are at the model's own fair odds (a calibration measure).")},
         {"date": "2026-10-23", "n_repriced": rp["2026-10-23"], "n_voided": vm,
          "curated_before": "943-436 (+17.21%)", "curated_after": "936-434 (+16.02%, +219.45u)",
          "note": ("MLB moneylines recorded when no book price was loaded had been graded at a "
@@ -257,11 +270,15 @@ def _block_inactive_players(picks: List[Dict[str, Any]]) -> List[Dict[str, Any]]
     a record full of bets nobody could have made. Team / game subjects ('@' or a
     known team name) are exempt, and the gate stands down for a sport whose box
     feed looks unhealthy (fewer than 150 players) rather than blocking a slate.
-    NHL: anywhere in the feed's rolling window. NFL: a row within 16 days (bye)."""
+    NHL: anywhere in the feed's rolling window. NFL: a row within 16 days (bye).
+    NBA (2026-11-03): a row within 5 days -- teams play every ~2 days, and
+    props on players out for weeks (Edwards since 10/26, Fox with no game at
+    all) were most of the NBA picks that could never settle."""
     INACTIVE_BLOCKED.clear()
     today = dt.date.today()
     feeds = {}
-    for sp, f, days in (("NFL", "nfl_player_gamelogs.json", 16), ("NHL", "nhl_player_gamelogs.json", 21)):
+    for sp, f, days in (("NFL", "nfl_player_gamelogs.json", 16), ("NHL", "nhl_player_gamelogs.json", 21),
+                        ("NBA", "nba_player_gamelogs.json", 5)):
         by = _load(os.path.join(DATA_DIR, f)).get("by_name") or {}
         if len(by) < 150:
             continue
@@ -2079,6 +2096,8 @@ def _bball_stat(market: str):
         line = float(nums[-1]) if nums else None
     if "home_total" in m: stat = "_home_total"
     elif "away_total" in m: stat = "_away_total"
+    elif "team_pts" in m or "team_points" in m: stat = "_team_pts"
+    elif "fta" in m or "ft_att" in m or "free_throw" in m: stat = "fta"
     elif "3pm" in m or "fg3" in m or "three" in m: stat = "fg3m"
     elif ("blk" in m and "stl" in m) or "blkstl" in m: stat = "_blk_stl"
     elif "pra" in m: stat = "_pra"
@@ -2119,15 +2138,47 @@ def _bball_value(stat: str, game: Dict[str, Any]):
     return game.get(stat)
 
 
-def _grade_wnba_prop(pick: Dict[str, Any], by_name: Dict[str, Any]) -> Optional[str]:
+def _bball_game_day(pick: Dict[str, Any], dates: set, games: List[Dict[str, Any]]) -> Optional[str]:
+    """Which day's box score settles this basketball pick. Picks were dated by
+    the UTC date of tip-off until 2026-11-03 (nba_slate), so a 10 PM ET game
+    carries the NEXT day's date. Exact date when it is the only candidate; the
+    day before when only it has a game and the pick was recorded by then; when
+    both have games, the pick's matchup decides against the finals; else refuse."""
+    pd = str(pick.get("date") or "")[:10]
+    try:
+        prev = (dt.date.fromisoformat(pd) - dt.timedelta(days=1)).isoformat()
+    except Exception:
+        return pd if pd in dates else None
+    rec = str(pick.get("recorded_at") or "")[:10]
+    if pd in dates and prev not in dates:
+        return pd
+    if prev in dates and pd not in dates:
+        return prev if (not rec or rec <= pd) else None
+    if pd in dates and prev in dates:
+        mu = _norm_bball_matchup(pick.get("matchup") or "")
+        hit = {str(g.get("date"))[:10] for g in games
+               if str(g.get("date"))[:10] in (pd, prev)
+               and _norm_bball_matchup(f"{g.get('away_abbrev','')} @ {g.get('home_abbrev','')}") == mu}
+        return hit.pop() if len(hit) == 1 else pd
+    return None
+
+
+def _grade_wnba_prop(pick: Dict[str, Any], by_name: Dict[str, Any],
+                     games: Optional[List[Dict[str, Any]]] = None) -> Optional[str]:
     stat, line, side = _bball_stat(pick.get("market"))
-    if stat is None or line is None or side is None or stat in ("_home_total", "_away_total"):
+    if stat is None or line is None or side is None or stat in ("_home_total", "_away_total", "_team_pts"):
         return None
     prec = by_name.get(_norm_name(pick.get("player_or_matchup")))
     if not prec:
+        # punctuation-tolerant fallback: the generators write 'deaaron fox',
+        # the box feed "de'aaron fox" (same key the activity gate uses)
+        key = _nfl_key(pick.get("player_or_matchup"))
+        prec = next((v for k, v in by_name.items() if _nfl_key(k) == key), None)
+    if not prec:
         return None
+    day = _bball_game_day(pick, {(g.get("date") or "")[:10] for g in (prec.get("games") or [])}, games or [])
     for game in (prec.get("games") or []):
-        if (game.get("date") or "")[:10] != pick.get("date"):
+        if (game.get("date") or "")[:10] != day:
             continue
         val = _bball_value(stat, game)
         if val is None:
@@ -2138,7 +2189,7 @@ def _grade_wnba_prop(pick: Dict[str, Any], by_name: Dict[str, Any]) -> Optional[
         pick["outcome"] = {
             "stat": label, "actual": val, "line": line, "side": side.upper(),
             "verify": (f"{pick.get('player_or_matchup')} — {label} = {val} "
-                       f"(line {line}, bet {side}) on {pick.get('date')}"),
+                       f"(line {line}, bet {side}) on {day}"),
         }
         return "won" if won else "lost"
     return None
@@ -2159,26 +2210,54 @@ def _norm_bball_matchup(s: str) -> str:
 
 def _grade_wnba_team_total(pick: Dict[str, Any], games: List[Dict[str, Any]]) -> Optional[str]:
     stat, line, side = _bball_stat(pick.get("market"))
-    if stat not in ("_home_total", "_away_total") or line is None or side is None:
+    if stat not in ("_home_total", "_away_total", "_team_pts") or line is None or side is None:
         return None
-    matchup = _norm_bball_matchup(pick.get("player_or_matchup") or "")
+    pom = pick.get("player_or_matchup") or ""
+    team_ab = None
+    if stat == "_team_pts":
+        # 'HOU (BOS @ HOU)' -> team HOU in the BOS @ HOU game (2026-11-03: these
+        # parsed as a PLAYER's points and voided 100%)
+        mt = re.match(r"\s*([A-Za-z]{2,4})\s*\((.+)\)\s*$", pom)
+        if not mt:
+            return None
+        team_ab, pom = mt.group(1).upper(), mt.group(2)
+    matchup = _norm_bball_matchup(pom)
+    pd = str(pick.get("date") or "")[:10]
+    try:
+        days = (pd, (dt.date.fromisoformat(pd) - dt.timedelta(days=1)).isoformat())
+    except Exception:
+        days = (pd,)
+    cands = []
     for g in games:
-        if (g.get("date") or "")[:10] != pick.get("date"):
+        if (g.get("date") or "")[:10] not in days:
             continue
         g_mu = _norm_bball_matchup(f"{g.get('away_abbrev','')} @ {g.get('home_abbrev','')}")
-        if matchup != g_mu and matchup not in g_mu and g_mu not in matchup:
-            continue
-        score = g.get("home_score") if stat == "_home_total" else g.get("away_score")
+        # full names too ('MIAMI HEAT @ LOS ANGELES LAKERS' never matched the
+        # abbreviation form and every alt-total voided)
+        g_full = f"{g.get('away_name','')} @ {g.get('home_name','')}".lower()
+        if matchup in (g_mu, g_full) or (len(matchup) > 5 and (matchup in g_mu or g_mu in matchup)):
+            cands.append(g)
+    # UTC-shear dating (see _bball_game_day): the exact day first, the day
+    # before only when it is the one candidate
+    exact = [g for g in cands if (g.get("date") or "")[:10] == pd]
+    pick_g = exact[:1] or (cands if len(cands) == 1 else [])
+    for g in pick_g:
+        if stat == "_team_pts":
+            h_ab = _BBALL_AB_NORM.get(str(g.get("home_abbrev", "")).upper(), str(g.get("home_abbrev", "")).upper())
+            stat_side = "_home_total" if _BBALL_AB_NORM.get(team_ab, team_ab) == h_ab else "_away_total"
+        else:
+            stat_side = stat
+        score = g.get("home_score") if stat_side == "_home_total" else g.get("away_score")
         if score is None:
             continue
         over_wins = score > line
         won = (not over_wins) if side == "under" else over_wins
-        which = "home" if stat == "_home_total" else "away"
+        which = "home" if stat_side == "_home_total" else "away"
         pick["outcome"] = {
             "final_score": f"{g.get('away_abbrev')} {g.get('away_score')} @ {g.get('home_abbrev')} {g.get('home_score')}",
             "team_total": score, "line": line, "side": side.upper(),
             "verify": (f"{g.get('away_abbrev')} @ {g.get('home_abbrev')}: {which} scored {score} "
-                       f"(line {line}, bet {side}) on {pick.get('date')}"),
+                       f"(line {line}, bet {side}) on {str(g.get('date'))[:10]}"),
         }
         return "won" if won else "lost"
     return None
@@ -2188,7 +2267,7 @@ def _grade_wnba_pick(pick: Dict[str, Any], by_name: Dict[str, Any],
                      games: List[Dict[str, Any]]) -> Optional[str]:
     # Basketball-generic: also used for NBA (sport == "NBA") with NBA gamelogs.
     r = _grade_wnba_team_total(pick, games)
-    return r if r is not None else _grade_wnba_prop(pick, by_name)
+    return r if r is not None else _grade_wnba_prop(pick, by_name, games)
 
 
 # ---------------------------------------------------------------------------
@@ -3384,6 +3463,39 @@ def _regrade_strict(p: Dict[str, Any], historical_mlb, by_name) -> Optional[str]
     return _grade_batter_prop(market, p, by_name)  # sets p["outcome"]
 
 
+def _regrade_bball_wrong_game(history: List[Dict[str, Any]]) -> int:
+    """NBA picks dated by the UTC date of tip-off (until 2026-11-03) could be
+    graded against the WRONG game on a back-to-back: Scottie Barnes REB over
+    6.5, TOR @ LAL played 11/1, was dated 11/2 and settled 'won' off the 11/2
+    TOR @ LAC box (15 reb); vs the right game he had 6 -> lost. Re-grade every
+    settled NBA pick still inside the box-log window with the matchup-aware
+    grader; flip only on a definite disagreement, with an audit entry."""
+    by = {_norm_name(k): v for k, v in (_load(os.path.join(DATA_DIR, "nba_player_gamelogs.json")).get("by_name") or {}).items()}
+    games = _load(os.path.join(DATA_DIR, "nba_historical.json")).get("games") or []
+    if len(by) < 150:
+        return 0
+    n = 0
+    for p in history:
+        if str(p.get("sport") or "").upper() != "NBA" or not p.get("settled") or p.get("voided"):
+            continue
+        if p.get("result") not in ("won", "lost"):
+            continue
+        q = {k: v for k, v in p.items() if k != "outcome"}
+        r = _grade_wnba_pick(q, by, games)
+        if r not in ("won", "lost") or r == p["result"]:
+            continue
+        prev = p["result"]
+        dec = _american_to_decimal(_price_american(p)) or 1.91
+        p["result"] = r
+        p["payout_units"] = round(dec - 1, 4) if r == "won" else -1.0
+        p["outcome"] = dict(q.get("outcome") or {}, check=f"re-graded from {prev}: wrong game (UTC-dated pick)")
+        p.setdefault("resettle_log", []).append({
+            "at": dt.datetime.now().isoformat(timespec="seconds"), "from": prev, "to": r,
+            "reason": "graded against the wrong game (pick dated by UTC tip-off; matchup-checked re-grade)"})
+        n += 1
+    return n
+
+
 def _resettle_on_revision(history: List[Dict[str, Any]]) -> int:
     """Re-grade every settled pick for a DEFINITIVELY-FINAL game against the
     current box score and correct any whose recorded result no longer matches.
@@ -3747,6 +3859,7 @@ def run() -> Dict[str, Any]:
     # recorded result (MLB stat revisions) so net_units / hit_rate / ROI reflect
     # the truth -- we never carry an outcome the box score contradicts.
     n_resettled = _resettle_on_revision(history)
+    n_resettled += _regrade_bball_wrong_game(history)
 
     if len(history) > MAX_PICKS:
         # Evict SIGNAL-FREE entries first -- never settled history while any exist.

@@ -41,6 +41,27 @@ bpleone-site/
 
 ## Current deployment state (LIVE)
 
+- **2026-11-03 (later) — NBA GRADING.** 1,389 NBA picks since 10/20: 570
+  voided "no outcome feed within 4 days", 417 pending, only 430 settled.
+  Causes: (1) `nba_slate.upcoming_games` dated games by the UTC [:10] of
+  tip-off -> every 10 PM ET game carried the NEXT day's date; no box row on
+  that date -> void, or on a back-to-back graded vs the WRONG game (Scottie
+  Barnes REB o6.5 TOR@LAL 11/1 settled 'won' off the 11/2 TOR@LAC box).
+  Fixed to the ET day. (2) Grader (`_grade_wnba_prop`, shared with WNBA) now
+  picks the box-score day via `_bball_game_day` (exact date if unique; day
+  before if only it has a game and the pick was recorded by then; matchup vs
+  finals when both). (3) `team_pts` markets ('HOU (BOS @ HOU)') parsed as a
+  PLAYER's points; full-name team totals ('MIAMI HEAT @ LOS ANGELES LAKERS')
+  never matched abbreviations -> both handled. (4) FTA: espn_box_logs now
+  keeps `fta` (FT made-attempted); grader maps fta. (5) punctuation-tolerant
+  name fallback ('deaaron fox' vs "de'aaron fox"). (6) NBA joins the activity
+  gate (box row within 5 days). (7) `_regrade_bball_wrong_game` re-checks
+  settled NBA picks inside the log window (2 flipped won->lost, audit in
+  resettle_log). Result (not curated, fair-odds units): 270-160 -25.20u, 570
+  void -> 596-337 -40.01u, 380 void; disclosed as a price_corrections entry
+  (track-record.html now honours `counts_text` / `record_label`). Picks
+  outside the 8-day box window that were graded vs a wrong back-to-back game
+  can't be re-checked.
 - **2026-11-03 — NFL PROPS: CALIBRATED LINE SELECTION (form_v3).** Season
   calibration (one pick per player-game): pass_yds 57% vs 75% predicted,
   rush_yds 64%, pass_cmp 55%; rec/rec_yds on target. Split by direction it is
