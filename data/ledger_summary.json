@@ -1,23 +1,23 @@
 {
-  "generated_at": "2026-11-03T16:20:23",
+  "generated_at": "2026-11-03T17:38:12",
   "stake_assumption": "1u flat per pick",
-  "total_picks": 17405,
-  "n_settled": 20926,
-  "n_pending": 645,
-  "n_void": 1774,
-  "wins": 9501,
-  "losses": 11412,
+  "total_picks": 17604,
+  "n_settled": 21461,
+  "n_pending": 505,
+  "n_void": 1578,
+  "wins": 9854,
+  "losses": 11594,
   "pushes": 13,
-  "hit_rate": 0.4543,
-  "net_units": -3726.182,
-  "roi_pct": -17.82,
-  "n_calibrated_picks": 17261,
+  "hit_rate": 0.4594,
+  "net_units": -3732.267,
+  "roi_pct": -17.4,
+  "n_calibrated_picks": 17460,
   "calibrated_reliability": {
-    "n": 14858,
-    "ece_raw": 0.0797,
-    "ece_calibrated": 0.0128,
-    "brier_raw": 0.21225,
-    "brier_calibrated": 0.19775,
+    "n": 15393,
+    "ece_raw": 0.0772,
+    "ece_calibrated": 0.0111,
+    "brier_raw": 0.21267,
+    "brier_calibrated": 0.19721,
     "note": "In-sample over the settled ledger (the isotonic transform is fit on these same outcomes); held-out 70/30 validation is in recalibration_map.json. p_predicted = raw model prob (kept untouched for the learning loop); p_calibrated = honest prob stamped per pick. Lower ECE/Brier on the calibrated column = the displayed % is truer."
   },
   "curated": {
@@ -53,11 +53,11 @@
   "headline_basis": "all-time: working ledger + data/ledger_archive.json",
   "working_ledger_only": {
     "all": {
-      "n_settled": 14986,
-      "wins": 6544,
-      "losses": 8431,
-      "net_units": -2467.596,
-      "roi_pct": -16.48
+      "n_settled": 15521,
+      "wins": 6897,
+      "losses": 8613,
+      "net_units": -2473.682,
+      "roi_pct": -15.95
     },
     "curated": {
       "n_settled": 1109,
@@ -68,6 +68,17 @@
     }
   },
   "price_corrections": [
+    {
+      "date": "2026-11-03",
+      "label": "NBA grading",
+      "n_repriced": 0,
+      "n_voided": 0,
+      "counts_text": "520 settled (190 had been voided as unsettleable, 330 sat pending), 2 re-graded against the right game",
+      "record_label": "NBA picks (not part of the curated record)",
+      "curated_before": "270-160 (-25.20u), 570 void",
+      "curated_after": "596-337 (-40.01u), 380 void",
+      "note": "NBA picks were dated by the UTC date of tip-off, so every 10 PM ET game carried the next day's date: no box score matched and the pick voided as unsettleable, or, on a back-to-back, it was graded against the next night's game. Team-points, free-throw and full-name team totals had no working grader. Picks are now dated to the US/Eastern game day and graded by matchup; settled picks inside the box-score window were re-checked. Units are at the model's own fair odds (a calibration measure)."
+    },
     {
       "date": "2026-10-23",
       "n_repriced": 68,
@@ -95,20 +106,20 @@
     }
   ],
   "stale_sources_skipped": [],
-  "inactive_player_props_blocked": 0,
-  "started_game_picks_blocked": 9,
+  "inactive_player_props_blocked": 26,
+  "started_game_picks_blocked": 0,
   "past_dated_picks_blocked": 19,
   "restatement": {
     "date": "2026-10-23",
     "note": "The headline became ALL-TIME on 2026-10-23. 5,946 settled picks that the old tail-cut eviction had destroyed (May-June 2026, the 07-06 erosion and the run-up to 09-03) were rebuilt from git history at each pick's final state, with today's duplicate-wager rule re-applied, and folded back in. They are mostly the raw May-June MLB prop firehose (2,961-2,983, -1,256.9u), so the firehose ROI fell; the curated record changed by the curated picks among them. Before this date the published numbers covered the working window only -- working_ledger_only keeps that basis.",
     "n_archived_in_headline": 5940
   },
-  "n_added_this_run": 65,
-  "n_newly_settled_this_run": 46,
+  "n_added_this_run": 199,
+  "n_newly_settled_this_run": 0,
   "n_resettled_this_run": 0,
   "n_voided_this_run": 0,
   "n_duplicates_collapsed_this_run": 0,
-  "n_duplicate_adds_blocked_this_run": 7,
+  "n_duplicate_adds_blocked_this_run": 21,
   "n_reconciled_settled_voids": 0,
   "n_bootstrapped_from_locks_history": 0,
   "by_source": {
@@ -338,13 +349,13 @@
       "roi_pct": 53.5
     },
     "wnba_3pm_3pm_under_3.5": {
-      "n": 16,
-      "wins": 10,
+      "n": 18,
+      "wins": 12,
       "losses": 6,
       "pushes": 0,
-      "net_units": -0.85,
-      "hit_rate": 0.625,
-      "roi_pct": -5.31
+      "net_units": 0.37,
+      "hit_rate": 0.6667,
+      "roi_pct": 2.06
     },
     "wnba_3pm_3pm_over_0.5": {
       "n": 25,
@@ -365,13 +376,13 @@
       "roi_pct": -32.02
     },
     "wnba_blkstl_blk_stl_under_2.5": {
-      "n": 35,
+      "n": 37,
       "wins": 25,
-      "losses": 10,
+      "losses": 12,
       "pushes": 0,
-      "net_units": 1.961,
-      "hit_rate": 0.7143,
-      "roi_pct": 5.6
+      "net_units": -0.039,
+      "hit_rate": 0.6757,
+      "roi_pct": -0.11
     },
     "mlb_3plus_tb_tb_3plus_no": {
       "n": 4,
@@ -545,13 +556,13 @@
       "roi_pct": -1.72
     },
     "wnba_blkstl_blk_stl_over_0.5": {
-      "n": 24,
-      "wins": 19,
+      "n": 26,
+      "wins": 21,
       "losses": 5,
       "pushes": 0,
-      "net_units": 4.147,
-      "hit_rate": 0.7917,
-      "roi_pct": 17.28
+      "net_units": 5.271,
+      "hit_rate": 0.8077,
+      "roi_pct": 20.27
     },
     "wnba_alts_home_total_over_77.2": {
       "n": 6,
@@ -725,13 +736,13 @@
       "roi_pct": -23.4
     },
     "wnba_blkstl_blk_stl_under_3.5": {
-      "n": 14,
-      "wins": 9,
+      "n": 16,
+      "wins": 11,
       "losses": 5,
       "pushes": 0,
-      "net_units": -0.287,
-      "hit_rate": 0.6429,
-      "roi_pct": -2.05
+      "net_units": 0.94,
+      "hit_rate": 0.6875,
+      "roi_pct": 5.88
     },
     "wc_model_home_ml": {
       "n": 33,
@@ -824,13 +835,13 @@
       "roi_pct": -60.95
     },
     "wnba_3pm_3pm_under_2.5": {
-      "n": 28,
-      "wins": 20,
+      "n": 30,
+      "wins": 22,
       "losses": 8,
       "pushes": 0,
-      "net_units": 1.316,
-      "hit_rate": 0.7143,
-      "roi_pct": 4.7
+      "net_units": 2.111,
+      "hit_rate": 0.7333,
+      "roi_pct": 7.04
     },
     "wnba_blkstl_blk_stl_under_1.5": {
       "n": 13,
@@ -1535,13 +1546,13 @@
       "roi_pct": -23.4
     },
     "tennis_games_total_games_over_19.5": {
-      "n": 8,
-      "wins": 7,
+      "n": 9,
+      "wins": 8,
       "losses": 1,
       "pushes": 0,
-      "net_units": 2.234,
-      "hit_rate": 0.875,
-      "roi_pct": 27.93
+      "net_units": 2.736,
+      "hit_rate": 0.8889,
+      "roi_pct": 30.4
     },
     "tennis_games_total_games_under_22.5": {
       "n": 8,
@@ -1994,58 +2005,58 @@
       "roi_pct": 35.58
     },
     "nba_steals_over_0.5": {
-      "n": 14,
-      "wins": 12,
+      "n": 20,
+      "wins": 18,
       "losses": 2,
       "pushes": 0,
-      "net_units": 3.62,
-      "hit_rate": 0.8571,
-      "roi_pct": 25.86
+      "net_units": 6.368,
+      "hit_rate": 0.9,
+      "roi_pct": 31.84
     },
     "nba_3pm_3pm_under_3.5": {
+      "n": 21,
+      "wins": 14,
+      "losses": 7,
+      "pushes": 0,
+      "net_units": 0.091,
+      "hit_rate": 0.6667,
+      "roi_pct": 0.43
+    },
+    "nba_tov_tov_under_4.0": {
+      "n": 8,
+      "wins": 8,
+      "losses": 0,
+      "pushes": 0,
+      "net_units": 3.486,
+      "hit_rate": 1.0,
+      "roi_pct": 43.58
+    },
+    "nba_tov_tov_under_3.5": {
+      "n": 32,
+      "wins": 12,
+      "losses": 20,
+      "pushes": 0,
+      "net_units": -13.856,
+      "hit_rate": 0.375,
+      "roi_pct": -43.3
+    },
+    "nba_pra_pra_under_41.5": {
+      "n": 15,
+      "wins": 12,
+      "losses": 3,
+      "pushes": 0,
+      "net_units": 2.187,
+      "hit_rate": 0.8,
+      "roi_pct": 14.58
+    },
+    "nba_pra_pra_under_37.5": {
       "n": 14,
       "wins": 8,
       "losses": 6,
       "pushes": 0,
-      "net_units": -1.873,
+      "net_units": -2.484,
       "hit_rate": 0.5714,
-      "roi_pct": -13.38
-    },
-    "nba_tov_tov_under_4.0": {
-      "n": 4,
-      "wins": 4,
-      "losses": 0,
-      "pushes": 0,
-      "net_units": 1.75,
-      "hit_rate": 1.0,
-      "roi_pct": 43.75
-    },
-    "nba_tov_tov_under_3.5": {
-      "n": 19,
-      "wins": 5,
-      "losses": 14,
-      "pushes": 0,
-      "net_units": -11.345,
-      "hit_rate": 0.2632,
-      "roi_pct": -59.71
-    },
-    "nba_pra_pra_under_41.5": {
-      "n": 12,
-      "wins": 10,
-      "losses": 2,
-      "pushes": 0,
-      "net_units": 2.257,
-      "hit_rate": 0.8333,
-      "roi_pct": 18.81
-    },
-    "nba_pra_pra_under_37.5": {
-      "n": 8,
-      "wins": 3,
-      "losses": 5,
-      "pushes": 0,
-      "net_units": -3.709,
-      "hit_rate": 0.375,
-      "roi_pct": -46.36
+      "roi_pct": -17.74
     },
     "nhl_anytime_goal_yes": {
       "n": 1,
@@ -2075,22 +2086,22 @@
       "roi_pct": 55.2
     },
     "nba_pa_pa_under_33.0": {
-      "n": 6,
-      "wins": 3,
+      "n": 8,
+      "wins": 5,
       "losses": 3,
       "pushes": 0,
-      "net_units": -1.367,
-      "hit_rate": 0.5,
-      "roi_pct": -22.78
+      "net_units": -0.265,
+      "hit_rate": 0.625,
+      "roi_pct": -3.31
     },
     "nba_pa_pa_under_31.5": {
-      "n": 6,
-      "wins": 3,
+      "n": 8,
+      "wins": 5,
       "losses": 3,
       "pushes": 0,
-      "net_units": -1.338,
-      "hit_rate": 0.5,
-      "roi_pct": -22.3
+      "net_units": -0.158,
+      "hit_rate": 0.625,
+      "roi_pct": -1.98
     },
     "nba_pr_pr_under_37.5": {
       "n": 2,
@@ -2102,11 +2113,11 @@
       "roi_pct": -23.7
     },
     "wnba_ast_under_4.5": {
-      "n": 1,
-      "wins": 1,
+      "n": 3,
+      "wins": 3,
       "losses": 0,
       "pushes": 0,
-      "net_units": 0.529,
+      "net_units": 1.587,
       "hit_rate": 1.0,
       "roi_pct": 52.9
     },
@@ -2129,13 +2140,13 @@
       "roi_pct": 50.2
     },
     "nba_blocks_over_0.5": {
-      "n": 6,
-      "wins": 4,
-      "losses": 2,
+      "n": 10,
+      "wins": 6,
+      "losses": 4,
       "pushes": 0,
-      "net_units": -0.074,
-      "hit_rate": 0.6667,
-      "roi_pct": -1.23
+      "net_units": -0.923,
+      "hit_rate": 0.6,
+      "roi_pct": -9.23
     },
     "nba_3pm_3pm_under_4.0": {
       "n": 3,
@@ -2147,202 +2158,202 @@
       "roi_pct": 41.93
     },
     "nba_3pm_3pm_over_2.5": {
-      "n": 1,
-      "wins": 0,
+      "n": 2,
+      "wins": 1,
       "losses": 1,
       "pushes": 0,
-      "net_units": -1.0,
-      "hit_rate": 0.0,
-      "roi_pct": -100.0
+      "net_units": -0.408,
+      "hit_rate": 0.5,
+      "roi_pct": -20.4
     },
     "nba_3pm_3pm_under_3.0": {
-      "n": 3,
+      "n": 5,
       "wins": 1,
-      "losses": 2,
+      "losses": 4,
       "pushes": 0,
-      "net_units": -1.6,
-      "hit_rate": 0.3333,
-      "roi_pct": -53.33
+      "net_units": -3.6,
+      "hit_rate": 0.2,
+      "roi_pct": -72.0
     },
     "nba_3pm_3pm_over_1.5": {
-      "n": 7,
-      "wins": 6,
+      "n": 10,
+      "wins": 9,
       "losses": 1,
       "pushes": 0,
-      "net_units": 2.323,
-      "hit_rate": 0.8571,
-      "roi_pct": 33.19
+      "net_units": 3.928,
+      "hit_rate": 0.9,
+      "roi_pct": 39.28
     },
     "nba_3pm_3pm_under_2.5": {
-      "n": 17,
-      "wins": 14,
-      "losses": 3,
+      "n": 24,
+      "wins": 19,
+      "losses": 5,
       "pushes": 0,
-      "net_units": 4.185,
-      "hit_rate": 0.8235,
-      "roi_pct": 24.62
+      "net_units": 4.493,
+      "hit_rate": 0.7917,
+      "roi_pct": 18.72
     },
     "nba_3pm_3pm_over_0.5": {
-      "n": 4,
-      "wins": 4,
+      "n": 5,
+      "wins": 5,
       "losses": 0,
       "pushes": 0,
-      "net_units": 1.842,
+      "net_units": 2.286,
       "hit_rate": 1.0,
-      "roi_pct": 46.05
+      "roi_pct": 45.72
     },
     "nba_tov_tov_over_2.5": {
-      "n": 5,
-      "wins": 2,
-      "losses": 3,
+      "n": 9,
+      "wins": 5,
+      "losses": 4,
       "pushes": 0,
-      "net_units": -1.795,
-      "hit_rate": 0.4,
-      "roi_pct": -35.9
+      "net_units": -1.023,
+      "hit_rate": 0.5556,
+      "roi_pct": -11.37
     },
     "nba_tov_tov_over_1.5": {
-      "n": 6,
-      "wins": 6,
-      "losses": 0,
-      "pushes": 0,
-      "net_units": 3.308,
-      "hit_rate": 1.0,
-      "roi_pct": 55.13
-    },
-    "nba_tov_tov_under_2.5": {
-      "n": 8,
-      "wins": 2,
-      "losses": 6,
-      "pushes": 0,
-      "net_units": -5.014,
-      "hit_rate": 0.25,
-      "roi_pct": -62.68
-    },
-    "nba_pra_pra_under_47.5": {
-      "n": 2,
-      "wins": 2,
-      "losses": 0,
-      "pushes": 0,
-      "net_units": 0.906,
-      "hit_rate": 1.0,
-      "roi_pct": 45.3
-    },
-    "nba_pra_pra_under_42.5": {
       "n": 9,
       "wins": 7,
       "losses": 2,
       "pushes": 0,
-      "net_units": 0.983,
+      "net_units": 1.832,
       "hit_rate": 0.7778,
-      "roi_pct": 10.92
+      "roi_pct": 20.36
     },
-    "nba_pra_pra_under_40.5": {
-      "n": 5,
-      "wins": 4,
-      "losses": 1,
+    "nba_tov_tov_under_2.5": {
+      "n": 16,
+      "wins": 7,
+      "losses": 9,
       "pushes": 0,
-      "net_units": 0.75,
-      "hit_rate": 0.8,
-      "roi_pct": 15.0
+      "net_units": -5.556,
+      "hit_rate": 0.4375,
+      "roi_pct": -34.73
     },
-    "nba_pra_pra_under_39.5": {
-      "n": 14,
-      "wins": 9,
-      "losses": 5,
-      "pushes": 0,
-      "net_units": -1.07,
-      "hit_rate": 0.6429,
-      "roi_pct": -7.64
-    },
-    "nba_pra_pra_under_38.5": {
-      "n": 5,
-      "wins": 4,
-      "losses": 1,
-      "pushes": 0,
-      "net_units": 0.727,
-      "hit_rate": 0.8,
-      "roi_pct": 14.54
-    },
-    "nba_pra_pra_under_36.5": {
-      "n": 7,
-      "wins": 6,
-      "losses": 1,
-      "pushes": 0,
-      "net_units": 1.498,
-      "hit_rate": 0.8571,
-      "roi_pct": 21.4
-    },
-    "nba_pra_pra_under_35.5": {
-      "n": 6,
-      "wins": 2,
-      "losses": 4,
-      "pushes": 0,
-      "net_units": -3.144,
-      "hit_rate": 0.3333,
-      "roi_pct": -52.4
-    },
-    "nba_pra_pra_under_34.5": {
-      "n": 5,
-      "wins": 3,
-      "losses": 2,
-      "pushes": 0,
-      "net_units": -0.654,
-      "hit_rate": 0.6,
-      "roi_pct": -13.08
-    },
-    "nba_pra_pra_under_33.5": {
-      "n": 7,
-      "wins": 3,
-      "losses": 4,
-      "pushes": 0,
-      "net_units": -2.689,
-      "hit_rate": 0.4286,
-      "roi_pct": -38.41
-    },
-    "nba_pra_pra_under_32.5": {
-      "n": 7,
-      "wins": 3,
-      "losses": 4,
-      "pushes": 0,
-      "net_units": -2.73,
-      "hit_rate": 0.4286,
-      "roi_pct": -39.0
-    },
-    "nba_pra_pra_under_31.5": {
-      "n": 7,
-      "wins": 4,
-      "losses": 3,
-      "pushes": 0,
-      "net_units": -1.328,
-      "hit_rate": 0.5714,
-      "roi_pct": -18.97
-    },
-    "nba_pra_pra_under_25.5": {
-      "n": 2,
-      "wins": 1,
-      "losses": 1,
-      "pushes": 0,
-      "net_units": -0.569,
-      "hit_rate": 0.5,
-      "roi_pct": -28.45
-    },
-    "nba_reb_reb_over_8.5": {
-      "n": 1,
-      "wins": 0,
-      "losses": 1,
-      "pushes": 0,
-      "net_units": -1.0,
-      "hit_rate": 0.0,
-      "roi_pct": -100.0
-    },
-    "nba_reb_reb_under_9.5": {
+    "nba_pra_pra_under_47.5": {
       "n": 3,
       "wins": 2,
       "losses": 1,
       "pushes": 0,
-      "net_units": 0.178,
+      "net_units": -0.094,
       "hit_rate": 0.6667,
-      "roi_pct": 5.93
+      "roi_pct": -3.13
+    },
+    "nba_pra_pra_under_42.5": {
+      "n": 12,
+      "wins": 9,
+      "losses": 3,
+      "pushes": 0,
+      "net_units": 0.792,
+      "hit_rate": 0.75,
+      "roi_pct": 6.6
+    },
+    "nba_pra_pra_under_40.5": {
+      "n": 11,
+      "wins": 8,
+      "losses": 3,
+      "pushes": 0,
+      "net_units": 0.455,
+      "hit_rate": 0.7273,
+      "roi_pct": 4.14
+    },
+    "nba_pra_pra_under_39.5": {
+      "n": 18,
+      "wins": 13,
+      "losses": 5,
+      "pushes": 0,
+      "net_units": 0.658,
+      "hit_rate": 0.7222,
+      "roi_pct": 3.66
+    },
+    "nba_pra_pra_under_38.5": {
+      "n": 10,
+      "wins": 6,
+      "losses": 4,
+      "pushes": 0,
+      "net_units": -1.377,
+      "hit_rate": 0.6,
+      "roi_pct": -13.77
+    },
+    "nba_pra_pra_under_36.5": {
+      "n": 13,
+      "wins": 8,
+      "losses": 5,
+      "pushes": 0,
+      "net_units": -1.555,
+      "hit_rate": 0.6154,
+      "roi_pct": -11.96
+    },
+    "nba_pra_pra_under_35.5": {
+      "n": 11,
+      "wins": 6,
+      "losses": 5,
+      "pushes": 0,
+      "net_units": -2.451,
+      "hit_rate": 0.5455,
+      "roi_pct": -22.28
+    },
+    "nba_pra_pra_under_34.5": {
+      "n": 8,
+      "wins": 5,
+      "losses": 3,
+      "pushes": 0,
+      "net_units": -0.778,
+      "hit_rate": 0.625,
+      "roi_pct": -9.72
+    },
+    "nba_pra_pra_under_33.5": {
+      "n": 10,
+      "wins": 6,
+      "losses": 4,
+      "pushes": 0,
+      "net_units": -1.437,
+      "hit_rate": 0.6,
+      "roi_pct": -14.37
+    },
+    "nba_pra_pra_under_32.5": {
+      "n": 12,
+      "wins": 7,
+      "losses": 5,
+      "pushes": 0,
+      "net_units": -1.959,
+      "hit_rate": 0.5833,
+      "roi_pct": -16.32
+    },
+    "nba_pra_pra_under_31.5": {
+      "n": 9,
+      "wins": 5,
+      "losses": 4,
+      "pushes": 0,
+      "net_units": -1.901,
+      "hit_rate": 0.5556,
+      "roi_pct": -21.12
+    },
+    "nba_pra_pra_under_25.5": {
+      "n": 3,
+      "wins": 1,
+      "losses": 2,
+      "pushes": 0,
+      "net_units": -1.569,
+      "hit_rate": 0.3333,
+      "roi_pct": -52.3
+    },
+    "nba_reb_reb_over_8.5": {
+      "n": 2,
+      "wins": 1,
+      "losses": 1,
+      "pushes": 0,
+      "net_units": -0.425,
+      "hit_rate": 0.5,
+      "roi_pct": -21.25
+    },
+    "nba_reb_reb_under_9.5": {
+      "n": 4,
+      "wins": 3,
+      "losses": 1,
+      "pushes": 0,
+      "net_units": 0.766,
+      "hit_rate": 0.75,
+      "roi_pct": 19.15
     },
     "nba_reb_reb_over_7.5": {
       "n": 5,
@@ -2355,39 +2366,39 @@
     },
     "nba_reb_reb_over_6.5": {
       "n": 9,
-      "wins": 4,
-      "losses": 5,
+      "wins": 3,
+      "losses": 6,
       "pushes": 0,
-      "net_units": -2.831,
-      "hit_rate": 0.4444,
-      "roi_pct": -31.46
+      "net_units": -4.396,
+      "hit_rate": 0.3333,
+      "roi_pct": -48.84
     },
     "nba_reb_reb_under_7.5": {
-      "n": 5,
+      "n": 6,
       "wins": 4,
-      "losses": 1,
-      "pushes": 0,
-      "net_units": 1.259,
-      "hit_rate": 0.8,
-      "roi_pct": 25.18
-    },
-    "nba_reb_reb_under_6.5": {
-      "n": 1,
-      "wins": 1,
-      "losses": 0,
-      "pushes": 0,
-      "net_units": 0.521,
-      "hit_rate": 1.0,
-      "roi_pct": 52.1
-    },
-    "nba_reb_reb_over_4.5": {
-      "n": 3,
-      "wins": 1,
       "losses": 2,
       "pushes": 0,
-      "net_units": -1.415,
-      "hit_rate": 0.3333,
-      "roi_pct": -47.17
+      "net_units": 0.259,
+      "hit_rate": 0.6667,
+      "roi_pct": 4.32
+    },
+    "nba_reb_reb_under_6.5": {
+      "n": 2,
+      "wins": 2,
+      "losses": 0,
+      "pushes": 0,
+      "net_units": 1.089,
+      "hit_rate": 1.0,
+      "roi_pct": 54.45
+    },
+    "nba_reb_reb_over_4.5": {
+      "n": 6,
+      "wins": 3,
+      "losses": 3,
+      "pushes": 0,
+      "net_units": -1.292,
+      "hit_rate": 0.5,
+      "roi_pct": -21.53
     },
     "nba_reb_reb_under_5.5": {
       "n": 2,
@@ -2399,22 +2410,22 @@
       "roi_pct": -24.25
     },
     "nba_reb_reb_under_5.0": {
-      "n": 2,
-      "wins": 2,
-      "losses": 0,
+      "n": 4,
+      "wins": 3,
+      "losses": 1,
       "pushes": 0,
-      "net_units": 1.11,
-      "hit_rate": 1.0,
-      "roi_pct": 55.5
+      "net_units": 0.72,
+      "hit_rate": 0.75,
+      "roi_pct": 18.0
     },
     "nba_ast_ast_under_7.5": {
-      "n": 2,
+      "n": 3,
       "wins": 2,
-      "losses": 0,
+      "losses": 1,
       "pushes": 0,
-      "net_units": 1.17,
-      "hit_rate": 1.0,
-      "roi_pct": 58.5
+      "net_units": 0.17,
+      "hit_rate": 0.6667,
+      "roi_pct": 5.67
     },
     "nba_ast_ast_over_5.5": {
       "n": 1,
@@ -2426,22 +2437,22 @@
       "roi_pct": 58.1
     },
     "nba_ast_ast_under_6.5": {
-      "n": 6,
-      "wins": 6,
-      "losses": 0,
+      "n": 9,
+      "wins": 8,
+      "losses": 1,
       "pushes": 0,
-      "net_units": 3.467,
-      "hit_rate": 1.0,
-      "roi_pct": 57.78
+      "net_units": 3.604,
+      "hit_rate": 0.8889,
+      "roi_pct": 40.04
     },
     "nba_ast_ast_under_5.5": {
-      "n": 2,
+      "n": 3,
       "wins": 2,
-      "losses": 0,
+      "losses": 1,
       "pushes": 0,
-      "net_units": 1.099,
-      "hit_rate": 1.0,
-      "roi_pct": 54.95
+      "net_units": 0.099,
+      "hit_rate": 0.6667,
+      "roi_pct": 3.3
     },
     "nba_pa_pa_under_35.0": {
       "n": 1,
@@ -2453,67 +2464,67 @@
       "roi_pct": 59.2
     },
     "nba_pa_pa_under_32.0": {
-      "n": 2,
-      "wins": 1,
+      "n": 3,
+      "wins": 2,
       "losses": 1,
       "pushes": 0,
-      "net_units": -0.454,
-      "hit_rate": 0.5,
-      "roi_pct": -22.7
+      "net_units": 0.111,
+      "hit_rate": 0.6667,
+      "roi_pct": 3.7
     },
     "nba_pa_pa_under_30.0": {
-      "n": 3,
-      "wins": 2,
-      "losses": 1,
+      "n": 8,
+      "wins": 6,
+      "losses": 2,
       "pushes": 0,
-      "net_units": -0.009,
-      "hit_rate": 0.6667,
-      "roi_pct": -0.3
+      "net_units": 1.071,
+      "hit_rate": 0.75,
+      "roi_pct": 13.39
     },
     "nba_pa_pa_under_29.0": {
-      "n": 1,
-      "wins": 0,
-      "losses": 1,
+      "n": 4,
+      "wins": 2,
+      "losses": 2,
       "pushes": 0,
-      "net_units": -1.0,
-      "hit_rate": 0.0,
-      "roi_pct": -100.0
+      "net_units": -0.993,
+      "hit_rate": 0.5,
+      "roi_pct": -24.82
     },
     "nba_pa_pa_under_28.5": {
-      "n": 2,
-      "wins": 1,
-      "losses": 1,
+      "n": 4,
+      "wins": 2,
+      "losses": 2,
       "pushes": 0,
-      "net_units": -0.503,
+      "net_units": -1.003,
       "hit_rate": 0.5,
-      "roi_pct": -25.15
+      "roi_pct": -25.07
     },
     "nba_pa_pa_under_27.5": {
-      "n": 2,
-      "wins": 1,
+      "n": 5,
+      "wins": 4,
       "losses": 1,
       "pushes": 0,
-      "net_units": -0.495,
-      "hit_rate": 0.5,
-      "roi_pct": -24.75
+      "net_units": 0.955,
+      "hit_rate": 0.8,
+      "roi_pct": 19.1
     },
     "nba_pa_pa_under_26.5": {
-      "n": 3,
-      "wins": 2,
+      "n": 4,
+      "wins": 3,
       "losses": 1,
       "pushes": 0,
-      "net_units": 0.014,
-      "hit_rate": 0.6667,
-      "roi_pct": 0.47
+      "net_units": 0.436,
+      "hit_rate": 0.75,
+      "roi_pct": 10.9
     },
     "nba_pr_pr_under_40.0": {
-      "n": 2,
+      "n": 3,
       "wins": 1,
-      "losses": 1,
+      "losses": 2,
       "pushes": 0,
-      "net_units": -0.425,
-      "hit_rate": 0.5,
-      "roi_pct": -21.25
+      "net_units": -1.425,
+      "hit_rate": 0.3333,
+      "roi_pct": -47.5
     },
     "nba_pr_pr_under_36.0": {
       "n": 2,
@@ -2525,67 +2536,67 @@
       "roi_pct": 56.05
     },
     "nba_pr_pr_under_35.0": {
-      "n": 5,
-      "wins": 4,
+      "n": 7,
+      "wins": 6,
       "losses": 1,
       "pushes": 0,
-      "net_units": 1.138,
-      "hit_rate": 0.8,
-      "roi_pct": 22.76
+      "net_units": 2.283,
+      "hit_rate": 0.8571,
+      "roi_pct": 32.61
     },
     "nba_pr_pr_under_33.5": {
-      "n": 8,
-      "wins": 5,
+      "n": 12,
+      "wins": 9,
       "losses": 3,
       "pushes": 0,
-      "net_units": -0.227,
-      "hit_rate": 0.625,
-      "roi_pct": -2.84
+      "net_units": 1.942,
+      "hit_rate": 0.75,
+      "roi_pct": 16.18
     },
     "nba_pr_pr_under_33.0": {
-      "n": 4,
+      "n": 5,
       "wins": 2,
-      "losses": 2,
+      "losses": 3,
       "pushes": 0,
-      "net_units": -0.876,
-      "hit_rate": 0.5,
-      "roi_pct": -21.9
+      "net_units": -1.876,
+      "hit_rate": 0.4,
+      "roi_pct": -37.52
     },
     "nba_pr_pr_under_32.5": {
-      "n": 3,
+      "n": 6,
       "wins": 2,
-      "losses": 1,
+      "losses": 4,
       "pushes": 0,
-      "net_units": 0.053,
-      "hit_rate": 0.6667,
-      "roi_pct": 1.77
+      "net_units": -2.947,
+      "hit_rate": 0.3333,
+      "roi_pct": -49.12
     },
     "nba_pr_pr_under_31.5": {
-      "n": 1,
-      "wins": 1,
+      "n": 3,
+      "wins": 3,
       "losses": 0,
       "pushes": 0,
-      "net_units": 0.497,
+      "net_units": 1.445,
       "hit_rate": 1.0,
-      "roi_pct": 49.7
+      "roi_pct": 48.17
     },
     "nba_pr_pr_under_30.5": {
-      "n": 1,
+      "n": 2,
       "wins": 0,
-      "losses": 1,
+      "losses": 2,
       "pushes": 0,
-      "net_units": -1.0,
+      "net_units": -2.0,
       "hit_rate": 0.0,
       "roi_pct": -100.0
     },
     "nba_pr_pr_under_29.5": {
-      "n": 2,
+      "n": 3,
       "wins": 1,
-      "losses": 1,
+      "losses": 2,
       "pushes": 0,
-      "net_units": -0.556,
-      "hit_rate": 0.5,
-      "roi_pct": -27.8
+      "net_units": -1.556,
+      "hit_rate": 0.3333,
+      "roi_pct": -51.87
     },
     "nba_pr_pr_under_25.0": {
       "n": 2,
@@ -2597,22 +2608,22 @@
       "roi_pct": 48.0
     },
     "nba_pr_pr_under_23.0": {
-      "n": 1,
-      "wins": 1,
+      "n": 2,
+      "wins": 2,
       "losses": 0,
       "pushes": 0,
-      "net_units": 0.463,
+      "net_units": 0.922,
       "hit_rate": 1.0,
-      "roi_pct": 46.3
+      "roi_pct": 46.1
     },
     "nba_ra_ra_over_13.0": {
-      "n": 5,
-      "wins": 4,
+      "n": 6,
+      "wins": 5,
       "losses": 1,
       "pushes": 0,
-      "net_units": 0.702,
-      "hit_rate": 0.8,
-      "roi_pct": 14.04
+      "net_units": 1.099,
+      "hit_rate": 0.8333,
+      "roi_pct": 18.32
     },
     "nba_ra_ra_under_16.0": {
       "n": 1,
@@ -2633,22 +2644,22 @@
       "roi_pct": 43.7
     },
     "nba_ra_ra_over_7.5": {
-      "n": 1,
+      "n": 2,
       "wins": 1,
-      "losses": 0,
+      "losses": 1,
       "pushes": 0,
-      "net_units": 0.459,
-      "hit_rate": 1.0,
-      "roi_pct": 45.9
+      "net_units": -0.541,
+      "hit_rate": 0.5,
+      "roi_pct": -27.05
     },
     "nba_tov_tov_under_4.5": {
-      "n": 1,
-      "wins": 1,
+      "n": 5,
+      "wins": 5,
       "losses": 0,
       "pushes": 0,
-      "net_units": 0.481,
+      "net_units": 2.534,
       "hit_rate": 1.0,
-      "roi_pct": 48.1
+      "roi_pct": 50.68
     },
     "nba_pra_pra_under_49.5": {
       "n": 1,
@@ -2660,38 +2671,38 @@
       "roi_pct": 46.9
     },
     "nba_pra_pra_under_43.5": {
-      "n": 3,
-      "wins": 2,
+      "n": 4,
+      "wins": 3,
       "losses": 1,
       "pushes": 0,
-      "net_units": -0.145,
-      "hit_rate": 0.6667,
-      "roi_pct": -4.83
+      "net_units": 0.329,
+      "hit_rate": 0.75,
+      "roi_pct": 8.22
     },
     "nba_pra_pra_under_27.5": {
-      "n": 1,
-      "wins": 0,
+      "n": 2,
+      "wins": 1,
       "losses": 1,
       "pushes": 0,
-      "net_units": -1.0,
-      "hit_rate": 0.0,
-      "roi_pct": -100.0
+      "net_units": -0.606,
+      "hit_rate": 0.5,
+      "roi_pct": -30.3
     },
     "nba_ast_ast_under_7.0": {
-      "n": 3,
-      "wins": 2,
+      "n": 4,
+      "wins": 3,
       "losses": 1,
       "pushes": 0,
-      "net_units": 0.141,
-      "hit_rate": 0.6667,
-      "roi_pct": 4.7
+      "net_units": 0.716,
+      "hit_rate": 0.75,
+      "roi_pct": 17.9
     },
     "nba_ast_ast_over_4.5": {
-      "n": 1,
+      "n": 2,
       "wins": 0,
-      "losses": 1,
+      "losses": 2,
       "pushes": 0,
-      "net_units": -1.0,
+      "net_units": -2.0,
       "hit_rate": 0.0,
       "roi_pct": -100.0
     },
@@ -2741,31 +2752,31 @@
       "roi_pct": 58.8
     },
     "nba_pr_pr_under_34.0": {
+      "n": 4,
+      "wins": 2,
+      "losses": 2,
+      "pushes": 0,
+      "net_units": -0.938,
+      "hit_rate": 0.5,
+      "roi_pct": -23.45
+    },
+    "nba_blocks_over_1.5": {
       "n": 3,
       "wins": 2,
       "losses": 1,
       "pushes": 0,
-      "net_units": 0.062,
+      "net_units": 0.209,
       "hit_rate": 0.6667,
-      "roi_pct": 2.07
-    },
-    "nba_blocks_over_1.5": {
-      "n": 1,
-      "wins": 0,
-      "losses": 1,
-      "pushes": 0,
-      "net_units": -1.0,
-      "hit_rate": 0.0,
-      "roi_pct": -100.0
+      "roi_pct": 6.97
     },
     "nba_3pm_3pm_under_4.5": {
-      "n": 2,
+      "n": 3,
       "wins": 1,
-      "losses": 1,
+      "losses": 2,
       "pushes": 0,
-      "net_units": -0.468,
-      "hit_rate": 0.5,
-      "roi_pct": -23.4
+      "net_units": -1.468,
+      "hit_rate": 0.3333,
+      "roi_pct": -48.93
     },
     "nba_3pm_3pm_under_1.5": {
       "n": 3,
@@ -2786,94 +2797,103 @@
       "roi_pct": 40.3
     },
     "nba_tov_tov_under_3.0": {
-      "n": 2,
+      "n": 3,
       "wins": 0,
-      "losses": 2,
+      "losses": 3,
       "pushes": 0,
-      "net_units": -2.0,
+      "net_units": -3.0,
       "hit_rate": 0.0,
       "roi_pct": -100.0
     },
     "nba_pra_pra_under_52.5": {
-      "n": 1,
-      "wins": 0,
+      "n": 2,
+      "wins": 1,
       "losses": 1,
       "pushes": 0,
-      "net_units": -1.0,
-      "hit_rate": 0.0,
-      "roi_pct": -100.0
+      "net_units": -0.498,
+      "hit_rate": 0.5,
+      "roi_pct": -24.9
     },
     "nba_pra_pra_under_30.5": {
-      "n": 6,
+      "n": 7,
       "wins": 4,
-      "losses": 2,
+      "losses": 3,
       "pushes": 0,
-      "net_units": -0.3,
-      "hit_rate": 0.6667,
-      "roi_pct": -5.0
+      "net_units": -1.3,
+      "hit_rate": 0.5714,
+      "roi_pct": -18.57
     },
     "nba_pra_pra_under_29.5": {
-      "n": 1,
-      "wins": 1,
-      "losses": 0,
-      "pushes": 0,
-      "net_units": 0.463,
-      "hit_rate": 1.0,
-      "roi_pct": 46.3
-    },
-    "nba_pra_pra_under_26.5": {
-      "n": 1,
-      "wins": 1,
-      "losses": 0,
-      "pushes": 0,
-      "net_units": 0.476,
-      "hit_rate": 1.0,
-      "roi_pct": 47.6
-    },
-    "nba_reb_reb_over_9.5": {
-      "n": 1,
-      "wins": 0,
-      "losses": 1,
-      "pushes": 0,
-      "net_units": -1.0,
-      "hit_rate": 0.0,
-      "roi_pct": -100.0
-    },
-    "nba_reb_reb_under_10.5": {
-      "n": 3,
-      "wins": 2,
-      "losses": 1,
-      "pushes": 0,
-      "net_units": 0.216,
-      "hit_rate": 0.6667,
-      "roi_pct": 7.2
-    },
-    "nba_reb_reb_over_7.0": {
-      "n": 3,
-      "wins": 2,
-      "losses": 1,
-      "pushes": 0,
-      "net_units": 0.149,
-      "hit_rate": 0.6667,
-      "roi_pct": 4.97
-    },
-    "nba_reb_reb_over_6.0": {
       "n": 3,
       "wins": 1,
       "losses": 2,
       "pushes": 0,
-      "net_units": -1.487,
+      "net_units": -1.537,
       "hit_rate": 0.3333,
-      "roi_pct": -49.57
+      "roi_pct": -51.23
     },
-    "nba_reb_reb_under_7.0": {
-      "n": 4,
-      "wins": 4,
+    "nba_pra_pra_under_26.5": {
+      "n": 2,
+      "wins": 2,
       "losses": 0,
       "pushes": 0,
-      "net_units": 2.186,
+      "net_units": 0.884,
       "hit_rate": 1.0,
-      "roi_pct": 54.65
+      "roi_pct": 44.2
+    },
+    "nba_fta_fta_under_3.5": {
+      "n": 2,
+      "wins": 2,
+      "losses": 0,
+      "pushes": 0,
+      "net_units": 1.171,
+      "hit_rate": 1.0,
+      "roi_pct": 58.55
+    },
+    "nba_reb_reb_over_9.5": {
+      "n": 3,
+      "wins": 1,
+      "losses": 2,
+      "pushes": 0,
+      "net_units": -1.412,
+      "hit_rate": 0.3333,
+      "roi_pct": -47.07
+    },
+    "nba_reb_reb_under_10.5": {
+      "n": 4,
+      "wins": 3,
+      "losses": 1,
+      "pushes": 0,
+      "net_units": 0.787,
+      "hit_rate": 0.75,
+      "roi_pct": 19.68
+    },
+    "nba_reb_reb_over_7.0": {
+      "n": 7,
+      "wins": 2,
+      "losses": 5,
+      "pushes": 0,
+      "net_units": -3.85,
+      "hit_rate": 0.2857,
+      "roi_pct": -55.0
+    },
+    "nba_reb_reb_over_6.0": {
+      "n": 4,
+      "wins": 2,
+      "losses": 2,
+      "pushes": 0,
+      "net_units": -0.892,
+      "hit_rate": 0.5,
+      "roi_pct": -22.3
+    },
+    "nba_reb_reb_under_7.0": {
+      "n": 5,
+      "wins": 4,
+      "losses": 1,
+      "pushes": 0,
+      "net_units": 1.186,
+      "hit_rate": 0.8,
+      "roi_pct": 23.72
     },
     "nba_reb_reb_over_3.5": {
       "n": 1,
@@ -2885,13 +2905,13 @@
       "roi_pct": 52.4
     },
     "nba_ast_ast_over_5.0": {
-      "n": 1,
-      "wins": 0,
-      "losses": 1,
+      "n": 5,
+      "wins": 2,
+      "losses": 3,
       "pushes": 0,
-      "net_units": -1.0,
-      "hit_rate": 0.0,
-      "roi_pct": -100.0
+      "net_units": -1.824,
+      "hit_rate": 0.4,
+      "roi_pct": -36.48
     },
     "nba_ast_ast_over_3.0": {
       "n": 3,
@@ -2903,13 +2923,13 @@
       "roi_pct": -100.0
     },
     "nba_ast_ast_under_2.5": {
-      "n": 3,
-      "wins": 2,
+      "n": 4,
+      "wins": 3,
       "losses": 1,
       "pushes": 0,
-      "net_units": 0.111,
-      "hit_rate": 0.6667,
-      "roi_pct": 3.7
+      "net_units": 0.66,
+      "hit_rate": 0.75,
+      "roi_pct": 16.5
     },
     "nba_pa_pa_under_37.0": {
       "n": 1,
@@ -2921,31 +2941,31 @@
       "roi_pct": -100.0
     },
     "nba_pa_pa_under_34.0": {
-      "n": 2,
-      "wins": 2,
+      "n": 3,
+      "wins": 3,
       "losses": 0,
       "pushes": 0,
-      "net_units": 1.116,
+      "net_units": 1.684,
       "hit_rate": 1.0,
-      "roi_pct": 55.8
+      "roi_pct": 56.13
     },
     "nba_pa_pa_under_30.5": {
-      "n": 2,
-      "wins": 0,
-      "losses": 2,
+      "n": 4,
+      "wins": 1,
+      "losses": 3,
       "pushes": 0,
-      "net_units": -2.0,
-      "hit_rate": 0.0,
-      "roi_pct": -100.0
+      "net_units": -2.476,
+      "hit_rate": 0.25,
+      "roi_pct": -61.9
     },
     "nba_pa_pa_under_28.0": {
-      "n": 2,
-      "wins": 2,
+      "n": 4,
+      "wins": 4,
       "losses": 0,
       "pushes": 0,
-      "net_units": 0.958,
+      "net_units": 1.909,
       "hit_rate": 1.0,
-      "roi_pct": 47.9
+      "roi_pct": 47.73
     },
     "nba_pa_pa_under_27.0": {
       "n": 1,
@@ -2966,13 +2986,13 @@
       "roi_pct": -28.05
     },
     "nba_pr_pr_under_35.5": {
-      "n": 1,
-      "wins": 0,
+      "n": 2,
+      "wins": 1,
       "losses": 1,
       "pushes": 0,
-      "net_units": -1.0,
-      "hit_rate": 0.0,
-      "roi_pct": -100.0
+      "net_units": -0.462,
+      "hit_rate": 0.5,
+      "roi_pct": -23.1
     },
     "nba_pr_pr_under_28.5": {
       "n": 1,
@@ -2993,13 +3013,13 @@
       "roi_pct": 40.0
     },
     "nba_pr_pr_under_27.5": {
-      "n": 2,
+      "n": 3,
       "wins": 2,
-      "losses": 0,
+      "losses": 1,
       "pushes": 0,
-      "net_units": 0.975,
-      "hit_rate": 1.0,
-      "roi_pct": 48.75
+      "net_units": -0.025,
+      "hit_rate": 0.6667,
+      "roi_pct": -0.83
     },
     "nba_pr_pr_under_23.5": {
       "n": 2,
@@ -3011,13 +3031,13 @@
       "roi_pct": -26.3
     },
     "nba_ra_ra_over_13.5": {
-      "n": 2,
-      "wins": 1,
+      "n": 4,
+      "wins": 3,
       "losses": 1,
       "pushes": 0,
-      "net_units": -0.578,
-      "hit_rate": 0.5,
-      "roi_pct": -28.9
+      "net_units": 0.211,
+      "hit_rate": 0.75,
+      "roi_pct": 5.27
     },
     "nba_ra_ra_over_9.0": {
       "n": 2,
@@ -3038,13 +3058,13 @@
       "roi_pct": 43.1
     },
     "nba_ra_ra_under_10.0": {
-      "n": 1,
+      "n": 2,
       "wins": 1,
-      "losses": 0,
+      "losses": 1,
       "pushes": 0,
-      "net_units": 0.431,
-      "hit_rate": 1.0,
-      "roi_pct": 43.1
+      "net_units": -0.569,
+      "hit_rate": 0.5,
+      "roi_pct": -28.45
     },
     "wnba_alts_home_total_over_77.8": {
       "n": 2,
@@ -3055,14 +3075,131 @@
       "hit_rate": 0.0,
       "roi_pct": -100.0
     },
-    "nba_pa_pa_under_33.5": {
+    "nba_fta_fta_under_8.0": {
+      "n": 7,
+      "wins": 6,
+      "losses": 1,
+      "pushes": 0,
+      "net_units": 1.97,
+      "hit_rate": 0.8571,
+      "roi_pct": 28.14
+    },
+    "nba_fta_fta_under_7.5": {
       "n": 3,
       "wins": 1,
       "losses": 2,
       "pushes": 0,
-      "net_units": -1.425,
+      "net_units": -1.412,
       "hit_rate": 0.3333,
-      "roi_pct": -47.5
+      "roi_pct": -47.07
+    },
+    "nba_fta_fta_under_7.0": {
+      "n": 18,
+      "wins": 10,
+      "losses": 8,
+      "pushes": 0,
+      "net_units": -3.027,
+      "hit_rate": 0.5556,
+      "roi_pct": -16.82
+    },
+    "nba_fta_fta_under_6.5": {
+      "n": 7,
+      "wins": 4,
+      "losses": 3,
+      "pushes": 0,
+      "net_units": -0.749,
+      "hit_rate": 0.5714,
+      "roi_pct": -10.7
+    },
+    "nba_fta_fta_under_2.5": {
+      "n": 3,
+      "wins": 0,
+      "losses": 3,
+      "pushes": 0,
+      "net_units": -3.0,
+      "hit_rate": 0.0,
+      "roi_pct": -100.0
+    },
+    "nba_tt_team_pts_under_123.5": {
+      "n": 2,
+      "wins": 2,
+      "losses": 0,
+      "pushes": 0,
+      "net_units": 1.045,
+      "hit_rate": 1.0,
+      "roi_pct": 52.25
+    },
+    "nba_tt_team_pts_under_122.5": {
+      "n": 11,
+      "wins": 6,
+      "losses": 5,
+      "pushes": 0,
+      "net_units": -1.728,
+      "hit_rate": 0.5455,
+      "roi_pct": -15.71
+    },
+    "nba_tt_team_pts_under_121.5": {
+      "n": 11,
+      "wins": 8,
+      "losses": 3,
+      "pushes": 0,
+      "net_units": 1.025,
+      "hit_rate": 0.7273,
+      "roi_pct": 9.32
+    },
+    "nba_tt_team_pts_under_119.5": {
+      "n": 13,
+      "wins": 10,
+      "losses": 3,
+      "pushes": 0,
+      "net_units": 2.354,
+      "hit_rate": 0.7692,
+      "roi_pct": 18.11
+    },
+    "nba_tt_team_pts_under_118.5": {
+      "n": 18,
+      "wins": 14,
+      "losses": 4,
+      "pushes": 0,
+      "net_units": 3.368,
+      "hit_rate": 0.7778,
+      "roi_pct": 18.71
+    },
+    "nba_tt_team_pts_under_117.5": {
+      "n": 7,
+      "wins": 5,
+      "losses": 2,
+      "pushes": 0,
+      "net_units": 0.608,
+      "hit_rate": 0.7143,
+      "roi_pct": 8.69
+    },
+    "nba_tt_team_pts_under_116.5": {
+      "n": 10,
+      "wins": 8,
+      "losses": 2,
+      "pushes": 0,
+      "net_units": 2.07,
+      "hit_rate": 0.8,
+      "roi_pct": 20.7
+    },
+    "nba_tt_team_pts_under_115.5": {
+      "n": 8,
+      "wins": 4,
+      "losses": 4,
+      "pushes": 0,
+      "net_units": -1.9,
+      "hit_rate": 0.5,
+      "roi_pct": -23.75
+    },
+    "nba_pa_pa_under_33.5": {
+      "n": 6,
+      "wins": 2,
+      "losses": 4,
+      "pushes": 0,
+      "net_units": -2.826,
+      "hit_rate": 0.3333,
+      "roi_pct": -47.1
     },
     "nba_pa_pa_under_31.0": {
       "n": 4,
@@ -3074,13 +3211,13 @@
       "roi_pct": 52.08
     },
     "nba_pa_pa_under_29.5": {
-      "n": 2,
+      "n": 3,
       "wins": 2,
-      "losses": 0,
+      "losses": 1,
       "pushes": 0,
-      "net_units": 0.995,
-      "hit_rate": 1.0,
-      "roi_pct": 49.75
+      "net_units": -0.004,
+      "hit_rate": 0.6667,
+      "roi_pct": -0.13
     },
     "nba_pr_pr_under_38.0": {
       "n": 1,
@@ -3091,6 +3228,15 @@
       "hit_rate": 0.0,
       "roi_pct": -100.0
     },
+    "nba_pr_pr_under_36.5": {
+      "n": 1,
+      "wins": 1,
+      "losses": 0,
+      "pushes": 0,
+      "net_units": 0.599,
+      "hit_rate": 1.0,
+      "roi_pct": 59.9
+    },
     "nba_pr_pr_under_24.0": {
       "n": 1,
       "wins": 1,
@@ -3099,6 +3245,24 @@
       "net_units": 0.437,
       "hit_rate": 1.0,
       "roi_pct": 43.7
+    },
+    "nba_ra_ra_over_20.0": {
+      "n": 1,
+      "wins": 0,
+      "losses": 1,
+      "pushes": 0,
+      "net_units": -1.0,
+      "hit_rate": 0.0,
+      "roi_pct": -100.0
+    },
+    "nba_ra_ra_under_11.0": {
+      "n": 1,
+      "wins": 1,
+      "losses": 0,
+      "pushes": 0,
+      "net_units": 0.459,
+      "hit_rate": 1.0,
+      "roi_pct": 45.9
     },
     "nba_ra_ra_over_6.5": {
       "n": 1,
@@ -3109,7 +3273,25 @@
       "hit_rate": 1.0,
       "roi_pct": 40.6
     },
-    "nba_reb_reb_over_8.0": {
+    "nba_alts_home_total_over_109.7": {
+      "n": 63,
+      "wins": 42,
+      "losses": 21,
+      "pushes": 0,
+      "net_units": -2.268,
+      "hit_rate": 0.6667,
+      "roi_pct": -3.6
+    },
+    "nba_3pm_3pm_under_5.0": {
+      "n": 3,
+      "wins": 1,
+      "losses": 2,
+      "pushes": 0,
+      "net_units": -1.597,
+      "hit_rate": 0.3333,
+      "roi_pct": -53.23
+    },
+    "nba_pra_pra_under_54.5": {
       "n": 2,
       "wins": 0,
       "losses": 2,
@@ -3117,6 +3299,60 @@
       "net_units": -2.0,
       "hit_rate": 0.0,
       "roi_pct": -100.0
+    },
+    "nba_fta_fta_under_6.0": {
+      "n": 10,
+      "wins": 6,
+      "losses": 4,
+      "pushes": 0,
+      "net_units": -1.222,
+      "hit_rate": 0.6,
+      "roi_pct": -12.22
+    },
+    "nba_fta_fta_under_5.0": {
+      "n": 11,
+      "wins": 7,
+      "losses": 4,
+      "pushes": 0,
+      "net_units": -0.844,
+      "hit_rate": 0.6364,
+      "roi_pct": -7.67
+    },
+    "nba_tt_team_pts_under_120.5": {
+      "n": 13,
+      "wins": 10,
+      "losses": 3,
+      "pushes": 0,
+      "net_units": 2.244,
+      "hit_rate": 0.7692,
+      "roi_pct": 17.26
+    },
+    "nba_tt_team_pts_under_113.5": {
+      "n": 3,
+      "wins": 2,
+      "losses": 1,
+      "pushes": 0,
+      "net_units": 0.075,
+      "hit_rate": 0.6667,
+      "roi_pct": 2.5
+    },
+    "nba_reb_reb_over_8.0": {
+      "n": 4,
+      "wins": 1,
+      "losses": 3,
+      "pushes": 0,
+      "net_units": -2.429,
+      "hit_rate": 0.25,
+      "roi_pct": -60.72
+    },
+    "nba_ast_ast_under_6.0": {
+      "n": 5,
+      "wins": 3,
+      "losses": 2,
+      "pushes": 0,
+      "net_units": -0.309,
+      "hit_rate": 0.6,
+      "roi_pct": -6.18
     },
     "nba_ast_ast_under_3.5": {
       "n": 2,
@@ -3127,14 +3363,50 @@
       "hit_rate": 0.5,
       "roi_pct": -22.2
     },
-    "nba_ra_ra_under_15.5": {
-      "n": 2,
-      "wins": 1,
+    "nba_pa_pa_under_24.5": {
+      "n": 1,
+      "wins": 0,
       "losses": 1,
       "pushes": 0,
-      "net_units": -0.541,
-      "hit_rate": 0.5,
-      "roi_pct": -27.05
+      "net_units": -1.0,
+      "hit_rate": 0.0,
+      "roi_pct": -100.0
+    },
+    "nba_ra_ra_over_17.0": {
+      "n": 1,
+      "wins": 1,
+      "losses": 0,
+      "pushes": 0,
+      "net_units": 0.493,
+      "hit_rate": 1.0,
+      "roi_pct": 49.3
+    },
+    "nba_ra_ra_under_15.5": {
+      "n": 3,
+      "wins": 2,
+      "losses": 1,
+      "pushes": 0,
+      "net_units": -0.116,
+      "hit_rate": 0.6667,
+      "roi_pct": -3.87
+    },
+    "nba_3pm_3pm_under_1.0": {
+      "n": 1,
+      "wins": 1,
+      "losses": 0,
+      "pushes": 0,
+      "net_units": 0.588,
+      "hit_rate": 1.0,
+      "roi_pct": 58.8
+    },
+    "nba_pra_pra_under_50.5": {
+      "n": 2,
+      "wins": 2,
+      "losses": 0,
+      "pushes": 0,
+      "net_units": 0.961,
+      "hit_rate": 1.0,
+      "roi_pct": 48.05
     },
     "nba_pra_pra_under_44.5": {
       "n": 1,
@@ -3144,6 +3416,24 @@
       "net_units": 0.476,
       "hit_rate": 1.0,
       "roi_pct": 47.6
+    },
+    "nba_tt_team_pts_under_127.5": {
+      "n": 1,
+      "wins": 1,
+      "losses": 0,
+      "pushes": 0,
+      "net_units": 0.526,
+      "hit_rate": 1.0,
+      "roi_pct": 52.6
+    },
+    "nba_tt_team_pts_under_114.5": {
+      "n": 4,
+      "wins": 3,
+      "losses": 1,
+      "pushes": 0,
+      "net_units": 0.558,
+      "hit_rate": 0.75,
+      "roi_pct": 13.95
     },
     "nba_reb_reb_over_9.0": {
       "n": 1,
@@ -3155,6 +3445,33 @@
       "roi_pct": 57.5
     },
     "nba_reb_reb_under_10.0": {
+      "n": 2,
+      "wins": 0,
+      "losses": 2,
+      "pushes": 0,
+      "net_units": -2.0,
+      "hit_rate": 0.0,
+      "roi_pct": -100.0
+    },
+    "nba_reb_reb_over_5.0": {
+      "n": 3,
+      "wins": 0,
+      "losses": 3,
+      "pushes": 0,
+      "net_units": -3.0,
+      "hit_rate": 0.0,
+      "roi_pct": -100.0
+    },
+    "nba_reb_reb_under_6.0": {
+      "n": 4,
+      "wins": 4,
+      "losses": 0,
+      "pushes": 0,
+      "net_units": 2.22,
+      "hit_rate": 1.0,
+      "roi_pct": 55.5
+    },
+    "nba_reb_reb_over_3.0": {
       "n": 1,
       "wins": 0,
       "losses": 1,
@@ -3164,13 +3481,31 @@
       "roi_pct": -100.0
     },
     "nba_ast_ast_over_6.0": {
-      "n": 1,
-      "wins": 1,
+      "n": 2,
+      "wins": 2,
       "losses": 0,
       "pushes": 0,
-      "net_units": 0.559,
+      "net_units": 1.121,
       "hit_rate": 1.0,
-      "roi_pct": 55.9
+      "roi_pct": 56.05
+    },
+    "nba_ast_ast_over_3.5": {
+      "n": 2,
+      "wins": 1,
+      "losses": 1,
+      "pushes": 0,
+      "net_units": -0.435,
+      "hit_rate": 0.5,
+      "roi_pct": -21.75
+    },
+    "nba_pa_pa_under_36.0": {
+      "n": 2,
+      "wins": 1,
+      "losses": 1,
+      "pushes": 0,
+      "net_units": -0.386,
+      "hit_rate": 0.5,
+      "roi_pct": -19.3
     },
     "nba_pa_pa_under_14.5": {
       "n": 1,
@@ -3190,6 +3525,24 @@
       "hit_rate": 0.0,
       "roi_pct": -100.0
     },
+    "nba_pr_pr_under_24.5": {
+      "n": 1,
+      "wins": 1,
+      "losses": 0,
+      "pushes": 0,
+      "net_units": 0.427,
+      "hit_rate": 1.0,
+      "roi_pct": 42.7
+    },
+    "nba_ra_ra_over_12.0": {
+      "n": 1,
+      "wins": 1,
+      "losses": 0,
+      "pushes": 0,
+      "net_units": 0.444,
+      "hit_rate": 1.0,
+      "roi_pct": 44.4
+    },
     "nba_ra_ra_under_14.0": {
       "n": 1,
       "wins": 0,
@@ -3199,6 +3552,24 @@
       "hit_rate": 0.0,
       "roi_pct": -100.0
     },
+    "nba_ra_ra_over_8.5": {
+      "n": 2,
+      "wins": 2,
+      "losses": 0,
+      "pushes": 0,
+      "net_units": 0.841,
+      "hit_rate": 1.0,
+      "roi_pct": 42.05
+    },
+    "nba_ra_ra_under_10.5": {
+      "n": 1,
+      "wins": 1,
+      "losses": 0,
+      "pushes": 0,
+      "net_units": 0.431,
+      "hit_rate": 1.0,
+      "roi_pct": 43.1
+    },
     "nfl_game_ml": {
       "n": 10,
       "wins": 6,
@@ -3207,6 +3578,78 @@
       "net_units": 2.41,
       "hit_rate": 0.6,
       "roi_pct": 24.1
+    },
+    "nba_fta_fta_under_5.5": {
+      "n": 3,
+      "wins": 3,
+      "losses": 0,
+      "pushes": 0,
+      "net_units": 1.775,
+      "hit_rate": 1.0,
+      "roi_pct": 59.17
+    },
+    "nba_tt_team_pts_under_124.5": {
+      "n": 2,
+      "wins": 2,
+      "losses": 0,
+      "pushes": 0,
+      "net_units": 1.01,
+      "hit_rate": 1.0,
+      "roi_pct": 50.5
+    },
+    "nba_ast_ast_over_2.5": {
+      "n": 1,
+      "wins": 0,
+      "losses": 1,
+      "pushes": 0,
+      "net_units": -1.0,
+      "hit_rate": 0.0,
+      "roi_pct": -100.0
+    },
+    "nba_pa_pa_under_34.5": {
+      "n": 4,
+      "wins": 2,
+      "losses": 2,
+      "pushes": 0,
+      "net_units": -0.795,
+      "hit_rate": 0.5,
+      "roi_pct": -19.88
+    },
+    "nba_ra_ra_under_20.5": {
+      "n": 1,
+      "wins": 0,
+      "losses": 1,
+      "pushes": 0,
+      "net_units": -1.0,
+      "hit_rate": 0.0,
+      "roi_pct": -100.0
+    },
+    "nba_tov_tov_under_5.0": {
+      "n": 1,
+      "wins": 1,
+      "losses": 0,
+      "pushes": 0,
+      "net_units": 0.485,
+      "hit_rate": 1.0,
+      "roi_pct": 48.5
+    },
+    "nba_pra_pra_under_24.5": {
+      "n": 2,
+      "wins": 1,
+      "losses": 1,
+      "pushes": 0,
+      "net_units": -0.571,
+      "hit_rate": 0.5,
+      "roi_pct": -28.55
+    },
+    "nba_fta_fta_under_4.0": {
+      "n": 2,
+      "wins": 1,
+      "losses": 1,
+      "pushes": 0,
+      "net_units": -0.571,
+      "hit_rate": 0.5,
+      "roi_pct": -28.55
     },
     "nba_reb_reb_under_9.0": {
       "n": 1,
@@ -3218,40 +3661,31 @@
       "roi_pct": 56.2
     },
     "nba_reb_reb_over_5.5": {
+      "n": 2,
+      "wins": 2,
+      "losses": 0,
+      "pushes": 0,
+      "net_units": 1.141,
+      "hit_rate": 1.0,
+      "roi_pct": 57.05
+    },
+    "nba_ast_ast_over_4.0": {
       "n": 1,
       "wins": 1,
       "losses": 0,
       "pushes": 0,
-      "net_units": 0.535,
+      "net_units": 0.602,
       "hit_rate": 1.0,
-      "roi_pct": 53.5
+      "roi_pct": 60.2
     },
-    "nba_reb_reb_over_5.0": {
-      "n": 1,
-      "wins": 0,
-      "losses": 1,
-      "pushes": 0,
-      "net_units": -1.0,
-      "hit_rate": 0.0,
-      "roi_pct": -100.0
-    },
-    "nba_reb_reb_under_6.0": {
+    "nba_pa_pa_under_32.5": {
       "n": 3,
       "wins": 3,
       "losses": 0,
       "pushes": 0,
-      "net_units": 1.677,
+      "net_units": 1.629,
       "hit_rate": 1.0,
-      "roi_pct": 55.9
-    },
-    "nba_pa_pa_under_34.5": {
-      "n": 2,
-      "wins": 1,
-      "losses": 1,
-      "pushes": 0,
-      "net_units": -0.39,
-      "hit_rate": 0.5,
-      "roi_pct": -19.5
+      "roi_pct": 54.3
     },
     "nba_pa_pa_under_25.5": {
       "n": 1,
@@ -3263,6 +3697,33 @@
       "roi_pct": 42.2
     },
     "nba_pr_pr_under_27.0": {
+      "n": 2,
+      "wins": 1,
+      "losses": 1,
+      "pushes": 0,
+      "net_units": -0.522,
+      "hit_rate": 0.5,
+      "roi_pct": -26.1
+    },
+    "nba_pr_pr_under_22.5": {
+      "n": 2,
+      "wins": 2,
+      "losses": 0,
+      "pushes": 0,
+      "net_units": 0.915,
+      "hit_rate": 1.0,
+      "roi_pct": 45.75
+    },
+    "nba_pr_pr_under_22.0": {
+      "n": 2,
+      "wins": 1,
+      "losses": 1,
+      "pushes": 0,
+      "net_units": -0.557,
+      "hit_rate": 0.5,
+      "roi_pct": -27.85
+    },
+    "nba_ra_ra_over_19.5": {
       "n": 1,
       "wins": 0,
       "losses": 1,
@@ -3271,14 +3732,14 @@
       "hit_rate": 0.0,
       "roi_pct": -100.0
     },
-    "nba_pr_pr_under_22.0": {
+    "nba_ra_ra_under_17.0": {
       "n": 1,
       "wins": 1,
       "losses": 0,
       "pushes": 0,
-      "net_units": 0.443,
+      "net_units": 0.411,
       "hit_rate": 1.0,
-      "roi_pct": 44.3
+      "roi_pct": 41.1
     },
     "nba_ra_ra_over_11.0": {
       "n": 1,
@@ -3289,6 +3750,24 @@
       "hit_rate": 1.0,
       "roi_pct": 38.9
     },
+    "nba_fta_fta_under_4.5": {
+      "n": 1,
+      "wins": 0,
+      "losses": 1,
+      "pushes": 0,
+      "net_units": -1.0,
+      "hit_rate": 0.0,
+      "roi_pct": -100.0
+    },
+    "nba_tt_team_pts_under_112.5": {
+      "n": 2,
+      "wins": 1,
+      "losses": 1,
+      "pushes": 0,
+      "net_units": -0.5,
+      "hit_rate": 0.5,
+      "roi_pct": -25.0
+    },
     "nba_reb_reb_under_8.5": {
       "n": 1,
       "wins": 1,
@@ -3298,23 +3777,23 @@
       "hit_rate": 1.0,
       "roi_pct": 57.1
     },
-    "nba_ast_ast_under_6.0": {
+    "nba_ast_ast_under_4.5": {
       "n": 1,
       "wins": 1,
       "losses": 0,
       "pushes": 0,
-      "net_units": 0.546,
+      "net_units": 0.568,
       "hit_rate": 1.0,
-      "roi_pct": 54.6
+      "roi_pct": 56.8
     },
-    "nba_pa_pa_under_36.0": {
+    "nba_pa_pa_under_26.0": {
       "n": 1,
-      "wins": 0,
-      "losses": 1,
+      "wins": 1,
+      "losses": 0,
       "pushes": 0,
-      "net_units": -1.0,
-      "hit_rate": 0.0,
-      "roi_pct": -100.0
+      "net_units": 0.446,
+      "hit_rate": 1.0,
+      "roi_pct": 44.6
     },
     "nba_pa_pa_under_16.0": {
       "n": 1,
@@ -3325,14 +3804,41 @@
       "hit_rate": 0.0,
       "roi_pct": -100.0
     },
-    "nba_3pm_3pm_under_5.0": {
-      "n": 2,
-      "wins": 1,
+    "nba_pr_pr_under_37.0": {
+      "n": 1,
+      "wins": 0,
       "losses": 1,
       "pushes": 0,
-      "net_units": -0.597,
-      "hit_rate": 0.5,
-      "roi_pct": -29.85
+      "net_units": -1.0,
+      "hit_rate": 0.0,
+      "roi_pct": -100.0
+    },
+    "nba_ra_ra_over_18.0": {
+      "n": 1,
+      "wins": 1,
+      "losses": 0,
+      "pushes": 0,
+      "net_units": 0.481,
+      "hit_rate": 1.0,
+      "roi_pct": 48.1
+    },
+    "nba_ra_ra_under_16.5": {
+      "n": 1,
+      "wins": 0,
+      "losses": 1,
+      "pushes": 0,
+      "net_units": -1.0,
+      "hit_rate": 0.0,
+      "roi_pct": -100.0
+    },
+    "nba_ra_ra_under_14.5": {
+      "n": 1,
+      "wins": 0,
+      "losses": 1,
+      "pushes": 0,
+      "net_units": -1.0,
+      "hit_rate": 0.0,
+      "roi_pct": -100.0
     },
     "nba_pr_pr_under_30.0": {
       "n": 1,
@@ -3343,7 +3849,151 @@
       "hit_rate": 0.0,
       "roi_pct": -100.0
     },
-    "nba_pra_pra_under_54.5": {
+    "nba_pra_pra_under_46.5": {
+      "n": 1,
+      "wins": 1,
+      "losses": 0,
+      "pushes": 0,
+      "net_units": 0.435,
+      "hit_rate": 1.0,
+      "roi_pct": 43.5
+    },
+    "nba_fta_fta_under_9.0": {
+      "n": 1,
+      "wins": 0,
+      "losses": 1,
+      "pushes": 0,
+      "net_units": -1.0,
+      "hit_rate": 0.0,
+      "roi_pct": -100.0
+    },
+    "nba_fta_fta_under_8.5": {
+      "n": 1,
+      "wins": 1,
+      "losses": 0,
+      "pushes": 0,
+      "net_units": 0.606,
+      "hit_rate": 1.0,
+      "roi_pct": 60.6
+    },
+    "nba_fta_fta_over_1.5": {
+      "n": 1,
+      "wins": 1,
+      "losses": 0,
+      "pushes": 0,
+      "net_units": 0.556,
+      "hit_rate": 1.0,
+      "roi_pct": 55.6
+    },
+    "nba_tt_team_pts_under_126.5": {
+      "n": 1,
+      "wins": 1,
+      "losses": 0,
+      "pushes": 0,
+      "net_units": 0.508,
+      "hit_rate": 1.0,
+      "roi_pct": 50.8
+    },
+    "nba_reb_reb_under_4.5": {
+      "n": 1,
+      "wins": 0,
+      "losses": 1,
+      "pushes": 0,
+      "net_units": -1.0,
+      "hit_rate": 0.0,
+      "roi_pct": -100.0
+    },
+    "nba_ast_ast_over_7.0": {
+      "n": 1,
+      "wins": 1,
+      "losses": 0,
+      "pushes": 0,
+      "net_units": 0.602,
+      "hit_rate": 1.0,
+      "roi_pct": 60.2
+    },
+    "nba_pa_pa_under_25.0": {
+      "n": 1,
+      "wins": 0,
+      "losses": 1,
+      "pushes": 0,
+      "net_units": -1.0,
+      "hit_rate": 0.0,
+      "roi_pct": -100.0
+    },
+    "nba_pa_pa_under_23.5": {
+      "n": 2,
+      "wins": 2,
+      "losses": 0,
+      "pushes": 0,
+      "net_units": 0.889,
+      "hit_rate": 1.0,
+      "roi_pct": 44.45
+    },
+    "nba_pa_pa_under_16.5": {
+      "n": 1,
+      "wins": 1,
+      "losses": 0,
+      "pushes": 0,
+      "net_units": 0.455,
+      "hit_rate": 1.0,
+      "roi_pct": 45.5
+    },
+    "nba_pr_pr_under_40.5": {
+      "n": 2,
+      "wins": 1,
+      "losses": 1,
+      "pushes": 0,
+      "net_units": -0.408,
+      "hit_rate": 0.5,
+      "roi_pct": -20.4
+    },
+    "nba_ra_ra_over_19.0": {
+      "n": 1,
+      "wins": 0,
+      "losses": 1,
+      "pushes": 0,
+      "net_units": -1.0,
+      "hit_rate": 0.0,
+      "roi_pct": -100.0
+    },
+    "nba_ra_ra_under_21.0": {
+      "n": 1,
+      "wins": 1,
+      "losses": 0,
+      "pushes": 0,
+      "net_units": 0.472,
+      "hit_rate": 1.0,
+      "roi_pct": 47.2
+    },
+    "nba_ra_ra_under_15.0": {
+      "n": 1,
+      "wins": 1,
+      "losses": 0,
+      "pushes": 0,
+      "net_units": 0.459,
+      "hit_rate": 1.0,
+      "roi_pct": 45.9
+    },
+    "nba_ra_ra_over_11.5": {
+      "n": 1,
+      "wins": 1,
+      "losses": 0,
+      "pushes": 0,
+      "net_units": 0.395,
+      "hit_rate": 1.0,
+      "roi_pct": 39.5
+    },
+    "nba_tov_tov_under_5.5": {
+      "n": 1,
+      "wins": 1,
+      "losses": 0,
+      "pushes": 0,
+      "net_units": 0.538,
+      "hit_rate": 1.0,
+      "roi_pct": 53.8
+    },
+    "nba_pra_pra_under_53.5": {
       "n": 1,
       "wins": 0,
       "losses": 1,
@@ -3544,44 +4194,44 @@
       "hit_rate": 0.4077
     },
     "home_total_over": {
-      "n": 180,
-      "wins": 149,
-      "losses": 31,
+      "n": 243,
+      "wins": 191,
+      "losses": 52,
       "pushes": 0,
-      "net_units": 48.715,
-      "hit_rate": 0.8278
+      "net_units": 46.447,
+      "hit_rate": 0.786
     },
     "3pm_under": {
-      "n": 115,
-      "wins": 76,
-      "losses": 39,
+      "n": 138,
+      "wins": 92,
+      "losses": 46,
       "pushes": 0,
-      "net_units": -2.386,
-      "hit_rate": 0.6609
+      "net_units": -1.511,
+      "hit_rate": 0.6667
     },
     "3pm_over": {
-      "n": 40,
-      "wins": 29,
+      "n": 45,
+      "wins": 34,
       "losses": 11,
       "pushes": 0,
-      "net_units": 3.795,
-      "hit_rate": 0.725
+      "net_units": 6.435,
+      "hit_rate": 0.7556
     },
     "blk_stl_over": {
-      "n": 38,
-      "wins": 25,
+      "n": 40,
+      "wins": 27,
       "losses": 13,
       "pushes": 0,
-      "net_units": -0.417,
-      "hit_rate": 0.6579
+      "net_units": 0.707,
+      "hit_rate": 0.675
     },
     "blk_stl_under": {
-      "n": 68,
-      "wins": 45,
-      "losses": 23,
+      "n": 72,
+      "wins": 47,
+      "losses": 25,
       "pushes": 0,
-      "net_units": -1.225,
-      "hit_rate": 0.6618
+      "net_units": -1.999,
+      "hit_rate": 0.6528
     },
     "tb_3plus_no": {
       "n": 4,
@@ -3696,12 +4346,12 @@
       "hit_rate": 1.0
     },
     "ast_over": {
-      "n": 18,
-      "wins": 10,
-      "losses": 8,
+      "n": 29,
+      "wins": 16,
+      "losses": 13,
       "pushes": 0,
-      "net_units": -2.592,
-      "hit_rate": 0.5556
+      "net_units": -4.085,
+      "hit_rate": 0.5517
     },
     "home_plus": {
       "n": 37,
@@ -3712,12 +4362,12 @@
       "hit_rate": 0.6757
     },
     "blocks_over": {
-      "n": 65,
-      "wins": 33,
-      "losses": 32,
+      "n": 71,
+      "wins": 37,
+      "losses": 34,
       "pushes": 0,
-      "net_units": -14.947,
-      "hit_rate": 0.5077
+      "net_units": -14.585,
+      "hit_rate": 0.5211
     },
     "away_plus": {
       "n": 50,
@@ -3760,12 +4410,12 @@
       "hit_rate": 0.7287
     },
     "ast_under": {
-      "n": 33,
-      "wins": 26,
-      "losses": 7,
+      "n": 47,
+      "wins": 35,
+      "losses": 12,
       "pushes": 0,
-      "net_units": 7.423,
-      "hit_rate": 0.7879
+      "net_units": 7.455,
+      "hit_rate": 0.7447
     },
     "total_under": {
       "n": 190,
@@ -3808,12 +4458,12 @@
       "hit_rate": 0.2885
     },
     "total_games_over": {
-      "n": 34,
-      "wins": 28,
+      "n": 35,
+      "wins": 29,
       "losses": 6,
       "pushes": 0,
-      "net_units": 6.996,
-      "hit_rate": 0.8235
+      "net_units": 7.498,
+      "hit_rate": 0.8286
     },
     "away_clean_sheet_no": {
       "n": 1,
@@ -4128,28 +4778,28 @@
       "hit_rate": 0.6548
     },
     "steals_over": {
-      "n": 11,
-      "wins": 9,
+      "n": 17,
+      "wins": 15,
       "losses": 2,
       "pushes": 0,
-      "net_units": 2.432,
-      "hit_rate": 0.8182
+      "net_units": 5.18,
+      "hit_rate": 0.8824
     },
     "tov_under": {
-      "n": 31,
-      "wins": 13,
-      "losses": 18,
+      "n": 63,
+      "wins": 35,
+      "losses": 28,
       "pushes": 0,
-      "net_units": -11.726,
-      "hit_rate": 0.4194
+      "net_units": -10.968,
+      "hit_rate": 0.5556
     },
     "pra_under": {
-      "n": 106,
-      "wins": 65,
-      "losses": 41,
+      "n": 173,
+      "wins": 108,
+      "losses": 65,
       "pushes": 0,
-      "net_units": -12.799,
-      "hit_rate": 0.6132
+      "net_units": -17.938,
+      "hit_rate": 0.6243
     },
     "anytime_goal_yes": {
       "n": 1,
@@ -4160,28 +4810,28 @@
       "hit_rate": 0.0
     },
     "reb_under": {
-      "n": 32,
-      "wins": 25,
-      "losses": 7,
+      "n": 42,
+      "wins": 30,
+      "losses": 12,
       "pushes": 0,
-      "net_units": 7.059,
-      "hit_rate": 0.7812
+      "net_units": 4.939,
+      "hit_rate": 0.7143
     },
     "pa_under": {
-      "n": 57,
-      "wins": 35,
-      "losses": 22,
+      "n": 97,
+      "wins": 65,
+      "losses": 32,
       "pushes": 0,
-      "net_units": -3.501,
-      "hit_rate": 0.614
+      "net_units": 2.074,
+      "hit_rate": 0.6701
     },
     "pr_under": {
-      "n": 52,
-      "wins": 33,
-      "losses": 19,
+      "n": 80,
+      "wins": 49,
+      "losses": 31,
       "pushes": 0,
-      "net_units": -1.87,
-      "hit_rate": 0.6346
+      "net_units": -5.603,
+      "hit_rate": 0.6125
     },
     "rec_yds_under": {
       "n": 89,
@@ -4200,36 +4850,52 @@
       "hit_rate": 0.5
     },
     "tov_over": {
-      "n": 11,
-      "wins": 8,
-      "losses": 3,
+      "n": 18,
+      "wins": 12,
+      "losses": 6,
       "pushes": 0,
-      "net_units": 1.514,
-      "hit_rate": 0.7273
+      "net_units": 0.81,
+      "hit_rate": 0.6667
     },
     "reb_over": {
-      "n": 31,
-      "wins": 13,
-      "losses": 18,
+      "n": 48,
+      "wins": 19,
+      "losses": 29,
       "pushes": 0,
-      "net_units": -10.889,
-      "hit_rate": 0.4194
+      "net_units": -18.396,
+      "hit_rate": 0.3958
     },
     "ra_over": {
-      "n": 13,
-      "wins": 9,
-      "losses": 4,
+      "n": 26,
+      "wins": 18,
+      "losses": 8,
       "pushes": 0,
-      "net_units": -0.191,
+      "net_units": -0.351,
       "hit_rate": 0.6923
     },
     "ra_under": {
-      "n": 6,
-      "wins": 4,
-      "losses": 2,
+      "n": 16,
+      "wins": 10,
+      "losses": 6,
       "pushes": 0,
-      "net_units": -0.244,
-      "hit_rate": 0.6667
+      "net_units": -1.586,
+      "hit_rate": 0.625
+    },
+    "fta_under": {
+      "n": 69,
+      "wins": 41,
+      "losses": 28,
+      "pushes": 0,
+      "net_units": -7.301,
+      "hit_rate": 0.5942
+    },
+    "team_pts_under": {
+      "n": 106,
+      "wins": 77,
+      "losses": 29,
+      "pushes": 0,
+      "net_units": 11.261,
+      "hit_rate": 0.7264
     },
     "pass_int_under": {
       "n": 9,
@@ -4366,6 +5032,14 @@
       "pushes": 0,
       "net_units": 3.003,
       "hit_rate": 0.6667
+    },
+    "fta_over": {
+      "n": 1,
+      "wins": 1,
+      "losses": 0,
+      "pushes": 0,
+      "net_units": 0.556,
+      "hit_rate": 1.0
     }
   },
   "by_canonical": {
@@ -4514,44 +5188,44 @@
       "hit_rate": 0.4077
     },
     "home_total_over": {
-      "n": 180,
-      "wins": 149,
-      "losses": 31,
+      "n": 243,
+      "wins": 191,
+      "losses": 52,
       "pushes": 0,
-      "net_units": 48.715,
-      "hit_rate": 0.8278
+      "net_units": 46.447,
+      "hit_rate": 0.786
     },
     "3pm_under": {
-      "n": 115,
-      "wins": 76,
-      "losses": 39,
+      "n": 138,
+      "wins": 92,
+      "losses": 46,
       "pushes": 0,
-      "net_units": -2.386,
-      "hit_rate": 0.6609
+      "net_units": -1.511,
+      "hit_rate": 0.6667
     },
     "3pm_over": {
-      "n": 40,
-      "wins": 29,
+      "n": 45,
+      "wins": 34,
       "losses": 11,
       "pushes": 0,
-      "net_units": 3.795,
-      "hit_rate": 0.725
+      "net_units": 6.435,
+      "hit_rate": 0.7556
     },
     "blk_stl_over": {
-      "n": 38,
-      "wins": 25,
+      "n": 40,
+      "wins": 27,
       "losses": 13,
       "pushes": 0,
-      "net_units": -0.417,
-      "hit_rate": 0.6579
+      "net_units": 0.707,
+      "hit_rate": 0.675
     },
     "blk_stl_under": {
-      "n": 68,
-      "wins": 45,
-      "losses": 23,
+      "n": 72,
+      "wins": 47,
+      "losses": 25,
       "pushes": 0,
-      "net_units": -1.225,
-      "hit_rate": 0.6618
+      "net_units": -1.999,
+      "hit_rate": 0.6528
     },
     "mlb_tb_2.5_under": {
       "n": 6,
@@ -4674,12 +5348,12 @@
       "hit_rate": 1.0
     },
     "ast_over": {
-      "n": 18,
-      "wins": 10,
-      "losses": 8,
+      "n": 29,
+      "wins": 16,
+      "losses": 13,
       "pushes": 0,
-      "net_units": -2.592,
-      "hit_rate": 0.5556
+      "net_units": -4.085,
+      "hit_rate": 0.5517
     },
     "home_plus": {
       "n": 37,
@@ -4690,12 +5364,12 @@
       "hit_rate": 0.6757
     },
     "blocks_over": {
-      "n": 65,
-      "wins": 33,
-      "losses": 32,
+      "n": 71,
+      "wins": 37,
+      "losses": 34,
       "pushes": 0,
-      "net_units": -14.947,
-      "hit_rate": 0.5077
+      "net_units": -14.585,
+      "hit_rate": 0.5211
     },
     "mlb_hrr_4.5_under": {
       "n": 30,
@@ -4746,12 +5420,12 @@
       "hit_rate": 0.7287
     },
     "ast_under": {
-      "n": 33,
-      "wins": 26,
-      "losses": 7,
+      "n": 47,
+      "wins": 35,
+      "losses": 12,
       "pushes": 0,
-      "net_units": 7.423,
-      "hit_rate": 0.7879
+      "net_units": 7.455,
+      "hit_rate": 0.7447
     },
     "total_under": {
       "n": 190,
@@ -4794,12 +5468,12 @@
       "hit_rate": 0.2885
     },
     "total_games_over": {
-      "n": 34,
-      "wins": 28,
+      "n": 35,
+      "wins": 29,
       "losses": 6,
       "pushes": 0,
-      "net_units": 6.996,
-      "hit_rate": 0.8235
+      "net_units": 7.498,
+      "hit_rate": 0.8286
     },
     "away_clean_sheet_no": {
       "n": 1,
@@ -5114,28 +5788,28 @@
       "hit_rate": 0.6548
     },
     "steals_over": {
-      "n": 11,
-      "wins": 9,
+      "n": 17,
+      "wins": 15,
       "losses": 2,
       "pushes": 0,
-      "net_units": 2.432,
-      "hit_rate": 0.8182
+      "net_units": 5.18,
+      "hit_rate": 0.8824
     },
     "tov_under": {
-      "n": 31,
-      "wins": 13,
-      "losses": 18,
+      "n": 63,
+      "wins": 35,
+      "losses": 28,
       "pushes": 0,
-      "net_units": -11.726,
-      "hit_rate": 0.4194
+      "net_units": -10.968,
+      "hit_rate": 0.5556
     },
     "pra_under": {
-      "n": 106,
-      "wins": 65,
-      "losses": 41,
+      "n": 173,
+      "wins": 108,
+      "losses": 65,
       "pushes": 0,
-      "net_units": -12.799,
-      "hit_rate": 0.6132
+      "net_units": -17.938,
+      "hit_rate": 0.6243
     },
     "anytime_goal_yes": {
       "n": 1,
@@ -5146,28 +5820,28 @@
       "hit_rate": 0.0
     },
     "reb_under": {
-      "n": 32,
-      "wins": 25,
-      "losses": 7,
+      "n": 42,
+      "wins": 30,
+      "losses": 12,
       "pushes": 0,
-      "net_units": 7.059,
-      "hit_rate": 0.7812
+      "net_units": 4.939,
+      "hit_rate": 0.7143
     },
     "pa_under": {
-      "n": 57,
-      "wins": 35,
-      "losses": 22,
+      "n": 97,
+      "wins": 65,
+      "losses": 32,
       "pushes": 0,
-      "net_units": -3.501,
-      "hit_rate": 0.614
+      "net_units": 2.074,
+      "hit_rate": 0.6701
     },
     "pr_under": {
-      "n": 52,
-      "wins": 33,
-      "losses": 19,
+      "n": 80,
+      "wins": 49,
+      "losses": 31,
       "pushes": 0,
-      "net_units": -1.87,
-      "hit_rate": 0.6346
+      "net_units": -5.603,
+      "hit_rate": 0.6125
     },
     "rec_yds_under": {
       "n": 89,
@@ -5186,36 +5860,52 @@
       "hit_rate": 0.5
     },
     "tov_over": {
-      "n": 11,
-      "wins": 8,
-      "losses": 3,
+      "n": 18,
+      "wins": 12,
+      "losses": 6,
       "pushes": 0,
-      "net_units": 1.514,
-      "hit_rate": 0.7273
+      "net_units": 0.81,
+      "hit_rate": 0.6667
     },
     "reb_over": {
-      "n": 31,
-      "wins": 13,
-      "losses": 18,
+      "n": 48,
+      "wins": 19,
+      "losses": 29,
       "pushes": 0,
-      "net_units": -10.889,
-      "hit_rate": 0.4194
+      "net_units": -18.396,
+      "hit_rate": 0.3958
     },
     "ra_over": {
-      "n": 13,
-      "wins": 9,
-      "losses": 4,
+      "n": 26,
+      "wins": 18,
+      "losses": 8,
       "pushes": 0,
-      "net_units": -0.191,
+      "net_units": -0.351,
       "hit_rate": 0.6923
     },
     "ra_under": {
-      "n": 6,
-      "wins": 4,
-      "losses": 2,
+      "n": 16,
+      "wins": 10,
+      "losses": 6,
       "pushes": 0,
-      "net_units": -0.244,
-      "hit_rate": 0.6667
+      "net_units": -1.586,
+      "hit_rate": 0.625
+    },
+    "fta_under": {
+      "n": 69,
+      "wins": 41,
+      "losses": 28,
+      "pushes": 0,
+      "net_units": -7.301,
+      "hit_rate": 0.5942
+    },
+    "team_pts_under": {
+      "n": 106,
+      "wins": 77,
+      "losses": 29,
+      "pushes": 0,
+      "net_units": 11.261,
+      "hit_rate": 0.7264
     },
     "pass_int_under": {
       "n": 9,
@@ -5352,6 +6042,14 @@
       "pushes": 0,
       "net_units": 3.003,
       "hit_rate": 0.6667
+    },
+    "fta_over": {
+      "n": 1,
+      "wins": 1,
+      "losses": 0,
+      "pushes": 0,
+      "net_units": 0.556,
+      "hit_rate": 1.0
     }
   },
   "by_sport": {
@@ -5396,15 +6094,15 @@
     },
     "WNBA": {
       "n": 500,
-      "settled": 456,
-      "wins": 333,
-      "losses": 123,
+      "settled": 468,
+      "wins": 343,
+      "losses": 125,
       "pushes": 0,
-      "pending": 6,
-      "void": 38,
-      "net_units": 47.493,
-      "hit_rate": 0.7303,
-      "roi_pct": 10.42,
+      "pending": 0,
+      "void": 32,
+      "net_units": 50.917,
+      "hit_rate": 0.7329,
+      "roi_pct": 10.88,
       "markets": 4
     },
     "EPL": {
@@ -5487,15 +6185,15 @@
     },
     "TENNIS": {
       "n": 183,
-      "settled": 120,
-      "wins": 62,
+      "settled": 121,
+      "wins": 63,
       "losses": 58,
       "pushes": 0,
-      "pending": 12,
+      "pending": 11,
       "void": 51,
-      "net_units": -29.118,
-      "hit_rate": 0.5167,
-      "roi_pct": -24.26,
+      "net_units": -28.615,
+      "hit_rate": 0.5207,
+      "roi_pct": -23.65,
       "markets": 6
     },
     "UCL": {
@@ -5551,16 +6249,16 @@
       "markets": 1
     },
     "NBA": {
-      "n": 1441,
-      "settled": 454,
-      "wins": 288,
-      "losses": 166,
+      "n": 1640,
+      "settled": 976,
+      "wins": 630,
+      "losses": 346,
       "pushes": 0,
-      "pending": 417,
-      "void": 570,
-      "net_units": -22.997,
-      "hit_rate": 0.6344,
-      "roi_pct": -5.07,
+      "pending": 284,
+      "void": 380,
+      "net_units": -33.03,
+      "hit_rate": 0.6455,
+      "roi_pct": -3.38,
       "markets": 16
     }
   },
@@ -5598,10 +6296,10 @@
     "note": "NFL props are judged from 10/23 forward: the simulator's form rule changed, so earlier picks are a different model. They stay on the record as their own line and never feed a family verdict."
   },
   "last_7_days": {
-    "wins": 726,
-    "losses": 400,
-    "net_units": -69.475,
-    "hit_rate": 0.6448
+    "wins": 1057,
+    "losses": 575,
+    "net_units": -79.76,
+    "hit_rate": 0.6477
   },
   "note": "Unified pick ledger -- records every pick the model surfaces (top_25 board, whales, consensus, unders, sharp action, locks, POD) and settles each against actual outcomes. Per-source W-L feeds back into calibration so the model learns which modules are reliable. THIS is the training signal.",
   "archived_history": {

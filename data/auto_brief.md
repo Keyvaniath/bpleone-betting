@@ -26,18 +26,18 @@ _0% lineups confirmed_
    - Worlds
 
 ## NBA -- REGULAR
-- Oklahoma City Thunder @ Cleveland Cavaliers (5-2 vs 4-3) 117-112 | P(home) 0.0% fair +0 | Final
-- Detroit Pistons @ Charlotte Hornets (6-1 vs 3-5) 124-91 | P(home) 0.0% fair +0 | Final
-- Atlanta Hawks @ Indiana Pacers (4-4 vs 2-6) 108-104 | P(home) 0.0% fair +0 | Final
-- Brooklyn Nets @ New York Knicks (1-6 vs 3-4) 90-103 | P(home) 100.0% fair +0 | Final
-- Washington Wizards @ Orlando Magic (4-3 vs 2-5) 103-94 | P(home) 0.0% fair +0 | Final
+- Philadelphia 76ers @ Detroit Pistons (7-1 vs 6-1)  | P(home) 51.2% fair -105 | Scheduled
+- Atlanta Hawks @ Washington Wizards (4-4 vs 4-3)  | P(home) 62.0% fair -163 | Scheduled
+- Milwaukee Bucks @ Boston Celtics (1-6 vs 5-2)  | P(home) 94.8% fair -1835 | Scheduled
+- Charlotte Hornets @ Brooklyn Nets (3-5 vs 1-6)  | P(home) 25.4% fair +294 | Scheduled
+- Chicago Bulls @ New York Knicks (1-6 vs 3-4)  | P(home) 84.6% fair -550 | Scheduled
 
 ## NHL -- REGULAR
-- Vegas Golden Knights @ Boston Bruins (0-0-0 vs 0-0-0) 2-3 | P(home) 100.0% fair +0 | Final
-- Detroit Red Wings @ Florida Panthers (0-0-0 vs 0-0-0) 5-3 | P(home) 0.0% fair +0 | Final
-- Colorado Avalanche @ Chicago Blackhawks (0-0-0 vs 0-0-0) 5-2 | P(home) 0.0% fair +0 | Final
-- Calgary Flames @ San Jose Sharks (0-0-0 vs 0-0-0) 2-1 | P(home) 0.0% fair +0 | Final
 - Utah Mammoth @ Toronto Maple Leafs (9-6-0 vs 8-6-2)  | P(home) 41.4% fair +141 | Scheduled
+- Winnipeg Jets @ Montreal Canadiens (4-8-3 vs 9-3-2)  | P(home) 59.2% fair -145 | Scheduled
+- Detroit Red Wings @ Tampa Bay Lightning (7-5-3 vs 8-3-2)  | P(home) 61.1% fair -157 | Scheduled
+- St. Louis Blues @ New York Rangers (7-6-1 vs 7-7-1)  | P(home) 49.5% fair +102 | Scheduled
+- Minnesota Wild @ Philadelphia Flyers (10-3-3 vs 4-8-4)  | P(home) 38.0% fair +163 | Scheduled
 
 ## LoL Esports -- 0 live, 7 upcoming
 - [Worlds] TOP ESPORTS vs Invictus Gaming BO5 | P(A) 23.6% fair +324/-324
