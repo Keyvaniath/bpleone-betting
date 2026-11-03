@@ -120,9 +120,13 @@ pass.
    (unposted totals juice), `book_vs_model_team.py:198` (totals -110/-110 --
    now re-priced before the Alpha uses it, but the board itself still shows
    it), `slate_roi_projector.py`, `sharpe_ranking.py`.
-3. (done on branch) per-record `price_provenance`. Follow-up: ESPN's default
-   NFL board shows last week until midweek -> the desk misses early Week-N
-   lines (fetch the upcoming week explicitly); `ml_reprice` pending_priced reads
+3. (merged c413a65fd9) per-record `price_provenance`.
+   NFL feed (branch `integrity/nfl-feed`): `espn_odds.fetch_sport` also
+   requests the NEXT week for NFL / NCAAF (`week=N+1&seasontype=T` from the
+   bare board, postseason week 1 after the regular season), merged by event
+   id. 11/3: the bare board held 14 Week-9 finals and 0 upcoming games; with
+   the fix 15 upcoming NFL games carry DraftKings lines -> desk board 15 rows,
+   4 picks, 4 games held as QB-uncertain. Remaining follow-up: `ml_reprice` pending_priced reads
    `by_matchup`, which is not status-filtered (could stamp an in-play price).
 4. Alpha record (locked days) is 70 props at the model's own price (+13.36u) +
    35 DK game lines (-0.78u): counting rule is Brandon's call.
