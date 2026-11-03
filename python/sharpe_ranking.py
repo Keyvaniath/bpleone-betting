@@ -8,7 +8,7 @@ where the unit return = +b (decimal-1) if win, -1 if loss, weighted by p.
 
 For each qualifying bet:
    p = model_prob
-   b = decimal payout - 1  (assume -110 if no price -> b = 0.909)
+   b = decimal payout - 1  (real book price only; no price -> not ranked)
    expected = p*b - (1-p)*1     (per $1 staked)
    variance = (b - expected)^2 * p + (-1 - expected)^2 * (1-p)
    sharpe   = expected / sqrt(variance)  if variance > 0 else 0
@@ -41,7 +41,7 @@ DATA_DIR = os.path.join(os.path.dirname(__file__), "..", "data")
 BB_PATH = os.path.join(DATA_DIR, "best_bets.json")
 OUT_PATH = os.path.join(DATA_DIR, "sharpe_rankings.json")
 
-DEFAULT_AMERICAN = -110
+DEFAULT_AMERICAN = None   # 2026-11-03: no default price -- real book price or not ranked
 
 
 def _load(p: str) -> Dict[str, Any]:
@@ -82,16 +82,16 @@ def run() -> Dict[str, Any]:
         prob = b.get("model_prob")
         if prob is None or prob <= 0.50 or prob >= 0.99:
             continue
-        # For SGPs, use joint_prob and embed the fair price into the calc;
-        # for game/NRFI/DK/PP, fall back to -110.
-        american = DEFAULT_AMERICAN
-        if b.get("source") == "SGP" and b.get("line"):
-            # line for SGP is fair decimal
-            try:
-                d = float(b["line"])
-                american = int(round((d - 1) * 100)) if d >= 2 else int(round(-100 / (d - 1)))
-            except Exception:
-                pass
+        # FAIL CLOSED (2026-11-03): rank only at a REAL book price. This used
+        # to price every bet at -110 (and SGPs at their own fair price), so the
+        # Sharpe ranking scored bets against a price no book offered.
+        american = b.get("book_american")
+        try:
+            american = int(american)
+        except (TypeError, ValueError):
+            continue
+        if abs(american) < 100:
+            continue
         s = _sharpe_for_bet(prob, american)
         rankings.append({
             "rank": b.get("rank"),

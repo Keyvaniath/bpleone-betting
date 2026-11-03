@@ -237,8 +237,27 @@ def write_artifact(out, path="../data/arbitrage.json"):
     print(f"Wrote {path}")
 
 
+def unavailable_artifact() -> dict:
+    """What the site publishes (2026-11-03, P0): TODAY_MARKETS above is a
+    hand-written DEMO (invented quotes, one book literally 'Synthetic-Glitch',
+    a line 'intentionally errored' to create an arb). It was scanned and
+    published daily as data/arbitrage.json. Arbitrage needs live quotes from
+    2+ takeable books; we have one (DraftKings via ESPN), so the honest state
+    is unavailable -- empty lists and the reason, never the demo's output."""
+    import datetime as _dt
+    return {"available": False,
+            "reason": ("Cross-book scanning needs live quotes from 2+ sportsbooks; the only live feed is "
+                       "DraftKings (via ESPN), so no arbitrage, middle or low-vig scan is possible."),
+            "generated_at": _dt.datetime.utcnow().isoformat(timespec="seconds"),
+            "arbs": [], "middles": [], "low_vig": [], "markets_scanned": 0, "quotes_scanned": 0}
+
+
 if __name__ == "__main__":
-    out = scan_all()
+    import sys as _sys
+    if "--demo" not in _sys.argv:
+        write_artifact(unavailable_artifact())
+        raise SystemExit(0)
+    out = scan_all()        # --demo: the worked example, printed only
     print(f"Scanned {out['markets_scanned']} markets, {out['quotes_scanned']} quotes")
     print(f"\nARBS FOUND: {len(out['arbs'])}")
     for a in out['arbs'][:5]:
@@ -249,4 +268,5 @@ if __name__ == "__main__":
     print(f"\nMIDDLES: {len(out['middles'])}")
     for mid in out['middles'][:3]:
         print(f"  {mid['market']}: {mid.get('type','?')} window {mid['middle_window']}")
-    write_artifact(out)
+    # --demo never writes the site's artifact (it is invented data)
+

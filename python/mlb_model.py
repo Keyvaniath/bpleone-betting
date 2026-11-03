@@ -181,13 +181,18 @@ def project_game(g: GameInput) -> GameProjection:
     if g.market_ml_away is not None:
         proj.edges[f"{g.away.code}_ML"] = edge_pct(p_away, g.market_ml_away)
 
-    over_px = g.market_over_price if g.market_over_price is not None else -110
-    under_px = g.market_under_price if g.market_under_price is not None else -110
+    # FAIL CLOSED (2026-11-03): a total side gets an edge only at its REAL
+    # posted juice -- an unposted price used to default to -110, so the model
+    # recommended totals against a price no book offered.
+    over_px = g.market_over_price
+    under_px = g.market_under_price
     over_p = None
     if g.market_total is not None:
         over_p = totals.get(g.market_total, total_over_prob(away_l, home_l, g.market_total))
-        proj.edges[f"OVER_{g.market_total}"] = edge_pct(over_p, over_px)
-        proj.edges[f"UNDER_{g.market_total}"] = edge_pct(1 - over_p, under_px)
+        if over_px is not None:
+            proj.edges[f"OVER_{g.market_total}"] = edge_pct(over_p, over_px)
+        if under_px is not None:
+            proj.edges[f"UNDER_{g.market_total}"] = edge_pct(1 - over_p, under_px)
 
     # Build recommendation list, sorted by edge.
     for label, edge in sorted(proj.edges.items(), key=lambda x: -x[1]):

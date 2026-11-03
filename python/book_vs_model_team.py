@@ -189,25 +189,28 @@ def run() -> Dict[str, Any]:
 
         # ----- TOTALS (Over/Under) book-vs-model edge -----
         # Model gives p_over_market (probability OVER the book's posted total).
-        # Book total prices are typically -110/-110 each side (decimal ~1.91).
-        # Standard -110/-110 means de-vigged 50/50. We compute edge directly
-        # using model's p_over and the book's standard ~1.91 decimal.
         p_over_model = nested_model.get("p_over_market") or model_g.get("p_over_market")
-        if p_over_model is not None and total_book is not None:
-            # Assume -110 each side (typical MLB total juice) unless book provides custom
-            over_book_dec = 1.909  # -110 in decimal
-            under_book_dec = 1.909
+        # FAIL CLOSED (2026-11-03): the REAL posted over/under juice, or no
+        # total edge. This used to assume -110 / -110 (decimal 1.909) on every
+        # total, so a side the book priced at -125 showed a fake edge.
+        import quotes as _q
+        over_book_dec = _q.american_to_decimal(market.get("over_price"))
+        under_book_dec = _q.american_to_decimal(market.get("under_price"))
+        if p_over_model is not None and total_book is not None and (over_book_dec or under_book_dec):
             p_under_model = 1.0 - p_over_model
-            edge_over = p_over_model * over_book_dec - 1
-            edge_under = p_under_model * under_book_dec - 1
+            sides = []
+            if over_book_dec:
+                sides.append(("OVER", p_over_model, over_book_dec, p_over_model * over_book_dec - 1))
+            if under_book_dec:
+                sides.append(("UNDER", p_under_model, under_book_dec, p_under_model * under_book_dec - 1))
 
-            for tot_side, tot_p, tot_dec, tot_edge in (
-                ("OVER", p_over_model, over_book_dec, edge_over),
-                ("UNDER", p_under_model, under_book_dec, edge_under),
-            ):
+            for tot_side, tot_p, tot_dec, tot_edge in sides:
                 if tot_p < 0.30 or tot_p > 0.78: continue
                 if tot_edge < 0.03: continue
-                calibrated_p_tot = _shrink_toward_book(tot_p, 0.5)
+                side_px = market.get("over_price") if tot_side == "OVER" else market.get("under_price")
+                opp_px = market.get("under_price") if tot_side == "OVER" else market.get("over_price")
+                devig = _q.no_vig_two_way(side_px, opp_px)    # only from this market's two posted sides
+                calibrated_p_tot = _shrink_toward_book(tot_p, devig if devig is not None else 0.5)
                 calibrated_edge_tot = calibrated_p_tot * tot_dec - 1
                 total_edges.append({
                     "matchup": matchup,
@@ -215,10 +218,10 @@ def run() -> Dict[str, Any]:
                     "total_line": total_book,
                     "model_prob": round(tot_p, 4),
                     "calibrated_prob": round(calibrated_p_tot, 4),
-                    "book_implied_devig": 0.5,  # standard -110 = 50% devig
-                    "model_book_gap_pp": round((tot_p - 0.5) * 100, 2),
-                    "book_american": -110,
-                    "book_decimal": over_book_dec,
+                    "book_implied_devig": round(devig, 4) if devig is not None else None,
+                    "model_book_gap_pp": round((tot_p - devig) * 100, 2) if devig is not None else None,
+                    "book_american": side_px,
+                    "book_decimal": round(tot_dec, 4),    # this side's own price (was the over price for both)
                     "edge_pct": round(tot_edge * 100, 2),
                     "calibrated_edge_pct": round(calibrated_edge_tot * 100, 2),
                     "kelly_fraction": round(max(0, (tot_p * tot_dec - 1) / (tot_dec - 1)), 4),
@@ -240,7 +243,7 @@ def run() -> Dict[str, Any]:
         "ml_edges": edges,
         "total_edges": total_edges,
         "method_note": "REAL book-vs-model. ML lines de-vigged from matchups.market.ml_*. "
-                       "Totals use standard -110/-110 (1.909 decimal) since matchups.market.total "
+                       "Totals use the book's real posted over/under juice (no juice -> no total edge); "
                        "doesn't include the price (just the line). Filter 3%+ edge, "
                        "model_prob in [0.30, 0.78].",
     }

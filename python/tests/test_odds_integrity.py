@@ -278,3 +278,31 @@ def test_today_status_counts_only_what_is_on_disk(tmp_path, monkeypatch):
     mlb = [r for r in out["sports"] if r["sport"] == "MLB"][0]
     assert mlb["status"].startswith("Off-season")
     assert out["alpha"]["has_pick"] is False and "9 were player props" in out["alpha"]["reason"]
+
+
+# ------------------------------------------------- remaining price paths ----
+def test_arbitrage_never_publishes_the_demo():
+    import arbitrage as ar
+    out = ar.unavailable_artifact()
+    assert out["available"] is False and out["arbs"] == [] and out["middles"] == []
+
+
+def test_sharpe_ranking_skips_unpriced(tmp_path, monkeypatch):
+    import sharpe_ranking as sr
+    bb = tmp_path / "best_bets.json"
+    bb.write_text(json.dumps({"bets": [{"model_prob": 0.6, "label": "no price"},
+                                       {"model_prob": 0.6, "label": "priced", "book_american": -120}]}))
+    monkeypatch.setattr(sr, "BB_PATH", str(bb))
+    monkeypatch.setattr(sr, "OUT_PATH", str(tmp_path / "out.json"))
+    out = sr.run()
+    labels = [r["label"] for r in (out.get("rankings") or out.get("all") or [])]
+    assert "no price" not in labels and "priced" in labels
+
+
+def test_ml_reprice_no_longer_stamps_later_prices():
+    import ml_reprice as mr
+    pend = [{"pick_id": "p", "sport": "MLB", "market": "ML_HOME", "player_or_matchup": "NYY @ BOS",
+             "fair_american": -110, "settled": False}]
+    mr._SEED_CACHE = {}
+    mr.apply_ledger(pend, lambda p: "home")
+    assert pend[0].get("book_american") is None

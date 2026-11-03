@@ -118,6 +118,8 @@ def _load_game_legs() -> List[Dict[str, Any]]:
             leg_edge = r.get("edge_pct") or 0
             if leg_edge < MIN_LEG_EDGE_PCT or leg_edge > MAX_LEG_EDGE_PCT:
                 continue
+            if r.get("market_price") is None:
+                continue                      # no real price -> not a leg
             legs.append({
                 "type": "game",
                 "label": f"{g['matchup']} {r.get('label')}",
@@ -125,7 +127,7 @@ def _load_game_legs() -> List[Dict[str, Any]]:
                 "market": r.get("label"),
                 "side": None,
                 "line": None,
-                "price": int(_nz(r.get("market_price"), -110)),
+                "price": int(r["market_price"]),   # real price only (no -110 default, 2026-11-03)
                 "model_prob": float((r.get("model_prob") or 0)),
                 "edge_pct": r.get("edge_pct"),
                 "game_id": g.get("matchup"),
