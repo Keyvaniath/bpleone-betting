@@ -86,8 +86,8 @@ def curated_model_priced(p) -> bool:
     graded at the model's own fair price because no book price was stamped --
     the curated record is graded at the house price, so it needs a real one."""
     cur = str(p.get("source", "")).startswith(CURATED) or any(str(x).startswith(CURATED) for x in p.get("also_sources") or [])
-    mk = str(p.get("market") or "")
-    game = mk.startswith(("OVER_", "UNDER_")) or "ml" in mk.lower()
+    mk = str(p.get("market") or "").upper()     # case-insensitive: 'over_7.5' was missed (2026-11-03)
+    game = mk.startswith(("OVER_", "UNDER_")) or "ML" in mk
     return (cur and game and p.get("sport") == "MLB" and p.get("book_american") is None
             and p.get("fair_american") is not None and not placeholder(p))
 
@@ -207,7 +207,7 @@ def main(dry=False):
             first_pitch = min(starts) if starts else dt.datetime.fromisoformat(gd + "T16:00:00+00:00")
             cutoff = min(max(rec, dt.datetime.fromisoformat(gd + "T15:59:00+00:00")),
                          first_pitch - dt.timedelta(minutes=5))
-            mk = str(p.get("market") or "")
+            mk = str(p.get("market") or "").upper()
             tot = re.fullmatch(r"(OVER|UNDER)_(\d+(?:\.\d+)?)", mk)
             side = _ml_side(p)
             nxt = (dt.date.fromisoformat(gd) + dt.timedelta(days=1)).isoformat()

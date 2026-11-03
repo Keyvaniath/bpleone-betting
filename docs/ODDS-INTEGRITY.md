@@ -95,15 +95,35 @@ is not the model's ~52.4%) stops new ones.
   9.1.1) + a CI step in `daily-pipeline.yml`. Real data: 0 picks newly voided,
   curated unchanged (290-243, -3.92u).
 
+## Price provenance (branch `integrity/price-provenance`, 2026-11-03, NOT merged)
+
+Every ledger + archive row carries `price_provenance` {class, kind, book,
+observed_at, snapshot_id, inferred}: **A** `book_snapshot` (timestamped quote
+at pick time -- stamped at intake from the quote the board / desk carried);
+**B** `reconstructed` (seed re-price, `repriced.book` / snapshot) or
+`book_untimestamped` (book price stamped without a time -- all history before
+11/03); **C** `model_fair`, `venue_breakeven` (PrizePicks), `unpriced`. Backfill
+is `inferred: true`; a re-price moves A -> B and keeps
+`price_provenance_at_intake`. Ledger summary `by_price_class` (all / curated),
+shown on track-record. Backfill result: all settled B 299-252 (-4.09u), C
+9,390-11,113 (-3,535u), A none yet; curated entirely B 289-243 (-4.60u) after
+one more curated total (`over_7.5`, lower case, missed by the case-sensitive
+audit) was voided. Fixed with it: the `top_25_board` collector dropped
+`book_american` / `quote` (a quoted board pick would have been graded at the
+model's price); the game-lines desk now attaches its snapshot quote. Tests: 29
+pass.
+
 ## Open (P0)
 
-1. (done on branch, pending merge) selection + settlement + evaluation fail closed.
+1. (merged a5aee8bd58, approved 11/03) selection + settlement + evaluation fail closed.
 2. Remaining -110 assumptions in secondary boards: `mlb_model.py:184-185`
    (unposted totals juice), `book_vs_model_team.py:198` (totals -110/-110 --
    now re-priced before the Alpha uses it, but the board itself still shows
    it), `slate_roi_projector.py`, `sharpe_ranking.py`.
-3. No per-record provenance field yet (`price_provenance`: book_snapshot /
-   reconstructed / model_fair / synthetic) -- classification is inferred.
+3. (done on branch) per-record `price_provenance`. Follow-up: ESPN's default
+   NFL board shows last week until midweek -> the desk misses early Week-N
+   lines (fetch the upcoming week explicitly); `ml_reprice` pending_priced reads
+   `by_matchup`, which is not status-filtered (could stamp an in-play price).
 4. Alpha record (locked days) is 70 props at the model's own price (+13.36u) +
    35 DK game lines (-0.78u): counting rule is Brandon's call.
 5. `param_recommender` auto-applied thresholds tuned on 0.909-payout units --

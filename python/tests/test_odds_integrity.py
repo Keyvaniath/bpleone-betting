@@ -184,3 +184,45 @@ def test_intake_gate_blocks_synthetic_minus_110_only():
              {"pick_id": "book", "book_american": -110, "fair_american": -250, "prob": 0.71}]
     kept = {p["pick_id"] for p in t._block_unpriced(picks)}
     assert kept == {"genuine_fair", "book"}
+
+
+# ------------------------------------------------------------ provenance ----
+def test_provenance_classes():
+    import all_picks_tracker as t
+    pv = t._price_provenance
+    q = {"provenance": "book_snapshot", "book": "draftkings", "observed_at": "2026-11-03T17:30:00",
+         "snapshot_id": "espn_odds@x#1", "event_id": "1"}
+    assert pv({"book_american": -120, "quote": q}, at_intake=True)["class"] == "A"
+    assert pv({"book_american": -120})["kind"] == "book_untimestamped"            # no timestamp -> not A
+    assert pv({"book_american": -120, "repriced": {"book": "bovada"}})["kind"] == "reconstructed"
+    assert pv({"fair_american": -250, "market": "PRA_UNDER_40.5"})["kind"] == "model_fair"
+    assert pv({"fair_american": -136, "market": "PP_batter_hrr_under_3.5"})["kind"] == "venue_breakeven"
+    assert pv({})["kind"] == "unpriced"
+    # a synthetic quote never makes class A, even with a timestamp
+    assert pv({"book_american": -110, "quote": dict(q, provenance="synthetic")}, at_intake=True)["class"] == "B"
+
+
+def test_reprice_moves_intake_A_to_B_and_keeps_original():
+    import all_picks_tracker as t
+    q = {"provenance": "book_snapshot", "book": "draftkings", "observed_at": "2026-11-03T17:30:00"}
+    p = {"book_american": -120, "quote": q}
+    p["price_provenance"] = t._price_provenance(p, at_intake=True)
+    p.pop("quote")
+    p["repriced"] = {"book": "draftkings", "book_snapshot_at": "2026-11-03T18:00:00"}
+    assert t._backfill_provenance([p]) == 1
+    assert p["price_provenance"]["kind"] == "reconstructed" and p["price_provenance_at_intake"]["class"] == "A"
+    assert t._backfill_provenance([p]) == 0                                     # idempotent
+
+
+def test_top25_collector_carries_the_quote(tmp_path, monkeypatch):
+    """A board pick must reach the ledger with its book price + quote, never
+    only the model's fair price (it would be graded at the model's number)."""
+    import all_picks_tracker as t
+    (tmp_path / "todays_top_plays.json").write_text(json.dumps({"top_25": [
+        {"sport": "NBA", "player_or_matchup": "PHI @ DET", "market": "ML_HOME", "prob": 0.6,
+         "fair_american": -150, "book_american": -110,
+         "quote": {"provenance": "book_snapshot", "book": "draftkings", "observed_at": "2026-11-03T17:30:00"}}]}))
+    monkeypatch.setattr(t, "DATA_DIR", str(tmp_path))
+    rows = [r for r in t._collect_picks_from_sources() if r.get("source") == "top_25_board"]
+    assert rows and rows[0]["book_american"] == -110
+    assert rows[0]["price_provenance"]["class"] == "A"
