@@ -41,6 +41,26 @@ bpleone-site/
 
 ## Current deployment state (LIVE)
 
+- **2026-11-03 — NFL PROPS: CALIBRATED LINE SELECTION (form_v3).** Season
+  calibration (one pick per player-game): pass_yds 57% vs 75% predicted,
+  rush_yds 64%, pass_cmp 55%; rec/rec_yds on target. Split by direction it is
+  the OVERS (pass_yds_over 4/8, rush_yds_over 6/11, pass_cmp_over 3/7,
+  longest_* ~54%) -- winner's curse: Week 7-9 OVER picks came in at a median
+  0.79x (pass) / 0.77x (rush) the projection, because `_best_line_mc` takes the
+  line with the highest raw p. recalibration.py never corrected them: every
+  family was below the 30-bet floor (identity). Changes: (1) recalibration
+  `parent_ratio`: a thin family borrows the realized/predicted ratio of its
+  sport+direction pool of THIN families (big self-fitted families excluded --
+  they dragged calibrated thin ones), shrunk by the pool's n and blended with
+  the family's own record, and only when the pool is > 2 SE off (no
+  out-of-sample proof otherwise: the time-split test had 18 picks). NFL overs
+  pool: 95 picks, ratio 0.85 -> a raw 0.75 over -> ~0.59. (2)
+  nfl_player_props `_best_line_mc` runs the band + choice on the recalibrated
+  p, keeps `p_raw`; form_rule form_v3. (3) the ledger's `p_predicted` for NFL
+  props = p_raw, so the recalibration keeps learning from the model, not its
+  own output (otherwise it would oscillate). Untested on a live slate (Week
+  10 not loaded on 11/3); synthetic check: a 75% raw pass-yds over now picks
+  the under instead.
 - **2026-11-02 — NHL SKATER PROPS ON REAL RATES.** Season calibration by
   source (hit rate vs predicted): HITS_OVER_2.5 33% vs 67% (n=27),
   BLOCKS_OVER_1.5 49% vs 64% (n=47), ANYTIME_GOAL_NO 71% vs 87% (n=21); P3

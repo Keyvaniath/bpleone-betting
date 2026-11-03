@@ -761,7 +761,9 @@ def _collect_picks_from_sources() -> List[Dict[str, Any]]:
                 "market": bm.get("market"),
                 "prob": bm.get("p"),
                 "fair_american": bm.get("fair_odds"),
-                "p_predicted": bm.get("p"),
+                # raw model prob (pre-recalibration) so recalibration.py keeps
+                # learning from the model, not from its own output (form_v3)
+                "p_predicted": bm.get("p_raw") or bm.get("p"),
                 "matchup": r.get("matchup"),
                 # Date the pick to its kickoff so it settles vs that day's box
                 # score (NFL games are days out, not same-day like MLB props).

@@ -392,15 +392,30 @@ def _wide_candidates(team_set: set, gl: Dict[str, Any]) -> Dict[str, Dict[str, A
 
 
 def _best_line_mc(samples, lines, prefix, band=(0.58, 0.80)):
-    """Pick the standard line the simulated distribution leans on most (playable)."""
+    """Pick the standard line the simulated distribution leans on most (playable).
+
+    CALIBRATED SELECTION (2026-11-02, form_v3): picking the line with the
+    highest RAW probability selects exactly the players the model over-projects
+    (winner's curse: on Week 7-9 OVER picks the actual came in at a median 0.79x
+    the projection for pass yards, 0.77x for rush yards; those OVERS hit ~55%
+    at ~75% predicted). The band and the choice now run on the recalibrated
+    probability (recalibration.py, settled-outcome isotonic / parent pooling);
+    `p_raw` is kept so the recalibration keeps learning from raw predictions."""
+    try:
+        import recalibration as _rc
+        _cal = _rc.recalibrate
+    except Exception:
+        _cal = lambda q, m: q
     best = None
     for line in lines:
         p_over = _SIM.prob_over(samples, line)
-        side, p = ("OVER", p_over) if p_over >= 0.5 else ("UNDER", 1 - p_over)
+        side, p_raw = ("OVER", p_over) if p_over >= 0.5 else ("UNDER", 1 - p_over)
+        market = f"{prefix}_{side}_{line}"
+        p = _cal(p_raw, market)
         if not (band[0] <= p <= band[1]):
             continue
         if best is None or p > best["p"]:
-            best = {"market": f"{prefix}_{side}_{line}", "p": round(p, 3),
+            best = {"market": market, "p": round(p, 3), "p_raw": round(p_raw, 3),
                     "fair_odds": _american(p), "line": line, "side": side}
     return best
 
@@ -568,7 +583,7 @@ def _write_projections(details: List[Dict[str, Any]], mode: str,
     details.sort(key=lambda d: -(((d.get("dk_points") or {}).get("mean")) or 0))
     _payload = {
         "generated_at": dt.datetime.utcnow().isoformat(timespec="seconds"),
-        "form_rule": "form_v2",   # stamped onto every ledger pick (judged from 10/23 forward)
+        "form_rule": "form_v3",   # v3 = calibrated line selection (2026-11-02); v2 judged from 10/23
         "mode": mode,   # 'preview' (preseason: next regular-season slate) | 'live'
         "week_start": week_start,
         "n_players": len(details),
@@ -629,7 +644,7 @@ def run() -> Dict[str, Any]:
             _write_projections(details, "preview", wk_start)
         out = {
             "generated_at": dt.datetime.utcnow().isoformat(timespec="seconds"),
-        "form_rule": "form_v2",   # stamped onto every ledger pick (judged from 10/23 forward)
+        "form_rule": "form_v3",   # v3 = calibrated line selection (2026-11-02); v2 judged from 10/23
             "season_status": season_status,
             "n_props": 0,
             "n_strong_edges": 0,
@@ -718,7 +733,7 @@ def run() -> Dict[str, Any]:
     strong = [r for r in rows if r.get("best_market")]
     out = {
         "generated_at": dt.datetime.utcnow().isoformat(timespec="seconds"),
-        "form_rule": "form_v2",   # stamped onto every ledger pick (judged from 10/23 forward)
+        "form_rule": "form_v3",   # v3 = calibrated line selection (2026-11-02); v2 judged from 10/23
         "season_status": season_status or "regular",
         "n_props": len(rows),
         "n_strong_edges": len(strong),

@@ -30,6 +30,7 @@ Output: data/recalibration_map.json
 from __future__ import annotations
 
 import os
+import re
 import json
 import datetime as dt
 from typing import Any, Dict, List, Optional, Tuple
@@ -60,9 +61,23 @@ def _load_ledger() -> Dict[str, Any]:
         return {}
 
 
+def _direction(fam: str) -> Optional[str]:
+    m = re.search(r"(?:^|_)(over|under|yes|no)(?:_|$)", str(fam))
+    return m.group(1) if m else None
+
+
+_PARENT_OF: Dict[str, str] = {}   # family -> "SPORT:direction" (most common sport of its picks)
+
+
 def _pairs_by_family() -> Dict[str, List[Tuple[float, int]]]:
-    """{canonical_family: [(predicted_prob, outcome 0/1), ...]} from settled picks."""
+    """{canonical_family: [(predicted_prob, outcome 0/1), ...]} from settled picks.
+    Also fills _PARENT_OF and returns parent pools under "parent:SPORT:dir" keys
+    (2026-11-02: NFL yardage OVERS hit ~55% at ~75% predicted, but each family
+    -- pass_yds_over n=8, rush_yds_over 11, pass_cmp_over 7 -- sat below the
+    30-bet floor, so nothing corrected them; their sport+direction parent
+    pools them)."""
     out: Dict[str, List[Tuple[float, int]]] = {}
+    sport_ct: Dict[str, Dict[str, int]] = {}
     for p in (_load_ledger().get("picks") or []):
         if p.get("voided") or p.get("result") not in ("won", "lost"):
             continue
@@ -78,7 +93,22 @@ def _pairs_by_family() -> Dict[str, List[Tuple[float, int]]]:
         if not (0.0 < pr < 1.0):
             continue
         y = 1 if p.get("result") == "won" else 0
-        out.setdefault(pc.canon_market_family(p.get("market")), []).append((pr, y))
+        fam = pc.canon_market_family(p.get("market"))
+        out.setdefault(fam, []).append((pr, y))
+        sp = str(p.get("sport") or "").upper()
+        if sp and _direction(fam):
+            c = sport_ct.setdefault(fam, {})
+            c[sp] = c.get(sp, 0) + 1
+    # Parent pools hold only the THIN families (below MIN_N_FAMILY): a family
+    # with its own fit is already corrected, and letting a big miscalibrated
+    # one (mlb_hrr_2.5_over, n=746 at 0.38 of predicted) set the pool's ratio
+    # dragged well-calibrated thin ones (mlb_hit_0.5_over) down with it.
+    _PARENT_OF.clear()
+    for fam, c in sport_ct.items():
+        _PARENT_OF[fam] = f"parent:{max(c, key=c.get)}:{_direction(fam)}"
+    for fam, key in _PARENT_OF.items():
+        if len(out.get(fam) or []) < MIN_N_FAMILY:
+            out.setdefault(key, []).extend(out[fam])
     return out
 
 
@@ -147,6 +177,12 @@ def _interp(x: float, anchors: List[List[float]]) -> float:
 
 
 def _apply(fit: Dict[str, Any], raw: float) -> float:
+    if fit["method"] == "parent_ratio":
+        # the parent's realized/predicted ratio, shrunk by its sample, then a
+        # family-average blend with the family's own (thin) record
+        adj = raw + (raw * fit["ratio"] - raw) * fit["parent_n"] / (fit["parent_n"] + PRIOR_K)
+        n, r = fit["n"], fit["realized"]
+        return _clamp((PRIOR_K * adj + n * r) / (PRIOR_K + n))
     if fit["method"] == "family_avg":
         n, r = fit["n"], fit["realized"]
         return _clamp((PRIOR_K * raw + n * r) / (PRIOR_K + n))
@@ -160,8 +196,22 @@ def _maps() -> Dict[str, Dict[str, Any]]:
     global _MAP_CACHE
     if _MAP_CACHE is None:
         _MAP_CACHE = {}
-        for fam, pairs in _pairs_by_family().items():
+        allp = _pairs_by_family()
+        for fam, pairs in allp.items():
+            if fam.startswith("parent:"):
+                continue
             fit = _fit_family(pairs)
+            if not fit:
+                par = allp.get(_PARENT_OF.get(fam, ""), [])
+                pred = sum(x for x, _ in par) / len(par) if par else 0.0
+                real = sum(y for _, y in par) / len(par) if par else 0.0
+                # only a parent that is itself clearly off (> 2 SE) moves a thin
+                # family: no out-of-sample proof the pooling helps otherwise
+                sig = par and abs(real - pred) > 2 * (pred * (1 - pred) / len(par)) ** 0.5
+                if len(par) >= MIN_N_FAMILY and pairs and sig:
+                    fit = {"method": "parent_ratio", "n": len(pairs), "parent": _PARENT_OF[fam],
+                           "parent_n": len(par), "ratio": round((sum(y for _, y in par) / len(par)) / pred, 4),
+                           "realized": round(sum(y for _, y in pairs) / len(pairs), 4)}
             if fit:
                 _MAP_CACHE[fam] = fit
     return _MAP_CACHE
@@ -212,6 +262,8 @@ def run() -> Dict[str, Any]:
     families: List[Dict[str, Any]] = []
 
     for fam, pairs in fam_pairs.items():
+        if fam.startswith("parent:"):
+            continue
         ps = [p for p, _ in pairs]
         ys = [y for _, y in pairs]
         fit = maps.get(fam)
@@ -233,7 +285,8 @@ def run() -> Dict[str, Any]:
             "ece_raw": round(ece_raw, 4),
             "ece_calibrated": round(ece_cal, 4),
             "transform": ({"anchors": fit["anchors"]} if fit and fit["method"] == "bucketed"
-                          else ({"realized": fit["realized"]} if fit else None)),
+                          else ({k: fit[k] for k in ("realized", "parent", "parent_n", "ratio") if k in fit}
+                                if fit else None)),
         })
 
     families.sort(key=lambda f: -(f["ece_raw"] - f["ece_calibrated"]))
