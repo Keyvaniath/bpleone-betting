@@ -179,9 +179,23 @@ def _price_corrections(history):
         vm += vr.startswith("unpriced moneyline")
         vt += vr.startswith("unpriced total")
         vu += vr.startswith("unposted total")
+    ph_rp = sum(1 for p in rows if str((p.get("repriced") or {}).get("reason") or "").startswith("2026-11-03: graded at a placeholder"))
+    ph_vd = sum(1 for p in rows if str(p.get("voided_reason") or "").startswith("unpriced: graded at a placeholder"))
     nba_regraded = sum(1 for p in rows if str(p.get("sport") or "").upper() == "NBA"
                        and any("wrong game" in str(x.get("reason") or "") for x in (p.get("resettle_log") or [])))
     return [
+        {"date": "2026-11-03", "label": "placeholder prices", "n_repriced": ph_rp, "n_voided": ph_vd,
+         "curated_before": "912-420 (+13.87%, +184.81u)", "curated_after": "803-345 (+13.73%, +157.67u)",
+         "note": ("Every settled pick still graded at a -110 that no book posted -- the grader's fallback "
+                  "when a pick had no price, or a board that filled in -110 when its line was missing -- was "
+                  "checked against the prices books actually posted before first pitch (git history: "
+                  "DraftKings, then the Odds API, then Bovada; the exact line for totals, never a snapshot "
+                  "after first pitch). Found: graded at that real price. Not found -- every player prop "
+                  "(1+ hit, home run: no sportsbook prop prices were ever recorded) and the totals no book "
+                  "showed -- voided, wins and losses alike. The 1+ hit props had been overpaid at -110 (real "
+                  "prices run near -250): curated drops ~27u. The home-run props had been underpaid (real "
+                  "prices run +300 and longer) and were not curated: the all-picks line moves from -3,732u "
+                  "to -3,644u.")},
         {"date": "2026-11-03", "label": "NBA grading", "n_repriced": 0, "n_voided": 0,
          "counts_text": (f"520 settled (190 had been voided as unsettleable, 330 sat pending), "
                          f"{nba_regraded} re-graded against the right game"),
@@ -1879,6 +1893,36 @@ def _nhl_intake(out: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
 
 
 STARTED_BLOCKED: List[str] = []   # picks on games already live/final at intake
+UNPRICED_BLOCKED: List[str] = []  # picks with no real price (placeholder -110) at intake
+
+
+def _block_unpriced(picks: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
+    """Never ledger a bet with no real price (2026-11-03: 481 settled picks had
+    been graded at a placeholder -110 -- the grader's no-price fallback, or a
+    board that stamped -110 when its line was missing). A pick needs a book
+    price, or a model fair price that is its own (a -110 fair price counts only
+    when the model's probability is ~52.4%)."""
+    UNPRICED_BLOCKED.clear()
+    out = []
+    for p in picks:
+        b, f = p.get("book_american"), p.get("fair_american")
+        bad = False
+        if b is None:
+            if f is None:
+                bad = p.get("prob") is not None or p.get("market") is not None
+                # signal-only rows (prob None, e.g. under-alert scores) are priced
+                # later from the live board; they are checked again at settle
+                bad = bad and p.get("prob") is not None
+            elif f == -110:
+                try:
+                    bad = abs(float(p.get("prob")) - 0.5238) > 0.02
+                except (TypeError, ValueError):
+                    bad = True
+        if bad:
+            UNPRICED_BLOCKED.append(p.get("pick_id") or f"{p.get('source')}|{p.get('player_or_matchup')}")
+            continue
+        out.append(p)
+    return out
 PAST_DATE_BLOCKED: List[str] = []  # picks whose game date is before today (ET)
 
 
@@ -3728,11 +3772,13 @@ def run() -> Dict[str, Any]:
     n_bootstrapped = _bootstrap_from_locks_history(history, existing_ids)
 
     # Collect today's picks from every source
-    today_picks = _block_past_dated(_block_inactive_players(_collect_picks_from_sources()))
+    today_picks = _block_unpriced(_block_past_dated(_block_inactive_players(_collect_picks_from_sources())))
     if STARTED_BLOCKED:
         print(f"  started gate: {len(STARTED_BLOCKED)} pick(s) on games already live/final -- not logged")
     if PAST_DATE_BLOCKED:
         print(f"  past-date gate: {len(PAST_DATE_BLOCKED)} pick(s) dated before today (ET) -- not logged")
+    if UNPRICED_BLOCKED:
+        print(f"  price gate: {len(UNPRICED_BLOCKED)} pick(s) with no real price (placeholder -110) -- not logged")
     if INACTIVE_BLOCKED:
         print(f"  activity gate: {len(INACTIVE_BLOCKED)} NFL/NHL player props on players not playing -- not logged")
     n_added = 0
@@ -4075,9 +4121,10 @@ def run() -> Dict[str, Any]:
         d = b["wins"] + b["losses"]
         b["hit_rate"] = round(b["wins"] / d, 4) if d else None
         b["roi_pct"] = round(b["net_units"] / d * 100, 2) if d else None
-        b["label"] = ("from 10/23 -- season-to-date form (judged)" if r == "form_v2"
+        b["label"] = ("from 11/3 -- calibrated line selection (judged)" if r == "form_v3"
+                      else "10/23-11/2 -- season-to-date form (judged)" if r == "form_v2"
                       else "before 10/23 -- one-game form (retired; record only)")
-    nfl_props_by_model = {"cutoff": _pc.NFL_FORM_V2_FROM, "current": "form_v2", "lines": nfl_by_model,
+    nfl_props_by_model = {"cutoff": _pc.NFL_FORM_V2_FROM, "current": "form_v3", "lines": nfl_by_model,
                           "note": ("NFL props are judged from 10/23 forward: the simulator's form rule "
                                    "changed, so earlier picks are a different model. They stay on the "
                                    "record as their own line and never feed a family verdict.")}
@@ -4182,6 +4229,7 @@ def run() -> Dict[str, Any]:
         "inactive_player_props_blocked": len(INACTIVE_BLOCKED),
         "started_game_picks_blocked": len(STARTED_BLOCKED),
         "past_dated_picks_blocked": len(PAST_DATE_BLOCKED),
+        "unpriced_picks_blocked": len(UNPRICED_BLOCKED),
         "restatement": {
             "date": "2026-10-23",
             "note": ("The headline became ALL-TIME on 2026-10-23. 5,946 settled picks that the old "
