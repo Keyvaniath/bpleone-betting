@@ -108,6 +108,23 @@ SPORT_QUERY = {
 # board. For these leagues also ask for today's ET date explicitly and merge
 # (deduped by event id; today's copy last so matchup-keyed joins take it).
 DATED_SPORTS = {"mlb", "nba", "wnba", "nhl", "ncaab"}
+# THE WEEKLY ROLLOVER (2026-11-03): the bare NFL / college-football board keeps
+# showing LAST week (all finals) until midweek -- on Tuesday 11/3 it held 14
+# finished Week 9 games and none of Week 10, so the game-lines desk had an empty
+# NFL board whenever DraftKings posted next week's lines before the rollover.
+# For weekly leagues also request the NEXT week (week + 1, same season type;
+# after the last regular-season week, postseason week 1) and merge by event id.
+WEEKLY_SPORTS = {"nfl", "ncaaf"}
+
+
+def _next_week_query(board: Dict[str, Any]) -> Optional[str]:
+    """`week=N+1&seasontype=T` from the bare board's own week / season block,
+    or the postseason's first week once the regular season's weeks run out."""
+    wk = (board.get("week") or {}).get("number")
+    st = (board.get("season") or {}).get("type")
+    if not wk or not st:
+        return None
+    return f"week={int(wk) + 1}&seasontype={int(st)}"
 
 
 def _today_et() -> str:
@@ -128,11 +145,28 @@ def fetch_sport(sport: str) -> List[Dict[str, Any]]:
     if sport in DATED_SPORTS:
         urls.append(base + (q + "&" if q else "?") + f"dates={_today_et()}")
     events: List[Dict[str, Any]] = []
+    first: Dict[str, Any] = {}
     for u in urls:
         try:
-            events.extend(_get(u).get("events") or [])
+            d = _get(u)
+            first = first or d
+            events.extend(d.get("events") or [])
         except Exception as e:
             print(f"[espn-odds] {sport} fetch failed ({u.rsplit('/', 1)[-1]}): {e!r}")
+    if sport in WEEKLY_SPORTS and first:
+        nq = _next_week_query(first)
+        tries = [nq] if nq else []
+        if (first.get("season") or {}).get("type") == 2:
+            tries.append("week=1&seasontype=3")       # regular season over -> postseason week 1
+        for qq in tries:
+            try:
+                nxt = _get(base + (q + "&" if q else "?") + qq).get("events") or []
+            except Exception as e:
+                print(f"[espn-odds] {sport} next-week fetch failed ({qq}): {e!r}")
+                nxt = []
+            if nxt:
+                events.extend(nxt)
+                break
     if not events:
         return []
     last = {}

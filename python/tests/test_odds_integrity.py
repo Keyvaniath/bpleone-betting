@@ -226,3 +226,34 @@ def test_top25_collector_carries_the_quote(tmp_path, monkeypatch):
     rows = [r for r in t._collect_picks_from_sources() if r.get("source") == "top_25_board"]
     assert rows and rows[0]["book_american"] == -110
     assert rows[0]["price_provenance"]["class"] == "A"
+
+
+# ------------------------------------------------------------- NFL feed ----
+def test_next_week_query_and_rollover():
+    import espn_odds as eo
+    assert eo._next_week_query({"week": {"number": 8}, "season": {"type": 2}}) == "week=9&seasontype=2"
+    assert eo._next_week_query({}) is None
+
+
+def test_weekly_feed_merges_next_week(monkeypatch):
+    """The bare NFL board holds last week's finals until midweek; next week's
+    priced games must still reach espn_odds (2026-11-03: 0 -> 15 NFL lines)."""
+    import espn_odds as eo
+
+    def ev(i, state, ml=None):
+        odds = [{"moneyline": {"home": {"close": {"odds": str(ml)}}, "away": {"close": {"odds": "+150"}}}}] if ml else []
+        return {"id": str(i), "date": "2026-11-08T18:00Z", "competitions": [{
+            "competitors": [{"homeAway": "home", "team": {"abbreviation": "KC"}},
+                            {"homeAway": "away", "team": {"abbreviation": f"T{i}"}}],
+            "odds": odds, "status": {"type": {"state": state}}}]}
+
+    def fake_get(url):
+        if "week=9" in url:
+            return {"events": [ev(2, "pre", "-180"), ev(1, "post")]}       # overlap with the bare board
+        return {"week": {"number": 8}, "season": {"type": 2}, "events": [ev(1, "post")]}
+
+    monkeypatch.setattr(eo, "_get", fake_get)
+    games = eo.fetch_sport("nfl")
+    assert sorted(g["event_id"] for g in games) == ["1", "2"]                # merged, deduped by id
+    nxt = [g for g in games if g["event_id"] == "2"][0]
+    assert nxt["status"] == "pre" and nxt["market"]["ml_home"] == -180
