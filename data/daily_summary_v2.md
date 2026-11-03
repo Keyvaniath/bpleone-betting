@@ -1,18 +1,18 @@
 # EdgeStat Daily Summary — 2026-11-03
 
-## 🏥 Model Health: 61.1/100 [OK]
+## 🏥 Model Health: 64.6/100 [OK]
 - Operational but room to improve - check yellow components
-  - 🟢 Calibration Freshness: 100.0/100
-  - 🔴 Hit Rate Trend: 44.0/100
-  - 🔴 Brier Trend: 9.2/100
+  - 🟢 Calibration Freshness: 99.6/100
+  - 🔴 Hit Rate Trend: 48.1/100
+  - 🔴 Brier Trend: 13.8/100
   - 🟢 Pipeline Audit: 100.0/100
-  - 🟢 Data Health: 86.4/100
+  - 🟢 Data Health: 95.5/100
   - 🔴 Edge Count: 31.4/100
 
 ## 🌐 Slate Overview
-- **Regime today:** BALANCED (avg P(home)=0.543)
-- **Total games on board:** 43
-- **Strong home favorites:** 17 | **Strong road dogs:** 13
+- **Regime today:** BALANCED (avg P(home)=0.544)
+- **Total games on board:** 48
+- **Strong home favorites:** 18 | **Strong road dogs:** 13
 
 ## 🎯 Top 5 Best Bets
 1. **LOL Inspired UNDER 3.5 Kills** (78/100 ★★★★)
@@ -49,31 +49,31 @@
 - Hot teams: **8** | Cold teams: **24** | Over-heavy: 0 | Under-heavy: 35
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (246)
-- RESIDUAL_DIVERGENCE: **10**
-- STEAM_MOVE: **236**
-  - Winnipeg Jets (NHL): Winnipeg Jets OUTPERFORMING expected margin by 7.3pts in recent games -- model bias may persist
-  - Tampa Bay Lightning (NHL): Tampa Bay Lightning UNDERPERFORMING expected margin by 8.8pts in recent games -- model bias may persist
-  - New York Rangers (NHL): New York Rangers OUTPERFORMING expected margin by 9.9pts in recent games -- model bias may persist
-  - Pittsburgh Penguins (NHL): Pittsburgh Penguins UNDERPERFORMING expected margin by 9.2pts in recent games -- model bias may persist
-  - Vegas Golden Knights (NHL): Vegas Golden Knights OUTPERFORMING expected margin by 8.6pts in recent games -- model bias may persist
+## ⚠️ Anomaly Detector (254)
+- RESIDUAL_DIVERGENCE: **15**
+- STEAM_MOVE: **239**
+  - Charlotte Hornets (NBA): Charlotte Hornets UNDERPERFORMING expected margin by 10.2pts in recent games -- model bias may persist
+  - Chicago Bulls (NBA): Chicago Bulls UNDERPERFORMING expected margin by 9.8pts in recent games -- model bias may persist
+  - Indiana Pacers (NBA): Indiana Pacers UNDERPERFORMING expected margin by 9.5pts in recent games -- model bias may persist
+  - Houston Rockets (NBA): Houston Rockets OUTPERFORMING expected margin by 6.3pts in recent games -- model bias may persist
+  - San Antonio Spurs (NBA): San Antonio Spurs OUTPERFORMING expected margin by 9.7pts in recent games -- model bias may persist
 
-## 💰 Today's Portfolio (11 picks)
-- Total stake: **$265.0** (26.5% of $1000 bankroll)
-- Expected EV: **$-7.54**
+## 💰 Today's Portfolio (13 picks)
+- Total stake: **$335.0** (33.5% of $1000 bankroll)
+- Expected EV: **$-6.0**
   - #1 [LOL] $35 on LOL Inspired UNDER 3.5 Kills (P=62%)
   - #2 [LOL] $35 on LOL ShowMaker OVER 3.5 Kills (P=62%)
   - #3 [LOL] $35 on LOL Peyz OVER 4.5 Kills (P=61%)
-  - #4 [NHL] $20 on NHL Montreal Canadiens ML (9-3-2) vs Winnipeg Jets (P=60%)
-  - #5 [NHL] $20 on NHL Tampa Bay Lightning ML (8-3-2) vs Detroit Red Wings (P=61%)
+  - #4 [NBA] $35 on NBA Washington Wizards ML (4-3) vs Atlanta Hawks (P=62%)
+  - #5 [NBA] $35 on NBA Oklahoma City Thunder ML (5-2) vs Cleveland Cavaliers (P=70%)
 
-## 🎯 Convergence Picks (25 stacked games)
-- ELITE: **13** · HIGH: 5 · MED: 7
+## 🎯 Convergence Picks (26 stacked games)
+- ELITE: **11** · HIGH: 7 · MED: 8
   - [ELITE] Winnipeg Jets @ Montreal Canadiens : 6 signals (PREGAME, HEAT_COLD, HEAT_COLD, HEAT_COLD)
   - [ELITE] Carolina Hurricanes @ Nashville Predators : 6 signals (PREGAME, HEAT_COLD, HEAT_COLD, HEAT_COLD)
   - [ELITE] Anaheim Ducks @ Vancouver Canucks : 6 signals (PREGAME, HEAT_COLD, HEAT_COLD, ANOMALY)
-  - [ELITE] Vegas Golden Knights @ Boston Bruins : 5 signals (HEAT_COLD, ANOMALY, ANOMALY, ATS)
-  - [ELITE] Detroit Red Wings @ Florida Panthers : 5 signals (PREGAME, HEAT_COLD, HEAT_COLD, ANOMALY)
+  - [ELITE] Detroit Red Wings @ Tampa Bay Lightning : 5 signals (PREGAME, HEAT_COLD, HEAT_COLD, ANOMALY)
+  - [ELITE] Vegas Golden Knights @ Pittsburgh Penguins : 5 signals (HEAT_COLD, ANOMALY, ANOMALY, ATS)
 
 ## 🏀 NBA Player Heat (10 HOT / 4 COLD)
   - 🔥 **Maxime Raynaud** (SAC): L5 20.0/9.8/2.6 vs season 12.5/7.5/1.4 [PTS +7.5, REB +2.3]
@@ -109,12 +109,12 @@
 - [NHL] FADE Vegas Golden Knights (away on B2B)
 - [NHL] FADE Colorado Avalanche (away on B2B)
 
-## 📈 Streak Regression Alerts (6)
-- [NHL] Montreal Canadiens on W5 L10 5-0 -- Montreal Canadiens on W5 -- no historical sample
-- [NHL] Winnipeg Jets on L7 L10 0-5 -- Winnipeg Jets on L7 -- no historical sample
-- [NHL] New York Rangers on L4 L10 0-4 -- New York Rangers on L4 -- no historical sample
-- [NHL] Colorado Avalanche on W3 L10 4-1 -- Colorado Avalanche on W3 -- no historical sample
-- [NHL] Edmonton Oilers on W3 L10 3-2 -- Edmonton Oilers on W3 -- no historical sample
+## 📈 Streak Regression Alerts (17)
+- [NBA] Detroit Pistons on W3 L10 4-1 -- FADE Detroit Pistons (on W3, historically regress 100% of the time)
+- [NBA] Philadelphia 76ers on W4 L10 4-1 -- Philadelphia 76ers on W4 -- no historical sample
+- [NBA] Milwaukee Bucks on L3 L10 1-4 -- BACK Milwaukee Bucks (on L3, historically bounce back 100% of the time)
+- [NBA] Charlotte Hornets on L4 L10 1-4 -- Charlotte Hornets on L4 -- no historical sample
+- [NBA] Chicago Bulls on L5 L10 0-5 -- Chicago Bulls on L5 -- no historical sample
 
 ## 📉 Walk-Forward Trajectory (n_windows=3d × 8 markets)
 - 📈 Improving: **1** · ➖ Flat: 4 · 📉 Degrading: **3**

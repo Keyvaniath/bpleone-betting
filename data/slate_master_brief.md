@@ -1,30 +1,18 @@
 # EdgeStat — Tonight's Master Brief
-_Generated 2026-11-03T17:36:46 UTC_
+_Generated 2026-11-03T18:02:04 UTC_
 
 ## Slate Quality
 - **Tier:** NO_ACTION_NIGHT
-- **Score:** -144
+- **Score:** -164
 - **Advisory:** STAND DOWN. Slate has no aligned conviction. Skip betting tonight or watch only.
 - **Total LOCKs:** 0
-- **Total STRONG:** 6
+- **Total STRONG:** 1
 - **Total FADES:** 168
 
 ## Top 5 Curated Picks
-1. **GOLF / Steven Fisk** (GOLF_PLAYER, score=219.29)
-   - Play: Steven Fisk (PLAYER_STRONG)
-   - Rationale: Cross-sport top pick (GOLF_PLAYER)
-2. **GOLF / Kristoffer Ventura** (GOLF_PLAYER, score=219.29)
-   - Play: Kristoffer Ventura (PLAYER_STRONG)
-   - Rationale: Cross-sport top pick (GOLF_PLAYER)
-3. **NBA / NOP** (NBA_TEAM, score=60.0)
+1. **NBA / NOP** (NBA_TEAM, score=60.0)
    - Play: NOP (TEAM_STRONG)
    - Rationale: Cross-sport top pick (NBA_TEAM)
-
-## Top Events Board
-- **GOLF** / ? (TOURNAMENT_STRONG)
-  - Steven Fisk top 10 finish
-  - Kristoffer Ventura top 10 finish
-  - Mackenzie Hughes top 10 finish
 
 ## Slate ROI Projection
 - **Picks:** 0
@@ -33,13 +21,13 @@ _Generated 2026-11-03T17:36:46 UTC_
 - **Expected P&L on $100:** $0.0
 
 ## Top Fades
-- **NBA** / lauri markkanen (PLAYER_FADE)
-  - Fade angle: PTS UNDER + PRA UNDER (multi-prop)
 - **NBA** / tyrese maxey (PLAYER_FADE)
   - Fade angle: PTS UNDER + PRA UNDER (multi-prop)
-- **NBA** / kyrie irving (PLAYER_FADE)
+- **NBA** / shai gilgeous-alexander (PLAYER_FADE)
   - Fade angle: PTS UNDER + PRA UNDER (multi-prop)
 - **NBA** / jaylen brown (PLAYER_FADE)
   - Fade angle: PTS UNDER + PRA UNDER (multi-prop)
-- **NBA** / shai gilgeous-alexander (PLAYER_FADE)
+- **NBA** / jayson tatum (PLAYER_FADE)
+  - Fade angle: PTS UNDER + PRA UNDER (multi-prop)
+- **NBA** / lauri markkanen (PLAYER_FADE)
   - Fade angle: PTS UNDER + PRA UNDER (multi-prop)
