@@ -1,13 +1,13 @@
 # EdgeStat — Tonight's Master Brief
-_Generated 2026-11-03T18:02:04 UTC_
+_Generated 2026-11-03T18:45:01 UTC_
 
 ## Slate Quality
 - **Tier:** NO_ACTION_NIGHT
-- **Score:** -164
+- **Score:** -157
 - **Advisory:** STAND DOWN. Slate has no aligned conviction. Skip betting tonight or watch only.
 - **Total LOCKs:** 0
 - **Total STRONG:** 1
-- **Total FADES:** 168
+- **Total FADES:** 161
 
 ## Top 5 Curated Picks
 1. **NBA / NOP** (NBA_TEAM, score=60.0)
@@ -21,13 +21,13 @@ _Generated 2026-11-03T18:02:04 UTC_
 - **Expected P&L on $100:** $0.0
 
 ## Top Fades
-- **NBA** / tyrese maxey (PLAYER_FADE)
-  - Fade angle: PTS UNDER + PRA UNDER (multi-prop)
-- **NBA** / shai gilgeous-alexander (PLAYER_FADE)
-  - Fade angle: PTS UNDER + PRA UNDER (multi-prop)
-- **NBA** / jaylen brown (PLAYER_FADE)
-  - Fade angle: PTS UNDER + PRA UNDER (multi-prop)
-- **NBA** / jayson tatum (PLAYER_FADE)
-  - Fade angle: PTS UNDER + PRA UNDER (multi-prop)
-- **NBA** / lauri markkanen (PLAYER_FADE)
-  - Fade angle: PTS UNDER + PRA UNDER (multi-prop)
+- **NBA** / CHI (TEAM_FADE)
+  - Fade angle: team total UNDER
+- **NBA** / HOU (TEAM_FADE)
+  - Fade angle: team total UNDER
+- **NBA** / SAS (TEAM_FADE)
+  - Fade angle: team total UNDER
+- **NBA** / DET (TEAM_FADE)
+  - Fade angle: team total UNDER
+- **NBA** / TOR (TEAM_FADE)
+  - Fade angle: team total UNDER
