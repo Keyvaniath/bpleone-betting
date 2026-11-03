@@ -4318,6 +4318,19 @@ def run() -> Dict[str, Any]:
         d = b["wins"] + b["losses"]
         b["hit_rate"] = round(b["wins"] / d, 4) if d > 0 else None
         b["roi_pct"] = round(b["net_units"] / max(1, d) * 100, 2) if d > 0 else None
+    # 2026-11-03: lock_of_day's "338-60 +188u" was 295-52 PrizePicks props at
+    # PP's break-even. Each source carries its record at SPORTSBOOK prices
+    # (class A/B, PrizePicks excluded) beside the all-rows total.
+    for s, b in by_source.items():
+        rows = [p for p in settled if (p.get("source") or "?") == s]
+        b["by_price_class"] = _by_class(rows)
+        bk = [p for p in rows if not _is_pp(p)
+              and ((p.get("price_provenance") or {}).get("class") or "C") in ("A", "B")]
+        bw = sum(p["result"] == "won" for p in bk)
+        bl = sum(p["result"] == "lost" for p in bk)
+        bn = round(sum((p.get("payout_units") or 0) for p in bk), 3)
+        b["sportsbook"] = {"wins": bw, "losses": bl, "net_units": bn,
+                           "roi_pct": round(bn / (bw + bl) * 100, 2) if (bw + bl) else None}
 
     # FAMILY EVIDENCE excludes retired-model NFL props (judged from 10/23
     # forward): prob_calibration's curation reads these two blocks.
@@ -4374,12 +4387,21 @@ def run() -> Dict[str, Any]:
             elif p["result"] == "lost": b["losses"] += 1
             elif p["result"] == "push": b["pushes"] += 1
             b["net_units"] = round(b["net_units"] + (p.get("payout_units") or 0), 3)
+            # (2026-11-03) calibration: these props pay at the model's OWN fair
+            # odds, so the honest read is hit rate vs avg predicted probability
+            # over the decided (W/L) picks -- additive, nothing else changes.
+            if p["result"] in ("won", "lost") and isinstance(p.get("p_predicted"), (int, float)):
+                b["_p_sum"] = b.get("_p_sum", 0.0) + float(p["p_predicted"])
+                b["_p_n"] = b.get("_p_n", 0) + 1
         else:
             b["pending"] += 1
     for r, b in nfl_by_model.items():
         d = b["wins"] + b["losses"]
         b["hit_rate"] = round(b["wins"] / d, 4) if d else None
         b["roi_pct"] = round(b["net_units"] / d * 100, 2) if d else None
+        _pn = b.pop("_p_n", 0); _ps = b.pop("_p_sum", 0.0)
+        b["n_with_p"] = _pn                                          # (2026-11-03)
+        b["avg_p_predicted"] = round(_ps / _pn, 4) if _pn else None  # (2026-11-03)
         b["label"] = ("from 11/3 -- calibrated line selection (judged)" if r == "form_v3"
                       else "10/23-11/2 -- season-to-date form (judged)" if r == "form_v2"
                       else "before 10/23 -- one-game form (retired; record only)")

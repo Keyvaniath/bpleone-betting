@@ -638,6 +638,23 @@ def run() -> Dict[str, Any]:
                 "risks": ["Golf outright variance is high; smaller stake recommended"],
             })
 
+    # FAIL CLOSED (2026-11-03): a Best Bet needs a REAL sportsbook price. Only the
+    # DK prop board (props.json, DraftKings lines via the odds feed) carries one.
+    # Everything else here was ranked and shown "@ price" at the model's OWN fair
+    # odds: PrizePicks (feed dead, break-even not a book), NRFI vs a league
+    # baseline, SGP/parlays, KBO/LoL/CS/golf model picks, and NBA/NHL/ESPN game
+    # lines off the record Elo (DK had TB -278 where we printed -157). Game lines
+    # return only through the game-lines desk once a sport's verdict passes.
+    _PRICED_SOURCES = {"DK"}
+    excluded: Dict[str, int] = {}
+    kept = []
+    for c in candidates:
+        if c.get("source") in _PRICED_SOURCES:
+            kept.append(c)
+        else:
+            excluded[c.get("source") or "?"] = excluded.get(c.get("source") or "?", 0) + 1
+    candidates = kept
+
     # Sort and rank
     candidates.sort(key=lambda c: -(c.get("quality_score") or 0))
     for i, c in enumerate(candidates[:50]):
@@ -649,6 +666,8 @@ def run() -> Dict[str, Any]:
         "n_bets": len(top),
         "total_candidates": len(candidates),
         "n_overconfident_curated": n_overconf_dropped,
+        "rule": "a best bet needs a real sportsbook price; model-only projections, PrizePicks and parlays are excluded",
+        "excluded_unpriced": excluded,
         "by_source": {s: sum(1 for c in top if c.get("source") == s)
                        for s in ("DK", "PP", "NRFI", "SGP", "GOLF", "NBA", "NHL", "KBO", "LOL", "CS",
                                   "WNBA", "MLS", "EPL", "UCL", "NFL", "NCAAF", "NCAAB", "CWS")},
