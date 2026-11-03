@@ -474,6 +474,24 @@ def run() -> Dict[str, Any]:
                               for p in settled if p["result"] != "push"), 3)
     roi_pct = round(net_units / total_risked * 100, 2) if total_risked > 0 else None
 
+    # 2026-11-03: the headline above mixes 366 PrizePicks locks (graded at PP's
+    # -136 break-even, an unverified locks-history import) with sportsbook-priced
+    # locks. Publish them apart; pages lead with the sportsbook line.
+    def _agg(rows):
+        w = sum(1 for p in rows if p["result"] == "won")
+        l = sum(1 for p in rows if p["result"] == "lost")
+        net = round(sum((p.get("payout_units") or 0) for p in rows), 3)
+        risk = round(sum((p.get("unit_size_quarter_kelly") or 0) for p in rows if p["result"] != "push"), 3)
+        return {"wins": w, "losses": l, "n_settled": len(rows),
+                "hit_rate": round(w / (w + l), 4) if (w + l) else None,
+                "net_units": net, "total_risked_units": risk,
+                "roi_pct": round(net / risk * 100, 2) if risk > 0 else None}
+    _is_pp = lambda p: (p.get("sport") or "").upper() == "MLB-PP" or str(p.get("market") or "").upper().startswith("PP_")
+    by_price = {
+        "sportsbook": _agg([p for p in settled if not _is_pp(p)]),
+        "prizepicks_unverified": _agg([p for p in settled if _is_pp(p)]),
+    }
+
     # Per-sport breakdown
     by_sport: Dict[str, Dict[str, Any]] = {}
     for p in settled:
@@ -536,6 +554,7 @@ def run() -> Dict[str, Any]:
             "hit_rate": round(l7_wins / max(1, l7_wins + l7_losses), 4) if (l7_wins + l7_losses) > 0 else None,
         },
         "by_sport": by_sport,
+        "by_price": by_price,
         "by_market_family": by_family,
         "todays_locks": todays_locks,
         "history": history,

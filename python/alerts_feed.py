@@ -91,7 +91,7 @@ def _steam(items: List[Dict[str, Any]], ts: str) -> List[Dict[str, Any]]:
         out.append({
             "type": "STEAM", "icon": "📈", "sport": m.get("sport") or "",
             "title": f"Steam: {m.get('matchup','')}",
-            "detail": (f"Sharp money toward {toward} — {kinds} moved "
+            "detail": (f"DraftKings line moved toward {toward} — {kinds} moved "   # not proof of sharp money (2026-11-03)
                        f"{mv:.1f}pp{(' / total ' + format(tot, '.1f')) if tot else ''} "
                        f"over {m.get('snapshots','?')} snapshots"),
             "score": _clamp(mv * 4 + tot * 12), "ts": ts, "link": "line-movement.html",

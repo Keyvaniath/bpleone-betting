@@ -34,6 +34,24 @@ FONT = "-apple-system,Segoe UI,Roboto,Arial,sans-serif"
 MONO = "'JetBrains Mono',Menlo,Consolas,monospace"
 
 
+def _split_line(split):
+    """2026-11-03: lead with the record at SPORTSBOOK prices. The 67-38 headline
+    mixes 35 DK-priced game lines with 70 props graded at the model's own fair
+    odds -- the props' units are not a betting record."""
+    b = (split or {}).get("book_priced_game_lines") or {}
+    m = (split or {}).get("model_priced_props") or {}
+    if not b and not m:
+        return None
+    out = []
+    if b:
+        r = b.get("roi_pct") or 0
+        out.append(f"at DraftKings prices {b.get('wins', 0)}-{b.get('losses', 0)} "
+                   f"({'+' if r >= 0 else ''}{r}% ROI)")
+    if m:
+        out.append(f"props graded at the model's own odds {m.get('wins', 0)}-{m.get('losses', 0)} (not a betting ROI)")
+    return " · ".join(out)
+
+
 def _load(p: str) -> Dict[str, Any]:
     try:
         with open(p, encoding="utf-8") as f:
@@ -98,16 +116,19 @@ def compose() -> Dict[str, Any]:
         head_txt = _mk_human(today.get("market"), today.get("player_or_matchup"))
         is_ml = "moneyline" in head_txt
         headline = (head_txt if is_ml else str(today.get("player_or_matchup") or ""))
-        if today.get("fair_american") is not None:
-            headline += f" @ {_odds(today.get('fair_american'))}"
+        # the price shown is the sportsbook's, never the model's fair (2026-11-03)
+        if today.get("book_american") is not None:
+            headline += f" @ {_odds(today.get('book_american'))} (DraftKings)"
         sub = (f"({today.get('player_or_matchup')})" if is_ml else head_txt)
         prob = today.get("model_prob_calibrated") or today.get("model_prob")
         subject = f"Alpha Pick {date}: {headline}"
         if prob:
             subject += f" · model {round(prob * 100)}%"
 
+    _sl = _split_line(rec.get("price_split"))
     roi = record.get("roi_pct") or 0
-    rec_line = (f"Record: {record.get('wins', 0)}-{record.get('losses', 0)} · "
+    rec_line = (f"Record: {_sl}" if _sl else
+                f"Record: {record.get('wins', 0)}-{record.get('losses', 0)} · "
                 f"{round((record.get('hit_rate') or 0) * 100)}% hit · "
                 f"{'+' if roi >= 0 else ''}{roi}% ROI")
     v2_line = ""

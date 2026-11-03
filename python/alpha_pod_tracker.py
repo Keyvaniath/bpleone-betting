@@ -141,11 +141,15 @@ def _agg(legs: List[Dict[str, Any]]) -> Dict[str, Any]:
     settled = [l for l in legs if l.get("settled")]
     wins = sum(1 for l in settled if l["result"] == "won")
     losses = sum(1 for l in settled if l["result"] == "lost")
-    pushes = sum(1 for l in settled if l["result"] in ("push", "void"))
+    # 2026-11-03: voids are not pushes and not settled bets -- they were counted
+    # into n_settled and shown as "35-6-67".
+    pushes = sum(1 for l in settled if l["result"] == "push")
+    voids = sum(1 for l in settled if l["result"] == "void")
     decided = wins + losses
     net = round(sum((l.get("payout_units") or 0) for l in settled), 3)
     return {
-        "n_settled": len(settled), "wins": wins, "losses": losses, "pushes": pushes,
+        "n_settled": len(settled) - voids, "wins": wins, "losses": losses, "pushes": pushes,
+        "n_void": voids,
         "hit_rate": round(wins / decided, 4) if decided else None,
         "net_units": net,
         "roi_pct": round(net / decided * 100, 2) if decided else None,
@@ -200,8 +204,11 @@ def run() -> Dict[str, Any]:
     # Curated-prop context (immediate credibility while the forward record builds).
     summ = _load(SUMMARY)
     bysport = (summ.get("by_sport") or {}).get("MLB-PP") or {}
+    # 2026-11-03: the slip is PrizePicks props graded at PP's -136 break-even and
+    # the "pool" is the MLB-PP locks-history import -- unverified, not a
+    # sportsbook record. No longer published as day-one credibility.
     context = None
-    if bysport.get("settled"):
+    if False and bysport.get("settled"):
         context = {
             "label": "Curated MLB player-prop pool (all-time, the slip's source)",
             "settled": bysport.get("settled"), "wins": bysport.get("wins"),
@@ -216,6 +223,7 @@ def run() -> Dict[str, Any]:
         "launch_date": history[0]["date"] if history else snap_date,
         "n_days_tracked": len(history),
         "stake_assumption": "1u flat per leg",
+        "price_basis": "PrizePicks per-leg break-even (-136) or the model's own fair odds -- not a sportsbook price; unverified",
         "slip": slip_agg,
         "slip_last_30": _agg(l30_slip),
         "headline": _agg(all_head),

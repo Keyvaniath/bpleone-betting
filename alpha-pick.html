@@ -128,17 +128,17 @@
     <span class="tagline">by bpleone</span>
   </div>
   <nav class="mainnav"><!-- nav.js injects here --></nav>
-  <div class="topbar-actions"><div class="ticker">LIVE</div></div>
+  <div class="topbar-actions"></div>
 </header>
 
 <div class="container">
 
 <h1>Alpha Pick of the Day</h1>
 <div class="sub">
-  Different from Play of the Day. The Alpha Pick is the model's highest
-  <strong>ROI per dollar risked</strong> play — could be a favorite or an
-  underdog. POD asks "where am I most confident?" Alpha asks
-  <strong>"where is the book most wrong?"</strong>
+  At most one pick a day. It must be priced at a live DraftKings quote
+  (snapshot under 3 hours old, before the start), its market family must not be a
+  proven loser or overconfident, and its calibrated EV at the DraftKings price must clear
+  +2%. If nothing clears that bar, there is no pick. No edge is proven yet.
 </div>
 
 <!-- Forward track record of the daily slip (settled via the ledger) -->
@@ -148,14 +148,15 @@ fetch('data/alpha_pod_record.json?t=' + Date.now()).then(function (r) { return r
   var s = d.slip || {}, c = d.curated_context, el = document.getElementById('alphaRecord');
   var parts = ['<span style="color:var(--muted,#888);text-transform:uppercase;font-size:10px;letter-spacing:.5px;">★ Track record</span>'];
   if (s.n_settled) {
-    parts.push('Slip <b>' + s.wins + '-' + s.losses + (s.pushes ? '-' + s.pushes : '') + '</b> ' +
-      '<span style="color:' + (s.roi_pct >= 0 ? '#58c878' : '#e35a5a') + ';">' + (s.roi_pct >= 0 ? '+' : '') + s.roi_pct + '%</span> · ' +
-      '<span style="color:' + (s.net_units >= 0 ? '#58c878' : '#e35a5a') + ';">' + (s.net_units >= 0 ? '+' : '') + s.net_units + 'u</span> ' +
-      '<span style="color:#666;">(' + s.n_settled + ' legs since ' + (d.launch_date || 'launch') + ')</span>');
+    // 2026-11-03: the slip is props graded at PrizePicks' break-even or the
+    // model's own odds -- a hit record, not a betting ROI; voids are not pushes.
+    parts.push('Prop slip <b>' + s.wins + '-' + s.losses + (s.pushes ? '-' + s.pushes : '') + '</b> ' +
+      '<span style="color:#666;">(' + s.n_settled + ' settled legs since ' + (d.launch_date || 'launch') +
+      (s.n_void ? ', ' + s.n_void + ' void' : '') + ') · graded at PrizePicks / model odds — unverified, not a betting ROI</span>');
   } else {
     parts.push('<span style="color:var(--text-2,#9fb0c8);">Slip record building since ' + (d.launch_date || 'launch') + ' — ' + (d.n_days_tracked || 0) + ' day(s); legs settle nightly off the public ledger</span>');
   }
-  if (c) parts.push('<span style="color:var(--text-2,#9fb0c8);">Curated prop pool (all-time): <b>' + c.wins + '-' + c.losses + '</b> <span style="color:#58c878;">+' + c.roi_pct + '%</span> over ' + c.settled + '</span>');
+  if (false && c) parts.push('<span style="color:var(--text-2,#9fb0c8);">Curated prop pool (all-time): <b>' + c.wins + '-' + c.losses + '</b> <span style="color:#58c878;">+' + c.roi_pct + '%</span> over ' + c.settled + '</span>');
   el.innerHTML = parts.join(' &nbsp;·&nbsp; ');
   el.style.display = 'flex';
 }).catch(function () {});
@@ -217,9 +218,12 @@ fetch('data/alpha_pick_record.json?t=' + Date.now()).then(function (r) { return 
   document.getElementById('opStats').innerHTML =
     cell('Record', rec, '#e8ecf3') +
     cell('Hit rate', r.hit_rate != null ? Math.round(r.hit_rate * 100) + '%' : '—', '#e8ecf3') +
-    cell('ROI / bet', pc(r.roi_pct), col(r.roi_pct)) +
-    cell('Net (1u flat)', (r.net_units >= 0 ? '+' : '') + r.net_units + 'u', col(r.net_units)) +
-    cell('Last 30d', pc(r30.roi_pct), col(r30.roi_pct));
+    // 2026-11-03: ROI only at sportsbook prices; props are graded at the model's own odds
+    (function (ps) {
+      var g = (ps || {}).book_priced_game_lines, pr = (ps || {}).model_priced_props;
+      return (g ? cell('At DK prices', g.wins + '-' + g.losses + ' · ' + pc(g.roi_pct), col(g.roi_pct)) : '') +
+             (pr ? cell('Props (model odds)', pr.wins + '-' + pr.losses, '#9fb0c8') : '');
+    })(d.price_split);
   // honest ETF comparison
   document.getElementById('opCompare').innerHTML =
     '<strong style="color:#d4a04a;">One pick vs the board:</strong> ' +
@@ -344,7 +348,7 @@ fetch('data/alpha_pick_record.json?t=' + Date.now()).then(function (r) { return 
   <div id="apStats" style="display:flex;flex-wrap:wrap;gap:0;border-top:1px solid rgba(255,255,255,.06);border-bottom:1px solid rgba(255,255,255,.06);"></div>
   <div style="padding:10px 18px 4px;font-size:10px;text-transform:uppercase;letter-spacing:.5px;color:var(--muted,#888);font-family:'JetBrains Mono',monospace;">What each leg adds</div>
   <div id="apSlots" style="padding:0 18px 4px;font-family:'JetBrains Mono',monospace;font-size:12px;"></div>
-  <div style="padding:0 18px 8px;font-size:11px;color:var(--muted,#888);line-height:1.5;">Essentially all the edge is in the anchor pick — the diversifier legs run roughly breakeven, so they buy spread, not extra edge.</div>
+  <div style="padding:0 18px 8px;font-size:11px;color:var(--muted,#888);line-height:1.5;">These legs are props graded at the model's own odds or PrizePicks' break-even, so the per-leg numbers are a hit record, not a betting ROI.</div>
   <div id="apToday" style="padding:8px 18px 4px;border-top:1px solid rgba(255,255,255,.06);font-size:12.5px;"></div>
   <details style="padding:2px 18px 14px;">
     <summary style="cursor:pointer;font-size:11px;color:var(--muted,#888);text-transform:uppercase;letter-spacing:.5px;">The honest read on diversifying</summary>
@@ -367,9 +371,7 @@ fetch('data/alpha_pick_record.json?t=' + Date.now()).then(function (r) { return 
   document.getElementById('apStats').innerHTML =
     cell('Slate record', r.wins + '-' + r.losses + (r.pushes ? '-' + r.pushes : ''), '#e8ecf3') +
     cell('Hit rate', r.hit_rate != null ? Math.round(r.hit_rate * 100) + '%' : '—', '#e8ecf3') +
-    cell('ROI / bet', pc(r.roi_pct), col(r.roi_pct)) +
-    cell('Net (1u flat)', (r.net_units >= 0 ? '+' : '') + r.net_units + 'u', col(r.net_units)) +
-    cell('Last 30d', pc(r30.roi_pct), col(r30.roi_pct));
+    ''; // props slate: hit record only -- graded at model / PrizePicks odds (2026-11-03)
   // per-slot: what each leg contributes (the honest "diversity costs ROI" view)
   var slotLabel = { '0': 'The Pick (anchor)', '1': 'Diversifier #1', '2': 'Diversifier #2' };
   var slots = s.by_slot || {};
@@ -494,7 +496,7 @@ fetch('data/weekly_thread.json?t=' + Date.now()).then(function (r) { return r.js
       <div class="stat-val" id="stat-prob">—</div>
     </div>
     <div class="stat">
-      <div class="stat-label">Fair Odds</div>
+      <div class="stat-label">DK Price</div>
       <div class="stat-val gold" id="stat-odds">—</div>
     </div>
     <div class="stat">
@@ -515,11 +517,11 @@ fetch('data/weekly_thread.json?t=' + Date.now()).then(function (r) { return r.js
 <!-- The morning digest: 3-5 best props + other machine picks, refreshed 7am PT -->
 <div class="panel" id="propsPanel">
   <h2 style="display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:8px;">
-    <span>The Slip — Props of the Day</span>
+    <span>Prop projections — no sportsbook price, not picks</span>
     <span id="slateLine" style="color:#d4a04a;font-size:11px;text-transform:none;letter-spacing:0;"></span>
   </h2>
   <div class="prow head" style="display:grid;grid-template-columns:1.7fr 1.4fr 70px 80px 70px 70px;gap:12px;padding:8px 14px;background:rgba(255,255,255,0.05);color:var(--muted,#888);font-size:10px;text-transform:uppercase;font-family:'JetBrains Mono',monospace;">
-    <div>Player</div><div>Prop</div><div class="num" style="text-align:right;">Model</div><div class="num" style="text-align:right;">Fair</div><div class="num" style="text-align:right;">Edge</div><div class="num" style="text-align:right;">¼-Kelly</div>
+    <div>Player</div><div>Prop</div><div class="num" style="text-align:right;">Model</div><div></div><div></div><div></div>
   </div>
   <div id="propsRows"><div style="padding:14px;color:var(--muted,#888);">Loading the slip…</div></div>
 </div>
@@ -536,8 +538,8 @@ fetch('data/weekly_thread.json?t=' + Date.now()).then(function (r) { return r.js
     <div>Type</div>
     <div>Market</div>
     <div class="num">Prob</div>
-    <div class="num">Fair Odds</div>
-    <div class="num">ROI</div>
+    <div class="num">DK Price</div>
+    <div class="num">EV @ DK</div>
   </div>
   <div id="top-5-rows">—</div>
 </div>
@@ -549,12 +551,10 @@ fetch('data/weekly_thread.json?t=' + Date.now()).then(function (r) { return r.js
     bias toward high-probability favorites where the model is sure.
     Variance-tight. Lower payout but high hit-rate.
     <br><br>
-    <strong>Alpha Pick</strong> ranks by raw <strong>ROI per $1 risked</strong>
-    = model_prob × decimal_odds − 1.
-    Excludes longshots below 18% (variance too brutal) and heavy-fav territory
-    above 85% (that's where POD lives). What's left is the band where
-    pricing inefficiency tends to concentrate: solid favs the book is mis-shading
-    or underdogs the model thinks are live.
+    <strong>Alpha Pick</strong> considers only candidates with a live DraftKings quote and
+    ranks them by calibrated EV at that price. It excludes proven-loser and overconfident
+    families and requires +2% calibrated EV. Most days nothing qualifies, and that is the
+    honest result.
   </div>
 </div>
 
@@ -596,7 +596,7 @@ async function load() {
   document.getElementById('pick-line').textContent = a.player_or_matchup + (a.team ? ' (' + a.team + ')' : '');
   document.getElementById('market-line').textContent = a.market || a.market_family || '—';
   document.getElementById('stat-prob').textContent = fmtPct(a.model_prob);
-  document.getElementById('stat-odds').textContent = fmtOdds(a.fair_american);
+  document.getElementById('stat-odds').textContent = a.book_american != null ? fmtOdds(a.book_american) : '—';   // 2026-11-03
   document.getElementById('stat-roi').textContent = fmtSigned(a.roi_per_dollar);
   document.getElementById('stat-kelly').textContent = a.kelly_fraction != null ? a.kelly_fraction.toFixed(3) : '—';
   document.getElementById('stat-unit').textContent = a.unit_size_quarter_kelly != null ? a.unit_size_quarter_kelly.toFixed(3) + 'u' : '—';
@@ -608,7 +608,7 @@ async function load() {
       <div>${(p.src||'').slice(0,8)}</div>
       <div>${(p.market||'').slice(0,28)}</div>
       <div class="num">${fmtPct(p.model_prob)}</div>
-      <div class="num" style="color:#d4a04a;">${fmtOdds(p.fair_american)}</div>
+      <div class="num" style="color:#d4a04a;">${p.book_american != null ? fmtOdds(p.book_american) : '—'}</div>
       <div class="num" style="color:${p.roi_per_dollar>=0?'#58c878':'#e35a5a'};">${fmtSigned(p.roi_per_dollar)}</div>
     </div>
   `).join('');
@@ -634,15 +634,18 @@ async function load() {
       <div><b>${esc(p.player)}</b> <span style="color:var(--muted,#888);">${esc(p.team || '')}</span> <span style="color:#666;font-size:10px;">${esc(p.sport || '')}</span></div>
       <div style="color:var(--text-2,#bbb);">${esc(p.market)}</div>
       <div class="num" style="text-align:right;">${fmtPct(p.prob, 0)}</div>
-      <div class="num" style="text-align:right;color:#d4a04a;">${fmtOdds(p.fair_american)}</div>
-      <div class="num" style="text-align:right;color:#58c878;">${p.edge_pct != null ? '+' + Number(p.edge_pct).toFixed(0) + '%' : '—'}</div>
-      <div class="num" style="text-align:right;">${p.unit_quarter_kelly != null ? Number(p.unit_quarter_kelly).toFixed(3) + 'u' : '—'}</div>
+      <div></div><div></div><div></div>
     </div>`).join('') : '<div style="padding:14px;color:var(--muted,#888);">No qualifying props on today\'s slate yet — fills in with the morning refresh.</div>';
 
   // Other plays the machine likes
   const others = d.other_picks || [];
   const kindColor = { 'Game line': '#58c878', 'World Cup': '#ffc15e', 'PrizePicks': '#9db8ff' };
-  document.getElementById('otherRows').innerHTML = others.length ? others.map(o => `
+  // 2026-11-03: a play without an actionable DraftKings quote is a projection, not a pick
+  document.getElementById('otherRows').innerHTML = others.length ? others.map(o => o.actionable === false ? `
+    <div style="display:flex;gap:12px;align-items:center;padding:11px 14px;border-bottom:1px solid rgba(255,255,255,0.04);">
+      <span style="font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;padding:3px 8px;border-radius:4px;background:rgba(255,255,255,.06);color:#8a93a6;white-space:nowrap;">projection</span>
+      <span style="flex:1;min-width:0;font-size:12.5px;color:var(--text-2,#9fb0c8);">${esc(o.label)} <span style="color:#666;">— no sportsbook price (${esc(o.non_actionable_reason || 'not priced')}); not a pick</span></span>
+    </div>` : `
     <a href="${esc(o.link || '#')}" style="display:flex;gap:12px;align-items:center;padding:11px 14px;border-bottom:1px solid rgba(255,255,255,0.04);text-decoration:none;">
       <span style="font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;padding:3px 8px;border-radius:4px;background:rgba(255,255,255,.06);color:${kindColor[o.kind] || '#d4a04a'};white-space:nowrap;">${esc(o.kind)}</span>
       <span style="flex:1;min-width:0;">
@@ -653,6 +656,12 @@ async function load() {
     </a>`).join('') : '<div style="padding:14px;color:var(--muted,#888);">—</div>';
 
   const diag = d.diagnostics || {};
+  const rj = diag.rejected || {};
+  if (Object.keys(rj).length) {
+    document.getElementById('diag').innerHTML = 'Rejected candidates by reason: ' +
+      Object.entries(rj).map(([k, v]) => `${esc(k)} ${v}`).join(' · ') + `<br><span style="color:#666;">Generated ${d.generated_at}</span>`;
+    return;
+  }
   document.getElementById('diag').innerHTML =
     `n_input_plays = ${diag.n_input_plays} · ` +
     `n_filtered_low_prob = ${diag.n_filtered_low_prob} · ` +

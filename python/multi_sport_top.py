@@ -101,6 +101,21 @@ def run() -> Dict[str, Any]:
             })
             seen_sports.add(c["source"])
 
+    # FAIL CLOSED (2026-11-03): a "top pick" needs a REAL sportsbook price. LoL /
+    # CS / KBO / golf / tennis best-bets and the NBA/NHL best_bets rows carry
+    # only the model's own fair price (NBA from a record Elo, desk verdict NO
+    # EDGE) -- they were shown on the homepage as "HIGH conviction" picks.
+    # They move to `projections` with the reason; never to `picks`.
+    projections = []
+    priced = []
+    for p in picks:
+        if p.get("market_american") is not None:
+            priced.append(p)
+        else:
+            p["not_a_pick_reason"] = "no sportsbook price -- model projection only"
+            projections.append(p)
+    picks = priced
+
     # Sort: confidence first (HIGH > MED > LOW), then by sport in display order
     conf_order = {"HIGH": 0, "MED": 1, "LOW": 2}
     picks.sort(key=lambda p: (conf_order.get(p.get("confidence", "MED"), 1), p["sport"]))
@@ -109,6 +124,8 @@ def run() -> Dict[str, Any]:
         "generated_at": dt.datetime.utcnow().isoformat(timespec="seconds"),
         "n_sports": len(picks),
         "picks": picks,
+        "projections": projections,
+        "rule": "a pick needs a real sportsbook price; model-only outputs are listed as projections",
     }
     os.makedirs(DATA_DIR, exist_ok=True)
     with open(OUT_PATH, "w") as f: json.dump(payload, f, indent=2)

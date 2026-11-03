@@ -26,7 +26,7 @@
           const rawEdge = Number(top.edge_pct) || 0;
           const isPreCal = rawEdge >= 15;
           const tag = isPreCal ? 'CALIBRATING' : 'EDGE';
-          const edgeStr = isPreCal ? '+25%+' : '+' + rawEdge.toFixed(1) + '%';
+          const edgeStr = '+' + rawEdge.toFixed(1) + '%' + (isPreCal ? ' (unverified)' : '');   // 2026-11-03: no inflated +25%+
           lines.push(`\u{1F4CA} ${tag} - ${g.matchup} ${top.label} ${edgeStr}`);
         }
       });
