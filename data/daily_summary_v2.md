@@ -1,10 +1,10 @@
 # EdgeStat Daily Summary — 2026-11-03
 
-## 🏥 Model Health: 67.2/100 [OK]
+## 🏥 Model Health: 66.8/100 [OK]
 - Operational but room to improve - check yellow components
-  - 🟢 Calibration Freshness: 100.0/100
-  - 🔴 Hit Rate Trend: 54.1/100
-  - 🔴 Brier Trend: 16.2/100
+  - 🟢 Calibration Freshness: 99.7/100
+  - 🔴 Hit Rate Trend: 53.2/100
+  - 🔴 Brier Trend: 15.5/100
   - 🟢 Pipeline Audit: 100.0/100
   - 🟢 Data Health: 95.5/100
   - 🔴 Edge Count: 40.0/100
@@ -33,25 +33,25 @@
 - **[LOL]** Hope OVER 4.5 Kills | MED conviction · model 61.3% fair -158
 - **[CS]** torzsi OVER 40.5 Kills (BO3) | MED conviction · model 61.0% fair -157
 
-## ⚡ Pre-Game HIGH Conviction (20)
+## ⚡ Pre-Game HIGH Conviction (16)
 - [NBA] **Charlotte Hornets** AWAY (3-5 L10) · model 74.6% fair -294
-- [UCL] **Atlético Madrid** HOME (None L10) · model 72.7% fair -267
-- [UCL] **Bodo/Glimt** HOME (None L10) · model 72.7% fair -267
-- [UCL] **LASK Linz** HOME (None L10) · model 72.7% fair -267
-- [UCL] **Manchester United** HOME (None L10) · model 72.7% fair -267
 - [NCAAF] **Ohio State Buckeyes** HOME (None L10) · model 71.8% fair -254
 - [NCAAF] **Houston Cougars** HOME (None L10) · model 71.8% fair -254
 - [NCAAF] **South Carolina Gamecocks** HOME (None L10) · model 70.2% fair -235
 - [NCAAF] **Florida Gators** HOME (None L10) · model 70.2% fair -235
 - [NCAAF] **Notre Dame Fighting Irish** HOME (None L10) · model 70.1% fair -234
+- [NHL] **Carolina Hurricanes** AWAY (5-1 L10) · model 69.8% fair -232
+- [NBA] **Oklahoma City Thunder** HOME (5-2 L10) · model 69.6% fair -229
+- [NBA] **San Antonio Spurs** HOME (5-2 L10) · model 69.6% fair -229
+- [NHL] **Anaheim Ducks** AWAY (2-4 L10) · model 67.3% fair -206
 
 ## 🔥/❄️ Heat / Cold Signals
 - Hot teams: **8** | Cold teams: **24** | Over-heavy: 0 | Under-heavy: 35
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (260)
+## ⚠️ Anomaly Detector (262)
 - RESIDUAL_DIVERGENCE: **15**
-- STEAM_MOVE: **245**
+- STEAM_MOVE: **247**
   - Charlotte Hornets (NBA): Charlotte Hornets UNDERPERFORMING expected margin by 10.2pts in recent games -- model bias may persist
   - Chicago Bulls (NBA): Chicago Bulls UNDERPERFORMING expected margin by 9.8pts in recent games -- model bias may persist
   - Indiana Pacers (NBA): Indiana Pacers UNDERPERFORMING expected margin by 9.5pts in recent games -- model bias may persist
@@ -60,7 +60,7 @@
 
 ## 💰 Today's Portfolio (12 picks)
 - Total stake: **$315.0** (31.5% of $1000 bankroll)
-- Expected EV: **$-6.04**
+- Expected EV: **$-22.29**
   - #1 [LOL] $35 on LOL Inspired UNDER 3.5 Kills (P=62%)
   - #2 [LOL] $35 on LOL ShowMaker OVER 3.5 Kills (P=62%)
   - #3 [LOL] $35 on LOL Peyz OVER 4.5 Kills (P=61%)

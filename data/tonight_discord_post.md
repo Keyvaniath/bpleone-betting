@@ -1,9 +1,8 @@
 **EdgeStat -- Tonight's Slate**
-_NO_ACTION_NIGHT_ | L:0 S:40 F:211
+_NO_ACTION_NIGHT_ | L:0 S:1 F:273
 
 :dart: **Top Picks:**
-1. [GOLF] Brice Garnett -- Brice Garnett (PLAYER_STRONG)
-2. [GOLF] Ben Martin -- Ben Martin (PLAYER_STRONG)
+1. [NBA] NOP -- NOP (TEAM_STRONG)
 
 :coin: Bankroll Advisory: STAND DOWN. Slate has no aligned conviction. Skip betting tonight or watch only.
 
