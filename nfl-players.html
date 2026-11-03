@@ -55,6 +55,8 @@
 <main class="container">
   <section class="page-head">
     <h1>🏈 NFL Player Projections <span class="muted" style="font-size:14px;font-weight:400;">— the full Monte Carlo, player by player</span></h1>
+    <!-- (2026-11-03) unvalidated label + slate date / finished-slate state. -->
+    <p style="margin:4px 0 0;"><span style="display:inline-block;padding:2px 8px;border-radius:4px;background:rgba(212,160,74,.18);color:#d4a04a;font-size:10px;font-weight:700;">UNVALIDATED MODEL PROJECTION — no sportsbook price, not a pick</span></p>
     <p id="pp_status" class="muted">Loading…</p>
   </section>
   <section id="prevBanner" style="display:none; margin:0 0 18px; padding:10px 16px; border:1px solid rgba(80,150,220,.4); border-left:3px solid #5096dc; border-radius:8px; background:rgba(80,150,220,.07); font-size:12.5px; color:var(--text-2,#b9c3d4); line-height:1.55;"></section>
@@ -62,7 +64,7 @@
     <div class="metric"><span class="metric-num" id="m_players">--</span><span class="metric-label">Players Projected</span></div>
     <div class="metric"><span class="metric-num" id="m_mode">--</span><span class="metric-label">Mode</span></div>
     <div class="metric"><span class="metric-num" id="m_week">--</span><span class="metric-label">Slate</span></div>
-    <div class="metric"><span class="metric-num" id="m_markets">--</span><span class="metric-label">Priced Markets</span></div>
+    <div class="metric"><span class="metric-num" id="m_markets">--</span><span class="metric-label">Modeled Markets</span></div>
   </section>
   <section class="card" style="margin-bottom:24px;">
     <div class="card-head">
@@ -164,12 +166,30 @@ fetch('data/nfl_player_projections.json?t=' + Date.now(), { cache: 'no-cache' })
     DATA = d;
     const n = d.n_players || 0;
     $('m_players').textContent = n;
-    $('m_mode').textContent = (d.mode || '—').toUpperCase();
-    $('m_week').textContent = d.week_start || '—';
+    // (2026-11-03) a slate whose games are all before today (ET) is finished:
+    // say so instead of "LIVE", and show the slate's own game date(s).
+    const todayET = new Intl.DateTimeFormat('en-CA', { timeZone: 'America/New_York' }).format(new Date());
+    const gdates = Array.from(new Set((d.players || []).map(p => p.game_date).filter(Boolean))).sort();
+    const finished = gdates.length > 0 && gdates[gdates.length - 1] < todayET;
+    const slateTxt = gdates.length ? (gdates.length === 1 ? gdates[0] : gdates[0] + ' → ' + gdates[gdates.length - 1]) : (d.week_start || '—');
+    $('m_mode').textContent = finished ? 'FINISHED SLATE' : (d.mode || '—').toUpperCase();
+    $('m_week').textContent = slateTxt;
+    const srcCount = {};
+    (d.players || []).forEach(p => { srcCount[p.source || 'baseline'] = (srcCount[p.source || 'baseline'] || 0) + 1; });
+    const srcLine = Object.entries(srcCount).map(([k, v]) => v + ' of ' + n + ' from ' + k).join(', ');
+    const pbx = $('prevBanner');
+    if (finished && d.mode !== 'preview') {
+      pbx.innerHTML = '<b style="color:#5096dc;">Finished slate (' + slateTxt + ').</b> These were the pre-game projections for games that have already been played — kept for reference, not a live board. The next slate loads when the pipeline publishes it. ' +
+        'Seeds: ' + srcLine + '. Unvalidated model projections: the P(over) values are the model\'s own numbers at standard lines, not sportsbook prices.';
+      pbx.style.display = 'block';
+    } else if (d.mode !== 'preview') {
+      pbx.innerHTML = '<b style="color:#5096dc;">Slate ' + slateTxt + '.</b> Seeds: ' + srcLine + '. Unvalidated model projections: the P(over) values are the model\'s own numbers at standard lines, not sportsbook prices.';
+      pbx.style.display = 'block';
+    }
     let mkts = 0;
     (d.players || []).forEach(p => { mkts += Object.keys(p.markets || {}).length; });
     $('m_markets').textContent = mkts.toLocaleString();
-    $('pp_status').textContent = `${n} players · generated ${(d.generated_at || '').replace('T', ' ')} UTC`;
+    $('pp_status').textContent = `${n} players · slate ${slateTxt}${finished ? ' (finished)' : ''} · generated ${(d.generated_at || '').replace('T', ' ')} UTC`;
     if (d.mode === 'preview') {
       const pb = $('prevBanner');
       pb.innerHTML = '<b style="color:#5096dc;">Week 1 preview.</b> These are projections for the upcoming regular-season slate, published for study — <b>not picks</b>. Nothing here enters the ledger until the season starts; the props board goes live Week 1 automatically.';

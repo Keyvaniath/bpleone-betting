@@ -61,7 +61,8 @@ fetch('data/data_health.json?t=' + Date.now()).then(function(r){return r.json();
 
   <section class="page-head">
     <h1>MLB Analytics Hub</h1>
-    <p>Every game, every market, modeled. We score the full slate on moneyline, run line, total, first-5, and 200+ player props daily — and surface only the edges that survive vig and variance.</p>
+    <!-- (2026-11-03) the slate claim renders only when today.json has games; no hard-coded prop count. -->
+    <p id="mlbHeadLine" class="muted">Loading today's slate…</p>
   </section>
 
   <section id="apiDownBannerMlb" style="display:none; margin: 0 0 18px 0; padding: 12px 16px; border-radius: 8px; font-family: 'JetBrains Mono', monospace; font-size: 13px;"></section>
@@ -72,7 +73,7 @@ fetch('data/data_health.json?t=' + Date.now()).then(function(r){return r.json();
     <div class="metric"><span class="metric-num" id="mlbEV">--</span><span class="metric-label">+EV Plays</span></div>
     <div class="metric"><span class="metric-num" id="mlbHit">--</span><span class="metric-label">Season Hit %</span></div>
     <div class="metric"><span class="metric-num" id="mlbROI">--</span><span class="metric-label">Season ROI</span></div>
-    <div class="metric"><span class="metric-num" id="mlbCLV">--</span><span class="metric-label">Avg CLV</span></div>
+    <div class="metric" title="No closing-line value is recorded on the desk's picks yet (2026-11-03: the old figure was line drift across both sides of every game, not CLV on picks)"><span class="metric-num" id="mlbCLV">—</span><span class="metric-label">Avg CLV (picks)</span></div>
   </section>
 
   <section class="card" style="margin-bottom:18px;">
@@ -107,17 +108,28 @@ fetch('data/data_health.json?t=' + Date.now()).then(function(r){return r.json();
       set("mlbGames", games.length);
       set("mlbEdges", edges.length);
       set("mlbEV", edges.filter(r => (r.edge_pct || 0) >= 3).length);
-      // Source-aware banner: amber for Bovada fallback, red for no real lines
+      // (2026-11-03) header claim only when there is a slate; off-season line otherwise.
+      const hl = document.getElementById("mlbHeadLine");
+      if (hl) {
+        if (games.length) {
+          hl.className = "";
+          hl.textContent = `${games.length} game${games.length === 1 ? "" : "s"} on today's slate (${d.date || ""}), modeled on moneyline, run line, total and first-5 — edges are shown only against a real sportsbook price.`;
+        } else {
+          const mo = new Date().getMonth() + 1;
+          hl.textContent = (mo >= 11 || mo <= 2)
+            ? `No MLB games on today's slate (${d.date || ""}). Off-season — the desk resumes with next season's schedule; the records below are historical results.`
+            : `No MLB games on today's slate (${d.date || ""}).`;
+        }
+      }
+      // (2026-11-03) the Bovada "sharp... real value" banner and the "fair price
+      // against placeholder -110" banner are removed: no price default exists, and
+      // an unpriced market gets no edge. State that plainly when no book is attached.
       const b = document.getElementById("apiDownBannerMlb");
       if (b && games.length > 0) {
         const books = new Set(games.map(g => g.market?.book).filter(Boolean));
-        const allBovada = books.size === 1 && books.has("bovada");
         if (books.size === 0) {
           b.style.cssText += ";display:block; background: rgba(227,90,90,0.08); border: 1px solid rgba(227,90,90,0.45); color: #e35a5a;";
-          b.innerHTML = `<strong>&#9888; No real odds today.</strong> Market columns show fair price against placeholder &minus;110. Edges are model-vs-reference, not real book edges.`;
-        } else if (allBovada) {
-          b.style.cssText += ";display:block; background: rgba(74,222,128,0.06); border: 1px solid rgba(74,222,128,0.28); color: var(--text-2,#9fb0c8);";
-          b.innerHTML = `📊 <strong style="color:#4ade80;">Lines sourced from Bovada</strong> — a sharp, market-efficient book (within ~2–3¢ of DraftKings on liquid markets), so the edges are real value against a real book. <span style="font-size:11px; opacity:0.8;">DraftKings-canonical pricing returns when the Odds API key is active.</span>`;
+          b.innerHTML = `<strong>&#9888; No sportsbook lines on today's slate yet.</strong> Market columns stay empty and no edges are computed until a real price posts.`;
         }
       }
     }).catch(() => {});
@@ -132,12 +144,8 @@ fetch('data/data_health.json?t=' + Date.now()).then(function(r){return r.json();
       set("mlbHit", (pl.hit_rate * 100).toFixed(1) + "%");
       set("mlbROI", (pl.roi_pct >= 0 ? "+" : "") + pl.roi_pct.toFixed(1) + "%");
     }).catch(() => {});
-    fetch("data/clv_log.json", { cache: "no-cache" }).then(r => r.json()).then(c => {
-      const recs = (c.records || []).filter(r => r.clv_pct != null);
-      if (!recs.length) return;
-      const avg = recs.reduce((s, r) => s + Number(r.clv_pct), 0) / recs.length;
-      set("mlbCLV", (avg >= 0 ? "+" : "") + avg.toFixed(2) + "%");
-    }).catch(() => {});
+    // (2026-11-03) Avg CLV removed: clv_log.json is open->close line drift across
+    // BOTH sides of every game, not CLV on recorded picks. The tile shows "—".
   })();
   </script>
 
@@ -439,16 +447,12 @@ fetch('data/data_health.json?t=' + Date.now()).then(function(r){return r.json();
       </ul>
     </div>
     <div class="card">
-      <div class="card-head"><span>📐 Model Inputs (live)</span><span class="muted" id="modelInputsMeta"></span></div>
+      <!-- (2026-11-03) was "Model Inputs (live)" with hard-coded ticks ("Statcast
+           (live)", "NOAA refresh 15m", "Bovada + DK polled"); now driven by
+           data/data_health.json -- each row is a real health check. -->
+      <div class="card-head"><span>📐 Feed Health (MLB-related)</span><span class="muted" id="modelInputsMeta"></span></div>
       <ul id="modelInputsList" style="list-style:none; padding:0; margin:0; font-size: 13px;">
-        <li style="display:flex; justify-content:space-between; padding:9px 0; border-bottom:1px solid var(--line-soft);"><span class="muted">Team true-talent priors</span><span class="positive">✓ updated</span></li>
-        <li style="display:flex; justify-content:space-between; padding:9px 0; border-bottom:1px solid var(--line-soft);"><span class="muted">Starting pitcher FIP / K9 / BB9</span><span class="positive">✓ Statcast (live)</span></li>
-        <li style="display:flex; justify-content:space-between; padding:9px 0; border-bottom:1px solid var(--line-soft);"><span class="muted">Bullpen rest & usage</span><span class="positive">✓ last 5 days</span></li>
-        <li style="display:flex; justify-content:space-between; padding:9px 0; border-bottom:1px solid var(--line-soft);"><span class="muted">Lineup confirmations</span><span class="positive" id="modelInputsLineup">✓ refreshing…</span></li>
-        <li style="display:flex; justify-content:space-between; padding:9px 0; border-bottom:1px solid var(--line-soft);"><span class="muted">Weather + wind</span><span class="positive">✓ NOAA refresh 15m</span></li>
-        <li style="display:flex; justify-content:space-between; padding:9px 0; border-bottom:1px solid var(--line-soft);"><span class="muted">Umpire history</span><span class="positive">✓ 5-yr zone data</span></li>
-        <li style="display:flex; justify-content:space-between; padding:9px 0; border-bottom:1px solid var(--line-soft);"><span class="muted">Park factors (3-yr)</span><span class="positive">✓ regressed</span></li>
-        <li style="display:flex; justify-content:space-between; padding:9px 0;"><span class="muted">Market consensus</span><span class="positive">✓ Bovada + DK polled</span></li>
+        <li class="muted" style="padding:9px 0;">Loading data_health.json…</li>
       </ul>
     </div>
 
@@ -494,23 +498,28 @@ fetch('data/data_health.json?t=' + Date.now()).then(function(r){return r.json();
         });
     })();
 
-    // Lineup confirmation count -- from matchups.json
-    fetch("data/matchups.json", { cache: "no-cache" })
+    // (2026-11-03) Feed health -- real checks from data_health.json (status +
+    // its own finding text), not hard-coded ticks.
+    fetch("data/data_health.json?t=" + Date.now(), { cache: "no-cache" })
       .then(r => r.json())
-      .then(d => {
-        const games = d.games || [];
-        const confirmed = games.filter(g => {
-          const l = g.lineups || {};
-          return (l.home && Array.isArray(l.home) && l.home.length >= 8)
-              || (l.away && Array.isArray(l.away) && l.away.length >= 8);
-        }).length;
-        const total = games.length;
-        const el = document.getElementById("modelInputsLineup");
-        if (el) el.textContent = `✓ ${confirmed}/${total} confirmed`;
+      .then(h => {
+        const list = document.getElementById("modelInputsList");
+        if (!list) return;
+        const want = ["mlb", "pitcher_matchup", "props", "freshness"];
+        const rows = (h.checks || []).filter(c => want.includes(c.feed));
+        const col = { green: "#58c878", yellow: "#d4a04a", red: "#e35a5a" };
+        const esc = (s) => String(s == null ? "" : s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+        list.innerHTML = rows.length ? rows.map(c => `<li style="display:flex; justify-content:space-between; gap:12px; padding:9px 0; border-bottom:1px solid var(--line-soft);">
+            <span><span class="muted">${esc(c.feed.replace(/_/g, " "))}</span><br><span class="muted" style="font-size:11px;">${esc((c.findings || [])[0] || "")}</span></span>
+            <span style="color:${col[c.status] || "var(--muted,#888)"}; font-weight:700; text-transform:uppercase; font-size:11px;">${esc(c.status || "—")}</span>
+          </li>`).join("") : '<li class="muted" style="padding:9px 0;">No MLB health checks in data_health.json.</li>';
         const meta = document.getElementById("modelInputsMeta");
-        if (meta) meta.textContent = `refreshed ${(d.generated_at || "").slice(0, 10)}`;
+        if (meta) meta.innerHTML = `checked ${(h.generated_at || "").replace("T", " ")} UTC · <a href="status.html" style="color:#5aa2e3;">status</a>`;
       })
-      .catch(() => {});
+      .catch(() => {
+        const list = document.getElementById("modelInputsList");
+        if (list) list.innerHTML = '<li class="muted" style="padding:9px 0;">data_health.json unavailable.</li>';
+      });
     </script>
   </section>
 
@@ -559,24 +568,30 @@ fetch("data/team_form.json", { cache: "no-cache" })
   .then(r => r.json())
   .then(d => {
     teamFormData = d.teams || {};
-    const sorted = Object.entries(teamFormData).sort((a, b) => (b[1].run_diff||0) - (a[1].run_diff||0));
-    if (!sorted.length) return;
+    // (2026-11-03) a Hot/Cold "last 10" panel needs a real league sample: >= 10
+    // teams, each with >= 10 games in its window (November had 4 postseason teams
+    // on 2-9 games). Otherwise the panel is not shown.
+    const eligible = Object.entries(teamFormData).filter(([, t]) => (t.games_in_sample || 0) >= 10);
+    if (eligible.length < 10) return;
+    const sorted = eligible.sort((a, b) => (b[1].run_diff||0) - (a[1].run_diff||0));
+    const sgn = (v) => v == null ? "—" : (v > 0 ? "+" + v : String(v));
+    const rdCol = (v) => (v || 0) > 0 ? "#58c878" : (v || 0) < 0 ? "#e35a5a" : "var(--muted,#888)";
     const hot = sorted.slice(0, 5);
     const cold = sorted.slice(-5).reverse();
     const rowsHot = hot.map(([name, t]) => `
       <div style="display:grid; grid-template-columns: 1.4fr auto auto auto; gap:8px; padding:5px 0;
                   border-bottom:1px solid rgba(255,255,255,0.04); font-family:'JetBrains Mono',monospace; font-size:12px;">
         <span><strong>${t.abbr || name}</strong> <span class="muted" style="font-size:10px;">${name}</span></span>
-        <span style="color:#58c878;">${t.wins}-${t.losses}</span>
-        <span style="color:#58c878;">+${t.run_diff}</span>
+        <span>${t.wins}-${t.losses}</span>
+        <span style="color:${rdCol(t.run_diff)};">${sgn(t.run_diff)}</span>
         <span class="muted">${t.streak}</span>
       </div>`).join("");
     const rowsCold = cold.map(([name, t]) => `
       <div style="display:grid; grid-template-columns: 1.4fr auto auto auto; gap:8px; padding:5px 0;
                   border-bottom:1px solid rgba(255,255,255,0.04); font-family:'JetBrains Mono',monospace; font-size:12px;">
         <span><strong>${t.abbr || name}</strong> <span class="muted" style="font-size:10px;">${name}</span></span>
-        <span style="color:#e35a5a;">${t.wins}-${t.losses}</span>
-        <span style="color:#e35a5a;">${t.run_diff}</span>
+        <span>${t.wins}-${t.losses}</span>
+        <span style="color:${rdCol(t.run_diff)};">${sgn(t.run_diff)}</span>
         <span class="muted">${t.streak}</span>
       </div>`).join("");
     const panel = document.createElement("section");

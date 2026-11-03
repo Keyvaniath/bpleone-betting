@@ -81,7 +81,7 @@
     <div class="game-lines-card" data-sport="nfl"><p class="muted" style="padding:14px;">Loading…</p></div>
   </section>
   <section class="card" style="margin-bottom:24px;">
-    <div class="card-head"><span>🎯 <strong>Model Props</strong> <span class="muted" style="font-size:10px;">play-level Monte Carlo · odds-independent · graded on the box score · paid at the model's own fair odds, so the ROI measures calibration, not a bettable return</span></span><span class="muted" id="pr_meta">--</span></div>
+    <div class="card-head"><span>🎯 <strong>Model Props</strong> <span class="muted" style="font-size:10px;">play-level Monte Carlo · no sportsbook prop price · graded on the box score at the model's own fair odds, so the record is a calibration check (hit rate vs predicted), not a bettable return</span></span><span class="muted" id="pr_meta">--</span></div>
     <div id="pr_record" class="muted" style="padding:8px 16px 0; font-size:11.5px; font-family:'JetBrains Mono',monospace;"></div>
     <div id="pr_list"><p class="muted" style="padding:14px;">Loading…</p></div>
   </section>
@@ -145,26 +145,30 @@ fetch("data/nfl_state.json?t=" + Date.now(), { cache: "no-cache" })
 fetch("data/espn_odds.json?t=" + Date.now(), { cache: "no-cache" })
   .then(r => r.json())
   .then(d => {
-    const rows = (d.games || []).filter(g => (g.sport || '').toUpperCase() === 'NFL');
+    // (2026-11-03) pre-game rows with a real DK moneyline only -- finished /
+    // unpriced rows (status post, all-null market) are not book lines.
+    const rows = (d.games || []).filter(g => (g.sport || '').toUpperCase() === 'NFL' &&
+      (g.status || '') === 'pre' && g.market && g.market.ml_home != null && g.market.ml_away != null);
     const el = document.getElementById('ln_list');
     if (!el) return;
-    const cols = 'grid-template-columns:1.6fr 90px 90px 90px 110px;';
+    const cols = 'grid-template-columns:1.6fr 90px 90px 100px 110px;';
     if (!rows.length) {
-      el.innerHTML = '<p class="muted" style="padding:14px;">No NFL lines on the free feed right now — ESPN posts book lines close to kickoff.</p>';
+      el.innerHTML = '<p class="muted" style="padding:14px;">No pre-game NFL lines on the free feed right now — ESPN posts book lines close to kickoff.</p>';
       return;
     }
-    el.innerHTML = '<div class="sb-row head" style="' + cols + '"><span>Matchup</span><span>Away ML</span><span>Home ML</span><span>Spread</span><span>Total</span></div>' +
+    const fmtSpr = (s) => s == null ? '—' : (s > 0 ? '+' + s : String(s));   // (2026-11-03) home team's spread
+    el.innerHTML = '<div class="sb-row head" style="' + cols + '"><span>Matchup</span><span>Away ML</span><span>Home ML</span><span>Home spread</span><span>Total</span></div>' +
       rows.map(g => {
         const m = g.market || {};
         return '<div class="sb-row" style="' + cols + '">' +
           '<span><strong>' + g.matchup + '</strong></span>' +
           '<span>' + fmtAmer(m.ml_away) + '</span>' +
           '<span>' + fmtAmer(m.ml_home) + '</span>' +
-          '<span>' + (m.spread != null ? m.spread : '—') + '</span>' +
+          '<span>' + fmtSpr(m.spread) + '</span>' +
           '<span>' + (m.total != null ? 'O/U ' + m.total : '—') + '</span></div>';
       }).join('');
     const meta = document.getElementById('ln_meta');
-    if (meta) meta.textContent = rows.length + ' games · ' + (d.generated_at || '').replace('T', ' ') + ' UTC';
+    if (meta) meta.textContent = rows.length + ' pre-game games · DK snapshot ' + (d.generated_at || '').replace('T', ' ') + ' UTC';
   }).catch(() => {});
 
 // Model props (nfl_player_props). During preseason the generator is GATED and
@@ -198,20 +202,37 @@ fetch("data/nfl_player_props.json?t=" + Date.now(), { cache: "no-cache" })
     if (meta) meta.textContent = (d.n_strong_edges || 0) + ' edges · ' + (d.generated_at || '').replace('T', ' ') + ' UTC';
   }).catch(() => {});
 
-// Props record, two lines: judged from 10/23 forward (the form rule changed).
+// Props record, one line per model rule (never summed). (2026-11-03) These pay
+// at the model's OWN fair odds, so units/ROI are not a return -- show
+// calibration: hit rate vs the average predicted probability of the decided
+// picks. Every line in nfl_props_by_model renders with its own label.
 fetch("data/recent_picks.json?t=" + Date.now(), { cache: "no-cache" })
   .then(r => r.json())
   .then(d => {
-    const L = ((d.nfl_props_by_model || {}).lines) || {};
+    const B = d.nfl_props_by_model || {};
+    const L = B.lines || {};
     const el = document.getElementById('pr_record');
     if (!el || !Object.keys(L).length) return;
+    const pct = (x) => (x * 100).toFixed(1) + '%';
     const fmt = (s) => {
       const dec = (s.wins || 0) + (s.losses || 0);
       if (!dec) return (s.pending || 0) + ' pending, none settled yet';
-      return s.wins + '-' + s.losses + ' · ' + (s.roi_pct >= 0 ? '+' : '') + s.roi_pct + '% ROI · ' + (s.net_units >= 0 ? '+' : '') + s.net_units + 'u · ' + (s.pending || 0) + ' pending';
+      const hr = s.wins / dec;
+      let cal = 'hit ' + pct(hr) + ' (' + s.wins + '/' + dec + ')';
+      if (s.avg_p_predicted != null) {
+        const gap = (hr - s.avg_p_predicted) * 100;
+        cal += ' vs ' + pct(s.avg_p_predicted) + ' predicted' + (s.n_with_p != null && s.n_with_p < dec ? ' (avg of the ' + s.n_with_p + ' with a recorded prob)' : '') + ' · ' + (gap >= 0 ? '+' : '−') + Math.abs(gap).toFixed(1) + ' pts ' + (gap >= 0 ? 'under-confident' : 'over-confident');
+      } else {
+        cal += ' · avg predicted not recorded';
+      }
+      return cal + ' · ' + (s.pending || 0) + ' pending';
     };
-    el.innerHTML = (L.form_v2 ? '<div><b style="color:#d4a04a;">Record from 10/23 (judged):</b> ' + fmt(L.form_v2) + '</div>' : '') +
-      (L.form_v1 ? '<div>Before 10/23, retired one-game-form model (record only): ' + fmt(L.form_v1) + '</div>' : '');
+    const order = Object.keys(L).sort().reverse();   // newest rule first (form_v3, form_v2, form_v1)
+    el.innerHTML = order.map(k => {
+      const s = L[k] || {};
+      const cur = k === B.current;
+      return '<div>' + (cur ? '<b style="color:#d4a04a;">' : '') + (s.label || k) + (cur ? ' — current' : '') + ':' + (cur ? '</b>' : '') + ' ' + fmt(s) + '</div>';
+    }).join('');
   }).catch(() => {});
 
 setInterval(() => location.reload(), 5 * 60 * 1000);

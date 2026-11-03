@@ -74,6 +74,8 @@
 <main class="container">
   <section class="page-head">
     <h1>🏆 2026 World Cup</h1>
+    <!-- (2026-11-03) tournament-complete state, filled from worldcup_advancement.json's stage. -->
+    <div class="honest" id="wcDone" style="display:none;"></div>
     <p>Every match priced <b>3-way</b> — home / draw / away off an independent-Poisson goals grid, the same show-your-work math as the MLB innings models. Fair odds are 0-vig. Group tables and finals come straight from the results feed that settles our picks.</p>
   </section>
 
@@ -103,7 +105,7 @@
   </section>
 
   <section class="card" style="margin-bottom:28px;" id="grpCard">
-    <div class="card-head"><span>📊 Group Tables &amp; Advancement Odds</span><span class="muted">top 2 + 8 best thirds advance · Adv% = Monte Carlo</span></div>
+    <div class="card-head"><span id="grpTitle">📊 Group Tables &amp; Advancement Odds</span><span class="muted" id="grpSub">top 2 + 8 best thirds advance · Adv% = Monte Carlo</span></div>
     <div style="padding:12px 16px;"><div class="grpgrid" id="groups"><p class="muted">Loading group tables…</p></div><p class="muted" id="advMeta" style="font-family:'JetBrains Mono',monospace;font-size:11px;margin:10px 2px 0;"></p></div>
   </section>
 </main>
@@ -214,17 +216,29 @@ Promise.all([
   document.getElementById("resMeta").textContent = `${res.length} played`;
   document.getElementById("results").innerHTML = res.map(m =>
     `<span>${esc(m.date)} · <b>${esc(m.away)} ${m.away_score} – ${m.home_score} ${esc(m.home)}</b></span>`).join("")
-    || '<span class="muted">First finals land after the opening matchday.</span>';
+    || '<span class="muted">No finals in the results feed right now.</span>';   // (2026-11-03) dropped the opening-matchday line
 
   // Official group tables (A-L); top 2 highlighted as advancing. The Adv column
   // is the forward-looking Monte Carlo advance probability (worldcup_advancement).
   const groups = d.groups || [];
   const adv = advData && advData.available ? advData : null;
+  // (2026-11-03) finished group stage / finished tournament: final tables, no odds.
+  const fin = adv && (adv.stage === "group_stage_complete" || adv.stage === "tournament_complete");
+  if (fin) {
+    const sub = document.getElementById("grpSub"); if (sub) sub.textContent = "final tables · ✓ = advanced (top 2 + 8 best thirds)";
+    const ttl = document.getElementById("grpTitle"); if (ttl) ttl.innerHTML = "📊 Final Group Tables";
+    const done = document.getElementById("wcDone");
+    if (done && adv.stage === "tournament_complete") {
+      done.style.display = "block";
+      done.innerHTML = `<b>Tournament complete.</b> The 2026 World Cup ended with the final on ${esc(adv.final_date || "")}. There are no upcoming matches to price; the group tables below are the official final standings and the report card is the settled record.`;
+    }
+  }
   const advByTeam = {};
   if (adv) for (const g of (adv.groups || [])) for (const t of (g.teams || [])) advByTeam[t.team] = t;
   const advCell = (team) => {
     const a = advByTeam[team];
     if (!a) return '<span class="adv muted">—</span>';
+    if (a.final) return a.advanced ? '<span class="adv" style="color:#5fe0a0;" title="advanced">✓</span>' : '<span class="adv muted" title="eliminated">✗</span>';
     const v = a.p_advance;
     const txt = v >= 0.9995 ? "✓" : (v <= 0.0005 ? "✗" : pc(v));
     const col = v >= 0.6 ? "#5fe0a0" : (v >= 0.35 ? "#ffc15e" : "#ff8a8a");
@@ -236,9 +250,11 @@ Promise.all([
       <div class="grpbox">
         <h4>${esc(g.name)}</h4>
         <div class="grow"><span class="gh">#</span><span class="gh">Team</span><span class="gh">GP</span><span class="gh">Pts</span><span class="gh">GD</span><span class="gh">W-D-L</span><span class="gh adv">Adv</span></div>
-        ${g.teams.map((t, i) => `<div class="grow ${i < 2 ? "qual" : ""}"><span>${t.rank}</span><span>${esc(t.team)}${t.advanced ? ' <span style="color:#5fe0a0;">✓</span>' : ""}</span><span>${t.gp}</span><span><b>${t.pts}</b></span><span>${t.gd >= 0 ? "+" : ""}${t.gd}</span><span class="muted">${t.w}-${t.d}-${t.l}</span>${advCell(t.team)}</div>`).join("")}
+        ${g.teams.map((t, i) => `<div class="grow ${(fin ? t.advanced : i < 2) ? "qual" : ""}"><span>${t.rank}</span><span>${esc(t.team)}${t.advanced ? ' <span style="color:#5fe0a0;">✓</span>' : ""}</span><span>${t.gp}</span><span><b>${t.pts}</b></span><span>${t.gd >= 0 ? "+" : ""}${t.gd}</span><span class="muted">${t.w}-${t.d}-${t.l}</span>${advCell(t.team)}</div>`).join("")}
       </div>`).join("");
-    document.getElementById("advMeta").textContent = adv
+    document.getElementById("advMeta").textContent = fin
+      ? `Group stage complete (every team played 3): official final tables, ${adv.n_advanced ?? "—"} of ${adv.n_teams ?? "—"} advanced. No simulation · ${(adv.generated_at || "").replace("T", " ").slice(0, 16)} UTC`
+      : adv
       ? `Adv% = P(top 2 or one of 8 best third-placed) from ${adv.n_sims.toLocaleString()} Monte Carlo sims · ${adv.n_fixtures_remaining} group fixtures left · ${(adv.generated_at || "").replace("T", " ").slice(0, 16)} UTC`
       : "Advancement sim fills in once the group stage is underway.";
   } else {

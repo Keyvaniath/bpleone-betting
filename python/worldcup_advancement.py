@@ -45,6 +45,7 @@ N_SIMS = 20000
 SEED = 1234            # fixed -> stable output between runs (churn only on real moves)
 N_BEST_THIRDS = 8      # 2026 R32 takes the 8 best third-placed teams
 GROUP_SIZE = 4
+WC_FINAL_DATE = "2026-07-19"   # (2026-11-03) the 2026 final (MetLife); after it the tournament is over
 
 
 def _load(p) -> Dict[str, Any]:
@@ -86,6 +87,14 @@ def _pois_sample(rng: random.Random, lam: float) -> int:
             return k - 1
 
 
+def _group_complete(g: Dict[str, Any]) -> bool:
+    """(2026-11-03) a round-robin group is finished when every team has played
+    everyone else (GP = n-1). Read off the standings' own GP -- the results feed
+    can be empty months later while the table is complete."""
+    rows = [r for r in (g.get("teams") or []) if r.get("team")]
+    return bool(rows) and all(int(r.get("gp") or 0) >= len(rows) - 1 for r in rows)
+
+
 def _remaining_fixtures(groups: List[Dict[str, Any]],
                         played: set) -> List[Tuple[str, str, str]]:
     """Every group-stage pairing not yet played. A 4-team group is a single
@@ -93,6 +102,8 @@ def _remaining_fixtures(groups: List[Dict[str, Any]],
     remaining schedule -- no fixture list needed."""
     fixtures: List[Tuple[str, str, str]] = []
     for g in groups:
+        if _group_complete(g):   # (2026-11-03) nothing left to play in this group
+            continue
         teams = [r["team"] for r in (g.get("teams") or []) if r.get("team")]
         for i in range(len(teams)):
             for j in range(i + 1, len(teams)):
@@ -193,12 +204,48 @@ def simulate(groups: List[Dict[str, Any]], st: Dict[str, Dict[str, Any]],
             "n_teams": len(base)}
 
 
+def _final_tables(groups: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
+    """(2026-11-03) every group finished: the official table IS the answer --
+    no simulation. `advanced` is ESPN's own flag (top 2 + the 8 best thirds)."""
+    out_groups = []
+    for g in groups:
+        rows = []
+        for r in sorted((g.get("teams") or []), key=lambda x: int(x.get("rank") or 99)):
+            if not r.get("team"):
+                continue
+            rows.append({"team": r["team"], "rank": r.get("rank"), "pts": int(r.get("pts") or 0),
+                         "gp": int(r.get("gp") or 0), "gd": int(r.get("gf") or 0) - int(r.get("ga") or 0),
+                         "gf": int(r.get("gf") or 0), "advanced": bool(r.get("advanced")), "final": True})
+        out_groups.append({"name": g["name"], "teams": rows})
+    return out_groups
+
+
 def run() -> Dict[str, Any]:
     results = wm._wc_results()
     st = wm._standings(results)
     groups = _groups()
+    today = dt.datetime.now(dt.timezone.utc).date().isoformat()
 
-    if not groups:
+    if groups and all(_group_complete(g) for g in groups):
+        # (2026-11-03) the group stage is over (every team GP = 3). Re-simulating
+        # all 72 fixtures because the results feed is empty would print made-up
+        # advance odds on a finished table.
+        done = today > WC_FINAL_DATE
+        out = {
+            "generated_at": dt.datetime.now(dt.timezone.utc).isoformat(timespec="seconds"),
+            "n_sims": 0, "available": True,
+            "stage": "tournament_complete" if done else "group_stage_complete",
+            "n_fixtures_remaining": 0,
+            "n_teams": sum(len(g.get("teams") or []) for g in groups),
+            "n_advanced": sum(1 for g in groups for r in (g.get("teams") or []) if r.get("advanced")),
+            "final_date": WC_FINAL_DATE,
+            "format_note": ("Group stage complete: every team has played 3. These are the official "
+                            "final tables (ESPN); advanced = top 2 + the 8 best third-placed teams. "
+                            "No simulation." + (f" The tournament ended with the final on {WC_FINAL_DATE}."
+                                                 if done else "")),
+            "groups": _final_tables(groups),
+        }
+    elif not groups:
         out = {
             "generated_at": dt.datetime.now(dt.timezone.utc).isoformat(timespec="seconds"),
             "n_sims": 0, "available": False,
@@ -211,6 +258,7 @@ def run() -> Dict[str, Any]:
         out = {
             "generated_at": dt.datetime.now(dt.timezone.utc).isoformat(timespec="seconds"),
             "n_sims": N_SIMS, "available": True,
+            "stage": "group_stage",   # (2026-11-03)
             "n_fixtures_remaining": sim["n_fixtures_remaining"],
             "n_teams": sim["n_teams"],
             "format_note": (
@@ -233,6 +281,8 @@ if __name__ == "__main__":
     o = run()
     if not o.get("available"):
         print(f"[wc-advance] not available: {o.get('note')}")
+    elif o.get("stage") in ("group_stage_complete", "tournament_complete"):   # (2026-11-03)
+        print(f"[wc-advance] {o['stage']}: {o.get('n_advanced')} of {o.get('n_teams')} advanced, no sim -> {OUT}")
     else:
         print(f"[wc-advance] {o['n_sims']:,} sims, {o['n_fixtures_remaining']} fixtures remaining, "
               f"{o['n_teams']} teams -> {OUT}")

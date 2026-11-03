@@ -339,12 +339,17 @@ def run() -> Dict[str, Any]:
                 "calibration_method": (meta or {}).get("method"),
                 "family_n_settled": (meta or {}).get("n"),
                 # The reasoning chain, mirroring the Alpha pick's why-panel.
+                # (2026-11-03) the SIDE's Elo comes first (it printed home first
+                # even when the side was away), HFA is attributed to the home
+                # team by name, and the number is a model-vs-book gap, not an
+                # edge -- the closing line is sharper than this model.
                 "why": (
-                    f"Elo {rh['rating']:.0f} vs {ra['rating']:.0f}"
-                    f"{'' if neutral else ' +' + str(int(cr.HFA_ELO)) + ' home'} "
+                    f"{team} Elo {(rh if side == 'HOME' else ra)['rating']:.0f} vs "
+                    f"{away if side == 'HOME' else home} {(ra if side == 'HOME' else rh)['rating']:.0f}"
+                    f"{'' if neutral else ' (+' + str(int(cr.HFA_ELO)) + ' home for ' + str(home) + ')'} "
                     f"-> model {p_model:.1%}; shrunk to {p_shrunk:.1%} against the "
-                    f"book's de-vigged {book_devig:.1%}; at {book_ml} that is "
-                    f"{edge * 100:.1f}% edge."),
+                    f"book's de-vigged {book_devig:.1%}; at {book_ml} that is a "
+                    f"{edge * 100:.1f}% model-vs-book gap (unvalidated)."),
             })
 
     edges.sort(key=lambda e: -e["edge_pct"])

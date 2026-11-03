@@ -73,7 +73,9 @@
 
   <!-- PLAYER PROJECTIONS — points + PRA (odds-independent model bands) -->
   <section class="card" id="ptsProjCard" style="margin-bottom: 24px; border-left: 3px solid #fb923c; display:none;">
-    <div class="card-head"><span>🎯 <strong>Player Projections — Points + PRA</strong> <span class="muted" style="font-size:10px;">(model bands · odds-independent)</span></span><span class="muted" id="ptsProjMeta">--</span></div>
+    <!-- (2026-11-03) labelled as what it is: the pool is a hand-typed 2024-25 table, PPG blended toward last season by games played. -->
+    <div class="card-head"><span>🎯 <strong>Player Projections — Points + PRA</strong> <span style="font-size:9.5px;font-weight:700;padding:2px 7px;border-radius:4px;background:rgba(212,160,74,.18);color:#d4a04a;margin-left:6px;">UNVALIDATED MODEL PROJECTION — NO SPORTSBOOK PRICE, NOT A PICK</span></span><span class="muted" id="ptsProjMeta">--</span></div>
+    <p class="muted" style="font-size:11px; padding:8px 16px 0; margin:0;">Projected mean only. Inputs: this season's ESPN per-game averages blended toward last season by games played (early in the season that is mostly last season), times pace and opponent defense. Players with no games this season are left out. No book prop line is compared and no lean is implied.</p>
     <div id="ptsProjList"><p class="muted" style="padding:14px;">Loading projections…</p></div>
   </section>
   <script>
@@ -84,25 +86,28 @@
     const norm = s => (s||'').trim().toLowerCase();
     const ptsRows = pts.rows || [];
     const praRows = pra.rows || [];
-    if (!ptsRows.length && !praRows.length) return;
+    if (!ptsRows.length) return;   // (2026-11-03) PRA rides on the points rows
     const ptsIdx = {}; ptsRows.forEach(r => { ptsIdx[norm(r.player)] = r; });
     const praIdx = {}; praRows.forEach(r => { praIdx[norm(r.player)] = r; });
-    const names = Array.from(new Set([...ptsRows.map(r=>norm(r.player)), ...praRows.map(r=>norm(r.player))]));
+    // (2026-11-03) the points producer drops players with 0 games this season;
+    // PRA rows are shown only for players that survive it.
+    const names = Array.from(new Set(ptsRows.map(r=>norm(r.player))));
     const projOf = n => (ptsIdx[n] && ptsIdx[n].projected_pts) || (praIdx[n] && praIdx[n].projected_pra) || 0;
     names.sort((a,b) => projOf(b) - projOf(a));
     const card = document.getElementById("ptsProjCard");
     if (!card) return;
     card.style.display = "block";
     const stamp = (pts.generated_at || pra.generated_at || '').slice(11,16);
-    document.getElementById("ptsProjMeta").textContent = `${names.length} players · model bands · ${stamp} UTC`;
+    document.getElementById("ptsProjMeta").textContent = `${names.length} players · model projection · ${stamp} UTC`;
     document.getElementById("ptsProjList").innerHTML = names.map(n => {
       const p = ptsIdx[n] || {}; const a = praIdx[n] || {};
       const name = p.player || a.player || n;
       const matchup = p.matchup || a.matchup || '';
       const ptsVal = p.projected_pts != null ? p.projected_pts : '—';
       const praVal = a.projected_pra != null ? a.projected_pra : '—';
-      const ptsConf = p.confident_over_line ? 'o' + p.confident_over_line : '—';
-      const praConf = a.confident_over_line ? 'o' + a.confident_over_line : '—';
+      // (2026-11-03) no "o32.5"-style lean: the model's own line is not a book line.
+      const ptsConf = 'proj. mean';
+      const praConf = 'proj. mean';
       return `<div style="display:flex;align-items:center;justify-content:space-between;padding:10px 16px;border-bottom:1px solid rgba(255,255,255,0.04);border-left:3px solid #fb923c;">
         <div><span style="font-weight:600;font-size:13px;">${name}</span> <span class="muted" style="font-size:11px;">${matchup}</span></div>
         <div style="display:flex;gap:22px;text-align:right;font-family:'JetBrains Mono',monospace;">
