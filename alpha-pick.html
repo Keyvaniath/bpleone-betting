@@ -225,11 +225,24 @@ fetch('data/alpha_pick_record.json?t=' + Date.now()).then(function (r) { return 
     '<strong style="color:#d4a04a;">One pick vs the board:</strong> ' +
     'this single play runs <b style="color:' + col(r.roi_pct) + ';">' + pc(r.roi_pct) + '</b> at ' +
     (r.hit_rate != null ? Math.round(r.hit_rate * 100) + '%' : '—') + ' over ' + r.n_settled + ' settled — ' +
-    (b.roi_pct != null ? 'right alongside the full <b>curated board</b> (<b style="color:#58c878;">+' +
-      (+b.roi_pct).toFixed(1) + '%</b> at <b>' + Math.round((b.hit_rate || 0) * 100) + '%</b> across ~' +
+    (b.roi_pct != null ? 'against the full <b>curated board</b> (<b style="color:' + col(b.roi_pct) + ';">' +
+      pc(b.roi_pct) + '</b> at <b>' + Math.round((b.hit_rate || 0) * 100) + '%</b> across ~' +
       (b.n_settled || 0) + ' plays). ' : '') +
-    'That <em>both</em> clear a real edge is the point — it\'s the model + curation, not luck. But one bet a day is far higher variance (~' +
-    r.n_settled + ' bets vs ~' + (b.n_settled || 0) + '): follow the one pick as a headline; the board\'s larger sample is the bankable number.' +
+    // 2026-11-03: the "both clear a real edge" claim only when both actually do
+    ((r.roi_pct > 0 && b.roi_pct > 0)
+      ? 'That <em>both</em> are positive is the point — but one bet a day is far higher variance (~' +
+        r.n_settled + ' bets vs ~' + (b.n_settled || 0) + '): the board\'s larger sample is the number to trust.'
+      : 'One bet a day is far higher variance (~' + r.n_settled + ' bets vs ~' + (b.n_settled || 0) +
+        '); the board\'s larger sample is the number to trust, and at sportsbook prices it is not positive.') +
+    // 2026-11-03: which part of the record is at a real book price
+    ((d.price_split && d.price_split.model_priced_props)
+      ? (function (ps) {
+          var g = ps.book_priced_game_lines || {}, pr = ps.model_priced_props || {};
+          var u = function (x) { return (x >= 0 ? '+' : '') + x + 'u'; };
+          return '<br><span style="color:#d4a04a;font-weight:600;">Prices:</span> game lines at the real DraftKings line ' +
+            g.wins + '-' + g.losses + ' (' + u(g.net_units) + '); player props ' + pr.wins + '-' + pr.losses + ' (' + u(pr.net_units) +
+            ') are graded at the model\'s own fair price — no sportsbook prop price is on record for them.';
+        })(d.price_split) : '') +
     ((d.price_corrections && d.price_corrections.note)
       ? '<br><span style="color:#d4a04a;font-weight:600;">Corrected 10/23 + 10/26:</span> ' + d.price_corrections.note
       : '');

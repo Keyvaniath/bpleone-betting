@@ -141,9 +141,9 @@ Promise.all([J('forward_test.json'), J('family_durability.json'), J('curation_oo
   const cur = led.curated || {};
   const cal = led.calibrated_reliability || {};
   const tiles = [];
-  if (cur.net_units != null) tiles.push({v:'+' + Math.round(cur.net_units) + 'u', k:`curated book (${cur.n_settled} picks · ${(100*(cur.hit_rate||0)).toFixed(0)}% hit · 1u flat)`, up:1});
-  if (ins.curated_roi != null && ins.raw_roi != null) tiles.push({v:sgn(ins.raw_roi) + ' → ' + sgn(ins.curated_roi), k:'raw firehose → curated (same model, losers dropped)', up:1});
-  if (hci.roi_lo != null) tiles.push({v:`[${sgn(hci.roi_lo)}, ${sgn(hci.roi_hi)}]`, k:'held-out 95% CI — floor above zero = not luck', up:1});
+  if (cur.net_units != null) tiles.push({v:(cur.net_units >= 0 ? '+' : '') + Math.round(cur.net_units) + 'u', k:`curated book (${cur.n_settled} picks · ${(100*(cur.hit_rate||0)).toFixed(0)}% hit · 1u flat · sportsbook prices only)`, up:cur.net_units >= 0 ? 1 : 0});
+  if (ins.curated_roi != null && ins.raw_roi != null) tiles.push({v:sgn(ins.raw_roi) + ' → ' + sgn(ins.curated_roi), k:'raw firehose → curated, IN-SAMPLE (losing families picked on the same data)', up:0});
+  if (hci.roi_lo != null) tiles.push({v:`[${sgn(hci.roi_lo)}, ${sgn(hci.roi_hi)}]`, k:(hci.roi_lo > 0 ? 'held-out 95% CI — floor above zero = not luck' : 'held-out 95% CI — includes zero: not yet distinguishable from luck'), up:hci.roi_lo > 0 ? 1 : 0});
   if (cal.ece_raw != null && cal.ece_calibrated != null) tiles.push({v:(100*cal.ece_raw).toFixed(1) + '% → ' + (100*cal.ece_calibrated).toFixed(1) + '%', k:'calibration error, raw → calibrated (a 70% hits ~70%)', up:1});
   document.getElementById('pcStats').innerHTML = tiles.map(t =>
     `<div class="pc-stat"><div class="v ${t.up?'up':''}">${t.v}</div><div class="k">${t.k}</div></div>`).join('');

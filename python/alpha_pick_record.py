@@ -543,6 +543,20 @@ def run() -> Dict[str, Any]:
     # honest apples-to-apples comparison for "one bet vs the whole board." Pulled
     # from ledger_summary so it always matches the site's headline curated ROI.
     cur = (_load(SUMMARY).get("curated") or {})
+    # PRICE SPLIT (2026-11-03, display only -- locked Alpha days are never
+    # edited): game lines are graded at the real DraftKings line; player props
+    # have no sportsbook price on record, so they are graded at the model's own
+    # fair price. Say which part of the record is which.
+    def _is_game(r):
+        m = str(r.get("market") or "").lower()
+        return "ml" in m or m.startswith(("over_", "under_"))
+    split = {}
+    for key, sel in (("book_priced_game_lines", _is_game), ("model_priced_props", lambda r: not _is_game(r))):
+        rs = [r for r in one_rows if sel(r) and r.get("result") in ("won", "lost")]
+        w_ = sum(1 for r in rs if r["result"] == "won")
+        u_ = round(sum(r.get("payout_units") or 0 for r in rs), 2)
+        split[key] = {"wins": w_, "losses": len(rs) - w_, "net_units": u_,
+                      "roi_pct": round(u_ / len(rs) * 100, 1) if rs else None}
     board = {
         "n_settled": cur.get("n_settled"), "wins": cur.get("wins"),
         "losses": cur.get("losses"), "hit_rate": cur.get("hit_rate"),
@@ -677,17 +691,16 @@ def run() -> Dict[str, Any]:
         "streak": _streak(one_rows),
         "props_slate": slate,    # the One Pick + 1-2 diversified "alpha props"
         "history": list(reversed(one_rows)),   # newest first
+        "price_split": split,
         "note": ("The single highest model-EV MLB player prop each day, flat 1u, "
                  "backfilled from the public ledger and selected on pre-game model "
                  "probability and odds only -- the ranking never sees the outcome. "
-                 "It has run ahead of even the full curated book -- but on ~50 bets "
-                 "versus the board's ~1,000, so treat its ROI as noisier: one bet a "
-                 "day is far higher variance, and a cold week swings it hard. The "
-                 "point isn't one number beating the other -- it's that BOTH the "
-                 "single pick and the diversified board clear a real edge, which is "
-                 "what you'd expect if the edge lives in the model + curation rather "
-                 "than luck. Follow the one pick as a headline to watch; the board's "
-                 "larger-sample ROI is the bankable, robust number. RULE AMENDMENT "
+                 "One bet a day is far higher variance than the board, so treat its "
+                 "ROI as noisy. PRICES (2026-11-03): its game lines are graded at the "
+                 "real DraftKings line; its player props have no sportsbook price on "
+                 "record and are graded at the model's own fair price -- see "
+                 "price_split; at sportsbook prices the curated board is not "
+                 "positive. RULE AMENDMENT "
                  "2026-08-10 (v2, forward-only): picks now route through the same "
                  "curation + calibration gate as every other surfaced board -- "
                  "proven-negative and overconfident families are excluded and the "

@@ -41,6 +41,29 @@ bpleone-site/
 
 ## Current deployment state (LIVE)
 
+- **2026-11-03 (late) — CURATED = SPORTSBOOK PRICES ONLY (Brandon's calls).**
+  Price audit of the curated record: game lines at book 156-114 +8.58u (ML) /
+  116-125 -10.51u (totals); 60 curated MLB game lines graded at the MODEL'S
+  own fair price -> seed E kind `model_fair` (32 repriced, 28 voided;
+  785-335 +151.66u); and 587 curated PrizePicks props (May 19 - Jul 9, market
+  `PP_*`, sport MLB-PP) graded at PrizePicks' per-leg break-even -136 =
+  +155.58u of the curated profit. Brandon chose: (1) PrizePicks props leave
+  the curated headline -> own `prizepicks` block in the ledger summary +
+  track-record line; (2) rescale to flat 1u: 249 locks-history imports had a
+  ~0.06u stake (`_normalize_stakes`, every build, audit `stake_normalized`).
+  Curated now 290-243 (-0.74%, -3.92u); PrizePicks 495-92 +271.97u (+46.3%,
+  84% hit -- from the locks-history import, flagged unverified). Also:
+  validate_curation_oos.py + forward_test.py exclude PP and payout-less picks
+  (the 0.91 fallback graded a missing price as a -110 win): held-out 70/30
+  curated -5.1% (raw -6.5%), forward test -0.5% (8/8 rungs beat raw, none
+  profitable). Front-end honesty: index.html colours by sign and says "not
+  profitable" (a negative held-out ROI had rendered green as proof); the
+  "statistically significant / not luck" line only when the HELD-OUT CI
+  clears zero; proof.html tiles signed + labelled in-sample; alpha-pick.html
+  "both clear a real edge" only when both are positive + a price split. ALPHA
+  (locked, not edited): 70 props at the model's own price 48-22 +13.36u, 35
+  game lines at DK 19-16 -0.78u -- `price_split` in alpha_pick_record.json;
+  whether Alpha should count model-priced props is Brandon's call.
 - **2026-11-03 (night) — NBA PROP SPREADS FITTED.** With NBA settling, by
   family: REB_OVER 40% at 64% predicted (n=48, z -3.5), PRA_UNDER 62% vs 70%,
   TOV_UNDER 56% vs 67%, FTA_UNDER 59% vs 66%. Cause: hand-set sigmas

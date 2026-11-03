@@ -416,7 +416,11 @@
       const pcNote = (d.price_corrections || []).map(c =>
         `<p class="muted" style="font-size:11px;margin:8px 0 0;"><b>Corrected ${c.date}${c.label ? " (" + c.label + ")" : ""}:</b> ${c.note} ` +
         `${c.counts_text || (c.n_repriced + " re-priced, " + c.n_voided + " voided")}. ${c.record_label || "Curated"} ${c.curated_before} → ${c.curated_after}.</p>`).join("");
-      document.getElementById("bsGrid").innerHTML = header + rows + nflNote + rsNote + pcNote;
+      // PrizePicks (2026-11-03): its own line, never part of the curated headline.
+      const pp = d.prizepicks;
+      const ppNote = (pp && pp.n_settled)
+        ? `<p class="muted" style="font-size:11px;margin:8px 0 0;"><b>PrizePicks line (separate):</b> ${pp.wins}-${pp.losses}, ${pp.net_units >= 0 ? "+" : ""}${pp.net_units}u (${pp.roi_pct >= 0 ? "+" : ""}${pp.roi_pct}%), ${pp.first_date} → ${pp.last_date}. ${pp.definition}</p>` : "";
+      document.getElementById("bsGrid").innerHTML = header + rows + nflNote + rsNote + ppNote + pcNote;
     }).catch(() => {});
   </script>
 

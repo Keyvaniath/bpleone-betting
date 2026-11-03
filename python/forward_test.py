@@ -37,9 +37,13 @@ MAX_RUNGS = 12        # keep the artifact + card bounded (~ a season of rungs)
 
 def _load_picks():
     d = json.load(open(LEDGER, encoding="utf-8"))
+    # 2026-11-03: PrizePicks props (no sportsbook price; their own line) and
+    # picks with no recorded payout are out of the evidence.
     return [p for p in (d.get("picks") or [])
             if p.get("settled") and p.get("result") in ("won", "lost", "push")
-            and not p.get("voided")]
+            and not p.get("voided") and p.get("payout_units") is not None
+            and not str(p.get("market") or "").startswith("PP_")
+            and str(p.get("sport") or "").upper() != "MLB-PP"]
 
 
 def _net(p):

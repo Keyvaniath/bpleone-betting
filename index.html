@@ -303,7 +303,7 @@ fetch('data/data_health.json?t=' + Date.now()).then(function(r){return r.json();
 
   <!-- PROVE IT strip: real ledger, replayable by anyone -->
   <section id="proveIt" style="display:none; margin: 0 0 22px 0; padding: 13px 18px; border-radius: 10px; border: 1px solid rgba(88,200,120,.28); font-family: 'JetBrains Mono', monospace; font-size: 13px;">
-    <span style="font-size:10px;text-transform:uppercase;letter-spacing:.6px;color:#8a93a6;display:block;margin-bottom:7px;">The receipts — verifiable · out-of-sample · statistically significant</span>
+    <span style="font-size:10px;text-transform:uppercase;letter-spacing:.6px;color:#8a93a6;display:block;margin-bottom:7px;">The receipts — verifiable · out-of-sample tested · shown even when they lose</span>
     <span id="proveItForward" style="display:none;font-size:13.5px;"></span>
     <span id="proveItCI" style="display:none;margin-top:6px;color:var(--text-2,#9fb0c8);"></span>
     <span id="proveItOos" style="display:none;margin-top:6px;color:var(--text-2,#9fb0c8);"></span>
@@ -337,20 +337,33 @@ fetch('data/data_health.json?t=' + Date.now()).then(function(r){return r.json();
     const exRobust = (c.roi_ex_flagged != null)
       ? ` <span style="color:#e0a13a;">Concentrated, though</span> — excluding small-sample-flagged families the robust edge is <b style="color:#58c878;">${sgn(c.roi_ex_flagged)}</b> (we show the full breakdown, not just the headline).`
       : "";
+    // Colour by sign and say it plainly (2026-11-03): a negative held-out ROI
+    // was rendered green as if it were proof of edge.
+    const col = v => v >= 0 ? "#58c878" : "#e35a5a";
+    const verdict = h.test_oos_roi > 0 ? "" : (h.test_oos_roi > h.test_raw_roi
+      ? ` <span style="color:#e0a13a;">Curation loses less than the raw feed, but it is <b>not profitable</b> on unseen data.</span>`
+      : ` <span style="color:#e0a13a;">No held-out edge.</span>`);
     document.getElementById("proveItOos").innerHTML =
       `<span style="color:#8a93a6;">Held-out test: </span>curation frozen on early data returns ` +
-      `<b style="color:#58c878;">${sgn(h.test_oos_roi)}</b> on the <i>unseen</i> later window ` +
-      `(raw firehose <b style="color:#e35a5a;">${sgn(h.test_raw_roi)}</b>).` + exRobust;
+      `<b style="color:${col(h.test_oos_roi)};">${sgn(h.test_oos_roi)}</b> on the <i>unseen</i> later window ` +
+      `(raw firehose <b style="color:${col(h.test_raw_roi)};">${sgn(h.test_raw_roi)}</b>).` + verdict + (h.test_oos_roi > 0 ? exRobust : "");
     document.getElementById("proveItOos").style.display = "block";
     document.getElementById("proveIt").style.display = "block";
     // Bootstrap 95% CI — is the edge distinguishable from luck?
     const ci = (d.in_sample || {}).curated_roi_ci, hci = d.holdout_70_ci;
-    if (ci && ci.positive) {
+    // "Not luck" only when the HELD-OUT interval clears zero too (2026-11-03):
+    // an in-sample CI on a cut chosen from the same data is optimistic by
+    // construction, and it was being shown as proof while the held-out test lost.
+    if (ci && ci.positive && hci && hci.positive) {
       document.getElementById("proveItCI").innerHTML =
         `<span style="color:#8a93a6;">Statistically significant: </span>bootstrap 95% CI on the curated edge is ` +
-        `<b style="color:#58c878;">[+${ci.roi_lo}%, +${ci.roi_hi}%]</b> in-sample` +
-        (hci && hci.positive ? `, <b style="color:#58c878;">[+${hci.roi_lo}%, +${hci.roi_hi}%]</b> held-out` : "") +
-        ` — the lower bound stays <b>above zero</b>, so it's not luck.`;
+        `<b style="color:#58c878;">[+${ci.roi_lo}%, +${ci.roi_hi}%]</b> in-sample, ` +
+        `<b style="color:#58c878;">[+${hci.roi_lo}%, +${hci.roi_hi}%]</b> held-out — the lower bound stays <b>above zero</b> on unseen data.`;
+      document.getElementById("proveItCI").style.display = "block";
+    } else if (ci && ci.positive) {
+      document.getElementById("proveItCI").innerHTML =
+        `<span style="color:#8a93a6;">In-sample only: </span>the bootstrap CI is [+${ci.roi_lo}%, +${ci.roi_hi}%] on the same data the ` +
+        `cut was chosen from — optimistic by construction. The held-out test above is the number to trust.`;
       document.getElementById("proveItCI").style.display = "block";
     }
   }).catch(() => {});
@@ -371,7 +384,8 @@ fetch('data/data_health.json?t=' + Date.now()).then(function(r){return r.json();
     }
     document.getElementById("proveItForward").innerHTML =
       `<span style="color:#8a93a6;">⏱ Forward test (zero hindsight): </span>since <b>${d.anchor}</b>, on <b>${d.n_settled_since}</b> picks settled against a rule frozen <i>before</i> they happened — ` +
-      `curated <b style="color:#58c878;">${sgn(d.curated_roi)}</b> (hit ${d.curated_hit}%) vs raw firehose <b style="color:#e35a5a;">${sgn(d.raw_roi)}</b>.` + repeat + cav;
+      `curated <b style="color:${d.curated_roi >= 0 ? "#58c878" : "#e35a5a"};">${sgn(d.curated_roi)}</b> (hit ${d.curated_hit}%) vs raw firehose <b style="color:${d.raw_roi >= 0 ? "#58c878" : "#e35a5a"};">${sgn(d.raw_roi)}</b>.` +
+      (d.curated_roi > 0 ? "" : ` <span style="color:#e0a13a;">Not profitable so far.</span>`) + repeat + cav;
     document.getElementById("proveItForward").style.display = "block";
     document.getElementById("proveIt").style.display = "block";
   }).catch(() => {});

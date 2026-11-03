@@ -185,7 +185,19 @@ def _price_corrections(history):
     ph_vd = sum(1 for p in rows if str(p.get("voided_reason") or "").startswith("unpriced: graded at a placeholder"))
     nba_regraded = sum(1 for p in rows if str(p.get("sport") or "").upper() == "NBA"
                        and any("wrong game" in str(x.get("reason") or "") for x in (p.get("resettle_log") or [])))
+    n_norm = sum(1 for p in rows if p.get("stake_normalized"))
     return [
+        {"date": "2026-11-03", "label": "PrizePicks split out + flat 1u stakes", "n_repriced": 0, "n_voided": 0,
+         "counts_text": (f"587 PrizePicks props moved to their own line; {n_norm} locks-history picks rescaled "
+                         "from a ~0.06u stake to the flat 1u"),
+         "curated_before": "785-335 (+13.54%, +151.66u)", "curated_after": "290-243 (-0.74%, -3.92u)",
+         "note": ("The curated headline is now graded at real sportsbook prices only. 587 curated "
+                  "PrizePicks props (May 19 - July 9) had been graded at PrizePicks' per-leg break-even "
+                  "(-136, a 2-pick Power Play) -- not a sportsbook line, and a single leg cannot be bet "
+                  "alone -- and they were almost all of the curated profit. They keep their own labelled "
+                  "line (495-92, +271.97u at a flat 1u: 249 of them had been imported from the old locks "
+                  "history at a ~0.06u stake and were rescaled). Its 84% hit rate is far above anything "
+                  "else on the site and comes from that import; treat it as unverified.")},
         {"date": "2026-11-03", "label": "curated game lines at the model's price", "n_repriced": mf_rp,
          "n_voided": mf_vd,
          "curated_before": "803-345 (+13.73%, +157.67u)", "curated_after": "785-335 (+13.54%, +151.66u)",
@@ -3517,6 +3529,30 @@ def _regrade_strict(p: Dict[str, Any], historical_mlb, by_name) -> Optional[str]
     return _grade_batter_prop(market, p, by_name)  # sets p["outcome"]
 
 
+def _normalize_stakes(history: List[Dict[str, Any]]) -> int:
+    """Every settled pick at the flat 1u stake the record states (2026-11-03,
+    Brandon's call). Picks imported from the old locks history carried a
+    fractional stake (~0.06u: a win paid +0.0456 at -136, a loss -0.062) --
+    249 PrizePicks rows. Re-derive the payout at 1u from the graded price;
+    idempotent, audit-stamped."""
+    n = 0
+    for p in history:
+        if p.get("_bootstrapped_from") != "locks_history" or p.get("voided") or not p.get("settled"):
+            continue
+        res, px = p.get("result"), _price_american(p)
+        if res not in ("won", "lost") or px is None:
+            continue
+        want = round((_american_to_decimal(px) or 1.0) - 1, 4) if res == "won" else -1.0
+        cur = p.get("payout_units")
+        if cur is None or abs(cur - want) < 1e-3:
+            continue
+        p["stake_normalized"] = {"at": dt.datetime.now().isoformat(timespec="seconds"), "from_payout": cur,
+                                 "reason": "locks-history import carried a fractional stake; rescaled to the flat 1u"}
+        p["payout_units"] = want
+        n += 1
+    return n
+
+
 def _regrade_bball_wrong_game(history: List[Dict[str, Any]]) -> int:
     """NBA picks dated by the UTC date of tip-off (until 2026-11-03) could be
     graded against the WRONG game on a back-to-back: Scottie Barnes REB over
@@ -3916,6 +3952,9 @@ def run() -> Dict[str, Any]:
     # the truth -- we never carry an outcome the box score contradicts.
     n_resettled = _resettle_on_revision(history)
     n_resettled += _regrade_bball_wrong_game(history)
+    n_stake_norm = _normalize_stakes(history)
+    if n_stake_norm:
+        print(f"  stake normalization: {n_stake_norm} pick(s) rescaled to the flat 1u stake")
 
     if len(history) > MAX_PICKS:
         # Evict SIGNAL-FREE entries first -- never settled history while any exist.
@@ -3999,11 +4038,21 @@ def run() -> Dict[str, Any]:
         s = src or ""
         return any(s == pre or s.startswith(pre) for pre in _CURATED_PREFIXES)
 
+    def _is_pp(p):
+        return str(p.get("market") or "").startswith("PP_") or str(p.get("sport") or "").upper() == "MLB-PP"
+
     def _is_curated_pick(p):
         # A wager counts as curated if the copy the guard kept came from a curated
         # source OR if a curated board offered the same wager while it was open
         # (also_sources, stamped by the ADD-GUARD). One row either way -- attribution
         # only, never a double count.
+        # PRIZEPICKS (2026-11-03, Brandon's call): PrizePicks props have no
+        # sportsbook price -- they were graded at PrizePicks' per-leg break-even
+        # (-136, a 2-pick Power Play) and a single leg is not bettable. They
+        # leave the curated headline (graded at real book prices only) and keep
+        # their own labelled line (`prizepicks` below).
+        if _is_pp(p):
+            return False
         if _is_curated(p.get("source")):
             return True
         return any(_is_curated(s) for s in (p.get("also_sources") or ()))
@@ -4026,6 +4075,24 @@ def run() -> Dict[str, Any]:
                        "Whale, Sharp, Consensus (hit), Under Alerts, POD. Excludes the "
                        "experimental prop feeds, which are tracked to train the model, "
                        "not bet."),
+    }
+
+    pp = [p for p in settled if _is_pp(p) and (_is_curated(p.get("source"))
+                                                or any(_is_curated(x) for x in (p.get("also_sources") or ())))]
+    pp_w = sum(1 for p in pp if p["result"] == "won")
+    pp_l = sum(1 for p in pp if p["result"] == "lost")
+    pp_net = round(sum((p.get("payout_units") or 0) for p in pp), 3)
+    pp_risk = sum(1 for p in pp if p["result"] != "push")
+    prizepicks = {
+        "n_settled": len(pp), "wins": pp_w, "losses": pp_l,
+        "hit_rate": round(pp_w / (pp_w + pp_l), 4) if (pp_w + pp_l) else None,
+        "net_units": pp_net, "roi_pct": round(pp_net / pp_risk * 100, 2) if pp_risk else None,
+        "first_date": min((str(p.get("date"))[:10] for p in pp), default=None),
+        "last_date": max((str(p.get("date"))[:10] for p in pp), default=None),
+        "definition": ("Curated PrizePicks props (Lock of the Day / Top 25), graded at PrizePicks' per-leg "
+                       "break-even of -136 (a 2-pick Power Play pays 3x). Not a sportsbook price, and a "
+                       "single leg cannot be bet alone -- so this is its own line, never part of the "
+                       "curated headline (split out 2026-11-03)."),
     }
 
     # RECENT FORM (trailing 30 days by pick date): the all-time number alone
@@ -4232,6 +4299,7 @@ def run() -> Dict[str, Any]:
         "n_calibrated_picks": n_calibrated,
         "calibrated_reliability": calibrated_reliability,
         "curated": curated,
+        "prizepicks": prizepicks,
         "headline_basis": "all-time: working ledger + data/ledger_archive.json",
         "working_ledger_only": _working_only,
         "price_corrections": _price_corrections(history),
