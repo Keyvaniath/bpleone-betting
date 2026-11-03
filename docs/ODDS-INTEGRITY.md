@@ -125,6 +125,35 @@ Alpha card shows the reason and the BOOK price (was labelled Fair Odds);
 Book Edge / Parlay cards say why they are empty; the parlay card is labelled
 research-only. Runs in the daily late pass, the heartbeat and live-games.
 
+## Remaining pricing risks (branch `integrity/pricing-risks`, 2026-11-03, NOT merged)
+
+- `ml_reprice.apply_ledger`: the pending-pick fill stamped "the live DK line"
+  from `espn_odds.by_matchup` -- not status-filtered (could be IN-PLAY) and a
+  LATER price than at publication. Removed (0 pending picks used it today); the
+  intake price gate refuses unpriced picks, legacy ones void at settlement.
+- `mlb_model.py`: total edges only at the real posted juice (was -110).
+- `book_vs_model_team.py`: totals at the real over/under juice (was 1.909 on
+  both sides); the row's `book_american` is the side's real price (was a
+  hard-coded -110), `book_decimal` the side's own (was the OVER's for an
+  UNDER), no-vig from this market's two sides (was 0.5).
+- `slate_roi_projector.py`: real price or skipped (was -110); the elite-board
+  block that INVENTED p_win (0.50 + 0.03/signal) and a -115 price removed.
+- `sharpe_ranking.py`: ranks only at a real `book_american` (was -110).
+- `parlays.py`: a game leg needs a real market price (was -110).
+- `player_breakdown.py` (+ player.html): ROI over priced plays only (was -110
+  for missing prices); "no priced plays" shown.
+- **`arbitrage.py` published a hand-written DEMO daily** (invented quotes, a
+  book named "Synthetic-Glitch", a line "intentionally errored") as
+  `data/arbitrage.json`, rendered on arbitrage.html / extras.js. Now publishes
+  `available: false` + reason (one live book; arbitrage needs 2+); `--demo`
+  prints only. linemaker.json is a demo but labelled "Illustrative simulation"
+  on its page -> kept.
+- Remaining -110 literals are docstrings, detection of placeholders
+  (`calibration_status`, intake gate), the applied one-shot, labelled demos
+  (`risk.py`, `portfolio.py`, `pipeline.py` DEMO_SLATE -- blocked at intake), and
+  model-conviction prop selection bands "vs a -110 book" (props are never
+  actionable). Tests: 35 pass.
+
 ## Open (P0)
 
 1. (merged a5aee8bd58, approved 11/03) selection + settlement + evaluation fail closed.

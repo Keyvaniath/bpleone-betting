@@ -538,16 +538,18 @@ def _player_accuracy(tr_props: List[Dict[str, Any]], pid: int) -> Dict[str, Any]
         if price is None:
             return 0
         return price / 100 if price >= 0 else 100 / abs(price)
-    net = 0.0
+    # ROI only over plays with a REAL DraftKings price (2026-11-03): a missing
+    # price used to count as -110. Hit rate still uses every graded play.
+    net, n_priced = 0.0, 0
     for r in mine:
-        price = r.get("dk_over") if r.get("play") == "OVER" else r.get("dk_under") if r.get("play") == "UNDER" else -110
-        if r["play_hit"] is True:
-            net += payout(price if price is not None else -110)
-        else:
-            net -= 1
+        price = r.get("dk_over") if r.get("play") == "OVER" else r.get("dk_under") if r.get("play") == "UNDER" else None
+        if price is None:
+            continue
+        n_priced += 1
+        net += payout(price) if r["play_hit"] is True else -1
     n = len(mine)
     hit_rate = wins / n
-    roi = (net / n) * 100
+    roi = (net / n_priced) * 100 if n_priced else None
     by_market: Dict[str, Dict[str, Any]] = {}
     for r in mine:
         mk = r.get("market") or "?"
@@ -572,7 +574,8 @@ def _player_accuracy(tr_props: List[Dict[str, Any]], pid: int) -> Dict[str, Any]
         tier = "unproven"
     return {
         "n_props": n, "hits": wins, "hit_rate": round(hit_rate, 3),
-        "net_units": round(net, 2), "roi_pct": round(roi, 2),
+        "net_units": round(net, 2), "roi_pct": round(roi, 2) if roi is not None else None,
+        "n_priced": n_priced,
         "trust_tier": tier, "by_market": by_market_arr,
     }
 

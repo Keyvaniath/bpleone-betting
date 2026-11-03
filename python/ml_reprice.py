@@ -168,19 +168,12 @@ def apply_ledger(picks, side_of) -> Dict[str, int]:
                                          else "no real pre-game total exists on record")
                                       + " -- the bet's line never existed")
                 n["voided_unpriced_total"] += 1
-    book = (_load(os.path.join(DATA_DIR, "espn_odds.json")).get("by_matchup") or {})
-    for p in picks:
-        if p.get("settled") or p.get("voided") or p.get("book_american") is not None:
-            continue
-        if p.get("fair_american") not in (-110, 100, None):
-            continue
-        sd = side_of(p)
-        if not sd:
-            continue
-        px = (book.get(str(p.get("player_or_matchup") or "")) or {}).get("ml_home" if sd == "home" else "ml_away")
-        if px is not None:
-            p["book_american"] = px
-            n["pending_priced"] += 1
+    # REMOVED (2026-11-03, P0): pending placeholder-priced moneylines used to
+    # get "the live DK line" here -- read from espn_odds `by_matchup`, which is
+    # not status-filtered (an IN-PLAY price could be stamped) and is in any
+    # case a LATER price than the one available when the pick was published.
+    # The intake price gate (_block_unpriced) now refuses an unpriced pick, and
+    # a legacy one without a price voids as "unpriced" at settlement.
     return n
 
 

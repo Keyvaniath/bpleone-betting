@@ -70,8 +70,9 @@ def run() -> Dict[str, Any]:
     pp = pod.get("pick") or {}
     if pp:
         p_win = _safe(pp.get("p_win") or pp.get("model_p"))
-        odds = _safe(pp.get("book_odds") or pp.get("odds"), -110)
-        if p_win > 0 and odds != 0:
+        # FAIL CLOSED (2026-11-03): a real book price or nothing (was a -110 default)
+        odds = _safe(pp.get("book_american") or pp.get("book_odds") or pp.get("odds"), 0)
+        if p_win > 0 and odds != 0 and _american_to_decimal(odds):
             picks.append({
                 "source": "POD",
                 "subject": pp.get("market") or pp.get("subject"),
@@ -84,8 +85,8 @@ def run() -> Dict[str, Any]:
     for e in (top_edges.get("top_25") or top_edges.get("rows") or [])[:20]:
         if not isinstance(e, dict): continue
         p_win = _safe(e.get("p_win") or e.get("model_p"))
-        odds = _safe(e.get("book_odds") or e.get("odds"), -110)
-        if p_win <= 0: continue
+        odds = _safe(e.get("book_american") or e.get("book_odds") or e.get("odds"), 0)
+        if p_win <= 0 or not odds or not _american_to_decimal(odds): continue   # no real price -> not projected
         picks.append({
             "source": "TOP_EDGE",
             "subject": e.get("market") or e.get("subject"),
@@ -95,7 +96,10 @@ def run() -> Dict[str, Any]:
         })
 
     # Elite board entries: assume p_win = 0.55 baseline for 5+ signal entities at -115 book
-    for ent in (eb.get("elites") or [])[:10]:
+    # REMOVED (2026-11-03, P0): the elite-board block INVENTED both the win
+    # probability (0.50 + 0.03 per signal) and the price (-115). Neither is
+    # data; an ROI projection on them is fabricated.
+    for ent in []:
         if not isinstance(ent, dict): continue
         n_sig = ent.get("n_signals", 0) or 0
         if n_sig < 5: continue
