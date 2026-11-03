@@ -41,6 +41,21 @@ bpleone-site/
 
 ## Current deployment state (LIVE)
 
+- **2026-11-03 (night) — NBA PROP SPREADS FITTED.** With NBA settling, by
+  family: REB_OVER 40% at 64% predicted (n=48, z -3.5), PRA_UNDER 62% vs 70%,
+  TOV_UNDER 56% vs 67%, FTA_UNDER 59% vs 66%. Cause: hand-set sigmas
+  (rebounds max(1.8, 22%), points max(4, 25%), assists max(2, 30%), PRA max(7,
+  20%), combos from component sigmas, FTA Poisson). tools/
+  build_nba_dispersion.py -> data/nba_dispersion.json: SD = a * mean^b per stat
+  on 26.7k 2025-26 player-games (8 rpg -> SD 3.3 not 1.8; 20 ppg -> 7.5 not
+  5.0; FTA 43% wider than Poisson). python/nba_dispersion.py (`sd`,
+  `p_at_least` NB) now feeds points/rebounds/assists/PRA, the PA/PR/RA combos
+  (fitted on the combo itself -- the components correlate) and FTA. Within-
+  player spread with the mean known = a floor; projection error is on top
+  (recalibration.py handles the residual). Count props (TO/3PM/STL/BLK)
+  measured ~Poisson -> unchanged. Note: these modules choose their OWN line
+  (no book prop lines), e.g. PRA under projection+3.5 -> every row qualifies;
+  they stay calibration exhibits at model fair odds.
 - **2026-11-03 (evening) — NO PLACEHOLDER PRICES + NBA GAME-LINES DESK.**
   Brandon: "the odds must be perfect". 481 settled picks (ledger + archive)
   were still graded at a -110 no book posted (grader fallback 1.91 when a pick

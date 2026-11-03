@@ -21,6 +21,7 @@ from __future__ import annotations
 
 import os
 import json
+import nba_dispersion as _nd   # fitted NBA stat spreads (2026-11-03)
 import math
 import datetime as dt
 from typing import Any, Dict, List, Optional
@@ -206,7 +207,7 @@ def run() -> Dict[str, Any]:
                 base_ppg = info["ppg"]
 
             projected_pts = base_ppg * pace_factor * matchup_factor
-            sigma = max(4.0, 0.25 * projected_pts)
+            sigma = _nd.sd("pts", projected_pts)   # fitted real spread (2026-11-03); was max(4, 25%)
 
             # Compute over/under for typical 0.5 lines around projection
             # Books set the line at or very near projected_pts. Only evaluate the

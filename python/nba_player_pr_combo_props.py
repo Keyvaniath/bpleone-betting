@@ -20,6 +20,7 @@ from __future__ import annotations
 
 import os
 import json
+import nba_dispersion as _nd   # fitted NBA stat spreads (2026-11-03)
 import math
 import datetime as dt
 from typing import Any, Dict, List, Optional
@@ -92,7 +93,7 @@ def run() -> Dict[str, Any]:
 
         proj_combined = proj_pts + proj_reb
         # Small positive correlation between PTS and REB (~0.20)
-        sigma_combined = math.sqrt(sig_pts**2 + sig_reb**2) * 1.05
+        sigma_combined = _nd.sd("pr", proj_combined)   # fitted on the combo itself
 
         # Find typical book lines around projection (0.5-step)
         base_line = round(proj_combined * 2) / 2

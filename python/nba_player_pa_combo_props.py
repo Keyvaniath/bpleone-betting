@@ -21,6 +21,7 @@ from __future__ import annotations
 
 import os
 import json
+import nba_dispersion as _nd   # fitted NBA stat spreads (2026-11-03)
 import math
 import datetime as dt
 from typing import Any, Dict, List, Optional
@@ -91,7 +92,7 @@ def run() -> Dict[str, Any]:
         if proj_pts <= 0 or proj_ast <= 0: continue
 
         proj_combined = proj_pts + proj_ast
-        sigma_combined = math.sqrt(sig_pts**2 + sig_ast**2) * 1.05
+        sigma_combined = _nd.sd("pa", proj_combined)   # fitted on the combo itself (pts/ast correlate)
 
         base_line = round(proj_combined * 2) / 2
         best_edge = 0.0

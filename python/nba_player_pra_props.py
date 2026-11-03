@@ -15,6 +15,7 @@ from __future__ import annotations
 
 import os
 import json
+import nba_dispersion as _nd   # fitted NBA stat spreads (2026-11-03)
 import math
 import datetime as dt
 from typing import Any, Dict, List, Optional
@@ -174,7 +175,7 @@ def run() -> Dict[str, Any]:
                 base_pra = info["ppg"] + info["rpg"] + info["apg"]
                 pra_source = "fallback"
             projected_pra = base_pra * pace_factor * opp_def_factor
-            sigma = max(7.0, 0.20 * projected_pra)
+            sigma = _nd.sd("pra", projected_pra)   # fitted real spread (2026-11-03); was max(7, 20%)
 
             # Evaluate nearest 1.0 line within 4.0 of projection
             edge_class = "NONE"

@@ -11,6 +11,7 @@ from __future__ import annotations
 
 import os
 import json
+import nba_dispersion as _nd   # fitted NBA stat spreads (2026-11-03)
 import math
 import datetime as dt
 from typing import Any, Dict, List, Optional
@@ -154,7 +155,7 @@ def run() -> Dict[str, Any]:
                 rpg_source = "fallback"
             projected_reb = base_rpg * pace_factor
             # Rebounds variance is moderate (sigma = 22%% of projected, but min 1.8)
-            sigma = max(1.8, 0.22 * projected_reb)
+            sigma = _nd.sd("reb", projected_reb)   # fitted real spread (2026-11-03); was max(1.8, 22%)
 
             best_edge_class = "NONE"
             best_market = None

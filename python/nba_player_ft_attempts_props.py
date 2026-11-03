@@ -15,6 +15,7 @@ from __future__ import annotations
 
 import os
 import json
+import nba_dispersion as _nd   # fitted NBA stat spreads (2026-11-03)
 import math
 import datetime as dt
 from typing import Any, Dict, List, Optional
@@ -187,7 +188,7 @@ def run() -> Dict[str, Any]:
             for line in (base_line - 0.5, base_line + 0.5):
                 if line < 0.5: continue
                 if abs(projected_fta - line) > 1.0: continue
-                p_over = _poisson_at_least(int(line) + 1, projected_fta)
+                p_over = _nd.p_at_least("fta", int(line) + 1, projected_fta)
                 p_under = 1 - p_over
                 if 0.62 <= p_over <= 0.72:
                     if not best_market or p_over > best_market["p"]:

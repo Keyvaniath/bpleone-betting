@@ -11,6 +11,7 @@ from __future__ import annotations
 
 import os
 import json
+import nba_dispersion as _nd   # fitted NBA stat spreads (2026-11-03)
 import math
 import datetime as dt
 from typing import Any, Dict, List, Optional
@@ -151,7 +152,7 @@ def run() -> Dict[str, Any]:
                 apg_source = "fallback"
             projected_ast = base_apg * pace_factor
             # AST variance is higher than PTS (more spiky)
-            sigma = max(2.0, 0.30 * projected_ast)
+            sigma = _nd.sd("ast", projected_ast)   # fitted real spread (2026-11-03); was max(2, 30%)
 
             # Only nearest line within 0.75 of projection (where books actually price)
             best_edge_class = "NONE"
