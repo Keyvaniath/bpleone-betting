@@ -198,7 +198,7 @@ def sport_curation_report() -> Dict[str, Dict[str, Any]]:
         net = p.get("net_units")
         if net is None:
             pu = p.get("payout_units")
-            net = (pu if pu is not None else 0.91) if res == "won" else (-1.0 if res == "lost" else 0.0)
+            net = (pu if pu is not None else 0.0) if res == "won" else (-1.0 if res == "lost" else 0.0)   # no payout -> no credit (was 0.91)
         a = agg.setdefault(sport, {"n": 0, "wins": 0, "net_raw": 0.0, "net_curated": 0.0, "n_curated": 0})
         a["n"] += 1
         if res == "won":

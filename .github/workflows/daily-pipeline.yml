@@ -59,6 +59,14 @@ jobs:
       - name: Smoke tests
         working-directory: python
         run: python smoke_tests.py || echo "smoke_tests.py" >> "$RUNNER_TEMP/failed_steps.txt"
+      # Odds-integrity regression tests (2026-11-03, P0): the fail-closed
+      # pricing contract (no placeholder / model-own / stale / post-start
+      # price can be ranked, selected or paid). A failure turns the run red
+      # at the failure gate.
+      - name: Odds-integrity regression tests
+        run: |
+          pip install -q pytest
+          python -m pytest python/tests -q || echo "odds-integrity tests" >> "$RUNNER_TEMP/failed_steps.txt"
       # Snapshot the active config (defaults + any runtime overrides) so
       # /config.html can render the live knob table.
       - name: Snapshot config

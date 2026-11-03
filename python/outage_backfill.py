@@ -98,7 +98,9 @@ def _regrade_nhl_settled() -> Dict[str, Any]:
         new = apt._grade_nhl_pick(q, by, games)
         if new is None or new == p.get("result"):
             continue
-        dec = apt._american_to_decimal(p.get("fair_american")) or 1.91
+        dec = apt._american_to_decimal(p.get("fair_american"))
+        if dec is None:
+            continue                       # no price -> never re-paid at a placeholder
         new_pay = round(dec - 1, 4) if new == "won" else (-1.0 if new == "lost" else 0.0)
         p["regraded"] = {"from_result": p.get("result"), "from_payout": p.get("payout_units"),
                          "at": now,

@@ -274,6 +274,11 @@ def _check_kelly_fraction(tr: Dict[str, Any]) -> List[Dict[str, Any]]:
             continue
     if len(recent) < 20:
         return out
+    # DISABLED (2026-11-03, P0 odds integrity): this sized Kelly from an ROI
+    # computed at an ASSUMED -110 (units = wins x 0.909 - losses) -- no real
+    # prices -- and medium-severity recommendations are auto-applied. Sizing
+    # must come from genuinely priced results; until then, no recommendation.
+    return out
 
     wins = sum(1 for p in recent if (p.get("recommendation") == "OVER" and p.get("over_hit") is True)
                                     or (p.get("recommendation") == "UNDER" and p.get("over_hit") is False))

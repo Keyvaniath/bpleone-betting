@@ -28,6 +28,8 @@ import re
 import datetime as dt
 from typing import Any, Dict, List, Tuple
 
+import quotes as _quotes   # the pricing contract (fail-closed)
+
 
 DATA_DIR = os.path.join(os.path.dirname(__file__), "..", "data")
 OUT = os.path.join(DATA_DIR, "todays_top_plays.json")
@@ -355,11 +357,15 @@ def run() -> Dict[str, Any]:
     n_ungradeable_out = 0
 
     candidates: List[Dict[str, Any]] = []
+    rejected: Dict[str, int] = {}
+    projections: List[Dict[str, Any]] = []
+    n_input = 0
     for src, doc in (("player", player_pot), ("team", team_pot)):
         items = doc.get("all_picks") or doc.get("top_50") or doc.get("top_30") or []
         for x in items:
             raw_prob = x.get("prob")
             if not raw_prob: continue
+            n_input += 1
             source = x.get("source")
             # CURATION: never publish a market family proven to lose money over a
             # real sample (e.g. to_hit_hr -92u, k_1plus -84u). ROI, not hit rate.
@@ -369,26 +375,35 @@ def run() -> Dict[str, Any]:
             if (str(x.get("sport") or "").upper(), str(x.get("market") or "").lower()) in ungradeable:
                 n_ungradeable_out += 1
                 continue
-            # Get explicit fair_american FIRST so shrinkage can anchor to market
-            fair = x.get("fair_american")
-            # MONEYLINES ARE NEVER PRICED BY DEFAULT (2026-10-23). A missing
-            # price used to fall through to -110 below: the 10/23 Alpha was MIL
-            # ML "@ -110" with DraftKings at -192 -- the shrink lost its market
-            # anchor (72% model -> 59.8%) and the EV vs a fake 52.4% implied
-            # looked like +12.9%. Take the live DK line; no line, no candidate.
-            if not isinstance(fair, (int, float)) and _is_moneyline(x.get("market")):
-                fair = _book_ml(x.get("matchup") or x.get("player"), x.get("market"))
-                if fair is None:
-                    continue
-            calibrated_prob = _shrink_prob(raw_prob, source, fair if isinstance(fair, (int, float)) else None, market=x.get("market"))
-            if calibrated_prob is None or calibrated_prob < MIN_PROB: continue
-            # Fall back to source-default fair odds if none provided
-            if not isinstance(fair, (int, float)):
-                fair = _fair_odds_for_source(source, src)
-            dec_odds = _american_to_decimal(fair) or 1.91
-            edge = _edge_pct(calibrated_prob, dec_odds)
+            # FAIL CLOSED (2026-11-03, P0): a candidate is ranked only on a
+            # GENUINE sportsbook quote (quotes.price_candidate: a DraftKings
+            # snapshot, fresh, pre-start, exact line). The old path priced a
+            # missing quote at -110 (-136 PrizePicks) and props at the model's
+            # OWN fair price, so "EV" was the model against itself (the 10/23
+            # Alpha was MIL ML "@ -110" with DK at -192). No quote -> a labelled
+            # projection with its rejection reason, never a ranked play.
+            fair = x.get("fair_american")          # the model's own fair price (display only)
+            mu = x.get("matchup") or x.get("player")
+            pr = _quotes.price_candidate(x.get("sport"), mu, x.get("market"), None)
+            if not pr["actionable"]:
+                rejected[pr["reason"]] = rejected.get(pr["reason"], 0) + 1
+                if len(projections) < 60:
+                    projections.append({"sport": x.get("sport"), "player_or_matchup": x.get("player") or x.get("matchup"),
+                                        "market": x.get("market"), "model_prob_raw": round(raw_prob, 4),
+                                        "model_fair_american": fair, "source": source,
+                                        "actionable": False, "reason": pr["reason"]})
+                continue
+            q = pr["quote"]
+            calibrated_prob = _shrink_prob(raw_prob, source, q["american"], market=x.get("market"))
+            if calibrated_prob is None or calibrated_prob < MIN_PROB:
+                rejected["below_min_prob"] = rejected.get("below_min_prob", 0) + 1
+                continue
+            dec_odds = q["decimal"]
+            edge = _quotes.ev_binary(calibrated_prob, dec_odds)
             kelly = _kelly_fraction(calibrated_prob, dec_odds)
-            if edge * 100 < MIN_EDGE_PCT: continue   # require material edge
+            if edge is None or edge * 100 < MIN_EDGE_PCT:     # require material edge AT THE QUOTED PRICE
+                rejected["below_ev_hurdle"] = rejected.get("below_ev_hurdle", 0) + 1
+                continue
             candidates.append({
                 "src": src,
                 "sport": x.get("sport"),
@@ -399,8 +414,11 @@ def run() -> Dict[str, Any]:
                 "prob": round(calibrated_prob, 4),
                 "raw_prob": round(raw_prob, 4),
                 "shrinkage_w": round(SOURCE_SHRINKAGE_W.get(source or "", DEFAULT_SHRINKAGE_W), 2),
-                "fair_american": fair,
+                "fair_american": fair,                      # model's own price (display)
+                "book_american": q["american"],             # the quote the EV is computed at
                 "decimal_odds": round(dec_odds, 3),
+                "quote": q,
+                "min_acceptable_american": _quotes.min_acceptable_american(calibrated_prob, MIN_EDGE_PCT / 100),
                 "edge_pct": round(edge * 100, 1),
                 "kelly_fraction": round(kelly, 4),
                 "unit_size_quarter_kelly": round(kelly * 0.25, 3),
@@ -455,6 +473,13 @@ def run() -> Dict[str, Any]:
                       "outputs are mixed with a 0.55 baseline weighted by source "
                       "reliability -- shrinkage_w in each pick = weight on raw."),
         },
+        # CANDIDATE FUNNEL (2026-11-03): input -> curation -> quote -> prob -> EV.
+        "funnel": {"n_input": n_input, "n_curated_out": n_curated_out, "n_ungradeable_out": n_ungradeable_out,
+                   "rejected": rejected, "n_actionable_candidates": len(candidates),
+                   "n_after_dedupe": len(deduped)},
+        "pricing_rule": ("Ranked only on a genuine sportsbook quote (DraftKings via ESPN, fresh, pre-start, "
+                         "exact line). Player props have no sportsbook price source -> projections only."),
+        "projections": projections,
         "n_total_plays": len(deduped),
         "n_raw_candidates": len(candidates),
         "n_curated_out_proven_neg": n_curated_out,

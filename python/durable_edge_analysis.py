@@ -25,7 +25,7 @@ def _net(p):
     pu = p.get("payout_units")
     if pu is not None:
         return float(pu)
-    return 0.91 if p.get("result") == "won" else -1.0
+    return 0.0 if p.get("result") == "won" else -1.0   # no payout -> no win credit (was 0.91)
 
 
 def _stat(rows):
@@ -53,7 +53,7 @@ def build():
 
     # Sizing from realized win rate + average decimal odds (payout_units on a win == b).
     wins = [p for p in picks if p.get("result") == "won"]
-    b = statistics.mean(_net(p) for p in wins) if wins else 0.91
+    b = statistics.mean(_net(p) for p in wins) if wins else 0.0   # no wins -> no price assumed (was 0.91)
     p_ = overall["wins"] / overall["n"]
     q = 1 - p_
     full_kelly = (b * p_ - q) / b if b else 0.0

@@ -42,7 +42,7 @@ def _payout_units(american) -> float:
     try:
         american = int(american)
     except (TypeError, ValueError):
-        return 0.91
+        return 0.0      # unknown price -> no win credit (was 0.91 = -110)
     return american / 100 if american >= 0 else 100 / abs(american)
 
 

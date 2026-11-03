@@ -110,9 +110,9 @@ def run() -> Dict[str, Any]:
             e.update(settled=True, outcome="PUSH", pl_units=0.0)
         else:
             won = r["winner"] == e["side"]
-            dec = _amer_to_dec(e.get("fair_american")) or 1.91
+            dec = _amer_to_dec(e.get("fair_american"))   # no price -> no win credit (was 1.91)
             e.update(settled=True, outcome="WIN" if won else "LOSS",
-                     pl_units=round((dec - 1) if won else -1.0, 3),
+                     pl_units=round(((dec - 1) if dec else 0.0) if won else -1.0, 3),
                      actual=f"{r['away_score']}-{r['home_score']}",
                      settled_at=dt.datetime.now().isoformat(timespec="seconds"))
         n_settled_run += 1

@@ -45,11 +45,11 @@ def _load(p):
 
 
 def _payout_units(american) -> float:
-    """Profit on a 1u win at fair odds; default to -110-ish if unknown."""
+    """Profit on a 1u win at fair odds; 0 if the price is unknown (no placeholder)."""
     try:
         american = int(american)
     except (TypeError, ValueError):
-        return 0.91
+        return 0.0      # unknown price -> no win credit (was 0.91 = -110)
     return american / 100 if american >= 0 else 100 / abs(american)
 
 

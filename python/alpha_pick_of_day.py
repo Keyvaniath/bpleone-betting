@@ -11,12 +11,14 @@ recommendation — regardless of whether it's a favorite or underdog. Could be:
   - A -110 favorite the model thinks is 60% (ROI ~+14%)
   - A +500 longshot the model thinks is 22% (ROI ~+32%)
 
-Method:
-  Scan all picks from todays_top_plays + per-sport strong_edges. For each:
-    decimal_odds = american_to_decimal(fair_american) — model's fair price
-    book_decimal = a proxy for current book price (we use 0.95 * fair as
-                  vig-adjusted proxy since we don't pull live book odds here)
-    ROI per $1 = model_prob * book_decimal - 1
+Method (FAIL CLOSED since 2026-11-03, P0 odds integrity):
+  Candidates come from todays_top_plays (already quote-gated) and the
+  book-vs-model team edges. EVERY candidate is re-priced through
+  quotes.price_candidate -- a genuine DraftKings snapshot quote, fresh, pre-start,
+  exact line -- and anything without one is rejected with a reason.
+    ROI per $1 = model_prob * quoted_decimal - 1   (binary, no push)
+  (Until 2026-11-03 the "book price" here was the model's OWN fair price, or a
+  -110 placeholder: the ranking compared the model with itself.)
   Filter:
     - min model_prob = 0.18 (no <18% longshots — variance too brutal)
     - min model_prob = 0.85 max (heavy favs not Alpha — that's POD territory)
@@ -36,6 +38,8 @@ import os
 import json
 import datetime as dt
 from typing import Any, Dict, List, Optional
+
+import quotes as _quotes   # the pricing contract (fail-closed)
 
 
 DATA_DIR = os.path.join(os.path.dirname(__file__), "..", "data")
@@ -217,6 +221,17 @@ def _other_picks() -> List[Dict[str, Any]]:
             "detail": f"{p_fav:.0%} model · {fair_s}" + (f" · {surf}" if surf else ""),
             "link": "tennis.html",
         })
+    # FAIL CLOSED (2026-11-03): these are model leans. Only one backed by a
+    # genuine DraftKings quote may be marked actionable; golf / tennis / World
+    # Cup / PrizePicks have no sportsbook quote source -> projections.
+    for pk in picks:
+        q = None
+        if pk.get("kind") in ("Game line", "Game Line", "ML", "Moneyline") and pk.get("matchup") and pk.get("market"):
+            q = _quotes.price_candidate(pk.get("sport"), pk.get("matchup"), pk.get("market"), pk.get("prob"))
+        pk["actionable"] = bool(q and q["actionable"])
+        pk["non_actionable_reason"] = None if pk["actionable"] else ((q or {}).get("reason") or "unsupported_market")
+        if q and q.get("quote"):
+            pk["quote"] = q["quote"]
     return picks[:5]
 
 
@@ -230,12 +245,15 @@ def run() -> Dict[str, Any]:
     n_highprob = 0
     n_no_odds = 0
 
+    rejected: Dict[str, int] = {}
     for p in plays:
         prob = p.get("prob")
-        dec_odds = p.get("decimal_odds") or _american_to_decimal(p.get("fair_american"))
-        if prob is None or dec_odds is None:
+        pr = _quotes.price_candidate(p.get("sport"), p.get("player_or_matchup"), p.get("market"), prob)
+        if prob is None or not pr["actionable"]:
             n_no_odds += 1
+            rejected[pr["reason"] or "no_prob"] = rejected.get(pr["reason"] or "no_prob", 0) + 1
             continue
+        dec_odds = pr["quote"]["decimal"]
         if prob < 0.18:
             n_lowprob += 1
             continue
@@ -244,10 +262,7 @@ def run() -> Dict[str, Any]:
             n_highprob += 1
             continue
 
-        # ROI per $1 risked = prob * decimal_odds - 1
-        # We use decimal_odds as book proxy (it's fair-odds, so this gives
-        # the model's view of true ROI not accounting for actual book vig).
-        roi = (prob * dec_odds) - 1
+        roi = _quotes.ev_binary(prob, dec_odds)     # at the quoted DraftKings price
         candidates.append({
             "sport": p.get("sport"),
             "player_or_matchup": p.get("player_or_matchup"),
@@ -256,7 +271,10 @@ def run() -> Dict[str, Any]:
             "market_family": p.get("market_family"),
             "model_prob": round(prob, 4),
             "fair_american": p.get("fair_american"),
+            "book_american": pr["quote"]["american"],
             "decimal_odds": round(dec_odds, 3),
+            "quote": pr["quote"],
+            "min_acceptable_american": pr["min_acceptable_american"],
             "edge_pct": p.get("edge_pct"),
             "roi_per_dollar": round(roi, 4),
             "kelly_fraction": p.get("kelly_fraction"),
@@ -274,10 +292,17 @@ def run() -> Dict[str, Any]:
     for e in real_book_edges:
         # Prefer calibrated_prob (Bayesian-shrunk toward book) over raw model_prob
         prob = e.get("calibrated_prob") or e.get("model_prob")
-        dec = e.get("book_decimal")
-        if prob is None or dec is None: continue
+        side = str(e.get("side") or "").upper()
+        mk = ("ML_" + side) if side in ("HOME", "AWAY") else (f"{side}_{e.get('total_line')}" if side in ("OVER", "UNDER") else "")
+        # Re-price at the live quote: totals here used an ASSUMED -110/-110
+        # (book_vs_model_team), and a stale board line is not a price.
+        pr = _quotes.price_candidate("MLB", e.get("matchup"), mk, prob)
+        if prob is None or not pr["actionable"]:
+            rejected[pr["reason"] or "no_prob"] = rejected.get(pr["reason"] or "no_prob", 0) + 1
+            continue
+        dec = pr["quote"]["decimal"]
         if prob < 0.18 or prob > 0.85: continue
-        roi = (prob * dec) - 1
+        roi = _quotes.ev_binary(prob, dec)
         if roi < 0.03: continue
         # Same dedup: don't add if same matchup+side already in candidates
         match_key = (e.get("matchup"), e.get("side"))
@@ -289,6 +314,9 @@ def run() -> Dict[str, Any]:
             "market_family": "team_ml" if e.get("side") in ("HOME", "AWAY") else "total_ou",
             "model_prob": round(prob, 4),
             "fair_american": e.get("book_american"),
+            "book_american": pr["quote"]["american"],
+            "quote": pr["quote"],
+            "min_acceptable_american": pr["min_acceptable_american"],
             "decimal_odds": round(dec, 3),
             "edge_pct": e.get("edge_pct"),
             "roi_per_dollar": round(roi, 4),
@@ -340,10 +368,11 @@ def run() -> Dict[str, Any]:
             "n_filtered_high_prob_pod_territory": n_highprob,
             "n_no_odds": n_no_odds,
             "n_real_book_edges_added": n_book_added,
+            "rejected": rejected,
         },
-        "method_note": "Alpha Pick = highest ROI (prob × decimal_odds − 1) from "
-                       "todays_top_plays. Filtered to model_prob in [0.18, 0.85] "
-                       "so true longshots and POD-tier favs are excluded.",
+        "method_note": "Alpha Pick = highest EV at a GENUINE DraftKings quote (model_prob x quoted "
+                       "decimal - 1), fresh and pre-start; no quote, no candidate. Filtered to "
+                       "model_prob in [0.18, 0.85].",
     }
     os.makedirs(os.path.dirname(OUT), exist_ok=True)
     with open(OUT, "w") as f: json.dump(out, f, indent=2)

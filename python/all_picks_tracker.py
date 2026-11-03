@@ -3055,7 +3055,9 @@ def _settle_picks(history: List[Dict[str, Any]]) -> int:
 
         market = (p.get("market") or "").lower()
         result = None
-        decimal_odds = _american_to_decimal(_price_american(p)) or 1.91
+        # FAIL CLOSED (2026-11-03): no price on record -> no payout. This used
+        # to fall back to decimal 1.91 (-110) and paid a placeholder.
+        decimal_odds = _american_to_decimal(_price_american(p))
 
         sport = (p.get("sport") or "").upper()
         if sport == "WNBA":
@@ -3163,6 +3165,13 @@ def _settle_picks(history: List[Dict[str, Any]]) -> int:
             else:
                 result = _grade_batter_prop(market, p, by_name)
 
+        if result and result in ("won", "lost") and decimal_odds is None:
+            p["voided"] = True
+            p["voided_at"] = dt.datetime.now().isoformat(timespec="seconds")
+            p["voided_reason"] = (f"unpriced: no price on record at settlement (graded {result}; "
+                                  "outcome kept, no payout -- never a placeholder -110)")
+            p.setdefault("outcome", {})["graded_result_unpaid"] = result
+            continue
         if result:
             p["settled"] = True
             p["result"] = result
@@ -3575,7 +3584,9 @@ def _regrade_bball_wrong_game(history: List[Dict[str, Any]]) -> int:
         if r not in ("won", "lost") or r == p["result"]:
             continue
         prev = p["result"]
-        dec = _american_to_decimal(_price_american(p)) or 1.91
+        dec = _american_to_decimal(_price_american(p))
+        if dec is None:
+            continue                       # no price -> never re-paid at a placeholder
         p["result"] = r
         p["payout_units"] = round(dec - 1, 4) if r == "won" else -1.0
         p["outcome"] = dict(q.get("outcome") or {}, check=f"re-graded from {prev}: wrong game (UTC-dated pick)")
@@ -3619,7 +3630,9 @@ def _resettle_on_revision(history: List[Dict[str, Any]]) -> int:
             p["outcome"]["check"] = "verified"
             continue
         # Current box score disagrees with what we recorded -> re-settle to truth.
-        decimal_odds = _american_to_decimal(_price_american(p)) or 1.91
+        decimal_odds = _american_to_decimal(_price_american(p))
+        if decimal_odds is None:
+            continue                       # no price -> never re-paid at a placeholder
         p["result"] = recomputed
         p["payout_units"] = (round(decimal_odds - 1, 4) if recomputed == "won"
                              else (-1.0 if recomputed == "lost" else 0.0))
