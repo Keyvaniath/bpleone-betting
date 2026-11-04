@@ -319,6 +319,9 @@ class GoalieState:
                     self.prim_counts[b][1] += 1
                 self.starts[team].append(st["id"])
             for r in rows:
+                # a boxscore row with no shot data (None) adds nothing (2026-11-03)
+                if r.get("sa") is None or r.get("sv") is None:
+                    continue
                 self.sa[r["id"]] += r["sa"]
                 self.sv[r["id"]] += r["sv"]
                 self.name[r["id"]] = r["name"]
