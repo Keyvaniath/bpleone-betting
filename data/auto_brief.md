@@ -1,4 +1,4 @@
-# Tonight's Slate Brief — 2026-11-03
+# Tonight's Slate Brief — 2026-11-04
 
 ## Slate Quality: 70/100 (MEDIUM)
 _0% lineups confirmed_
@@ -6,7 +6,7 @@ _0% lineups confirmed_
 
 ## Slate
 - **0 games** scheduled
-- **20 best bets** scored: 0 DK · 0 PP · 0 NRFI · 0 SGP
+- **21 best bets** scored: 0 DK · 0 PP · 0 NRFI · 0 SGP
 
 ## Top 5 Best Bets
 1. **LOL Inspired UNDER 3.5 Kills**  (78/100 ****, edge —)
@@ -37,17 +37,17 @@ _0% lineups confirmed_
 - Chicago Bulls @ New York Knicks (1-6 vs 3-4)  | P(home) 84.6% fair -550 | Scheduled
 
 ## NHL -- REGULAR
-- Utah Mammoth @ Toronto Maple Leafs (9-6-0 vs 8-6-2)  | P(home) 40.6% fair +146 | Scheduled
-- Winnipeg Jets @ Montreal Canadiens (4-8-3 vs 9-3-2)  | P(home) 60.1% fair -151 | Scheduled
-- Detroit Red Wings @ Tampa Bay Lightning (7-5-3 vs 8-3-2)  | P(home) 61.1% fair -157 | Scheduled
-- St. Louis Blues @ New York Rangers (7-6-1 vs 7-7-1)  | P(home) 47.4% fair +111 | Scheduled
-- Minnesota Wild @ Philadelphia Flyers (10-3-3 vs 4-8-4)  | P(home) 38.0% fair +163 | Scheduled
+- Utah Mammoth @ Toronto Maple Leafs (0-0-0 vs 0-0-0) 3-2 | P(home) 0.0% fair +0 | Final
+- Winnipeg Jets @ Montreal Canadiens (0-0-0 vs 0-0-0) 5-4 | P(home) 0.0% fair +0 | Final
+- Detroit Red Wings @ Tampa Bay Lightning (0-0-0 vs 0-0-0) 2-4 | P(home) 100.0% fair +0 | Final
+- St. Louis Blues @ New York Rangers (0-0-0 vs 0-0-0) 1-3 | P(home) 100.0% fair +0 | Final
+- Minnesota Wild @ Philadelphia Flyers (0-0-0 vs 0-0-0) 4-2 | P(home) 0.0% fair +0 | Final
 
-## LoL Esports -- 0 live, 7 upcoming
-- [Worlds] TOP ESPORTS vs Invictus Gaming BO5 | P(A) 23.6% fair +324/-324
+## LoL Esports -- 0 live, 6 upcoming
 - [Worlds] Gen.G Esports vs LYON BO5 | P(A) 74.9% fair -298/+298
 - [Worlds] Dplus KIA vs BILIBILI GAMING BO5 | P(A) 48.9% fair +104/-104
 - [Worlds] T1 vs Karmine Corp BO5 | P(A) 37.3% fair +168/-168
+- [Worlds] TBD vs Invictus Gaming BO5 | P(A) 22.6% fair +342/-342
 - [Worlds] TBD vs TBD BO5 | P(A) 50.0% fair -100/-100
 - **LoL POT:** Karmine Corp ML vs T1 (Worlds, BO5) (HIGH)
 

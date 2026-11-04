@@ -1,31 +1,29 @@
 # EdgeStat Daily Brief - 2026-11-04
 
-**Model Confidence: 10.2/100 [RED]** -- Calibration warming up. Research signal only; no real-money sizing yet.
+**Model Confidence: 10.4/100 [RED]** -- Calibration warming up. Research signal only; no real-money sizing yet.
 
 _Pipeline health: **WARNING** (7/15 artifacts ok; 8 empty, 0 stale)._ 
 
-_Generated at 2026-11-04T02:06:41 UTC. Game lines source: **placeholder -110 (no real book today)**. Pick-em opportunities from PrizePicks._
+_Generated at 2026-11-04T12:43:20 UTC. Game lines source: **placeholder -110 (no real book today)**. Pick-em opportunities from PrizePicks._
 
 ## Self-Learning Loop
 
 | Market | n settled | Hit rate | Model implied | Bias | Correction |
 |---|---|---|---|---|---|
-| batter hits | 279 | 55.6% | 56.8% | 1.022 | 0.979 |
 | batter total bases | 65 | 35.4% | 39.2% | 1.105 | 0.913 |
+| batter hits | 279 | 55.6% | 56.8% | 1.022 | 0.979 |
 
-Cumulative graded plays: 21088. Wins: 9705. Hit rate: 46.0%.
+Cumulative graded plays: 21146. Wins: 9748. Hit rate: 46.1%.
 
 ## Team Form (last 10)
 
-**Hot:** MIL 6-1 (W1, +19), TB 4-5 (L1, -4), LAD 0-2 (L2, -6), CLE 1-3 (L3, -9)
+**Hot:** MIL 5-1 (W1, +15), LAD 0-1 (L1, -2), TB 4-5 (L1, -4), CLE 1-3 (L3, -9)
 
-**Cold:** CLE 1-3 (L3, -9), LAD 0-2 (L2, -6), TB 4-5 (L1, -4), MIL 6-1 (W1, 19)
+**Cold:** CLE 1-3 (L3, -9), TB 4-5 (L1, -4), LAD 0-1 (L1, -2), MIL 5-1 (W1, 15)
 
 ## Loop Activity (since last refresh)
 
-- Confidence delta: **+0.0**
-- batter total bases: cf +0.0309 (-2 new settled)
-- batter hits: cf +0.0096 (-17 new settled)
+- Confidence delta: **+0.2**
 
 ## Model Recommendations (operator review)
 
