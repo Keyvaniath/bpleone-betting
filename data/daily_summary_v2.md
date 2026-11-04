@@ -1,4 +1,4 @@
-# EdgeStat Daily Summary — 2026-11-03
+# EdgeStat Daily Summary — 2026-11-04
 
 ## 🏥 Model Health: 67.1/100 [OK]
 - Operational but room to improve - check yellow components
@@ -10,9 +10,9 @@
   - 🔴 Edge Count: 42.9/100
 
 ## 🌐 Slate Overview
-- **Regime today:** BALANCED (avg P(home)=0.544)
+- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.551)
 - **Total games on board:** 48
-- **Strong home favorites:** 18 | **Strong road dogs:** 13
+- **Strong home favorites:** 20 | **Strong road dogs:** 16
 
 ## 🎯 Top 5 Best Bets
 1. **LOL Inspired UNDER 3.5 Kills** (78/100 ★★★★)
@@ -33,25 +33,25 @@
 - **[LOL]** Hope OVER 4.5 Kills | MED conviction · model 61.3% fair -158
 - **[CS]** torzsi OVER 40.5 Kills (BO3) | MED conviction · model 61.0% fair -157
 
-## ⚡ Pre-Game HIGH Conviction (16)
+## ⚡ Pre-Game HIGH Conviction (14)
 - [NBA] **Charlotte Hornets** AWAY (3-5 L10) · model 74.6% fair -294
 - [NCAAF] **Ohio State Buckeyes** HOME (None L10) · model 71.8% fair -254
 - [NCAAF] **Houston Cougars** HOME (None L10) · model 71.8% fair -254
 - [NCAAF] **South Carolina Gamecocks** HOME (None L10) · model 70.2% fair -235
 - [NCAAF] **Florida Gators** HOME (None L10) · model 70.2% fair -235
 - [NCAAF] **Notre Dame Fighting Irish** HOME (None L10) · model 70.1% fair -234
-- [NHL] **Carolina Hurricanes** AWAY (5-1 L10) · model 69.8% fair -232
-- [NBA] **Oklahoma City Thunder** HOME (5-2 L10) · model 69.6% fair -229
-- [NBA] **San Antonio Spurs** HOME (5-2 L10) · model 69.6% fair -229
-- [NHL] **Anaheim Ducks** AWAY (2-4 L10) · model 67.3% fair -206
+- [NBA] **Oklahoma City Thunder** HOME (4-2 L10) · model 69.6% fair -229
+- [NBA] **San Antonio Spurs** HOME (5-1 L10) · model 69.6% fair -229
+- [NHL] **Anaheim Ducks** AWAY (2-3 L10) · model 67.3% fair -206
+- [NBA] **Miami Heat** AWAY (2-5 L10) · model 66.2% fair -196
 
 ## 🔥/❄️ Heat / Cold Signals
-- Hot teams: **8** | Cold teams: **24** | Over-heavy: 0 | Under-heavy: 35
+- Hot teams: **10** | Cold teams: **24** | Over-heavy: 0 | Under-heavy: 31
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (262)
+## ⚠️ Anomaly Detector (268)
 - RESIDUAL_DIVERGENCE: **15**
-- STEAM_MOVE: **247**
+- STEAM_MOVE: **253**
   - Charlotte Hornets (NBA): Charlotte Hornets UNDERPERFORMING expected margin by 10.2pts in recent games -- model bias may persist
   - Chicago Bulls (NBA): Chicago Bulls UNDERPERFORMING expected margin by 9.8pts in recent games -- model bias may persist
   - Indiana Pacers (NBA): Indiana Pacers UNDERPERFORMING expected margin by 9.5pts in recent games -- model bias may persist
@@ -131,11 +131,11 @@
   - ⚠️ batter_rbis (Brier Δ -0.0052)
 
 ## 🧠 Training Convergence
-- ELITE: **0** · HEALTHY: 0 · OK: 2 · DEGRADED: **0**
+- ELITE: **0** · HEALTHY: 1 · OK: 0 · DEGRADED: **1**
 
 ## 🤖 Self-Training Status
-- **NBA**: n=107 games · hit rate 65.4% · bias +1.0pp
-- **NHL**: n=95 games · hit rate 51.6% · bias -0.1pp
+- **NBA**: n=104 games · hit rate 67.3% · bias +0.7pp
+- **NHL**: n=84 games · hit rate 54.8% · bias -2.5pp
 - **WNBA**: n=5 games · hit rate 60.0% · bias -23.7pp
 - **MLS**: n=75 games · hit rate 46.7% · bias -2.7pp
 - **EPL**: n=30 games · hit rate 50.0% · bias +6.7pp
