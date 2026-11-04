@@ -6,7 +6,7 @@ _0% lineups confirmed_
 
 ## Slate
 - **0 games** scheduled
-- **27 best bets** scored: 0 DK · 0 PP · 0 NRFI · 0 SGP
+- **28 best bets** scored: 0 DK · 0 PP · 0 NRFI · 0 SGP
 
 ## Top 5 Best Bets
 1. **LOL Inspired UNDER 3.5 Kills**  (78/100 ****, edge —)
@@ -40,7 +40,7 @@ _0% lineups confirmed_
 - Ottawa Senators @ Buffalo Sabres (9-6-1 vs 7-4-3)  | P(home) 60.0% fair -150 | Scheduled
 - Chicago Blackhawks @ Florida Panthers (4-10-1 vs 8-5-2)  | P(home) 64.4% fair -181 | Scheduled
 - San Jose Sharks @ Los Angeles Kings (7-8-1 vs 4-7-2)  | P(home) 55.2% fair -123 | Scheduled
-- Calgary Flames @ Seattle Kraken (7-8-0 vs 8-5-1)  | P(home) 49.4% fair +102 | Scheduled
+- Calgary Flames @ Seattle Kraken (7-8-0 vs 8-5-1)  | P(home) 51.0% fair -104 | Scheduled
 
 ## LoL Esports -- 0 live, 6 upcoming
 - [Worlds] Gen.G Esports vs LYON BO5 | P(A) 74.9% fair -298/+298
