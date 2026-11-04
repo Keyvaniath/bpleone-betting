@@ -173,3 +173,46 @@ research-only. Runs in the daily late pass, the heartbeat and live-games.
    35 DK game lines (-0.78u): counting rule is Brandon's call.
 5. `param_recommender` auto-applied thresholds tuned on 0.909-payout units --
    scope of affected parameters not yet traced.
+
+## Site-wide audit (branch `integrity/nfl-settle-by-event`, 2026-11-03, NOT merged)
+
+Trigger: Brandon's screenshot of nba.html -- P(home) 94.8% / "fair" -1835 for
+MIL @ BOS off an Elo of a 7-game win-pct. Four read-only auditors covered all
+121 live pages (sport desks; picks/edges/props; record/model pages; homepage,
+Alpha, email) against the standard: every displayed number is a real book
+price (DK, timestamped), a validated model's output with its verdict, or a
+recorded result. ~150 findings; the P0 class was the same everywhere: a model
+output with no sportsbook price presented as a pick, edge, price, record or
+proof. Fixed (commits on this branch):
+
+- NFL settlement by ESPN event id (exact-side fallback, refuses empty /
+  ambiguous); 10/10 settled desk picks re-grade the same.
+- `board_prior.py`: sport boards publish the desk blend (with verdict) or DK
+  no-vig, else nothing; record Elo kept only as `p_home_win_record_elo`.
+  Pages show DK moneylines, not fair prices.
+- Fail closed at every "pick" surface: best_bets (DK-priced rows only),
+  multi_sport_top (`projections`), nba_book_edges (validated desk only),
+  locks (`by_price`: sportsbook 3-0 vs PrizePicks 307-59 unverified), Alpha
+  slip (voids not pushes; no PP pool), email + tweet (record at DK prices
+  19-16 -2.2% first; props "graded at the model's own odds").
+- No-price desks (golf, LoL, CS, KBO, tennis, player pages): projections only,
+  `is_pick: false`; no STRONG vs an assumed -120 book, no parlays, no TBD
+  rows, no hard-coded totals or day-of-year starters; golf silent pre-event.
+- Record pages: per-source record at sportsbook prices
+  (`by_source[src].sportsbook`: lock_of_day 338-60 +188u -> 2-0 +1.1u);
+  family_durability on A/B only (no durable family); held-out CI "entirely
+  below zero"; synthetic track_record.json off every public page; models.html
+  fabricated backtest table deleted; strategy-sim Kelly only on A/B.
+- learning_integrity: tests calibration + ROI at real prices; the old code
+  matched "WIN" against "won", so every pick scored a loss. SIDE EFFECT:
+  learning_guards / self_learn_weights now see 15 trustworthy sources, not 52
+  (model-weight change -- Brandon to confirm).
+- Homepage: honest hero, model-projection cards / empty panels / mock
+  newsletter / default parlay retired, receipts coloured by sign, no clv_log
+  "CLV", steam = "line moved", not "sharp money".
+
+Still open after this pass: golf_round_score_props + the other tennis prop
+modules (assumed -120 STRONG rule); *_pot_history settle projections at fair
+odds; validate_curation_oos / self_train / odds_key_preflight / clv_by_source
+producer wording; dow_pl includes MLB-PP; sport_coverage IN-SEASON keyed on a
+props refresh; nba_player_pra_props `_abbr`; docs/ is publicly served.
