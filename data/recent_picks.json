@@ -1,23 +1,23 @@
 {
- "generated_at": "2026-11-03T21:51:17",
+ "generated_at": "2026-11-04T00:53:12",
  "stake_assumption": "1u flat per pick",
- "total_picks": 17652,
- "n_settled": 21069,
- "n_pending": 544,
- "n_void": 1694,
- "wins": 9690,
- "losses": 11368,
+ "total_picks": 17653,
+ "n_settled": 21088,
+ "n_pending": 502,
+ "n_void": 1718,
+ "wins": 9700,
+ "losses": 11377,
  "pushes": 11,
  "hit_rate": 0.4602,
- "net_units": -3541.761,
+ "net_units": -3546.026,
  "roi_pct": -16.82,
- "n_calibrated_picks": 17508,
+ "n_calibrated_picks": 17509,
  "calibrated_reliability": {
-  "n": 15371,
-  "ece_raw": 0.0774,
-  "ece_calibrated": 0.0112,
-  "brier_raw": 0.21266,
-  "brier_calibrated": 0.19722,
+  "n": 15390,
+  "ece_raw": 0.0775,
+  "ece_calibrated": 0.0114,
+  "brier_raw": 0.21273,
+  "brier_calibrated": 0.19729,
   "note": "In-sample over the settled ledger (the isotonic transform is fit on these same outcomes); held-out 70/30 validation is in recalibration_map.json. p_predicted = raw model prob (kept untouched for the learning loop); p_calibrated = honest prob stamped per pick. Lower ECE/Brier on the calibrated column = the displayed % is truer."
  },
  "curated": {
@@ -40,10 +40,10 @@
   "definition": "Featured/recommended plays only -- Lock of the Day, Top 25, Whale, Sharp, Consensus (hit), Under Alerts, POD. Excludes the experimental prop feeds, which are tracked to train the model, not bet.",
   "last_30": {
    "wins": 10,
-   "losses": 16,
-   "net_units": -8.442,
-   "roi_pct": -32.47,
-   "hit_rate": 0.3846
+   "losses": 15,
+   "net_units": -7.442,
+   "roi_pct": -29.77,
+   "hit_rate": 0.4
   }
  },
  "prizepicks": {
@@ -60,11 +60,11 @@
  "by_price_class": {
   "all": {
    "C": {
-    "n": 20507,
-    "wins": 9391,
-    "losses": 11116,
-    "net_units": -3537.669,
-    "roi_pct": -17.25
+    "n": 20526,
+    "wins": 9401,
+    "losses": 11125,
+    "net_units": -3541.933,
+    "roi_pct": -17.26
    },
    "B": {
     "n": 562,
@@ -92,11 +92,11 @@
  "headline_basis": "all-time: working ledger + data/ledger_archive.json",
  "working_ledger_only": {
   "all": {
-   "n_settled": 15414,
-   "wins": 6831,
-   "losses": 8572,
-   "net_units": -2378.649,
-   "roi_pct": -15.44
+   "n_settled": 15433,
+   "wins": 6841,
+   "losses": 8581,
+   "net_units": -2382.913,
+   "roi_pct": -15.45
   },
   "curated": {
    "n_settled": 514,
@@ -183,7 +183,7 @@
   }
  ],
  "stale_sources_skipped": [],
- "inactive_player_props_blocked": 20,
+ "inactive_player_props_blocked": 22,
  "started_game_picks_blocked": 0,
  "past_dated_picks_blocked": 19,
  "unpriced_picks_blocked": 0,
@@ -192,12 +192,12 @@
   "note": "The headline became ALL-TIME on 2026-10-23. 5,946 settled picks that the old tail-cut eviction had destroyed (May-June 2026, the 07-06 erosion and the run-up to 09-03) were rebuilt from git history at each pick's final state, with today's duplicate-wager rule re-applied, and folded back in. They are mostly the raw May-June MLB prop firehose (2,961-2,983, -1,256.9u), so the firehose ROI fell; the curated record changed by the curated picks among them. Before this date the published numbers covered the working window only -- working_ledger_only keeps that basis.",
   "n_archived_in_headline": 5655
  },
- "n_added_this_run": 0,
- "n_newly_settled_this_run": 4,
+ "n_added_this_run": 1,
+ "n_newly_settled_this_run": 27,
  "n_resettled_this_run": 0,
- "n_voided_this_run": 0,
- "n_duplicates_collapsed_this_run": 0,
- "n_duplicate_adds_blocked_this_run": 18,
+ "n_voided_this_run": 16,
+ "n_duplicates_collapsed_this_run": 8,
+ "n_duplicate_adds_blocked_this_run": 25,
  "n_reconciled_settled_voids": 0,
  "n_bootstrapped_from_locks_history": 0,
  "by_source": {
@@ -526,22 +526,22 @@
    "roi_pct": -24.62
   },
   "soccer_cards_cards_under_5.0": {
-   "n": 195,
-   "wins": 120,
-   "losses": 75,
+   "n": 199,
+   "wins": 122,
+   "losses": 77,
    "pushes": 0,
-   "net_units": -17.913,
-   "hit_rate": 0.6154,
-   "roi_pct": -9.19
+   "net_units": -18.692,
+   "hit_rate": 0.6131,
+   "roi_pct": -9.39
   },
   "soccer_btts_btts_yes": {
-   "n": 94,
-   "wins": 49,
-   "losses": 45,
+   "n": 100,
+   "wins": 50,
+   "losses": 50,
    "pushes": 0,
-   "net_units": -17.309,
-   "hit_rate": 0.5213,
-   "roi_pct": -18.41
+   "net_units": -21.796,
+   "hit_rate": 0.5,
+   "roi_pct": -21.8
   },
   "mlb_under_alert": {
    "n": 25,
@@ -832,13 +832,13 @@
    "roi_pct": 53.84
   },
   "soccer_clean_sheet_home_clean_sheet_no": {
-   "n": 401,
-   "wins": 290,
-   "losses": 111,
+   "n": 404,
+   "wins": 292,
+   "losses": 112,
    "pushes": 0,
-   "net_units": -12.969,
-   "hit_rate": 0.7232,
-   "roi_pct": -3.23
+   "net_units": -13.398,
+   "hit_rate": 0.7228,
+   "roi_pct": -3.32
   },
   "wnba_alts_home_total_over_74.4": {
    "n": 1,
@@ -1858,13 +1858,13 @@
    "roi_pct": -100.0
   },
   "soccer_cards_cards_under_6.0": {
-   "n": 20,
-   "wins": 14,
+   "n": 22,
+   "wins": 16,
    "losses": 6,
    "pushes": 0,
-   "net_units": 0.51,
-   "hit_rate": 0.7,
-   "roi_pct": 2.55
+   "net_units": 1.395,
+   "hit_rate": 0.7273,
+   "roi_pct": 6.34
   },
   "cfb_model": {
    "n": 34,
@@ -1957,13 +1957,13 @@
    "roi_pct": 8.51
   },
   "soccer_total_total_over_2.5": {
-   "n": 27,
-   "wins": 20,
-   "losses": 7,
+   "n": 31,
+   "wins": 23,
+   "losses": 8,
    "pushes": 0,
-   "net_units": 3.312,
-   "hit_rate": 0.7407,
-   "roi_pct": 12.27
+   "net_units": 3.857,
+   "hit_rate": 0.7419,
+   "roi_pct": 12.44
   },
   "sharp_strong": {
    "n": 4,
@@ -4323,20 +4323,20 @@
    "hit_rate": 0.4706
   },
   "cards_under": {
-   "n": 214,
-   "wins": 134,
-   "losses": 80,
+   "n": 220,
+   "wins": 138,
+   "losses": 82,
    "pushes": 0,
-   "net_units": -16.407,
-   "hit_rate": 0.6262
+   "net_units": -16.302,
+   "hit_rate": 0.6273
   },
   "btts_yes": {
-   "n": 93,
-   "wins": 48,
-   "losses": 45,
+   "n": 99,
+   "wins": 49,
+   "losses": 50,
    "pushes": 0,
-   "net_units": -17.814,
-   "hit_rate": 0.5161
+   "net_units": -22.301,
+   "hit_rate": 0.4949
   },
   "ml_away": {
    "n": 67,
@@ -4427,12 +4427,12 @@
    "hit_rate": 0.8889
   },
   "home_clean_sheet_no": {
-   "n": 388,
-   "wins": 282,
-   "losses": 106,
+   "n": 391,
+   "wins": 284,
+   "losses": 107,
    "pushes": 0,
-   "net_units": -10.568,
-   "hit_rate": 0.7268
+   "net_units": -10.996,
+   "hit_rate": 0.7263
   },
   "ast_under": {
    "n": 47,
@@ -4723,12 +4723,12 @@
    "hit_rate": 1.0
   },
   "total_over": {
-   "n": 27,
-   "wins": 20,
-   "losses": 7,
+   "n": 31,
+   "wins": 23,
+   "losses": 8,
    "pushes": 0,
-   "net_units": 3.312,
-   "hit_rate": 0.7407
+   "net_units": 3.857,
+   "hit_rate": 0.7419
   },
   "tbr_ml": {
    "n": 6,
@@ -5325,20 +5325,20 @@
    "hit_rate": 0.4706
   },
   "cards_under": {
-   "n": 214,
-   "wins": 134,
-   "losses": 80,
+   "n": 220,
+   "wins": 138,
+   "losses": 82,
    "pushes": 0,
-   "net_units": -16.407,
-   "hit_rate": 0.6262
+   "net_units": -16.302,
+   "hit_rate": 0.6273
   },
   "btts_yes": {
-   "n": 93,
-   "wins": 48,
-   "losses": 45,
+   "n": 99,
+   "wins": 49,
+   "losses": 50,
    "pushes": 0,
-   "net_units": -17.814,
-   "hit_rate": 0.5161
+   "net_units": -22.301,
+   "hit_rate": 0.4949
   },
   "ml_away": {
    "n": 67,
@@ -5437,12 +5437,12 @@
    "hit_rate": 0.8889
   },
   "home_clean_sheet_no": {
-   "n": 388,
-   "wins": 282,
-   "losses": 106,
+   "n": 391,
+   "wins": 284,
+   "losses": 107,
    "pushes": 0,
-   "net_units": -10.568,
-   "hit_rate": 0.7268
+   "net_units": -10.996,
+   "hit_rate": 0.7263
   },
   "ast_under": {
    "n": 47,
@@ -5733,12 +5733,12 @@
    "hit_rate": 1.0
   },
   "total_over": {
-   "n": 27,
-   "wins": 20,
-   "losses": 7,
+   "n": 31,
+   "wins": 23,
+   "losses": 8,
    "pushes": 0,
-   "net_units": 3.312,
-   "hit_rate": 0.7407
+   "net_units": 3.857,
+   "hit_rate": 0.7419
   },
   "tbr_ml": {
    "n": 6,
@@ -6149,8 +6149,8 @@
    "wins": 72,
    "losses": 102,
    "pushes": 0,
-   "pending": 7,
-   "void": 91,
+   "pending": 6,
+   "void": 92,
    "net_units": 151.62,
    "hit_rate": 0.4138,
    "roi_pct": 87.14,
@@ -6214,8 +6214,8 @@
    "wins": 63,
    "losses": 58,
    "pushes": 0,
-   "pending": 11,
-   "void": 51,
+   "pending": 9,
+   "void": 53,
    "net_units": -28.615,
    "hit_rate": 0.5207,
    "roi_pct": -23.65,
@@ -6223,15 +6223,15 @@
   },
   "UCL": {
    "n": 129,
-   "settled": 108,
-   "wins": 72,
-   "losses": 36,
+   "settled": 127,
+   "wins": 82,
+   "losses": 45,
    "pushes": 0,
-   "pending": 21,
+   "pending": 2,
    "void": 0,
-   "net_units": -1.873,
-   "hit_rate": 0.6667,
-   "roi_pct": -1.73,
+   "net_units": -6.135,
+   "hit_rate": 0.6457,
+   "roi_pct": -4.83,
    "markets": 5
   },
   "NCAAF": {
@@ -6248,12 +6248,12 @@
    "markets": 1
   },
   "NFL": {
-   "n": 3017,
+   "n": 3018,
    "settled": 2489,
    "wins": 1759,
    "losses": 730,
    "pushes": 0,
-   "pending": 110,
+   "pending": 111,
    "void": 418,
    "net_units": -91.539,
    "hit_rate": 0.7067,
@@ -6279,8 +6279,8 @@
    "wins": 630,
    "losses": 346,
    "pushes": 0,
-   "pending": 326,
-   "void": 380,
+   "pending": 305,
+   "void": 401,
    "net_units": -33.03,
    "hit_rate": 0.6455,
    "roi_pct": -3.38,
@@ -6318,12 +6318,12 @@
     "label": "10/23-11/2 -- season-to-date form (judged)"
    },
    "form_v3": {
-    "n": 4,
+    "n": 5,
     "settled": 0,
     "wins": 0,
     "losses": 0,
     "pushes": 0,
-    "pending": 4,
+    "pending": 5,
     "void": 0,
     "net_units": 0.0,
     "hit_rate": null,
@@ -6334,583 +6334,13 @@
   "note": "NFL props are judged from 10/23 forward: the simulator's form rule changed, so earlier picks are a different model. They stay on the record as their own line and never feed a family verdict."
  },
  "last_7_days": {
-  "wins": 1058,
-  "losses": 583,
-  "net_units": -86.53,
-  "hit_rate": 0.6447
+  "wins": 998,
+  "losses": 544,
+  "net_units": -75.687,
+  "hit_rate": 0.6472
  },
  "note": "Unified pick ledger -- records every pick the model surfaces (top_25 board, whales, consensus, unders, sharp action, locks, POD) and settles each against actual outcomes. Per-source W-L feeds back into calibration so the model learns which modules are reliable. THIS is the training signal.",
  "picks": [
-  {
-   "source": "nba_tt_team_pts_under_119.5",
-   "sport": "NBA",
-   "player_or_matchup": "BOS (BOS @ HOU)",
-   "market": "TEAM_PTS_UNDER_119.5",
-   "prob": 0.657,
-   "fair_american": -192,
-   "p_predicted": 0.657,
-   "matchup": "BOS @ HOU",
-   "date": "2026-11-02",
-   "pick_id": "nba_tt_team_pts_under_119_5|NBA|BOS__BOS___HOU_|TEAM_PTS_UNDER_119_5|2026-11-02",
-   "settled": true,
-   "result": "won",
-   "payout_units": 0.5208,
-   "recorded_at": "2026-11-02T19:02:04",
-   "p_calibrated": 0.6937,
-   "outcome": {
-    "final_score": "BOS 93 @ HOU 109",
-    "team_total": 93,
-    "line": 119.5,
-    "side": "UNDER",
-    "verify": "BOS @ HOU: away scored 93 (line 119.5, bet under) on 2026-11-02"
-   },
-   "settled_at": "2026-11-03T17:36:22",
-   "price_provenance": {
-    "inferred": true,
-    "class": "C",
-    "kind": "model_fair"
-   }
-  },
-  {
-   "source": "nba_tt_team_pts_under_119.5",
-   "sport": "NBA",
-   "player_or_matchup": "NYK (BKN @ NYK)",
-   "market": "TEAM_PTS_UNDER_119.5",
-   "prob": 0.664,
-   "fair_american": -198,
-   "p_predicted": 0.664,
-   "matchup": "BKN @ NYK",
-   "date": "2026-11-02",
-   "pick_id": "nba_tt_team_pts_under_119_5|NBA|NYK__BKN___NYK_|TEAM_PTS_UNDER_119_5|2026-11-02",
-   "settled": true,
-   "result": "won",
-   "payout_units": 0.5051,
-   "recorded_at": "2026-11-02T19:02:04",
-   "p_calibrated": 0.7051,
-   "outcome": {
-    "final_score": "BKN 90 @ NY 103",
-    "team_total": 90,
-    "line": 119.5,
-    "side": "UNDER",
-    "verify": "BKN @ NY: away scored 90 (line 119.5, bet under) on 2026-11-02"
-   },
-   "settled_at": "2026-11-03T17:36:22",
-   "price_provenance": {
-    "inferred": true,
-    "class": "C",
-    "kind": "model_fair"
-   }
-  },
-  {
-   "source": "nba_tt_team_pts_under_119.5",
-   "sport": "NBA",
-   "player_or_matchup": "LA  (TOR @ LA )",
-   "market": "TEAM_PTS_UNDER_119.5",
-   "prob": 0.667,
-   "fair_american": -200,
-   "p_predicted": 0.667,
-   "matchup": "TOR @ LA ",
-   "date": "2026-11-02",
-   "pick_id": "nba_tt_team_pts_under_119_5|NBA|LA___TOR___LA__|TEAM_PTS_UNDER_119_5|2026-11-02",
-   "settled": true,
-   "result": "lost",
-   "payout_units": -1.0,
-   "recorded_at": "2026-11-02T19:02:04",
-   "p_calibrated": 0.7187,
-   "outcome": {
-    "final_score": "TOR 125 @ LAC 118",
-    "team_total": 125,
-    "line": 119.5,
-    "side": "UNDER",
-    "verify": "TOR @ LAC: away scored 125 (line 119.5, bet under) on 2026-11-02"
-   },
-   "settled_at": "2026-11-03T17:36:22",
-   "price_provenance": {
-    "inferred": true,
-    "class": "C",
-    "kind": "model_fair"
-   }
-  },
-  {
-   "source": "nba_tt_team_pts_under_118.5",
-   "sport": "NBA",
-   "player_or_matchup": "CHA (DET @ CHA)",
-   "market": "TEAM_PTS_UNDER_118.5",
-   "prob": 0.64,
-   "fair_american": -178,
-   "p_predicted": 0.64,
-   "matchup": "DET @ CHA",
-   "date": "2026-11-02",
-   "pick_id": "nba_tt_team_pts_under_118_5|NBA|CHA__DET___CHA_|TEAM_PTS_UNDER_118_5|2026-11-02",
-   "settled": true,
-   "result": "won",
-   "payout_units": 0.5618,
-   "recorded_at": "2026-11-02T19:02:04",
-   "p_calibrated": 0.6937,
-   "outcome": {
-    "final_score": "DET 124 @ CHA 91",
-    "team_total": 91,
-    "line": 118.5,
-    "side": "UNDER",
-    "verify": "DET @ CHA: home scored 91 (line 118.5, bet under) on 2026-11-02"
-   },
-   "settled_at": "2026-11-03T17:36:22",
-   "price_provenance": {
-    "inferred": true,
-    "class": "C",
-    "kind": "model_fair"
-   }
-  },
-  {
-   "source": "nba_tt_team_pts_under_118.5",
-   "sport": "NBA",
-   "player_or_matchup": "PHI (CHI @ PHI)",
-   "market": "TEAM_PTS_UNDER_118.5",
-   "prob": 0.645,
-   "fair_american": -181,
-   "p_predicted": 0.645,
-   "matchup": "CHI @ PHI",
-   "date": "2026-11-02",
-   "pick_id": "nba_tt_team_pts_under_118_5|NBA|PHI__CHI___PHI_|TEAM_PTS_UNDER_118_5|2026-11-02",
-   "settled": true,
-   "result": "lost",
-   "payout_units": -1.0,
-   "recorded_at": "2026-11-02T19:02:04",
-   "p_calibrated": 0.6937,
-   "outcome": {
-    "final_score": "CHI 107 @ PHI 126",
-    "team_total": 126,
-    "line": 118.5,
-    "side": "UNDER",
-    "verify": "CHI @ PHI: home scored 126 (line 118.5, bet under) on 2026-11-02"
-   },
-   "settled_at": "2026-11-03T17:36:22",
-   "price_provenance": {
-    "inferred": true,
-    "class": "C",
-    "kind": "model_fair"
-   }
-  },
-  {
-   "source": "nba_tt_team_pts_under_118.5",
-   "sport": "NBA",
-   "player_or_matchup": "LAL (MIA @ LAL)",
-   "market": "TEAM_PTS_UNDER_118.5",
-   "prob": 0.663,
-   "fair_american": -197,
-   "p_predicted": 0.663,
-   "matchup": "MIA @ LAL",
-   "date": "2026-11-02",
-   "pick_id": "nba_tt_team_pts_under_118_5|NBA|LAL__MIA___LAL_|TEAM_PTS_UNDER_118_5|2026-11-02",
-   "settled": true,
-   "result": "lost",
-   "payout_units": -1.0,
-   "recorded_at": "2026-11-02T19:02:04",
-   "p_calibrated": 0.7005,
-   "outcome": {
-    "final_score": "MIA 117 @ LAL 138",
-    "team_total": 138,
-    "line": 118.5,
-    "side": "UNDER",
-    "verify": "MIA @ LAL: home scored 138 (line 118.5, bet under) on 2026-11-02"
-   },
-   "settled_at": "2026-11-03T17:36:22",
-   "price_provenance": {
-    "inferred": true,
-    "class": "C",
-    "kind": "model_fair"
-   }
-  },
-  {
-   "source": "nba_tt_team_pts_under_118.5",
-   "sport": "NBA",
-   "player_or_matchup": "CLE (OKC @ CLE)",
-   "market": "TEAM_PTS_UNDER_118.5",
-   "prob": 0.666,
-   "fair_american": -199,
-   "p_predicted": 0.666,
-   "matchup": "OKC @ CLE",
-   "date": "2026-11-02",
-   "pick_id": "nba_tt_team_pts_under_118_5|NBA|CLE__OKC___CLE_|TEAM_PTS_UNDER_118_5|2026-11-02",
-   "settled": true,
-   "result": "won",
-   "payout_units": 0.5025,
-   "recorded_at": "2026-11-02T19:02:04",
-   "p_calibrated": 0.7142,
-   "outcome": {
-    "final_score": "OKC 117 @ CLE 112",
-    "team_total": 112,
-    "line": 118.5,
-    "side": "UNDER",
-    "verify": "OKC @ CLE: home scored 112 (line 118.5, bet under) on 2026-11-02"
-   },
-   "settled_at": "2026-11-03T17:36:22",
-   "price_provenance": {
-    "inferred": true,
-    "class": "C",
-    "kind": "model_fair"
-   }
-  },
-  {
-   "source": "nba_tt_team_pts_under_117.5",
-   "sport": "NBA",
-   "player_or_matchup": "CHI (CHI @ PHI)",
-   "market": "TEAM_PTS_UNDER_117.5",
-   "prob": 0.651,
-   "fair_american": -186,
-   "p_predicted": 0.651,
-   "matchup": "CHI @ PHI",
-   "date": "2026-11-02",
-   "pick_id": "nba_tt_team_pts_under_117_5|NBA|CHI__CHI___PHI_|TEAM_PTS_UNDER_117_5|2026-11-02",
-   "settled": true,
-   "result": "won",
-   "payout_units": 0.5376,
-   "recorded_at": "2026-11-02T19:02:04",
-   "p_calibrated": 0.6937,
-   "outcome": {
-    "final_score": "CHI 107 @ PHI 126",
-    "team_total": 107,
-    "line": 117.5,
-    "side": "UNDER",
-    "verify": "CHI @ PHI: away scored 107 (line 117.5, bet under) on 2026-11-02"
-   },
-   "settled_at": "2026-11-03T17:36:22",
-   "price_provenance": {
-    "inferred": true,
-    "class": "C",
-    "kind": "model_fair"
-   }
-  },
-  {
-   "source": "nba_tt_team_pts_under_117.5",
-   "sport": "NBA",
-   "player_or_matchup": "TOR (TOR @ LA )",
-   "market": "TEAM_PTS_UNDER_117.5",
-   "prob": 0.671,
-   "fair_american": -204,
-   "p_predicted": 0.671,
-   "matchup": "TOR @ LA ",
-   "date": "2026-11-02",
-   "pick_id": "nba_tt_team_pts_under_117_5|NBA|TOR__TOR___LA__|TEAM_PTS_UNDER_117_5|2026-11-02",
-   "settled": true,
-   "result": "lost",
-   "payout_units": -1.0,
-   "recorded_at": "2026-11-02T19:02:04",
-   "p_calibrated": 0.7369,
-   "outcome": {
-    "final_score": "TOR 125 @ LAC 118",
-    "team_total": 125,
-    "line": 117.5,
-    "side": "UNDER",
-    "verify": "TOR @ LAC: away scored 125 (line 117.5, bet under) on 2026-11-02"
-   },
-   "settled_at": "2026-11-03T17:36:22",
-   "price_provenance": {
-    "inferred": true,
-    "class": "C",
-    "kind": "model_fair"
-   }
-  },
-  {
-   "source": "nba_tt_team_pts_under_117.5",
-   "sport": "NBA",
-   "player_or_matchup": "MIA (MIA @ LAL)",
-   "market": "TEAM_PTS_UNDER_117.5",
-   "prob": 0.674,
-   "fair_american": -207,
-   "p_predicted": 0.674,
-   "matchup": "MIA @ LAL",
-   "date": "2026-11-02",
-   "pick_id": "nba_tt_team_pts_under_117_5|NBA|MIA__MIA___LAL_|TEAM_PTS_UNDER_117_5|2026-11-02",
-   "settled": true,
-   "result": "won",
-   "payout_units": 0.4831,
-   "recorded_at": "2026-11-02T19:02:04",
-   "p_calibrated": 0.7383,
-   "outcome": {
-    "final_score": "MIA 117 @ LAL 138",
-    "team_total": 117,
-    "line": 117.5,
-    "side": "UNDER",
-    "verify": "MIA @ LAL: away scored 117 (line 117.5, bet under) on 2026-11-02"
-   },
-   "settled_at": "2026-11-03T17:36:22",
-   "price_provenance": {
-    "inferred": true,
-    "class": "C",
-    "kind": "model_fair"
-   }
-  },
-  {
-   "source": "nba_tt_team_pts_under_116.5",
-   "sport": "NBA",
-   "player_or_matchup": "MIN (MIL @ MIN)",
-   "market": "TEAM_PTS_UNDER_116.5",
-   "prob": 0.674,
-   "fair_american": -207,
-   "p_predicted": 0.674,
-   "matchup": "MIL @ MIN",
-   "date": "2026-11-02",
-   "pick_id": "nba_tt_team_pts_under_116_5|NBA|MIN__MIL___MIN_|TEAM_PTS_UNDER_116_5|2026-11-02",
-   "settled": true,
-   "result": "won",
-   "payout_units": 0.4831,
-   "recorded_at": "2026-11-02T19:02:04",
-   "p_calibrated": 0.7383,
-   "outcome": {
-    "final_score": "MIL 100 @ MIN 112",
-    "team_total": 112,
-    "line": 116.5,
-    "side": "UNDER",
-    "verify": "MIL @ MIN: home scored 112 (line 116.5, bet under) on 2026-11-02"
-   },
-   "settled_at": "2026-11-03T17:36:22",
-   "price_provenance": {
-    "inferred": true,
-    "class": "C",
-    "kind": "model_fair"
-   }
-  },
-  {
-   "source": "nba_tt_team_pts_under_115.5",
-   "sport": "NBA",
-   "player_or_matchup": "MIL (MIL @ MIN)",
-   "market": "TEAM_PTS_UNDER_115.5",
-   "prob": 0.657,
-   "fair_american": -192,
-   "p_predicted": 0.657,
-   "matchup": "MIL @ MIN",
-   "date": "2026-11-02",
-   "pick_id": "nba_tt_team_pts_under_115_5|NBA|MIL__MIL___MIN_|TEAM_PTS_UNDER_115_5|2026-11-02",
-   "settled": true,
-   "result": "won",
-   "payout_units": 0.5208,
-   "recorded_at": "2026-11-02T19:02:04",
-   "p_calibrated": 0.6937,
-   "outcome": {
-    "final_score": "MIL 100 @ MIN 112",
-    "team_total": 100,
-    "line": 115.5,
-    "side": "UNDER",
-    "verify": "MIL @ MIN: away scored 100 (line 115.5, bet under) on 2026-11-02"
-   },
-   "settled_at": "2026-11-03T17:36:22",
-   "price_provenance": {
-    "inferred": true,
-    "class": "C",
-    "kind": "model_fair"
-   }
-  },
-  {
-   "source": "nba_tt_team_pts_under_115.5",
-   "sport": "NBA",
-   "player_or_matchup": "POR (POR @ DEN)",
-   "market": "TEAM_PTS_UNDER_115.5",
-   "prob": 0.666,
-   "fair_american": -199,
-   "p_predicted": 0.666,
-   "matchup": "POR @ DEN",
-   "date": "2026-11-02",
-   "pick_id": "nba_tt_team_pts_under_115_5|NBA|POR__POR___DEN_|TEAM_PTS_UNDER_115_5|2026-11-02",
-   "settled": true,
-   "result": "lost",
-   "payout_units": -1.0,
-   "recorded_at": "2026-11-02T19:02:04",
-   "p_calibrated": 0.7142,
-   "outcome": {
-    "final_score": "POR 118 @ DEN 110",
-    "team_total": 118,
-    "line": 115.5,
-    "side": "UNDER",
-    "verify": "POR @ DEN: away scored 118 (line 115.5, bet under) on 2026-11-02"
-   },
-   "settled_at": "2026-11-03T17:36:22",
-   "price_provenance": {
-    "inferred": true,
-    "class": "C",
-    "kind": "model_fair"
-   }
-  },
-  {
-   "source": "nba_tt_team_pts_under_114.5",
-   "sport": "NBA",
-   "player_or_matchup": "WAS (WAS @ ORL)",
-   "market": "TEAM_PTS_UNDER_114.5",
-   "prob": 0.651,
-   "fair_american": -186,
-   "p_predicted": 0.651,
-   "matchup": "WAS @ ORL",
-   "date": "2026-11-02",
-   "pick_id": "nba_tt_team_pts_under_114_5|NBA|WAS__WAS___ORL_|TEAM_PTS_UNDER_114_5|2026-11-02",
-   "settled": true,
-   "result": "won",
-   "payout_units": 0.5376,
-   "recorded_at": "2026-11-02T19:02:04",
-   "p_calibrated": 0.6937,
-   "outcome": {
-    "final_score": "WSH 103 @ ORL 94",
-    "team_total": 103,
-    "line": 114.5,
-    "side": "UNDER",
-    "verify": "WSH @ ORL: away scored 103 (line 114.5, bet under) on 2026-11-02"
-   },
-   "settled_at": "2026-11-03T17:36:22",
-   "price_provenance": {
-    "inferred": true,
-    "class": "C",
-    "kind": "model_fair"
-   }
-  },
-  {
-   "source": "nba_tt_team_pts_under_113.5",
-   "sport": "NBA",
-   "player_or_matchup": "BKN (BKN @ NYK)",
-   "market": "TEAM_PTS_UNDER_113.5",
-   "prob": 0.649,
-   "fair_american": -185,
-   "p_predicted": 0.649,
-   "matchup": "BKN @ NYK",
-   "date": "2026-11-02",
-   "pick_id": "nba_tt_team_pts_under_113_5|NBA|BKN__BKN___NYK_|TEAM_PTS_UNDER_113_5|2026-11-02",
-   "settled": true,
-   "result": "won",
-   "payout_units": 0.5405,
-   "recorded_at": "2026-11-02T19:02:04",
-   "p_calibrated": 0.6937,
-   "outcome": {
-    "final_score": "BKN 90 @ NY 103",
-    "team_total": 90,
-    "line": 113.5,
-    "side": "UNDER",
-    "verify": "BKN @ NY: away scored 90 (line 113.5, bet under) on 2026-11-02"
-   },
-   "settled_at": "2026-11-03T17:36:22",
-   "price_provenance": {
-    "inferred": true,
-    "class": "C",
-    "kind": "model_fair"
-   }
-  },
-  {
-   "source": "nba_tt_team_pts_under_113.5",
-   "sport": "NBA",
-   "player_or_matchup": "HOU (BOS @ HOU)",
-   "market": "TEAM_PTS_UNDER_113.5",
-   "prob": 0.651,
-   "fair_american": -187,
-   "p_predicted": 0.651,
-   "matchup": "BOS @ HOU",
-   "date": "2026-11-02",
-   "pick_id": "nba_tt_team_pts_under_113_5|NBA|HOU__BOS___HOU_|TEAM_PTS_UNDER_113_5|2026-11-02",
-   "settled": true,
-   "result": "won",
-   "payout_units": 0.5348,
-   "recorded_at": "2026-11-02T19:02:04",
-   "p_calibrated": 0.6937,
-   "outcome": {
-    "final_score": "BOS 93 @ HOU 109",
-    "team_total": 109,
-    "line": 113.5,
-    "side": "UNDER",
-    "verify": "BOS @ HOU: home scored 109 (line 113.5, bet under) on 2026-11-02"
-   },
-   "settled_at": "2026-11-03T17:36:22",
-   "price_provenance": {
-    "inferred": true,
-    "class": "C",
-    "kind": "model_fair"
-   }
-  },
-  {
-   "source": "nhl_pl_home_plus_1.5",
-   "sport": "NHL",
-   "player_or_matchup": "Vegas Golden Knights @ Boston Bruins",
-   "market": "HOME_PLUS_1.5",
-   "prob": 0.721,
-   "fair_american": -259,
-   "p_predicted": 0.721,
-   "matchup": "Vegas Golden Knights @ Boston Bruins",
-   "date": "2026-11-02",
-   "pick_id": "nhl_pl_home_plus_1_5|NHL|Vegas_Golden_Knights___Boston_Bruins|HOME_PLUS_1_5|2026-11-02",
-   "settled": true,
-   "result": "won",
-   "payout_units": 0.3861,
-   "recorded_at": "2026-11-02T19:02:04",
-   "p_calibrated": 0.6868,
-   "outcome": {
-    "final_score": "VGK 2 @ BOS 3",
-    "side": "home",
-    "line": 1.5,
-    "market": "HOME_PLUS_1.5",
-    "verify": "VGK 2 @ BOS 3: home +1.5 \u2014 HOME_PLUS_1.5"
-   },
-   "settled_at": "2026-11-03T11:41:24",
-   "price_provenance": {
-    "inferred": true,
-    "class": "C",
-    "kind": "model_fair"
-   }
-  },
-  {
-   "source": "nhl_pl_away_plus_1.5",
-   "sport": "NHL",
-   "player_or_matchup": "Detroit Red Wings @ Florida Panthers",
-   "market": "AWAY_PLUS_1.5",
-   "prob": 0.719,
-   "fair_american": -256,
-   "p_predicted": 0.719,
-   "matchup": "Detroit Red Wings @ Florida Panthers",
-   "date": "2026-11-02",
-   "pick_id": "nhl_pl_away_plus_1_5|NHL|Detroit_Red_Wings___Florida_Panthers|AWAY_PLUS_1_5|2026-11-02",
-   "settled": true,
-   "result": "won",
-   "payout_units": 0.3906,
-   "recorded_at": "2026-11-02T19:02:04",
-   "p_calibrated": 0.6714,
-   "outcome": {
-    "final_score": "DET 5 @ FLA 3",
-    "side": "away",
-    "line": 1.5,
-    "market": "AWAY_PLUS_1.5",
-    "verify": "DET 5 @ FLA 3: away +1.5 \u2014 AWAY_PLUS_1.5"
-   },
-   "settled_at": "2026-11-03T11:41:24",
-   "price_provenance": {
-    "inferred": true,
-    "class": "C",
-    "kind": "model_fair"
-   }
-  },
-  {
-   "source": "nhl_pl_home_plus_1.5",
-   "sport": "NHL",
-   "player_or_matchup": "Calgary Flames @ San Jose Sharks",
-   "market": "HOME_PLUS_1.5",
-   "prob": 0.729,
-   "fair_american": -270,
-   "p_predicted": 0.729,
-   "matchup": "Calgary Flames @ San Jose Sharks",
-   "date": "2026-11-02",
-   "pick_id": "nhl_pl_home_plus_1_5|NHL|Calgary_Flames___San_Jose_Sharks|HOME_PLUS_1_5|2026-11-02",
-   "settled": true,
-   "result": "won",
-   "payout_units": 0.3704,
-   "recorded_at": "2026-11-02T19:02:04",
-   "p_calibrated": 0.6888,
-   "outcome": {
-    "final_score": "CGY 2 @ SJ 1",
-    "side": "home",
-    "line": 1.5,
-    "market": "HOME_PLUS_1.5",
-    "verify": "CGY 2 @ SJ 1: home +1.5 \u2014 HOME_PLUS_1.5"
-   },
-   "settled_at": "2026-11-03T16:20:23",
-   "price_provenance": {
-    "inferred": true,
-    "class": "C",
-    "kind": "model_fair"
-   }
-  },
   {
    "source": "nhl_period_p3_over_1.5",
    "sport": "NHL",
@@ -8066,7 +7496,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-11-03T03:34:06",
-   "p_calibrated": 0.6559,
+   "p_calibrated": 0.6576,
    "outcome": {
     "final_score": "Everton 1-0 Newcastle United",
     "total_cards": 7,
@@ -8099,7 +7529,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-11-03T03:34:06",
-   "p_calibrated": 0.5055,
+   "p_calibrated": 0.5112,
    "outcome": {
     "final_score": "Everton 1-0 Newcastle United",
     "total_cards": 7,
@@ -8165,7 +7595,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-10-28T19:34:20",
-   "p_calibrated": 0.6559,
+   "p_calibrated": 0.6576,
    "outcome": {
     "final_score": "VfB Stuttgart 0-2 Galatasaray",
     "total_cards": 8,
@@ -8185,6 +7615,110 @@
    }
   },
   {
+   "source": "soccer_cards_cards_under_6.0",
+   "sport": "UCL",
+   "player_or_matchup": "Internazionale @ Feyenoord Rotterdam",
+   "market": "CARDS_UNDER_6.0",
+   "prob": 0.683,
+   "fair_american": -215,
+   "p_predicted": 0.683,
+   "matchup": "Internazionale @ Feyenoord Rotterdam",
+   "date": "2026-11-03",
+   "pick_id": "soccer_cards_cards_under_6_0|UCL|Internazionale___Feyenoord_Rotterdam|CARDS_UNDER_6_0|2026-11-03",
+   "settled": true,
+   "result": "won",
+   "payout_units": 0.4651,
+   "recorded_at": "2026-10-28T19:34:20",
+   "p_calibrated": 0.6576,
+   "price_provenance": {
+    "inferred": true,
+    "class": "C",
+    "kind": "model_fair"
+   },
+   "outcome": {
+    "final_score": "Internazionale 3-0 Feyenoord Rotterdam",
+    "total_cards": 3,
+    "total_goals": 3,
+    "scorers": [
+     "yann bisseck",
+     "pio esposito",
+     "piotr zielinski"
+    ],
+    "market": "CARDS_UNDER_6.0",
+    "verify": "Internazionale 3-0 Feyenoord Rotterdam: 3 cards (line 6.0) \u2014 CARDS_UNDER_6.0"
+   },
+   "settled_at": "2026-11-04T00:53:12"
+  },
+  {
+   "source": "soccer_cards_cards_under_6.0",
+   "sport": "UCL",
+   "player_or_matchup": "Aston Villa @ Barcelona",
+   "market": "CARDS_UNDER_6.0",
+   "prob": 0.704,
+   "fair_american": -238,
+   "p_predicted": 0.704,
+   "matchup": "Aston Villa @ Barcelona",
+   "date": "2026-11-03",
+   "pick_id": "soccer_cards_cards_under_6_0|UCL|Aston_Villa___Barcelona|CARDS_UNDER_6_0|2026-11-03",
+   "settled": true,
+   "result": "won",
+   "payout_units": 0.4202,
+   "recorded_at": "2026-10-28T19:34:20",
+   "p_calibrated": 0.6576,
+   "price_provenance": {
+    "inferred": true,
+    "class": "C",
+    "kind": "model_fair"
+   },
+   "outcome": {
+    "final_score": "Aston Villa 0-3 Barcelona",
+    "total_cards": 4,
+    "total_goals": 3,
+    "scorers": [
+     "lamine yamal",
+     "raphinha",
+     "raphinha"
+    ],
+    "market": "CARDS_UNDER_6.0",
+    "verify": "Aston Villa 0-3 Barcelona: 4 cards (line 6.0) \u2014 CARDS_UNDER_6.0"
+   },
+   "settled_at": "2026-11-04T00:53:12"
+  },
+  {
+   "source": "soccer_cards_cards_under_5.0",
+   "sport": "UCL",
+   "player_or_matchup": "Bayern Munich @ Atl\u00e9tico Madrid",
+   "market": "CARDS_UNDER_5.0",
+   "prob": 0.622,
+   "fair_american": -164,
+   "p_predicted": 0.622,
+   "matchup": "Bayern Munich @ Atl\u00e9tico Madrid",
+   "date": "2026-11-03",
+   "pick_id": "soccer_cards_cards_under_5_0|UCL|Bayern_Munich___Atl_tico_Madrid|CARDS_UNDER_5_0|2026-11-03",
+   "settled": true,
+   "result": "won",
+   "payout_units": 0.6098,
+   "recorded_at": "2026-10-28T19:34:20",
+   "p_calibrated": 0.6179,
+   "price_provenance": {
+    "inferred": true,
+    "class": "C",
+    "kind": "model_fair"
+   },
+   "outcome": {
+    "final_score": "Bayern Munich 2-0 Atl\u00e9tico Madrid",
+    "total_cards": 3,
+    "total_goals": 2,
+    "scorers": [
+     "lennart karl",
+     "konrad laimer"
+    ],
+    "market": "CARDS_UNDER_5.0",
+    "verify": "Bayern Munich 2-0 Atl\u00e9tico Madrid: 3 cards (line 5.0) \u2014 CARDS_UNDER_5.0"
+   },
+   "settled_at": "2026-11-04T00:53:12"
+  },
+  {
    "source": "soccer_cards_cards_under_5.0",
    "sport": "UCL",
    "player_or_matchup": "Lille @ Bodo/Glimt",
@@ -8199,7 +7733,7 @@
    "result": "won",
    "payout_units": 0.6098,
    "recorded_at": "2026-10-28T19:34:20",
-   "p_calibrated": 0.6178,
+   "p_calibrated": 0.6179,
    "price_provenance": {
     "inferred": true,
     "class": "C",
@@ -8216,6 +7750,117 @@
    "settled_at": "2026-11-03T21:51:18"
   },
   {
+   "source": "soccer_cards_cards_under_5.0",
+   "sport": "UCL",
+   "player_or_matchup": "Slovan Bratislava @ LASK Linz",
+   "market": "CARDS_UNDER_5.0",
+   "prob": 0.622,
+   "fair_american": -164,
+   "p_predicted": 0.622,
+   "matchup": "Slovan Bratislava @ LASK Linz",
+   "date": "2026-11-03",
+   "pick_id": "soccer_cards_cards_under_5_0|UCL|Slovan_Bratislava___LASK_Linz|CARDS_UNDER_5_0|2026-11-03",
+   "settled": true,
+   "result": "won",
+   "payout_units": 0.6098,
+   "recorded_at": "2026-10-28T19:34:20",
+   "p_calibrated": 0.6179,
+   "price_provenance": {
+    "inferred": true,
+    "class": "C",
+    "kind": "model_fair"
+   },
+   "outcome": {
+    "final_score": "Slovan Bratislava 0-4 LASK Linz",
+    "total_cards": 2,
+    "total_goals": 4,
+    "scorers": [
+     "kasper j\u00f8rgensen",
+     "kasper j\u00f8rgensen",
+     "robert ljubicic",
+     "samuel adeniran"
+    ],
+    "market": "CARDS_UNDER_5.0",
+    "verify": "Slovan Bratislava 0-4 LASK Linz: 2 cards (line 5.0) \u2014 CARDS_UNDER_5.0"
+   },
+   "settled_at": "2026-11-04T00:53:12"
+  },
+  {
+   "source": "soccer_cards_cards_under_5.0",
+   "sport": "UCL",
+   "player_or_matchup": "AS Roma @ Manchester United",
+   "market": "CARDS_UNDER_5.0",
+   "prob": 0.622,
+   "fair_american": -164,
+   "p_predicted": 0.622,
+   "matchup": "AS Roma @ Manchester United",
+   "date": "2026-11-03",
+   "pick_id": "soccer_cards_cards_under_5_0|UCL|AS_Roma___Manchester_United|CARDS_UNDER_5_0|2026-11-03",
+   "settled": true,
+   "result": "lost",
+   "payout_units": -1.0,
+   "recorded_at": "2026-10-28T19:34:20",
+   "p_calibrated": 0.6179,
+   "price_provenance": {
+    "inferred": true,
+    "class": "C",
+    "kind": "model_fair"
+   },
+   "outcome": {
+    "final_score": "AS Roma 2-3 Manchester United",
+    "total_cards": 8,
+    "total_goals": 5,
+    "scorers": [
+     "mat\u00ecas soul\u00e8",
+     "donyell malen",
+     "bruno fernandes",
+     "matheus cunha",
+     "matheus cunha"
+    ],
+    "market": "CARDS_UNDER_5.0",
+    "verify": "AS Roma 2-3 Manchester United: 8 cards (line 5.0) \u2014 CARDS_UNDER_5.0"
+   },
+   "settled_at": "2026-11-04T00:53:12"
+  },
+  {
+   "source": "soccer_cards_cards_under_5.0",
+   "sport": "UCL",
+   "player_or_matchup": "Paris Saint-Germain @ Villarreal",
+   "market": "CARDS_UNDER_5.0",
+   "prob": 0.629,
+   "fair_american": -170,
+   "p_predicted": 0.629,
+   "matchup": "Paris Saint-Germain @ Villarreal",
+   "date": "2026-11-03",
+   "pick_id": "soccer_cards_cards_under_5_0|UCL|Paris_Saint_Germain___Villarreal|CARDS_UNDER_5_0|2026-11-03",
+   "settled": true,
+   "result": "lost",
+   "payout_units": -1.0,
+   "recorded_at": "2026-10-28T19:34:20",
+   "p_calibrated": 0.6179,
+   "price_provenance": {
+    "inferred": true,
+    "class": "C",
+    "kind": "model_fair"
+   },
+   "outcome": {
+    "final_score": "Paris Saint-Germain 6-0 Villarreal",
+    "total_cards": 5,
+    "total_goals": 6,
+    "scorers": [
+     "jo\u00e3o neves",
+     "d\u00e9sir\u00e9 dou\u00e9",
+     "senny mayulu",
+     "fabi\u00e1n ruiz",
+     "fabi\u00e1n ruiz",
+     "david boly"
+    ],
+    "market": "CARDS_UNDER_5.0",
+    "verify": "Paris Saint-Germain 6-0 Villarreal: 5 cards (line 5.0) \u2014 CARDS_UNDER_5.0"
+   },
+   "settled_at": "2026-11-04T00:53:12"
+  },
+  {
    "source": "soccer_btts_btts_yes",
    "sport": "UCL",
    "player_or_matchup": "Sporting CP @ Shakhtar Donetsk",
@@ -8230,7 +7875,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-10-28T19:34:20",
-   "p_calibrated": 0.6495,
+   "p_calibrated": 0.6266,
    "outcome": {
     "final_score": "Sporting CP 1-0 Shakhtar Donetsk",
     "total_cards": 2,
@@ -8251,6 +7896,44 @@
   {
    "source": "soccer_btts_btts_yes",
    "sport": "UCL",
+   "player_or_matchup": "Paris Saint-Germain @ Villarreal",
+   "market": "BTTS_YES",
+   "prob": 0.666,
+   "fair_american": -200,
+   "p_predicted": 0.666,
+   "matchup": "Paris Saint-Germain @ Villarreal",
+   "date": "2026-11-03",
+   "pick_id": "soccer_btts_btts_yes|UCL|Paris_Saint_Germain___Villarreal|BTTS_YES|2026-11-03",
+   "settled": true,
+   "result": "lost",
+   "payout_units": -1.0,
+   "recorded_at": "2026-10-28T19:34:20",
+   "p_calibrated": 0.6266,
+   "price_provenance": {
+    "inferred": true,
+    "class": "C",
+    "kind": "model_fair"
+   },
+   "outcome": {
+    "final_score": "Paris Saint-Germain 6-0 Villarreal",
+    "total_cards": 5,
+    "total_goals": 6,
+    "scorers": [
+     "jo\u00e3o neves",
+     "d\u00e9sir\u00e9 dou\u00e9",
+     "senny mayulu",
+     "fabi\u00e1n ruiz",
+     "fabi\u00e1n ruiz",
+     "david boly"
+    ],
+    "market": "BTTS_YES",
+    "verify": "Paris Saint-Germain 6-0 Villarreal: both scored = False \u2014 BTTS_YES"
+   },
+   "settled_at": "2026-11-04T00:53:12"
+  },
+  {
+   "source": "soccer_btts_btts_yes",
+   "sport": "UCL",
    "player_or_matchup": "VfB Stuttgart @ Galatasaray",
    "market": "BTTS_YES",
    "prob": 0.664,
@@ -8263,7 +7946,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-10-28T19:34:20",
-   "p_calibrated": 0.6495,
+   "p_calibrated": 0.6266,
    "outcome": {
     "final_score": "VfB Stuttgart 0-2 Galatasaray",
     "total_cards": 8,
@@ -8285,6 +7968,110 @@
   {
    "source": "soccer_btts_btts_yes",
    "sport": "UCL",
+   "player_or_matchup": "Internazionale @ Feyenoord Rotterdam",
+   "market": "BTTS_YES",
+   "prob": 0.664,
+   "fair_american": -198,
+   "p_predicted": 0.664,
+   "matchup": "Internazionale @ Feyenoord Rotterdam",
+   "date": "2026-11-03",
+   "pick_id": "soccer_btts_btts_yes|UCL|Internazionale___Feyenoord_Rotterdam|BTTS_YES|2026-11-03",
+   "settled": true,
+   "result": "lost",
+   "payout_units": -1.0,
+   "recorded_at": "2026-10-28T19:34:20",
+   "p_calibrated": 0.6266,
+   "price_provenance": {
+    "inferred": true,
+    "class": "C",
+    "kind": "model_fair"
+   },
+   "outcome": {
+    "final_score": "Internazionale 3-0 Feyenoord Rotterdam",
+    "total_cards": 3,
+    "total_goals": 3,
+    "scorers": [
+     "yann bisseck",
+     "pio esposito",
+     "piotr zielinski"
+    ],
+    "market": "BTTS_YES",
+    "verify": "Internazionale 3-0 Feyenoord Rotterdam: both scored = False \u2014 BTTS_YES"
+   },
+   "settled_at": "2026-11-04T00:53:12"
+  },
+  {
+   "source": "soccer_btts_btts_yes",
+   "sport": "UCL",
+   "player_or_matchup": "Aston Villa @ Barcelona",
+   "market": "BTTS_YES",
+   "prob": 0.663,
+   "fair_american": -197,
+   "p_predicted": 0.663,
+   "matchup": "Aston Villa @ Barcelona",
+   "date": "2026-11-03",
+   "pick_id": "soccer_btts_btts_yes|UCL|Aston_Villa___Barcelona|BTTS_YES|2026-11-03",
+   "settled": true,
+   "result": "lost",
+   "payout_units": -1.0,
+   "recorded_at": "2026-10-28T19:34:20",
+   "p_calibrated": 0.6266,
+   "price_provenance": {
+    "inferred": true,
+    "class": "C",
+    "kind": "model_fair"
+   },
+   "outcome": {
+    "final_score": "Aston Villa 0-3 Barcelona",
+    "total_cards": 4,
+    "total_goals": 3,
+    "scorers": [
+     "lamine yamal",
+     "raphinha",
+     "raphinha"
+    ],
+    "market": "BTTS_YES",
+    "verify": "Aston Villa 0-3 Barcelona: both scored = False \u2014 BTTS_YES"
+   },
+   "settled_at": "2026-11-04T00:53:12"
+  },
+  {
+   "source": "soccer_btts_btts_yes",
+   "sport": "UCL",
+   "player_or_matchup": "Bayern Munich @ Atl\u00e9tico Madrid",
+   "market": "BTTS_YES",
+   "prob": 0.661,
+   "fair_american": -195,
+   "p_predicted": 0.661,
+   "matchup": "Bayern Munich @ Atl\u00e9tico Madrid",
+   "date": "2026-11-03",
+   "pick_id": "soccer_btts_btts_yes|UCL|Bayern_Munich___Atl_tico_Madrid|BTTS_YES|2026-11-03",
+   "settled": true,
+   "result": "lost",
+   "payout_units": -1.0,
+   "recorded_at": "2026-10-28T19:34:20",
+   "p_calibrated": 0.6235,
+   "price_provenance": {
+    "inferred": true,
+    "class": "C",
+    "kind": "model_fair"
+   },
+   "outcome": {
+    "final_score": "Bayern Munich 2-0 Atl\u00e9tico Madrid",
+    "total_cards": 3,
+    "total_goals": 2,
+    "scorers": [
+     "lennart karl",
+     "konrad laimer"
+    ],
+    "market": "BTTS_YES",
+    "verify": "Bayern Munich 2-0 Atl\u00e9tico Madrid: both scored = False \u2014 BTTS_YES"
+   },
+   "settled_at": "2026-11-04T00:53:12"
+  },
+  {
+   "source": "soccer_btts_btts_yes",
+   "sport": "UCL",
    "player_or_matchup": "Lille @ Bodo/Glimt",
    "market": "BTTS_YES",
    "prob": 0.661,
@@ -8297,7 +8084,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-10-28T19:34:20",
-   "p_calibrated": 0.6495,
+   "p_calibrated": 0.6235,
    "price_provenance": {
     "inferred": true,
     "class": "C",
@@ -8312,6 +8099,79 @@
     "verify": "Lille 0-0 Bodo/Glimt: both scored = False \u2014 BTTS_YES"
    },
    "settled_at": "2026-11-03T21:51:18"
+  },
+  {
+   "source": "soccer_btts_btts_yes",
+   "sport": "UCL",
+   "player_or_matchup": "Slovan Bratislava @ LASK Linz",
+   "market": "BTTS_YES",
+   "prob": 0.661,
+   "fair_american": -195,
+   "p_predicted": 0.661,
+   "matchup": "Slovan Bratislava @ LASK Linz",
+   "date": "2026-11-03",
+   "pick_id": "soccer_btts_btts_yes|UCL|Slovan_Bratislava___LASK_Linz|BTTS_YES|2026-11-03",
+   "settled": true,
+   "result": "lost",
+   "payout_units": -1.0,
+   "recorded_at": "2026-10-28T19:34:20",
+   "p_calibrated": 0.6235,
+   "price_provenance": {
+    "inferred": true,
+    "class": "C",
+    "kind": "model_fair"
+   },
+   "outcome": {
+    "final_score": "Slovan Bratislava 0-4 LASK Linz",
+    "total_cards": 2,
+    "total_goals": 4,
+    "scorers": [
+     "kasper j\u00f8rgensen",
+     "kasper j\u00f8rgensen",
+     "robert ljubicic",
+     "samuel adeniran"
+    ],
+    "market": "BTTS_YES",
+    "verify": "Slovan Bratislava 0-4 LASK Linz: both scored = False \u2014 BTTS_YES"
+   },
+   "settled_at": "2026-11-04T00:53:12"
+  },
+  {
+   "source": "soccer_btts_btts_yes",
+   "sport": "UCL",
+   "player_or_matchup": "AS Roma @ Manchester United",
+   "market": "BTTS_YES",
+   "prob": 0.661,
+   "fair_american": -195,
+   "p_predicted": 0.661,
+   "matchup": "AS Roma @ Manchester United",
+   "date": "2026-11-03",
+   "pick_id": "soccer_btts_btts_yes|UCL|AS_Roma___Manchester_United|BTTS_YES|2026-11-03",
+   "settled": true,
+   "result": "won",
+   "payout_units": 0.5128,
+   "recorded_at": "2026-10-28T19:34:20",
+   "p_calibrated": 0.6235,
+   "price_provenance": {
+    "inferred": true,
+    "class": "C",
+    "kind": "model_fair"
+   },
+   "outcome": {
+    "final_score": "AS Roma 2-3 Manchester United",
+    "total_cards": 8,
+    "total_goals": 5,
+    "scorers": [
+     "mat\u00ecas soul\u00e8",
+     "donyell malen",
+     "bruno fernandes",
+     "matheus cunha",
+     "matheus cunha"
+    ],
+    "market": "BTTS_YES",
+    "verify": "AS Roma 2-3 Manchester United: both scored = True \u2014 BTTS_YES"
+   },
+   "settled_at": "2026-11-04T00:53:12"
   },
   {
    "source": "soccer_total_total_over_2.5",
@@ -8349,6 +8209,40 @@
   {
    "source": "soccer_total_total_over_2.5",
    "sport": "UCL",
+   "player_or_matchup": "Bayern Munich @ Atl\u00e9tico Madrid",
+   "market": "TOTAL_OVER_2.5",
+   "prob": 0.66,
+   "fair_american": -194,
+   "p_predicted": 0.66,
+   "matchup": "Bayern Munich @ Atl\u00e9tico Madrid",
+   "date": "2026-11-03",
+   "pick_id": "soccer_total_total_over_2_5|UCL|Bayern_Munich___Atl_tico_Madrid|TOTAL_OVER_2_5|2026-11-03",
+   "settled": true,
+   "result": "lost",
+   "payout_units": -1.0,
+   "recorded_at": "2026-10-28T19:34:20",
+   "p_calibrated": 0.66,
+   "price_provenance": {
+    "inferred": true,
+    "class": "C",
+    "kind": "model_fair"
+   },
+   "outcome": {
+    "final_score": "Bayern Munich 2-0 Atl\u00e9tico Madrid",
+    "total_cards": 3,
+    "total_goals": 2,
+    "scorers": [
+     "lennart karl",
+     "konrad laimer"
+    ],
+    "market": "TOTAL_OVER_2.5",
+    "verify": "Bayern Munich 2-0 Atl\u00e9tico Madrid: 2 goals (line 2.5) \u2014 TOTAL_OVER_2.5"
+   },
+   "settled_at": "2026-11-04T00:53:12"
+  },
+  {
+   "source": "soccer_total_total_over_2.5",
+   "sport": "UCL",
    "player_or_matchup": "Lille @ Bodo/Glimt",
    "market": "TOTAL_OVER_2.5",
    "prob": 0.66,
@@ -8378,6 +8272,151 @@
    "settled_at": "2026-11-03T21:51:18"
   },
   {
+   "source": "soccer_total_total_over_2.5",
+   "sport": "UCL",
+   "player_or_matchup": "Slovan Bratislava @ LASK Linz",
+   "market": "TOTAL_OVER_2.5",
+   "prob": 0.66,
+   "fair_american": -194,
+   "p_predicted": 0.66,
+   "matchup": "Slovan Bratislava @ LASK Linz",
+   "date": "2026-11-03",
+   "pick_id": "soccer_total_total_over_2_5|UCL|Slovan_Bratislava___LASK_Linz|TOTAL_OVER_2_5|2026-11-03",
+   "settled": true,
+   "result": "won",
+   "payout_units": 0.5155,
+   "recorded_at": "2026-10-28T19:34:20",
+   "p_calibrated": 0.66,
+   "price_provenance": {
+    "inferred": true,
+    "class": "C",
+    "kind": "model_fair"
+   },
+   "outcome": {
+    "final_score": "Slovan Bratislava 0-4 LASK Linz",
+    "total_cards": 2,
+    "total_goals": 4,
+    "scorers": [
+     "kasper j\u00f8rgensen",
+     "kasper j\u00f8rgensen",
+     "robert ljubicic",
+     "samuel adeniran"
+    ],
+    "market": "TOTAL_OVER_2.5",
+    "verify": "Slovan Bratislava 0-4 LASK Linz: 4 goals (line 2.5) \u2014 TOTAL_OVER_2.5"
+   },
+   "settled_at": "2026-11-04T00:53:12"
+  },
+  {
+   "source": "soccer_total_total_over_2.5",
+   "sport": "UCL",
+   "player_or_matchup": "AS Roma @ Manchester United",
+   "market": "TOTAL_OVER_2.5",
+   "prob": 0.66,
+   "fair_american": -194,
+   "p_predicted": 0.66,
+   "matchup": "AS Roma @ Manchester United",
+   "date": "2026-11-03",
+   "pick_id": "soccer_total_total_over_2_5|UCL|AS_Roma___Manchester_United|TOTAL_OVER_2_5|2026-11-03",
+   "settled": true,
+   "result": "won",
+   "payout_units": 0.5155,
+   "recorded_at": "2026-10-28T19:34:20",
+   "p_calibrated": 0.66,
+   "price_provenance": {
+    "inferred": true,
+    "class": "C",
+    "kind": "model_fair"
+   },
+   "outcome": {
+    "final_score": "AS Roma 2-3 Manchester United",
+    "total_cards": 8,
+    "total_goals": 5,
+    "scorers": [
+     "mat\u00ecas soul\u00e8",
+     "donyell malen",
+     "bruno fernandes",
+     "matheus cunha",
+     "matheus cunha"
+    ],
+    "market": "TOTAL_OVER_2.5",
+    "verify": "AS Roma 2-3 Manchester United: 5 goals (line 2.5) \u2014 TOTAL_OVER_2.5"
+   },
+   "settled_at": "2026-11-04T00:53:12"
+  },
+  {
+   "source": "soccer_total_total_over_2.5",
+   "sport": "UCL",
+   "player_or_matchup": "Paris Saint-Germain @ Villarreal",
+   "market": "TOTAL_OVER_2.5",
+   "prob": 0.66,
+   "fair_american": -194,
+   "p_predicted": 0.66,
+   "matchup": "Paris Saint-Germain @ Villarreal",
+   "date": "2026-11-03",
+   "pick_id": "soccer_total_total_over_2_5|UCL|Paris_Saint_Germain___Villarreal|TOTAL_OVER_2_5|2026-11-03",
+   "settled": true,
+   "result": "won",
+   "payout_units": 0.5155,
+   "recorded_at": "2026-10-28T19:34:20",
+   "p_calibrated": 0.66,
+   "price_provenance": {
+    "inferred": true,
+    "class": "C",
+    "kind": "model_fair"
+   },
+   "outcome": {
+    "final_score": "Paris Saint-Germain 6-0 Villarreal",
+    "total_cards": 5,
+    "total_goals": 6,
+    "scorers": [
+     "jo\u00e3o neves",
+     "d\u00e9sir\u00e9 dou\u00e9",
+     "senny mayulu",
+     "fabi\u00e1n ruiz",
+     "fabi\u00e1n ruiz",
+     "david boly"
+    ],
+    "market": "TOTAL_OVER_2.5",
+    "verify": "Paris Saint-Germain 6-0 Villarreal: 6 goals (line 2.5) \u2014 TOTAL_OVER_2.5"
+   },
+   "settled_at": "2026-11-04T00:53:12"
+  },
+  {
+   "source": "soccer_clean_sheet_home_clean_sheet_no",
+   "sport": "UCL",
+   "player_or_matchup": "Bayern Munich @ Atl\u00e9tico Madrid",
+   "market": "HOME_CLEAN_SHEET_NO",
+   "prob": 0.778,
+   "fair_american": -350,
+   "p_predicted": 0.778,
+   "matchup": "Bayern Munich @ Atl\u00e9tico Madrid",
+   "date": "2026-11-03",
+   "pick_id": "soccer_clean_sheet_home_clean_sheet_no|UCL|Bayern_Munich___Atl_tico_Madrid|HOME_CLEAN_SHEET_NO|2026-11-03",
+   "settled": true,
+   "result": "won",
+   "payout_units": 0.2857,
+   "recorded_at": "2026-10-28T19:34:20",
+   "p_calibrated": 0.7472,
+   "price_provenance": {
+    "inferred": true,
+    "class": "C",
+    "kind": "model_fair"
+   },
+   "outcome": {
+    "final_score": "Bayern Munich 2-0 Atl\u00e9tico Madrid",
+    "total_cards": 3,
+    "total_goals": 2,
+    "scorers": [
+     "lennart karl",
+     "konrad laimer"
+    ],
+    "market": "HOME_CLEAN_SHEET_NO",
+    "verify": "Bayern Munich 2-0 Atl\u00e9tico Madrid: home clean sheet = False \u2014 HOME_CLEAN_SHEET_NO"
+   },
+   "settled_at": "2026-11-04T00:53:12"
+  },
+  {
    "source": "soccer_clean_sheet_home_clean_sheet_no",
    "sport": "UCL",
    "player_or_matchup": "Lille @ Bodo/Glimt",
@@ -8392,7 +8431,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-10-28T19:34:20",
-   "p_calibrated": 0.7493,
+   "p_calibrated": 0.7472,
    "price_provenance": {
     "inferred": true,
     "class": "C",
@@ -8407,6 +8446,79 @@
     "verify": "Lille 0-0 Bodo/Glimt: home clean sheet = True \u2014 HOME_CLEAN_SHEET_NO"
    },
    "settled_at": "2026-11-03T21:51:18"
+  },
+  {
+   "source": "soccer_clean_sheet_home_clean_sheet_no",
+   "sport": "UCL",
+   "player_or_matchup": "Slovan Bratislava @ LASK Linz",
+   "market": "HOME_CLEAN_SHEET_NO",
+   "prob": 0.778,
+   "fair_american": -350,
+   "p_predicted": 0.778,
+   "matchup": "Slovan Bratislava @ LASK Linz",
+   "date": "2026-11-03",
+   "pick_id": "soccer_clean_sheet_home_clean_sheet_no|UCL|Slovan_Bratislava___LASK_Linz|HOME_CLEAN_SHEET_NO|2026-11-03",
+   "settled": true,
+   "result": "lost",
+   "payout_units": -1.0,
+   "recorded_at": "2026-10-28T19:34:20",
+   "p_calibrated": 0.7472,
+   "price_provenance": {
+    "inferred": true,
+    "class": "C",
+    "kind": "model_fair"
+   },
+   "outcome": {
+    "final_score": "Slovan Bratislava 0-4 LASK Linz",
+    "total_cards": 2,
+    "total_goals": 4,
+    "scorers": [
+     "kasper j\u00f8rgensen",
+     "kasper j\u00f8rgensen",
+     "robert ljubicic",
+     "samuel adeniran"
+    ],
+    "market": "HOME_CLEAN_SHEET_NO",
+    "verify": "Slovan Bratislava 0-4 LASK Linz: home clean sheet = True \u2014 HOME_CLEAN_SHEET_NO"
+   },
+   "settled_at": "2026-11-04T00:53:12"
+  },
+  {
+   "source": "soccer_clean_sheet_home_clean_sheet_no",
+   "sport": "UCL",
+   "player_or_matchup": "AS Roma @ Manchester United",
+   "market": "HOME_CLEAN_SHEET_NO",
+   "prob": 0.778,
+   "fair_american": -350,
+   "p_predicted": 0.778,
+   "matchup": "AS Roma @ Manchester United",
+   "date": "2026-11-03",
+   "pick_id": "soccer_clean_sheet_home_clean_sheet_no|UCL|AS_Roma___Manchester_United|HOME_CLEAN_SHEET_NO|2026-11-03",
+   "settled": true,
+   "result": "won",
+   "payout_units": 0.2857,
+   "recorded_at": "2026-10-28T19:34:20",
+   "p_calibrated": 0.7472,
+   "price_provenance": {
+    "inferred": true,
+    "class": "C",
+    "kind": "model_fair"
+   },
+   "outcome": {
+    "final_score": "AS Roma 2-3 Manchester United",
+    "total_cards": 8,
+    "total_goals": 5,
+    "scorers": [
+     "mat\u00ecas soul\u00e8",
+     "donyell malen",
+     "bruno fernandes",
+     "matheus cunha",
+     "matheus cunha"
+    ],
+    "market": "HOME_CLEAN_SHEET_NO",
+    "verify": "AS Roma 2-3 Manchester United: home clean sheet = False \u2014 HOME_CLEAN_SHEET_NO"
+   },
+   "settled_at": "2026-11-04T00:53:12"
   },
   {
    "source": "nba_steals_over_0.5",
@@ -12374,5 +12486,5 @@
   "2026-05-19",
   "2026-11-03"
  ],
- "digest_generated_at": "2026-11-03T21:51:20"
+ "digest_generated_at": "2026-11-04T00:53:15"
 }
