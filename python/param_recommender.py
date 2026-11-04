@@ -21,7 +21,8 @@ Suggestion rules (each one has a rationale + suggested_value + current_value):
   - "live_edges.edge_threshold_pp" too LOW: >40 alerts/day (alert spam).
   - "player_bias.min_player_n" too HIGH: zero per-player overrides
     despite >3 systematic anomalies flagged.
-  - "plays.kelly_fraction" suggestions: track-record Sharpe-style ROI.
+  - "plays.kelly_fraction" suggestions: DISABLED 2026-11-03 (it read the
+    synthetic track_record.json at an assumed -110). Original rule:
     If trailing-30-day ROI > +10% AND drawdown < 5%, propose stepping up
     Kelly from 0.25 -> 0.33. If ROI < 0% over same window, propose 0.20.
   - "walk_forward.window_days": if 5+ markets are flagged "degrading",
@@ -64,7 +65,8 @@ RES_PATH = os.path.join(DATA_DIR, "residuals.json")
 PB_PATH = os.path.join(DATA_DIR, "player_bias.json")
 ANOM_PATH = os.path.join(DATA_DIR, "anomalies.json")
 ALERTS_PATH = os.path.join(DATA_DIR, "live_alerts.json")
-TR_PATH = os.path.join(DATA_DIR, "track_record.json")
+# (2026-11-03) track_record.json (deprecated SYNTHETIC feed) is no longer read;
+# the Kelly check it fed is disabled until sizing can come from real prices.
 OUT_PATH = os.path.join(DATA_DIR, "param_recommendations.json")
 
 try:
@@ -335,7 +337,7 @@ def run() -> Dict[str, Any]:
     pb = _load(PB_PATH)
     anom = _load(ANOM_PATH)
     alerts = _load(ALERTS_PATH)
-    tr = _load(TR_PATH)
+    tr: Dict[str, Any] = {}   # (2026-11-03) synthetic track_record.json no longer loaded
 
     recs: List[Dict[str, Any]] = []
     recs.extend(_check_n_prior(cal, prev_cal, res))

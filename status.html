@@ -102,10 +102,16 @@ fetch('data/data_health.json?t=' + Date.now(), { cache:'no-cache' })
     // active=green; invalid (key rejected) is the only genuine breakage=red;
     // exhausted/low_quota/dormant are valid-but-degraded (key works, no budget /
     // not yet enabled)=yellow. Matches data_health's props canary.
-    var dotcls = d.state==='active'?'green':(d.state==='invalid'?'red':'yellow');
+    // (2026-11-03) "active" only means the key validated: no sportsbook PROP price has
+    // ever been ingested into the ledger, so the row says that instead of "feed is live".
+    var dotcls = d.state==='active'?'yellow':(d.state==='invalid'?'red':'yellow');
     document.getElementById('oddsDot').className='dot '+dotcls;
-    document.getElementById('oddsLbl').textContent = 'Odds feed — '+String(d.state||'').replace('_',' ').toUpperCase();
-    var body = E(d.headline||'');
+    document.getElementById('oddsLbl').textContent = d.state==='active'
+      ? 'Odds feed — KEY VALID'
+      : 'Odds feed — '+String(d.state||'').replace('_',' ').toUpperCase();
+    var body = d.state==='active'
+      ? 'Key valid; prop book lines not ingested. Player props are graded at the model\'s own fair odds (price class C); game lines come from DraftKings via ESPN.'
+      : E(d.headline||'');
     if (d.key_set===false && (d.activates||[]).length) {
       body += '<br><span style="color:var(--muted,#8a93a6);">Activates when the ODDS_API_KEY secret is set:</span><br>' + d.activates.map(function(a){return '&middot; '+E(a);}).join('<br>');
     } else if (d.detail && d.detail.requests_remaining!=null) {

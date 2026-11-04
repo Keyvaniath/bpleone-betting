@@ -66,7 +66,7 @@
     <h1>Model Calibration</h1>
     <p>We publish our calibration. For every market family, this is what the model <b>predicted</b> versus what <b>actually happened</b> across every settled bet — straight from the results ledger, no synthetic data. A positive gap means the model was overconfident. Families proven to lose money are <span class="pos">curated out</span> of the boards entirely; well-sampled families have their displayed probabilities <span class="neg">calibrated</span> toward the realized rate. This is the engine behind the High Confidence Board.</p>
     <p class="muted" style="font-size:12.5px;">Curated-out families split two ways: <span class="pos">overconfident</span> — the model's probability itself is broken (realized far below predicted), so the edge is fake at <i>any</i> price; and <span style="color:#e8b54e;">priced-short</span> — the probability is roughly right but the bet loses at fair odds (it could still be +EV at a soft book line). The distinction is why we curate by ROI, not hit rate.</p>
-    <p class="muted" style="font-size:12.5px;">Curation runs on <b>every</b> pipeline cycle, so a family that turns into a proven loser is dropped automatically — the book can't quietly accumulate dead weight. The converse holds too: no family that <i>survives</i> the cut is a persistent loser (one that bleeds across <i>both</i> halves of the settled record). What's left is the clean subset — the losers are removed, not hidden.</p>
+    <p class="muted" style="font-size:12.5px;">Curation runs on <b>every</b> pipeline cycle, so a family that turns into a proven loser is dropped automatically — the book can't quietly accumulate dead weight. <!-- (2026-11-03) removed the unsupported claim that no surviving family is a persistent loser -->Surviving the cut is not proof of edge: families that survive can still lose money (see the net-units column and the held-out result below). Every number on this page is an <b>in-sample replay at the model's own fair odds</b> unless it says otherwise; PrizePicks (MLB-PP) rows are excluded — that line is unverified and not bettable.</p>
   </section>
 
   <!-- Held-out validation: does the curated edge survive out-of-sample? (auto-updating) -->
@@ -74,7 +74,7 @@
     <div class="card-head"><span>🧪 Held-Out Validation — is the curation a real edge, or curve-fit?</span><span class="muted" id="oosMeta">—</span></div>
     <div style="padding:14px 18px;">
       <p id="oosHeadline" style="font-size:13.5px;color:#cfe9d6;line-height:1.6;margin:0 0 12px;font-weight:600;">—</p>
-      <p class="muted" style="font-size:12px;margin:0 0 14px;line-height:1.6;">Curating out proven-negative families lifts the book to <span id="oosLiftNum">~+30%</span> — but that rule is fit on the <em>whole</em> ledger. So we froze the cut-set on an <strong>early window</strong> and scored those <strong>pre-committed</strong> cuts on the <strong>unseen later window</strong>. A curve-fit edge collapses out-of-sample; this one holds:</p>
+      <p class="muted" style="font-size:12px;margin:0 0 14px;line-height:1.6;"><!-- (2026-11-03) static "this one holds" prose replaced: the held-out result decides -->In-sample, curating out proven-negative families moves the replay to <span id="oosLiftNum">—</span> — but that rule is fit on the <em>whole</em> ledger. So we froze the cut-set on an <strong>early window</strong> and scored those <strong>pre-committed</strong> cuts on the <strong>unseen later window</strong>. A curve-fit edge collapses out-of-sample. <span id="oosVerdict"></span></p>
       <div id="oosTable" style="font-family:'JetBrains Mono',monospace;"></div>
       <div id="oosPersist" style="margin-top:14px;font-size:12px;color:var(--text-2,#aab3c5);line-height:1.65;"></div>
       <div id="oosConc" style="margin-top:12px;font-size:12px;color:var(--text-2,#aab3c5);line-height:1.65;padding:10px 12px;border:1px solid rgba(224,161,58,.25);border-radius:8px;background:rgba(224,161,58,.05);display:none;"></div>
@@ -93,8 +93,20 @@
       document.getElementById("oosMeta").textContent =
         `${(d.n_settled||0).toLocaleString()} settled · ${d.span ? d.span[0]+'→'+d.span[1] : ''} · ${(d.generated_at||'').replace('T',' ').slice(0,16)}`;
       var _ci = d.holdout_70_ci;
-      var _ciTxt = _ci ? `<br><span style="font-weight:400;color:var(--text-2,#aab3c5);font-size:12.5px;">Statistical significance: held-out 95% CI <b>[${_ci.roi_lo>=0?'+':''}${_ci.roi_lo}%, ${_ci.roi_hi>=0?'+':''}${_ci.roi_hi}%]</b> on n=${_ci.n} — ${_ci.positive?'<b style="color:#58c878;">above zero, so the edge is statistically real, not luck</b>':'includes zero, so not yet distinguishable from luck'} (bootstrap).</span>` : "";
-      document.getElementById("oosHeadline").innerHTML = "✅ " + (d.headline || "") + _ciTxt;
+      // (2026-11-03) three-way CI verdict: above zero / entire CI below zero / spans zero.
+      var _ciVerdict = !_ci ? "" : (_ci.roi_lo > 0
+          ? '<b style="color:#58c878;">entire CI above zero within this sample</b>'
+          : (_ci.roi_hi < 0
+              ? '<b style="color:#e35a5a;">entire CI below zero: held-out curated is reliably negative</b>'
+              : 'includes zero, so not distinguishable from break-even'));
+      var _ciTxt = _ci ? `<br><span style="font-weight:400;color:var(--text-2,#aab3c5);font-size:12.5px;">Held-out 95% CI <b>[${_ci.roi_lo>=0?'+':''}${_ci.roi_lo}%, ${_ci.roi_hi>=0?'+':''}${_ci.roi_hi}%]</b> on n=${_ci.n} — ${_ciVerdict} (bootstrap; graded at the model's own odds — not a betting ROI).</span>` : "";
+      // (2026-11-03) ✅ only when the held-out 70/30 curated ROI is positive.
+      var _h70 = (d.holdout||[]).filter(h => h.split === "70/30")[0] || d.holdout[0];
+      var _okOos = !!(_h70 && _h70.test_oos_roi > 0);
+      document.getElementById("oosHeadline").innerHTML = (_okOos ? "✅ " : "❌ ") + (d.headline || "") + _ciTxt;
+      document.getElementById("oosVerdict").innerHTML = _okOos
+        ? 'Here the held-out curated ROI stays above zero:'
+        : '<b style="color:#e35a5a;">Here it does not hold: the held-out curated ROI is negative.</b>';
       // Live-fill the in-sample lift so the prose can never go stale again.
       var _ins = d.in_sample || {};
       if (_ins.curated_roi != null) {
@@ -108,8 +120,8 @@
       const rows = (d.holdout||[]).map(h => `<div style="display:grid;grid-template-columns:${cols};gap:10px;padding:8px 0;border-bottom:1px solid rgba(255,255,255,0.04);font-size:12px;">
         <span><strong>${h.split}</strong></span>
         <span class="muted">${h.train_end}→${h.test_end}</span>
-        <span style="color:#e35a5a;">${fmt(h.test_raw_roi)}</span>
-        <span style="color:#58c878;font-weight:700;">${fmt(h.test_oos_roi)} <span class="muted" style="font-weight:400;">n=${h.test_oos_n}</span></span>
+        <span style="color:${h.test_raw_roi>=0?'#58c878':'#e35a5a'};">${fmt(h.test_raw_roi)}</span>
+        <span style="color:${h.test_oos_roi>=0?'#58c878':'#e35a5a'};font-weight:700;">${fmt(h.test_oos_roi)} <span class="muted" style="font-weight:400;">n=${h.test_oos_n}</span></span>
         <span>${h.test_oos_hit.toFixed(1)}%</span></div>`).join("");
       document.getElementById("oosTable").innerHTML = head + rows;
       const p = d.persistence || {};
@@ -207,13 +219,17 @@ fetch("data/calibration_map.json", { cache: "no-cache" }).then(r => r.json()).th
   const gi = d.guard_impact;
   if (gi && gi.all && gi.after_curation) {
     const a = gi.all, c = gi.after_curation;
+    // (2026-11-03) colour by sign, never a forced "+"; show the price-class mix.
+    const sg = v => v == null ? "—" : (v >= 0 ? "+" : "") + v;
+    const sc = v => v == null ? "#8a93a6" : (v >= 0 ? "#5fe0a0" : "#ff8a8a");
+    const clsTxt = o => Object.keys(o || {}).sort().map(k => `${k} ${o[k].toLocaleString()}`).join(" · ") || "—";
     document.getElementById("guardBanner").innerHTML = `
       <div style="border:1px solid rgba(95,224,160,.3); border-radius:11px; padding:14px 18px; background:linear-gradient(90deg,rgba(255,107,107,.06),rgba(95,224,160,.08)); font-family:'JetBrains Mono',monospace; display:flex; align-items:center; flex-wrap:wrap; gap:8px 14px;">
-        <span style="font-size:10.5px; text-transform:uppercase; letter-spacing:.5px; color:#8a93a6; width:100%;">What the curation guard does to the book's bottom line</span>
-        <span style="font-size:13px;">Raw firehose <b style="color:#ff8a8a;">${a.roi_pct}% ROI</b> <span class="muted">(${a.n} settled bets · ${a.net_units}u)</span></span>
+        <span style="font-size:10.5px; text-transform:uppercase; letter-spacing:.5px; color:#8a93a6; width:100%;">What the curation guard does to the replay — in-sample, model-fair-odds replay (not a betting ROI)</span>
+        <span style="font-size:13px;">Raw firehose <b style="color:${sc(a.roi_pct)};">${sg(a.roi_pct)}% replay ROI</b> <span class="muted">(${a.n} settled · ${sg(a.net_units)}u)</span></span>
         <span style="color:#8a93a6;">&rarr; drop the proven-losing families &rarr;</span>
-        <span style="font-size:16px;"><b style="color:#5fe0a0;">+${c.roi_pct}% ROI</b> <span class="muted">(${c.n} bets · ${c.hit_rate!=null?(100*c.hit_rate).toFixed(0)+'% hit · ':''}+${c.net_units}u)</span></span>
-        <span style="font-size:10.5px; color:#8a93a6; width:100%;">Universe: the WHOLE ledger with proven-negative families removed — a family-level replay. The Track Record's "curated" number counts only the recommended boards (locks/top-25/whale/sharp/consensus), a different, smaller universe — the two are meant to differ.</span>
+        <span style="font-size:16px;"><b style="color:${sc(c.roi_pct)};">${sg(c.roi_pct)}% replay ROI</b> <span class="muted">(${c.n} · ${c.hit_rate!=null?(100*c.hit_rate).toFixed(0)+'% hit · ':''}${sg(c.net_units)}u)</span></span>
+        <span style="font-size:10.5px; color:#8a93a6; width:100%;">${esc(gi.basis || "In-sample, model-fair-odds replay.")} Price classes after the cut: ${clsTxt(c.price_classes)}. Universe: the working ledger with proven-negative families removed, fit on these same outcomes. The Track Record's "curated" number counts only the recommended boards at sportsbook prices (class B), a different universe; the held-out test above is the out-of-sample answer.</span>
       </div>`;
   }
   document.getElementById("sumStrip").innerHTML = `
@@ -221,7 +237,7 @@ fetch("data/calibration_map.json", { cache: "no-cache" }).then(r => r.json()).th
     <span class="s"><span class="lab">actually hits</span><b>${pct(d.overall_realized_hit_rate)}</b></span>
     <span class="s"><span class="lab">overconfidence</span><b class="${gp>0?'pos':'neg'}">${gp>0?'+':''}${(100*gp).toFixed(1)}pp</b></span>
     <span class="s"><span class="lab">curated out</span><b class="pos">${d.n_curated_out}</b> <span class="muted">(${d.n_overconfident||0} broken prob)</span></span>
-    <span class="s"><span class="lab">losses avoided</span><b class="neg">${d.units_protected_by_curation}u</b></span>
+    <span class="s"><span class="lab">cut families' net (model odds)</span><b class="${d.units_protected_by_curation>=0?'neg':'pos'}">${d.units_protected_by_curation}u</b></span>
     <span class="s"><span class="lab">calibrated</span><b class="neg">${d.n_calibrated}</b> <span class="muted">+ ${d.n_model_only} model-only</span></span>`;
 
   // Desk-level money map — raw firehose vs curated net, by whole sport.
@@ -229,6 +245,8 @@ fetch("data/calibration_map.json", { cache: "no-cache" }).then(r => r.json()).th
   if (dcw && (dcw.desks || []).length) {
     const STT = {
       profitable:      { label: "profitable",        col: "#5fe0a0", bg: "rgba(95,224,160,.13)" },
+      // (2026-11-03) positive only at the model's own fair odds -> calibration, not profit
+      positive_model_odds: { label: "+ at model odds",  col: "#8a93a6", bg: "rgba(255,255,255,.05)" },
       marginal:        { label: "marginal",          col: "#8a93a6", bg: "rgba(255,255,255,.05)" },
       underperforming: { label: "underperforming",   col: "#e8b54e", bg: "rgba(212,160,74,.15)" },
       proven_negative: { label: "cut — proven neg",  col: "#ff8a8a", bg: "rgba(255,107,107,.15)" }
@@ -238,7 +256,7 @@ fetch("data/calibration_map.json", { cache: "no-cache" }).then(r => r.json()).th
     const rows = dcw.desks.map(x => {
       const st = STT[x.status] || STT.marginal;
       return `<div style="${GRID}font-family:'JetBrains Mono',monospace;font-size:12.5px;padding:8px 12px;border:1px solid var(--border,#222a36);border-radius:8px;margin-bottom:6px;border-left:3px solid ${st.col};">
-        <span><b>${esc(x.sport)}</b></span>
+        <span><b>${esc(x.sport)}</b> <span class="muted" style="font-size:10px;" title="price classes of settled rows (A/B sportsbook, C model fair)">${Object.keys(x.price_classes||{}).sort().join("/")}</span></span>
         <span class="muted" style="text-align:right;">${x.n}</span>
         <span style="text-align:right;">${pct(x.hit_rate)}</span>
         <span style="text-align:right;" title="raw firehose net">${x.net_raw>=0?'+':''}${x.net_raw}u <span class="muted">${roiC(x.roi_raw)}</span></span>
@@ -249,8 +267,8 @@ fetch("data/calibration_map.json", { cache: "no-cache" }).then(r => r.json()).th
     const sm = dcw.summary || {};
     document.getElementById("deskMap").innerHTML = `
       <div style="border:1px solid rgba(255,255,255,.08);border-radius:11px;padding:14px 18px;">
-        <span style="font-size:10.5px;text-transform:uppercase;letter-spacing:.5px;color:#8a93a6;">Desk-level money map — raw firehose vs curated, by sport</span>
-        <p class="muted" style="font-size:11.5px;margin:7px 0 12px;">The table below curates <i>markets</i>; this is the same view one level up — every desk's raw net vs its net after dropping proven-negative + overconfident families. ${(sm.profitable||[]).length} desks clear a real edge after curation; ${ (sm.underperforming||[]).length ? "still negative after curation: <b style=\"color:#e8b54e;\">"+(sm.underperforming).join(", ")+"</b>" : "none stay negative after curation" }. Desks hard-cut as proven-negative: ${(sm.proven_negative_desks||[]).join(", ") || "none"}.</p>
+        <span style="font-size:10.5px;text-transform:uppercase;letter-spacing:.5px;color:#8a93a6;">Desk-level map — raw vs curated, by sport · in-sample, model-fair-odds replay</span>
+        <p class="muted" style="font-size:11.5px;margin:7px 0 12px;">The table below curates <i>markets</i>; this is the same view one level up — every desk's raw net vs its net after dropping proven-negative + overconfident families. <b>In-sample replay (2026-11-03 label):</b> the cut is fit on these outcomes, and a desk's rows are mostly graded at the model's own fair odds (price class C), so a positive number here is calibration, not a betting profit. MLB-PP is excluded (unverified, not bettable). Positive after curation with every row at a sportsbook price: ${(sm.profitable||[]).join(", ") || "none"}; positive only at model odds: ${(sm.positive_model_odds||[]).join(", ") || "none"}; ${ (sm.underperforming||[]).length ? "still negative after curation: <b style=\"color:#e8b54e;\">"+(sm.underperforming).join(", ")+"</b>" : "none stay negative after curation" }. Desks hard-cut as proven-negative: ${(sm.proven_negative_desks||[]).join(", ") || "none"}.</p>
         <div style="overflow-x:auto;"><div style="min-width:560px;">
           <div style="${GRID}padding:0 12px 7px;font-size:10.5px;text-transform:uppercase;letter-spacing:.5px;color:#8a93a6;">
             <span>Desk</span><span style="text-align:right;">n</span><span style="text-align:right;">hit</span><span style="text-align:right;">raw net</span><span style="text-align:right;">curated net</span><span>status</span>

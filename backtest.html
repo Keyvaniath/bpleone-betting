@@ -44,9 +44,11 @@
   <section class="page-head">
     <h1>Performance Analytics</h1>
     <p style="margin:6px 0 0;font-size:12.5px;color:var(--text-2,#9fb0c8);">CLV by source, prop CLV, and drawdown analytics. For the canonical public record, see the <a href="track-record.html" style="color:var(--accent,#d4a04a);">Track Record →</a></p>
-    <p>Every number below is computed from <code>data/backtest.json</code>, built from the actual settled-picks ledger — real recommended picks, graded outcomes, 1u flat stake at model fair price. No synthetic data. The blended curve includes <em>all</em> sources (including experimental prop feeds), so see the per-source breakdown for where the edge actually concentrates.</p>
+    <!-- (2026-11-03) universe + price-class disclosure -->
+    <p>The tiles and curves below are computed from <code>data/backtest.json</code>, built from the settled-picks ledger — real surfaced picks, graded outcomes, 1u flat. <strong>Working ledger only</strong>: it excludes the archived May–June history that the all-time headline on the Track Record includes, so its totals differ from the headline. <strong>Mostly price class C</strong>: player props are graded at the model's own fair odds (no sportsbook prop prices are recorded), so the blended ROI is calibration at model odds, not a betting ROI. The per-source table leads with the sportsbook-priced (class A/B) record.</p>
   </section>
 
+  <div class="muted" style="font-size:11px;text-transform:uppercase;letter-spacing:.5px;margin:0 0 6px;">All sources · working ledger only · mostly model fair odds (not a betting ROI)</div>
   <section class="metric-strip">
     <div class="metric"><span class="metric-num" id="btPlays">--</span><span class="metric-label">Plays Settled</span></div>
     <div class="metric"><span class="metric-num" id="btHit">--</span><span class="metric-label">Hit Rate</span></div>
@@ -173,7 +175,7 @@
     <div class="card">
       <div class="card-head"><span>📈 Cumulative Units P&L</span></div>
       <canvas id="btBankrollChart" height="220"></canvas>
-      <p class="caption">Realized cumulative P&L across every settled pick, 1u flat. Blended across all sources (including experimental prop feeds), so it can run negative even while the sharp sources profit — see the per-source breakdown below.</p>
+      <p class="caption">Cumulative P&L across every settled pick in the working ledger, 1u flat at each pick's recorded price — mostly the model's own fair odds, so this is calibration at model odds, not a betting ROI. Blended across all sources, including experimental prop feeds. <!-- (2026-11-03) --></p>
     </div>
     <div class="card">
       <div class="card-head"><span>📉 Drawdown Curve</span></div>
@@ -184,10 +186,11 @@
 
   <section class="card" style="margin-bottom: 28px;">
     <div class="card-head"><span>📋 Recent Plays — Verifiable Log (last 50)</span><span class="muted" style="font-size:11px;">each row shows the real box-score result that settled it — cross-check any of them</span></div>
+    <!-- (2026-11-03) rendered by the inline script below (not extras.js) so the Price column says which price it is -->
     <div class="table-wrap">
-      <table class="data-table" id="btTable">
+      <table class="data-table" id="btLog">
         <thead>
-          <tr><th>Day</th><th>Pick</th><th>Side</th><th>Price</th><th>Actual outcome</th><th>Stake</th><th>Edge</th><th>Result</th><th>P/L</th><th>Check</th></tr>
+          <tr><th>Day</th><th>Pick</th><th>Side</th><th>Price</th><th>Actual outcome</th><th>Stake</th><th>Raw model edge</th><th>Result</th><th>P/L</th><th>Check</th></tr>
         </thead>
         <tbody></tbody>
       </table>
@@ -197,25 +200,29 @@
   <section class="grid-3">
     <div class="card">
       <div class="card-head"><span>🎯 Why CLV matters</span></div>
-      <p style="color:var(--text-2); font-size:14px;">Closing line value is the #1 leading indicator of long-term profit. Even when you lose a play, if you beat the closing line you're playing a winning game. Per-pick CLV capture is being wired in (write-once open + closing-line snapshots); average CLV shows "—" until enough real closing lines accumulate.</p>
+      <p style="color:var(--text-2); font-size:14px;">Closing line value is a leading indicator: beating the close consistently is evidence of pricing skill, though not proof on its own. CLV needs a real sportsbook price at pick time and at the close, so it exists only for book-priced game lines; props have no book price recorded. Average CLV shows "—" until enough real closing lines accumulate. <!-- (2026-11-03) --></p>
     </div>
     <div class="card">
-      <div class="card-head"><span>🧪 Walk-Forward Design</span></div>
-      <p style="color:var(--text-2); font-size:14px;">Every day, the model is allowed to learn from prior days only. No look-ahead. This is the gold-standard backtest for time-series strategies. Backtests that train on the whole dataset and evaluate the same data ("in-sample") overstate performance by 2-5x.</p>
+      <!-- (2026-11-03) rewritten to the real mechanism -->
+      <div class="card-head"><span>🧪 What is in-sample here</span></div>
+      <p style="color:var(--text-2); font-size:14px;">This page replays the ledger; it is not a walk-forward backtest. The family curation (cutting market families with n ≥ 25 and net ≤ −5u) and the isotonic recalibration are both fit on the whole settled ledger, so any curated number is in-sample. The out-of-sample checks are separate: the held-out 70/30 split and the frozen-rule forward test on the <a href="track-record.html">Track Record</a> — both currently negative.</p>
     </div>
     <div class="card">
+      <!-- (2026-11-03) rewritten to the real mechanism (there is no ROI<0 auto-recalibration trigger) -->
       <div class="card-head"><span>📦 Production Pipeline</span></div>
-      <p style="color:var(--text-2); font-size:14px;">Same backtest engine runs nightly in CI on the real season. Any month with ROI &lt;0 or hit % &lt;52 triggers an auto-recalibration of the model's prior assumptions. Bayesian priors are weighted ~50 game shrinkage.</p>
+      <p style="color:var(--text-2); font-size:14px;">The daily CI pipeline rebuilds the ledger, settles picks against real results and refits two things from the settled outcomes: the per-family isotonic recalibration (model probability → realized hit rate) and the proven-negative family list the boards exclude. Neither is triggered by ROI; both refit every run. Restatements (repricing to DraftKings, voiding unpriced picks) are disclosed on the Track Record.</p>
     </div>
   </section>
 
   <section class="card">
-    <div class="card-head"><span>📊 Performance by Source</span><span class="muted" id="segMeta">--</span></div>
+    <div class="card-head"><span>📊 Performance by Source</span><span class="muted" id="segMeta2">--</span></div>
+    <!-- (2026-11-03) verdict tags (SHARP/CORE/WATCH/FADE) removed; sportsbook record leads (ledger_summary.by_source[src].sportsbook) -->
+    <p class="muted" style="font-size:12px;margin:0 0 10px;padding:0 4px;">The sportsbook columns are the only betting ROI: picks graded at a real sportsbook price (class A/B), PrizePicks excluded. The greyed all-rows figure includes PrizePicks (unverified) and model-fair-odds rows; see price classes on the <a href="track-record.html">Track Record</a>. It is not a betting ROI.</p>
     <div class="table-wrap">
       <table class="data-table">
-        <thead><tr><th>Source</th><th>Plays</th><th>Hit %</th><th>ROI (1u flat)</th><th>Net Units</th><th>Verdict</th></tr></thead>
-        <tbody id="segBody">
-          <tr><td colspan="6" class="muted" style="padding:14px; text-align:center;">Loading per-source performance from settled records…</td></tr>
+        <thead><tr><th>Source</th><th>Sportsbook W-L</th><th>Sportsbook ROI</th><th>Sportsbook net</th><th style="color:#6f7889;">All rows (incl. PrizePicks / model-odds — not a betting ROI)</th></tr></thead>
+        <tbody id="segBody2">
+          <tr><td colspan="5" class="muted" style="padding:14px; text-align:center;">Loading per-source performance from settled records…</td></tr>
         </tbody>
       </table>
     </div>
@@ -237,6 +244,81 @@
 <script src="js/ml-models.js"></script>
 <script src="js/extras.js"></script>
 <script src="js/main.js"></script>
+<script>
+// (2026-11-03) honest rendering for this page: tiles/curve coloured by sign, the recent-plays
+// Price column labelled by what it is (backtest.json "price" = the pick's fair_american), and
+// the per-source table led by the sportsbook (class A/B) record from ledger_summary.json.
+(function () {
+  const pos = "#58c878", neg = "#e35a5a";
+  const sg = v => (v >= 0 ? "+" : "") + v;
+  const fp = p => p > 0 ? "+" + p : String(p);
+  fetch("data/backtest.json", { cache: "no-cache" }).then(r => r.json()).then(data => {
+    const m = (data && data.metrics) || {};
+    const col = (id, v) => { const el = document.getElementById(id); if (el && v != null) el.style.color = v > 0 ? pos : neg; };
+    col("btROI", m.roi_pct); col("btUnits", m.total_units);
+    // recolour the extras.js cumulative curve by the sign of its last point
+    setTimeout(() => {
+      try {
+        const ch = window.Chart && Chart.getChart(document.getElementById("btBankrollChart"));
+        const path = data.bankroll_path || [];
+        if (ch && path.length) {
+          const up = path[path.length - 1] > 0;
+          ch.data.datasets[0].borderColor = up ? pos : neg;
+          ch.data.datasets[0].backgroundColor = up ? "rgba(88,200,120,0.10)" : "rgba(227,90,90,0.08)";
+          ch.data.datasets[0].label = "Cumulative units (1u flat, all sources, mostly model fair odds)";
+          ch.update("none");
+        }
+      } catch (e) {}
+    }, 400);
+    const tbody = document.querySelector("#btLog tbody");
+    if (tbody) {
+      const bets = (data.recent_bets || []).slice(0, 50);
+      const checkCell = (c) => !c ? "—"
+        : c.indexOf("verified") === 0
+          ? '<span style="color:#4ade80;" title="current box score still agrees with the recorded result">✓</span>'
+          : '<span style="color:#d4a04a;" title="' + c.replace(/"/g, "'") + '">⚠ revised</span>';
+      const priceCell = b => b.book_american != null
+        ? fp(b.book_american) + ' <span class="muted" style="font-size:10px;">book</span>'
+        : (b.price != null ? fp(b.price) + ' <span class="muted" style="font-size:10px;">model fair</span>' : "—");
+      tbody.innerHTML = bets.length ? bets.map(b => `<tr>
+        <td>${b.day || ""}</td><td class="matchup">${b.matchup || ""}</td>
+        <td>${(b.side || "").replace(/_/g, " ")}${b.source ? ' <span class="muted" style="font-size:10px;">' + b.source + "</span>" : ""}</td>
+        <td>${priceCell(b)}</td>
+        <td style="font-size:11px; color:var(--text,#eaeaea);">${b.outcome || "—"}</td>
+        <td>${b.stake}u</td>
+        <td>${b.edge != null ? sg(Number(b.edge).toFixed(1)) + "%" : "—"}</td>
+        <td class="${b.result === "WIN" ? "positive" : b.result === "LOSS" ? "negative" : ""}">${b.result}</td>
+        <td class="${b.pl >= 0 ? "positive" : "negative"}">${b.pl >= 0 ? "+" : ""}${b.pl}u</td>
+        <td>${checkCell(b.outcome_check)}</td>
+      </tr>`).join("") : `<tr><td colspan="10" class="muted" style="padding:14px;text-align:center;">No settled plays yet.</td></tr>`;
+    }
+  }).catch(() => {});
+  fetch("data/ledger_summary.json", { cache: "no-cache" }).then(r => r.json()).then(d => {
+    const body = document.getElementById("segBody2");
+    if (!body) return;
+    const curated = new Set((d.curated && d.curated.sources) || []);
+    const sbN = s => s.sportsbook ? (s.sportsbook.wins || 0) + (s.sportsbook.losses || 0) : 0;
+    const rows = Object.entries(d.by_source || {}).map(([k, v]) => ({ source: k, ...v }))
+      .filter(s => ((s.wins || 0) + (s.losses || 0)) > 0)
+      .sort((a, b) => (curated.has(b.source) - curated.has(a.source)) || sbN(b) - sbN(a) || (a.net_units || 0) - (b.net_units || 0));
+    if (!rows.length) { body.innerHTML = `<tr><td colspan="5" class="muted" style="padding:14px;text-align:center;">No settled plays yet.</td></tr>`; return; }
+    body.innerHTML = rows.map(s => {
+      const sb = s.sportsbook || {}, n = sbN(s);
+      const c = !n ? "var(--muted,#888)" : (sb.net_units > 0 ? pos : neg);
+      return `<tr>
+        <td>${(s.source || "").replace(/_/g, " ")}${curated.has(s.source) ? ' <span class="muted" style="font-size:10px;">curated</span>' : ""}</td>
+        <td>${n ? sb.wins + "-" + sb.losses : '<span class="muted">none</span>'}</td>
+        <td style="color:${c};">${n && sb.roi_pct != null ? sg(sb.roi_pct) + "%" : "—"}</td>
+        <td style="color:${c};">${n && sb.net_units != null ? sg(sb.net_units) + "u" : "—"}</td>
+        <td style="color:#6f7889;font-size:11px;">${s.wins || 0}-${s.losses || 0}, hit ${s.hit_rate != null ? (s.hit_rate * 100).toFixed(1) + "%" : "—"}, ${s.net_units != null ? sg(s.net_units) + "u" : "—"}</td>
+      </tr>`;
+    }).join("");
+    const meta = document.getElementById("segMeta2");
+    const nb = rows.filter(s => sbN(s) > 0).length;
+    if (meta) meta.textContent = `${rows.length} sources · ${nb} with sportsbook-priced picks · includes PrizePicks (unverified) and model-fair-odds rows; see price classes`;
+  }).catch(() => {});
+})();
+</script>
 <script src="js/nav_badge.js"></script>
 </body>
 </html>

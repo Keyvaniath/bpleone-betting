@@ -122,7 +122,7 @@
   <section class="card" style="margin-bottom:24px;">
     <div class="card-head"><span>Artifact Freshness</span><span class="muted" id="auditTime"></span></div>
     <div class="audit-row head">
-      <span>Artifact</span><span>Generated</span><span>Age</span><span>Status</span>
+      <span>Artifact</span><span>Generated (artifact's own timestamp)</span><span>Age</span><span>Status</span>
     </div>
     <div id="auditList"><p class="muted" style="padding:14px;">Loading...</p></div>
   </section>
@@ -130,12 +130,11 @@
   <section class="card">
     <div class="card-head"><span>Pipeline Schedule</span></div>
     <div style="padding:14px;">
-      <p style="margin:0 0 10px 0;"><strong>Daily MLB Pipeline:</strong> 6 AM / 1 PM / 6 PM ET (10:00 / 17:00 / 22:00 UTC)</p>
-      <ul style="margin:0; padding-left:20px; font-size:13px;">
-        <li>6 AM run: full chain (outcomes → calibration → schedule → odds → matchups → snapshot → props → parlays → pickem → sleeper → injuries → team form → bullpen → NRFI → F5 → lineup quality → run line → travel → pitch matchup → series → CLV → top plays → daily summary → notify)</li>
-        <li>1 PM + 6 PM runs: lighter (game lines + matchups + snapshot + parlays + CLV + top plays + brief)</li>
-      </ul>
-      <p style="margin:10px 0 0 0;"><strong>Live In-Progress Games Poll:</strong> every 10 min during 3 PM - 2 AM ET</p>
+      <!-- (2026-11-03) cadence corrected to the workflow crons; GitHub's scheduler delays and drops runs -->
+      <p style="margin:0 0 10px 0;"><strong>Daily pipeline</strong> (daily-pipeline.yml): scheduled 14:00 and 22:00 UTC — the full chain (outcomes, settlement, every sport desk, calibration, the ledger, boards).</p>
+      <p style="margin:0 0 10px 0;"><strong>Heartbeat</strong> (continuous-heartbeat.yml): scheduled every 2 hours (:23) — odds, settlement, ledger refresh, D1 sync.</p>
+      <p style="margin:0;"><strong>Live games</strong> (live-games.yml): scheduled every 15 min, 16:00–06:00 UTC.</p>
+      <p class="muted" style="margin:10px 0 0 0; font-size:12px;">These are schedules, not guarantees: GitHub's cron delays and drops runs under load (the live-games job has run only a handful of times a day), so ages below are what was actually delivered.</p>
     </div>
   </section>
 
@@ -162,7 +161,8 @@ const FILES = [
   { path: "data/pythagorean.json",    label: "Pythagorean (luck) per team",       expected_h: 24 },
   { path: "data/clv_log.json",        label: "CLV log",                           expected_h: 8 },
   { path: "data/top_plays.json",      label: "Top plays aggregator",              expected_h: 8 },
-  { path: "data/track_record.json",   label: "Settled track record",              expected_h: 48 },
+  // (2026-11-03) deprecated SYNTHETIC feed (frozen 6/02) -- feeds no public number; not age-checked (83MB)
+  { path: "data/track_record.json",   label: "DEPRECATED synthetic feed (not the track record)", expected_h: 48, deprecated: true },
   { path: "data/calibration_live.json", label: "Calibration corrections",         expected_h: 48 },
   { path: "data/daily_summary.md",    label: "Daily brief (markdown)",            expected_h: 8 },
   { path: "data/live_state.json",     label: "Live in-game state",                expected_h: 1 },
@@ -175,15 +175,40 @@ function freshClass(ageH, expectedH) {
   return "fresh-old";
 }
 
+// (2026-11-03) Ages come from each artifact's own generated_at (the time the pipeline
+// wrote it), not the HTTP Last-Modified header -- on GitHub Pages that is the deploy /
+// checkout time, so every file looked minutes old. Naive timestamps are UTC (CI).
+function _parseTs(v) {
+  if (!v) return null;
+  let s = String(v).trim();
+  if (!/[zZ]|[+-]\d\d:?\d\d$/.test(s)) s += "Z";
+  const t = new Date(s).getTime();
+  return isFinite(t) ? t : null;
+}
 async function loadOne(f) {
   try {
-    const r = await fetch(f.path + "?_=" + Date.now(), { method: "HEAD", cache: "no-cache" });
+    if (f.deprecated) {
+      const h = await fetch(f.path + "?_=" + Date.now(), { method: "HEAD", cache: "no-cache" });
+      return { ...f, status: h.ok ? "DEPRECATED" : "MISSING", lastMod: null, ageH: null };
+    }
+    const r = await fetch(f.path + "?_=" + Date.now(), { cache: "no-cache" });
     if (!r.ok) return { ...f, status: "MISSING", lastMod: null, ageH: null };
-    const lastMod = r.headers.get("Last-Modified");
-    if (!lastMod) return { ...f, status: "?", lastMod: null, ageH: null };
-    const ageMs = Date.now() - new Date(lastMod).getTime();
-    const ageH = ageMs / (1000 * 60 * 60);
-    return { ...f, status: "ok", lastMod, ageH };
+    let ts = null, src = null;
+    if (/\.json$/.test(f.path)) {
+      try {
+        const d = await r.json();
+        const k = ["generated_at", "updated_at", "checked_at", "last_updated", "timestamp"].find(k => d && d[k]);
+        if (k) { ts = _parseTs(d[k]); src = d[k]; }
+      } catch (e) { return { ...f, status: "ERR", lastMod: null, ageH: null }; }
+    }
+    if (ts == null) {
+      // no generated_at in the artifact: fall back to the header, flagged as such
+      const lm = r.headers.get("Last-Modified");
+      if (!lm) return { ...f, status: "?", lastMod: null, ageH: null };
+      ts = new Date(lm).getTime(); src = lm + " (header)";
+    }
+    const ageH = (Date.now() - ts) / (1000 * 60 * 60);
+    return { ...f, status: "ok", lastMod: src, ageH };
   } catch {
     return { ...f, status: "ERR", lastMod: null, ageH: null };
   }
@@ -202,8 +227,10 @@ function fmtAge(ageH) {
   list.innerHTML = rows.map(r => {
     const cls = r.status === "MISSING" || r.status === "ERR"
       ? "fresh-old"
+      : r.status === "DEPRECATED" ? "fresh-na"
       : freshClass(r.ageH, r.expected_h);
-    const status = r.status === "MISSING" ? "missing"
+    const status = r.status === "DEPRECATED" ? "deprecated — feeds no public number"
+                : r.status === "MISSING" ? "missing"
                 : r.status === "ERR" ? "error"
                 : r.status === "?" ? "no headers"
                 : (r.ageH <= r.expected_h ? "fresh" : r.ageH <= r.expected_h*2 ? "stale" : "stale!");
@@ -214,7 +241,7 @@ function fmtAge(ageH) {
       <span class="${cls}">${status}</span>
     </div>`;
   }).join("");
-  document.getElementById("auditTime").textContent = "checked just now";
+  document.getElementById("auditTime").textContent = "checked just now · ages from each file's generated_at";
 })();
 
 // Pipeline health snapshot from data/pipeline_health.json (server-side audit).

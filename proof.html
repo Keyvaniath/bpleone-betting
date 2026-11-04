@@ -80,7 +80,8 @@
     </div>
 
     <div class="pc-sec">
-      <div class="pc-lab">The durable book — only families with a CI floor above zero, positive in both halves</div>
+      <!-- (2026-11-03) family_durability now scores sportsbook-priced (A/B) picks only; MLB-PP + class C excluded -->
+      <div class="pc-lab">The durable book — sportsbook prices only: families with a CI floor above zero, positive in both halves</div>
       <div class="pc-big" id="pcDurable">—</div>
     </div>
 
@@ -118,22 +119,36 @@ Promise.all([J('forward_test.json'), J('family_durability.json'), J('curation_oo
     let html = `<div class="lrow hd"><span>Rule frozen</span><span>Cut</span><span>Since</span><span>Curated</span><span>Raw</span><span>Status</span></div>`;
     html += exps.map(e => {
       const b = e.building;
-      const cur = b ? '<span class="muted">—</span>' : `<b style="color:#58c878;">${sgn(e.curated_roi)}</b>`;
-      const raw = b ? '<span class="muted">—</span>' : `<span style="color:#e35a5a;">${sgn(e.raw_roi)}</span>`;
+      // (2026-11-03) colour by sign, not by role
+      const cur = b ? '<span class="muted">—</span>' : `<b style="color:${e.curated_roi > 0 ? '#58c878' : '#e35a5a'};">${sgn(e.curated_roi)}</b>`;
+      const raw = b ? '<span class="muted">—</span>' : `<span style="color:${e.raw_roi > 0 ? '#58c878' : '#e35a5a'};">${sgn(e.raw_roi)}</span>`;
       const st  = b ? `<span style="color:#e0a13a;">building ${e.n_settled_since}/${fwd.min_meaningful||150}</span>`
-                    : (e.small_sample ? '<span style="color:#e0a13a;">small n</span>' : '<span style="color:#58c878;">matured ✓</span>');
+                    : (e.small_sample ? '<span style="color:#e0a13a;">small n</span>' : '<span class="muted">matured</span>');
       return `<div class="lrow"><span>${e.anchor}</span><span class="muted">${e.frozen_cut_size}f</span><span>n=${e.n_settled_since}</span><span>${cur}</span><span>${raw}</span><span>${st}</span></div>`;
     }).join('');
+    // (2026-11-03) say plainly how many matured rungs are profitable
+    const mat = exps.filter(e => !e.building && !e.small_sample);
+    const prof = mat.filter(e => (e.curated_roi || 0) > 0).length;
+    if (mat.length) html += `<div class="lrow" style="grid-template-columns:1fr;"><span>${prof === 0
+      ? `<b style="color:#e35a5a;">none profitable</b> — 0 of ${mat.length} matured rungs show a positive curated ROI (curation loses less than raw; mostly graded at the model's own odds)`
+      : `<b>${prof} of ${mat.length}</b> matured rungs show a positive curated ROI (mostly graded at the model's own odds)`}</span></div>`;
     document.getElementById('pcLadder').innerHTML = html;
   }
 
   // --- durable book ---
   const bk = dur.durable_book;
   if (bk && bk.n){
+    const c = bk.roi > 0 ? 'up' : '';
     document.getElementById('pcDurable').innerHTML =
-      `<b>${bk.n}</b> settled across <b>${bk.families.length}</b> families · ROI <b class="up">${sgn(bk.roi)}</b> · ` +
-      `net <b class="up">+${bk.net_units}u</b> · hit ${(100*bk.hit).toFixed(1)}% · ` +
-      `95% CI <b>[${sgn(bk.ci_lo)}, ${sgn(bk.ci_hi)}]</b> — <b class="up">the floor is ${sgn(bk.ci_lo)}</b>`;
+      `<b>${bk.n}</b> settled across <b>${bk.families.length}</b> families · ROI <b class="${c}" style="${bk.roi > 0 ? '' : 'color:#e35a5a;'}">${sgn(bk.roi)}</b> · ` +
+      `net <b class="${c}">${bk.net_units >= 0 ? '+' : ''}${bk.net_units}u</b> · hit ${(100*bk.hit).toFixed(1)}% · ` +
+      `95% CI <b>[${sgn(bk.ci_lo)}, ${sgn(bk.ci_hi)}]</b>`;
+  } else if (dur && dur.generated_at) {
+    // (2026-11-03) corrected result: nothing survives at sportsbook prices
+    document.getElementById('pcDurable').innerHTML =
+      `<b style="color:#e0a13a;">No durable family at sportsbook prices.</b> <span class="muted" style="font-size:13px;">` +
+      `${(dur.n_settled_total||0).toLocaleString()} book-priced picks scored across ${dur.n_families_evaluated||0} families; ` +
+      `${(dur.n_excluded_class_c||0).toLocaleString()} model-odds and ${(dur.n_excluded_prizepicks||0).toLocaleString()} PrizePicks rows excluded.</span>`;
   }
 
   // --- stat tiles ---
@@ -141,12 +156,15 @@ Promise.all([J('forward_test.json'), J('family_durability.json'), J('curation_oo
   const cur = led.curated || {};
   const cal = led.calibrated_reliability || {};
   const tiles = [];
-  if (cur.net_units != null) tiles.push({v:(cur.net_units >= 0 ? '+' : '') + Math.round(cur.net_units) + 'u', k:`curated book (${cur.n_settled} picks · ${(100*(cur.hit_rate||0)).toFixed(0)}% hit · 1u flat · sportsbook prices only)`, up:cur.net_units >= 0 ? 1 : 0});
-  if (ins.curated_roi != null && ins.raw_roi != null) tiles.push({v:sgn(ins.raw_roi) + ' → ' + sgn(ins.curated_roi), k:'raw firehose → curated, IN-SAMPLE (losing families picked on the same data)', up:0});
-  if (hci.roi_lo != null) tiles.push({v:`[${sgn(hci.roi_lo)}, ${sgn(hci.roi_hi)}]`, k:(hci.roi_lo > 0 ? 'held-out 95% CI — floor above zero = not luck' : 'held-out 95% CI — includes zero: not yet distinguishable from luck'), up:hci.roi_lo > 0 ? 1 : 0});
+  // (2026-11-03) every tile coloured by sign (dn = red); CI tile has a below-zero branch
+  if (cur.net_units != null) tiles.push({v:(cur.net_units >= 0 ? '+' : '') + cur.net_units.toFixed(1) + 'u' + (cur.roi_pct != null ? ' (' + sgn(cur.roi_pct) + ')' : ''), k:`curated book (${cur.wins}-${cur.losses} · 1u flat · sportsbook prices only, class B)`, up:cur.net_units > 0 ? 1 : 0, dn:cur.net_units < 0 ? 1 : 0});
+  if (ins.curated_roi != null && ins.raw_roi != null) tiles.push({v:sgn(ins.raw_roi) + ' → ' + sgn(ins.curated_roi), k:'raw firehose → curated, IN-SAMPLE at mostly model fair odds (losing families picked on the same data) — not a betting ROI', up:0});
+  if (hci.roi_lo != null) tiles.push({v:`[${sgn(hci.roi_lo)}, ${sgn(hci.roi_hi)}]`, k:(hci.roi_lo > 0 ? 'held-out 95% CI — entire CI above zero'
+      : (hci.roi_hi < 0 ? 'held-out 95% CI — entire CI below zero: held-out curated is reliably negative' : 'held-out 95% CI — includes zero: not distinguishable from zero')),
+      up:hci.roi_lo > 0 ? 1 : 0, dn:hci.roi_hi < 0 ? 1 : 0});
   if (cal.ece_raw != null && cal.ece_calibrated != null) tiles.push({v:(100*cal.ece_raw).toFixed(1) + '% → ' + (100*cal.ece_calibrated).toFixed(1) + '%', k:'calibration error, raw → calibrated (a 70% hits ~70%)', up:1});
   document.getElementById('pcStats').innerHTML = tiles.map(t =>
-    `<div class="pc-stat"><div class="v ${t.up?'up':''}">${t.v}</div><div class="k">${t.k}</div></div>`).join('');
+    `<div class="pc-stat"><div class="v ${t.up?'up':''}" style="${t.dn?'color:#e35a5a;':''}">${t.v}</div><div class="k">${t.k}</div></div>`).join('');
 
   // --- tamper-evident hash ---
   if (hash.head){

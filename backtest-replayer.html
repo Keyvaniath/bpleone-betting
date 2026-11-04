@@ -71,9 +71,14 @@
     <strong style="color:#d4a04a;">What this is:</strong>
     <span style="color: var(--text-2,#aaa); font-size:13px;">
       Every pick ever made by any module is stored permanently in Cloudflare D1 (Pro plan SQL at the edge).
-      Filter by source, sport, date range, outcome. The D1 sync runs every 5 minutes inside the heartbeat
-      workflow, so this dashboard is never more than 5 minutes stale. Differs from the walk-forward
-      <a href="backtest.html" style="color:#d4a04a;">/backtest</a> page (which is a different methodology).
+      Filter by source, sport, date range, outcome. The D1 sync runs inside the heartbeat workflow, scheduled
+      every 2 hours (GitHub's cron drops some runs), so this can be a few hours behind the ledger.
+      Differs from the walk-forward <a href="backtest.html" style="color:#d4a04a;">/backtest</a> page (which is a different methodology).
+      <br><b>Mixed price classes:</b> "Entry" is the sportsbook price when the ledger has one (class A/B — MLB game lines,
+      NFL desk game lines); every other row — all player props, most sports, and the PrizePicks (MLB-PP, unverified) rows — is
+      graded at the model's own fair odds (class C). Net units and ROI below mix both, so they are not a betting ROI;
+      see <a href="track-record.html" style="color:#d4a04a;">the track record</a> for the record by price class.
+      <!-- (2026-11-03) was "never more than 5 minutes stale"; price classes labelled -->
     </span>
   </div>
 
@@ -114,8 +119,8 @@
     <div class="stat"><div class="stat-val" id="s_settled">--</div><div class="stat-label">Settled</div></div>
     <div class="stat"><div class="stat-val" id="s_hit">--</div><div class="stat-label">Hit Rate</div></div>
     <div class="stat"><div class="stat-val" id="s_units">--</div><div class="stat-label">Net Units</div></div>
-    <div class="stat"><div class="stat-val" id="s_roi">--</div><div class="stat-label">ROI %</div></div>
-    <div class="stat"><div class="stat-val" id="s_edge">--</div><div class="stat-label">Avg Edge</div></div>
+    <div class="stat"><div class="stat-val" id="s_roi">--</div><div class="stat-label">ROI % (mixed classes)</div></div>
+    <div class="stat"><div class="stat-val" id="s_edge">--</div><div class="stat-label">Avg raw model edge</div></div>
   </div>
 
   <h2 style="color:#d4a04a; font-size:15px; margin: 24px 0 8px;">Per-Source Breakdown</h2>
@@ -270,7 +275,7 @@ function renderPicks(arr) {
       <div>${p.date || '--'}</div>
       <div>${p.player_or_matchup || '--'}</div>
       <div><strong>${p.source}</strong><br><span class="muted" style="font-size:10px;">${p.market || ''}</span></div>
-      <div>${p.entry_odds !== null && p.entry_odds !== undefined ? (p.entry_odds > 0 ? '+' : '') + p.entry_odds : '--'}</div>
+      <div>${p.entry_odds !== null && p.entry_odds !== undefined ? (p.entry_odds > 0 ? '+' : '') + p.entry_odds : '--'}${(p.entry_odds != null && p.fair_odds != null && p.entry_odds === p.fair_odds) || /^MLB-PP$/i.test(p.sport || '') ? '<br><span class="muted" style="font-size:9.5px;">model fair</span>' : ''}</div>
       <div>${p.fair_odds !== null && p.fair_odds !== undefined ? (p.fair_odds > 0 ? '+' : '') + p.fair_odds : '--'}</div>
       <div>${p.edge_pct !== null && p.edge_pct !== undefined ? fmt(p.edge_pct, 1) + '%' : '--'}</div>
       <div>${outcomeBadge}</div>

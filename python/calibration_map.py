@@ -43,9 +43,26 @@ def _load(p):
         return {}
 
 
+def _is_prizepicks(p) -> bool:
+    """(2026-11-03) MLB-PP / PP_* rows are the UNVERIFIED locks-history import
+    graded at PrizePicks' -136 break-even -- their own line, never in this map."""
+    return (str(p.get("sport") or "").upper() == "MLB-PP"
+            or str(p.get("market") or "").upper().startswith("PP_"))
+
+
+def _price_class(p) -> str:
+    """(2026-11-03) A timestamped book / B reconstructed book / C no book price."""
+    c = ((p.get("price_provenance") or {}).get("class") or "C")
+    return c if c in ("A", "B", "C") else "C"
+
+
 def run() -> Dict[str, Any]:
     pc.reset_caches()
-    picks = _load(LEDGER).get("picks") or []
+    all_picks = _load(LEDGER).get("picks") or []
+    # (2026-11-03) PrizePicks rows leave the calibration map entirely.
+    picks = [p for p in all_picks if not _is_prizepicks(p)]
+    n_pp_excluded = sum(1 for p in all_picks if _is_prizepicks(p)
+                        and not p.get("voided") and p.get("result") in ("won", "lost"))
     neg = pc.proven_negative_families()
     overconf = pc.overconfident_families()
 
@@ -116,6 +133,7 @@ def run() -> Dict[str, Any]:
     def _agg(keep):
         n = w = 0
         net = 0.0
+        cls: Dict[str, int] = {}
         for p in picks:
             if p.get("voided") or p.get("result") not in ("won", "lost"):
                 continue
@@ -123,17 +141,25 @@ def run() -> Dict[str, Any]:
                 continue
             n += 1
             w += 1 if p.get("result") == "won" else 0
+            c = _price_class(p)
+            cls[c] = cls.get(c, 0) + 1
             try:
                 net += float(p.get("payout_units"))
             except (TypeError, ValueError):
                 pass
         return {"n": n, "net_units": round(net, 1),
                 "roi_pct": round(100 * net / n, 1) if n else None,
-                "hit_rate": round(w / n, 4) if n else None}
+                "hit_rate": round(w / n, 4) if n else None,
+                "price_classes": cls}   # (2026-11-03) how much of it is at a real book price
     guard_impact = {
         "all": _agg(lambda f: True),
         "after_curation": _agg(lambda f: f not in neg),
         "curated_out": _agg(lambda f: f in neg),
+        # (2026-11-03) honest label: the cut-set is fit on these same outcomes and
+        # nearly every row is graded at the model's own fair odds (class C).
+        "basis": "in-sample, model-fair-odds replay -- the cut is fit on these same "
+                 "outcomes and most rows carry no sportsbook price (class C); "
+                 "MLB-PP excluded. Not a betting ROI.",
     }
 
     # DESK-LEVEL honesty: raw vs curated net per whole sport. The family net above
@@ -142,12 +168,37 @@ def run() -> Dict[str, Any]:
     # profitable subset to publish -- shown so the money map is the same one we
     # audit internally, not a cherry-pick.
     desk_report = pc.sport_curation_report()
-    desks = sorted(([{"sport": s, **a} for s, a in desk_report.items()]),
-                   key=lambda d: -(d.get("net_curated") or 0))
+    # (2026-11-03) MLB-PP leaves the desk map (unverified, not bettable), and a
+    # desk is only "profitable" when every settled pick carries a sportsbook
+    # price (class A/B). A positive replay at the model's own fair odds is
+    # relabelled "positive_model_odds" -- calibration, not a betting result.
+    desk_cls: Dict[str, Dict[str, int]] = {}
+    for p in picks:
+        if not p.get("settled") or p.get("voided") or p.get("result") not in ("won", "lost", "push"):
+            continue
+        s = str(p.get("sport") or "?").upper()
+        c = _price_class(p)
+        dc = desk_cls.setdefault(s, {})
+        dc[c] = dc.get(c, 0) + 1
+    desks = []
+    for s, a in desk_report.items():
+        if s == "MLB-PP":
+            continue
+        row = {"sport": s, **a}
+        cls = desk_cls.get(s, {})
+        row["price_classes"] = cls
+        row["all_book_priced"] = bool(cls) and not cls.get("C")
+        if row.get("status") == "profitable" and not row["all_book_priced"]:
+            row["status"] = "positive_model_odds"
+        desks.append(row)
+    desks.sort(key=lambda d: -(d.get("net_curated") or 0))
     desk_curation = {
+        "basis": "in-sample, model-fair-odds replay (MLB-PP excluded)",   # (2026-11-03)
         "summary": {
             "n_desks": len(desks),
             "profitable": sorted([d["sport"] for d in desks if d.get("status") == "profitable"]),
+            "positive_model_odds": sorted([d["sport"] for d in desks
+                                           if d.get("status") == "positive_model_odds"]),
             "underperforming": sorted([d["sport"] for d in desks
                                        if d.get("status") in ("underperforming", "proven_negative")]),
             "proven_negative_desks": sorted(pc.proven_negative_sports()),
@@ -170,6 +221,7 @@ def run() -> Dict[str, Any]:
         "n_calibrated": n_cal,
         "n_model_only": n_mod,
         "n_overconfident": n_overconf,
+        "n_prizepicks_excluded": n_pp_excluded,   # (2026-11-03) MLB-PP not in this map
         "units_protected_by_curation": net_protected,
         "guard_impact": guard_impact,
         "desk_curation": desk_curation,

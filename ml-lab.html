@@ -52,11 +52,13 @@
     <div class="metric"><span class="metric-num">30</span><span class="metric-label">Features Engineered</span></div>
     <div class="metric"><span class="metric-num">8</span><span class="metric-label">Feature Families</span></div>
     <div class="metric"><span class="metric-num">169</span><span class="metric-label">NN Parameters</span></div>
-    <div class="metric"><span class="metric-num" id="mlEnsAcc">--</span><span class="metric-label">Live Hit Rate</span></div>
+    <div class="metric" title="Real settled ledger, all picks and markets mixed (ledger_summary.json). A blended hit rate across markets with different prices -- not an accuracy or edge figure."><span class="metric-num" id="mlEnsAcc">--</span><span class="metric-label">Ledger Hit Rate (all settled)</span></div>
     <div class="metric"><span class="metric-num" id="mlEce">--</span><span class="metric-label">Avg Calibration ECE</span></div>
   </section>
   <script>
-  // Live model accuracy + ECE: from track_record + calibration_live
+  // Ledger hit rate + ECE: from ledger_summary + calibration_live
+  // (2026-11-03) the hit-rate tile read data/track_record.json -- the deprecated SYNTHETIC feed.
+  // It now reads the real settled ledger (ledger_summary.json).
   (function(){
     const setText = (id, v) => { const el = document.getElementById(id); if (el) el.textContent = v; };
     fetch("data/calibration_live.json", { cache: "no-cache" }).then(r => r.json()).then(c => {
@@ -66,69 +68,75 @@
         setText("mlEce", (avg * 100).toFixed(1) + "%");
       }
     }).catch(() => {});
-    fetch("data/track_record.json", { cache: "no-cache" }).then(r => r.json()).then(tr => {
-      const props = (tr.props || []).filter(p => p.play_hit === true || p.play_hit === false);
-      if (!props.length) return;
-      const hr = props.filter(p => p.play_hit === true).length / props.length * 100;
-      setText("mlEnsAcc", hr.toFixed(1) + "%");
+    fetch("data/ledger_summary.json", { cache: "no-cache" }).then(r => r.json()).then(d => {
+      if (d.hit_rate == null || !d.n_settled) return;
+      setText("mlEnsAcc", (d.hit_rate * 100).toFixed(1) + "%");
+    }).catch(() => {});
+    // (2026-11-03) "The Stack" figures: live from ensemble.json, labelled as the synthetic dev set.
+    fetch("data/ensemble.json", { cache: "no-cache" }).then(r => r.json()).then(e => {
+      const bce = e.per_model_bce || {};
+      const put = (id, k) => { if (bce[k] != null) setText(id, "LL " + Number(bce[k]).toFixed(3)); };
+      put("mlBay", "BAYESIAN"); put("mlGBM", "GBM"); put("mlMC", "MC_SIM"); put("mlNN", "NN");
+      if (e.ensemble_acc != null) setText("mlEnsemble", (100 * e.ensemble_acc).toFixed(1) + "% acc");
+      if (e.n_games) setText("mlStackN", e.n_games.toLocaleString());
     }).catch(() => {});
   })();
   </script>
 
   <section class="grid-2">
     <div class="card">
-      <div class="card-head"><span>🧠 The Stack</span></div>
+      <div class="card-head"><span>🧠 The Stack</span><span class="muted" style="font-size:11px;">synthetic <span id="mlStackN">600</span>-game dev set — not betting results</span></div>
       <div class="factor-grid" style="grid-template-columns: 1fr; gap: 10px;">
         <div class="factor" style="border-left: 3px solid var(--accent);">
           <div>
             <strong>Bayesian + Poisson</strong>
             <div class="muted" style="font-size: 12px;">Hierarchical Bayesian factor model + Poisson run distribution</div>
           </div>
-          <span class="f-val" id="mlBay">64.0%</span>
+          <span class="f-val" id="mlBay">—</span>
         </div>
         <div class="factor" style="border-left: 3px solid var(--blue);">
           <div>
             <strong>Gradient Boosting (XGBoost-style)</strong>
             <div class="muted" style="font-size: 12px;">25 regression trees, depth 3, learning rate 0.08</div>
           </div>
-          <span class="f-val" id="mlGBM">63.7%</span>
+          <span class="f-val" id="mlGBM">—</span>
         </div>
         <div class="factor" style="border-left: 3px solid var(--purple);">
           <div>
             <strong>Monte Carlo Simulation</strong>
             <div class="muted" style="font-size: 12px;">10,000 plate-appearance-level simulations</div>
           </div>
-          <span class="f-val" id="mlMC">64.7%</span>
+          <span class="f-val" id="mlMC">—</span>
         </div>
         <div class="factor" style="border-left: 3px solid var(--gold);">
           <div>
             <strong>Neural Network (MLP)</strong>
             <div class="muted" style="font-size: 12px;">12 → 16 → 8 → 1, tanh + sigmoid, backprop from scratch</div>
           </div>
-          <span class="f-val" id="mlNN">63.5%</span>
+          <span class="f-val" id="mlNN">—</span>
         </div>
         <div class="factor" style="border-left: 3px solid #fff; background: rgba(74,222,128,0.06);">
           <div>
             <strong>★ ENSEMBLE (stacked)</strong>
             <div class="muted" style="font-size: 12px;">Logistic meta-learner over the 4 base outputs</div>
           </div>
-          <span class="f-val positive" id="mlEnsemble">64.5%</span>
+          <span class="f-val" id="mlEnsemble">—</span>
         </div>
       </div>
-      <p class="caption" style="margin-top:14px;">Each model uses the same 30-feature input vector. The ensemble's weights are learned from backtest cross-validation. Diversity matters — when one model is wrong, the others can compensate.</p>
+      <p class="caption" style="margin-top:14px;"><!-- (2026-11-03) -->Log loss (LL) per base model and the ensemble's accuracy, all on a <strong>synthetic 600-game development set</strong> (data/ensemble.json) — an architecture demonstration, not live or betting performance. Each model uses the same 30-feature input vector; the ensemble's weights are fit on that same synthetic set.</p>
     </div>
 
     <div class="card">
       <div class="card-head"><span>📊 Ensemble Meta-Weights</span></div>
       <canvas id="mlWeightsChart" height="220"></canvas>
-      <p class="caption">Normalized contribution of each base model to the ensemble's final prediction. Learned by gradient descent on a held-out validation set.</p>
+      <p class="caption">Normalized contribution of each base model to the ensemble's final prediction, fit by gradient descent on the synthetic development set. <!-- (2026-11-03) --></p>
     </div>
   </section>
 
   <section class="card" style="margin-bottom: 28px;">
     <div class="card-head"><span>🎯 Feature Importance (Permutation)</span></div>
     <canvas id="mlFeatChart" height="220"></canvas>
-    <p class="caption">How much each feature contributes to model accuracy. Measured by shuffling that column in the test set and watching the loss bump up. Top features are exactly what a sharp baseball analyst would expect.</p>
+    <p class="caption">How much each feature contributes to model accuracy on the synthetic development set, measured by shuffling that column and watching the loss bump up. <!-- (2026-11-03) synthetic-set label --></p>
   </section>
 
   <section class="grid-2">
@@ -145,7 +153,7 @@
   </section>
 
   <section class="card" style="margin-bottom: 28px;">
-    <div class="card-head"><span>🧪 30-Feature Vector — LAD vs SDP</span></div>
+    <div class="card-head"><span>🧪 30-Feature Vector — example: LAD vs SDP</span><span class="muted" style="font-size:11px;">illustrative example game, not a live slate <!-- (2026-11-03) --></span></div>
     <div class="table-wrap">
       <table class="data-table" id="mlFeatTable">
         <thead><tr><th>#</th><th>Feature</th><th>Family</th><th>Value</th><th>Description</th></tr></thead>

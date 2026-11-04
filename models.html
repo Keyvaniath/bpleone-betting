@@ -44,7 +44,8 @@
   <section class="page-head">
     <h1>Models & Calculators</h1>
     <p>Under the hood. Every probability we publish comes out of one of these models, and every calculator below is what a sharp uses to size a bet correctly. No black boxes.</p>
-    <p class="muted" style="font-size:12px; margin-top:6px;">Hit-rate and ROI numbers below reflect the synthetic walk-forward benchmark used to validate model architecture. <strong>Live hit rate</strong> from real outcomes accumulates on the <a href="learning.html" style="color:#58c878;">Learning</a> page and bias-corrects daily projections via the self-learning loop.</p>
+    <!-- (2026-11-03) removed the synthetic-benchmark hit-rate/ROI framing: this page describes the models; it publishes no performance numbers -->
+    <p class="muted" style="font-size:12px; margin-top:6px;">This page describes how the models work. It publishes no backtest or performance figures. The real settled record, split by price class, is on the <a href="track-record.html" style="color:#58c878;">Track Record</a>.</p>
   </section>
 
   <section class="grid-3">
@@ -52,13 +53,13 @@
       <div class="card-head"><span class="pill green">CORE</span><span class="muted">v3.4</span></div>
       <h3>Bayesian Game Engine</h3>
       <p style="color: var(--text-2)">Hierarchical Bayesian model. Each team's true talent is a posterior distribution updated nightly with shrinkage to league average. Starter, lineup, park, bullpen, weather, and umpire are independent multiplicative adjustments.</p>
-      <p class="caption"><strong>Inputs:</strong> 14 factors • <strong>Backtested:</strong> 2018–2025 (12,400 games) • <strong>OOS hit rate:</strong> 55.4% on MLs at –110 vig.</p>
+      <p class="caption"><strong>Inputs:</strong> 14 factors.</p><!-- (2026-11-03) removed unsourced "Backtested 2018-2025 (12,400 games)" and "55.4% OOS" claims -->
     </div>
     <div class="card">
       <div class="card-head"><span class="pill blue">RUNS</span><span class="muted">v2.1</span></div>
       <h3>Poisson Run Distribution</h3>
       <p style="color: var(--text-2)">Generates a joint distribution over total runs given each team's expected run lambda. Used for totals, run lines, first-5 totals, and NRFI/YRFI markets.</p>
-      <p class="caption"><strong>Outputs:</strong> P(total &gt; k) for any k, half-line pushes handled, mean = 8.1 ± 2.2 across slate.</p>
+      <p class="caption"><strong>Outputs:</strong> P(total &gt; k) for any k, half-line pushes handled.</p><!-- (2026-11-03) removed hard-coded slate mean -->
     </div>
     <div class="card">
       <div class="card-head"><span class="pill purple">PROPS</span><span class="muted">v2 (Statcast)</span></div>
@@ -70,19 +71,19 @@
       <div class="card-head"><span class="pill gold">FLOW</span><span class="muted">v1.4</span></div>
       <h3>Sharp Flow Detector</h3>
       <p style="color: var(--text-2)">Pattern matcher on line movement vs. ticket-handle splits. Steam moves and reverse-line-movement signals fire when handle &gt; tickets by ≥ 20%.</p>
-      <p class="caption"><strong>Sources:</strong> 6 books polled every 60s • <strong>Backtest:</strong> sharp side outperforms public side by +3.1% ROI.</p>
+      <p class="caption">No validated backtest of this signal is published.</p><!-- (2026-11-03) removed unsourced "6 books every 60s" and "+3.1% ROI" claims -->
     </div>
     <div class="card">
       <div class="card-head"><span class="pill red">RISK</span><span class="muted">v2.0</span></div>
       <h3>Kelly Bankroll Manager</h3>
       <p style="color: var(--text-2)">Fractional Kelly criterion (default ¼-Kelly), capped at 5 units per play. Designed to maximize geometric growth without ruin risk over realistic 1,000+ play horizons.</p>
-      <p class="caption"><strong>Default:</strong> 0.25 × full Kelly • <strong>Drawdown:</strong> &lt; 18% peak-to-trough over 95% of simulated seasons.</p>
+      <p class="caption"><strong>Default:</strong> 0.25 × full Kelly. Kelly needs a real sportsbook price and a validated probability; without both it is not sized.</p><!-- (2026-11-03) removed unsourced "Drawdown < 18%" claim -->
     </div>
     <div class="card">
       <div class="card-head"><span class="pill green">SIMS</span><span class="muted">10k</span></div>
       <h3>Monte Carlo Game Sim</h3>
       <p style="color: var(--text-2)">For high-edge plays, we run 10,000 game simulations using the Bayesian inputs as parameters. The simulation distribution is what produces our final win probability.</p>
-      <p class="caption"><strong>Runtime:</strong> ~80ms per game • <strong>Bootstrap CI on win prob:</strong> ± 1.2%.</p>
+      <!-- (2026-11-03) removed unsourced runtime / "± 1.2%" CI caption -->
     </div>
   </section>
 
@@ -118,39 +119,19 @@
           <div class="factor"><span class="f-name">Kelly Stake (% bankroll)</span><span class="f-val" id="calcKelly">—</span></div>
           <div class="factor"><span class="f-name">Recommended Stake ($)</span><span class="f-val" id="calcDollars">—</span></div>
         </div>
-        <p class="caption" style="margin-top: 12px;">Positive EV = the bet is profitable in expectation. Negative Kelly = pass — the market has it right or you're picking the wrong side.</p>
+        <p class="caption" style="margin-top: 12px;">Positive EV = profitable in expectation <em>only if your probability is right</em>. Negative Kelly = pass — the market has it right or you're picking the wrong side.</p>
       </div>
     </div>
   </section>
 
   <section class="card" style="margin-bottom: 28px;">
-    <div class="card-head"><span>📈 Bankroll Simulator — Kelly vs. Flat</span></div>
+    <div class="card-head"><span>📈 Bankroll Simulator — Kelly vs. Flat</span><span class="muted">illustration, not our results</span></div>
     <canvas id="bankrollChart" height="220"></canvas>
-    <p class="caption">60-bet simulation at 55% win rate, –110 vig. ¼-Kelly compounds while 2% flat staking grows linearly. Kelly's advantage scales with edge size.</p>
+    <!-- (2026-11-03) labelled as an illustration -->
+    <p class="caption"><strong>Illustration with an assumed 55% win rate at –110, not our results.</strong> 60 seeded random bets: ¼-Kelly compounds while 2% flat staking grows linearly. Our real settled record is not profitable; see the <a href="track-record.html">Track Record</a>.</p>
   </section>
 
-  <section class="card" style="margin-bottom: 28px;">
-    <div class="card-head"><span>🧪 Backtest Results — by Bet Type</span><span class="muted" style="color:#d4a04a;">⚠️ Architectural benchmark — see /accuracy for live W-L</span></div>
-    <p style="color: #d4a04a; font-size: 12px; padding: 8px 14px; background: rgba(212,160,74,0.08); border-radius: 6px; margin: 12px 14px;">
-      ⚠️ <strong>These numbers are an architectural benchmark</strong> — illustrative ROI/Sharpe targets for each bet type at the model architecture's theoretical performance. NOT live track record. For real settled W-L by market and by source, visit <a href="accuracy.html" style="color:#58c878;">/accuracy</a> (live pick ledger) or <a href="track-record.html" style="color:#58c878;">/track-record</a> (Play of the Day P&L).
-    </p>
-    <div class="table-wrap">
-      <table class="data-table">
-        <thead><tr><th>Bet Type</th><th>Plays (bench)</th><th>Hit %</th><th>ROI</th><th>Avg CLV</th><th>Sharpe</th><th>Max DD</th></tr></thead>
-        <tbody>
-          <tr><td class="matchup">MLB Moneyline</td><td>1,842</td><td>55.4%</td><td class="positive">+6.2%</td><td>+2.1%</td><td>1.74</td><td>-14.2u</td></tr>
-          <tr><td class="matchup">MLB Run Line</td><td>1,206</td><td>53.1%</td><td class="positive">+4.8%</td><td>+1.6%</td><td>1.32</td><td>-18.4u</td></tr>
-          <tr><td class="matchup">MLB Total</td><td>1,544</td><td>55.4%</td><td class="positive">+5.7%</td><td>+2.4%</td><td>1.58</td><td>-12.1u</td></tr>
-          <tr><td class="matchup">F5 Total</td><td>702</td><td>54.7%</td><td class="positive">+4.1%</td><td>+1.9%</td><td>1.28</td><td>-9.8u</td></tr>
-          <tr><td class="matchup">NRFI</td><td>608</td><td>57.8%</td><td class="positive">+7.3%</td><td>+2.8%</td><td>1.81</td><td>-8.2u</td></tr>
-          <tr><td class="matchup">Player Props</td><td>3,210</td><td>59.1%</td><td class="positive">+9.4%</td><td>+3.1%</td><td>2.05</td><td>-11.6u</td></tr>
-          <tr><td class="matchup">Parlays (2-leg)</td><td>184</td><td>34.2%</td><td class="negative">-3.1%</td><td>-0.2%</td><td>—</td><td>-22.4u</td></tr>
-          <tr><td class="matchup">Same-Game Parlays</td><td>96</td><td>22.1%</td><td class="negative">-12.4%</td><td>-1.8%</td><td>—</td><td>-18.6u</td></tr>
-        </tbody>
-      </table>
-    </div>
-    <p class="caption">Parlays bleed money — we publish them only as "fun" plays, never as +EV recommendations. Stick to straight bets with positive CLV.</p>
-  </section>
+  <!-- (2026-11-03) deleted the hard-coded "Backtest Results — by Bet Type" table (invented benchmark ROI/Sharpe/CLV, not results) -->
 
   <section class="card">
     <div class="card-head"><span>📦 What's in the model</span></div>
