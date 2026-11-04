@@ -63,7 +63,8 @@
 
   <section class="page-head">
     <h1>Best Bets — Composite Quality Score</h1>
-    <p>Every market we score (DK props, PrizePicks softer lines, NRFI/YRFI, correlation-aware SGPs) ranked by a composite quality score (0-100) that incorporates edge, model confidence, per-player trust tier, lineup confirmation, weather alignment, and pitcher fatigue.</p>
+    <!-- (2026-11-03) accurate copy: best_bets.json is fail-closed upstream (DK-priced rows only) -->
+    <p>Only bets with a <strong>real sportsbook price</strong> (DraftKings) are listed, ranked by a composite quality score (0-100) built from the edge at that price, model confidence, per-player trust tier, lineup confirmation, weather alignment and pitcher fatigue. Model-only projections (NRFI/YRFI, model game lines, esports/golf picks), PrizePicks lines (feed dark since 2026-07-09) and parlays/SGPs are <strong>not</strong> best bets and are excluded; the count excluded is shown below.</p>
   </section>
 
   <!-- Slate confidence tile -->
@@ -87,9 +88,7 @@
     <div class="metric"><span class="metric-num" id="bbTotal">--</span><span class="metric-label">Bets Surfaced</span></div>
     <div class="metric"><span class="metric-num" id="bbElite">--</span><span class="metric-label">Elite (88+)</span></div>
     <div class="metric"><span class="metric-num" id="bbDk">--</span><span class="metric-label">DK Props</span></div>
-    <div class="metric"><span class="metric-num" id="bbPp">--</span><span class="metric-label">PP Softer</span></div>
-    <div class="metric"><span class="metric-num" id="bbNrfi">--</span><span class="metric-label">NRFI/YRFI</span></div>
-    <div class="metric"><span class="metric-num" id="bbSgp">--</span><span class="metric-label">SGPs</span></div>
+    <div class="metric"><span class="metric-num" id="bbExcl">--</span><span class="metric-label">Excluded: no book price</span></div>
   </section>
 
   <section class="card" style="margin-bottom: 24px;">
@@ -97,9 +96,6 @@
     <div class="filter-bar" style="padding: 10px 16px;">
       <button class="bb-filter active" data-filter="">All sources</button>
       <button class="bb-filter" data-filter="DK">DK only</button>
-      <button class="bb-filter" data-filter="PP">PrizePicks</button>
-      <button class="bb-filter" data-filter="NRFI">NRFI/YRFI</button>
-      <button class="bb-filter" data-filter="SGP">SGPs</button>
       <button class="bb-filter" data-filter="elite">Elite (88+) only</button>
     </div>
     <div class="bet-card head">
@@ -128,15 +124,20 @@
     setText("bbTotal", _data.n_bets);
     setText("bbElite", (_data.bets || []).filter(b => b.quality_score >= 88).length);
     setText("bbDk", (_data.by_source || {}).DK || 0);
-    setText("bbPp", (_data.by_source || {}).PP || 0);
-    setText("bbNrfi", (_data.by_source || {}).NRFI || 0);
-    setText("bbSgp", (_data.by_source || {}).SGP || 0);
+    const exc = _data.excluded_unpriced || {};
+    const nExc = Object.values(exc).reduce((a, b) => a + b, 0);
+    setText("bbExcl", nExc);
     setText("bbMeta", `${_data.n_bets} of ${_data.total_candidates} candidates · ${(_data.generated_at || "").replace("T", " ")} UTC`);
 
     let items = _data.bets || [];
     if (_filter === "elite") items = items.filter(b => b.quality_score >= 88);
     else if (_filter) items = items.filter(b => b.source === _filter);
 
+    if (!(_data.bets || []).length) {
+      const by = Object.entries(exc).sort((a, b) => b[1] - a[1]).map(([s, n]) => s + " " + n).join(", ");
+      document.getElementById("bbList").innerHTML = `<p class="muted" style="padding:14px;">No best bet today: a best bet needs a real sportsbook price${nExc ? ` — ${nExc} model-only projections excluded (${by})` : ""}.</p>`;
+      return;
+    }
     document.getElementById("bbList").innerHTML = items.map(b => {
       const star = "★".repeat(b.stars) + "☆".repeat(5 - b.stars);
       const qt = tier(b.quality_score);
@@ -179,11 +180,15 @@
     _filter = btn.dataset.filter;
     render();
   });
-  // Slate confidence tile
-  fetch("data/slate_confidence.json", { cache: "no-cache" })
-    .then(r => r.json())
-    .then(s => {
+  // Slate confidence tile -- (2026-11-03) hidden when there is no slate: it is an
+  // MLB-slate score, and it rendered "70 MEDIUM -- slightly smaller bets" with 0 games.
+  Promise.all([
+    fetch("data/slate_confidence.json", { cache: "no-cache" }).then(r => r.json()),
+    fetch("data/today.json", { cache: "no-cache" }).then(r => r.json()).catch(() => ({})),
+  ])
+    .then(([s, today]) => {
       if (s.score === undefined) return;
+      if (today.no_games || !(today.games || []).length || !(s.n_games > 0)) return;
       document.getElementById("slateConfCard").style.display = "block";
       document.getElementById("slateScore").textContent = s.score;
       const tier = s.tier || "medium";

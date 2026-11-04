@@ -42,8 +42,65 @@ def _load(p):
     except Exception: return {}
 
 
+PROJECTION_LABEL = "model projection — unvalidated, no sportsbook price, not a recommendation"
+
+
+def _today_et() -> str:
+    try:
+        from zoneinfo import ZoneInfo
+        return dt.datetime.now(ZoneInfo("America/New_York")).date().isoformat()
+    except Exception:
+        return (dt.datetime.now(dt.timezone.utc) - dt.timedelta(hours=5)).date().isoformat()
+
+
+def _et_date(ts) -> str:
+    try:
+        from zoneinfo import ZoneInfo
+        t = dt.datetime.fromisoformat(str(ts).replace("Z", "+00:00"))
+        if t.tzinfo is None:
+            t = t.replace(tzinfo=dt.timezone.utc)
+        return t.astimezone(ZoneInfo("America/New_York")).date().isoformat()
+    except Exception:
+        return ""
+
+
+def _slate_gate() -> Dict[str, Dict[str, Any]]:
+    """(2026-11-03) Which sports have a REAL slate today (ET). The board had
+    1,613 MLB and 606 WNBA rows on a day with 0 games in either league: the
+    extended-props files are re-emitted off season tables whether or not
+    anyone plays. A sport contributes rows only when today's board has games."""
+    today = _today_et()
+    gate: Dict[str, Dict[str, Any]] = {}
+    t = _load(os.path.join(DATA_DIR, "today.json"))
+    n_mlb = 0 if t.get("no_games") else len(t.get("games") or [])
+    gate["MLB"] = {"open": n_mlb > 0, "n_games_today": n_mlb}
+    for sport in ("NBA", "WNBA", "NHL", "KBO"):
+        st = _load(os.path.join(DATA_DIR, f"{sport.lower()}_state.json"))
+        n = int(st.get("n_games_today") or 0)
+        gate[sport] = {"open": n > 0, "n_games_today": n, "next_game_date": st.get("next_game_date")}
+    lol = _load(os.path.join(DATA_DIR, "lol_state.json"))
+    n = sum(1 for m in (lol.get("upcoming_matches") or []) + (lol.get("live_matches") or [])
+            if _et_date(m.get("start_time")) == today)
+    gate["LOL"] = {"open": n > 0, "n_games_today": n}
+    cs = _load(os.path.join(DATA_DIR, "cs_state.json"))
+    n = sum(1 for m in (cs.get("matches") or [])
+            if not m.get("is_completed") and _et_date(m.get("start_time")) == today)
+    gate["CS"] = {"open": n > 0, "n_games_today": n}
+    # PrizePicks feed dark since 2026-07-09 -- never a slate
+    gate["MLB-PP"] = {"open": False, "n_games_today": 0, "reason": "PrizePicks feed dark since 2026-07-09"}
+    gate["_date_et"] = today
+    return gate
+
+
+_GATE: Dict[str, Dict[str, Any]] = {}
+_DROPPED: Dict[str, int] = {}
+
+
 def _add(picks, sport, player, team, market, prob, fair, source):
     if prob is None or not (MIN_PROB <= prob <= MAX_PROB): return
+    if not (_GATE.get(sport) or {}).get("open"):          # (2026-11-03) no slate today -> no row
+        _DROPPED[sport] = _DROPPED.get(sport, 0) + 1
+        return
     # Some feeds emit team as a dict (e.g. {abbr, name}) -- normalize to a short
     # string so the artifact is clean and the debug print can't crash the
     # pipeline (2026-07-12: a dict team here TypeError'd the whole daily run).
@@ -53,11 +110,16 @@ def _add(picks, sport, player, team, market, prob, fair, source):
     picks.append({
         "sport": sport, "player": player, "team": team,
         "market": market, "prob": round(prob, 4),
-        "fair_american": fair, "source": source,
+        # (2026-11-03) no fair price on the row: a model fair price is not a
+        # sportsbook price and read as one. The row is a labelled projection.
+        "label": PROJECTION_LABEL, "source": source,
     })
 
 
 def run() -> Dict[str, Any]:
+    global _GATE
+    _GATE = _slate_gate()
+    _DROPPED.clear()
     picks: List[Dict[str, Any]] = []
 
     # MLB extended (4846 batter+pitcher props)
@@ -244,8 +306,13 @@ def run() -> Dict[str, Any]:
     for p in picks:
         by_sport[p["sport"]] = (by_sport.get(p["sport"]) or 0) + 1
 
+    gate_out = {k: v for k, v in _GATE.items() if not k.startswith("_")}
     payload = {
         "generated_at": dt.datetime.now().isoformat(timespec="seconds"),
+        "date_et": _GATE.get("_date_et"),
+        "label": PROJECTION_LABEL,
+        "slate_gate": gate_out,
+        "dropped_no_slate_today": dict(_DROPPED),
         "min_prob": MIN_PROB,
         "max_prob": MAX_PROB,
         "n_picks_total": len(picks),
@@ -263,9 +330,9 @@ if __name__ == "__main__":
     print(f"Slate player pot: {p['n_picks_total']} picks in {p['min_prob']:.0%}-{p['max_prob']:.0%} sweet spot")
     print(f"  By sport: {p['by_sport']}")
     print(f"  Top 15:")
+    print(f"  Dropped (no slate today ET): {p['dropped_no_slate_today']}")
     for x in p["top_50"][:15]:
-        fair = x.get("fair_american")
-        fair_str = f"fair {fair:+d}" if isinstance(fair, int) else "fair --"
+        fair_str = ""
         tm = str(x.get("team") or "--")[:4]
         print(f"    [{str(x.get('sport') or ''):7s}] {str(x.get('player') or '')[:22]:22s} ({tm:4s}) "
               f"{str(x.get('market') or '')[:32]:32s} p={(x.get('prob') or 0)*100:.0f}% {fair_str}")

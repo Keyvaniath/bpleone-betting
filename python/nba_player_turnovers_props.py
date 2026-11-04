@@ -7,7 +7,7 @@ High-usage point guards drive most turnover props (Doncic, Harden, Trae, etc.).
 Method:
   projected_TO = season_TO_per_game * pace_factor * opp_TO_force_factor
   Poisson distribution -> P(over X.5)
-  STRONG when 10%+ edge vs -120 book breakeven (54.5%), within nearest 0.5 line.
+  flag band (NOT an edge: no sportsbook prop price exists; the old '10%+ edge vs an assumed -120 book' is withdrawn 2026-11-03) breakeven (54.5%), within nearest 0.5 line.
 
 Output: data/nba_player_turnovers_props.json
 """
@@ -182,7 +182,7 @@ def run() -> Dict[str, Any]:
                 if abs(projected_tov - line) > 0.75: continue
                 p_over = _poisson_at_least(int(line) + 1, projected_tov)
                 p_under = 1 - p_over
-                # STRONG: 10%+ edge vs -120 (54.5% breakeven), capped at 72%
+                # flag band p in [0.62, 0.72] -- NOT an edge (no real book price; assumed -120 withdrawn 2026-11-03)
                 if 0.62 <= p_over <= 0.72:
                     if not best_market or p_over > best_market["p"]:
                         edge_class = "STRONG_OVER"
@@ -219,8 +219,9 @@ def run() -> Dict[str, Any]:
         "n_players_projected": len(rows),
         "n_strong_edges": len(strong),
         "n_players_in_db": len(PLAYER_DB),
-        "method_note": "NBA player TO x pace x opp_TO_force_factor. Poisson at nearest 0.5 line. "
-                       "STRONG = 10%+ edge vs -120 book (p in [0.62, 0.72]).",
+        "status": "unvalidated_model_projection",   # (2026-11-03)
+        "method_note": "UNVALIDATED MODEL PROJECTION -- no sportsbook price, not a pick. NBA player TO x pace x opp_TO_force_factor. Poisson at nearest 0.5 line. "
+                       "flag band (NOT an edge: no sportsbook prop price exists; the old '10%+ edge vs an assumed -120 book' is withdrawn 2026-11-03) (p in [0.62, 0.72]).",
         "rows": rows,
         "strong_edges": strong,
     }

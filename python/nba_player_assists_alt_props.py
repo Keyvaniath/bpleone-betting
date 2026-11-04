@@ -116,7 +116,8 @@ def run() -> Dict[str, Any]:
         "generated_at": dt.datetime.utcnow().isoformat(timespec="seconds"),
         "n_players": len(out_rows),
         "n_strong_edges": len(strong),
-        "method_note": "Normal CDF at 9.5/11.5/14.5 lines from projected_ast + sigma. "
+        "status": "unvalidated_model_projection",   # (2026-11-03)
+        "method_note": "UNVALIDATED MODEL PROJECTION -- no sportsbook price, not a pick. Normal CDF at 9.5/11.5/14.5 lines from projected_ast + sigma. "
                        "STRONG_YES_10 [0.55, 0.72], _12 [0.28, 0.45], _15 [0.08, 0.20].",
         "top_15_by_p_10plus": out_rows[:15],
         "strong_edges": strong,

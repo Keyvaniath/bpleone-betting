@@ -43,8 +43,9 @@
 
   <section class="page-head">
     <h1>Player Props -- Today's Edges</h1>
-    <p>Player props are the most inefficient market in sports betting. Books can't sharpen 1,000+ markets a day with the same precision they sharpen the moneyline. Our prop model attacks where the books are weakest.</p>
-    <p class="market-line" style="margin-top:8px;">Lines from <strong>DraftKings</strong> (your takeable book). PrizePicks &amp; Sleeper lines are coming -- both run a different DFS pick-em model.</p>
+    <!-- (2026-11-03) accurate copy: no sportsbook prop source in the free feeds; PrizePicks dark since 2026-07-09 -->
+    <p>Player-prop model projections. <strong>No sportsbook prop source exists in the free feeds</strong>, so a row here has a book line/price only when a paid prop feed supplies one; otherwise it is a model projection — unvalidated, no sportsbook price, not a recommendation.</p>
+    <p class="market-line" style="margin-top:8px;">The PrizePicks feed has been dark since 2026-07-09; Sleeper is auth-gated.</p>
     <p class="muted" style="font-size:12px; margin-top:6px;">Model v1.1: pitcher_strikeouts, batter_home_runs, batter_hits, batter_total_bases. Projections use season stats + opponent-team K-rate + bench-player heuristic. Calibration loop is live -- each day's outcomes feed back into tomorrow's bias correction (see <a href="learning.html" style="color:#58c878;">Learning</a>). Low-confidence plays filtered to SKIP.</p>
   </section>
 
@@ -126,7 +127,8 @@
   </script>
 
   <section id="apiDownBannerProps" style="display:none; margin: 0 0 18px 0; padding: 12px 16px; border-radius: 8px; background: rgba(227,90,90,0.08); border: 1px solid rgba(227,90,90,0.45); font-family: 'JetBrains Mono', monospace; font-size: 13px; color: #e35a5a;">
-    <strong>⚠ Book prop lines are dark: the paid Odds API monthly quota is spent.</strong> The key is valid — there's simply no request budget left this cycle, and the remaining credits are reserved so settlement never starves. Prop book lines resume automatically when the quota resets (~Sept 1). Game lines are unaffected (free feed), and every model board and the <a href="track-record.html" style="color:#e35a5a; text-decoration:underline;">track record</a> stay live. Feed status: <a href="status.html" style="color:#e35a5a; text-decoration:underline;">status page</a>.
+    <!-- (2026-11-03) was "quota ... resume ~Sept 1" (stale on 11/3) -->
+    <strong>⚠ No sportsbook prop source in the free feeds — props on this page are model projections.</strong> The free DraftKings feed (via ESPN) carries game lines only, so no player prop here has a real book price: there is no edge and no recommendation, only the model's projection. Game lines are unaffected, and the <a href="track-record.html" style="color:#e35a5a; text-decoration:underline;">track record</a> stays live. Feed status: <a href="status.html" style="color:#e35a5a; text-decoration:underline;">status page</a>.
   </section>
 
   <section class="metric-strip" id="propsMetricStrip">
@@ -343,8 +345,8 @@ fetch("data/props.json", { cache: "no-cache" })
   .then(r => r.json())
   .then(payload => {
     const all = payload.top_edges || [];
-    // If pipeline ran but produced zero props/games, the Odds API is down.
-    if (all.length === 0 && (payload.games || []).length === 0) {
+    // (2026-11-03) always shown: no free feed carries a sportsbook prop price
+    {
       const b = document.getElementById("apiDownBannerProps");
       if (b) b.style.display = "block";
     }

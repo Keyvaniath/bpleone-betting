@@ -1,11 +1,11 @@
 """
 EdgeStat -- consolidated daily bet slate.
 
-Synthesizes the four hero pick types (POD / Alpha / Book Edge / Parlay)
+Synthesizes the hero pick types (POD / Alpha / Book Edge / Fade; Parlay removed 2026-11-03)
 into a single normalized JSON the dashboard reads.
 
 For each pick:
-  type            POD | ALPHA | BOOK | PARLAY
+  type            POD | ALPHA | BOOK | FADE
   title           display name
   market          market description
   prob            calibrated probability
@@ -121,31 +121,17 @@ def run() -> Dict[str, Any]:
             "fade_type": top_fade.get("fade_type"),
         })
 
-    # --- PARLAY: top balanced 2-leg ---
-    parlays = _load(os.path.join(DATA_DIR, "cross_sport_parlays.json"))
-    par = (parlays.get("balanced_2_leg_picks") or parlays.get("top_2_leg_parlays") or [None])[0]
-    if par and (par.get("edge_pct") or 0) >= 5.0:
-        names = " + ".join((L.get("player_or_matchup") or "")[:20] for L in par.get("legs", []))
-        slate.append({
-            "type": "PARLAY",
-            "type_label": "🎲 PARLAY OF DAY",
-            "title": names,
-            "market": f"{par.get('n_legs')}-leg",
-            "sport": "MULTI",
-            "prob": par.get("joint_prob"),
-            "fair_american": par.get("fair_parlay_american"),
-            "decimal_odds": par.get("fair_parlay_decimal"),
-            "edge_pct": par.get("edge_pct"),
-            "kelly_fraction": 0.05,  # conservative cap for parlays
-            "correlation_factor": par.get("correlation_factor"),
-        })
+    # --- PARLAY: REMOVED (2026-11-03). Parlays are never recommended by
+    # default and never carry a stake or EV; "PARLAY OF DAY" priced the joint
+    # model probability against the model's own fair parlay price with a 5%
+    # Kelly cap. The parlay builder stays a research exhibit on its own page.
 
     out = {
         "generated_at": dt.datetime.utcnow().isoformat(timespec="seconds"),
         "n_picks": len(slate),
         "slate": slate,
         "kelly_fraction_used": "quarter_kelly",  # UI applies the ¼ multiplier
-        "method_note": "Consolidated bet slate: POD + ALPHA + top-3 BOOK + PARLAY. "
+        "method_note": "Consolidated bet slate: POD + ALPHA + top-3 BOOK (+ FADE). No parlays (2026-11-03). "
                        "All probabilities are calibrated where possible. "
                        "Kelly fractions are FULL Kelly; UI multiplies by 0.25.",
     }

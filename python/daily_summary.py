@@ -89,14 +89,18 @@ def build_summary() -> str:
                      f"{health.get('n_empty', 0)} empty, {health.get('n_stale', 0)} stale)._ ")
         lines.append("")
 
-    # Pick the source label for game lines.
-    src_books = set((g.get("market") or {}).get("book") for g in (today.get("games") or []))
-    src_books.discard(None)
-    src_label = ("DraftKings" if "draftkings" in src_books else
-                 "Bovada (fallback -- DK primary unavailable)" if "bovada" in src_books else
-                 "placeholder -110 (no real book today)")
+    # Game-lines source (2026-11-03): DraftKings via data/espn_odds.json with its
+    # observed time, or none. The "placeholder -110" branch is deleted -- a
+    # filled-in -110 is not a price. The PrizePicks feed has been dark since
+    # 2026-07-09, so the "pick-em opportunities" line is gone too.
+    espn = _load("espn_odds.json")
+    n_dk = sum(1 for g in (espn.get("games") or [])
+               if g.get("status") == "pre" and (g.get("market") or {}).get("ml_home") is not None
+               and str((g.get("market") or {}).get("book") or "").lower() == "draftkings")
+    src_label = (f"DraftKings via ESPN ({n_dk} pre-game priced games, observed {espn.get('generated_at')} UTC)"
+                 if n_dk else "no sportsbook price available")
     lines.append(f"_Generated at {today.get('generated_at') or 'unknown'} UTC. "
-                 f"Game lines source: **{src_label}**. Pick-em opportunities from PrizePicks._")
+                 f"Game lines source: **{src_label}**._")
     lines.append("")
 
     # --- Play of the Day ---
@@ -110,7 +114,7 @@ def build_summary() -> str:
         lines.append(f"- Market: {_fmt_price(pod['market_price'])}")
         lines.append(f"- Model probability: {pod['model_prob']*100:.1f}%")
         lines.append(f"- Raw edge: +{pod['edge_pct']}%")
-        lines.append(f"- Recommended stake: {kelly}")
+        # (2026-11-03) no stake line: sizing belongs to priced, validated picks only
         if is_precal:
             lines.append("")
             lines.append("> _Edge >= 15% is well above what a properly-calibrated baseball model produces. "
@@ -131,13 +135,15 @@ def build_summary() -> str:
             recs = sorted(g.get("recommendations") or [], key=lambda r: -(r.get("edge_pct") or 0))
             top = recs[0] if recs else None
             wx_str = "indoor" if wx.get("is_indoor") else f"{wx.get('temp_f','?')}F {wx.get('wind_mph','?')}mph"
-            top_str = f"{top['label']} +{top['edge_pct']}%" if top else "--"
+            # (2026-11-03) an edge is shown only against a real DraftKings price
+            is_dk = str(m.get("book") or "").lower() == "draftkings"
+            top_str = f"{top['label']} +{top['edge_pct']}% vs DK" if (top and is_dk) else "--"
             lines.append(f"| {g.get('time','--')} | {g['matchup']} | {g.get('park','--')} | {wx_str} | {top_str} |")
         lines.append("")
 
     # --- PrizePicks soft lines ---
-    pp_props = pickem.get("props") or []
-    softer = [p for p in pp_props if p.get("pp_advantage")]
+    # (2026-11-03) PrizePicks feed dark since 2026-07-09: section removed.
+    softer = []
     if softer:
         lines.append(f"## PrizePicks - {len(softer)} lines softer than DraftKings")
         lines.append("")
@@ -151,7 +157,8 @@ def build_summary() -> str:
         lines.append("")
 
     # --- Parlays ---
-    parlay_list = parlays.get("parlays") or []
+    # (2026-11-03) parlays are never recommended by default, never with EV/stake.
+    parlay_list = []
     if parlay_list:
         lines.append(f"## Parlays - top {min(5, len(parlay_list))}")
         lines.append("")
@@ -192,7 +199,7 @@ def build_summary() -> str:
     f5_games = f5.get("games") or []
     rl_games = rl.get("games") or []
     if nrfi_games or f5_games or rl_games:
-        lines.append("## Auxiliary Markets (Model Fair Prices)")
+        lines.append("## Auxiliary Markets -- model projection, unvalidated, no sportsbook price, not a recommendation")  # (2026-11-03)
         lines.append("")
         lines.append("| Matchup | NRFI % | NRFI fair | F5 total | RL home -1.5 fair | RL away +1.5 fair |")
         lines.append("|---|---|---|---|---|---|")
@@ -234,7 +241,10 @@ def build_summary() -> str:
 
     # --- Hot / cold teams ---
     teams_form = form.get("teams") or {}
-    if teams_form:
+    # (2026-11-03) team_form.json is MLB. Offseason (today.json no_games) or too
+    # few teams for a distinct top-5 / bottom-5 (needs > 10) -> suppressed; it
+    # had printed the same 4 teams as both Hot and Cold.
+    if teams_form and not today.get("no_games") and len(teams_form) > 10:
         sorted_by_diff = sorted(teams_form.items(), key=lambda kv: -(kv[1].get("run_diff") or 0))
         hot = sorted_by_diff[:5]
         cold = sorted_by_diff[-5:][::-1]

@@ -50,13 +50,19 @@ def _num(x, d=0.0):
 
 
 def run() -> Dict[str, Any]:
-    ats = _load("ats_tracker_mlb.json")
-    tf = (_load("team_form.json").get("teams") or {})
+    # (2026-11-03) Every tile here is MLB. In the offseason (today.json
+    # no_games) the feeds are frozen end-of-season snapshots and team_form.json
+    # holds 4 teams -- top-8 "hottest" and "coldest" were the SAME 4 teams.
+    # Offseason -> suppress MLB; a top-k/bottom-k board needs > 2k teams.
+    today = _load("today.json")
+    offseason = bool(today.get("no_games")) or not (today.get("games") or [])
+    ats = {} if offseason else _load("ats_tracker_mlb.json")
+    tf = {} if offseason else (_load("team_form.json").get("teams") or {})
     teams = [v for v in tf.values() if isinstance(v, dict)]
-    hot = _load("hot_streaks.json")
+    hot = {} if offseason else _load("hot_streaks.json")
 
     # pitcher form leaderboard: recent-form index (0-100) + heating/cooling status
-    rfi = _rows(_load("mlb_starter_recent_form_index.json"))
+    rfi = [] if offseason else _rows(_load("mlb_starter_recent_form_index.json"))
     status_by_pitcher = {r.get("pitcher"): r.get("status")
                          for r in _rows(_load("mlb_pitcher_form_tracker.json"))}
     pform = []
@@ -74,17 +80,27 @@ def run() -> Dict[str, Any]:
         return {k: t.get(k) for k in ("abbr", "wins", "losses", "run_diff", "runs_pg",
                                       "runs_allowed_pg", "streak", "games_in_sample")}
 
-    hottest = sorted(teams, key=lambda t: -_num(t.get("run_diff")))[:8]
-    coldest = sorted(teams, key=lambda t: _num(t.get("run_diff")))[:8]
-    high_scoring = sorted(teams, key=lambda t: -_num(t.get("runs_pg")))[:6]
-    pitching_best = sorted(teams, key=lambda t: _num(t.get("runs_allowed_pg")))[:6]
+    def _top(key, k, rev):
+        # a distinct top-k / bottom-k needs more than 2k teams (2026-11-03)
+        if len(teams) <= 2 * k:
+            return []
+        return sorted(teams, key=lambda t: (-1 if rev else 1) * _num(t.get(key)))[:k]
+    hottest = _top("run_diff", 8, True)
+    coldest = _top("run_diff", 8, False)
+    high_scoring = _top("runs_pg", 6, True)
+    pitching_best = _top("runs_allowed_pg", 6, False)
 
     out = {
         "generated_at": dt.datetime.utcnow().isoformat(timespec="seconds"),
         "date": (_load("today.json").get("date")),
-        "method_note": "League-wide trend scan: ATS model under/over-rates, hottest/coldest "
-                       "teams by run differential, hot/cold bats (L7 OPS), starting-pitcher "
-                       "form leaderboard, run-environment + NRFI leans. Joined from existing feeds.",
+        "method_note": "League-wide MLB trend scan: record vs the MODEL'S OWN spread (not a "
+                       "sportsbook spread; n >= 20 decided games), hottest/coldest teams by run "
+                       "differential (only with > 2k teams), hot/cold bats (L7 OPS), starting-"
+                       "pitcher form. Context, not recommendations. Suppressed in the offseason.",
+        "offseason": offseason,
+        "season_note": ("MLB offseason: no games on the board, so the MLB trend tiles are "
+                        "suppressed until Opening Day." if offseason else None),
+        "ats_basis": ats.get("basis"),
         "model_underrates": (ats.get("model_underrates_top5") or [])[:8],
         "model_overrates": (ats.get("model_overrates_top5") or [])[:8],
         "hottest_teams": [_slim_team(t) for t in hottest],
@@ -96,7 +112,7 @@ def run() -> Dict[str, Any]:
         "pitcher_form_leaderboard": pform[:20],
         "hot_pitchers": (hot.get("hot_pitchers") or [])[:10],
         "cold_pitchers": (hot.get("cold_pitchers") or [])[:10],
-        "nrfi_leans": _rows(_load("nrfi.json"))[:16],
+        "nrfi_leans": [],   # (2026-11-03) model P vs a league baseline is not a price/lean
         "counts": {
             "teams_ranked": len(teams),
             "hot_bats": len(hot.get("hot_batters") or []),

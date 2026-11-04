@@ -156,7 +156,7 @@ def run() -> Dict[str, Any]:
 
             edge_class = "NONE"
             best_market = None
-            # STRONG when 10%+ edge vs -120 book
+            # flag band (NOT an edge: no sportsbook prop price exists; the old '10%+ edge vs an assumed -120 book' is withdrawn 2026-11-03)
             for market, p in [
                 ("BLOCKS_OVER_0.5", p_b_1plus), ("BLOCKS_OVER_1.5", p_b_2plus),
                 ("STEALS_OVER_0.5", p_s_1plus), ("STEALS_OVER_1.5", p_s_2plus),
@@ -194,8 +194,9 @@ def run() -> Dict[str, Any]:
         "n_players_projected": len(rows),
         "n_strong": len(strong),
         "n_players_in_db": len(PLAYER_DB),
-        "method_note": "Per-player BPG/SPG × pace_factor. Poisson at 0.5/1.5 lines. "
-                       "STRONG = 10%+ edge vs -120 book.",
+        "status": "unvalidated_model_projection",   # (2026-11-03)
+        "method_note": "UNVALIDATED MODEL PROJECTION -- no sportsbook price, not a pick. Per-player BPG/SPG × pace_factor. Poisson at 0.5/1.5 lines. "
+                       "flag band (NOT an edge: no sportsbook prop price exists; the old '10%+ edge vs an assumed -120 book' is withdrawn 2026-11-03).",
         "rows": rows,
         "strong_edges": strong,
     }

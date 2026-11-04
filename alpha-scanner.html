@@ -9,22 +9,22 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="EdgeStat">
-<meta name="description" content="Cross-Sport Alpha Scanner · EdgeStat — quantitative sports-betting analytics: model edges, calibrated probabilities, and an honest settled track record across MLB, NBA, NHL, golf, tennis, soccer and more. Informational only, 21+.">
+<meta name="description" content="Cross-Sport Projection Scanner · EdgeStat — quantitative sports-betting analytics: model edges, calibrated probabilities, and an honest settled track record across MLB, NBA, NHL, golf, tennis, soccer and more. Informational only, 21+.">
 <link rel="canonical" href="https://betting.bpleone.com/alpha-scanner.html">
 <meta name="theme-color" content="#0d1017">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="EdgeStat">
-<meta property="og:title" content="Cross-Sport Alpha Scanner | EdgeStat">
-<meta property="og:description" content="Cross-Sport Alpha Scanner · EdgeStat — quantitative sports-betting analytics: model edges, calibrated probabilities, and an honest settled track record across MLB, NBA, NHL, golf, tennis, soccer and more. Informational only, 21+.">
+<meta property="og:title" content="Cross-Sport Projection Scanner | EdgeStat">
+<meta property="og:description" content="Cross-Sport Projection Scanner · EdgeStat — quantitative sports-betting analytics: model edges, calibrated probabilities, and an honest settled track record across MLB, NBA, NHL, golf, tennis, soccer and more. Informational only, 21+.">
 <meta property="og:url" content="https://betting.bpleone.com/alpha-scanner.html">
 <meta property="og:image" content="https://betting.bpleone.com/assets/og-card.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://betting.bpleone.com/assets/og-card.png">
-<meta name="twitter:title" content="Cross-Sport Alpha Scanner | EdgeStat">
-<meta name="twitter:description" content="Cross-Sport Alpha Scanner · EdgeStat — quantitative sports-betting analytics: model edges, calibrated probabilities, and an honest settled track record across MLB, NBA, NHL, golf, tennis, soccer and more. Informational only, 21+.">
-<title>Cross-Sport Alpha Scanner | EdgeStat</title>
+<meta name="twitter:title" content="Cross-Sport Projection Scanner | EdgeStat">
+<meta name="twitter:description" content="Cross-Sport Projection Scanner · EdgeStat — quantitative sports-betting analytics: model edges, calibrated probabilities, and an honest settled track record across MLB, NBA, NHL, golf, tennis, soccer and more. Informational only, 21+.">
+<title>Cross-Sport Projection Scanner | EdgeStat</title>
 <link rel="stylesheet" href="css/style.css?v=20260908c">
 <script src="js/nav.js?v=20260908c"></script>
 <style>
@@ -98,39 +98,41 @@
 </header>
 
 <div class="container">
-  <h1>Cross-Sport Alpha Scanner</h1>
+  <!-- (2026-11-03) relabelled: unvalidated model projections, no "alpha", no edge vs an assumed -120 -->
+  <h1>Cross-Sport Projection Scanner</h1>
   <p class="sub">
-    The spider that crawls <strong>every prop output across all sports</strong>
-    (MLB / NBA / NHL / WNBA / Soccer / Tennis / UFC) and surfaces the day's
-    highest-conviction plays. Filters to value-zone probabilities
-    (25-80%, avoiding heavy favorites and longshots).
+    Crawls every prop output across all sports (MLB / NBA / NHL / WNBA / Soccer / Tennis / UFC)
+    and lists each row's best model market at 25-80% probability.
+    <strong style="color:#e3a35a;">Unvalidated model projections — no sportsbook price, not a recommendation.</strong>
+    No sportsbook prop price exists in the free feeds, so no edge is shown; rows projected from the
+    hard-coded 2024-25 player table ("fallback") are excluded.
   </p>
 
   <div class="summary-grid">
     <div class="summary-card">
       <div class="count" id="cnt-alpha">—</div>
-      <div class="label">Pure Alpha Picks</div>
+      <div class="label">Model projections</div>
     </div>
     <div class="summary-card">
       <div class="count" id="cnt-correlated">—</div>
-      <div class="label">Correlated Matchups</div>
+      <div class="label">Games with 2+ projections</div>
     </div>
     <div class="summary-card">
       <div class="count" id="cnt-confluence">—</div>
-      <div class="label">Confluence Triples</div>
+      <div class="label">Players with 3+ projections</div>
     </div>
   </div>
 
   <div class="section">
-    <h2>Confluence Triples (3+ Signals on Same Player)</h2>
+    <h2>3+ projections on one player (same model family — not independent agreement)</h2>
     <div id="confluence-list"></div>
   </div>
 
   <div class="section">
-    <h2>Top Pure Alpha Picks</h2>
+    <h2>Model projections (unvalidated)</h2>
     <table>
       <thead>
-        <tr><th>Player</th><th>Sport / Market</th><th>Edge Class</th><th>Probability</th><th>Fair Odds</th><th>Matchup</th></tr>
+        <tr><th>Player</th><th>Module / Market</th><th>Model market</th><th>Model P</th><th>Book price</th><th>Matchup · date</th></tr>
       </thead>
       <tbody id="alpha-tbody"></tbody>
     </table>
@@ -146,7 +148,7 @@ fetch('data/cross_sport_alpha_scanner.json')
     document.getElementById('cnt-alpha').textContent = d.n_pure_alpha_picks || 0;
     document.getElementById('cnt-correlated').textContent = d.n_correlated_matchups || 0;
     document.getElementById('cnt-confluence').textContent = d.n_confluence_triples || 0;
-    document.getElementById('stamp').textContent = 'Generated ' + (d.generated_at || '');
+    document.getElementById('stamp').textContent = 'Generated ' + (d.generated_at || '') + (d.n_excluded_fallback ? ' · ' + d.n_excluded_fallback + ' fallback-table rows excluded' : '');
 
     // Confluence triples
     const confluenceEl = document.getElementById('confluence-list');
@@ -163,7 +165,7 @@ fetch('data/cross_sport_alpha_scanner.json')
       confluenceEl.appendChild(div);
     });
     if ((d.confluence_triples || []).length === 0) {
-      confluenceEl.innerHTML = '<div style="color:var(--muted,#888);font-size:13px;padding:12px;">No 3+ signal confluences tonight.</div>';
+      confluenceEl.innerHTML = '<div style="color:var(--muted,#888);font-size:13px;padding:12px;">No player with 3+ projections.</div>';
     }
 
     // Top alpha picks table
@@ -173,10 +175,10 @@ fetch('data/cross_sport_alpha_scanner.json')
       tr.innerHTML = `
         <td>${pick.player || '—'}</td>
         <td class="market">${pick.source_module} / ${pick.market_label}</td>
-        <td>${pick.edge_class || ''}</td>
+        <td>${pick.market || ''}</td>
         <td class="p-val">${(pick.p * 100).toFixed(1)}%</td>
-        <td class="odds">${pick.fair_odds || '—'}</td>
-        <td>${pick.matchup || '—'}</td>
+        <td class="odds">none</td>
+        <td>${pick.matchup || '—'}${pick.game_date ? ' · ' + pick.game_date : ''}</td>
       `;
       tbody.appendChild(tr);
     });

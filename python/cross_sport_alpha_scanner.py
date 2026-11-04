@@ -87,24 +87,37 @@ def _safe(x, default=0.0):
         return default
 
 
-def _identify_pick(row: Dict[str, Any]) -> Dict[str, Any]:
-    """Extract a normalized pick descriptor from a prop row."""
-    best = row.get("best_market") or {}
-    edge_class = row.get("edge_class") or ""
-    if not (best or edge_class.startswith("STRONG")):
-        return {}
+PROJECTION_LABEL = "unvalidated model projection — no sportsbook price, not a recommendation"
 
+
+def _is_fallback(row: Dict[str, Any]) -> bool:
+    """(2026-11-03) A row whose stat source is "fallback" was projected from the
+    hard-coded 2024-25 PLAYER_DB (stale averages AND teams), not real data."""
+    return any(k.endswith("_source") and str(v).lower() == "fallback" for k, v in row.items())
+
+
+def _identify_pick(row: Dict[str, Any]) -> Dict[str, Any]:
+    """Extract a normalized projection descriptor from a prop row.
+
+    (2026-11-03) No "alpha"/"STRONG" label and no edge: the modules' "STRONG =
+    10%+ edge vs -120 book" compares the model to an ASSUMED -120 price. No
+    sportsbook prop price exists in the free feeds, so edge is None."""
+    best = row.get("best_market") or {}
+    if not best:
+        return {}
     return {
         "p": _safe(best.get("p")),
-        "fair_odds": best.get("fair_odds"),
-        "market": best.get("market") or edge_class,
-        "edge_class": edge_class,
+        "market": best.get("market"),
+        "edge": None,
+        "book_price": None,
+        "label": PROJECTION_LABEL,
     }
 
 
 def run() -> Dict[str, Any]:
-    pure_alpha: List[Dict[str, Any]] = []
+    pure_alpha: List[Dict[str, Any]] = []      # (2026-11-03) = projections; key kept for consumers
     by_player: Dict[str, List[Dict[str, Any]]] = {}
+    n_fallback = 0
 
     for filename, list_key, ident_field, market_label in PROP_FILES:
         d = _load(os.path.join(DATA_DIR, filename))
@@ -115,6 +128,9 @@ def run() -> Dict[str, Any]:
             ident = (r.get(ident_field) or r.get("name") or r.get("player")
                      or r.get("batter") or r.get("pitcher") or "").strip()
             if not ident: continue
+            if _is_fallback(r):                      # (2026-11-03) hard-coded 2024-25 table
+                n_fallback += 1
+                continue
             pick = _identify_pick(r)
             if not pick: continue
             if not pick.get("p") or not pick.get("market"): continue
@@ -127,6 +143,7 @@ def run() -> Dict[str, Any]:
             pick_entry = {
                 "player": ident,
                 "matchup": r.get("matchup") or "",
+                "game_date": r.get("game_date") or r.get("date"),
                 "source_module": filename.replace(".json", ""),
                 "market_label": market_label,
                 **pick,
@@ -170,9 +187,16 @@ def run() -> Dict[str, Any]:
         "n_pure_alpha_picks": len(pure_alpha),
         "n_correlated_matchups": len(correlated_doubles),
         "n_confluence_triples": len(confluence_triples),
-        "method_note": f"Crawls {len(PROP_FILES)} prop output files across all sports, "
-                       "extracts STRONG picks with p in [25%, 80%], groups by matchup "
-                       "for correlated_doubles and by player for confluence_triples.",
+        "n_excluded_fallback": n_fallback,
+        "status": "unvalidated_model_projection",
+        "label": PROJECTION_LABEL,
+        "method_note": f"(2026-11-03) Crawls {len(PROP_FILES)} prop output files; keeps each row's best "
+                       "model market with p in [25%, 80%]. UNVALIDATED MODEL PROJECTIONS: no sportsbook "
+                       "price exists for these props, so there is no edge (the modules' 'STRONG = 10%+ vs "
+                       "-120' compared to an assumed price and is not used). Rows projected from the "
+                       "hard-coded 2024-25 table (source 'fallback') are excluded. correlated_doubles = "
+                       "2+ projections in one game; confluence_triples = 3+ projections on one player "
+                       "(same model, not independent agreement).",
         "top_25_pure_alpha": pure_alpha[:25],
         "correlated_doubles": correlated_doubles[:15],
         "confluence_triples": confluence_triples[:15],
@@ -184,6 +208,6 @@ def run() -> Dict[str, Any]:
 
 if __name__ == "__main__":
     o = run()
-    print(f"[xs-alpha] {o['n_pure_alpha_picks']} alpha picks, "
+    print(f"[xs-alpha] {o['n_pure_alpha_picks']} projections ({o['n_excluded_fallback']} fallback excluded), "
           f"{o['n_correlated_matchups']} correlated matchups, "
           f"{o['n_confluence_triples']} confluence triples -> {OUT}")

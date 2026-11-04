@@ -60,6 +60,7 @@
   .summary-key { color: #888; }
   .summary-val { color: #e6e6e6; font-family: 'Menlo', 'Consolas', monospace; }
   .green { color: #58c878; }
+  .red { color: #e35a5a; }
 
   .cta { display: block; background: linear-gradient(135deg, #d4a04a, #b8862e);
          color: #0a0a0a; text-align: center; padding: 12px; border-radius: 8px;
@@ -91,19 +92,23 @@
   <div class="summary" id="summary">
     <div class="summary-row"><span class="summary-key">Today's slate</span><span class="summary-val" id="sGames">--</span></div>
     <div class="summary-row"><span class="summary-key">Best Bets surfaced</span><span class="summary-val" id="sBets">--</span></div>
-    <div class="summary-row"><span class="summary-key">Model Hit Rate (7d)</span><span class="summary-val green" id="sHit">--</span></div>
+    <!-- (2026-11-03) hit rate shown WITH ROI, coloured by ROI sign (a 63.6% hit rate ran negative ROI 6 of 7 days) -->
+    <div class="summary-row"><span class="summary-key">All picks, last 7d</span><span class="summary-val" id="sHit">--</span></div>
     <div class="summary-row"><span class="summary-key">Model Health</span><span class="summary-val" id="sHealth">--</span></div>
   </div>
 
-  <a href="http://betting.bpleone.com" class="cta" target="_top">Open EdgeStat Desk →</a>
+  <a href="https://betting.bpleone.com/" class="cta" target="_top">Open EdgeStat Desk →</a>
 
+  <!-- (2026-11-03) refresh cadence = daily pipeline 2x/day + heartbeat every 2h (was "3x daily") -->
   <div class="footer">
-    <a href="http://betting.bpleone.com">betting.bpleone.com</a> · Updated 3× daily
+    <a href="https://betting.bpleone.com/" target="_top">betting.bpleone.com</a> · data refreshes about every 2 hours
   </div>
 </div>
 
 <script>
-const SITE = "http://betting.bpleone.com";
+// (2026-11-03) relative URLs: the absolute http:// origin was blocked as mixed
+// content when the widget is served over https.
+const SITE = ".";
 function loadAll() {
   Promise.all([
     fetch(`${SITE}/data/today.json?t=${Date.now()}`).then(r => r.json()).catch(() => ({})),
@@ -127,8 +132,17 @@ function loadAll() {
     document.getElementById("sBets").textContent = bb.n_bets || 0;
     const recent = (perf.by_date || []).slice(-7);
     if (recent.length) {
-      const avg = recent.reduce((s, r) => s + (r.hit_rate || 0), 0) / recent.length;
-      document.getElementById("sHit").textContent = (avg * 100).toFixed(1) + "%";
+      // pick-weighted over the 7 days (a simple day average over-weights thin days)
+      const n = recent.reduce((s, r) => s + (r.graded || 0), 0);
+      const hits = recent.reduce((s, r) => s + (r.hit_rate || 0) * (r.graded || 0), 0);
+      const st = recent.reduce((s, r) => s + (r.stake_records || 0), 0);
+      const roiW = recent.reduce((s, r) => s + (r.roi_pct == null ? 0 : r.roi_pct * (r.stake_records || 0)), 0);
+      const roi = st ? roiW / st : null;
+      const el = document.getElementById("sHit");
+      el.textContent = (n ? (hits / n * 100).toFixed(1) + "% hit" : "--") +
+        (roi != null ? " · ROI " + (roi >= 0 ? "+" : "") + roi.toFixed(1) + "%" : "");
+      el.classList.remove("green", "red");
+      if (roi != null) el.classList.add(roi >= 0 ? "green" : "red");
     }
     if (mh.total_score) {
       document.getElementById("sHealth").textContent = mh.total_score + "/100 · " + mh.tier;

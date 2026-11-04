@@ -60,23 +60,24 @@
 </header>
 <main class="container">
   <section class="page-head">
-    <h1>🎯 Confluence Top-5 — Tonight's Action List</h1>
+    <h1>🎯 Confluence Top-5 — Today's Priced Agreement</h1>
     <p class="muted" id="status">Loading from confluence_top_5.json…</p>
   </section>
 
   <div class="info-card">
     <strong style="color:#d4a04a;">What this is:</strong>
     <span style="color: var(--text-2,#aaa); font-size:13px;">
-      The 5 plays where multiple modules agree. Score = unique_sources × grade_weighting × (0.5 + avg_prob).
-      WHALE tier ≥ 6 (gold), STRONG tier ≥ 4 (green), STANDARD ≥ 2.
-      Grade-weighted — A/B graded sources count more than F-graded ones (which the integrity layer is still proving out).
+      <!-- (2026-11-03) today's ET slate, pre-game, DK-priced only; agreement within one market + direction -->
+      Plays where 2+ modules agree on the <em>same market and direction</em>. Score = unique_sources × grade_weighting × (0.5 + avg_prob).
+      Only pending picks on <strong>today's ET slate</strong> that are still <strong>pre-game</strong> and carry a live <strong>DraftKings price</strong>;
+      player props have no sportsbook price in the free feeds and are excluded. Agreement is a count, not a verdict.
     </span>
   </div>
 
   <div class="stat-strip">
     <div class="stat"><div class="stat-val" id="s_clusters">--</div><div class="stat-label">Clusters Found</div></div>
-    <div class="stat"><div class="stat-val" id="s_whales">--</div><div class="stat-label">WHALES (top-5)</div></div>
-    <div class="stat"><div class="stat-val" id="s_strong">--</div><div class="stat-label">STRONG (top-5)</div></div>
+    <div class="stat"><div class="stat-val" id="s_whales">--</div><div class="stat-label">Slate date (ET)</div></div>
+    <div class="stat"><div class="stat-val" id="s_strong">--</div><div class="stat-label">Excluded (unpriced / not today)</div></div>
     <div class="stat"><div class="stat-val" id="s_updated">--</div><div class="stat-label">Last Update</div></div>
   </div>
 
@@ -101,29 +102,31 @@
   }
 
   document.getElementById('s_clusters').textContent = d.n_clusters || 0;
-  document.getElementById('s_whales').textContent = d.n_top_5_whales || 0;
-  document.getElementById('s_strong').textContent = d.n_top_5_strong || 0;
+  document.getElementById('s_whales').textContent = d.date_et || '--';
+  document.getElementById('s_strong').textContent = Object.values(d.excluded || {}).reduce((a, b) => a + b, 0);
   document.getElementById('s_updated').textContent = new Date(d.generated_at + 'Z').toLocaleTimeString();
   document.getElementById('status').textContent =
     `Generated ${new Date(d.generated_at + 'Z').toLocaleString()} · refreshes every 5 min via heartbeat`;
 
   function renderCard(r) {
-    const tier = r.tier || 'STANDARD';
+    const tier = 'STANDARD';
     const sources = (r.sources || []).map((s, i) => {
       const g = (r.source_grades || [])[i] || 'F';
       return `<span class="source-pill grade-${g}">${s} · ${g}</span>`;
     }).join('');
-    const fairOdds = r.sample_pick?.fair_american;
+    const sp = r.sample_pick || {};
+    const bookOdds = sp.book_american;
+    const obs = sp.observed_at ? new Date(String(sp.observed_at).replace(/Z?$/, 'Z')).toLocaleTimeString('en-US', {timeZone:'America/New_York', hour:'numeric', minute:'2-digit'}) + ' ET' : '';
     return `<div class="pick-card tier-${tier.toLowerCase()}">
       <div class="pick-head">
         <div>
           <div class="pick-player">${r.player_or_matchup || '--'}</div>
-          <div class="pick-market">${r.sport || ''} · ${r.market_family || ''} · ${r.sample_pick?.market || ''}${fairOdds ? ' · fair ' + (fairOdds > 0 ? '+' : '') + fairOdds : ''}</div>
+          <div class="pick-market">${r.sport || ''} · ${sp.game_date || ''} · ${sp.market || ''}${bookOdds != null ? ' · DK ' + (bookOdds > 0 ? '+' : '') + bookOdds + ' (obs ' + obs + ')' : ''}${r.desk_verdict ? ' · desk: ' + r.desk_verdict : ''}</div>
         </div>
         <div>
           <div class="pick-score">${r.confluence_score}</div>
           <div class="pick-score-label">confluence</div>
-          <span class="tier-badge ${tier}" style="margin-top:4px; display:inline-block;">${tier}</span>
+
         </div>
       </div>
       <div style="color: var(--muted,#888); font-size: 11px;">
@@ -134,7 +137,7 @@
   }
 
   document.getElementById('top5').innerHTML = (d.top_5 || []).map(renderCard).join('')
-    || '<div class="info-card">No confluent picks yet — waiting for module agreement.</div>';
+    || `<div class="info-card">No priced agreement on today's slate (${d.date_et || ''} ET). ${Object.entries(d.excluded || {}).map(([k, v]) => v + ' ' + k.replace(/_/g, ' ')).join(' · ')}.</div>`;
   document.getElementById('top15').innerHTML = (d.top_15 || []).slice(5).map(renderCard).join('');
 })();
 </script>

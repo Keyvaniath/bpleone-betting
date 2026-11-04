@@ -116,17 +116,28 @@ def run() -> Dict[str, Any]:
                         "team": team_name,
                         "matchup": g.get("matchup"),
                         "over_pct": over_pct,
-                        "detail": f"{team_name} has gone OVER team-median total in {over_pct*100:.0f}% of L10 games -- lean OVER",
+                        "detail": f"{team_name} has gone OVER team-median total in {over_pct*100:.0f}% of L10 games",  # (2026-11-03) no lean advice
                     })
 
     # 4) SITUATIONAL anomalies -- aggregated from the already-computed free feeds
     #    so the anomalies surface carries every situational edge tonight in one
     #    place (each is also shown on its own page; this is the rollup).
 
-    # 4a) Steam moves (line_movement.py: open->current de-vigged move beyond threshold)
+    # 4a) Steam moves (line_movement.py: open->latest de-vigged move beyond threshold).
+    #     (2026-11-03) line_movement now carries only UPCOMING games and PRE-GAME
+    #     snapshots; we re-check here (game not started) and show the game date.
+    _now = dt.datetime.now(dt.timezone.utc)
     lm = _load(os.path.join(DATA_DIR, "line_movement.json"))
     for mv in (lm.get("movers") or []):
         if not mv.get("steam"):
+            continue
+        try:
+            _st = dt.datetime.fromisoformat(str(mv.get("commence_time")).replace("Z", "+00:00"))
+        except Exception:
+            continue                      # no commence time -> cannot prove pre-game
+        if _st.tzinfo is None:
+            _st = _st.replace(tzinfo=dt.timezone.utc)
+        if _st <= _now:
             continue
         kinds = "/".join(mv.get("steam_kind") or [])
         bits = []
@@ -139,7 +150,9 @@ def run() -> Dict[str, Any]:
             "type": "STEAM_MOVE",
             "team": mv.get("matchup"),
             "matchup": mv.get("matchup"),
-            "detail": f"{kinds} steam since open: {'; '.join(bits)} ({mv.get('snapshots')} snapshots)",
+            "game_date": mv.get("game_date"),
+            "detail": (f"{mv.get('game_date') or ''}: {kinds} line moved since open (pre-game DK): "
+                       f"{'; '.join(bits)} ({mv.get('snapshots')} snapshots) -- a line move, not a read on who bet"),
         })
 
     # 4b) Compound bullpen signals + pen-fatigue mismatches (mlb_bullpen_freshness.py)

@@ -133,12 +133,33 @@ def _summarize(positions: List[int]) -> Dict[str, Any]:
     }
 
 
+def _empty(reason: str, next_race=None) -> Dict[str, Any]:
+    out = {
+        "generated_at": dt.datetime.utcnow().isoformat(timespec="seconds"),
+        "next_race": next_race,
+        "circuit_key": None,
+        "n_drivers": 0,
+        "n_api_calls": 0,
+        "rows": [],
+        "reason": reason,
+        "note": "Driver track-specific finishing history overlay. Empty: " + reason,
+    }
+    os.makedirs(os.path.dirname(OUT), exist_ok=True)
+    with open(OUT, "w") as f: json.dump(out, f, indent=2)
+    return out
+
+
 def run() -> Dict[str, Any]:
     f1_state = _load(os.path.join(DATA_DIR, "f1_state.json"))
     next_race = f1_state.get("next_race") or f1_state.get("upcoming")
     if not next_race:
-        # Use the active circuit if state is missing
-        next_race = {"circuit": "monaco", "name": "Monaco Grand Prix"}
+        # (2026-11-03) a race on the board that has not finished counts as next
+        next_race = next((r for r in (f1_state.get("races") or [])
+                          if not r.get("is_complete") and str(r.get("status") or "").lower() != "final"), None)
+    if not next_race:
+        # (2026-11-03) NO hard-coded Monaco fallback: with no next race there is
+        # nothing to overlay, so emit nothing (it had shown Monaco history in November).
+        return _empty("no upcoming F1 race on the board (f1_state.json has no next race)")
 
     circuit_raw = next_race.get("circuit") or next_race.get("name") or "monaco"
     circuit = _normalize_circuit(circuit_raw)
@@ -148,6 +169,8 @@ def run() -> Dict[str, Any]:
     if drivers_list:
         drivers_list = drivers_list[:8]
     else:
+        # (2026-11-03) the hard-coded 5-driver list is stale; no standings -> nothing
+        return _empty("no current F1 driver standings in f1_state.json", next_race)
         drivers_list = [
             {"id": "max_verstappen", "name": "Max Verstappen"},
             {"id": "leclerc", "name": "Charles Leclerc"},
@@ -170,11 +193,14 @@ def run() -> Dict[str, Any]:
             n_api_hits += 1
 
         # Fall back to static history
+        src = "jolpica" if positions else None
         if not positions:
             history = FALLBACK_TRACK_HISTORY.get(last_name, {})
             positions = history.get(circuit, [])
+            src = "static_table" if positions else None   # (2026-11-03) provenance on the row
 
         summary = _summarize(positions)
+        summary["source"] = src
         summary["driver"] = d_name
         summary["circuit"] = circuit
         rows.append(summary)

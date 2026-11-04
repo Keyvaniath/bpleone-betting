@@ -58,8 +58,10 @@
   </section>
 
   <div class="info-card">
-    <strong style="color:#d4a04a;">Powered by Cloudflare Workers Pro plan</strong>
+    <!-- (2026-11-03) scope statement: the Worker polls MLB lines from Bovada only -->
+    <strong style="color:#d4a04a;">MLB / Bovada only (offseason: empty).</strong>
     <span style="color: var(--text-2,#aaa); font-size:13px;">
+      This page tracks MLB game lines from Bovada only — no other sport or book — so it is empty in the MLB offseason.
       Each game has a rolling 24-hour buffer of every line move stored in KV.
       The Worker writes a new snapshot every 60 seconds during games and the chart
       auto-refreshes every 30s. Total cost: ~43,000 KV writes/day out of 1,000,000
@@ -102,7 +104,7 @@ async function loadPulse() {
   // 1. List all buffers
   const list = await fetchJSON(WORKER + '/history');
   if (!list || !list.matchups) {
-    document.getElementById('status').textContent = 'Worker reachable but no history buffers yet — wait one cron tick (~60s) and the buffers will populate.';
+    document.getElementById('status').textContent = 'No line histories: this page covers MLB / Bovada only, so it is empty in the MLB offseason or before a slate is posted.';
     return;
   }
   document.getElementById('status').innerHTML =

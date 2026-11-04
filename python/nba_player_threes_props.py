@@ -4,7 +4,7 @@ EdgeStat -- NBA player 3-pointers made (3PM) prop projections.
 Per-player projected 3PM = season_3pm × pace_factor × opp_3p_defense.
 Poisson distribution at typical 0.5 lines.
 Common book lines: 1.5, 2.5, 3.5, 4.5 (depending on player).
-STRONG when 10%+ edge vs -120 book breakeven (54.5%).
+flag band (NOT an edge: no sportsbook prop price exists; the old '10%+ edge vs an assumed -120 book' is withdrawn 2026-11-03) breakeven (54.5%).
 
 Output: data/nba_player_threes_props.json
 """
@@ -187,7 +187,7 @@ def run() -> Dict[str, Any]:
                 # P(>= floor(line)+1)
                 p_over = _poisson_at_least(int(line) + 1, projected_tpm)
                 p_under = 1 - p_over
-                # Lock STRONG to ±10% edge over -120 (54.5% breakeven), capped at 72%
+                # flag band p in [0.62, 0.72] -- NOT an edge (no real book price; assumed -120 withdrawn 2026-11-03)
                 if 0.62 <= p_over <= 0.72:
                     if not best_market or p_over > best_market["p"]:
                         edge_class = "STRONG_OVER"
@@ -224,8 +224,9 @@ def run() -> Dict[str, Any]:
         "n_players_projected": len(rows),
         "n_strong_edges": len(strong),
         "n_players_in_db": len(PLAYER_DB),
-        "method_note": "NBA player 3PM × pace × opp_3p_defense. Poisson at nearest 0.5 line. "
-                       "STRONG = 10%+ edge vs -120 book (p in [0.62, 0.72]).",
+        "status": "unvalidated_model_projection",   # (2026-11-03)
+        "method_note": "UNVALIDATED MODEL PROJECTION -- no sportsbook price, not a pick. NBA player 3PM × pace × opp_3p_defense. Poisson at nearest 0.5 line. "
+                       "flag band (NOT an edge: no sportsbook prop price exists; the old '10%+ edge vs an assumed -120 book' is withdrawn 2026-11-03) (p in [0.62, 0.72]).",
         "rows": rows,
         "strong_edges": strong,
     }

@@ -30,7 +30,7 @@
 <style>
   .row { display: grid; gap: 8px; padding: 9px 14px; align-items: center; font-family: 'JetBrains Mono', monospace; font-size: 12px; border-bottom: 1px solid rgba(255,255,255,0.04); }
   .row.head { background: rgba(255,255,255,0.04); color: var(--muted,#888); font-size: 10px; text-transform: uppercase; padding: 8px 14px; }
-  .row.cols-game { grid-template-columns: 1.3fr 70px 70px 70px 70px 70px 70px 1.4fr; }
+  .row.cols-game { grid-template-columns: 1.3fr 90px 70px 70px 70px 70px 70px 1.4fr; }
   .pos { color: #58c878; font-weight: 700; }
   .neg { color: #e35a5a; font-weight: 700; }
   .muted { color: var(--muted,#888); }
@@ -59,22 +59,23 @@
   </section>
 
   <div class="info-card">
-    <strong style="color:#d4a04a;">Why this matters more than alpha:</strong>
+    <!-- (2026-11-03) ROI figures recomputed: 0.53 x 1.909 - 1 = +1.2%; 0.53 x 1.870 - 1 = -0.9% (were +6.4% / +1.8%) -->
+    <strong style="color:#d4a04a;">Why price matters:</strong>
     <span style="color: var(--text-2,#aaa); font-size:13px;">
       Getting <strong>-110 instead of -115</strong> on a coin-flip bet is the difference
-      between long-term winning and losing. A bettor at 53% win rate at -110 is +6.4% ROI;
-      at -115 they're +1.8%. Line shopping is the single highest-EV habit in sports betting
-      — bigger than any model edge.
+      between long-term winning and losing. A bettor at a 53% win rate at -110 is +1.2% ROI;
+      at -115 they're −0.9%.
     </span>
   </div>
 
   <div id="sources-strip"></div>
   <div id="arb-strip"></div>
 
-  <h2 style="color:#d4a04a; font-size:15px; margin: 24px 0 8px;">Tonight's Best Lines (across all polled books)</h2>
+  <!-- (2026-11-03) upcoming games only, fresh snapshots (< 6h), each price with its observed time -->
+  <h2 style="color:#d4a04a; font-size:15px; margin: 24px 0 8px;">Upcoming Best Lines (pre-game, fresh snapshots only)</h2>
   <div class="panel">
     <div class="row head cols-game">
-      <div>Game</div><div>Books</div>
+      <div>Game</div><div>Game date (ET)</div>
       <div>Best HOME ML</div><div>Best AWAY ML</div>
       <div>Best OVER</div><div>Best UNDER</div>
       <div>Total Line</div>
@@ -110,14 +111,15 @@
     </span>
   </div>`;
 
-  // Upgrade notice if only 1 book
+  // Upgrade notice if only 1 book (2026-11-03: names the book actually polled)
   if (d.n_books_polled <= 1) {
+    const live = (d.sources_used || []).filter(([n, s]) => String(s).startsWith('live')).map(([n]) => n);
     const up = document.createElement('div');
     up.className = 'upgrade-card';
     up.innerHTML = `<strong style="color:#d4a04a;">⚡ Unlock true multi-book line shopping:</strong>
     <p style="margin:8px 0 4px; font-size:13px; color:var(--text-2,#aaa);">
-      Currently polling Bovada only (DraftKings geo-blocks Cloudflare IPs).
-      For 8+ aggregated books (DK, FD, Caesars, MGM, PointsBet, Pinnacle, etc.), add a free
+      Currently one book with a fresh pre-game price: ${live.length ? live.join(', ') : 'none'}.
+      With a single book there is nothing to shop between. For 8+ aggregated books, add a free
       The Odds API key:
     </p>
     <ol style="font-size:13px; color:var(--text-2,#aaa); margin: 8px 0;">
@@ -133,10 +135,10 @@
   const arbStrip = document.getElementById('arb-strip');
   if (d.arbitrage_alerts && d.arbitrage_alerts.length) {
     arbStrip.innerHTML = `<div class="arb-card">
-      <strong style="color:#58c878;">🎯 ARBITRAGE — risk-free profit detected:</strong>
+      <strong style="color:#58c878;">🎯 Possible arbitrage (prices observed at different times — re-check both books before acting):</strong>
       ${d.arbitrage_alerts.map(a =>
         `<div style="font-family:'JetBrains Mono',monospace; font-size:12px; margin:6px 0;">
-          ${a.best_home.book} HOME @ ${a.best_home.odds} + ${a.best_away.book} AWAY @ ${a.best_away.odds} = +${a.edge_pct}% guaranteed
+          ${a.best_home.book} HOME @ ${a.best_home.odds} + ${a.best_away.book} AWAY @ ${a.best_away.odds} = implied sum ${a.implied_sum}%
         </div>`).join('')}
     </div>`;
   }
@@ -145,21 +147,23 @@
   const rows = d.rows || [];
   const div = document.getElementById('games-rows');
   if (!rows.length) {
-    div.innerHTML = '<div class="row"><div class="muted">No games today.</div></div>';
+    div.innerHTML = '<div class="row"><div class="muted">No upcoming game with a fresh (&lt; 6h) pre-game price.</div></div>';
   } else {
     div.innerHTML = rows.map(r => {
       const bestH = r.best_home_ml;
       const bestA = r.best_away_ml;
       const bestO = r.best_total_over;
       const bestU = r.best_total_under;
-      const fmtOdds = (o) => o ? `<span class="book-best">${o.odds>=0?'+':''}${o.odds}</span><br><span class="muted" style="font-size:10px;">${o.book}</span>` : '<span class="muted">--</span>';
+      const obsOf = (o) => { const b = o && r.books[o.book]; const t = b && b.observed_at; return t ? new Date(t).toLocaleTimeString('en-US', {timeZone:'America/New_York', hour:'numeric', minute:'2-digit'}) + ' ET' : ''; };
+      const fmtOdds = (o) => o ? `<span class="book-best">${o.odds>=0?'+':''}${o.odds}</span><br><span class="muted" style="font-size:10px;">${o.book} · obs ${obsOf(o)}</span>` : '<span class="muted">--</span>';
+      const gameDate = r.commence_time ? new Date(r.commence_time.replace(/Z?$/, 'Z')).toLocaleString('en-US', {timeZone:'America/New_York', month:'short', day:'numeric', hour:'numeric', minute:'2-digit'}) : '--';
       const totalLine = Object.values(r.books).find(b => b.total_line)?.total_line || '--';
       const notes = r.arbitrage_or_lowvig ?
         `<span class="${r.arbitrage_or_lowvig.type==='ARBITRAGE'?'pos':'muted'}">${r.arbitrage_or_lowvig.type} ${r.arbitrage_or_lowvig.edge_pct?'+'+r.arbitrage_or_lowvig.edge_pct+'%':r.arbitrage_or_lowvig.vig_pct+'% vig'}</span>` :
         `<span class="muted">${r.n_books} book${r.n_books===1?'':'s'} polled</span>`;
       return `<div class="row cols-game">
-        <div><strong>${r.matchup}</strong></div>
-        <div>${r.n_books}</div>
+        <div><strong>${r.matchup}</strong> <span class="muted" style="font-size:10px;">${r.sport || ''}</span></div>
+        <div>${gameDate}</div>
         <div>${fmtOdds(bestH)}</div>
         <div>${fmtOdds(bestA)}</div>
         <div>${fmtOdds(bestO)}</div>
@@ -171,7 +175,7 @@
   }
 
   document.getElementById('status').textContent =
-    `Generated: ${new Date(d.generated_at + 'Z').toLocaleString()} · refreshes every 5 min via heartbeat`;
+    `Generated: ${new Date(d.generated_at + 'Z').toLocaleString()} · upcoming games only, snapshots < ${d.max_snapshot_age_h || 6}h old · each price shows when it was observed`;
 })();
 </script>
 </body>

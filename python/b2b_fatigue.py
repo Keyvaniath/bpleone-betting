@@ -52,10 +52,32 @@ def _build_team_calendar(games):
     return cal
 
 
-def _check_b2b(today_date, team_calendar):
-    """Is this team playing on a B2B (yesterday + today)?"""
-    yesterday = today_date - dt.timedelta(days=1)
-    return any(g["date"] == yesterday for g in team_calendar)
+def _et_game_date(s):
+    """(2026-11-03) A state game's ET date. State `date` is a UTC timestamp
+    ('2026-11-05T00:00Z' = 7 PM ET on 11/4); [:10] of it is the WRONG day for
+    every evening game."""
+    if not s: return None
+    try:
+        t = dt.datetime.fromisoformat(str(s).replace("Z", "+00:00"))
+    except Exception:
+        return _parse_date(s)
+    if t.tzinfo is None:
+        return t.date()
+    try:
+        from zoneinfo import ZoneInfo
+        return t.astimezone(ZoneInfo("America/New_York")).date()
+    except Exception:
+        return (t - dt.timedelta(hours=5)).date()
+
+
+def _check_b2b(game_date, played_dates):
+    """(2026-11-03) Is this team on a B2B -- did it play (or is it scheduled)
+    the ET day BEFORE this game's own ET date? The old check used the RUN date
+    as every game's date, so on 11/3 all 14 NBA games for 11/4 were flagged
+    "both teams on B2B" off the 11/2 slate."""
+    if game_date is None:
+        return False
+    return (game_date - dt.timedelta(days=1)) in played_dates
 
 
 def _b2b_history(team_calendar, lookback_days=60):
@@ -77,7 +99,7 @@ def _b2b_history(team_calendar, lookback_days=60):
 
 
 def run() -> Dict[str, Any]:
-    today = dt.date.today()
+    today = _et_game_date(dt.datetime.now(dt.timezone.utc).isoformat())
     out_by_sport: Dict[str, Any] = {}
     n_fatigued_today = 0
 
@@ -88,37 +110,52 @@ def run() -> Dict[str, Any]:
         state = _load(state_file)
         hist = _load(hist_file)
         cal = _build_team_calendar(hist.get("games") or [])
+        # every ET date each team plays: finals (historical files are stamped
+        # with the ET board day) + every game on the current board (any state)
+        played = defaultdict(set)
+        for t, rows in cal.items():
+            for r in rows:
+                played[t].add(r["date"])
+        for g in (state.get("games") or []):
+            gd = _et_game_date(g.get("date"))
+            if gd:
+                played[g.get("home_team")].add(gd)
+                played[g.get("away_team")].add(gd)
         sport_alerts = []
         for g in (state.get("games") or []):
             if g.get("state") == "post": continue
             ht = g.get("home_team")
             at = g.get("away_team")
-            home_b2b = _check_b2b(today, cal.get(ht, []))
-            away_b2b = _check_b2b(today, cal.get(at, []))
+            gdate = _et_game_date(g.get("date"))
+            home_b2b = _check_b2b(gdate, played.get(ht, set()))
+            away_b2b = _check_b2b(gdate, played.get(at, set()))
             if not (home_b2b or away_b2b): continue
             home_b2b_hist = _b2b_history(cal.get(ht, [])) if home_b2b else None
             away_b2b_hist = _b2b_history(cal.get(at, [])) if away_b2b else None
             alert = {
                 "matchup": g.get("matchup"),
+                "game_date": gdate.isoformat() if gdate else None,      # ET (2026-11-03)
+                "is_today": gdate == today,
                 "home_team": ht, "away_team": at,
                 "home_on_b2b": home_b2b,
                 "away_on_b2b": away_b2b,
-                "p_home_pregame": g.get("p_home_win"),
+
                 "home_b2b_history": home_b2b_hist,
                 "away_b2b_history": away_b2b_hist,
             }
-            # Side that's NOT on B2B has the fatigue advantage
+            # (2026-11-03) a schedule FACT, not a pick: no "FADE" advice, and no
+            # model probability (p_home_win was an unvalidated prior).
             if home_b2b and not away_b2b:
                 alert["fatigue_edge"] = "AWAY"
-                alert["recommend"] = f"FADE {ht} (home on B2B)"
-                n_fatigued_today += 1
+                alert["recommend"] = f"{ht} (home) on the 2nd night of a back-to-back"
+                n_fatigued_today += 1 if gdate == today else 0   # today ET only (2026-11-03)
             elif away_b2b and not home_b2b:
                 alert["fatigue_edge"] = "HOME"
-                alert["recommend"] = f"FADE {at} (away on B2B)"
-                n_fatigued_today += 1
+                alert["recommend"] = f"{at} (away) on the 2nd night of a back-to-back"
+                n_fatigued_today += 1 if gdate == today else 0   # today ET only (2026-11-03)
             else:
                 alert["fatigue_edge"] = "BOTH"
-                alert["recommend"] = "Both teams on B2B - no edge"
+                alert["recommend"] = "Both teams on the 2nd night of a back-to-back"
             sport_alerts.append(alert)
         out_by_sport[sport] = sport_alerts
 
@@ -126,7 +163,9 @@ def run() -> Dict[str, Any]:
         "generated_at": dt.datetime.now().isoformat(timespec="seconds"),
         "n_fatigued_games_today": n_fatigued_today,
         "by_sport": out_by_sport,
-        "note": "B2B = team played yesterday AND playing today. Historical hit rate < .500 for B2B side.",
+        "date_et": today.isoformat() if today else None,
+        "note": ("(2026-11-03) B2B = the team played (or is scheduled) on the ET day before THIS "
+                 "game's own ET date. A schedule fact, not a recommendation."),
     }
     os.makedirs(DATA_DIR, exist_ok=True)
     with open(OUT, "w") as f: json.dump(payload, f, indent=2)

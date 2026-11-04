@@ -10,11 +10,16 @@ constraints:
   - Total exposure capped at 35% of bankroll
   - Sort by quality score, take top picks while honoring constraints
 
+(2026-11-03) Sized ONLY from best bets with an actionable DraftKings quote
+(quotes.py), at that quote's price, EV > 0; otherwise "no priced picks".
+best_bets `line` is a model fair price / prop line / parlay decimal -- never a price.
+
 Output: data/portfolio_today.json
 """
 from __future__ import annotations
 
 import os
+import sys
 import json
 import datetime as dt
 from typing import Any, Dict, List
@@ -52,13 +57,44 @@ def _kelly_fraction(p: float, dec_odds: float) -> float:
     return max(0, f)
 
 
+def _book_quote(b: Dict[str, Any]):
+    """(2026-11-03) The DK quote behind a best bet, or None. A row's `line` is a
+    model fair price, a prop line (3.5) or a parlay decimal -- never a price.
+    Accept only an explicit book quote (quotes.py contract), re-checked live."""
+    try:
+        import quotes as Q
+    except Exception:
+        sys.path.insert(0, os.path.dirname(__file__))
+        import quotes as Q
+    q = b.get("quote") if isinstance(b.get("quote"), dict) else None
+    if q is None and b.get("matchup") and b.get("market"):
+        q, _ = Q.find_quote(b.get("sport") or "", b.get("matchup"), b.get("market"))
+    if q is None:
+        return None, "no sportsbook quote"
+    ok, why = Q.actionable(q)
+    return (q, None) if ok else (None, why)
+
+
 def run() -> Dict[str, Any]:
     bb = _load(os.path.join(DATA_DIR, "best_bets.json"))
     bets = bb.get("bets") or []
-    if not bets:
+    # (2026-11-03) Size ONLY picks with an actionable DraftKings quote, at that
+    # quote's price. No quote -> not sized. Off-season this is empty, honestly.
+    priced, n_unpriced = [], 0
+    for b in bets:
+        q, _why = _book_quote(b)
+        if q is None:
+            n_unpriced += 1
+            continue
+        priced.append((b, q))
+    if not priced:
         payload = {
             "generated_at": dt.datetime.now().isoformat(timespec="seconds"),
-            "note": "no best_bets available",
+            "note": "no priced picks -- a portfolio is sized only from picks with an actionable DraftKings quote",
+            "rule": bb.get("rule"),
+            "excluded_unpriced": bb.get("excluded_unpriced") or {},
+            "n_best_bets_without_quote": n_unpriced,
+            "n_picks": 0,
             "picks": [],
         }
         os.makedirs(DATA_DIR, exist_ok=True)
@@ -66,37 +102,33 @@ def run() -> Dict[str, Any]:
         return payload
 
     # Sort by quality + edge
-    bets_sorted = sorted(bets, key=lambda b: (-(b.get("quality_score") or 0),
-                                                -(b.get("edge_pct") or 0)))
+    priced.sort(key=lambda bq: (-(bq[0].get("quality_score") or 0), -(bq[0].get("edge_pct") or 0)))
     picks: List[Dict[str, Any]] = []
     sport_counts: Dict[str, int] = {}
     total_exposure = 0
     seen_match_keys = set()
 
-    # Quality-weighted flat staking: best_bets contains fair odds (0 EV at fair),
-    # so we size by quality_score instead of Kelly. Top quality gets 5%, mid 3%,
-    # low 2%. This produces a credible "recommended portfolio" view.
-    for b in bets_sorted:
-        sport = b.get("source", "?")
+    for b, q in priced:
+        sport = b.get("sport") or b.get("source", "?")
         if (sport_counts.get(sport) or 0) >= MAX_PER_SPORT: continue
-        match_key = f"{sport}|{b.get('team') or b.get('player') or b.get('label','')}"
+        match_key = f"{sport}|{q.get('event_id') or b.get('team') or b.get('player') or b.get('label','')}"
         if match_key in seen_match_keys: continue
 
-        prob = b.get("model_prob") or 0.5
-        fair = b.get("line") if b.get("line") is not None else b.get("fair_american")
-        try:
-            fair_int = int(fair) if fair is not None and not isinstance(fair, int) else (fair or 0)
-        except Exception:
-            fair_int = 0
-        dec = _decimal_from_american(fair_int)
-        q = b.get("quality_score") or 0
+        prob = b.get("model_prob")
+        if prob is None: continue
+        dec = q["decimal"]
+        ev = prob * dec - 1                     # EV at the REAL DK price (2026-11-03)
+        if ev <= 0: continue
+        q_score = b.get("quality_score") or 0
         stars = b.get("stars") or 0
 
-        # Size by quality
-        if q >= 80: bet_pct = 0.05      # top 5%
-        elif q >= 70: bet_pct = 0.035    # 3.5%
-        elif q >= 60: bet_pct = 0.02     # 2%
-        else: continue                   # skip low-quality
+        # Size by quality, capped by quarter-Kelly at the DK price
+        if q_score >= 80: bet_pct = 0.05
+        elif q_score >= 70: bet_pct = 0.035
+        elif q_score >= 60: bet_pct = 0.02
+        else: continue
+        bet_pct = min(bet_pct, KELLY_FRACTION * _kelly_fraction(prob, dec), MAX_PER_PICK_PCT)
+        if bet_pct <= 0: continue
 
         if total_exposure + bet_pct > MAX_TOTAL_PCT: continue
         total_exposure += bet_pct
@@ -104,7 +136,7 @@ def run() -> Dict[str, Any]:
         seen_match_keys.add(match_key)
 
         stake = round(bet_pct * DEFAULT_BANKROLL, 2)
-        payout = round(stake * max(0.5, dec - 1), 2)
+        payout = round(stake * (dec - 1), 2)
 
         picks.append({
             "rank": len(picks) + 1,
@@ -112,16 +144,19 @@ def run() -> Dict[str, Any]:
             "label": b.get("label"),
             "play": b.get("play"),
             "model_prob": prob,
-            "fair_american": fair_int,
+            "book": q.get("book"),
+            "book_american": q.get("american"),
+            "observed_at": q.get("observed_at"),
+            "scheduled_start": q.get("scheduled_start"),
+            "ev_at_book": round(ev, 4),
             "stake_pct": round(bet_pct * 100, 2),
             "stake_dollars": stake,
             "potential_profit": payout,
-            "quality_score": q,
+            "quality_score": q_score,
             "stars": stars,
         })
 
     total_potential_profit = sum(p["potential_profit"] for p in picks)
-    # EV at fair odds is 0 by definition; surface as "if all hit at model prob"
     expected_pl = round(sum(p["potential_profit"] * p["model_prob"] -
                             p["stake_dollars"] * (1 - p["model_prob"]) for p in picks), 2)
 
@@ -132,7 +167,9 @@ def run() -> Dict[str, Any]:
         "max_per_pick_pct": MAX_PER_PICK_PCT,
         "max_total_pct": MAX_TOTAL_PCT,
         "max_per_sport": MAX_PER_SPORT,
+        "price_rule": "sized only at an actionable DraftKings quote (quotes.py)",
         "n_picks": len(picks),
+        "note": None if picks else "no priced picks with positive EV at the DraftKings price",
         "total_stake_pct": round(total_exposure * 100, 2),
         "total_stake_dollars": round(total_exposure * DEFAULT_BANKROLL, 2),
         "total_potential_profit": round(total_potential_profit, 2),
@@ -148,8 +185,7 @@ def run() -> Dict[str, Any]:
 
 if __name__ == "__main__":
     p = run()
-    print(f"Multi-sport portfolio: {p['n_picks']} picks · ${p['total_stake_dollars']:.2f} stake · "
-          f"expected EV ${p['expected_pl']}")
+    print(f"Multi-sport portfolio: {p.get('n_picks', 0)} priced picks -- {p.get('note') or ''}")
     for pk in p["picks"][:10]:
         print(f"  [{pk['rank']:2}] {pk['sport']:5} ${pk['stake_dollars']:6.2f} ({pk['stake_pct']}%) "
-              f"-- {pk['label'][:60]} | P={pk['model_prob']*100:.1f}% fair {pk['fair_american']:+d}")
+              f"-- {(pk['label'] or '')[:60]} | P={pk['model_prob']*100:.1f}% DK {pk['book_american']:+d}")

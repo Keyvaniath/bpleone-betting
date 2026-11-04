@@ -54,12 +54,13 @@
   <section class="card" style="margin-bottom: 18px;">
     <div class="card-head"><span>📋 What this tracks</span></div>
     <div style="padding:14px 18px; font-size:13px; line-height:1.7; color: var(--text-2,#aaa);">
-      <p>A team playing the 2nd game of a back-to-back (yesterday + today) is in a measurable fatigue state — historical win rates drop 4-8pp vs baseline. We surface games where one side is on a B2B and the other is rested.</p>
-      <p><strong>Recommend</strong>: fade the B2B side, especially when paired with a rested team coming off rest or a home stand.</p>
+      <!-- (2026-11-03) unsourced "4-8pp" claim and the fade advice removed -->
+      <p>Games where a team is playing the 2nd night of a back-to-back: it played (or is scheduled) on the ET day before <em>this game's own ET date</em>. Each team's record and margin in its own recent B2B games is shown from the finals feed.</p>
+      <p>This is a schedule fact, not a recommendation — no model here has been validated against a sportsbook price on B2B spots.</p>
     </div>
   </section>
   <section class="metric-strip">
-    <div class="metric"><span class="metric-num" id="m_total">--</span><span class="metric-label">Fatigue Edges</span></div>
+    <div class="metric"><span class="metric-num" id="m_total">--</span><span class="metric-label">Today: one side on B2B</span></div>
     <div class="metric"><span class="metric-num" id="m_nba">--</span><span class="metric-label">NBA Games</span></div>
     <div class="metric"><span class="metric-num" id="m_nhl">--</span><span class="metric-label">NHL Games</span></div>
   </section>
@@ -76,7 +77,8 @@ fetch("data/b2b_fatigue.json?t=" + Date.now(), { cache: "no-cache" })
     document.getElementById("m_total").textContent = data.n_fatigued_games_today || 0;
     document.getElementById("m_nba").textContent = nba.length;
     document.getElementById("m_nhl").textContent = nhl.length;
-    document.getElementById("status").textContent = `${data.n_fatigued_games_today || 0} games with fatigue edge today · ${(data.generated_at || '').slice(0, 19).replace('T', ' ')}`;
+    // (2026-11-03) B2B tested against each game's own ET date; a schedule fact, not a pick
+    document.getElementById("status").textContent = `${data.n_fatigued_games_today || 0} games today (${data.date_et || 'ET'}) with one team on the 2nd night of a back-to-back · schedule fact, not a pick · ${(data.generated_at || '').slice(0, 19).replace('T', ' ')}`;
 
     function renderCard(a, sport) {
       const cls = a.fatigue_edge === "BOTH" ? "both-tired" : "fatigue-edge";
@@ -85,7 +87,7 @@ fetch("data/b2b_fatigue.json?t=" + Date.now(), { cache: "no-cache" })
       const homeHist = a.home_b2b_history || {};
       const awayHist = a.away_b2b_history || {};
       return `<div class="game-card ${cls}">
-        <div class="matchup-title">${a.matchup} <span class="muted" style="font-size:10px;">${sport.toUpperCase()}</span></div>
+        <div class="matchup-title">${a.matchup} <span class="muted" style="font-size:10px;">${sport.toUpperCase()} · ${a.game_date || ''} ET</span></div>
         <div class="team-row head"><span>Team</span><span>On B2B?</span><span>L60d B2B</span><span>Margin in B2B</span></div>
         <div class="team-row ${homeCls}">
           <span>🏠 <strong>${a.home_team}</strong></span>

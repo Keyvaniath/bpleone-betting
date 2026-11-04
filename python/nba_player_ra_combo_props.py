@@ -10,7 +10,7 @@ Method:
   Inherits projected_reb + projected_ast from main NBA modules. Sigma
   combined via sqrt(sig_R^2 + sig_A^2) * 1.0 (assume near-independent).
 
-  STRONG when 10%+ edge vs -120 book.
+  flag band (NOT an edge: no sportsbook prop price exists; the old '10%+ edge vs an assumed -120 book' is withdrawn 2026-11-03).
 
 Output: data/nba_player_ra_combo_props.json
 """
@@ -131,9 +131,10 @@ def run() -> Dict[str, Any]:
         "generated_at": dt.datetime.utcnow().isoformat(timespec="seconds"),
         "n_players": len(out_rows),
         "n_strong_edges": len(strong),
-        "method_note": "R+A combo = projected_reb + projected_ast (from main NBA "
+        "status": "unvalidated_model_projection",   # (2026-11-03)
+        "method_note": "UNVALIDATED MODEL PROJECTION -- no sportsbook price, not a pick. R+A combo = projected_reb + projected_ast (from main NBA "
                        "modules). Sigma combined = sqrt(sig_R^2 + sig_A^2). "
-                       "STRONG when 10%+ edge vs -120 book.",
+                       "flag band (NOT an edge: no sportsbook prop price exists; the old '10%+ edge vs an assumed -120 book' is withdrawn 2026-11-03).",
         "top_15_by_ra": out_rows[:15],
         "strong_edges": strong,
     }

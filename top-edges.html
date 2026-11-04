@@ -102,23 +102,22 @@
 
 <h1>Top Calibrated Edges</h1>
 <div class="sub">
-  Unified action list combining REAL book edges (vs live DraftKings game lines from
-  <a href="data-sources.html" style="color:#7fb0e8;">ESPN's free odds feed</a>) and MODEL props
-  (with Bayesian shrinkage applied to both). Ranked by <strong style="color:#58c878;">calibrated_edge_pct</strong>
-  so cross-source comparison is honest — book vs prop edges normalized to the same scale.
+  <!-- (2026-11-03) model-priced props removed: their "Book %" was 1/model fair -->
+  Edges against a <strong>real sportsbook price</strong> only — live DraftKings game lines from
+  <a href="data-sources.html" style="color:#7fb0e8;">ESPN's free odds feed</a>, with Bayesian shrinkage toward the book.
+  Ranked by <strong style="color:#58c878;">calibrated_edge_pct</strong>. Player props are not listed: no sportsbook
+  prop price exists in the free feeds, and an "edge" against the model's own fair price is not an edge.
 </div>
 
 <div class="stats">
   <div class="stat-card"><div class="stat-label">Total Edges</div><div class="stat-value" id="s-total">—</div></div>
   <div class="stat-card"><div class="stat-label">Real-Book</div><div class="stat-value" style="color:#58c878;" id="s-real">—</div></div>
-  <div class="stat-card"><div class="stat-label">Model-Prop</div><div class="stat-value" style="color:#d4a04a;" id="s-model">—</div></div>
   <div class="stat-card"><div class="stat-label">Top Edge</div><div class="stat-value" style="color:#58c878;" id="s-topedge">—</div></div>
 </div>
 
 <div class="filters">
   <div class="filter active" data-f="all">All Sources</div>
   <div class="filter" data-f="REAL_BOOK">Real Book Only</div>
-  <div class="filter" data-f="MODEL_PROP">Model Props Only</div>
 </div>
 
 <div class="panel">
@@ -187,7 +186,6 @@ async function load() {
   const bs = DATA.by_source_type || {};
   document.getElementById('s-total').textContent = DATA.n_total_edges || 0;
   document.getElementById('s-real').textContent = bs.REAL_BOOK || 0;
-  document.getElementById('s-model').textContent = bs.MODEL_PROP || 0;
   const top = (DATA.top_10 || [])[0];
   document.getElementById('s-topedge').textContent = top ? (top.calibrated_edge_pct >= 0 ? '+' : '') + top.calibrated_edge_pct.toFixed(1) + '%' : '—';
   document.getElementById('meta').textContent = 'Generated ' + (DATA.generated_at || '—');
