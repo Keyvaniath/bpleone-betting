@@ -6,7 +6,7 @@ _0% lineups confirmed_
 
 ## Slate
 - **0 games** scheduled
-- **21 best bets** scored: 0 DK · 0 PP · 0 NRFI · 0 SGP
+- **27 best bets** scored: 0 DK · 0 PP · 0 NRFI · 0 SGP
 
 ## Top 5 Best Bets
 1. **LOL Inspired UNDER 3.5 Kills**  (78/100 ****, edge —)
@@ -37,11 +37,10 @@ _0% lineups confirmed_
 - Chicago Bulls @ New York Knicks (1-6 vs 3-4)  | P(home) 84.6% fair -550 | Scheduled
 
 ## NHL -- REGULAR
-- Utah Mammoth @ Toronto Maple Leafs (0-0-0 vs 0-0-0) 3-2 | P(home) 0.0% fair +0 | Final
-- Winnipeg Jets @ Montreal Canadiens (0-0-0 vs 0-0-0) 5-4 | P(home) 0.0% fair +0 | Final
-- Detroit Red Wings @ Tampa Bay Lightning (0-0-0 vs 0-0-0) 2-4 | P(home) 100.0% fair +0 | Final
-- St. Louis Blues @ New York Rangers (0-0-0 vs 0-0-0) 1-3 | P(home) 100.0% fair +0 | Final
-- Minnesota Wild @ Philadelphia Flyers (0-0-0 vs 0-0-0) 4-2 | P(home) 0.0% fair +0 | Final
+- Ottawa Senators @ Buffalo Sabres (9-6-1 vs 7-4-3)  | P(home) 60.0% fair -150 | Scheduled
+- Chicago Blackhawks @ Florida Panthers (4-10-1 vs 8-5-2)  | P(home) 64.4% fair -181 | Scheduled
+- San Jose Sharks @ Los Angeles Kings (7-8-1 vs 4-7-2)  | P(home) 55.2% fair -123 | Scheduled
+- Calgary Flames @ Seattle Kraken (7-8-0 vs 8-5-1)  | P(home) 49.4% fair +102 | Scheduled
 
 ## LoL Esports -- 0 live, 6 upcoming
 - [Worlds] Gen.G Esports vs LYON BO5 | P(A) 74.9% fair -298/+298

@@ -1,18 +1,18 @@
 # EdgeStat Daily Summary — 2026-11-04
 
-## 🏥 Model Health: 64.4/100 [OK]
+## 🏥 Model Health: 65.5/100 [OK]
 - Operational but room to improve - check yellow components
-  - 🟢 Calibration Freshness: 100.0/100
-  - 🔴 Hit Rate Trend: 53.2/100
-  - 🔴 Brier Trend: 15.5/100
+  - 🟢 Calibration Freshness: 99.9/100
+  - 🔴 Hit Rate Trend: 53.1/100
+  - 🔴 Brier Trend: 15.2/100
   - 🟢 Pipeline Audit: 100.0/100
-  - 🟢 Data Health: 81.8/100
-  - 🔴 Edge Count: 42.9/100
+  - 🟢 Data Health: 86.4/100
+  - 🔴 Edge Count: 45.7/100
 
 ## 🌐 Slate Overview
-- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.595)
-- **Total games on board:** 53
-- **Strong home favorites:** 24 | **Strong road dogs:** 11
+- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.551)
+- **Total games on board:** 65
+- **Strong home favorites:** 25 | **Strong road dogs:** 17
 
 ## 🎯 Top 5 Best Bets
 1. **LOL Inspired UNDER 3.5 Kills** (78/100 ★★★★)
@@ -33,26 +33,26 @@
 - **[LOL]** Hope OVER 4.5 Kills | MED conviction · model 61.3% fair -158
 - **[CS]** torzsi OVER 40.5 Kills (BO3) | MED conviction · model 61.0% fair -157
 
-## ⚡ Pre-Game HIGH Conviction (15)
+## ⚡ Pre-Game HIGH Conviction (22)
+- [UCL] **Arsenal** AWAY (None L10) · model 75.0% fair -300
+- [UCL] **Sabah FK** AWAY (None L10) · model 75.0% fair -300
 - [NBA] **Charlotte Hornets** AWAY (3-5 L10) · model 74.6% fair -294
+- [NFL] **Denver Broncos** AWAY (None L10) · model 74.5% fair -291
 - [NCAAF] **Ohio State Buckeyes** HOME (None L10) · model 71.8% fair -254
 - [NCAAF] **Houston Cougars** HOME (None L10) · model 71.8% fair -254
 - [NCAAF] **South Carolina Gamecocks** HOME (None L10) · model 70.2% fair -235
 - [NCAAF] **Florida Gators** HOME (None L10) · model 70.2% fair -235
 - [NCAAF] **Notre Dame Fighting Irish** HOME (None L10) · model 70.1% fair -234
 - [NBA] **Oklahoma City Thunder** HOME (4-2 L10) · model 69.6% fair -229
-- [NBA] **San Antonio Spurs** HOME (5-1 L10) · model 69.6% fair -229
-- [MLS] **Real Salt Lake** HOME (3-2 L10) · model 67.1% fair -204
-- [NBA] **Miami Heat** AWAY (2-5 L10) · model 66.2% fair -196
 
 ## 🔥/❄️ Heat / Cold Signals
 - Hot teams: **7** | Cold teams: **23** | Over-heavy: 0 | Under-heavy: 45
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (281)
+## ⚠️ Anomaly Detector (292)
 - RESIDUAL_DIVERGENCE: **18**
 - STREAK_MISMATCH: **2**
-- STEAM_MOVE: **261**
+- STEAM_MOVE: **272**
   - Charlotte Hornets (NBA): Charlotte Hornets UNDERPERFORMING expected margin by 10.9pts in recent games -- model bias may persist
   - Chicago Bulls (NBA): Chicago Bulls UNDERPERFORMING expected margin by 7.8pts in recent games -- model bias may persist
   - Indiana Pacers (NBA): Indiana Pacers UNDERPERFORMING expected margin by 9.8pts in recent games -- model bias may persist
@@ -61,20 +61,20 @@
 
 ## 💰 Today's Portfolio (13 picks)
 - Total stake: **$335.0** (33.5% of $1000 bankroll)
-- Expected EV: **$-21.29**
+- Expected EV: **$-5.03**
   - #1 [LOL] $35 on LOL Inspired UNDER 3.5 Kills (P=62%)
   - #2 [LOL] $35 on LOL ShowMaker OVER 3.5 Kills (P=62%)
   - #3 [LOL] $35 on LOL Peyz OVER 4.5 Kills (P=61%)
   - #4 [NBA] $35 on NBA Washington Wizards ML (4-3) vs Atlanta Hawks (P=62%)
   - #5 [NBA] $35 on NBA Oklahoma City Thunder ML (5-2) vs Cleveland Cavaliers (P=70%)
 
-## 🎯 Convergence Picks (23 stacked games)
-- ELITE: **8** · HIGH: 8 · MED: 7
-  - [ELITE] Winnipeg Jets @ Montreal Canadiens : 6 signals (HEAT_COLD, HEAT_COLD, HEAT_COLD, ANOMALY)
+## 🎯 Convergence Picks (40 stacked games)
+- ELITE: **21** · HIGH: 11 · MED: 8
+  - [ELITE] Chicago Blackhawks @ Florida Panthers : 7 signals (PREGAME, HEAT_COLD, HEAT_COLD, HEAT_COLD)
+  - [ELITE] LAFC @ Seattle Sounders FC : 6 signals (PREGAME, HEAT_COLD, HEAT_COLD, ANOMALY)
   - [ELITE] Philadelphia 76ers @ Detroit Pistons : 5 signals (HEAT_COLD, HEAT_COLD, HEAT_COLD, ATS)
   - [ELITE] Dallas Mavericks @ San Antonio Spurs : 5 signals (PREGAME, HEAT_COLD, HEAT_COLD, ANOMALY)
-  - [ELITE] Coventry City @ Everton : 5 signals (PREGAME, ANOMALY, ANOMALY, ATS)
-  - [ELITE] Chicago Bulls @ New York Knicks : 4 signals (HEAT_COLD, HEAT_COLD, ANOMALY, ATS)
+  - [ELITE] Anaheim Ducks @ Vancouver Canucks : 5 signals (HEAT_COLD, HEAT_COLD, HEAT_COLD, ATS)
 
 ## 🏀 NBA Player Heat (10 HOT / 4 COLD)
   - 🔥 **Maxime Raynaud** (SAC): L5 20.0/9.8/2.6 vs season 12.5/7.5/1.4 [PTS +7.5, REB +2.3]
@@ -112,7 +112,7 @@
   - ❄️ **Andruw Monasterio** (BOS): L14 .083 / season .233 (-150pts) -- FADE props
   - ❄️ **Nick Kurtz** (ATH): L14 .114 / season .256 (-142pts) -- FADE props
 
-## 📈 Streak Regression Alerts (17)
+## 📈 Streak Regression Alerts (23)
 - [NBA] Detroit Pistons on W3 L10 4-1 -- Detroit Pistons on W3 -- no historical sample
 - [NBA] Philadelphia 76ers on W4 L10 4-1 -- Philadelphia 76ers on W4 -- no historical sample
 - [NBA] Milwaukee Bucks on L3 L10 1-4 -- BACK Milwaukee Bucks (on L3, historically bounce back 100% of the time)

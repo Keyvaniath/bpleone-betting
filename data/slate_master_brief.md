@@ -1,13 +1,13 @@
 # EdgeStat — Tonight's Master Brief
-_Generated 2026-11-04T12:43:12 UTC_
+_Generated 2026-11-04T20:17:02 UTC_
 
 ## Slate Quality
 - **Tier:** NO_ACTION_NIGHT
-- **Score:** -173
+- **Score:** -172
 - **Advisory:** STAND DOWN. Slate has no aligned conviction. Skip betting tonight or watch only.
 - **Total LOCKs:** 0
 - **Total STRONG:** 1
-- **Total FADES:** 177
+- **Total FADES:** 176
 
 ## Top 5 Curated Picks
 1. **NBA / NOP** (NBA_TEAM, score=60.0)
@@ -21,13 +21,13 @@ _Generated 2026-11-04T12:43:12 UTC_
 - **Expected P&L on $100:** $0.0
 
 ## Top Fades
-- **NBA** / HOU (TEAM_FADE)
-  - Fade angle: team total UNDER
 - **NBA** / CHI (TEAM_FADE)
   - Fade angle: team total UNDER
-- **NBA** / TOR (TEAM_FADE)
+- **NBA** / HOU (TEAM_FADE)
   - Fade angle: team total UNDER
 - **NBA** / DET (TEAM_FADE)
+  - Fade angle: team total UNDER
+- **NBA** / TOR (TEAM_FADE)
   - Fade angle: team total UNDER
 - **NBA** / BKN (TEAM_FADE)
   - Fade angle: team total UNDER
