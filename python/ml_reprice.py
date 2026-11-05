@@ -17,7 +17,8 @@ cold archive:
     book_american first (all_picks_tracker._price_american).
   * unpriced (no pre-game line exists anywhere) -> voided, reason 'unpriced
     moneyline', never resurrected and never guessed.
-Pending MLB moneylines still on a placeholder get the live line now.
+Pending placeholder moneylines are NOT re-priced from a later board (removed
+2026-11-05); they void as unpriced at settlement.
 
 Runs once (marker data/ml_reprice_2026_10_done.json), just before the ledger
 build in daily-pipeline.
@@ -219,19 +220,11 @@ def run(force: bool = False) -> Dict[str, Any]:
     for p in picks:
         apply(p)
     # Pending moneylines still on a placeholder: price them from the live board.
-    import all_picks_tracker as apt
-    book = (_load(os.path.join(DATA_DIR, "espn_odds.json")).get("by_matchup") or {})
-    for p in picks:
-        if p.get("settled") or p.get("voided") or p.get("book_american") is not None:
-            continue
-        sd = apt._is_mlb_moneyline_market(p)
-        if not sd or p.get("fair_american") not in (-110, None):
-            continue
-        ln = book.get(str(p.get("player_or_matchup") or "")) or {}
-        px = ln.get("ml_home" if sd == "home" else "ml_away")
-        if px is not None:
-            p["book_american"] = px
-            tally["pending_priced"] += 1
+    # REMOVED (2026-11-05), same reason as apply_ledger's 11/3 removal: pending
+    # placeholder moneylines were stamped with "the live line" from espn_odds
+    # by_matchup -- not status-filtered (could be an in-play price) and in any
+    # case LATER than the price available when the pick was published. An
+    # unpriced pending pick voids as "unpriced" at settlement instead.
     with open(LEDGER, "w", encoding="utf-8") as f:
         json.dump(led, f, indent=2)
 

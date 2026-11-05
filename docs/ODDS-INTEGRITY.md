@@ -157,22 +157,37 @@ research-only. Runs in the daily late pass, the heartbeat and live-games.
 ## Open (P0)
 
 1. (merged a5aee8bd58, approved 11/03) selection + settlement + evaluation fail closed.
-2. Remaining -110 assumptions in secondary boards: `mlb_model.py:184-185`
-   (unposted totals juice), `book_vs_model_team.py:198` (totals -110/-110 --
-   now re-priced before the Alpha uses it, but the board itself still shows
-   it), `slate_roi_projector.py`, `sharpe_ranking.py`.
+2. CLOSED 2026-11-05 (re-inspected): `mlb_model.py` edges a total only at its
+   posted juice; `book_vs_model_team.py` totals need the real over/under
+   price (no -110/-110); `sharpe_ranking.py` ranks only rows with
+   `book_american`; `slate_roi_projector.py` takes a real price or nothing and
+   its elite-board block (invented p and -115) iterates over `[]`.
 3. (merged c413a65fd9) per-record `price_provenance`.
    NFL feed (branch `integrity/nfl-feed`): `espn_odds.fetch_sport` also
    requests the NEXT week for NFL / NCAAF (`week=N+1&seasontype=T` from the
    bare board, postseason week 1 after the regular season), merged by event
    id. 11/3: the bare board held 14 Week-9 finals and 0 upcoming games; with
    the fix 15 upcoming NFL games carry DraftKings lines -> desk board 15 rows,
-   4 picks, 4 games held as QB-uncertain. Remaining follow-up: `ml_reprice` pending_priced reads
-   `by_matchup`, which is not status-filtered (could stamp an in-play price).
+   4 picks, 4 games held as QB-uncertain. Follow-up CLOSED 2026-11-05:
+   `ml_reprice` stamped pending placeholder moneylines from `by_matchup` (not
+   status-filtered, and a later price than the one at publication).
+   `apply_ledger` had dropped this 11/03; the one-shot `run()` still had it
+   (marker-gated, so dormant) -- removed too, with a test (in-play board ->
+   no price stamped).
 4. Alpha record (locked days) is 70 props at the model's own price (+13.36u) +
    35 DK game lines (-0.78u): counting rule is Brandon's call.
-5. `param_recommender` auto-applied thresholds tuned on 0.909-payout units --
-   scope of affected parameters not yet traced.
+5. TRACED 2026-11-05: `data/runtime_config.json` has been written once
+   (1eaaabdcb1, 2026-05-18, "auto-apply medium-severity recommendations"):
+   `calibration.n_prior_default` 8 -> 5 (from projection residuals in
+   calibration_live: price-independent) and `live_edges.edge_threshold_pp`
+   5 -> 3.5 (from a zero-alert day: price-independent). The only 0.909-unit
+   rule (`plays.kelly_fraction`) never reached runtime_config and is disabled
+   since 11/03. No applied parameter was tuned on placeholder payouts.
+   Side note for Brandon (model behaviour, not changed): CLAUDE.md calls the
+   legacy calibration_runner chain a no-op ("all corrections 1.0"); today's
+   calibration_live has batter_total_bases 0.90 (n=63) and batter_hits 0.99
+   (n=261), which pipeline.py applies to MLB projections. Dormant until MLB
+   resumes.
 
 ## Site-wide audit (branch `integrity/nfl-settle-by-event`, 2026-11-03, NOT merged)
 
@@ -287,3 +302,30 @@ smoke_tests.py, network only).
   slate (fetch_error, kept_from), else an empty slate with fetch_error; the
   demo slate only with `--demo`. Crash replay after: 2/369 failing (network
   only) in all three states, pricing guard passing.
+
+Merged to main 2026-11-05 (4bf34c0e5b) on Brandon's go.
+
+## Guard coverage + stale boards (2026-11-05, branch integrity/open-items-1105)
+
+A scan of every data/*.json list that carries a price and an edge/play found
+three current surfaces the guard did not check, all now in PICK_SURFACES:
+- `picks_export.json` (public JSON + CSV): team-sport rows used
+  `p_home_win` (the W-L record Elo on older states) and every row shipped at
+  the model's fair price with no projection flag; the MLB POD row read a
+  nonexistent `model_price` and so exported no price at all. Now: the
+  board's vetted `p_home_display`, `price_basis` + `is_pick` on every
+  row (a pick only at a sportsbook price), POD carries its DK `market_price`
+  with observation time.
+- `player_pot.json` (LoL/CS/KBO props, no sportsbook prices them): every
+  row `is_pick: false`, `price_basis: model_fair`. The homepage card was
+  already retired; the briefs already label it projections.
+- `cfb_model.json`: edges carried a real DK price with no observation time.
+  Now `odds_observed_at` + `book`, `generated_at` in UTC (espn_odds is
+  UTC; local time made a fresh quote look like it came from the future), and
+  NO edge when the DK board is > 180 min old (`board_fresh` /
+  `board_age_min`; ncaaf.html says why). Before, the heartbeat could
+  re-price CFB edges against a board hours old.
+Smoke Test rebuilds these three from the commit's own code before the guard
+(so a merge is not judged on artifacts the previous code wrote).
+History files (locks_history, *_pot_history, rollups) are records, not
+current picks, and stay out of the guard.

@@ -44,6 +44,12 @@ PICK_SURFACES: List[Tuple[str, str]] = [
     ("whale_picks.json", "whales"),
     ("alpha_pick_of_day.json", "top_5_alphas"),
     ("alpha_pick_of_day.json", "other_picks"),
+    # (2026-11-05) found by a scan of every data/*.json list carrying a price
+    # and an edge/play: these published model-fair rows (or a DK price with no
+    # observation time) with no projection flag.
+    ("cfb_model.json", "edges"),
+    ("picks_export.json", "picks"),
+    ("player_pot.json", "top_5"),
 ]
 # (artifact, key) -> a single pick dict (or a no-pick marker).
 SINGLE_PICKS: List[Tuple[str, str]] = [

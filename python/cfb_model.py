@@ -43,6 +43,7 @@ except Exception:                                   # pragma: no cover
 
 DATA_DIR = os.path.join(os.path.dirname(__file__), "..", "data")
 OUT = os.path.join(DATA_DIR, "cfb_model.json")
+MAX_BOARD_AGE_MIN = 180   # same bar as quotes.MAX_QUOTE_AGE_MIN / verify_pricing
 ODDS_PATH = os.path.join(DATA_DIR, "espn_odds.json")
 RATINGS_PATH = os.path.join(DATA_DIR, "cfb_ratings.json")
 
@@ -214,7 +215,8 @@ def graduation_status() -> Dict[str, Any]:
 
 
 def run() -> Dict[str, Any]:
-    now = dt.datetime.now().isoformat(timespec="seconds")
+    # (2026-11-05) UTC, like espn_odds -- the pricing guard compares the two.
+    now = dt.datetime.utcnow().isoformat(timespec="seconds")
     ratings_payload = _load(RATINGS_PATH)
     if not ratings_payload.get("ratings"):
         # Degraded payload must be SHAPE-IDENTICAL to a good one (this repo has
@@ -252,6 +254,17 @@ def run() -> Dict[str, Any]:
     games_out: List[Dict[str, Any]] = []
     edges: List[Dict[str, Any]] = []
     n_unrated = 0
+    # (2026-11-05) FAIL CLOSED on a stale board: an edge is only as good as the
+    # price it was measured against. The heartbeat re-runs this module; if the
+    # DraftKings snapshot is > 180 min old (or undated) the games still publish
+    # for reference, but no edge does.
+    board_age_min = None
+    try:
+        _obs = dt.datetime.fromisoformat(str(odds.get("generated_at")).replace("Z", ""))
+        board_age_min = (dt.datetime.utcnow() - _obs.replace(tzinfo=None)).total_seconds() / 60
+    except (TypeError, ValueError):
+        pass
+    board_fresh = board_age_min is not None and board_age_min <= MAX_BOARD_AGE_MIN
 
     for g in rows:
         mk = g.get("market") or {}
@@ -291,7 +304,7 @@ def run() -> Dict[str, Any]:
         }
         games_out.append(row)
 
-        if bh is None or str(g.get("status")) != "pre":
+        if bh is None or str(g.get("status")) != "pre" or not board_fresh:
             continue
 
         for side, p_model, book_devig, book_ml in (
@@ -332,6 +345,9 @@ def run() -> Dict[str, Any]:
                 "calibrated_prob": round(p_cal, 4),
                 "book_implied_devig": round(book_devig, 4),
                 "book_american": book_ml,
+                # (2026-11-05) when DraftKings' price was read (pricing guard)
+                "odds_observed_at": odds.get("generated_at"),
+                "book": str(mk.get("book") or g.get("provider") or "draftkings").lower(),
                 "book_decimal": round(dec, 3),
                 "fair_american": _prob_to_american(p_cal),
                 "edge_pct": round(edge * 100, 2),
@@ -363,6 +379,8 @@ def run() -> Dict[str, Any]:
         "n_unrated": n_unrated,
         "n_edges": len(edges),
         "edges": edges,
+        "board_age_min": round(board_age_min, 1) if board_age_min is not None else None,
+        "board_fresh": board_fresh,
         "games": games_out,
         "model_backtest": applicable,
         "constants": {"shrink_cap": SHRINK_CAP, "shrink_slope": SHRINK_SLOPE,
