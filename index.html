@@ -25,9 +25,9 @@
 <meta name="twitter:title" content="EdgeStat — Quantitative Sports Betting Analytics">
 <meta name="twitter:description" content="Model edges, calibrated probabilities, and an honest settled track record across 17 sports. Informational only, 21+.">
 <title>EdgeStat | bpleone — Sports Betting Analytics & ML</title>
-<link rel="stylesheet" href="css/style.css?v=20260908c">
+<link rel="stylesheet" href="css/style.css?v=20261105">
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
-<script src="js/nav.js?v=20260908c"></script>
+<script src="js/nav.js?v=20261105"></script>
 <style>
 /* 2026-11-03: cards retired from the homepage -- model-only projections shown
    as picks (no sportsbook price), permanently empty panels, a mock newsletter
@@ -330,10 +330,10 @@ fetch('data/data_health.json?t=' + Date.now()).then(function(r){return r.json();
   <section class="metric-strip">
     <div class="metric"><span class="metric-num" id="mEdges">--</span><span class="metric-label">Edges Found Today</span></div>
     <div class="metric"><span class="metric-num" id="mGames">--</span><span class="metric-label">MLB Games Modeled</span></div>
-    <div class="metric"><span class="metric-num" id="mPlusEV">--</span><span class="metric-label">+EV Plays Filtered</span></div>
+    <div class="metric"><span class="metric-num" id="mPlusEV">--</span><span class="metric-label">Picks at a DK price</span></div>
     <div class="metric"><span class="metric-num" id="mSharp">--</span><span class="metric-label">Line-move alerts</span></div>
     <div class="metric"><span class="metric-num" id="mClv">--</span><span class="metric-label">Avg Closing Line Value</span></div>
-    <div class="metric"><span class="metric-num" id="mKelly">--</span><span class="metric-label">Recommended Stake (Kelly)</span></div>
+    <div class="metric"><span class="metric-num" id="mKelly">--</span><span class="metric-label">Suggested stake</span></div>
   </section>
 
   <!-- PROVE IT strip: real ledger, replayable by anyone -->
@@ -457,9 +457,13 @@ fetch('data/data_health.json?t=' + Date.now()).then(function(r){return r.json();
     const rows = d.rows || [], fams = d.families || [];
     if (rows.length < 100) return;
     let all = 0, cur = 0, curN = 0;
-    rows.forEach(r => { all += r[8]; if (!fams[r[3]].neg) { cur += r[8]; curN++; } });
+    // (2026-11-05) same universe as track-record's chart: PrizePicks (PP_*) families out
+    const sportsArr = d.sports || [];
+    const isPProw = r => sportsArr[r[2]] === 'MLB-PP';          // schema: [date, source, sport, family, ...]
+    const isPP = f => false;
+    rows.forEach(r => { if (isPProw(r)) return; all += r[8]; if (!fams[r[3]].neg) { cur += r[8]; curN++; } });
     document.getElementById("proveItLine").innerHTML =
-      `Every pick we surface is settled in a public ledger — <b>${rows.length.toLocaleString()}</b> picks and counting. ` +
+      `Every pick we surface is settled in a public ledger — <b>${rows.filter(r => !isPProw(r)).length.toLocaleString()}</b> picks and counting (PrizePicks props kept separate). ` +
       `Raw firehose <b style="color:#e35a5a;">${all >= 0 ? "+" : ""}${all.toFixed(0)}u</b> · ` +
       `family-curated replay <b style="color:${cur >= 0 ? "#58c878" : "#e35a5a"};">${cur >= 0 ? "+" : ""}${cur.toFixed(0)}u</b> (${curN.toLocaleString()} picks). ` +
       `Most rows are graded at the model's own odds or PrizePicks' break-even, so this is a calibration replay, not a betting ROI.`;
@@ -1088,7 +1092,7 @@ fetch('data/data_health.json?t=' + Date.now()).then(function(r){return r.json();
 <script src="js/live_data.js"></script>
 <script src="js/ml-models.js"></script>
 <script src="js/charts.js"></script>
-<script src="js/main.js"></script>
+<script src="js/main.js?v=20261105"></script>
 <style>@keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.45; } }</style>
 
 <script>
@@ -1258,6 +1262,8 @@ fetch("data/today.json", { cache: "no-cache" })
       // 2026-11-03: this used to `return`, leaving "Loading tonight's play..." up for good.
       const t = document.querySelector(".play-card .play-title");
       if (t) t.textContent = "No Play of the Day today";
+      const pg = document.querySelector(".play-card .play-grid"); if (pg) pg.style.display = "none";   // (2026-11-05) no six "--" tiles
+      const hn = document.getElementById("heroChartNote"); if (hn && d.no_games) hn.textContent = "no MLB slate (off-season) — chart empty";
       const sm = document.getElementById("podSummary");
       if (sm) sm.textContent = d.no_games
         ? "The Play of the Day is drawn from the MLB slate, and there are no MLB games on the board (off-season). See \"Today, by sport\" above for NFL / NBA / NHL."
@@ -1266,6 +1272,8 @@ fetch("data/today.json", { cache: "no-cache" })
       if (hm) hm.textContent = (d.generated_at || "").slice(0, 10);
       const mg = document.getElementById("mGames");
       if (mg && d.no_games) mg.textContent = "0";
+      const lr = document.getElementById("lastRefresh");
+      if (lr) lr.textContent = (d.generated_at || "").replace("T", " ").slice(0, 16) + " UTC";   // (2026-11-05) data time, not the page clock
       return;
     }
     // Title
@@ -1378,7 +1386,7 @@ fetch("data/clv_log.json", { cache: "no-cache" })
     if (!list) return;
     const stamp = document.getElementById("clvPanelStamp");
     if (!recs.length) {
-      list.innerHTML = `<li class="muted" style="padding:14px; font-style:italic;">No CLV captures yet -- the 6 PM ET refresh writes closing prices and the morning's open captures the open. The first non-zero movement appears tomorrow.</li>`;
+      list.innerHTML = `<li class="muted" style="padding:14px; font-style:italic;">Closing-line value is not tracked for the current boards: the old source (clv_log) was retired on 11/3 because open-to-close drift on both sides of a game is not CLV. The game-line desks publish their open-to-close movement on their own pages.</li>`;
       return;
     }
     // Sort by absolute movement, show the top 5 movers (anything that moved at all).
@@ -1404,14 +1412,19 @@ fetch("data/clv_log.json", { cache: "no-cache" })
 
 // Sharp Money Alerts -- count any leg with a >=0.5% line-move snapshot.
 // Until we capture real line movement, show "--" instead of a fake "3".
-fetch("data/clv_log.json", { cache: "no-cache" })
+// (2026-11-05) the tape's own STEAM count (DK line moves), and the picks hub's count
+fetch("data/alerts_feed.json", { cache: "no-cache" })
   .then(r => r.json())
-  .then(c => {
-    const recs = [];   // was: stale clv_log line drift since May, counted as "alerts" (2026-11-03)
-    const el = document.getElementById("mSharp");
-    if (el) el.textContent = recs.length ? String(recs.length) : "--";
-  })
+  .then(f => { const el = document.getElementById("mSharp"); if (el) el.textContent = String(((f && f.counts) || {}).STEAM || 0); })
   .catch(() => { const el = document.getElementById("mSharp"); if (el) el.textContent = "--"; });
+fetch("data/todays_picks.json", { cache: "no-cache" })
+  .then(r => r.json())
+  .then(p => {
+    const n = (p && p.n_picks != null) ? p.n_picks : null;
+    const set = (id, v) => { const el = document.getElementById(id); if (el) el.textContent = v; };
+    if (n != null) { set("mEdges", String(n)); set("mPlusEV", String(n)); set("mKelly", n ? "see picks" : "none"); }
+  })
+  .catch(() => {});
 
 // Hero stats: ALL settled picks (lock_of_day + pod + top_25_board + ...).
 // Reads ledger_summary.json (the precomputed rollup) — IDENTICAL top-level and
@@ -1502,6 +1515,7 @@ Promise.all([
 ]).then(([fb, rec]) => {
   const card = document.getElementById("loopActivityCard");
   if (!card) return;
+  return;   // (2026-11-05) operator dashboard (links to /config and the GitHub editor) -- not for the public page
   const entries = (fb && fb.entries) || [];
   const recs = (rec && rec.recommendations) || [];
   if (!entries.length && !recs.length) return;
@@ -1683,8 +1697,9 @@ Promise.all([
     const bp = d.by_price || {}, sb = bp.sportsbook || {}, pp = bp.prizepicks_unverified || {};
     d = Object.assign({}, d, { hit_rate: sb.hit_rate, net_units: sb.net_units, roi_pct: sb.roi_pct,
                                n_settled: sb.n_settled, total_risked_units: sb.total_risked_units, total_locks: sb.n_settled });
+    const tiny = (sb.n_settled || 0) < 30;   // (2026-11-05) 3-0 / +62% is noise, not a headline
     box.innerHTML = `
-      <p class="muted" style="font-size:10.5px; margin:0 0 8px;">Sportsbook-priced locks only: <b>${sb.wins || 0}-${sb.losses || 0}</b>. PrizePicks locks (graded at PP's break-even, unverified) are kept apart: ${pp.wins || 0}-${pp.losses || 0}.</p>
+      <p class="muted" style="font-size:10.5px; margin:0 0 8px;">Sportsbook-priced locks only: <b>${sb.wins || 0}-${sb.losses || 0}</b>${tiny ? ' — <b>' + (sb.n_settled || 0) + ' settled, too few to mean anything yet</b>' : ''}. PrizePicks locks (graded at PP's break-even, unverified) are kept apart: ${pp.wins || 0}-${pp.losses || 0}.</p>
       <div style="display:grid; grid-template-columns: repeat(5, 1fr); gap:10px; margin-bottom:14px;">
         <div style="text-align:center;">
           <div style="font-size:9px; color:var(--muted,#888); text-transform:uppercase;">Settled (book-priced)</div>
@@ -1708,6 +1723,7 @@ Promise.all([
       <div style="font-size:11px; color:var(--muted,#888); text-transform:uppercase; margin-bottom:8px;">🔒 Today's ${todays.length} Locks (recorded ${(d.generated_at||'').slice(11,16)} UTC)</div>
       ${todayHtml}
     `;
+    if (tiny) box.querySelectorAll('div[style*="font-size:18px"] span, div[style*="font-size:18px"]').forEach(e => { e.style.color = 'var(--muted,#888)'; e.style.fontWeight = '400'; });
   })
   .catch(err => {
     const box = document.getElementById("locksHomeBox");
@@ -1918,6 +1934,7 @@ fetch("data/calibration_status.json?t=" + Date.now(), { cache: "no-cache" })
       const a = d.alpha_pick;
       if (!a) {
         document.getElementById('alphaTitle').textContent = 'No Alpha Pick today';
+        (function () { const c = document.querySelector('.alpha-card .play-grid'); if (c) c.style.display = 'none'; })();
         fetch('data/today_status.json?t=' + Date.now()).then(r => r.json()).then(t => {
           const why = (t.alpha || {}).reason;
           if (why) document.getElementById('alphaMarket').textContent = why;
@@ -1974,6 +1991,7 @@ fetch("data/calibration_status.json?t=" + Date.now(), { cache: "no-cache" })
       const top = all[0];
       if (!top) {
         document.getElementById('beTitle').textContent = 'No book edges found today';
+        (function () { const c = document.querySelector('.book-edge-card .play-grid'); if (c) c.style.display = 'none'; })();
         document.getElementById('beSummary').textContent = 'This board covers MLB games vs the live DraftKings line; NFL / NBA / NHL game lines are on each sport page (see "Today, by sport" above).';
         return;
       }

@@ -107,7 +107,7 @@ def run() -> Dict[str, Any]:
         "status": "ok" if n else "pending — needs >=2 odds snapshots per game (fills in as the heartbeat polls open->close)",
         "note": "CLV = implied-prob shift on the model's side from open to close. Positive = "
                 "the market moved to us by close (we beat the closing number). The metric that "
-                "proves edge vs the market, independent of any single bet's result.",
+                "is a direction check on the model's leans, not proof of edge on its own.",
         "rows": rows,
     }
     os.makedirs(DATA_DIR, exist_ok=True)

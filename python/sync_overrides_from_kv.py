@@ -38,6 +38,12 @@ def _get_remote(url: str) -> Optional[Dict[str, Any]]:
 
 
 def run() -> Dict[str, Any]:
+    # (2026-11-05, pre-launch audit) OWNER-ONLY, EXPLICIT OPT-IN. This used to
+    # run on every heartbeat against a Worker route that accepted any POST, so
+    # an unauthenticated write could reach the model's weight blend. It is no
+    # longer wired into any workflow and refuses to run without the opt-in.
+    if os.environ.get("EDGESTAT_OVERRIDES_SYNC") != "1":
+        return {"status": "DISABLED", "reason": "set EDGESTAT_OVERRIDES_SYNC=1 to pull overrides (owner-only)"}
     worker_url = os.environ.get(WORKER_URL_ENV)
     if not worker_url:
         return {"status": "SKIP", "reason": f"{WORKER_URL_ENV} not set"}

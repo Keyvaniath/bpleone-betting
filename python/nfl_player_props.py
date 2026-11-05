@@ -601,6 +601,21 @@ def _write_projections(details: List[Dict[str, Any]], mode: str,
         json.dump(_payload, f, indent=2)
 
 
+def _qb_uncertain_teams() -> set:
+    """Teams the game-lines desk marks 'QB uncertain' on today's board."""
+    d = _load(os.path.join(DATA_DIR, "game_lines_desk.json"))
+    out = set()
+    for g in ((d.get("sports") or {}).get("nfl") or {}).get("board") or []:
+        for side in ("home", "away"):
+            q = (g.get("qbs") or {}).get(side) or {}
+            if q.get("certain") is False:
+                mu = str(g.get("matchup") or "")
+                parts = [x.strip() for x in mu.split("@")]
+                if len(parts) == 2:
+                    out.add(parts[1] if side == "home" else parts[0])
+    return out
+
+
 def run() -> Dict[str, Any]:
     state = _load(os.path.join(DATA_DIR, "nfl_state.json"))
     games = state.get("games") or state.get("events") or []
@@ -729,6 +744,16 @@ def run() -> Dict[str, Any]:
     if details:
         _write_projections(details, "live", min(s[3] for s in game_specs))
 
+    # (2026-11-05, pre-launch audit) The game-lines desk blocks its own pick
+    # when a starter is uncertain (ESPN injury report does not settle it). A
+    # passing projection for that team is then a guess about WHO plays, not
+    # how he plays -- both Huntley and Jackson carried BAL pass_int rows on
+    # 11/05 while the desk said "QB uncertain -- BAL". Drop pass_* rows for
+    # those teams and say so.
+    qb_uncertain = _qb_uncertain_teams()
+    dropped_qb = [r for r in rows if r.get("team") in qb_uncertain and str(r.get("stat_type") or "").startswith("pass_")]
+    rows = [r for r in rows if r not in dropped_qb]
+
     rows.sort(key=lambda r: -(r["best_market"]["p"]))
     strong = [r for r in rows if r.get("best_market")]
     out = {
@@ -740,6 +765,8 @@ def run() -> Dict[str, Any]:
         "n_players_in_db": len(NFL_PLAYER_DB),
         "n_players_projected": len(details),
         "n_inactive_dropped": len(inactive),
+        "qb_uncertain_teams": sorted(qb_uncertain),
+        "n_qb_uncertain_dropped": len(dropped_qb),
         "inactive_dropped": sorted(inactive)[:200],
         "universe_note": ("Universe = curated priors + 2025 season baselines + "
                           "current-season gamelogs (rookies enter after "

@@ -63,12 +63,11 @@ jobs:
       - name: Model version stamp
         working-directory: python
         run: python model_version.py || echo "model_version.py" >> "$RUNNER_TEMP/failed_steps.txt"
-      # Sync any user-saved model overrides from Cloudflare KV (no-op if Worker not deployed)
-      - name: Sync model overrides from Worker KV
-        env:
-          EDGESTAT_WORKER_URL: ${{ secrets.EDGESTAT_WORKER_URL }}
-        working-directory: python
-        run: python sync_overrides_from_kv.py || echo "sync_overrides_from_kv.py" >> "$RUNNER_TEMP/failed_steps.txt"
+      # (2026-11-05) The KV -> model_overrides sync step was REMOVED: the Worker
+      # route it read from accepted unauthenticated writes, so anyone could
+      # have steered the model's weights on the next heartbeat. Overrides are
+      # an owner-only, manual flow now (python/sync_overrides_from_kv.py needs
+      # EDGESTAT_OVERRIDES_SYNC=1 and is not wired into any workflow).
 
       # Fresh WNBA box logs BEFORE settlement -- the grader settles every beat
       # but its inputs only refreshed 2x/day in the pipeline, so in-season WNBA

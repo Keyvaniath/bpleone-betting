@@ -25,7 +25,7 @@
 <meta name="twitter:title" content="Live Now | EdgeStat">
 <meta name="twitter:description" content="Live Now · EdgeStat — quantitative sports-betting analytics: model edges, calibrated probabilities, and an honest settled track record across MLB, NBA, NHL, golf, tennis, soccer and more. Informational only, 21+.">
 <title>Live Now | EdgeStat</title>
-<link rel="stylesheet" href="css/style.css?v=20260908c">
+<link rel="stylesheet" href="css/style.css?v=20261105">
 <style>
   .live-row { display:grid; grid-template-columns: 60px 1.6fr 100px 80px 90px 80px 80px; gap:12px; padding:12px 14px; border-bottom:1px solid rgba(255,255,255,0.04); font-family:'JetBrains Mono',monospace; font-size:12px; align-items:center; }
   .live-row.head { background:rgba(255,255,255,0.04); color:var(--muted,#888); font-size:10px; text-transform:uppercase; }
@@ -44,7 +44,7 @@
   .badge.sched { color:#5096dc; }
   .empty { padding: 14px; color: var(--muted, #888); text-align: center; font-style: italic; }
 </style>
-<script src="js/nav.js?v=20260908c"></script>
+<script src="js/nav.js?v=20261105"></script>
 </head>
 <body class="page-live-now">
 <header class="topbar">
@@ -219,6 +219,8 @@ Promise.all([
   for (let i = games.length - 1; i >= 0; i--) {
     const g = games[i];
     if (isTbd(g.home_team) || isTbd(g.away_team) || /\bTBD\b.*\bTBD\b/i.test(g.matchup || '')) { games.splice(i, 1); continue; }
+    // (2026-11-05) the board's vetted probability (desk blend with verdict, or DK no-vig) -- never the raw record Elo
+    if ('p_home_display' in g) g.p_home_win = g.p_home_display;
     if (g.p_home_win == null || (g.state === 'pre' && g.p_home_win === 0.5)) g._noP = true;
     g.et_date = etDate(g.start);
   }
@@ -242,7 +244,7 @@ Promise.all([
     const badgeClass = g.state === 'in' ? 'live' : g.state === 'post' ? 'final' : 'sched';
     const winner = g.state === 'post' ?
       (g.home_score > g.away_score ? g.home_team : g.home_score < g.away_score ? g.away_team : 'TIE') :
-      (g.p_home_win == null ? '—' : `${(g.p_home_win * 100).toFixed(1)}%`);
+      (g.p_home_win == null ? '—' : `${(g.p_home_win * 100).toFixed(1)}%` + (g.p_source ? `<br><small style="font-size:9px;color:var(--muted,#888);">${g.p_source === 'game_lines_desk' ? (g.desk_verdict || 'desk') : 'DK no-vig'}</small>` : ''));
     return `<div class="live-row ${cls}">
       <span class="sport-pill ${g.sport}">${g.sport}</span>
       <span><strong>${g.matchup}</strong></span>
@@ -277,9 +279,9 @@ Promise.all([
           <div class="muted" style="font-size:11px;">${leader.total_to_par || '—'} · #${leader.order || '?'}</div>
         </div>
         <div>
-          <div class="muted" style="font-size:10px; text-transform:uppercase; letter-spacing:1px;">Model projection (unvalidated, no book price)</div>
-          <div style="font-size:18px; font-weight:700;">${(pot.player && (t.is_in_progress || t.is_complete)) ? `${pot.player} ${pot.type}` : '—'}</div>
-          <div class="muted" style="font-size:11px;">${(pot.player && (t.is_in_progress || t.is_complete) && pot.model_prob != null) ? 'model ' + (pot.model_prob*100).toFixed(1) + '%' : 'starts once the event is under way'}</div>
+          <div class="muted" style="font-size:10px; text-transform:uppercase; letter-spacing:1px;">Field</div>
+          <div style="font-size:18px; font-weight:700;">${golf.n_players || '—'} players</div>
+          <div class="muted" style="font-size:11px;">model projections are on the golf page, labelled unvalidated</div>
         </div>
       </div>
       <div style="margin-top: 10px;"><a href="golf.html" class="link-arrow">Full leaderboard →</a></div>

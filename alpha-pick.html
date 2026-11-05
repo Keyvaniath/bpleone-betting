@@ -25,8 +25,8 @@
 <meta name="twitter:title" content="Alpha Pick of the Day | EdgeStat">
 <meta name="twitter:description" content="Alpha Pick of the Day · EdgeStat — quantitative sports-betting analytics: model edges, calibrated probabilities, and an honest settled track record across MLB, NBA, NHL, golf, tennis, soccer and more. Informational only, 21+.">
 <title>Alpha Pick of the Day | EdgeStat</title>
-<link rel="stylesheet" href="css/style.css?v=20260908c">
-<script src="js/nav.js?v=20260908c"></script>
+<link rel="stylesheet" href="css/style.css?v=20261105">
+<script src="js/nav.js?v=20261105"></script>
 <style>
   body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; }
   .container { max-width: 1100px; margin: 0 auto; padding: 24px; }
@@ -158,7 +158,7 @@ fetch('data/alpha_pod_record.json?t=' + Date.now()).then(function (r) { return r
   }
   if (false && c) parts.push('<span style="color:var(--text-2,#9fb0c8);">Curated prop pool (all-time): <b>' + c.wins + '-' + c.losses + '</b> <span style="color:#58c878;">+' + c.roi_pct + '%</span> over ' + c.settled + '</span>');
   el.innerHTML = parts.join(' &nbsp;·&nbsp; ');
-  el.style.display = 'flex';
+  el.style.display = 'none';   // (2026-11-05) an 85% prop slip with more voids than settles is not the first number on this page; it stays on pod-history
 }).catch(function () {});
 </script>
 
@@ -171,7 +171,7 @@ fetch('data/alpha_pod_record.json?t=' + Date.now()).then(function (r) { return r
       <span id="opStreak" style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--muted,#888);"></span>
     </div>
     <p style="margin:6px 0 0;font-size:12.5px;color:var(--text-2,#9fb0c8);line-height:1.6;">
-      The full Alpha board surfaces dozens of plays a day — great in aggregate, but hard to <em>follow</em>.
+      The full Alpha board surfaces many plays a day; at sportsbook prices it is not profitable, and it is hard to <em>follow</em>.
       This isolates the <strong>single highest-EV pick</strong> each slate (flat 1u, backfilled from the public
       ledger, selected on pre-game odds only) so there's one number to watch.
     </p>
@@ -215,20 +215,23 @@ fetch('data/alpha_pick_record.json?t=' + Date.now()).then(function (r) { return 
       '<div style="font-size:18px;font-weight:700;color:' + (color || 'inherit') + ';font-family:\'JetBrains Mono\',monospace;margin-top:2px;">' + val + '</div></div>';
   };
   var rec = r.wins + '-' + r.losses + (r.pushes ? '-' + r.pushes : '');
+  // (2026-11-05) the sportsbook-priced record leads; the blended record is a hit record
   document.getElementById('opStats').innerHTML =
-    cell('Record', rec, '#e8ecf3') +
-    cell('Hit rate', r.hit_rate != null ? Math.round(r.hit_rate * 100) + '%' : '—', '#e8ecf3') +
-    // 2026-11-03: ROI only at sportsbook prices; props are graded at the model's own odds
     (function (ps) {
       var g = (ps || {}).book_priced_game_lines, pr = (ps || {}).model_priced_props;
-      return (g ? cell('At DK prices', g.wins + '-' + g.losses + ' · ' + pc(g.roi_pct), col(g.roi_pct)) : '') +
-             (pr ? cell('Props (model odds)', pr.wins + '-' + pr.losses, '#9fb0c8') : '');
-    })(d.price_split);
+      return (g ? cell('At DK prices (the betting record)', g.wins + '-' + g.losses + ' · ' + pc(g.roi_pct), col(g.roi_pct)) : '') +
+             (pr ? cell('Props at model odds (hit record)', pr.wins + '-' + pr.losses, '#9fb0c8') : '');
+    })(d.price_split) +
+    cell('All picks', rec, '#9fb0c8') +
+    cell('Hit rate (all)', r.hit_rate != null ? Math.round(r.hit_rate * 100) + '%' : '—', '#9fb0c8');
   // honest ETF comparison
+  var gdk = (d.price_split || {}).book_priced_game_lines;
   document.getElementById('opCompare').innerHTML =
     '<strong style="color:#d4a04a;">One pick vs the board:</strong> ' +
-    'this single play runs <b style="color:' + col(r.roi_pct) + ';">' + pc(r.roi_pct) + '</b> at ' +
-    (r.hit_rate != null ? Math.round(r.hit_rate * 100) + '%' : '—') + ' over ' + r.n_settled + ' settled — ' +
+    (gdk
+      ? 'at DraftKings prices the One Pick is <b style="color:' + col(gdk.roi_pct) + ';">' + gdk.wins + '-' + gdk.losses + ' · ' + pc(gdk.roi_pct) + '</b>; the blended ' + rec + ' (' + pc(r.roi_pct) + ') counts props graded at the model\'s own odds and is a hit record, not a betting ROI — '
+      : 'this single play runs <b style="color:' + col(r.roi_pct) + ';">' + pc(r.roi_pct) + '</b> at ' +
+        (r.hit_rate != null ? Math.round(r.hit_rate * 100) + '%' : '—') + ' over ' + r.n_settled + ' settled — ') +
     (b.roi_pct != null ? 'against the full <b>curated board</b> (<b style="color:' + col(b.roi_pct) + ';">' +
       pc(b.roi_pct) + '</b> at <b>' + Math.round((b.hit_rate || 0) * 100) + '%</b> across ~' +
       (b.n_settled || 0) + ' plays). ' : '') +
@@ -320,8 +323,8 @@ fetch('data/alpha_pick_record.json?t=' + Date.now()).then(function (r) { return 
     return '<div class="op-row" style="display:grid;grid-template-columns:82px 1fr 128px 54px 60px;gap:8px;padding:6px 10px;border-bottom:1px solid rgba(255,255,255,.04);align-items:center;">' +
       '<span style="color:var(--muted,#888);">' + h.date + '</span>' +
       '<span><b>' + (h.player_or_matchup || '') + '</b> <span style="color:var(--muted,#888);font-size:11px;">' + mkH(h.market, h.player_or_matchup) + '</span></span>' +
-      '<span style="color:#9fb0c8;font-size:11px;">' + (h.sport || '') + (h.fair_american != null ? ' @ ' + h.fair_american : '') + '</span>' +
-      '<span style="color:' + (h.roi_model_pct >= 0 ? '#58c878' : '#e35a5a') + ';">' + (h.roi_model_pct >= 0 ? '+' : '') + h.roi_model_pct + '%</span>' +
+      '<span style="color:#9fb0c8;font-size:11px;">' + (h.sport || '') + (h.fair_american != null ? ' @ ' + h.fair_american + (h.rule === 'v2' ? ' DK' : ' model') : '') + '</span>' +
+      '<span style="color:var(--muted,#888);font-size:10px;" title="model EV at that price when picked">EV ' + (h.roi_model_pct >= 0 ? '+' : '') + h.roi_model_pct + '%</span>' +
       '<span style="color:' + bc + ';font-weight:700;">' + badge + (pu != null && res !== 'pending' ? ' <span style="font-weight:400;color:var(--muted,#888);font-size:10px;">' + (pu >= 0 ? '+' : '') + pu + '</span>' : '') + '</span>' +
       '</div>';
   }).join('');
@@ -340,9 +343,9 @@ fetch('data/alpha_pick_record.json?t=' + Date.now()).then(function (r) { return 
       <span id="apCadence" style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--muted,#888);"></span>
     </div>
     <p style="margin:6px 0 0;font-size:12.5px;color:var(--text-2,#9fb0c8);line-height:1.6;">
-      Want a little more than one bet? This rides the One Pick alongside the highest-EV play in each
-      <strong>next distinct prop market</strong> — no two plays share a market, so the extras are genuinely
-      <em>different</em> bets, never a re-stamp of the pick. Same honest backfill, flat 1u each.
+      The One Pick alongside the highest-EV projection in each <strong>next distinct prop market</strong>.
+      These extra legs are player props at the model's own odds — no sportsbook prices them — so this card
+      is a hit-rate exhibit, not a set of bets.
     </p>
   </div>
   <div id="apStats" style="display:flex;flex-wrap:wrap;gap:0;border-top:1px solid rgba(255,255,255,.06);border-bottom:1px solid rgba(255,255,255,.06);"></div>
@@ -382,7 +385,7 @@ fetch('data/alpha_pick_record.json?t=' + Date.now()).then(function (r) { return 
       '<span style="color:' + (k === '0' ? '#d4a04a' : 'var(--text-2,#9fb0c8)') + ';">' + (slotLabel[k] || 'Slot ' + k) + '</span>' +
       '<span>' + v.wins + '-' + v.losses + (v.pushes ? '-' + v.pushes : '') + '</span>' +
       '<span style="color:var(--muted,#888);">' + (v.hit_rate != null ? Math.round(v.hit_rate * 100) + '% hit · ' : '') + (v.wins + v.losses) + ' actioned' + (thin ? ' · thin' : '') + '</span>' +
-      '<span style="text-align:right;color:' + col(v.roi_pct) + ';font-weight:700;">' + pc(v.roi_pct) + '</span></div>';
+      '<span style="text-align:right;color:var(--muted,#888);font-size:10px;">model odds</span></div>';
   }).join('');
   // today's slate
   var t = s.todays;
@@ -412,21 +415,20 @@ fetch('data/alpha_pick_record.json?t=' + Date.now()).then(function (r) { return 
 }).catch(function () {});
 </script>
 
-<!-- SHARE / daily tweet: one-tap "Post to X" (opens the composer pre-filled) -->
+<!-- SHARE: Bluesky / Threads / copy. (X removed 2026-11-05: account suspended, no automation.) -->
 <section id="tweetCard" style="display:none; margin:0 0 22px; border:1px solid rgba(29,155,240,.28); border-radius:12px; background:linear-gradient(180deg,rgba(29,155,240,.06),rgba(255,255,255,.01)); overflow:hidden;">
   <div style="padding:13px 18px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;">
-    <span style="font-size:14px;font-weight:600;">📣 Share today's pick</span>
+    <span style="font-size:14px;font-weight:600;">📣 Share today's pick (Bluesky / Threads / copy)</span>
     <span id="twChars" style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--muted,#888);"></span>
   </div>
   <pre id="twText" style="margin:0;padding:0 18px 12px;white-space:pre-wrap;font-family:inherit;font-size:13px;line-height:1.55;color:var(--text,#dfe6f2);"></pre>
   <div style="display:flex;gap:10px;padding:0 18px 16px;flex-wrap:wrap;">
-    <a id="twPost" href="#" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:6px;background:#1d9bf0;color:#fff;font-weight:600;font-size:13px;padding:9px 16px;border-radius:999px;text-decoration:none;">𝕏&nbsp; Post to X</a>
     <a id="bskyPost" href="#" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:6px;background:#0085ff;color:#fff;font-weight:600;font-size:13px;padding:9px 16px;border-radius:999px;text-decoration:none;">🦋 Bluesky</a>
     <a id="threadsPost" href="#" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:6px;background:#000;border:1px solid rgba(255,255,255,.25);color:#fff;font-weight:600;font-size:13px;padding:9px 16px;border-radius:999px;text-decoration:none;">@ Threads</a>
     <button id="twCopy" style="background:rgba(255,255,255,.06);color:var(--text,#dfe6f2);border:1px solid rgba(255,255,255,.14);font-size:13px;padding:9px 16px;border-radius:999px;cursor:pointer;">Copy text</button>
   </div>
   <details id="wkThreadWrap" style="display:none;border-top:1px solid rgba(255,255,255,.06);padding:10px 18px 16px;">
-    <summary style="cursor:pointer;font-size:12px;color:var(--muted,#888);text-transform:uppercase;letter-spacing:.5px;">🧵 Weekly receipts thread (post any day — tweet 1, then paste replies)</summary>
+    <summary style="cursor:pointer;font-size:12px;color:var(--muted,#888);text-transform:uppercase;letter-spacing:.5px;">🧵 Weekly receipts thread (post any day — first post, then paste the replies)</summary>
     <div id="wkThreadMeta" style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--muted,#888);margin:8px 0;"></div>
     <div id="wkThreadList"></div>
   </details>
@@ -436,7 +438,6 @@ fetch('data/alpha_tweet.json?t=' + Date.now()).then(function (r) { return r.json
   if (!d || !d.tweet) return;
   document.getElementById('twText').textContent = d.tweet;
   document.getElementById('twChars').textContent = d.char_count + '/280 · ' + (d.date || '');
-  document.getElementById('twPost').href = d.intent_url || ('https://twitter.com/intent/tweet?text=' + encodeURIComponent(d.tweet));
   // Same text, every platform -- the composer is platform-agnostic by design.
   var enc = encodeURIComponent(d.tweet);
   document.getElementById('bskyPost').href = 'https://bsky.app/intent/compose?text=' + enc;
@@ -523,7 +524,7 @@ fetch('data/weekly_thread.json?t=' + Date.now()).then(function (r) { return r.js
   <div class="prow head" style="display:grid;grid-template-columns:1.7fr 1.4fr 70px 80px 70px 70px;gap:12px;padding:8px 14px;background:rgba(255,255,255,0.05);color:var(--muted,#888);font-size:10px;text-transform:uppercase;font-family:'JetBrains Mono',monospace;">
     <div>Player</div><div>Prop</div><div class="num" style="text-align:right;">Model</div><div></div><div></div><div></div>
   </div>
-  <div id="propsRows"><div style="padding:14px;color:var(--muted,#888);">Loading the slip…</div></div>
+  <div id="propsRows"><div style="padding:14px;color:var(--muted,#888);">No prop projections on today's slate.</div></div>
 </div>
 
 <div class="panel" id="otherPanel">
@@ -548,8 +549,8 @@ fetch('data/weekly_thread.json?t=' + Date.now()).then(function (r) { return r.js
   <h2>How the model picks Alpha vs POD</h2>
   <div class="explainer">
     <strong>Play of Day</strong> ranks by confidence × edge × calibration —
-    bias toward high-probability favorites where the model is sure.
-    Variance-tight. Lower payout but high hit-rate.
+    bias toward high-probability favorites where the model is sure. Its settled
+    record at DraftKings prices is on the <a href="track-record.html">track record</a>.
     <br><br>
     <strong>Alpha Pick</strong> considers only candidates with a live DraftKings quote and
     ranks them by calibrated EV at that price. It excludes proven-loser and overconfident
@@ -589,6 +590,12 @@ async function load() {
   const a = d.alpha_pick;
   if (!a) {
     document.getElementById('pick-line').textContent = 'No Alpha Pick today';
+    const st = document.querySelector('#alpha-hero .stats'); if (st) st.style.display = 'none';
+    const pr = document.getElementById('propsRows'); if (pr) pr.innerHTML = '<div style="padding:14px;color:var(--muted,#888);">No prop projections on today's slate.</div>';
+    const t5 = document.getElementById('top-5-rows'); if (t5 && /^—?$/.test(t5.textContent.trim())) t5.innerHTML = '<div style="padding:10px 14px;color:var(--muted,#888);">No candidates cleared the gate today.</div>';
+    fetch('data/today_status.json?t=' + Date.now()).then(r => r.json()).then(t => {
+      const why = (t.alpha || {}).reason; if (why) document.getElementById('market-line').textContent = why;
+    }).catch(() => {});
     return;
   }
   document.getElementById('pick-class').textContent = (a.sport || '').toUpperCase();
@@ -635,7 +642,7 @@ async function load() {
       <div style="color:var(--text-2,#bbb);">${esc(p.market)}</div>
       <div class="num" style="text-align:right;">${fmtPct(p.prob, 0)}</div>
       <div></div><div></div><div></div>
-    </div>`).join('') : '<div style="padding:14px;color:var(--muted,#888);">No qualifying props on today\'s slate yet — fills in with the morning refresh.</div>';
+    </div>`).join('') : '<div style="padding:14px;color:var(--muted,#888);">No prop projections on today\'s slate.</div>';
 
   // Other plays the machine likes
   const others = d.other_picks || [];
@@ -675,6 +682,7 @@ setInterval(load, 5 * 60 * 1000);   // 5 min refresh — Worker quota
 </script>
 <script>
 // Daily email: composed by the pipeline from the same record; opens the mail client prefilled. Sending stays yours.
+if (localStorage.getItem('edgestat_owner') === '1')   // (2026-11-05) operator card (mailto / preview / copy), not for visitors
 fetch('data/alpha_email.json?t=' + Date.now(), { cache: 'no-cache' }).then(function (r) { return r.json(); }).then(function (e) {
   var s = document.createElement('section'); s.className = 'card'; s.style.marginBottom = '24px';
   s.innerHTML = '<div class="card-head"><span>&#9993;&#65039; <strong>Daily email</strong> <span class="muted" style="font-size:10px;">same pick, inbox-ready &mdash; you press send</span></span><span class="muted">' + (e.date || '') + '</span></div>' +

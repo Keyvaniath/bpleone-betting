@@ -26,7 +26,7 @@ HISTORY = os.path.join(DATA_DIR, "odds_history.json")
 OUT = os.path.join(DATA_DIR, "line_movement.json")
 
 STEAM_ML_PP = 2.5     # home implied prob shifted >= this many pp -> moneyline steam
-STEAM_TOTAL = 0.5     # total moved >= this many points -> total steam
+STEAM_TOTAL = 1.0     # (2026-11-05) was 0.5: 81 of 122 games read STEAM, 50 of them on a half-point total move
 
 
 def _load(p) -> Dict[str, Any]:

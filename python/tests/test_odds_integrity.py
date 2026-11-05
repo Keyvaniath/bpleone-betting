@@ -531,3 +531,24 @@ def test_failed_mlb_pull_never_publishes_the_demo_slate(tmp_path):
                "is_demo": False, "generated_at": "t0"}, open(path, "w"))
     m = P._production_manifest(demo, path)
     assert m["games"] == [{"matchup": "MIL @ CHC"}] and m["kept_from"] == "t0"
+
+
+def test_board_prior_rejects_espn_placeholder_lines(tmp_path, monkeypatch):
+    """ESPN files -100000/+5000 'DraftKings' lines on lopsided college games;
+    de-vigged they read as a 98% market. They are no market at all."""
+    import board_prior as bp
+    snap = {"generated_at": "2026-11-05T17:00:00",
+            "games": [{"sport": "NCAAB", "event_id": "1", "matchup": "BELL @ IU", "status": "pre",
+                       "market": {"ml_home": -100000, "ml_away": 5000, "book": "draftkings"}},
+                      {"sport": "NCAAB", "event_id": "2", "matchup": "WAKE @ VAN", "status": "pre",
+                       "market": {"ml_home": -2800, "ml_away": 1300, "book": "draftkings"}},
+                      {"sport": "NCAAB", "event_id": "3", "matchup": "A @ B", "status": "pre",
+                       "market": {"ml_home": -150, "ml_away": 130, "book": "draftkings"}}]}
+    (tmp_path / "espn_odds.json").write_text(json.dumps(snap))
+    (tmp_path / "game_lines_desk.json").write_text("{}")
+    monkeypatch.setattr(bp, "DATA_DIR", str(tmp_path))
+    prior = bp.BoardPrior("ncaab")
+    f1, f2, f3 = prior.for_event("1"), prior.for_event("2"), prior.for_event("3")
+    assert f1["p_home_display"] is None and f1["dk_ml_home"] is None and f1.get("dk_placeholder")
+    assert f2["p_home_display"] is not None          # -2800 is within the cap: a thin but real market
+    assert 0.5 < f3["p_home_display"] < 0.6

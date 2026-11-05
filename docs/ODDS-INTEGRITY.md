@@ -350,3 +350,112 @@ Replayed 52 recorded days (8/10 - 11/05) of alpha_pick_record through the
 current composers: 0 disagreements, 0 crashes. No recorded day carries a
 DK price on the pick (pre-11/03 locks are never edited), so the DK path is
 covered by an end-to-end test (fair -150 / DK -125).
+
+## Pre-launch audit (2026-11-05, branch launch/audit-1105)
+
+Brandon: "audit everything and find any issues -- make it perfect, this is the
+last ask before we send it out to people." Method: a headless crawl of all
+135 live pages (console errors, text leaks), a secrets scan of the public
+repo, a phone-width probe of 24 key pages, four read-only auditors over
+every page group against the standard above, each P0 re-verified by hand.
+
+Clean before the pass: no secrets in the repo, no encoding damage, all 8
+workflows green, 0 console errors on 135 pages, no NaN/undefined at phone
+width, OG card + sitemap present.
+
+Fixed on this branch (P0 first):
+- WORKER WRITE PATH: `POST /admin/save-overrides` accepted any JSON from
+  anyone; the heartbeat pulled it into `data/model_overrides.json`, which
+  `self_learn_weights` blends into the model. Now: the route needs
+  `X-EdgeStat-Admin: <ADMIN_TOKEN>` and is refused while the secret is
+  unset; the D1 write routes FAIL CLOSED without `SYNC_TOKEN` (they used to
+  open); the heartbeat sync step is removed and the script needs an explicit
+  `EDGESTAT_OVERRIDES_SYNC=1`. NEEDS: `wrangler secret put ADMIN_TOKEN`,
+  `wrangler secret put SYNC_TOKEN` (+ the EDGESTAT_SYNC_TOKEN GitHub secret
+  with the same value) and `wrangler deploy` -- Brandon's actions.
+- LEGAL PAGES every visitor accepts at the age gate were templates
+  ("[LEGAL ENTITY NAME]", "[STATE]", "[DATE]", "Template notice ... not
+  reviewed by an attorney"). Filled: Brandon Leone d/b/a bpleone, California
+  courts (the bracketed arbitration clause dropped), dated 2026-11-05, one
+  contact address. privacy.html now describes what happens: no analytics
+  script, no cookies, Formspree holds the subscribe address, GitHub /
+  Cloudflare / jsDelivr see IPs as hosts, no affiliate data. Counsel review
+  is still owed (GO-OFFICIAL checklist).
+- D1-FED PAGES OFFLINE: backtest-replayer.html and lifecycle.html read a
+  Worker copy of the ledger that stopped syncing 2026-09-08 and stores
+  payouts in a shape they could not read -> "+0.00u" for a 27-67 version,
+  PrizePicks-era lock records shown as a record. Both are a notice page
+  until the copy is rebuilt with price classes.
+- NFL DFS: `nfl_dfs_calibration.play_key` mapped every status but Q to
+  "healthy" (p_play 0.958) -- Davante Adams (IR), Lamar Jackson (OUT), Jalen
+  Hurts (IR) topped the Val/$K column. IR/OUT/O/D/PUP/NFI/SUS -> p_play 0.02;
+  the column shows the calibrated x_value.
+- ESPN PLACEHOLDER LINES (-100000/+5000 "DraftKings" on lopsided college
+  games) are dropped in espn_odds.py (|ml| > 3000) and guarded again in
+  board_prior.py, so they no longer become a 98% "market" probability, a
+  LOW_VIG flag, a line-move alert or a TRACK button.
+- OFF-SEASON DESKS: espn_generic stops uppercasing ESPN's stale season type
+  (WNBA "PLAYOFFS" three weeks after the Finals, CWS "SEASON" off a June 22
+  final): `active_season` = games today or within 14 days; otherwise
+  "no games scheduled -- last final <date>"; finals carry their date on the
+  board; the static "LIVE" chip is hidden unless a game is in progress
+  (nav.js, every page). live.html / live-momentum.html say the poller is
+  MLB-only and label the stored LAD@SDP example and the 484-game CLV table
+  as archived. mlb / player / f1 / wnba-players say off-season instead of
+  "pipeline may not have run yet".
+- NFL PROPS: 953/953 projections were "strong edges" with a "Fair" price
+  column; now "projections", "Book price: none", and passing rows are held
+  for teams whose starter the desk marks uncertain (BAL/CLE/MIN/NYG/PHI on
+  11/05 -- Huntley and Jackson both had BAL pass_int rows).
+- BOARD ROWS show the probability's source/verdict under the number on all
+  nine desks (was hover-title only): "UNPROVEN", "NO EDGE", "DK no-vig".
+  live-now.html uses `p_home_display` (NHL rows disagreed with nhl.html) and
+  the golf bestbet card is gone.
+- TRACK RECORD: Best/Worst/Live-settled showed the RECORDED price next to a
+  payout at the DK price (TBR "+940" paying +0.73u); now `book_american`.
+  The curated 289-243 / -0.86% line leads the page, same as the homepage;
+  POD is a sub-line.
+- ALPHA PAGE: the DK-priced 19-16 / -2.2% cell and sentence lead; the
+  blended 67-38 (+12%) is labelled a hit record; the 35-6 slip bar (67
+  voids) no longer leads; per-slot ROI% replaced by "model odds"; history
+  prices labelled DK vs model; "Post to X" removed (account suspended); the
+  daily-email operator card is owner-only (localStorage edgestat_owner=1);
+  the hero says why there is no pick.
+- HOMEPAGE: empty amber #staleBanner (CSS beat `hidden`); six "--" tiles
+  now honest counts (picks at a DK price, line-move alerts from the tape);
+  the three "--" play cards hide their tile grids on a no-play day; CLV
+  card says the source was retired; the 3-0 / +62% locks line says "too few
+  to mean anything"; the prove-it line excludes PrizePicks like the
+  track-record chart; operator loop card never shown; "Last refresh" is the
+  data time; ticker vocab humanized.
+- PHONE NAV: `.mainnav` collapsed to a 64px column with a scrollbar on every
+  page but the homepage; now a full-width swipeable row (style.css, cache
+  bumped to ?v=20261105 on 121 pages + sw.js; main.js versioned too).
+- SHELLS MADE HONEST: pricing ("Pro is not for sale yet", no Stripe claim,
+  no fake free-account CTA), support, sportsbooks ("no partner link", no
+  commission wording while there are no partners), subscribe copy
+  ("occasional updates, sent by hand"), nav labels, about.html roadmap
+  rewritten to the November state, alerts.html lede (a line move is a move),
+  arbitrage copy (no "look square" / "free money"), prizepicks-value header
+  (feed dark), config.html read-only (no GitHub-editor Apply), config /
+  model-control out of the public directory, operator text off line-shop /
+  pickem / status, nrfi tiles for prices that do not exist removed,
+  trends "Avg CLV (real)" tile removed, props/parlays "DK" labels replaced
+  by the row's book, STEAM_TOTAL 0.5 -> 1.0, sport_coverage no longer calls
+  MLB IN-SEASON on two stale pending picks and lists NCAAB, slate_player_pot
+  lists only players whose team plays today (was 463 NBA rows across 30
+  teams on a 2-game night), tonight.html pitch-count empty state,
+  methodology/clv/calibration-map use one CLV truth and label their
+  universes, widget.html carries the 21+ line, a branded 404.html.
+
+Verified after the pass: 49 integrity tests, pricing guard green on 16
+surfaces, JS syntax on every edited script, the pages above re-probed on
+localhost.
+
+Left for Brandon (not code): GitHub Pages "Enforce HTTPS" is off
+(http://betting.bpleone.com serves plain HTTP); the three Worker secrets and
+`wrangler deploy` above; counsel review of the legal pages; whether to keep
+serving the repo root (CLAUDE.md, X-LAUNCH-KIT.md, python/, worker source
+are one URL away -- the repo is public anyway); the Odds API key has 500
+requests this month while props.json has 0 props (no MLB; NBA/NFL props
+would be the only sportsbook-priced props on the site).

@@ -236,9 +236,13 @@ async function handleHTTP(request, env) {
   // SYNC_TOKEN`, same value as the EDGESTAT_SYNC_TOKEN GitHub secret that
   // d1_sync.py sends); until then behaviour is unchanged so a deploy can't
   // break the sync.
-  if ((path === "/db/log-picks" || path === "/db/settle-picks") && env.SYNC_TOKEN
-      && request.headers.get("X-EdgeStat-Sync") !== env.SYNC_TOKEN) {
-    return new Response(JSON.stringify({ error: "unauthorized" }), { status: 401, headers: cors });
+  // (2026-11-05, pre-launch audit) FAIL CLOSED: with no SYNC_TOKEN secret the
+  // write routes are refused, not opened. Set it with `wrangler secret put
+  // SYNC_TOKEN` and the same value as the EDGESTAT_SYNC_TOKEN GitHub secret.
+  if (path === "/db/log-picks" || path === "/db/settle-picks") {
+    if (!env.SYNC_TOKEN || request.headers.get("X-EdgeStat-Sync") !== env.SYNC_TOKEN) {
+      return new Response(JSON.stringify({ error: "unauthorized" }), { status: 401, headers: cors });
+    }
   }
 
   // POST /db/log-picks  body: { picks: [...] }  -- bulk insert picks
@@ -590,7 +594,14 @@ async function handleHTTP(request, env) {
 
   // /admin/save-overrides -- POST a model_overrides JSON, stored in KV.
   // The next pipeline cron syncs KV -> data/model_overrides.json via git commit.
+  // (2026-11-05, pre-launch audit) This route accepted ANY JSON body from
+  // anyone and the heartbeat pulled it into the model's weight blend. It now
+  // requires `X-EdgeStat-Admin: <ADMIN_TOKEN>` (`wrangler secret put
+  // ADMIN_TOKEN`) and is refused outright while that secret is unset.
   if (path === "/admin/save-overrides" && request.method === "POST") {
+    if (!env.ADMIN_TOKEN || request.headers.get("X-EdgeStat-Admin") !== env.ADMIN_TOKEN) {
+      return new Response(JSON.stringify({ error: "unauthorized" }), { status: 401, headers: cors });
+    }
     try {
       const body = await request.text();
       const parsed = JSON.parse(body);  // validate

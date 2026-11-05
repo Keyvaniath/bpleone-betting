@@ -109,9 +109,9 @@
   // summary/brief/data-sources remain reachable by URL / in-page links.
   const MORE = [
     { section: "Account & Bets" },
-    { href: "support.html",             label: "♥ Support / Tip" },
-    { href: "pricing.html",             label: "⭐ Pricing / Go Pro" },
-    { href: "sportsbooks.html",         label: "🎟 Where to Bet" },
+    { href: "support.html",             label: "♥ Support (tips coming later)" },
+    { href: "pricing.html",             label: "⭐ Pricing (free for now)" },
+    { href: "sportsbooks.html",         label: "🎟 Sportsbooks (no partners)" },
     { href: "bankroll.html",            label: "Bankroll" },
     { href: "my-bets.html",             label: "My Bets" },
     { section: "System & Reads" },
@@ -383,4 +383,17 @@ if ('serviceWorker' in navigator && location.protocol === 'https:') {
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', sync); else sync();
   window.addEventListener('resize', sync);
+})();
+
+// (2026-11-05) The header "LIVE" chip is static markup on ~40 pages. Keep it only where a
+// script owns it (the homepage ticker); sport desks show it themselves when a game is live.
+(function () {
+  const hide = () => {
+    try {
+      const t = document.querySelector('.topbar .ticker');
+      const ownsIt = !!document.querySelector('script[src*="js/main.js"]');   // main.js turns the chip into a real ticker
+      if (t && !ownsIt && t.textContent.trim() === 'LIVE') t.style.display = 'none';
+    } catch (e) {}
+  };
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', hide); else hide();
 })();

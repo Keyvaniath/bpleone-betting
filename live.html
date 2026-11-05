@@ -25,9 +25,9 @@
 <meta name="twitter:title" content="Live Win Expectancy | EdgeStat">
 <meta name="twitter:description" content="Live Win Expectancy · EdgeStat — quantitative sports-betting analytics: model edges, calibrated probabilities, and an honest settled track record across MLB, NBA, NHL, golf, tennis, soccer and more. Informational only, 21+.">
 <title>Live Win Expectancy | EdgeStat</title>
-<link rel="stylesheet" href="css/style.css?v=20260908c">
+<link rel="stylesheet" href="css/style.css?v=20261105">
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
-<script src="js/nav.js?v=20260908c"></script>
+<script src="js/nav.js?v=20261105"></script>
 </head>
 <body class="page-live">
 <header class="topbar">
@@ -50,7 +50,7 @@
   <section id="lockedCard" class="card" style="margin-bottom: 18px; display:none;">
     <div class="card-head"><span>🔒 Locked Props</span><span class="muted" id="lockMeta">--</span></div>
     <div style="padding: 8px 14px 14px;">
-      <p class="muted" style="font-size: 11px; margin: 0 0 8px 0;">Props already over their line where the player is done — these will cash. Consider PP/DK early-cashout if offered.</p>
+      <p class="muted" style="font-size: 11px; margin: 0 0 8px 0;">Props already over their line where the player is done — these will settle as hits.</p>
       <div id="lockList"></div>
     </div>
   </section>
@@ -319,7 +319,8 @@
   </section>
 
   <section class="card" style="margin-bottom: 28px;">
-    <div class="card-head"><span>📊 Win Expectancy Throughout the Game</span><span class="muted">Dodgers @ Padres</span></div>
+    <div class="card-head"><span>📊 Win Expectancy Throughout the Game</span><span class="muted" id="liveWPLabel">Dodgers @ Padres</span></div>
+    <p class="muted" id="liveWPArchived" style="display:none;padding:0 14px 6px;font-size:11px;"></p>
     <canvas id="liveWPChart" height="220"></canvas>
     <p class="caption">Probability that LAD wins, recomputed after each event. The shaded area is the home team's lead. Sharp dips/spikes mark high-leverage plays — those are the spots where live betting markets are slowest to react.</p>
   </section>
@@ -363,20 +364,15 @@ The model takes that state and runs 1,000 forward simulations:
 
 That ratio is P(home wins | current state).
 
-Convert to American odds, add target vig, and you have the *fair* live
-moneyline.  Compare it to what the book is offering — every gap is a
-potential live bet.
-
-Sharpest live-betting edges:
-  • After a HR — books overreact, fade the moving line
-  • Bases loaded, 2 outs — books underprice the strikeout probability
-  • Late-inning ties — bookies regress; you trust the better bullpen
-  • Pitcher fatigue past 90 pitches — TTO penalty is bigger than books model</pre>
+Convert to American odds, add target vig, and you have the model's *fair*
+live moneyline.  The gap between that and a book's live line is a model
+disagreement.  This in-game model has NO validated record against live
+closing prices, so a gap is a research observation, not a bet.</pre>
   </section>
 
   <section class="card">
     <div class="card-head"><span>⚡ Live Edge Detector</span></div>
-    <p style="color:var(--text-2)">Every 60 seconds, we compare our live fair price to the book's live moneyline across all six tracked sportsbooks. Any gap larger than 4% triggers an alert. Live markets are slower and squarer than pre-game markets — that's where the in-game edges live.</p>
+    <p style="color:var(--text-2)">Every 60 seconds, we compare the model's live fair price to DraftKings' live moneyline (via ESPN's feed). Any gap larger than 4% triggers an alert. Live markets are slower and squarer than pre-game markets — that's where the in-game edges live.</p>
     <ul style="color:var(--text-2); padding-left:20px; line-height:1.7;">
       <li><strong>Pre-game:</strong> Books re-shade on 6-figure handle and sharp money. Hard to beat.</li>
       <li><strong>Live:</strong> Books re-shade on a fixed algorithm that updates after each pitch. The algorithm is sometimes wrong by 3-5% in high-leverage spots.</li>
@@ -398,7 +394,7 @@ Sharpest live-betting edges:
 
 <script src="js/data.js"></script>
 <script src="js/ml-lab.js"></script>
-<script src="js/main.js"></script>
+<script src="js/main.js?v=20261105"></script>
 <script>
 // Live in-game state from data/live_state.json (refreshed every 10 min by live-games workflow)
 function renderLiveGames() {
@@ -435,8 +431,12 @@ function renderLiveGames() {
       }
 
       if (!games.length) {
-        section.innerHTML = `<div class="card-head"><span>Live Games Right Now</span><span class="muted">polled ${d.polled_at || "?"}</span></div>
-          <p class="muted" style="padding:14px;">No games currently in progress.</p>`;
+        // (2026-11-05) the poller is MLB-only; say so, and label the example chart below as archived
+        const lab = document.getElementById("liveWPLabel"); if (lab) lab.textContent = "Archived example — not live";
+        const arch = document.getElementById("liveWPArchived");
+        if (arch) { arch.style.display = "block"; arch.textContent = "This is a stored example game (Dodgers @ Padres) that shows how the in-game model moves; it is not today's game. The live board above polls MLB games only and is idle in the off-season."; }
+        section.innerHTML = `<div class="card-head"><span>Live Games Right Now</span><span class="muted">MLB only · last poll ${d.polled_at || "?"}</span></div>
+          <p class="muted" style="padding:14px;">No MLB game in progress. The live poller follows MLB only and is idle until Opening Day; NBA and NHL live scores are on the <a href="live-now.html" style="color:#7fb0e8;">Live Now</a> board.</p>`;
         return;
       }
       const rows = games.map(g => {
@@ -540,7 +540,7 @@ function renderLiveClv() {
       }).join("");
       section.innerHTML = `<div class="card-head">
         <span>Live Line Movement (CLV)</span>
-        <span class="muted">polled ${d.polled_at || "?"} UTC &middot; ${entries.length} games tracked</span>
+        <span class="muted">MLB only${entries.length > 40 ? " · includes the 2026 season archive, not live games" : ""} · polled ${d.polled_at || "?"} UTC &middot; ${entries.length} games tracked</span>
       </div>
       <div style="display:grid; grid-template-columns: 1.4fr 0.7fr 1fr 1fr 1fr 1fr; gap:14px; padding:6px 14px; color: var(--muted, #888); font-size: 10px; text-transform: uppercase;">
         <span>Matchup</span><span>State</span><span>Tracking</span><span>Home ML</span><span>Total</span><span>True CLV</span>
@@ -592,7 +592,7 @@ function renderLiveEdges() {
           <span>Model: ${(a.model_p_home_win * 100).toFixed(1)}%<br><span class="muted" style="font-size:10px;">Book: ${(a.book_implied_p_home_win * 100).toFixed(1)}%</span></span>
           <span><strong style="color:#58c878;">+${a.edge_pct}%</strong> edge</span>
           <span>${a.current_ml >= 0 ? '+' : ''}${a.current_ml}<br><span class="muted" style="font-size:10px;">fair ${a.fair_ml >= 0 ? '+' : ''}${a.fair_ml}</span></span>
-          <span><strong>${a.recommend_stake_units}u</strong><br><span class="muted" style="font-size:10px;">¼-Kelly</span></span>
+          <span class="muted" style="font-size:10px;">unvalidated<br>no stake</span>
         </div>`;
       }).join("");
       section.innerHTML = `<div class="card-head">
@@ -600,10 +600,10 @@ function renderLiveEdges() {
           <span class="muted">${alerts.length} live edge${alerts.length===1?'':'s'} &middot; threshold ${d.edge_threshold_pp}pp &middot; refreshes every 10 min</span>
         </div>
         <div style="display:grid; grid-template-columns: 1.4fr 0.6fr 1.2fr 1fr 1fr 1fr 0.8fr; gap:14px; padding: 6px 14px; color: var(--muted, #888); font-size: 10px; text-transform: uppercase;">
-          <span>Matchup</span><span>Side</span><span>Game State</span><span>Probs</span><span>Edge</span><span>Live ML</span><span>Stake</span>
+          <span>Matchup</span><span>Side</span><span>Game State</span><span>Probs</span><span>Gap</span><span>Live ML</span><span>Verdict</span>
         </div>
         ${rows}
-        <p class="muted" style="font-size:11px; padding: 10px 14px 0;">Refreshes every 10 min during games. ¼-Kelly stake capped at 1.5u. Alert fires when |model_p_win − book_implied_p_win| ≥ ${d.edge_threshold_pp}pp.</p>`;
+        <p class="muted" style="font-size:11px; padding: 10px 14px 0;">Refreshes every 10 min during games. No stake is suggested: the in-game model has no validated record. Alert fires when |model_p_win − book_implied_p_win| ≥ ${d.edge_threshold_pp}pp.</p>`;
     })
     .catch(err => console.error("live_edges load failed:", err));
 }

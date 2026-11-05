@@ -24,6 +24,7 @@ import datetime as dt
 import urllib.request
 from typing import Any, Dict, List, Optional
 
+PLACEHOLDER_ABS_ML = 3000   # beyond this an ESPN 'DK' moneyline is a placeholder, not a market (2026-11-05)
 DATA_DIR = os.path.join(os.path.dirname(__file__), "..", "data")
 OUT = os.path.join(DATA_DIR, "espn_odds.json")
 HISTORY = os.path.join(DATA_DIR, "odds_history.json")
@@ -194,6 +195,13 @@ def fetch_sport(sport: str) -> List[Dict[str, Any]]:
         tot = o.get("total") or {}
         ml_home = _am(_deep(ml, "home", "close", "odds") or _deep(ml, "home", "open", "odds"))
         ml_away = _am(_deep(ml, "away", "close", "odds") or _deep(ml, "away", "open", "odds"))
+        # (2026-11-05, pre-launch audit) ESPN files placeholder "DraftKings" lines on
+        # lopsided college games (-100000/+5000, -20000/+3500). Downstream they
+        # became a 98% "market" probability, a LOW_VIG flag and a TRACK button at
+        # -100000. A side beyond +/-3000 is not a posted market: drop the pair.
+        placeholder_ml = any(abs(int(x)) > PLACEHOLDER_ABS_ML for x in (ml_home, ml_away) if x is not None)
+        if placeholder_ml:
+            ml_home = ml_away = None
         over_px = _am(_deep(tot, "over", "close", "odds") or _deep(tot, "over", "open", "odds"))
         under_px = _am(_deep(tot, "under", "close", "odds") or _deep(tot, "under", "open", "odds"))
         status = _deep(comp, "status", "type", "state")  # pre / in / post
@@ -215,6 +223,7 @@ def fetch_sport(sport: str) -> List[Dict[str, Any]]:
             "market": {
                 "ml_home": ml_home,
                 "ml_away": ml_away,
+                "placeholder_ml": placeholder_ml,
                 "total": o.get("overUnder"),
                 "over_price": over_px,
                 "under_price": under_px,

@@ -25,7 +25,7 @@
 <meta name="twitter:title" content="NBA Desk | EdgeStat">
 <meta name="twitter:description" content="NBA Desk · EdgeStat — quantitative sports-betting analytics: model edges, calibrated probabilities, and an honest settled track record across MLB, NBA, NHL, golf, tennis, soccer and more. Informational only, 21+.">
 <title>NBA Desk | EdgeStat</title>
-<link rel="stylesheet" href="css/style.css?v=20260908c">
+<link rel="stylesheet" href="css/style.css?v=20261105">
 <style>
   .nba-row { display:grid; grid-template-columns: 1.6fr 70px 70px 80px 80px 80px 70px; gap:12px; padding:12px 14px; border-bottom:1px solid rgba(255,255,255,0.04); font-family:'JetBrains Mono',monospace; font-size:12px; align-items:center; }
   .nba-row.head { background:rgba(255,255,255,0.04); color:var(--muted,#888); font-size:10px; text-transform:uppercase; }
@@ -36,7 +36,7 @@
   .pill.final { background:rgba(150,150,150,0.15); color:#aaa; }
   .pill.sched { background:rgba(80,150,220,0.15); color:#5096dc; }
 </style>
-<script src="js/nav.js?v=20260908c"></script>
+<script src="js/nav.js?v=20261105"></script>
 </head>
 <body class="page-nba">
 <header class="topbar">
@@ -176,7 +176,7 @@ fetch("data/nba_state.json?t=" + Date.now(), { cache: "no-cache" })
         <span><strong>${g.matchup}</strong></span>
         <span class="muted" style="font-size:10px;">${g.away_record} / ${g.home_record}</span>
         <span style="font-weight:700;">${scoreText}</span>
-        <span style="color:${g.p_home_display == null ? 'var(--muted,#888)' : g.p_home_display >= 0.6 ? '#58c878' : g.p_home_display <= 0.4 ? '#e35a5a' : 'var(--text-2,#aaa)'}; font-weight:700;" title="${g.p_source === 'game_lines_desk' ? 'game-lines desk' + (g.desk_verdict ? ' (' + g.desk_verdict + ')' : '') : g.p_source === 'dk_no_vig' ? 'DraftKings no-vig' : 'no DraftKings line'}">${g.p_home_display == null ? '—' : (g.p_home_display * 100).toFixed(1) + '%'}</span>
+        <span style="color:${g.p_home_display == null ? 'var(--muted,#888)' : g.p_home_display >= 0.6 ? '#58c878' : g.p_home_display <= 0.4 ? '#e35a5a' : 'var(--text-2,#aaa)'}; font-weight:700;" title="${g.p_source === 'game_lines_desk' ? 'game-lines desk' + (g.desk_verdict ? ' (' + g.desk_verdict + ')' : '') : g.p_source === 'dk_no_vig' ? 'DraftKings no-vig' : 'no DraftKings line'}">${g.p_home_display == null ? '—' : (g.p_home_display * 100).toFixed(1) + '%'}<br><small style="font-weight:400;font-size:9px;color:var(--muted,#888);">${g.p_source === 'game_lines_desk' ? (g.desk_verdict || 'desk') : g.p_source === 'dk_no_vig' ? 'DK no-vig' : (g.dk_placeholder ? 'no market' : '')}</small></span>
         <span>${fmtAmer(g.dk_ml_home)}</span>
         <span>${fmtAmer(g.dk_ml_away)}</span>
         <span class="pill ${pillCls}">${g.status || g.state || '—'}</span>

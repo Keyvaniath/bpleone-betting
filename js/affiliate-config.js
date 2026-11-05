@@ -12,22 +12,24 @@
 window.EDGESTAT_AFFILIATE = {
   enabled: false,
 
+  // (2026-11-05) honest while enabled is false: there are NO affiliate links or
+  // sportsbook partnerships today. Restore the commission wording only with real links.
   disclosure:
-    "Some links below are affiliate links. If you register or deposit through them, " +
-    "EdgeStat may earn a commission at no extra cost to you. This never affects our " +
-    "models or track record. 21+ only, where legal. Gambling problem? Call 1-800-GAMBLER.",
+    "EdgeStat currently has no affiliate or sportsbook partnerships: nothing on this page " +
+    "pays us. If that ever changes, the links will be marked and this disclosure updated first. " +
+    "21+ only, where legal. Gambling problem? Call 1-800-GAMBLER.",
 
   // Operator cards. `url` "#" = not yet configured (rendered disabled).
   books: [
-    { name: "DraftKings Sportsbook", code: "DK", url: "#", offer: "[configure affiliate link]",
+    { name: "DraftKings Sportsbook", code: "DK", url: "#", offer: "no partner link",
       note: "Available in most regulated US states." },
-    { name: "FanDuel Sportsbook",    code: "FD", url: "#", offer: "[configure affiliate link]",
+    { name: "FanDuel Sportsbook",    code: "FD", url: "#", offer: "no partner link",
       note: "Available in most regulated US states." },
-    { name: "BetMGM",                code: "MGM", url: "#", offer: "[configure affiliate link]",
+    { name: "BetMGM",                code: "MGM", url: "#", offer: "no partner link",
       note: "Available in most regulated US states." },
-    { name: "Caesars Sportsbook",    code: "CZR", url: "#", offer: "[configure affiliate link]",
+    { name: "Caesars Sportsbook",    code: "CZR", url: "#", offer: "no partner link",
       note: "Available in most regulated US states." },
-    { name: "Fanatics Sportsbook",   code: "FAN", url: "#", offer: "[configure affiliate link]",
+    { name: "Fanatics Sportsbook",   code: "FAN", url: "#", offer: "no partner link",
       note: "Available in select states." },
   ],
 };

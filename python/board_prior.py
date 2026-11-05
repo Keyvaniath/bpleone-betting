@@ -38,6 +38,9 @@ def _load(name: str) -> Dict[str, Any]:
         return {}
 
 
+PLACEHOLDER_ABS_ML = 3000   # beyond this an ESPN 'DK' line is a placeholder, not a market
+
+
 class BoardPrior:
     def __init__(self, sport: str):
         self.sport = sport.lower()
@@ -68,6 +71,13 @@ class BoardPrior:
             "p_home_display": None,
             "desk_verdict": None,
         }
+        # (2026-11-05) ESPN files placeholder "DraftKings" lines on lopsided
+        # college games (-100000/+5000, -20000/+3500). De-vigged they read as a
+        # 98% "market" probability and seeded TRACK buttons at -100000. A side
+        # beyond +/-3000 is treated as no posted market.
+        if m and any(abs(int(m.get(k) or 0)) > PLACEHOLDER_ABS_ML for k in ("ml_home", "ml_away")):
+            out.update(dk_ml_home=None, dk_ml_away=None, odds_observed_at=None, dk_placeholder=True)
+            m = {}
         d = self.desk.get(eid)
         if d is not None:
             out.update(p_source="game_lines_desk", p_home_display=round(float(d["p_home"]), 4),

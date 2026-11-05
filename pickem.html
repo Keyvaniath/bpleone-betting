@@ -25,7 +25,7 @@
 <meta name="twitter:title" content="Pick-Em (PrizePicks) | EdgeStat">
 <meta name="twitter:description" content="Pick-Em (PrizePicks) · EdgeStat — quantitative sports-betting analytics: model edges, calibrated probabilities, and an honest settled track record across MLB, NBA, NHL, golf, tennis, soccer and more. Informational only, 21+.">
 <title>Pick-Em (PrizePicks) | EdgeStat</title>
-<link rel="stylesheet" href="css/style.css?v=20260908c">
+<link rel="stylesheet" href="css/style.css?v=20261105">
 <style>
   .pp-row { display:grid; grid-template-columns: 1.4fr 0.6fr 1.2fr 0.7fr 0.7fr 0.7fr 0.9fr 1fr 1fr;
             gap: 12px; padding:10px 14px; border-bottom:1px solid rgba(255,255,255,0.04);
@@ -49,7 +49,7 @@
                font-family:'JetBrains Mono',monospace; font-size:11px; color: var(--muted,#888);
                margin-bottom: 14px; border-radius: 6px; }
 </style>
-<script src="js/nav.js?v=20260908c"></script>
+<script src="js/nav.js?v=20261105"></script>
 </head>
 <body class="page-pickem">
 <header class="topbar">
@@ -66,7 +66,7 @@
   <section class="page-head">
     <h1>Pick-Em (PrizePicks)</h1>
     <p>PrizePicks runs a pick-em model: combine 2-6 legs into a Power Play, all must hit to cash. We pull their daily MLB projections, run our model at PP's line, and flag where PP is materially softer than DraftKings on the same player + market.</p>
-    <p class="muted" style="font-size:12px; margin-top:6px;" id="sleeperStatus">Sleeper Picks coming once you can hand us a Bearer token from your account (their endpoint is auth-gated).</p>
+    <p class="muted" style="font-size:12px; margin-top:6px;" id="sleeperStatus">Sleeper Picks: not connected.</p>
   </section>
 
   <section class="metric-strip" id="pickemMetrics">
@@ -232,7 +232,7 @@ fetch("data/sleeper.json", { cache: "no-cache" })
     const el = document.getElementById("sleeperStatus");
     if (!el) return;
     if (s.warning === "needs_auth") {
-      el.innerHTML = `<strong style="color:#d4a04a;">Sleeper Picks:</strong> auth-gated. Add a SLEEPER_TOKEN repo secret (see python/sleeper.py docstring) and Sleeper lines will appear alongside PrizePicks on the next refresh.`;
+      el.innerHTML = `<strong style="color:#d4a04a;">Sleeper Picks:</strong> not connected.`;
     } else if (s.raw_projections) {
       el.innerHTML = `<strong style="color:#58c878;">Sleeper Picks:</strong> live (${s.raw_projections} projections, ${s.matched_to_dk} matched to DK).`;
     }

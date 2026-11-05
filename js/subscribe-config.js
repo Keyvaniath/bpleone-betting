@@ -23,5 +23,5 @@ window.EDGESTAT_SUBSCRIBE = {
   buttondownUser: "",         // e.g. "edgestat"
   customEndpoint: "",         // e.g. "https://edgestat-subscribe.<you>.workers.dev"
   // Copy shown above the input. Tweak freely.
-  blurb: "Get the strongest signals in your inbox — steam, sharp moves, and fresh edges. No spam, unsubscribe anytime.",
+  blurb: "Occasional EdgeStat updates by email — written and sent by hand, no automated picks. Unsubscribe anytime.",
 };

@@ -309,18 +309,33 @@ def run(cfg: Dict[str, Any]) -> Dict[str, Any]:
     upcoming = [g for g in games if g not in today_games and g.get("state") != "post"]
     next_date = min((_et_date(g.get("date")) for g in upcoming if _et_date(g.get("date"))),
                     default=None)
+    # (2026-11-05, pre-launch audit) ESPN's season type sticks after a season
+    # ends (WNBA read "playoffs" three weeks after the Finals; CWS "season" in
+    # November off a June 22 final) and the desks uppercased that into the H1.
+    # The state is now what the board can SHOW: games today, a slate within 14
+    # days, or nothing scheduled -- with the last final's date so a reader can
+    # see how old the board is.
+    _horizon = (dt.date.fromisoformat(_today_et) + dt.timedelta(days=14)).isoformat()
+    upcoming_soon = [g for g in upcoming if _et_date(g.get("date")) and _et_date(g.get("date")) <= _horizon]
+    last_final = max((_et_date(g.get("date")) for g in games if g.get("state") == "post" and _et_date(g.get("date"))),
+                     default=None)
+    active_season = len(today_games) > 0 or len(upcoming_soon) > 0
+    if not active_season:
+        season_label = "no games scheduled"
     if today_games:
         note = f"{len(today_games)} game(s) on the board today ({season_label})."
     elif upcoming:
         note = (f"No games today — next slate {next_date} "
                 f"({len(upcoming)} upcoming, {season_label}).")
     else:
-        note = f"No games today ({season_label})."
+        note = ("No games scheduled" + (f" — last final {last_final}" if last_final else "") +
+                "; the next slate is not on the board yet.")
 
     payload = {
         "generated_at": dt.datetime.now().isoformat(timespec="seconds"),
         "league": cfg.get("league_label", sport_key.upper()),
-        "active_season": len(today_games) > 0 or season_type in (2, 3),
+        "active_season": active_season,
+        "last_final_date": last_final,
         "season_year": season,
         "season_status": season_label,
         "n_games_today": len(today_games),
