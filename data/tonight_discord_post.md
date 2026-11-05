@@ -1,9 +1,9 @@
 **EdgeStat -- Tonight's Slate**
-_NO_ACTION_NIGHT_ | L:0 S:39 F:176
+_NO_ACTION_NIGHT_ | L:0 S:13 F:220
 
 :dart: **Top Picks:**
-1. [GOLF] Brice Garnett -- Brice Garnett (PLAYER_STRONG)
-2. [GOLF] Ben Martin -- Ben Martin (PLAYER_STRONG)
+1. [GOLF] Harry Hall -- Harry Hall (PLAYER_STRONG)
+2. [GOLF] Matthieu Pavon -- Matthieu Pavon (PLAYER_STRONG)
 
 :coin: Bankroll Advisory: STAND DOWN. Slate has no aligned conviction. Skip betting tonight or watch only.
 

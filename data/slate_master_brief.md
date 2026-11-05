@@ -1,27 +1,27 @@
 # EdgeStat — Tonight's Master Brief
-_Generated 2026-11-05T16:59:46 UTC_
+_Generated 2026-11-05T17:19:02 UTC_
 
 ## Slate Quality
 - **Tier:** NO_ACTION_NIGHT
-- **Score:** -20
+- **Score:** -168
 - **Advisory:** STAND DOWN. Slate has no aligned conviction. Skip betting tonight or watch only.
 - **Total LOCKs:** 0
-- **Total STRONG:** 39
-- **Total FADES:** 176
+- **Total STRONG:** 13
+- **Total FADES:** 220
 
 ## Top 5 Curated Picks
-1. **GOLF / Brice Garnett** (GOLF_PLAYER, score=143.79)
-   - Play: Brice Garnett (PLAYER_STRONG)
+1. **GOLF / Harry Hall** (GOLF_PLAYER, score=155.43)
+   - Play: Harry Hall (PLAYER_STRONG)
    - Rationale: Cross-sport top pick (GOLF_PLAYER)
-2. **GOLF / Ben Martin** (GOLF_PLAYER, score=141.14)
-   - Play: Ben Martin (PLAYER_STRONG)
+2. **GOLF / Matthieu Pavon** (GOLF_PLAYER, score=121.86)
+   - Play: Matthieu Pavon (PLAYER_STRONG)
    - Rationale: Cross-sport top pick (GOLF_PLAYER)
 
 ## Top Events Board
 - **GOLF** / ? (TOURNAMENT_STRONG)
-  - Brice Garnett top 10 finish
-  - Ben Martin top 10 finish
-  - Peter Malnati top 10 finish
+  - Harry Hall top 10 finish
+  - Matthieu Pavon top 10 finish
+  - Nick Dunlap top 10 finish
 
 ## Slate ROI Projection
 - **Picks:** 0
@@ -30,13 +30,13 @@ _Generated 2026-11-05T16:59:46 UTC_
 - **Expected P&L on $100:** $0.0
 
 ## Top Fades
-- **NBA** / MIA (TEAM_FADE)
-  - Fade angle: team total UNDER
 - **NBA** / PHX (TEAM_FADE)
+  - Fade angle: team total UNDER
+- **NBA** / MIA (TEAM_FADE)
   - Fade angle: team total UNDER
 - **NBA** / ORL (TEAM_FADE)
   - Fade angle: team total UNDER
 - **NBA** / GSW (TEAM_FADE)
   - Fade angle: team total UNDER
-- **NHL** / adin hill (GOALIE_FADE)
+- **NHL** / frederik andersen (GOALIE_FADE)
   - Fade angle: saves UNDER + win NO

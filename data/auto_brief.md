@@ -2,14 +2,16 @@
 
 ## Slate
 - **0 games** scheduled
-- **No best bet today:** a best bet needs a real sportsbook price — 19 model-only projections excluded (LOL 5, MLS 5, NCAAF 4, NFL 3, EPL 1, NHL 1)
+- **No best bet today:** a best bet needs a real sportsbook price — 26 model-only projections excluded (LOL 5, MLS 5, NCAAF 4, GOLF 4, NFL 3, NHL 2, NBA 1, EPL 1, NCAAB 1)
 
 ## Golf -- World Wide Technology Championship
-- **Field:** 120 players  |  Status: Scheduled (starts 2026-11-05)
+- **Leader:** Harry Hall (-7) at #1
+- **Field:** 120 players  |  Status: In Progress
+- **Model projection:** Matthieu Pavon WIN (model 13.8%) — model projection — unvalidated, no sportsbook price, not a recommendation
 
 ## NBA -- REGULAR
 - 11/05 09:00 PM ET: Orlando Magic @ Phoenix Suns (2-5 vs 1-5)  | DK -104/-114 | desk P(home) 51.1% (NO EDGE) | Scheduled
-- 11/05 10:00 PM ET: Miami Heat @ Golden State Warriors (3-5 vs 5-3)  | DK +230/-281 | desk P(home) 70.9% (NO EDGE) | Scheduled
+- 11/05 10:00 PM ET: Miami Heat @ Golden State Warriors (3-5 vs 5-3)  | DK +228/-279 | desk P(home) 70.7% (NO EDGE) | Scheduled
 
 ## NHL -- REGULAR
 - 11/05 07:00 PM ET: Utah Mammoth @ Montreal Canadiens (10-6-0 vs 9-3-3)  | DK -122/+102 | desk P(home) 47.4% (NO EDGE) | Scheduled
