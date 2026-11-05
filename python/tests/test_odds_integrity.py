@@ -360,3 +360,16 @@ def test_board_never_publishes_the_record_elo(monkeypatch):
         g["p_home_win"] = p
         bp.finalize(g, lambda x: round(-100 * x / (1 - x)) if x > 0.5 else round(100 * (1 - x) / x))
     assert unpriced["fair_home_american"] is None and priced["fair_home_american"] is not None
+
+
+def test_board_prior_hides_dk_price_in_play():
+    """(2026-11-04) in play the espn_odds snapshot can be DK's in-game line."""
+    import board_prior as bp
+    am = lambda p: -100 if p >= 0.5 else 100
+    g = {"state": "in", "p_home_display": 0.6, "dk_ml_home": -191, "dk_ml_away": 160}
+    bp.finalize(g, am)
+    assert g["dk_ml_home"] is None and g["dk_ml_away"] is None
+    assert g["dk_ml_home_last_seen"] == -191 and g["p_home_display"] is None
+    pre = {"state": "pre", "p_home_display": 0.6, "dk_ml_home": -150, "dk_ml_away": 130}
+    bp.finalize(pre, am)
+    assert pre["dk_ml_home"] == -150 and pre["fair_home_american"] == -100

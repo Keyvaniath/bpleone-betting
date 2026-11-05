@@ -102,5 +102,12 @@ def finalize(game: Dict[str, Any], american) -> None:
     p = game.get("p_home_display") if game.get("state") == "pre" else None
     if game.get("state") != "pre":
         game["p_home_display"] = None
+        # (2026-11-04) the board is pre-game only: once a game starts, the latest
+        # espn_odds snapshot can be DK's IN-PLAY line (TOR@DEN -191/+160 showed
+        # mid-game). Keep the pre-game number for reference, never display it.
+        for k in ("dk_ml_home", "dk_ml_away"):
+            if game.get(k) is not None:
+                game[k + "_last_seen"] = game[k]
+            game[k] = None
     game["fair_home_american"] = american(p) if p is not None else None
     game["fair_away_american"] = american(1 - p) if p is not None else None
