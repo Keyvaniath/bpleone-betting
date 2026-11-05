@@ -100,7 +100,11 @@ def run() -> Dict[str, Any]:
     # matchups market is stale; ESPN refreshes every run, no key required. ESPN
     # fields override matchups for any shared game, and ESPN-only games (the model
     # may cover games matchups.json doesn't) are added so they can edge too.
-    espn_by = (_load(os.path.join(DATA_DIR, "espn_odds.json")).get("by_matchup") or {})
+    _espn_doc = _load(os.path.join(DATA_DIR, "espn_odds.json"))
+    espn_by = (_espn_doc.get("by_matchup") or {})
+    # (2026-11-04) quote provenance: when each feed was observed
+    _observed = {"espn_dk": _espn_doc.get("generated_at"),
+                 "matchups_snapshot": matchups.get("generated_at")}
     games = list(matchups.get("games") or [])
     seen = {g.get("matchup") for g in games}
     for g in games:
@@ -185,6 +189,7 @@ def run() -> Dict[str, Any]:
                 "kelly_calibrated": round(max(0, (calibrated_p * book_dec - 1) / (book_dec - 1)), 4) if book_dec > 1 else 0,
                 "is_underdog": book_ml > 0,
                 "line_source": line_source,
+                "odds_observed_at": _observed.get(line_source),
             })
 
         # ----- TOTALS (Over/Under) book-vs-model edge -----
@@ -227,6 +232,7 @@ def run() -> Dict[str, Any]:
                     "kelly_fraction": round(max(0, (tot_p * tot_dec - 1) / (tot_dec - 1)), 4),
                     "kelly_calibrated": round(max(0, (calibrated_p_tot * tot_dec - 1) / (tot_dec - 1)), 4),
                     "line_source": line_source,
+                    "odds_observed_at": _observed.get(line_source),
                 })
 
     # Sort by CALIBRATED edge (post-shrinkage) — this is the honest ranking

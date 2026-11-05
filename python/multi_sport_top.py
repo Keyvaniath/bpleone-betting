@@ -51,6 +51,8 @@ def _extract_pick(sport: str, blob: Dict[str, Any], page: str) -> Dict[str, Any]
             "model_prob": pod.get("model_prob"),
             "fair_american": pod.get("model_price"),
             "market_american": pod.get("market_price"),
+            "odds_observed_at": pod.get("odds_observed_at"),   # (2026-11-04) provenance
+            "commence_time": pod.get("commence_time"),
             "edge_pct": pod.get("edge_pct"),
             "kelly_units": pod.get("kelly_units"),
             "confidence": pod.get("confidence"),

@@ -52,6 +52,8 @@ def run() -> Dict[str, Any]:
                 "sport": p.get("sport") or "",
                 "prob": p.get("prob"),
                 "fair_american": p.get("fair_american"),
+                "book_american": p.get("book_american"),   # (2026-11-04) the DK quote
+                "quote": p.get("quote"),
                 "decimal_odds": p.get("decimal_odds"),
                 "edge_pct": p.get("edge_pct"),
                 "kelly_fraction": p.get("kelly_fraction") or 0,
@@ -69,6 +71,8 @@ def run() -> Dict[str, Any]:
             "sport": a.get("sport") or "",
             "prob": a.get("model_prob"),
             "fair_american": a.get("fair_american"),
+            "book_american": a.get("book_american"),   # (2026-11-04) the DK quote
+            "quote": a.get("quote"),
             "decimal_odds": a.get("decimal_odds"),
             "edge_pct": (a.get("roi_per_dollar") or 0) * 100,
             "kelly_fraction": a.get("kelly_fraction") or 0,
@@ -95,7 +99,9 @@ def run() -> Dict[str, Any]:
             "market": "TEAM_ML" if side in ("HOME", "AWAY") else f"TOTAL_{side}",
             "sport": "MLB",
             "prob": e.get("calibrated_prob"),
-            "fair_american": e.get("book_american"),
+            "fair_american": None,                    # (2026-11-04) was the BOOK price, mislabelled
+            "book_american": e.get("book_american"),
+            "odds_observed_at": e.get("odds_observed_at"),
             "decimal_odds": e.get("book_decimal"),
             "edge_pct": e.get("calibrated_edge_pct"),
             "kelly_fraction": e.get("kelly_calibrated") or e.get("kelly_fraction") or 0,

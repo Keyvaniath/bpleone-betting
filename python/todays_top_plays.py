@@ -384,7 +384,17 @@ def run() -> Dict[str, Any]:
             # projection with its rejection reason, never a ranked play.
             fair = x.get("fair_american")          # the model's own fair price (display only)
             mu = x.get("matchup") or x.get("player")
-            pr = _quotes.price_candidate(x.get("sport"), mu, x.get("market"), None)
+            pr = _quotes.price_candidate(x.get("sport"), mu, x.get("market"), None,
+                                         event_id=x.get("event_id"))
+            # (2026-11-04) a game line from a sport board is ranked only when its
+            # probability comes from a model that beat DraftKings out of sample
+            # (game_lines_desk verdict PROMISING). DK no-vig is the market itself
+            # (EV = -vig); an UNPROVEN / NO EDGE desk stays a forward test.
+            if pr["actionable"] and x.get("p_source") is not None and not (
+                    x.get("p_source") == "game_lines_desk" and x.get("desk_verdict") == "PROMISING"):
+                pr = {**pr, "actionable": False,
+                      "reason": "market_prob" if x.get("p_source") == "dk_no_vig"
+                                else f"desk_{str(x.get('desk_verdict') or 'unvalidated').lower().replace(' ', '_')}"}
             if not pr["actionable"]:
                 rejected[pr["reason"]] = rejected.get(pr["reason"], 0) + 1
                 if len(projections) < 60:

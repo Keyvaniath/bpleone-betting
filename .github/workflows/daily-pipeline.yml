@@ -1437,6 +1437,12 @@ jobs:
       - name: Site directory + live-status map (nav badges + Everything page)
         working-directory: python
         run: python site_directory.py || echo "site_directory.py" >> "$RUNNER_TEMP/failed_steps.txt"
+      # (2026-11-04) Pricing guard: every published pick row must carry a fresh,
+      # pre-start sportsbook quote (or say it is a projection). Self-tests first,
+      # so a guard that passes everything fails. Runs after every pick producer.
+      - name: Verify pricing guard
+        working-directory: python
+        run: python verify_pricing.py || echo "verify_pricing.py" >> "$RUNNER_TEMP/failed_steps.txt"
 
       - name: Commit + push if data changed
         # RESILIENCE (added 2026-06-02): run even when an earlier step failed, so a

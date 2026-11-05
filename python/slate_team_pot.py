@@ -36,12 +36,13 @@ def _load(p):
     except Exception: return {}
 
 
-def _add(picks, sport, matchup, market, prob, fair, source):
+def _add(picks, sport, matchup, market, prob, fair, source, **extra):
     if prob is None or not (MIN_PROB <= prob <= MAX_PROB): return
     picks.append({
         "sport": sport, "matchup": matchup,
         "market": market, "prob": round(prob, 4),
         "fair_american": fair, "source": source,
+        **{k: v for k, v in extra.items() if v is not None},
     })
 
 
@@ -128,12 +129,17 @@ def run() -> Dict[str, Any]:
             if g.get("state") == "post": continue
             if not _has_signal(g): continue   # skip preseason 0-0 games
             mu = g.get("matchup")
-            ph = g.get("p_home_win")
+            # (2026-11-04) the board's vetted pre-game probability only (board_prior:
+            # the desk blend or DK no-vig, None in play). p_home_win is live / the
+            # record Elo on older states -- DET@MIA went out at 91.6% from it.
+            ph = g.get("p_home_display")
             if ph:
+                meta = {"event_id": g.get("id"), "p_source": g.get("p_source"),
+                        "desk_verdict": g.get("desk_verdict")}
                 _add(picks, sport, mu, "ML_HOME", ph,
-                      g.get("fair_home_american"), sf)
+                      g.get("fair_home_american"), sf, **meta)
                 _add(picks, sport, mu, "ML_AWAY", 1 - ph,
-                      g.get("fair_away_american"), sf)
+                      g.get("fair_away_american"), sf, **meta)
 
     # NHL team props (already loaded above)
     nhl_team = _load(os.path.join(DATA_DIR, "nhl_team_props.json"))

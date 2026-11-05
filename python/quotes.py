@@ -150,8 +150,8 @@ def _total(market: str) -> Optional[Tuple[str, float]]:
     return (m.group(1), float(m.group(2))) if m else None
 
 
-def find_quote(sport: str, matchup: str, market: str, snapshot: Optional[Dict[str, Any]] = None
-               ) -> Tuple[Optional[Dict[str, Any]], Optional[str]]:
+def find_quote(sport: str, matchup: str, market: str, snapshot: Optional[Dict[str, Any]] = None,
+               event_id: Optional[str] = None) -> Tuple[Optional[Dict[str, Any]], Optional[str]]:
     """(quote, None) for a game moneyline / total DraftKings posted, else
     (None, reason). The quote carries everything the data contract needs."""
     snap = snapshot if snapshot is not None else load_snapshot()
@@ -159,9 +159,18 @@ def find_quote(sport: str, matchup: str, market: str, snapshot: Optional[Dict[st
     tot = _total(market)
     if side is None and tot is None:
         return None, R_UNSUPPORTED
-    g = next((x for x in (snap.get("games") or [])
-              if _norm(x.get("matchup")) == _norm(matchup)
-              and (not sport or _norm(x.get("sport")) == _norm(sport))), None)
+    games = snap.get("games") or []
+    g = None
+    # (2026-11-04) ESPN event id first: the snapshot keys matchups by abbreviation
+    # ("JAX @ BAL") while the sport state files use full names ("Jacksonville
+    # Jaguars @ Baltimore Ravens") -- every NFL/NBA/NHL/college candidate missed.
+    if event_id:
+        g = next((x for x in games if str(x.get("event_id") or "") == str(event_id)
+                  and (not sport or _norm(x.get("sport")) == _norm(sport))), None)
+    if g is None:
+        g = next((x for x in games
+                  if _norm(x.get("matchup")) == _norm(matchup)
+                  and (not sport or _norm(x.get("sport")) == _norm(sport))), None)
     if g is None:
         return None, R_NO_QUOTE
     m = g.get("market") or {}
@@ -215,10 +224,11 @@ def actionable(quote: Optional[Dict[str, Any]], now: Optional[dt.datetime] = Non
 
 
 def price_candidate(sport, matchup, market, p_model, ev_hurdle: float = 0.0,
-                    snapshot: Optional[Dict[str, Any]] = None, now: Optional[dt.datetime] = None) -> Dict[str, Any]:
+                    snapshot: Optional[Dict[str, Any]] = None, now: Optional[dt.datetime] = None,
+                    event_id: Optional[str] = None) -> Dict[str, Any]:
     """Everything a candidate needs from pricing, in one fail-closed call:
     {actionable, reason, quote, ev, min_acceptable_american, edge_vs_no_vig}."""
-    q, why = find_quote(sport, matchup, market, snapshot)
+    q, why = find_quote(sport, matchup, market, snapshot, event_id=event_id)
     ok, why2 = actionable(q, now) if q else (False, why)
     out = {"actionable": ok, "reason": None if ok else (why2 or why), "quote": q,
            "ev": None, "min_acceptable_american": min_acceptable_american(p_model, ev_hurdle) if p_model else None,

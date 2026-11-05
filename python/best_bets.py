@@ -41,6 +41,9 @@ import datetime as dt
 from typing import Any, Dict, List, Optional
 
 import prob_calibration as pc   # side/line-aware overconfidence guard
+import quotes as _q              # (2026-11-04) the pricing contract
+
+DK_PROP_EV_HURDLE = 0.02         # calibrated EV at the DK price must clear +2%
 
 
 def _nz(v, d):
@@ -223,6 +226,46 @@ def score_prop(p: Dict[str, Any], bd: Dict[str, Any], wx: Dict[str, Any],
     return {"quality_score": score, "stars": stars, "factors": factors, "risks": risks}
 
 
+def _iso_utc(ts):
+    """props.json stamps a naive local ISO time (CI = UTC). Treat naive as UTC."""
+    if not ts:
+        return None
+    try:
+        t = dt.datetime.fromisoformat(str(ts).replace("Z", "+00:00"))
+    except ValueError:
+        return None
+    if t.tzinfo is None:
+        t = t.replace(tzinfo=dt.timezone.utc)
+    return t.isoformat()
+
+
+def price_dk_prop(p: Dict[str, Any], fetched_at, now: Optional[dt.datetime] = None) -> Optional[Dict[str, Any]]:
+    """(2026-11-04) A props.json row -> its DraftKings quote + calibrated EV, or
+    None (fail closed: no price for the side, stale / started quote, no
+    calibrated prob, or EV below the hurdle)."""
+    play = p.get("play")
+    if play not in ("OVER", "UNDER"):
+        return None
+    amer = p.get("dk_over") if play == "OVER" else p.get("dk_under")
+    raw = p.get("model_prob_over") if play == "OVER" else p.get("model_prob_under")
+    quote = {"american": amer, "decimal": _q.american_to_decimal(amer),
+             "provenance": _q.ACTIONABLE_PROVENANCE, "book": "DraftKings",
+             "source": "the-odds-api", "observed_at": _iso_utc(fetched_at),
+             "scheduled_start": p.get("commence_time"), "event_status": "pre",
+             "line": p.get("line")}
+    ok, _why = _q.actionable(quote, now)
+    if not ok or quote["decimal"] is None:
+        return None
+    cal, meta = pc.calibrate_play(p.get("market"), play, p.get("line"), raw)
+    if cal is None:
+        return None
+    ev = _q.ev_binary(cal, quote["decimal"])
+    if ev is None or ev < DK_PROP_EV_HURDLE:
+        return None
+    return {"play": play, "american": amer, "raw": raw, "cal": cal, "meta": meta,
+            "quote": quote, "ev": ev}
+
+
 def run() -> Dict[str, Any]:
     bd = _bd_index()
     wx = _load(WX_PATH)
@@ -233,9 +276,24 @@ def run() -> Dict[str, Any]:
     n_overconf_dropped = 0   # raw props the ledger proves are overconfident (fake edge)
 
     # DK props
-    for p in (_load(PROPS_PATH).get("top_edges") or []):
+    # (2026-11-04) These are the ONLY prop rows with a real sportsbook price: the
+    # paid Odds API returns DraftKings' over/under for each line (dk_over /
+    # dk_under), fetched at props.json generated_at. They used to be published
+    # with the raw-model edge and no price or timestamp. Now each carries its
+    # quote, must pass quotes.actionable (fresh <= 180 min, pre-start), and its
+    # edge is the CALIBRATED probability's EV at that price.
+    props_doc = _load(PROPS_PATH)
+    props_fetched = props_doc.get("generated_at")
+    n_dk_unpriced = 0
+    for p in (props_doc.get("top_edges") or []):
         if not p.get("play") or p.get("play") == "SKIP":
             continue
+        priced = price_dk_prop(p, props_fetched)
+        if priced is None:
+            n_dk_unpriced += 1
+            continue
+        _play, _amer, _raw, _cal, _meta, _quote, _ev = (priced[k] for k in
+            ("play", "american", "raw", "cal", "meta", "quote", "ev"))
         # Never publish a prop whose family the ledger proves is overconfident on
         # this side (model probability is broken -> the edge is fake at any line).
         if pc.is_overconfident_play(p.get("market"), p.get("play"), p.get("line")):
@@ -249,8 +307,12 @@ def run() -> Dict[str, Any]:
             "team": p.get("team"),
             "market": p.get("market"), "line": p.get("line"),
             "play": p.get("play"),
-            "model_prob": p.get("model_prob_over"),
-            "edge_pct": p.get("best_edge_pct") or p.get("edge_pct"),
+            "model_prob_raw": _raw,
+            "model_prob": round(_cal, 4),                  # calibrated, side of the play
+            "calibration": _meta.get("method"),
+            "book_american": _amer,                        # DraftKings' price for this side
+            "quote": _quote,
+            "edge_pct": round(_ev * 100, 1),               # calibrated EV at the DK price
             "url_anchor": f"player.html?id={p.get('player_id')}",
             **sc,
         })
@@ -666,8 +728,10 @@ def run() -> Dict[str, Any]:
         "n_bets": len(top),
         "total_candidates": len(candidates),
         "n_overconfident_curated": n_overconf_dropped,
-        "rule": "a best bet needs a real sportsbook price; model-only projections, PrizePicks and parlays are excluded",
+        "rule": ("a best bet needs a real sportsbook price; model-only projections, PrizePicks and parlays are excluded. "
+                 "DraftKings props (paid Odds API) need a fresh pre-start quote and calibrated EV >= +2% at that price"),
         "excluded_unpriced": excluded,
+        "n_dk_props_rejected": n_dk_unpriced,   # (2026-11-04) stale / started / no price / below +2% calibrated EV
         "by_source": {s: sum(1 for c in top if c.get("source") == s)
                        for s in ("DK", "PP", "NRFI", "SGP", "GOLF", "NBA", "NHL", "KBO", "LOL", "CS",
                                   "WNBA", "MLS", "EPL", "UCL", "NFL", "NCAAF", "NCAAB", "CWS")},
