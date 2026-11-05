@@ -308,6 +308,25 @@ def test_ml_reprice_no_longer_stamps_later_prices():
     assert pend[0].get("book_american") is None
 
 
+def test_ml_reprice_one_shot_never_stamps_a_board_price(tmp_path, monkeypatch):
+    """The one-shot run() read espn_odds.by_matchup (not status-filtered): a
+    pending placeholder pick could be stamped with an in-play price."""
+    import ml_reprice as mr
+    led = {"picks": [{"pick_id": "p", "sport": "MLB", "market": "ML_HOME",
+                      "player_or_matchup": "NYY @ BOS", "fair_american": -110, "settled": False}]}
+    (tmp_path / "led.json").write_text(json.dumps(led))
+    (tmp_path / "espn_odds.json").write_text(json.dumps(
+        {"by_matchup": {"NYY @ BOS": {"ml_home": 450, "ml_away": -700}},
+         "games": [{"sport": "MLB", "matchup": "NYY @ BOS", "status": "in",
+                    "market": {"ml_home": 450, "ml_away": -700}}]}))
+    for k, v in {"DATA_DIR": tmp_path, "LEDGER": tmp_path / "led.json", "SEED": tmp_path / "none.json",
+                 "ARCHIVE": tmp_path / "arch.json", "MARKER": tmp_path / "marker.json"}.items():
+        monkeypatch.setattr(mr, k, str(v))
+    mr.run(force=True)
+    out = json.loads((tmp_path / "led.json").read_text())["picks"][0]
+    assert out.get("book_american") is None
+
+
 _NFL_FINALS = [
     {"id": "9001", "date": "2026-11-08", "away_abbrev": "DEN", "home_abbrev": "CAR",
      "away_score": 20, "home_score": 17},
