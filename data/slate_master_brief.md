@@ -1,18 +1,27 @@
 # EdgeStat — Tonight's Master Brief
-_Generated 2026-11-05T02:37:46 UTC_
+_Generated 2026-11-05T03:38:39 UTC_
 
 ## Slate Quality
-- **Tier:** NO_ACTION_NIGHT
-- **Score:** -156
-- **Advisory:** STAND DOWN. Slate has no aligned conviction. Skip betting tonight or watch only.
+- **Tier:** STRONG_NIGHT
+- **Score:** 83
+- **Advisory:** Solid slate. Pick top STRONG/LOCK picks; consider Kelly 25-50% sizing.
 - **Total LOCKs:** 0
-- **Total STRONG:** 1
-- **Total FADES:** 160
+- **Total STRONG:** 40
+- **Total FADES:** 77
 
 ## Top 5 Curated Picks
-1. **NBA / NOP** (NBA_TEAM, score=60.0)
-   - Play: NOP (TEAM_STRONG)
-   - Rationale: Cross-sport top pick (NBA_TEAM)
+1. **GOLF / Brice Garnett** (GOLF_PLAYER, score=143.79)
+   - Play: Brice Garnett (PLAYER_STRONG)
+   - Rationale: Cross-sport top pick (GOLF_PLAYER)
+2. **GOLF / Ben Martin** (GOLF_PLAYER, score=141.14)
+   - Play: Ben Martin (PLAYER_STRONG)
+   - Rationale: Cross-sport top pick (GOLF_PLAYER)
+
+## Top Events Board
+- **GOLF** / ? (TOURNAMENT_STRONG)
+  - Brice Garnett top 10 finish
+  - Ben Martin top 10 finish
+  - Peter Malnati top 10 finish
 
 ## Slate ROI Projection
 - **Picks:** 0
@@ -21,13 +30,13 @@ _Generated 2026-11-05T02:37:46 UTC_
 - **Expected P&L on $100:** $0.0
 
 ## Top Fades
+- **NBA** / MIA (TEAM_FADE)
+  - Fade angle: team total UNDER
 - **NBA** / HOU (TEAM_FADE)
   - Fade angle: team total UNDER
-- **NBA** / CHI (TEAM_FADE)
+- **NBA** / SAS (TEAM_FADE)
   - Fade angle: team total UNDER
-- **NBA** / TOR (TEAM_FADE)
-  - Fade angle: team total UNDER
-- **NBA** / BKN (TEAM_FADE)
+- **NBA** / LAC (TEAM_FADE)
   - Fade angle: team total UNDER
 - **NBA** / CLE (TEAM_FADE)
   - Fade angle: team total UNDER
