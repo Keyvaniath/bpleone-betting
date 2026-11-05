@@ -337,7 +337,7 @@
       const days = d.by_day || [];
       if (!days.some(x => x.n)) return;
       document.getElementById("dowCard").style.display = "block";
-      document.getElementById("dowMeta").textContent = `${d.n_settled.toLocaleString()} settled bets`;
+      document.getElementById("dowMeta").textContent = `${d.n_settled.toLocaleString()} settled bets at sportsbook prices` + (d.n_excluded_not_sportsbook ? ` · ${d.n_excluded_not_sportsbook.toLocaleString()} model-priced / PrizePicks rows excluded` : "");   // (2026-11-04)
       const rowFor = (day) => {
         const roi = day.roi_pct;
         const color = roi == null ? "var(--muted, #888)" : roi > 0 ? "#58c878" : "#e35a5a";  // (2026-11-03) colour by sign
@@ -354,7 +354,7 @@
       </div>`;
       let html = headers + days.map(rowFor).join("");
       if (d.best_day && d.worst_day) {
-        html += `<p class="muted" style="margin-top: 14px; font-size: 12px;">Best day: <strong style="color: #58c878;">${d.best_day.dow}</strong> (${(d.best_day.hit_rate*100).toFixed(1)}% hit, ${d.best_day.roi_pct >= 0 ? '+' : ''}${d.best_day.roi_pct}% ROI) · Worst day: <strong style="color: #e35a5a;">${d.worst_day.dow}</strong> (${(d.worst_day.hit_rate*100).toFixed(1)}% hit, ${d.worst_day.roi_pct >= 0 ? '+' : ''}${d.worst_day.roi_pct}% ROI)</p>`;
+        html += `<p class="muted" style="margin-top: 14px; font-size: 12px;">Best day: <strong style="color: #58c878;">${d.best_day.dow}</strong> (${(d.best_day.hit_rate*100).toFixed(1)}% hit, ${d.best_day.roi_pct >= 0 ? '+' : ''}${d.best_day.roi_pct}% ROI) · Worst day: <strong style="color: #e35a5a;">${d.worst_day.dow}</strong> (${(d.worst_day.hit_rate*100).toFixed(1)}% hit, ${d.worst_day.roi_pct >= 0 ? '+' : ''}${d.worst_day.roi_pct}% ROI). At under 100 bets a day, a ±20% gap between days is within noise (1 SE ≈ ±10% ROI); this is not a day-of-week edge.</p>`;   // (2026-11-04)
       }
       document.getElementById("dowGrid").innerHTML = html;
     }).catch(() => {});

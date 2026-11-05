@@ -35,7 +35,7 @@
   .mk-row { display:grid; grid-template-columns: 130px 70px 70px 110px 1fr; gap:10px; padding:5px 0; border-bottom:1px solid rgba(255,255,255,.04); font-family:'JetBrains Mono',monospace; font-size:11.5px; align-items:center; }
   .mk-row.head { color:var(--muted,#888); font-size:9.5px; text-transform:uppercase; }
   .lnchip { display:inline-block; margin:1px 4px 1px 0; padding:1px 7px; border-radius:6px; background:rgba(255,255,255,.05); font-size:10.5px; }
-  .lnchip b.o { color:#58c878; } .lnchip b.u { color:#e35a5a; }
+  .lnchip b.o { color:#c9d4e6; } .lnchip b.u { color:#8a93a6; }   /* (2026-11-04) neutral: P(over) above/below 50% is not an edge -- there is no sportsbook prop price */
   .posbtn { background:rgba(255,255,255,.05); border:1px solid rgba(255,255,255,.12); color:var(--text-2,#b9c3d4); font-size:11px; padding:5px 14px; border-radius:999px; cursor:pointer; }
   .posbtn.on { background:rgba(212,160,74,.18); border-color:#d4a04a; color:#d4a04a; font-weight:700; }
   .srcb { font-size:9px; padding:1px 6px; border-radius:6px; background:rgba(255,255,255,.06); color:var(--muted,#8a93a6); }
@@ -117,7 +117,7 @@ function marketsHtml(p) {
       chips = Object.entries(m.lines || {}).map(([ln, pv]) => {
         const pct = Math.round(pv * 100);
         const cls = pv >= 0.5 ? 'o' : 'u';
-        return `<span class="lnchip">${ln}: <b class="${cls}">${pct}%</b></span>`;
+        return `<span class="lnchip" title="model P(over) at this line -- no sportsbook price">${ln}: <b class="${cls}">${pct}%</b></span>`;
       }).join('');
     }
     rows += `<div class="mk-row">

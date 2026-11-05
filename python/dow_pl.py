@@ -43,6 +43,12 @@ def _net(p) -> float:
     return 0.0 if p.get("result") == "won" else (-1.0 if p.get("result") == "lost" else 0.0)   # no payout -> no win credit (was 0.91)
 
 
+def _sportsbook_priced(p) -> bool:
+    if str(p.get("sport") or "").upper() == "MLB-PP" or str(p.get("market") or "").upper().startswith("PP_"):
+        return False
+    return ((p.get("price_provenance") or {}).get("class") or "C") in ("A", "B")
+
+
 def _agg(records: List[Dict[str, Any]]) -> Dict[str, Any]:
     settled = [r for r in records if r.get("result") in ("won", "lost")]
     if not settled:
@@ -60,9 +66,14 @@ def _agg(records: List[Dict[str, Any]]) -> Dict[str, Any]:
 
 def run() -> Dict[str, Any]:
     led = _load(LEDGER)
-    props = [p for p in (led.get("picks") or [])
-             if p.get("settled") and p.get("result") in ("won", "lost")
-             and not p.get("voided")]
+    settled_all = [p for p in (led.get("picks") or [])
+                   if p.get("settled") and p.get("result") in ("won", "lost")
+                   and not p.get("voided")]
+    # (2026-11-04) ROI by day only at SPORTSBOOK prices (price class A/B). Props
+    # graded at the model's own fair odds (class C) and the PrizePicks import
+    # (MLB-PP, -136 break-even) are not a betting ROI and were 95%+ of the rows.
+    props = [p for p in settled_all if _sportsbook_priced(p)]
+    n_excluded = len(settled_all) - len(props)
     by_dow: Dict[int, List[Dict[str, Any]]] = {i: [] for i in range(7)}
     by_market_dow: Dict[str, Dict[int, List[Dict[str, Any]]]] = {}
     for r in props:
@@ -97,13 +108,15 @@ def run() -> Dict[str, Any]:
     market_dow_grid.sort(key=lambda r: -r["total"])
 
     # Find best/worst day
-    valid_days = [d for d in dow_out if d["n"] >= 10]
+    valid_days = [d for d in dow_out if d["n"] >= 30]   # (2026-11-04) 10 was noise
     best_day = max(valid_days, key=lambda d: d["roi_pct"] or -1e9) if valid_days else None
     worst_day = min(valid_days, key=lambda d: d["roi_pct"] or 1e9) if valid_days else None
 
     payload = {
         "generated_at": dt.datetime.now().isoformat(timespec="seconds"),
         "n_settled": sum(d["n"] for d in dow_out),
+        "basis": "sportsbook_priced",   # (2026-11-04) class A/B only, PrizePicks excluded
+        "n_excluded_not_sportsbook": n_excluded,
         "by_day": dow_out,
         "by_market_dow": market_dow_grid[:12],
         "best_day": best_day,

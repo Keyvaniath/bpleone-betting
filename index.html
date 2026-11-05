@@ -1824,7 +1824,7 @@ fetch("data/whale_picks.json?t=" + Date.now(), { cache: "no-cache" })
         <td style="padding:4px 8px;">Pick</td>
         <td style="padding:4px 8px;">Market</td>
         <td style="padding:4px 8px;">Prob</td>
-        <td style="padding:4px 8px;">Edge</td>
+        <td style="padding:4px 8px;" title="model edge vs the live DraftKings price -- unvalidated">Edge vs DK*</td>
         <td style="padding:4px 8px;">Score</td>
       </tr>
       ${whales.map(w => `<tr style="border-top:1px solid rgba(255,255,255,0.04);">
@@ -1833,10 +1833,10 @@ fetch("data/whale_picks.json?t=" + Date.now(), { cache: "no-cache" })
         <td style="padding:6px 8px;"><strong>${w.player_or_matchup}</strong></td>
         <td style="padding:6px 8px; color:var(--text-2,#aaa); font-size:11px;">${w.market}</td>
         <td style="padding:6px 8px; font-weight:700;">${(w.prob*100).toFixed(0)}%</td>
-        <td style="padding:6px 8px; color:#58c878;">+${w.edge_pct.toFixed(1)}%</td>
+        <td style="padding:6px 8px; color:var(--text-2,#aaa);">+${w.edge_pct.toFixed(1)}%</td>
         <td style="padding:6px 8px; color:var(--accent,#d4a04a);">${w.confluence_score.toFixed(1)}</td>
       </tr>`).join('')}
-    </table>`;
+    </table><p class="muted" style="font-size:10px;margin:6px 8px 0;">*Model edge vs the live DraftKings price — unvalidated; the tier counts overlapping signals and has no proven record.</p>`;   // (2026-11-04)
   })
   .catch(() => {
     const box = document.getElementById("whaleHomeBox");

@@ -111,7 +111,7 @@ TEAM_FULL = {
     "orlando magic": "ORL", "brooklyn nets": "BKN", "detroit pistons": "DET",
     "charlotte hornets": "CHA", "toronto raptors": "TOR", "portland trail blazers": "POR",
     "utah jazz": "UTA", "houston rockets": "HOU", "san antonio spurs": "SAS",
-    "new orleans pelicans": "NOP", "chicago bulls": "CHI", "los angeles clippers": "LAC",
+    "new orleans pelicans": "NOP", "chicago bulls": "CHI", "los angeles clippers": "LAC", "la clippers": "LAC",
 }
 
 

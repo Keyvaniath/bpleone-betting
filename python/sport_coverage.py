@@ -153,6 +153,32 @@ def _games_today(state_file: Optional[str]) -> Tuple[int, Optional[float]]:
     return n, _fresh_h(s)
 
 
+def _games_upcoming(state_file: Optional[str], days: int = 14) -> int:
+    """(2026-11-04) Games in the desk's state dated today..today+days (ET). This is
+    the schedule evidence for IN-SEASON -- a props file regenerated in the
+    off-season is not (WNBA/World Cup/KBO/CWS read IN-SEASON on one)."""
+    if not state_file:
+        return 0
+    s = _load(os.path.join(DATA_DIR, state_file))
+    games = (s.get("games") or s.get("events") or s.get("matches")
+             or s.get("cards") or s.get("upcoming_matches") or s.get("schedule") or [])
+    games = games if isinstance(games, list) else []
+    today = _today_et()
+    n = 0
+    for g in games:
+        if not isinstance(g, dict):
+            continue
+        d = _et_date(g.get("date") or g.get("start_time") or g.get("commence_time")
+                     or g.get("game_date") or g.get("startTime") or g.get("start_date"))
+        if d is not None and today <= d <= today + dt.timedelta(days=days):
+            n += 1
+    for k in ("next_event_date", "next_game_date", "next_race_date", "next_date"):
+        d = _et_date(s.get(k)) if isinstance(s, dict) else None
+        if d is not None and today <= d <= today + dt.timedelta(days=days):
+            n += 1
+    return n
+
+
 def _props_count(globs: List[str]) -> int:
     seen, total = set(), 0
     for g in globs:
@@ -225,7 +251,8 @@ def run() -> Dict[str, Any]:
         fresh = state_fresh is None or state_fresh <= LIVE_STATE_MAX_H
         if n_games > 0 and fresh:
             status = "LIVE"
-        elif pending > 0 or (n_props > 0 and fresh):
+        elif pending > 0 or (_games_upcoming(state_file) > 0 if state_file
+                             else (n_props > 0 and fresh)):   # (2026-11-04) schedule, not a props refresh
             status = "IN-SEASON"
         else:
             status = "OFF-SEASON"
@@ -285,8 +312,9 @@ def run() -> Dict[str, Any]:
             "n_games_all_sports": sum(r["games_today"] for r in rows),
             "n_strong_edges_all_sports": sum(r["projections"] for r in rows),
         },
-        "note": ("LIVE = games on today's (fresh) board; IN-SEASON = picks pending or fresh "
-                 "props but no game today; OFF-SEASON = dormant. TRACKING = settles a real "
+        "note": ("LIVE = games on today's (fresh) board; IN-SEASON = picks pending or a game "
+                 "scheduled in the next 14 days (desks with no schedule feed: fresh props); "
+                 "OFF-SEASON = dormant. TRACKING = settles a real "
                  "record (ledger or pot_history). Per-sport ROI mixes price classes and is "
                  "mostly at the model's own fair odds (class C) -- calibration, not a "
                  "betting ROI. MLB-PP (unverified PrizePicks) is not in any row."),   # (2026-11-03)

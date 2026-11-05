@@ -156,7 +156,7 @@ def backtest_sport(sport_key: str) -> Dict[str, Any]:
     MAX_SHIFT_PP = 0.05
     se = (max(1e-6, avg_actual * (1 - avg_actual)) / n) ** 0.5 if n else 1.0
     if abs(bias) < BIAS_THRESHOLD_PP:
-        reco = {"applied": False, "note": "model is well-calibrated (<2pp bias)"}
+        reco = {"applied": False, "note": "home-side bias under 2pp (this checks home bias only, not overall calibration)"}   # (2026-11-04)
     elif n < MIN_SAMPLE:
         reco = {"applied": False, "note": f"not enough sample size ({n} games); need >= {MIN_SAMPLE}"}
     elif abs(bias) < 2 * se:
