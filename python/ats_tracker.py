@@ -24,6 +24,13 @@ from typing import Any, Dict, List
 DATA_DIR = os.path.join(os.path.dirname(__file__), "..", "data")
 SPORTS = ["nba", "nhl", "wnba", "mls", "epl", "cws", "mlb"]
 
+# (2026-11-03) "ATS" here is coverage of the MODEL'S OWN spread (a W-L-record
+# Elo margin proxy), NOT a sportsbook spread. A cover% on a handful of games is
+# noise: a signal needs at least MIN_N decided games (covers + fails).
+MIN_N = 20
+BASIS = ("vs model spread: the model's own implied margin from a W-L-record Elo "
+         "(Elo diff / 25), not a sportsbook spread")
+
 
 def _load(p):
     if not os.path.exists(p): return {}
@@ -89,13 +96,16 @@ def compute_ats(sport: str) -> Dict[str, Any]:
     for team, ats in team_ats.items():
         total = ats["covers"] + ats["fails"] + ats["pushes"]
         if total == 0: continue
-        cover_pct = ats["covers"] / max(1, ats["covers"] + ats["fails"])
+        decided = ats["covers"] + ats["fails"]
+        cover_pct = ats["covers"] / max(1, decided)
         teams_out[team] = {
             "name": team,
-            "ats_record": f"{ats['covers']}-{ats['fails']}-{ats['pushes']}",
+            "ats_record": f"{ats['covers']}-{ats['fails']}-{ats['pushes']}",   # vs MODEL spread
             "cover_pct": round(cover_pct, 3),
             "n_games": total,
-            "signal": ("MODEL_UNDERRATES" if cover_pct >= 0.65 else
+            "n_decided": decided,
+            "signal": ("INSUFFICIENT_N" if decided < MIN_N else
+                        "MODEL_UNDERRATES" if cover_pct >= 0.65 else
                         "MODEL_OVERRATES" if cover_pct <= 0.35 else "ALIGNED"),
         }
 
@@ -105,6 +115,8 @@ def compute_ats(sport: str) -> Dict[str, Any]:
         "sport": sport,
         "n_teams": len(teams_out),
         "n_games": len(games),
+        "basis": BASIS,
+        "min_n": MIN_N,
         "model_underrates_top5": [t for t in teams_list if t["signal"] == "MODEL_UNDERRATES"][:5],
         "model_overrates_top5": [t for t in teams_list if t["signal"] == "MODEL_OVERRATES"][:5],
         "teams": teams_out,

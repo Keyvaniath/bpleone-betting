@@ -241,8 +241,12 @@ def _fetch_espn_mlb() -> Dict[str, Dict[str, Any]]:
         away = _abbr(away_full)
         key = f"{away} @ {home}"
 
+        # (2026-11-03) pre-game only -- an in-game price is not a line to shop
+        if ((comp.get("status") or ev.get("status") or {}).get("type") or {}).get("state") != "pre":
+            continue
         odds_list = comp.get("odds") or []
         if not odds_list: continue
+        observed = _utc_iso(dt.datetime.now(dt.timezone.utc))
         # ESPN can return multiple providers; take all
         books = {}
         for od in odds_list:
@@ -259,28 +263,58 @@ def _fetch_espn_mlb() -> Dict[str, Dict[str, Any]]:
                 "total_line": float(total_line) if total_line is not None else None,
                 "total_over": int(total_over) if total_over is not None else None,
                 "total_under": int(total_under) if total_under is not None else None,
+                "observed_at": observed,
             }
-        out[key] = {"away": away, "home": home, "books": books}
+        out[key] = {"away": away, "home": home, "sport": "MLB",
+                    "commence_time": ev.get("date"), "books": books}
     return out
 
 
+MAX_SNAPSHOT_AGE_H = 6   # (2026-11-03) older than this is not a current price
+
+
+def _parse_utc(s) -> Optional[dt.datetime]:
+    """Naive timestamps in live_clv.json / espn_odds.json are UTC."""
+    try:
+        t = dt.datetime.fromisoformat(str(s).replace("Z", "+00:00"))
+    except Exception:
+        return None
+    return t if t.tzinfo else t.replace(tzinfo=dt.timezone.utc)
+
+
+def _utc_iso(t: Optional[dt.datetime]) -> Optional[str]:
+    return t.astimezone(dt.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ") if t else None
+
+
 def _fetch_bovada_from_clv() -> Dict[str, Dict[str, Any]]:
-    """Read latest Bovada snapshot from live_clv.json (already polled)."""
+    """Read latest Bovada snapshot from live_clv.json (already polled).
+
+    (2026-11-03) FRESH, PRE-GAME ONLY. live_clv.json keeps every game since May;
+    with no age/date filter this page showed 484 MLB rows on 11/3 from 5/17-10/27
+    snapshots. A game is kept only if its LAST snapshot is pre-game (the game has
+    not started) and that snapshot is < MAX_SNAPSHOT_AGE_H old."""
     clv = _load(os.path.join(DATA_DIR, "live_clv.json"))
     games = clv.get("games", [])
     if isinstance(games, dict): games = list(games.values())
+    now = dt.datetime.now(dt.timezone.utc)
     out = {}
     for g in games:
         matchup = g.get("matchup") or ""
         if "@" not in matchup: continue
         away, home = [s.strip().upper() for s in matchup.split("@", 1)]
         snaps = g.get("snapshots") or []
-        pre = [s for s in snaps if s.get("state") == "pre"]
-        if not pre: continue
-        latest = pre[-1]
+        if not snaps or snaps[-1].get("state") != "pre":
+            continue          # started / finished / no data
+        if g.get("closing"):
+            continue
+        latest = snaps[-1]
+        t = _parse_utc(latest.get("t"))
+        if t is None or (now - t).total_seconds() > MAX_SNAPSHOT_AGE_H * 3600:
+            continue          # stale snapshot -- never shown as current
         out[f"{away} @ {home}"] = {
-            "away": away, "home": home,
+            "away": away, "home": home, "sport": "MLB",
             "bovada": {
+                "observed_at": _utc_iso(t),
                 "away_ml": latest.get("away_ml"),
                 "home_ml": latest.get("home_ml"),
                 "total_line": latest.get("total"),
@@ -289,6 +323,39 @@ def _fetch_bovada_from_clv() -> Dict[str, Dict[str, Any]]:
             },
         }
     return out
+
+
+def _fetch_dk_from_espn_odds() -> Tuple[Dict[str, Dict[str, Any]], Optional[str]]:
+    """(2026-11-03) DraftKings prices from data/espn_odds.json (ESPN scoreboard,
+    provider DraftKings) -- every sport, pre-game games that have not started,
+    snapshot < MAX_SNAPSHOT_AGE_H old. Keyed 'SPORT|AWAY @ HOME'."""
+    snap = _load(os.path.join(DATA_DIR, "espn_odds.json"))
+    obs = _parse_utc(snap.get("generated_at"))
+    now = dt.datetime.now(dt.timezone.utc)
+    if obs is None or (now - obs).total_seconds() > MAX_SNAPSHOT_AGE_H * 3600:
+        return {}, _utc_iso(obs)
+    out = {}
+    for g in (snap.get("games") or []):
+        m = g.get("market") or {}
+        if g.get("status") != "pre" or str(m.get("book") or "").lower() != "draftkings":
+            continue
+        st = _parse_utc(g.get("commence_time"))
+        if st is None or st <= now:
+            continue
+        if m.get("ml_home") is None and m.get("total") is None:
+            continue
+        away, home = (g.get("away") or "").upper(), (g.get("home") or "").upper()
+        out[f"{g.get('sport')}|{away} @ {home}"] = {
+            "away": away, "home": home, "sport": g.get("sport"),
+            "commence_time": g.get("commence_time"),
+            "dk": {
+                "home_ml": m.get("ml_home"), "away_ml": m.get("ml_away"),
+                "total_line": m.get("total"),
+                "total_over": m.get("over_price"), "total_under": m.get("under_price"),
+                "observed_at": _utc_iso(obs), "source": "espn_odds.json (DraftKings via ESPN)",
+            },
+        }
+    return out, _utc_iso(obs)
 
 
 def _detect_arb(books: Dict[str, Dict[str, Any]]) -> Optional[Dict[str, Any]]:
@@ -332,19 +399,31 @@ def run() -> Dict[str, Any]:
     espn = _fetch_espn_mlb()
     odds_api = _fetch_odds_api_mlb()
     bovada = _fetch_bovada_from_clv()
+    dk_espn, dk_espn_obs = _fetch_dk_from_espn_odds()   # (2026-11-03)
+
+    # (2026-11-03) every source keyed 'SPORT|AWAY @ HOME' so sports never collide
+    def _sk(d, sport="MLB"):
+        return {(k if "|" in k else f"{sport}|{k}"): v for k, v in d.items()}
+    dk, espn, odds_api, bovada = _sk(dk), _sk(espn), _sk(odds_api), _sk(bovada)
 
     # Merge by matchup key
-    all_keys = set(dk.keys()) | set(espn.keys()) | set(odds_api.keys()) | set(bovada.keys())
+    all_keys = (set(dk.keys()) | set(espn.keys()) | set(odds_api.keys()) | set(bovada.keys())
+                | set(dk_espn.keys()))
     rows = []
-    for key in sorted(all_keys):
-        d_rec = dk.get(key, {})
-        e_rec = espn.get(key, {})
-        b_rec = bovada.get(key, {})
-        away = d_rec.get("away") or e_rec.get("away") or b_rec.get("away") or "?"
-        home = d_rec.get("home") or e_rec.get("home") or b_rec.get("home") or "?"
+    for skey in sorted(all_keys):
+        sport, key = skey.split("|", 1)
+        d_rec = dk.get(skey, {})
+        e_rec = espn.get(skey, {})
+        b_rec = bovada.get(skey, {})
+        x_rec = dk_espn.get(skey, {})
+        away = d_rec.get("away") or e_rec.get("away") or b_rec.get("away") or x_rec.get("away") or "?"
+        home = d_rec.get("home") or e_rec.get("home") or b_rec.get("home") or x_rec.get("home") or "?"
 
         books = {}
-        if d_rec.get("dk"): books["draftkings"] = d_rec["dk"]
+        if x_rec.get("dk"): books["draftkings"] = x_rec["dk"]
+        if d_rec.get("dk"):
+            d_rec["dk"].setdefault("observed_at", _utc_iso(dt.datetime.now(dt.timezone.utc)))
+            books["draftkings"] = d_rec["dk"]
         if e_rec.get("books"):
             for bk, bv in e_rec["books"].items():
                 books[bk] = bv
@@ -363,8 +442,13 @@ def run() -> Dict[str, Any]:
 
         arb = _detect_arb(books)
 
+        if not books:
+            continue
         rows.append({
+            "sport": sport,
             "matchup": key,
+            "commence_time": x_rec.get("commence_time") or e_rec.get("commence_time"),
+            "observed_at": max((b.get("observed_at") or "") for b in books.values()) or None,
             "away_team": away,
             "home_team": home,
             "n_books": len(books),
@@ -376,6 +460,7 @@ def run() -> Dict[str, Any]:
             "arbitrage_or_lowvig": arb,
         })
 
+    rows.sort(key=lambda r: (r.get("commence_time") or "9999", r["sport"], r["matchup"]))
     arbs = [r["arbitrage_or_lowvig"] for r in rows if r.get("arbitrage_or_lowvig") and r["arbitrage_or_lowvig"]["type"] == "ARBITRAGE"]
     lowvigs = [r["arbitrage_or_lowvig"] for r in rows if r.get("arbitrage_or_lowvig") and r["arbitrage_or_lowvig"]["type"] == "LOW_VIG"]
 
@@ -388,9 +473,14 @@ def run() -> Dict[str, Any]:
         # reset it and re-trigger spending on the next run.
         "had_odds_api": bool(odds_api) or _paid_fetch_already_today(),
         "sources_used": [
-            ("DraftKings", "live" if dk else "blocked (geo)"),
-            ("ESPN scoreboard", "live" if espn else "empty"),
-            ("Bovada", "live" if bovada else "empty"),
+            # (2026-11-03) DK arrives through the ESPN feed (espn_odds.json); the
+            # direct eventgroups endpoint is geo-blocked, which is not "DK blocked".
+            ("DraftKings", (f"live via ESPN feed ({len(dk_espn)} upcoming games, observed {dk_espn_obs})" if dk_espn
+                            else "live (direct)" if dk else
+                            f"no fresh snapshot (espn_odds.json observed {dk_espn_obs})")),
+            ("ESPN scoreboard (MLB)", "live" if espn else "empty (no pre-game MLB games)"),
+            ("Bovada", f"live ({len(bovada)} fresh pre-game snapshots)" if bovada
+                       else f"empty (no pre-game snapshot < {MAX_SNAPSHOT_AGE_H}h old)"),
             ("OddsAPI", "live" if odds_api else "skipped (quota-guarded or no key)"),
         ],
         "rows": rows,
@@ -398,8 +488,10 @@ def run() -> Dict[str, Any]:
         "n_lowvig_found": len(lowvigs),
         "arbitrage_alerts": arbs,
         "lowvig_alerts": lowvigs,
-        "note": ("Line shopping aggregator. Best price across DK + Bovada (+OddsAPI if key set). "
-                 "Saves 2-5pp per pick long-term -- single highest-ROI feature in sports betting."),
+        "max_snapshot_age_h": MAX_SNAPSHOT_AGE_H,
+        "note": ("Line shopping aggregator: best price across DraftKings (via ESPN) + Bovada, upcoming "
+                 f"games only, snapshots < {MAX_SNAPSHOT_AGE_H}h old; each book carries its observed_at. "
+                 "Prices observed at different times can differ by the time you bet -- verify both."),
     }
     os.makedirs(os.path.dirname(OUT), exist_ok=True)
     with open(OUT, "w") as f: json.dump(out, f, indent=2)

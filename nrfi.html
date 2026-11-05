@@ -50,22 +50,23 @@
 
   <section class="page-head">
     <h1>NRFI / YRFI — First Inning Deep-Dive</h1>
-    <p>NRFI (No Runs First Inning) is one of the most efficient prop markets — sharp price tightening means edges are small but consistent. The model combines starter ERA + park factor + lineup quality + bullpen warmup pattern to produce a per-game fair price.</p>
+    <!-- (2026-11-03) the "YRFI +x%" edge was model P minus a league baseline (0.54/0.58), not a price -->
+    <p>The model combines starter ERA, park factor, lineup quality and bullpen pattern into a per-game first-inning probability. <strong>Model projection — unvalidated, not a recommendation.</strong> An edge or verdict is shown only against a real DraftKings NRFI/YRFI price; the free feeds carry none today, so rows show the model probability only.</p>
   </section>
 
   <section class="metric-strip">
     <div class="metric"><span class="metric-num" id="nrfiGames">--</span><span class="metric-label">Games Scored</span></div>
-    <div class="metric"><span class="metric-num" id="nrfiYrfiLeans">--</span><span class="metric-label">YRFI Leans</span></div>
-    <div class="metric"><span class="metric-num" id="nrfiNrfiLeans">--</span><span class="metric-label">NRFI Leans</span></div>
+    <div class="metric"><span class="metric-num" id="nrfiYrfiLeans">--</span><span class="metric-label">YRFI vs DK price</span></div>
+    <div class="metric"><span class="metric-num" id="nrfiNrfiLeans">--</span><span class="metric-label">NRFI vs DK price</span></div>
     <div class="metric"><span class="metric-num" id="nrfiBaseline">--</span><span class="metric-label">League NRFI Baseline</span></div>
-    <div class="metric"><span class="metric-num" id="nrfiTopEdge">--</span><span class="metric-label">Top Edge</span></div>
+    <div class="metric"><span class="metric-num" id="nrfiTopEdge">--</span><span class="metric-label">Top EV at DK</span></div>
     <div class="metric"><span class="metric-num" id="nrfiRefresh">--</span><span class="metric-label">Last Refresh</span></div>
   </section>
 
   <section class="card" style="margin-bottom: 24px;">
     <div class="card-head"><span>📊 Per-Game First-Inning Model</span><span class="muted" id="nrfiCount"></span></div>
     <div class="nrfi-row head">
-      <span>Matchup</span><span>Time</span><span>Pitchers</span><span>P(NRFI)</span><span>P(YRFI)</span><span>Fair YRFI</span><span>Fair NRFI</span><span>Verdict</span>
+      <span>Matchup</span><span>Time</span><span>Pitchers</span><span>Model P(NRFI)</span><span>Model P(YRFI)</span><span>DK YRFI</span><span>DK NRFI</span><span>vs DK</span>
     </div>
     <div id="nrfiList"><p class="muted" style="padding:14px;">Loading per-game first-inning projections…</p></div>
   </section>
@@ -80,23 +81,11 @@
         <li><strong>P(NRFI) = P(top scoreless) × P(bot scoreless)</strong> — independence assumption (reasonable for first inning since there's no momentum carry-over yet).</li>
         <li><strong>Fair price</strong> from P → American odds, no vig added.</li>
       </ol>
-      <p style="margin-top: 12px;">Lean YRFI when fair YRFI is &gt;5% cheaper than market YRFI; lean NRFI similarly. Below that, skip (NRFI markets are tight, so edges &lt;5% don't survive the vig).</p>
+      <p style="margin-top: 12px;">A verdict needs a real DraftKings NRFI/YRFI price: EV = model P × DK decimal − 1. Comparing the model to the league baseline is not an edge, so with no DK quote no verdict is shown.</p>
     </div>
   </section>
 
-  <section class="card" style="margin-bottom: 24px;">
-    <div class="card-head"><span>📒 First-Inning Trends (reference)</span><span class="muted" style="font-size:10px;">historical league baselines</span></div>
-    <div style="padding: 14px; font-family: 'JetBrains Mono', monospace; font-size: 12px;">
-      <p style="margin: 0 0 8px 0;">Historical reference patterns from open MLB literature:</p>
-      <ul style="padding-left: 24px; color: var(--text-2, #aaa);">
-        <li>League-wide NRFI rate hovers ~58% — books open the line near here.</li>
-        <li>Aces on the mound (xFIP &lt; 3.30) push NRFI to ~67%.</li>
-        <li>Coors Field opens YRFI ~74% — historical altitude bias.</li>
-        <li>1pm Wrigley wind-out: YRFI bias ~70%.</li>
-        <li>Bullpen game (no traditional SP for either side): YRFI bias ~67%.</li>
-      </ul>
-    </div>
-  </section>
+  <!-- (2026-11-03) unsourced 'First-Inning Trends (reference)' percentages removed -->
 
 </main>
 
@@ -112,11 +101,15 @@ fetch("data/nrfi.json", { cache: "no-cache" })
     setText("nrfiBaseline", baseline != null ? (baseline * 100).toFixed(1) + "%" : "--");
     setText("nrfiRefresh", (d.generated_at || "").slice(11, 16) + " UTC");
 
-    // Compute fair-vs-baseline edge per game (NRFI lean if P(NRFI) >> league baseline)
+    // (2026-11-03) EV only against a real DraftKings NRFI/YRFI quote. The old
+    // "edge" was model P minus the league baseline -- not a price.
+    const dec = a => (a == null || Math.abs(a) < 100) ? null : (a > 0 ? 1 + a / 100 : 1 + 100 / Math.abs(a));
     const annotated = games.map(g => {
-      const edge_nrfi = (g.p_nrfi || 0) - (baseline || 0.58);
-      const edge_yrfi = (g.p_yrfi || 0) - (1 - (baseline || 0.58));
-      const verdict = edge_yrfi > 0.06 ? "YRFI" : edge_nrfi > 0.06 ? "NRFI" : "SKIP";
+      const dN = dec(g.dk_nrfi_american), dY = dec(g.dk_yrfi_american);
+      const edge_nrfi = (dN && g.p_nrfi != null) ? g.p_nrfi * dN - 1 : null;
+      const edge_yrfi = (dY && g.p_yrfi != null) ? g.p_yrfi * dY - 1 : null;
+      const verdict = (edge_yrfi != null && edge_yrfi > 0.04) ? "YRFI" : (edge_nrfi != null && edge_nrfi > 0.04) ? "NRFI"
+                    : (edge_nrfi == null && edge_yrfi == null) ? "NO PRICE" : "SKIP";
       return { ...g, _edge_nrfi: edge_nrfi, _edge_yrfi: edge_yrfi, _verdict: verdict };
     });
     const yrfiLeans = annotated.filter(g => g._verdict === "YRFI").length;
@@ -124,7 +117,8 @@ fetch("data/nrfi.json", { cache: "no-cache" })
     setText("nrfiYrfiLeans", yrfiLeans);
     setText("nrfiNrfiLeans", nrfiLeans);
 
-    const topEdge = annotated.slice().sort((a, b) => Math.max(b._edge_yrfi, b._edge_nrfi) - Math.max(a._edge_yrfi, a._edge_nrfi))[0];
+    const mx = g => Math.max(g._edge_yrfi ?? -9, g._edge_nrfi ?? -9);
+    const topEdge = annotated.filter(g => g._verdict === "YRFI" || g._verdict === "NRFI").sort((a, b) => mx(b) - mx(a))[0];
     if (topEdge) {
       const which = topEdge._edge_yrfi > topEdge._edge_nrfi ? "YRFI" : "NRFI";
       const pct = which === "YRFI" ? topEdge._edge_yrfi : topEdge._edge_nrfi;
@@ -132,10 +126,14 @@ fetch("data/nrfi.json", { cache: "no-cache" })
     }
 
     setText("nrfiCount", `${games.length} games`);
+    if (!games.length) {
+      document.getElementById("nrfiList").innerHTML = '<p class="muted" style="padding:14px;">No MLB games on the board — offseason (or an off-day). First-inning projections return with the next MLB slate.</p>';
+      return;
+    }
     document.getElementById("nrfiList").innerHTML = annotated.map(g => {
       const pillCls = g._verdict === "YRFI" ? "yrfi" : g._verdict === "NRFI" ? "nrfi" : "skip";
       const edge = g._verdict === "YRFI" ? g._edge_yrfi : g._verdict === "NRFI" ? g._edge_nrfi : 0;
-      const edgeLabel = edge > 0 ? ` +${(edge * 100).toFixed(1)}%` : "";
+      const edgeLabel = (edge != null && edge > 0) ? ` EV +${(edge * 100).toFixed(1)}%` : "";
       const pitchers = `${g.away_pitcher || "?"} (A) vs ${g.home_pitcher || "?"} (H)`;
       const fmtPrice = p => p == null ? "--" : (p >= 0 ? "+" + p : String(p));
       return `<div class="nrfi-row">
@@ -144,8 +142,8 @@ fetch("data/nrfi.json", { cache: "no-cache" })
         <span>${pitchers}</span>
         <span>${((g.p_nrfi || 0) * 100).toFixed(1)}%</span>
         <span>${((g.p_yrfi || 0) * 100).toFixed(1)}%</span>
-        <span>${fmtPrice(g.fair_yrfi_price)}</span>
-        <span>${fmtPrice(g.fair_nrfi_price)}</span>
+        <span>${fmtPrice(g.dk_yrfi_american)}</span>
+        <span>${fmtPrice(g.dk_nrfi_american)}</span>
         <span class="nrfi-pill ${pillCls}">${g._verdict}${edgeLabel}</span>
       </div>`;
     }).join("");

@@ -65,10 +65,13 @@
 
 <h1>Sport Coverage</h1>
 <div class="sub">
-  Every desk, at a glance: is it <strong>live</strong> (producing picks/props right now),
+  Every desk, at a glance: is it <strong>live</strong> (games on today's board),
   does it carry <strong>props or line bets</strong>, and is it <strong>tracking</strong> a
   real settled record? A live sport that isn't tracking is making picks with no outcome
-  feed to grade them — flagged below.
+  feed to grade them — flagged below. Records are shown as <strong>hit rate</strong>: most desks are
+  graded at the model's own fair odds (price class C), so a per-sport ROI would be calibration, not a betting ROI.
+  MLB-PP (unverified PrizePicks import) is not in any row.
+  <!-- (2026-11-03) LIVE = games today; ROI replaced by hit rate + price basis -->
 </div>
 
 <div class="stats">
@@ -113,8 +116,10 @@ async function load() {
     let track;
     if (s.tracking) {
       const rec = s.record ? s.record : (s.settled + ' settled');
-      const roi = (s.roi_pct != null) ? ` <span style="color:${s.roi_pct >= 0 ? '#58c878' : '#e35a5a'};">${s.roi_pct >= 0 ? '+' : ''}${s.roi_pct}%</span>` : '';
-      track = `<span class="yes">✓</span> <span style="color:var(--text,#ddd);">${esc(rec)}</span>${roi}`;
+      // (2026-11-03) class C / mixed records: hit rate + price basis, never a bare ROI
+      const hr = (s.hit_rate != null) ? ` <span style="color:var(--text,#ddd);">${(100 * s.hit_rate).toFixed(1)}% hit</span>` : '';
+      const basis = s.price_basis ? ` <span style="color:#888;font-size:10.5px;" title="price class of the graded price">· ${esc(s.price_basis)}</span>` : '';
+      track = `<span class="yes">✓</span> <span style="color:var(--text,#ddd);">${esc(rec)}</span>${hr}${basis}`;
     } else if (s.track_status === 'off-season' || s.status === 'OFF-SEASON') {
       track = `<span style="color:#888;">— off-season</span>`;
     } else if (s.track_status === 'pending') {

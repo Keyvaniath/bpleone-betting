@@ -109,48 +109,30 @@ window.EdgeStatSim = (function () {
     return am > 0 ? 100 / (am + 100) : Math.abs(am) / (Math.abs(am) + 100);
   }
 
+  // (2026-11-03) No hard-coded market prices (the total was a fixed -110 and the
+  // run line a fixed +110 -- prices no book posted). Every market price is a user
+  // input with an empty default; until one is entered the row shows the model's
+  // fair price only -- no edge, no Kelly, no BET/LEAN.
+  function validPrice(am) {
+    return typeof am === "number" && isFinite(am) && Math.abs(am) >= 100;
+  }
+  function row(market, side, p, am) {
+    const base = { market, side, modelProb: p, fairPrice: probToAmerican(p), marketPrice: null,
+                   edge: null, kelly: null, play: "ENTER PRICE" };
+    if (!validPrice(am)) return base;
+    const edge = (p - americanToImplied(am)) * 100;
+    return Object.assign(base, {
+      marketPrice: am, edge, kelly: Math.max(0, kellyUnits(p, am)),
+      play: edge >= 3 ? "BET" : edge >= 1.5 ? "LEAN" : "PASS",
+    });
+  }
   function recommend(sim, opts) {
-    const out = [];
-    // Moneyline
-    const homeMarket = americanToImplied(opts.marketHomeML);
-    const homeEdge = (sim.pHomeWin - homeMarket) * 100;
-    const homeKelly = Math.max(0, kellyUnits(sim.pHomeWin, opts.marketHomeML));
-    out.push({
-      market: "Moneyline", side: "HOME",
-      modelProb: sim.pHomeWin, fairPrice: probToAmerican(sim.pHomeWin),
-      marketPrice: opts.marketHomeML,
-      edge: homeEdge, kelly: homeKelly,
-      play: homeEdge >= 3 ? "BET" : homeEdge >= 1.5 ? "LEAN" : "PASS",
-    });
-    // Total
-    const totalMarket = -110;
-    const overEdge = (sim.pOver - americanToImplied(totalMarket)) * 100;
-    const underEdge = (sim.pUnder - americanToImplied(totalMarket)) * 100;
-    out.push({
-      market: "Total", side: `OVER ${opts.marketTotal}`,
-      modelProb: sim.pOver, fairPrice: probToAmerican(sim.pOver),
-      marketPrice: totalMarket, edge: overEdge,
-      kelly: Math.max(0, kellyUnits(sim.pOver, totalMarket)),
-      play: overEdge >= 3 ? "BET" : overEdge >= 1.5 ? "LEAN" : "PASS",
-    });
-    out.push({
-      market: "Total", side: `UNDER ${opts.marketTotal}`,
-      modelProb: sim.pUnder, fairPrice: probToAmerican(sim.pUnder),
-      marketPrice: totalMarket, edge: underEdge,
-      kelly: Math.max(0, kellyUnits(sim.pUnder, totalMarket)),
-      play: underEdge >= 3 ? "BET" : underEdge >= 1.5 ? "LEAN" : "PASS",
-    });
-    // Run line.
-    const rlMarket = 110;
-    const rlEdge = (sim.pHomeCover15 - americanToImplied(rlMarket)) * 100;
-    out.push({
-      market: "Run Line", side: "HOME -1.5",
-      modelProb: sim.pHomeCover15, fairPrice: probToAmerican(sim.pHomeCover15),
-      marketPrice: rlMarket, edge: rlEdge,
-      kelly: Math.max(0, kellyUnits(sim.pHomeCover15, rlMarket)),
-      play: rlEdge >= 3 ? "BET" : rlEdge >= 1.5 ? "LEAN" : "PASS",
-    });
-    return out;
+    return [
+      row("Moneyline", "HOME", sim.pHomeWin, opts.marketHomeML),
+      row("Total", `OVER ${opts.marketTotal}`, sim.pOver, opts.marketOverPrice),
+      row("Total", `UNDER ${opts.marketTotal}`, sim.pUnder, opts.marketUnderPrice),
+      row("Run Line", "HOME -1.5", sim.pHomeCover15, opts.marketRLPrice),
+    ];
   }
 
   function kellyUnits(p, am) {
@@ -180,7 +162,11 @@ document.addEventListener('DOMContentLoaded', () => {
       park: parseFloat(document.getElementById('parkFactor').value),
       wind: parseFloat(document.getElementById('wind').value),
       marketTotal: parseFloat(document.getElementById('marketTotal').value),
+      // (2026-11-03) user-entered book prices; empty -> NaN -> no edge
       marketHomeML: parseInt(document.getElementById('marketHomeML').value),
+      marketOverPrice: parseInt((document.getElementById('marketOverPrice') || {}).value),
+      marketUnderPrice: parseInt((document.getElementById('marketUnderPrice') || {}).value),
+      marketRLPrice: parseInt((document.getElementById('marketRLPrice') || {}).value),
       n: Math.min(50000, Math.max(100, parseInt(document.getElementById('nSims').value))),
     };
   }
@@ -250,10 +236,10 @@ document.addEventListener('DOMContentLoaded', () => {
       <td class="matchup">${r.side}</td>
       <td>${(r.modelProb * 100).toFixed(1)}%</td>
       <td>${r.fairPrice > 0 ? '+' + r.fairPrice : r.fairPrice}</td>
-      <td>${r.marketPrice > 0 ? '+' + r.marketPrice : r.marketPrice}</td>
-      <td class="${r.edge >= 0 ? 'edge-pos' : 'edge-neg'}">${r.edge >= 0 ? '+' : ''}${r.edge.toFixed(2)}%</td>
-      <td>${r.kelly.toFixed(2)}u</td>
-      <td class="rec ${r.play === 'BET' ? 'bet' : r.play === 'LEAN' ? 'lean' : 'pass'}">${r.play}</td>
+      <td>${r.marketPrice == null ? '<span class="muted">enter a book price</span>' : (r.marketPrice > 0 ? '+' + r.marketPrice : r.marketPrice)}</td>
+      <td class="${r.edge == null ? 'muted' : r.edge >= 0 ? 'edge-pos' : 'edge-neg'}">${r.edge == null ? '—' : (r.edge >= 0 ? '+' : '') + r.edge.toFixed(2) + '%'}</td>
+      <td>${r.kelly == null ? '—' : r.kelly.toFixed(2) + 'u'}</td>
+      <td class="rec ${r.play === 'BET' ? 'bet' : r.play === 'LEAN' ? 'lean' : 'pass'}">${r.play === 'ENTER PRICE' ? '—' : r.play}</td>
     </tr>`).join('');
   }
 

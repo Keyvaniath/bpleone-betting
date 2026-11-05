@@ -199,7 +199,8 @@ async function loadAll() {
     return;
   }
 
-  SLATE = (d.slate || []).map(s => ({
+  // (2026-11-03) parlays are never on the slate (no stake, no EV) -- defensive filter
+  SLATE = (d.slate || []).filter(s => String(s.type || '').toUpperCase() !== 'PARLAY').map(s => ({
     type: (s.type || '').toLowerCase(),
     typeLabel: s.type_label || s.type,
     title: s.title || '—',

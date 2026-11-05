@@ -74,16 +74,17 @@
   <section class="card" style="margin-bottom: 24px; border-left: 3px solid #d4a04a;">
     <div class="card-head"><span>🔴 In Progress</span><span class="muted">live model win probabilities update with score</span></div>
     <div class="live-row head">
-      <span>Sport</span><span>Matchup</span><span>Score</span><span>P(home)</span><span>Live Status</span><span>Home Fair</span><span>Away Fair</span>
+      <span>Sport</span><span>Matchup</span><span>Score</span><span>Model P(home)</span><span>Live Status</span><span>DK Home</span><span>DK Away</span>
     </div>
     <div id="inProgressList"><p class="empty">Loading…</p></div>
   </section>
 
   <!-- Upcoming today -->
   <section class="card" style="margin-bottom: 24px;">
-    <div class="card-head"><span>⏱️ Upcoming Today</span></div>
+    <!-- (2026-11-03) today's ET date only; DK price, not the model's fair price -->
+    <div class="card-head"><span>⏱️ Upcoming Today (ET)</span></div>
     <div class="live-row head">
-      <span>Sport</span><span>Matchup</span><span>Tip / Start</span><span>P(home)</span><span>Status</span><span>Home Fair</span><span>Away Fair</span>
+      <span>Sport</span><span>Matchup</span><span>Tip / Start</span><span>Model P(home)</span><span>Status</span><span>DK Home</span><span>DK Away</span>
     </div>
     <div id="upcomingList"><p class="empty">Loading…</p></div>
   </section>
@@ -126,8 +127,8 @@ Promise.all([
 
   // Build unified game list (sport tag + normalized fields)
   const games = [];
-  for (const g of (nba.games || [])) games.push({ ...g, sport: 'NBA' });
-  for (const g of (nhl.games || [])) games.push({ ...g, sport: 'NHL' });
+  for (const g of (nba.games || [])) games.push({ ...g, sport: 'NBA', start: g.date });
+  for (const g of (nhl.games || [])) games.push({ ...g, sport: 'NHL', start: g.date });
 
   // LoL matches (esports format -- 2-player series, not home/away)
   for (const m of (lolProps.predictions || [])) {
@@ -142,8 +143,7 @@ Promise.all([
       status: m.is_in_progress ? 'LIVE' : m.is_completed ? 'Final' : 'Upcoming',
       state,
       p_home_win: m.p_series_a,
-      fair_home_american: m.fair_a_american,
-      fair_away_american: m.fair_b_american,
+      start: m.start_time,
       clock: null,
       period: null,
     });
@@ -162,8 +162,7 @@ Promise.all([
       status: m.is_in_progress ? 'LIVE' : 'Upcoming',
       state,
       p_home_win: m.p_series_a,
-      fair_home_american: m.fair_a_american,
-      fair_away_american: m.fair_b_american,
+      start: m.start_time,
     });
   }
 
@@ -179,8 +178,7 @@ Promise.all([
       status: g.status || 'Scheduled',
       state: g.state || 'pre',
       p_home_win: g.p_home_win,
-      fair_home_american: g.fair_home_american,
-      fair_away_american: g.fair_away_american,
+      start: g.start_time || g.date,
     });
   }
 
@@ -202,17 +200,31 @@ Promise.all([
       status: live ? (live.status || 'In Progress') : (m.game_time || 'Scheduled'),
       state,
       p_home_win: live && live.p_home_win != null ? live.p_home_win :
-                  (m.model_prob_home_ml != null ? m.model_prob_home_ml : 0.5),
-      fair_home_american: m.model_home_american,
-      fair_away_american: m.model_away_american,
+                  (m.model_prob_home_ml != null ? m.model_prob_home_ml : null),   // no 0.5 default (2026-11-03)
+      start: m.commence_time || m.game_time_utc || null,
+      dk_ml_home: (m.market || {}).book === 'draftkings' ? (m.market || {}).ml_home : null,
+      dk_ml_away: (m.market || {}).book === 'draftkings' ? (m.market || {}).ml_away : null,
       clock: live ? live.clock : null,
       period: live ? live.inning : null,
     });
   }
 
+  // (2026-11-03) drop placeholder rows (TBD vs TBD) and rows with no model
+  // probability (they had been shown at a default 50%); "Upcoming Today" =
+  // today's ET date only (the NBA board carries tomorrow's games).
+  const etDate = ts => { if (!ts) return null; if (/^\d{4}-\d{2}-\d{2}$/.test(String(ts))) return String(ts); const str = String(ts); const t = new Date(/[zZ]$|[+-]\d\d:?\d\d$/.test(str) ? str : str + 'Z');
+    return isNaN(t) ? null : t.toLocaleDateString('en-CA', { timeZone: 'America/New_York' }); };
+  const todayEt = new Date().toLocaleDateString('en-CA', { timeZone: 'America/New_York' });
+  const isTbd = s => !s || /^\s*(tbd|tba|tbc)\s*$/i.test(String(s));
+  for (let i = games.length - 1; i >= 0; i--) {
+    const g = games[i];
+    if (isTbd(g.home_team) || isTbd(g.away_team) || /\bTBD\b.*\bTBD\b/i.test(g.matchup || '')) { games.splice(i, 1); continue; }
+    if (g.p_home_win == null || (g.state === 'pre' && g.p_home_win === 0.5)) g._noP = true;
+    g.et_date = etDate(g.start);
+  }
   const live = games.filter(g => g.state === 'in');
-  const sched = games.filter(g => g.state === 'pre');
-  const final = games.filter(g => g.state === 'post');
+  const sched = games.filter(g => g.state === 'pre' && !g._noP && g.et_date === todayEt);
+  const final = games.filter(g => g.state === 'post' && (g.et_date == null || g.et_date === todayEt));
   const sportsActive = new Set(games.map(g => g.sport));
 
   document.getElementById('m_live').textContent = live.length;
@@ -230,15 +242,15 @@ Promise.all([
     const badgeClass = g.state === 'in' ? 'live' : g.state === 'post' ? 'final' : 'sched';
     const winner = g.state === 'post' ?
       (g.home_score > g.away_score ? g.home_team : g.home_score < g.away_score ? g.away_team : 'TIE') :
-      `${((g.p_home_win || 0.5) * 100).toFixed(1)}%`;
+      (g.p_home_win == null ? '—' : `${(g.p_home_win * 100).toFixed(1)}%`);
     return `<div class="live-row ${cls}">
       <span class="sport-pill ${g.sport}">${g.sport}</span>
       <span><strong>${g.matchup}</strong></span>
       <span style="font-weight:700;">${scoreText}</span>
       <span>${winner}</span>
       <span class="badge ${badgeClass}">${statusText}</span>
-      <span>${fmtAmer(g.fair_home_american)}</span>
-      <span>${fmtAmer(g.fair_away_american)}</span>
+      <span>${fmtAmer(g.dk_ml_home)}</span>
+      <span>${fmtAmer(g.dk_ml_away)}</span>
     </div>`;
   };
 
@@ -261,13 +273,13 @@ Promise.all([
       <div style="display:grid; grid-template-columns: 1fr 1fr; gap:16px;">
         <div>
           <div class="muted" style="font-size:10px; text-transform:uppercase; letter-spacing:1px;">Leader</div>
-          <div style="font-size:18px; font-weight:700;">${leader.name || '—'}</div>
+          <div style="font-size:18px; font-weight:700;">${(t.is_in_progress || t.is_complete) ? (leader.name || '—') : 'not started'}</div>
           <div class="muted" style="font-size:11px;">${leader.total_to_par || '—'} · #${leader.order || '?'}</div>
         </div>
         <div>
-          <div class="muted" style="font-size:10px; text-transform:uppercase; letter-spacing:1px;">Top Bet</div>
-          <div style="font-size:18px; font-weight:700;">${pot.player ? `${pot.player} ${pot.type}` : '—'}</div>
-          <div class="muted" style="font-size:11px;">${pot.fair_american != null ? fmtAmer(pot.fair_american) + ' fair · model ' + ((pot.model_prob || 0)*100).toFixed(1) + '%' : '—'}</div>
+          <div class="muted" style="font-size:10px; text-transform:uppercase; letter-spacing:1px;">Model projection (unvalidated, no book price)</div>
+          <div style="font-size:18px; font-weight:700;">${(pot.player && (t.is_in_progress || t.is_complete)) ? `${pot.player} ${pot.type}` : '—'}</div>
+          <div class="muted" style="font-size:11px;">${(pot.player && (t.is_in_progress || t.is_complete) && pot.model_prob != null) ? 'model ' + (pot.model_prob*100).toFixed(1) + '%' : 'starts once the event is under way'}</div>
         </div>
       </div>
       <div style="margin-top: 10px;"><a href="golf.html" class="link-arrow">Full leaderboard →</a></div>

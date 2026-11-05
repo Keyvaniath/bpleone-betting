@@ -34,6 +34,9 @@ try:
 except Exception:
     ELITE_PRIOR = {}
 
+MODEL_STATUS = ("unvalidated model projection -- no sportsbook price, "
+                "not a recommendation")
+
 
 # Common nationality buckets for top-X-nationality props
 AMERICAN_FLAGS = {"USA", "United States"}
@@ -86,6 +89,24 @@ def run() -> Dict[str, Any]:
             "generated_at": dt.datetime.now().isoformat(timespec="seconds"),
             "tournament": t.get("name"),
             "note": "no active field" if not field else "tournament complete",
+            "players": [],
+        }
+        os.makedirs(DATA_DIR, exist_ok=True)
+        with open(OUT_PATH, "w") as f:
+            json.dump(payload, f, indent=2)
+        return payload
+
+    # PRE-EVENT: NO PROPS (2026-11-03). The scheduled WWT field (all "E")
+    # produced "Top American +5714" etc. from a sim of a tournament that had
+    # not started. Nothing is projected until play begins.
+    if not (t.get("is_in_progress") or t.get("is_complete")):
+        start = (t.get("start_date") or "")[:10]
+        payload = {
+            "generated_at": dt.datetime.now().isoformat(timespec="seconds"),
+            "tournament": t.get("name"),
+            "is_pre_event": True,
+            "note": (f"Tournament starts {start}; projections appear once play begins"
+                     if start else "Tournament has not started; projections appear once play begins"),
             "players": [],
         }
         os.makedirs(DATA_DIR, exist_ok=True)
@@ -175,6 +196,7 @@ def run() -> Dict[str, Any]:
         "tournament": t.get("name"),
         "rounds_left": rounds_left,
         "cut_in_play": cut_in_play,
+        "model_status": MODEL_STATUS,   # (2026-11-03) not book prices
         "n_players": len(players),
         "n_sims": N_SIMS,
         "players": players,

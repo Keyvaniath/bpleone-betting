@@ -55,11 +55,12 @@
 <main class="container">
   <section class="page-head">
     <h1>Model Cards</h1>
-    <p class="lede">One card per sport, the way an ML team documents a model: <b>what the engine is</b>, <b>what it's trained on</b>, <b>how it actually performs</b>, and <b>where it breaks</b>. Performance is computed live from the same public, settled ledger that powers the <a href="strategy-sim.html">Strategy Simulator</a> — shown both raw (every family) and curated (proven-negative families dropped), so the honesty layer is visible per sport.</p>
+    <p class="lede">One card per sport, the way an ML team documents a model: <b>what the engine is</b>, <b>what it's trained on</b>, <b>how it actually performs</b>, and <b>where it breaks</b>. Performance is computed live from the same public, settled ledger that powers the <a href="strategy-sim.html">Strategy Simulator</a> — split by <b>price class</b> and shown both with every family and with the proven-negative families dropped.</p>
   </section>
 
   <div class="banner">
-    <b>Read the two ROI columns together.</b> "Raw" is the unfiltered model firehose; "Curated" is the book we'd actually surface, with proven-money-losing market families removed. The gap between them — clearest on MLB — is the discipline, not the model. Small samples are flagged; treat anything under ~30 decided bets as a read, not a verdict. These per-sport ROIs are <b>in-sample</b> (every settled pick); for the out-of-sample test — the curation cut-set frozen on early data and scored on the unseen window, plus the per-family concentration breakdown — see the <a href="track-record.html">held-out validation →</a>.
+    <!-- (2026-11-03) price-class split: ROI only at sportsbook prices (A/B); class C = calibration only; MLB-PP unverified -->
+    <b>ROI is shown only where a sportsbook price exists.</b> Class A/B rows were graded at a DraftKings price, so their ROI is a betting result. Class C rows (every player prop, and most desks) were graded at the model's own fair odds or a PrizePicks break-even: they show <b>hit rate vs the predicted probability</b>, labelled "calibration only" — not a betting ROI. MLB-PP is an unverified PrizePicks import and is not bettable. "Losers dropped" removes the proven-negative families chosen from these same outcomes, so it is <b>in-sample</b>; the held-out test of that cut is negative — see the <a href="track-record.html">held-out validation →</a>. Treat anything under ~30 decided bets as a read, not a verdict.
   </div>
 
   <div class="grid" id="cards"><p class="mut">Loading model cards…</p></div>
@@ -81,99 +82,125 @@
 <script>
 // Static per-sport spec (prose). Keyed by the strategy_sim sport code. Performance
 // numbers are computed LIVE from strategy_sim.json below; this is the documentation.
+// (2026-11-03) Limits prose no longer carries hard-coded ROI / sample numbers (they
+// had drifted); samples, activity and the price-class split are live-filled below.
 const SPECS = {
-  "MLB-PP": { name:"MLB Player Props", ico:"🃏", badge:["LIVE","b-live"], page:"props.html",
-    eng:"Calibrated per-player projections (hand-coded gradient-boosted trees + PA-level Monte Carlo) scored against PrizePicks' flat-payout lines; quarter-Kelly sizing.",
-    src:["MLB Stats API","Baseball Savant","PrizePicks (free menu)"],
-    lim:"The strongest book — soft PP lines vs calibrated projections. DraftKings prop ODDS are paid-gated, so the book-edge cross-check stays dark until the key returns." },
-  "MLB": { name:"MLB Game Lines", ico:"⚾", badge:["IN-SEASON","b-season"], page:"mlb.html",
-    eng:"Bayesian team-strength posterior + Poisson run-scoring → fair moneyline & totals, over a 30-feature pipeline (pitcher, bullpen fatigue, park, weather, umpire, schedule).",
+  "MLB-PP": { name:"MLB Player Props (PrizePicks)", ico:"🃏", unverified:true, page:"props.html",
+    eng:"Calibrated per-player projections (hand-coded gradient-boosted trees + PA-level Monte Carlo) scored against PrizePicks' flat-payout lines.",
+    src:["MLB Stats API","Baseball Savant","PrizePicks (free menu, dead since 7/9)"],
+    lim:"UNVERIFIED · not bettable. These rows are a locks-history import graded at PrizePicks' per-leg break-even (−136), not a sportsbook price, and a single leg cannot be bet alone. The PrizePicks feed has been dead since 7/9. Shown as calibration only; never part of the curated headline." },
+  "MLB": { name:"MLB", ico:"⚾", page:"mlb.html",
+    eng:"Bayesian team-strength posterior + Poisson run-scoring → fair moneyline & totals, over a 30-feature pipeline (pitcher, bullpen fatigue, park, weather, umpire, schedule); plus batter/pitcher prop generators.",
     src:["MLB Stats API","Baseball Savant","Open-Meteo","ESPN / DraftKings (free)"],
-    lim:"The raw game-line model is overconfident — that's the −22% firehose. The +EV book is the curated subset, and game lines additionally defer to the sharp de-vigged close so model overconfidence can't print a fake edge. Deepest, most mature desk." },
-  "GOLF": { name:"Golf", ico:"⛳", badge:["LIVE","b-live"], page:"golf.html",
+    lim:"The raw model is overconfident. Moneylines and totals are graded at the DraftKings price (class B); every MLB player prop has no sportsbook price (free feeds carry none) and is graded at the model's own fair odds (class C) — calibration, not ROI." },
+  "GOLF": { name:"Golf", ico:"⛳", page:"golf.html",
     eng:"Field-strength + course-fit model → top-5 / 10 / 20 finish probabilities, with a live in-tournament tracker.",
     src:["ESPN Golf","field/form metrics (free)"],
-    lim:"Outright & placement markets are high-variance by nature; +6.5% over 321 is healthy, but golf is structurally noisy." },
-  "WNBA": { name:"WNBA", ico:"🏀", badge:["IN-SEASON","b-season"], page:"wnba.html",
+    lim:"Outright & placement markets are high-variance by nature. No sportsbook price is recorded: graded at the model's own odds (class C)." },
+  "WNBA": { name:"WNBA", ico:"🏀", page:"wnba.html",
     eng:"Pace + usage prop generators with a live scoring-environment factor (Bayesian-shrunk from real results), extended to the 2026 expansion teams the static tables don't know.",
     src:["ESPN WNBA box logs","team form"],
-    lim:"Young sample; expansion-team priors are thin. The live scoring-env trim is the main edge over static pace tables." },
-  "F1": { name:"Formula 1", ico:"🏎️", badge:["EXPERIMENTAL","b-exp"], page:"f1.html",
+    lim:"Expansion-team priors are thin. Props carry no sportsbook price: graded at the model's own odds (class C)." },
+  "F1": { name:"Formula 1", ico:"🏎️", page:"f1.html",
     eng:"Qualifying / pole + top-6 finish model from driver & constructor form, as a one-winner normalized distribution.",
     src:["ESPN F1"],
-    lim:"The hardest desk (raw −72.5% → curated −33%). The pole market was over-flagging (multiple drivers tagged for one seat); a one-winner normalization fix shipped, but treat F1 as experimental." },
-  "UFC": { name:"UFC / MMA", ico:"🥊", badge:["SMALL SAMPLE","b-small"], page:"ufc.html",
+    lim:"The pole market was over-flagging (multiple drivers tagged for one seat); a one-winner normalization fix shipped. Experimental. Graded at the model's own odds (class C)." },
+  "UFC": { name:"UFC / MMA", ico:"🥊", page:"ufc.html",
     eng:"Fighter rating model → moneyline + round/finish props.",
     src:["ESPN MMA"],
-    lim:"+130% over 58 settled is a HOT, small sample — high variance, regression toward the mean is expected. One market live so far." },
-  "WORLDCUP": { name:"2026 World Cup", ico:"🏆", badge:["LIVE","b-live"], page:"worldcup.html",
+    lim:"Small, high-variance sample, one market. Graded at the model's own odds (class C), so its units are not a betting result." },
+  "WORLDCUP": { name:"2026 World Cup", ico:"🏆", page:"worldcup.html",
     eng:"3-way Poisson match model (FIFA-tier elo blended with in-tournament record) → 1X2 / O2.5 / BTTS, displayed book-shaded; plus a 20k-sim group-advancement Monte Carlo.",
     src:["ESPN fifa.world","DraftKings 3-way (free)"],
-    lim:"Live tournament, growing sample. The model runs flat, so displayed picks are shaded toward the sharp book; the raw model prob is kept for learning and divergence." },
-  "EPL": { name:"EPL", ico:"⚽", badge:["EARLY","b-small"], page:"epl.html",
+    lim:"The model runs flat, so displayed picks are shaded toward the sharp book; the raw model prob is kept for learning. Ledger rows are graded at the model's own odds (class C)." },
+  "EPL": { name:"EPL", ico:"⚽", page:"epl.html",
     eng:"Soccer total / BTTS / cards / clean-sheet / anytime-goalscorer prop generators.",
     src:["ESPN Soccer"],
-    lim:"Thin sample (~31). The club-soccer prop desk is early; treat as a developing read." },
-  "NBA": { name:"NBA", ico:"🏀", badge:["OFF-SEASON","b-off"], page:"nba.html",
-    eng:"Player-prop generators (PRA / AST / 3PM / TOV / STL / blocks) plus a model-vs-DraftKings book-edge board.",
+    lim:"Developing desk. Graded at the model's own odds (class C)." },
+  "NBA": { name:"NBA", ico:"🏀", page:"nba.html",
+    eng:"Player-prop generators (PRA / AST / 3PM / TOV / STL / blocks) plus a game-lines desk (Elo vs the DraftKings close).",
     src:["ESPN NBA box logs","DraftKings (free)"],
-    lim:"Off-season — only ~24 settled. Fills in next season; the book-edge board goes live with the schedule." },
-  "NHL": { name:"NHL", ico:"🏒", badge:["OFF-SEASON","b-off"], page:"nhl.html",
-    eng:"Elo / Glicko-2 team ratings + goalie-adjusted scoring → puck-line & totals + skater props.",
-    src:["ESPN NHL box logs"],
-    lim:"Raw −34.5%; off-season now. Goalie-start sensitivity is the key risk — a confirmed scratch swings the whole game model." },
-  "MLS": { name:"MLS", ico:"⚽", badge:["EARLY","b-small"], page:"mls.html",
+    lim:"Props choose their own line (no book prop lines) and are graded at the model's own odds (class C). The game-lines desk backtest shows no edge vs DraftKings, so it logs no picks." },
+  "NHL": { name:"NHL", ico:"🏒", page:"nhl.html",
+    eng:"Elo + shots / goalie / rest game model vs the DraftKings close, plus skater props on real per-game rates.",
+    src:["ESPN NHL box logs","NHL API boxscores","DraftKings (free)"],
+    lim:"The game model does not beat the DraftKings close (no edge, no game-line picks). Goalie-start sensitivity is the key risk. Props are graded at the model's own odds (class C)." },
+  "NFL": { name:"NFL", ico:"🏈", page:"nfl.html",
+    eng:"Player-prop Monte Carlo on season-to-date form, plus a game-lines desk (MOV Elo + QB model vs the DraftKings no-vig line).",
+    src:["ESPN NFL box logs","DraftKings (free)"],
+    lim:"Props are graded at the model's own odds (class C). Desk moneylines are logged at the DraftKings price (class A/B) but the desk verdict is UNPROVEN and they are not curated." },
+  "MLS": { name:"MLS", ico:"⚽", page:"mls.html",
     eng:"Soccer prop generators (total / BTTS / cards / clean sheet) on the MLS slate.",
     src:["ESPN Soccer"],
-    lim:"Very small sample (~7) — not yet a verdict on anything. Listed for transparency." },
-  "UCL": { name:"Champions League", ico:"⚽", badge:["EARLY","b-small"], page:"ucl.html",
+    lim:"Graded at the model's own odds (class C). Listed for transparency." },
+  "UCL": { name:"Champions League", ico:"⚽", page:"ucl.html",
     eng:"Soccer prop generators on UCL fixtures.",
     src:["ESPN Soccer"],
-    lim:"Very small sample (~6); offseason for the competition. Transparency listing." },
+    lim:"Graded at the model's own odds (class C). Listed for transparency." },
 };
 
 function roiCls(v){ return v == null ? "mut" : v >= 0 ? "up" : "down"; }
 function fmtRoi(v){ return v == null ? "—" : (v >= 0 ? "+" : "") + v.toFixed(1) + "%"; }
 
 fetch("data/strategy_sim.json", { cache: "no-cache" }).then(r => r.json()).then(d => {
-  const rows = d.rows || [], fams = d.families || [], sports = d.sports || [];
-  // schema: [date_i, source_i, sport_i, family_i, p_raw, p_cal, fair_american, res, payout_units]
+  const rows = d.rows || [], fams = d.families || [], sports = d.sports || [], dates = d.dates || [];
+  const PCL = d.price_classes || ["A","B","C"];
+  // schema: [date_i, source_i, sport_i, family_i, p_raw, p_cal, fair_american, res, payout_units, price_class_i, book_american]
+  // (2026-11-03) aggregate per sport x price group (book = A/B, model = C) x raw/curated,
+  // plus mean predicted prob so class C reads as calibration (hit vs predicted), not ROI.
+  const blank = () => ({ w:0, l:0, net:0, pn:0, ps:0, pw:0 });
   const agg = {};
-  for (const sp of sports) agg[sp] = { w:0,l:0,p:0,net:0, cw:0,cl:0,cp:0,cnet:0 };
+  for (const sp of sports) agg[sp] = { book:blank(), bookCur:blank(), model:blank(), modelCur:blank(), last:"" };
   for (const r of rows) {
     const sp = sports[r[2]], fam = fams[r[3]] || {}, res = r[7], u = r[8], a = agg[sp];
     if (!a) continue;
-    if (res === 1) a.w++; else if (res === 0) a.l++; else a.p++;
-    a.net += u;
-    if (!fam.neg) { if (res === 1) a.cw++; else if (res === 0) a.cl++; else a.cp++; a.cnet += u; }
+    const cls = PCL[r[9] == null ? 2 : r[9]] || "C";
+    const g = cls === "C" ? "model" : "book";
+    const dt = dates[r[0]] || ""; if (dt > a.last) a.last = dt;
+    for (const k of fam.neg ? [g] : [g, g + "Cur"]) {
+      const x = a[k];
+      if (res === 1) x.w++; else if (res === 0) x.l++;
+      if (res !== 2) { x.net += u; if (r[4] != null) { x.pn++; x.ps += r[4]; if (res === 1) x.pw++; } }
+    }
   }
-  const line = (w,l,net) => {
-    const dec = w + l, roi = dec ? 100 * net / dec : null, hit = dec ? w/dec : null;
-    return { rec: `${w}-${l}`, settled: w+l, hit, roi };
+  const line = x => {
+    const dec = x.w + x.l;
+    return { rec: `${x.w}-${x.l}`, settled: dec, hit: dec ? x.w/dec : null, roi: dec ? 100 * x.net / dec : null,
+             pred: x.pn ? x.ps / x.pn : null, hitP: x.pn ? x.pw / x.pn : null };
   };
-  // Order by raw decided count (data maturity) desc, only sports we have a spec for.
-  const order = Object.keys(agg).filter(s => SPECS[s])
-    .sort((x,y) => (agg[y].w+agg[y].l) - (agg[x].w+agg[x].l));
+  const total = a => a.book.w + a.book.l + a.model.w + a.model.l;
+  const order = Object.keys(agg).filter(s => SPECS[s]).sort((x,y) => total(agg[y]) - total(agg[x]));
+  const newest = dates.length ? dates.slice().sort().pop() : "";
+  const daysBetween = (a, b) => (a && b) ? Math.round((new Date(b) - new Date(a)) / 864e5) : null;
 
   document.getElementById("cards").innerHTML = order.map(sp => {
     const a = agg[sp], s = SPECS[sp];
-    const raw = line(a.w, a.l, a.net), cur = line(a.cw, a.cl, a.cnet);
-    const small = cur.settled < 30;
-    const hit = h => h == null ? "—" : (100*h).toFixed(0) + "%";
+    const bk = line(a.book), bkc = line(a.bookCur), md = line(a.model), mdc = line(a.modelCur);
+    const pct = h => h == null ? "—" : (100*h).toFixed(0) + "%";
+    const gap = (dl) => dl.settled ? `${pct(dl.hitP)} vs ${pct(dl.pred)} pred` : "—";
+    // badge: unverified, or live-derived activity from the newest settled date
+    const age = daysBetween(a.last, newest);
+    const badge = s.unverified ? ["UNVERIFIED","b-exp"]
+      : (age != null && age <= 7) ? ["ACTIVE","b-live"] : ["DORMANT · last " + (a.last || "—"),"b-off"];
+    const bookRows = bk.settled ? `
+          <tr><td>Book-priced (A/B) · all</td><td>${bk.settled}</td><td>${bk.rec}</td><td>${pct(bk.hit)}</td><td class="${roiCls(bk.roi)}">${fmtRoi(bk.roi)}</td></tr>
+          <tr><td>Book-priced (A/B) · losers dropped (in-sample)</td><td>${bkc.settled}</td><td>${bkc.rec}</td><td>${pct(bkc.hit)}</td><td class="${roiCls(bkc.roi)}"><b>${fmtRoi(bkc.roi)}</b></td></tr>` : "";
+    const modelRows = md.settled ? `
+          <tr><td>Model odds (C) · all</td><td>${md.settled}</td><td>${md.rec}</td><td>${gap(md)}</td><td class="mut">calibration only</td></tr>
+          ${mdc.settled ? `<tr><td>Model odds (C) · losers dropped</td><td>${mdc.settled}</td><td>${mdc.rec}</td><td>${gap(mdc)}</td><td class="mut">calibration only</td></tr>` : ""}` : "";
+    const small = bk.settled > 0 && bkc.settled < 30;
     return `<div class="mc">
-      <div class="top"><span class="ico">${s.ico}</span><h3>${s.name}</h3><span class="badge ${s.badge[1]}">${s.badge[0]}</span></div>
+      <div class="top"><span class="ico">${s.ico}</span><h3>${s.name}</h3><span class="badge ${badge[1]}">${badge[0]}</span></div>
       <div class="eng">${s.eng}</div>
       <div class="srcs">${s.src.map(x => `<span class="src">${x}</span>`).join("")}</div>
       <table class="perf">
-        <thead><tr><th>Book</th><th>Settled</th><th>Record</th><th>Hit</th><th>ROI</th></tr></thead>
-        <tbody>
-          <tr><td>Raw (all families)</td><td>${raw.settled}</td><td>${raw.rec}</td><td>${hit(raw.hit)}</td><td class="${roiCls(raw.roi)}">${fmtRoi(raw.roi)}</td></tr>
-          <tr><td>Curated (losers dropped)</td><td>${cur.settled}</td><td>${cur.rec}</td><td>${hit(cur.hit)}</td><td class="${roiCls(cur.roi)}"><b>${fmtRoi(cur.roi)}</b></td></tr>
-        </tbody>
+        <thead><tr><th>Price class · book</th><th>Settled</th><th>Record</th><th>Hit (vs pred)</th><th>ROI</th></tr></thead>
+        <tbody>${bookRows}${modelRows}</tbody>
       </table>
-      ${small ? `<div style="font-size:10.5px;color:#ffc15e;margin:-2px 0 8px;">⚠ small sample (${cur.settled} decided) — directional, not a verdict</div>` : ""}
+      ${md.settled ? `<div style="font-size:10.5px;color:var(--muted,#8a93a6);margin:-2px 0 8px;">Class C rows are graded at the model's own odds — not a betting ROI. Read hit rate against the predicted probability.</div>` : ""}
+      ${small ? `<div style="font-size:10.5px;color:#ffc15e;margin:-2px 0 8px;">⚠ small book-priced sample (${bkc.settled} decided) — directional, not a verdict</div>` : ""}
       <div class="lim"><b>Limits:</b> ${s.lim}</div>
-      <div class="links"><a href="${s.page}">open desk →</a><a href="strategy-sim.html?sport=${encodeURIComponent(sp)}">replay this sport →</a></div>
+      <div class="links"><a href="${s.page}">open desk →</a><a href="strategy-sim.html?sport=${encodeURIComponent(sp)}&pc=all${sp === "MLB-PP" ? "&pp=1" : ""}">replay this sport →</a></div>
     </div>`;
   }).join("");
 

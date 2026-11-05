@@ -119,10 +119,11 @@
 <div class="container">
   <h1>Today's Master Brief</h1>
   <p class="sub">
-    Tonight's MLB betting digest. Synthesized from 11+ context modules
-    (<strong>lineup quality, park weather, bullpen fatigue, pitcher edge
-    composite</strong>, hot streaks, top batter/pitcher aggregators).
-    Designed for a 30-second read before placing bets.
+    <!-- (2026-11-03) model-only props: labelled projections, not picks; offseason empty state -->
+    Tonight's MLB digest, synthesized from context modules (lineup quality, park weather,
+    bullpen fatigue, pitcher composite, hot streaks). The batter/pitcher entries are
+    <strong style="color:#e3a35a;">model projections — unvalidated, no sportsbook price, not a recommendation</strong>:
+    no sportsbook prop price exists in the free feeds.
   </p>
 
   <div class="brief-hero">
@@ -131,15 +132,15 @@
   </div>
 
   <div class="section">
-    <h2>Plays of the Day</h2>
+    <h2>Top model projections (not picks)</h2>
     <div class="pod-grid">
       <div class="pod-card batter">
-        <div class="label">★ Batter PoD</div>
+        <div class="label">Batter projection</div>
         <div class="player" id="batter-pod">—</div>
         <div class="meta" id="batter-meta"></div>
       </div>
       <div class="pod-card pitcher">
-        <div class="label">⚾ Pitcher PoD</div>
+        <div class="label">Pitcher projection</div>
         <div class="player" id="pitcher-pod">—</div>
         <div class="meta" id="pitcher-meta"></div>
       </div>
@@ -173,6 +174,8 @@ fetch('data/mlb_today_master_brief.json')
       bulletsEl.appendChild(li);
     });
 
+    // (2026-11-03) no MLB games -> no projections (the companion files can be stale)
+    if (!(d.n_games > 0)) return [{}, {}];
     // Pull PoDs from companion endpoints
     return Promise.all([
       fetch('data/mlb_today_top_batter_props.json').then(r => r.json()),
@@ -185,13 +188,13 @@ fetch('data/mlb_today_master_brief.json')
     document.getElementById('batter-pod').textContent = bpod.batter || '—';
     document.getElementById('batter-meta').textContent =
       bpod.batter
-        ? `${bpod.n_strong_edges || 0} STRONG signals · ${bpod.net_direction || ''} · composite ${bpod.composite_score || 0}`
-        : 'No batter PoD identified tonight';
+        ? `${bpod.n_strong_edges || 0} model flags · ${bpod.net_direction || ''} · composite ${bpod.composite_score || 0}`
+        : 'No MLB games — no batter projection';
     document.getElementById('pitcher-pod').textContent = ppod.pitcher || '—';
     document.getElementById('pitcher-meta').textContent =
       ppod.pitcher
-        ? `${ppod.n_strong_edges || 0} STRONG signals · ${ppod.net_direction || ''} · composite ${ppod.composite_score || 0}`
-        : 'No pitcher PoD identified tonight';
+        ? `${ppod.n_strong_edges || 0} model flags · ${ppod.net_direction || ''} · composite ${ppod.composite_score || 0}`
+        : 'No MLB games — no pitcher projection';
   })
   .catch(e => {
     document.getElementById('headline').textContent = 'Failed to load brief';

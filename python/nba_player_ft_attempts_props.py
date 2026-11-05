@@ -7,7 +7,7 @@ Top FT generators: SGA, Embiid, Trae, Giannis, KD, Booker, Luka, Brunson.
 Method:
   expected_FTA = season_fta * pace_factor * opp_foul_rate_factor
   Poisson at nearest 0.5 line within 1.0 of projection.
-  STRONG when 10%+ edge vs -120 book (p in [0.62, 0.72]).
+  flag band (NOT an edge: no sportsbook prop price exists; the old '10%+ edge vs an assumed -120 book' is withdrawn 2026-11-03) (p in [0.62, 0.72]).
 
 Output: data/nba_player_ft_attempts_props.json
 """
@@ -226,8 +226,9 @@ def run() -> Dict[str, Any]:
         "n_players_projected": len(rows),
         "n_strong_edges": len(strong),
         "n_players_in_db": len(PLAYER_DB),
-        "method_note": "NBA player FTA x pace x opp_foul_rate. Poisson at nearest 0.5 line "
-                       "within 1.0 of projection. STRONG = 10%+ edge vs -120 book.",
+        "status": "unvalidated_model_projection",   # (2026-11-03)
+        "method_note": "UNVALIDATED MODEL PROJECTION -- no sportsbook price, not a pick. NBA player FTA x pace x opp_foul_rate. Poisson at nearest 0.5 line "
+                       "within 1.0 of projection. flag band (NOT an edge: no sportsbook prop price exists; the old '10%+ edge vs an assumed -120 book' is withdrawn 2026-11-03).",
         "rows": rows,
         "strong_edges": strong,
     }

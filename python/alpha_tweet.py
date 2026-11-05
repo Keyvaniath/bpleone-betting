@@ -81,7 +81,7 @@ def _odds(a: Any) -> str:
 def _pick_line(p: Dict[str, Any], lead: str = "") -> str:
     name = p.get("player_or_matchup") or "?"
     mk = _humanize_market(p.get("market"))
-    od = _odds(p.get("fair_american"))
+    od = _odds(p.get("book_american"))   # sportsbook price only (2026-11-03)
     # the calibrated prob is the honest number when the record carries one (v2 picks)
     prob = p.get("model_prob_calibrated")
     if not isinstance(prob, (int, float)):
@@ -102,6 +102,17 @@ def _pick_line(p: Dict[str, Any], lead: str = "") -> str:
 
 
 def _record_line(rec: Dict[str, Any]) -> str:
+    # 2026-11-03: sportsbook-priced record first; props at model odds labelled.
+    b = (rec.get("price_split") or {}).get("book_priced_game_lines") or {}
+    m = (rec.get("price_split") or {}).get("model_priced_props") or {}
+    if b or m:
+        out = []
+        if b:
+            r = b.get("roi_pct") or 0
+            out.append(f"{b.get('wins', 0)}-{b.get('losses', 0)} at DK prices ({'+' if r >= 0 else ''}{round(r)}% ROI)")
+        if m:
+            out.append(f"props {m.get('wins', 0)}-{m.get('losses', 0)} at model odds (not a betting ROI)")
+        return " · ".join(out)
     w, l = rec.get("wins"), rec.get("losses")
     hr = rec.get("hit_rate")
     roi = rec.get("roi_pct")
@@ -158,7 +169,9 @@ def _compose(date: str, picks: List[Dict[str, Any]], rec: Dict[str, Any],
              terse: bool = False) -> str:
     lines = ["\U0001F3AF Alpha Pick of the Day", ""]
     lines.append(_pick_line(picks[0]))
-    if include_props and len(picks) > 1:
+    # 2026-11-03: prop legs carry only the model's own fair price (no sportsbook
+    # prop prices exist) -- never tweeted as picks.
+    if False and include_props and len(picks) > 1:
         for extra in picks[1:]:
             lines.append(_pick_line(extra, lead="+ "))
     lines.append("")
@@ -180,7 +193,7 @@ def _intent(text: str) -> str:
 
 def run() -> Dict[str, Any]:
     rec_data = _load(REC)
-    record = rec_data.get("record") or {}
+    record = dict(rec_data.get("record") or {}, price_split=rec_data.get("price_split"))
     slate = rec_data.get("props_slate") or {}
     todays_slate = (slate.get("todays") or {}).get("picks") or []
     one = rec_data.get("todays")

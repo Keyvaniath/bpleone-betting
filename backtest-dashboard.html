@@ -64,7 +64,7 @@
         <li><strong>Bias:</strong> avg(predicted) − avg(actual). Positive = model favors home too much</li>
         <li><strong>Reliability bins:</strong> for each 10% prob bucket, predicted hit rate vs actual</li>
       </ul>
-      <p>When sample ≥ 30 and |bias| ≥ 2pp, the system <strong>auto-applies a calibration shift</strong> to future predictions.</p>
+      <p>A home-side shift is applied to future predictions only when <strong>n ≥ 60</strong> games, |bias| ≥ 2pp <strong>and</strong> the bias is more than <strong>2 standard errors</strong> from zero; it is then shrunk by n / (n + 400) and capped at 5pp. A small average bias is <em>not</em> a calibration verdict — read the Brier score (0.25 = a coin flip; higher is worse than guessing 50/50) and the reliability bins.<!-- (2026-11-03) stated rule corrected to self_train.py's real one (was n ≥ 30 / 2pp) --></p>
     </div>
   </section>
   <div id="sportsContainer"></div>
@@ -89,6 +89,12 @@ Promise.all(SPORTS.map(s =>
     .map(r => {
       const color = SPORT_COLORS[r.sport] || "#888";
       const reco = r.recommendation || {};
+      // (2026-11-03) "<2pp bias" is not "well-calibrated": a Brier above 0.25 is worse than a coin flip.
+      const brierBad = typeof r.brier_score === "number" && r.brier_score > 0.25;
+      if (!reco.applied && /well-calibrated/.test(reco.note || "")) {
+        reco.note = `average home bias under 2pp, so no shift — not a calibration verdict` +
+          (brierBad ? `; Brier ${r.brier_score} is worse than a 50/50 guess (0.25), so this model is <b style="color:#e35a5a;">not</b> well-calibrated` : `; see Brier and the bins`);
+      }
       const recoHtml = reco.applied
         ? `<div class="reco-applied">✅ <strong>Auto-corrected:</strong> ${reco.note || ''} <em>(shift ${reco.recommended_shift > 0 ? '+' : ''}${(reco.recommended_shift * 100).toFixed(1)}pp applied to live predictions)</em></div>`
         : `<div class="reco-pending"><strong>No correction:</strong> ${reco.note || 'insufficient sample'}</div>`;
@@ -110,7 +116,7 @@ Promise.all(SPORTS.map(s =>
         <h2 style="margin: 0 0 12px 0; color: ${color};">${r.sport.toUpperCase()} — ${r.n_games} games</h2>
         <div class="metric-tile">
           <div class="tile"><div class="label">Hit rate</div><div class="value">${((r.hit_rate || 0)*100).toFixed(1)}%</div></div>
-          <div class="tile"><div class="label">Brier score</div><div class="value">${r.brier_score ?? '—'}</div></div>
+          <div class="tile"><div class="label">Brier score (0.25 = coin flip)</div><div class="value" style="${brierBad ? 'color:#e35a5a;' : ''}">${r.brier_score ?? '—'}</div></div>
           <div class="tile"><div class="label">Log loss</div><div class="value">${r.log_loss ?? '—'}</div></div>
           <div class="tile"><div class="label">Bias</div><div class="value" style="color:${Math.abs((r.bias || 0)) > 0.05 ? '#e35a5a' : '#58c878'}">${(r.bias || 0) > 0 ? '+' : ''}${((r.bias || 0)*100).toFixed(1)}pp</div></div>
         </div>

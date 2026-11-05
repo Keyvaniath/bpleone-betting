@@ -28,6 +28,12 @@
 <link rel="stylesheet" href="css/style.css?v=20260908c">
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
 <script src="js/nav.js?v=20260908c"></script>
+<style>
+/* 2026-11-03: cards retired from the homepage -- model-only projections shown
+   as picks (no sportsbook price), permanently empty panels, a mock newsletter
+   form, and a default parlay. Their own pages still carry labelled versions. */
+.x-retired { display: none !important; }
+</style>
 </head>
 <body>
 <header class="topbar">
@@ -107,24 +113,24 @@ fetch('data/data_health.json?t=' + Date.now()).then(function(r){return r.json();
   <section class="hero">
     <div class="hero-left">
       <div class="kicker">ALGORITHMIC SPORTS INTELLIGENCE</div>
-      <h1>The market is a number. <span class="accent">We trade the gap.</span></h1>
-      <p class="lede">EdgeStat is a quantitative sports-betting research desk. We model every game, expose where the books mis-price the market, and surface the highest-edge play in the league each morning. Think of it as Unusual Whales — for the diamond, the gridiron, and the hardwood.</p>
+      <h1>The market is a number. <span class="accent">We test whether we can beat it.</span></h1>
+      <p class="lede">EdgeStat is a quantitative sports-betting research desk. We model games, compare our numbers with DraftKings' posted prices, and publish every result, including the losses. No edge is proven yet: the curated record and the held-out test are both negative, and we say so below.</p>
       <div class="hero-stats" id="heroStats">
         <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px; width:100%;">
           <div style="padding:14px 16px; border-radius:10px; border:1px solid rgba(74,222,128,0.35); background:rgba(74,222,128,0.06);">
-            <div style="font-size:10px; letter-spacing:0.08em; text-transform:uppercase; color:#4ade80; font-weight:700;">★ Alpha — recommended plays</div>
+            <div style="font-size:10px; letter-spacing:0.08em; text-transform:uppercase; color:#4ade80; font-weight:700;">Curated board — sportsbook prices</div>
             <div id="hcAlphaNet" style="font-size:30px; font-weight:800; font-family:'JetBrains Mono',monospace; margin:4px 0 2px; color:#4ade80;">--u</div>
             <div style="font-size:11px; color:var(--text-2,#9fb0c8); font-family:'JetBrains Mono',monospace;"><span id="hcAlphaRoi">--</span> ROI · <span id="hcAlphaHit">--</span> hit · <span id="hcAlphaN">--</span> plays</div>
             <div id="hcAlphaL30" style="display:none; font-size:10.5px; color:var(--muted,#8a93a6); font-family:'JetBrains Mono',monospace; margin-top:4px;"></div>
             <div id="hcAlphaTag" style="display:none; font-size:9px; color:#d4a04a; margin-top:5px; line-height:1.4;"></div>
           </div>
           <div style="padding:14px 16px; border-radius:10px; border:1px solid rgba(255,255,255,0.10); background:rgba(255,255,255,0.02);">
-            <div style="font-size:10px; letter-spacing:0.08em; text-transform:uppercase; color:var(--muted,#888); font-weight:700;">All signals — incl. experimental</div>
+            <div style="font-size:10px; letter-spacing:0.08em; text-transform:uppercase; color:var(--muted,#888); font-weight:700;">All signals — mostly graded at the model's own odds</div>
             <div id="hcAllNet" style="font-size:30px; font-weight:800; font-family:'JetBrains Mono',monospace; margin:4px 0 2px; color:#9fb0c8;">--u</div>
             <div style="font-size:11px; color:var(--text-2,#9fb0c8); font-family:'JetBrains Mono',monospace;"><span id="hcAllRoi">--</span> ROI · <span id="hcAllHit">--</span> hit · <span id="hcAllN">--</span> plays</div>
           </div>
         </div>
-        <p style="grid-column:1/-1; font-size:11px; color:var(--text-2,#9fb0c8); margin:10px 0 0; line-height:1.6;"><strong>Alpha</strong> is the plays we actually recommend (Lock of the Day, Top 25, Whale, Sharp, Consensus, Under Alerts, POD). <strong>All Signals</strong> also counts every experimental prop feed — those exist to <em>train</em> the model at 1u-flat, not to bet, which is why the blended line runs negative. <a href="track-record.html" style="color:var(--accent,#4ade80);">Full track record →</a></p>
+        <p style="grid-column:1/-1; font-size:11px; color:var(--text-2,#9fb0c8); margin:10px 0 0; line-height:1.6;"><strong>Curated board</strong> = the boards we feature, graded at DraftKings' price (PrizePicks props are a separate, unverified line). <strong>All signals</strong> counts every model output; most of it has no sportsbook price and is graded at the model's own odds, so it is a calibration check, not a betting ROI. <a href="track-record.html" style="color:var(--accent,#4ade80);">Full track record →</a></p>
       </div>
       <div class="hero-cta">
         <a href="play-of-day.html" class="btn-primary big">View Today's Play of the Day</a>
@@ -135,12 +141,12 @@ fetch('data/data_health.json?t=' + Date.now()).then(function(r){return r.json();
       <div class="hero-card">
         <div class="hero-card-head">
           <span class="dot live"></span>
-          <span>LIVE MODEL CONFIDENCE — MLB Slate</span>
+          <span>MODEL CONFIDENCE — MLB slate</span>
         </div>
         <canvas id="heroChart" height="220"></canvas>
         <div class="hero-card-foot">
-          <span class="muted">Last refresh: <span id="lastRefresh">just now</span></span>
-          <span class="muted">Source: EdgeStat Bayesian v3.4</span>
+          <span class="muted">Last refresh: <span id="lastRefresh">—</span></span>
+          <span class="muted" id="heroChartNote">model probabilities, not prices</span>
         </div>
       </div>
     </div>
@@ -190,7 +196,7 @@ fetch('data/data_health.json?t=' + Date.now()).then(function(r){return r.json();
     <div style="display:flex; gap:20px; flex-wrap:wrap; align-items:stretch;">
       <a id="apodHeadline" href="alpha-pick.html" style="flex:1 1 230px; text-decoration:none; display:block;"></a>
       <div style="flex:2 1 340px;">
-        <div style="font-size:9.5px; text-transform:uppercase; letter-spacing:.6px; color:var(--muted,#8a93a6); margin-bottom:7px;">The Slip — props of the day</div>
+        <div style="font-size:9.5px; text-transform:uppercase; letter-spacing:.6px; color:var(--muted,#8a93a6); margin-bottom:7px;">Prop projections — no sportsbook price, not picks</div>
         <div id="apodProps" style="display:grid; gap:6px;"></div>
         <div id="apodOther" style="display:flex; gap:7px; flex-wrap:wrap; margin-top:11px;"></div>
       </div>
@@ -221,20 +227,20 @@ fetch('data/data_health.json?t=' + Date.now()).then(function(r){return r.json();
           '<div style="font-family:\'JetBrains Mono\',monospace; font-size:12px; color:var(--text-2,#9fb0c8); margin-bottom:8px;">' + esc((a.market || a.market_family || "").replace("PP_", "").replace(/_/g, " ")) + '</div>' +
           '<div style="display:flex; gap:14px; font-family:\'JetBrains Mono\',monospace; font-size:12px;">' +
             '<span><span style="color:var(--muted,#8a93a6);">model</span> <b>' + pct(a.model_prob) + '</b></span>' +
-            '<span><span style="color:var(--muted,#8a93a6);">fair</span> <b style="color:#d4a04a;">' + ml(a.fair_american) + '</b></span>' +
-            (a.roi_per_dollar != null ? '<span><span style="color:var(--muted,#8a93a6);">ROI</span> <b style="color:#58c878;">+' + (100 * a.roi_per_dollar).toFixed(0) + '%</b></span>' : '') +
+            (a.book_american != null ? '<span><span style="color:var(--muted,#8a93a6);">DK</span> <b style="color:#d4a04a;">' + ml(a.book_american) + '</b></span>' : '') +
           '</div>';
       }
       // props slip (up to 4 on the homepage)
       document.getElementById("apodProps").innerHTML = props.slice(0, 4).map(function (p) {
         return '<div style="display:flex; justify-content:space-between; gap:10px; font-family:\'JetBrains Mono\',monospace; font-size:12px; padding:4px 0; border-bottom:1px solid rgba(255,255,255,.05);">' +
           '<span style="white-space:nowrap; overflow:hidden; text-overflow:ellipsis;"><b>' + esc(p.player) + '</b> <span style="color:var(--muted,#8a93a6);">' + esc(p.market) + '</span></span>' +
-          '<span style="white-space:nowrap; color:#58c878;">' + pct(p.prob) + (p.unit_quarter_kelly != null ? ' <span style="color:var(--muted,#8a93a6);">' + Number(p.unit_quarter_kelly).toFixed(2) + 'u</span>' : '') + '</span>' +
+          '<span style="white-space:nowrap; color:var(--text-2,#9fb0c8);">model ' + pct(p.prob) + '</span>' +
         '</div>';
       }).join("");
       // other-picks chips
       var col = { "Game line": "#58c878", "World Cup": "#ffc15e", "PrizePicks": "#9db8ff" };
-      document.getElementById("apodOther").innerHTML = others.slice(0, 3).map(function (o) {
+      // only plays with an actionable sportsbook quote (2026-11-03)
+      document.getElementById("apodOther").innerHTML = others.filter(function (o) { return o.actionable === true; }).slice(0, 3).map(function (o) {
         return '<a href="' + esc(o.link || "#") + '" style="text-decoration:none; font-family:\'JetBrains Mono\',monospace; font-size:10.5px; padding:4px 9px; border-radius:6px; border:1px solid rgba(255,255,255,.08); color:var(--text-2,#9fb0c8); white-space:nowrap;"><span style="color:' + (col[o.kind] || "#d4a04a") + '; font-weight:700;">' + esc(o.kind) + '</span> · ' + esc((o.label || "").slice(0, 34)) + '</a>';
       }).join("");
       document.getElementById("alphaPodHero").style.display = "block";
@@ -244,12 +250,10 @@ fetch('data/data_health.json?t=' + Date.now()).then(function(r){return r.json();
     fetch("data/alpha_pod_record.json?t=" + Date.now(), { cache: "no-cache" }).then(function (r) { return r.json(); }).then(function (d) {
       var s = d.slip || {}, c = d.curated_context, el = document.getElementById("apodRecord");
       if (!el) return;
+      // 2026-11-03: the slip is PrizePicks/model-priced props -- hit rate only, labelled.
       if (s.n_settled) {
-        el.textContent = "slip " + s.wins + "-" + s.losses + " " + (s.roi_pct >= 0 ? "+" : "") + s.roi_pct + "%";
-        el.style.color = s.roi_pct >= 0 ? "#58c878" : "#e35a5a";
-      } else if (c) {
-        el.textContent = "pool +" + c.roi_pct + "% / " + c.settled;
-        el.title = "Realized ROI of the curated prop pool the slip is drawn from (" + c.wins + "-" + c.losses + ")";
+        el.textContent = "prop slip " + s.wins + "-" + s.losses + " (PrizePicks/model odds, unverified)";
+        el.style.color = "var(--text-2,#9fb0c8)";
       }
     }).catch(function () {});
   })();
@@ -409,9 +413,8 @@ fetch('data/data_health.json?t=' + Date.now()).then(function(r){return r.json();
     let repeat = "";
     if ((d.ladder_meaningful || 0) >= 2 && (d.ladder_beat_raw || 0) >= 2) {
       const m = d.ladder_meaningful, b = d.ladder_beat_raw;
-      repeat = b === m
-        ? ` <span style="color:#58c878;">Confirmed again on <b>${m}</b> independently-frozen windows — every one beat the firehose.</span>`
-        : ` <span style="color:#58c878;"><b>${b}/${m}</b> independently-frozen windows beat the firehose.</span>`;
+      const prof = (d.experiments || []).filter(e => (e.curated_roi || 0) > 0).length;
+      repeat = ` <span style="color:#e0a13a;"><b>${prof}</b> of <b>${m}</b> independently-frozen windows are profitable; ${b} lose less than the raw feed.</span>`;
     }
     document.getElementById("proveItForward").innerHTML =
       `<span style="color:#8a93a6;">⏱ Forward test (zero hindsight): </span>since <b>${d.anchor}</b>, on <b>${d.n_settled_since}</b> picks settled against a rule frozen <i>before</i> they happened — ` +
@@ -458,8 +461,8 @@ fetch('data/data_health.json?t=' + Date.now()).then(function(r){return r.json();
     document.getElementById("proveItLine").innerHTML =
       `Every pick we surface is settled in a public ledger — <b>${rows.length.toLocaleString()}</b> picks and counting. ` +
       `Raw firehose <b style="color:#e35a5a;">${all >= 0 ? "+" : ""}${all.toFixed(0)}u</b> · ` +
-      `honest book after curation <b style="color:#58c878;">${cur >= 0 ? "+" : ""}${cur.toFixed(0)}u</b> (${curN.toLocaleString()} picks). ` +
-      `Both numbers, in the open.`;
+      `family-curated replay <b style="color:${cur >= 0 ? "#58c878" : "#e35a5a"};">${cur >= 0 ? "+" : ""}${cur.toFixed(0)}u</b> (${curN.toLocaleString()} picks). ` +
+      `Most rows are graded at the model's own odds or PrizePicks' break-even, so this is a calibration replay, not a betting ROI.`;
     document.getElementById("proveIt").style.display = "block";
   }).catch(() => {});
   // Second line: the quant-credibility metrics — calibration + CLV — pulled live.
@@ -469,7 +472,7 @@ fetch('data/data_health.json?t=' + Date.now()).then(function(r){return r.json();
   ]).then(([led, clv]) => {
     const cr = led.calibrated_reliability, bits = [];
     if (cr && cr.ece_raw != null)
-      bits.push(`Calibration: raw model ECE <b style="color:#e35a5a;">${(100*cr.ece_raw).toFixed(1)}%</b> → calibrated <b style="color:#58c878;">${(100*cr.ece_calibrated).toFixed(1)}%</b> over ${(cr.n||0).toLocaleString()} settled (a displayed 70% really hits ≈70%)`);
+      bits.push(`Calibration (in-sample — fitted on the same outcomes): raw model ECE <b>${(100*cr.ece_raw).toFixed(1)}%</b> → calibrated <b>${(100*cr.ece_calibrated).toFixed(1)}%</b> over ${(cr.n||0).toLocaleString()} settled; held-out numbers on the <a href="calibration-map.html" style="color:#9fb0c8;">calibration map</a>`);
     if (clv && clv.n_tracked)
       bits.push(`CLV: beat the close <b>${(100*(clv.beat_close_rate||0)).toFixed(0)}%</b> on ${clv.n_tracked} tracked leans`);
     if (bits.length) {
@@ -569,7 +572,7 @@ fetch('data/data_health.json?t=' + Date.now()).then(function(r){return r.json();
       <a href="book-edges.html" class="btn-primary" style="background:#58c878;color:#1a1a1a;">All Book Edges →</a>
     </div>
 
-    <div class="card big-card parlay-card" style="background:linear-gradient(135deg,rgba(88,140,200,0.10),rgba(88,140,200,0.02));border:1px solid rgba(88,140,200,0.30);">
+    <div class="card big-card parlay-card x-retired" style="background:linear-gradient(135deg,rgba(88,140,200,0.10),rgba(88,140,200,0.02));border:1px solid rgba(88,140,200,0.30);">
       <div class="card-head">
         <span class="pill" style="background:#588cc8;color:#1a1a1a;font-weight:700;">🎲 PARLAY OF DAY</span>
         <span class="muted" id="parStamp">research only -- not a recommended bet (legs priced at the model's own odds)</span>
@@ -623,7 +626,7 @@ fetch('data/data_health.json?t=' + Date.now()).then(function(r){return r.json();
   </section>
 
   <!-- Cross-sport Player Play of the Day -->
-  <section class="card" id="playerPotCard" style="margin-bottom: 28px; border-left: 3px solid #b450dc; display:none;">
+  <section class="card x-retired" id="playerPotCard" style="margin-bottom: 28px; border-left: 3px solid #b450dc; display:none;">
     <div class="card-head">
       <span>🎮 <strong>Player Play of the Day — LoL · CS · KBO</strong></span>
       <span class="muted" id="playerPotMeta">--</span>
@@ -645,7 +648,7 @@ fetch('data/data_health.json?t=' + Date.now()).then(function(r){return r.json();
   </section>
 
   <!-- MODEL CONVICTION — cross-sport (cross_sport_top_picks.json; fresh each batch, odds-independent) -->
-  <section class="card" id="modelConvictionCard" style="margin-bottom: 28px; border-left: 3px solid #4ade80; display:none;">
+  <section class="card x-retired" id="modelConvictionCard" style="margin-bottom: 28px; border-left: 3px solid #4ade80; display:none;">
     <div class="card-head">
       <span>🎯 <strong>Model Conviction — Top Picks (All Sports)</strong> <span class="muted" style="font-size:10px;">(pure-model · odds-independent)</span></span>
       <span class="muted" id="modelConvMeta">--</span>
@@ -716,7 +719,7 @@ fetch('data/data_health.json?t=' + Date.now()).then(function(r){return r.json();
   </section>
 
   <!-- Calibration Status (transparency about how edges are derived) -->
-  <section class="card" id="calibCard" style="margin-bottom: 28px; border-left: 3px solid #d4a04a;">
+  <section class="card x-retired" id="calibCard" style="margin-bottom: 28px; border-left: 3px solid #d4a04a;">
     <div class="card-head">
       <span>⚙️ <strong>Model Calibration Status</strong></span>
       <a href="calibration-map.html" style="color:#d4a04a; font-size:12px; text-decoration:none;">predicted vs realized, per market →</a>
@@ -749,7 +752,7 @@ fetch('data/data_health.json?t=' + Date.now()).then(function(r){return r.json();
   </section>
 
   <!-- TONIGHT'S SHARPEST ARMS (MLB pitcher model board — sharp_plays_board.json; odds-independent) -->
-  <section class="card" id="sharpArmsCard" style="margin-bottom: 28px; border-left: 3px solid #58c878; display:none;">
+  <section class="card x-retired" id="sharpArmsCard" style="margin-bottom: 28px; border-left: 3px solid #58c878; display:none;">
     <div class="card-head">
       <span>⚾ <strong>Tonight's Sharpest Arms — Pitcher Model Board</strong></span>
       <span class="muted" id="sharpArmsMeta">--</span>
@@ -799,7 +802,7 @@ fetch('data/data_health.json?t=' + Date.now()).then(function(r){return r.json();
   </script>
 
   <!-- PITCHER SAME-GAME STACKS (mlb_pitcher_sgp_builder.json; correlation-aware, odds-independent) -->
-  <section class="card" id="pitcherSgpCard" style="margin-bottom: 28px; border-left: 3px solid #588cc8; display:none;">
+  <section class="card x-retired" id="pitcherSgpCard" style="margin-bottom: 28px; border-left: 3px solid #588cc8; display:none;">
     <div class="card-head">
       <span>🎯 <strong>Pitcher Same-Game Parlays (SGP)</strong> <span class="muted" style="font-size:10px;">2–3 correlated bets on one pitcher, combined into a single ticket</span></span>
       <span class="muted" id="pitcherSgpMeta">--</span>
@@ -855,7 +858,7 @@ fetch('data/data_health.json?t=' + Date.now()).then(function(r){return r.json();
   <!-- PLAYER PROPS ONLY — all sports, props only (no game lines / no parlays) -->
   <section class="card" id="playerPropsCard" style="margin-bottom: 28px; border-left: 3px solid #b450dc; display:none;">
     <div class="card-head">
-      <span>🎯 <strong>Player Props — All Sports</strong> <span class="muted" style="font-size:10px;">DraftKings + PrizePicks player props only · no game lines, no parlays</span></span>
+      <span>🎯 <strong>Player Props — All Sports</strong> <span class="muted" style="font-size:10px;">player props · a price is shown only when a book posted one</span></span>
       <span class="muted" id="playerPropsMeta">--</span>
     </div>
     <div class="table-wrap">
@@ -902,7 +905,7 @@ fetch('data/data_health.json?t=' + Date.now()).then(function(r){return r.json();
 
   <!-- TODAY'S TOP PLAYS (LIVE FROM data/top_plays.json) -->
   <section class="card" style="margin-bottom: 28px;">
-    <div class="card-head"><span>Today's Top Plays - All Markets</span><span class="muted">DraftKings + PrizePicks + parlays, ranked by quality score</span></div>
+    <div class="card-head"><span>Today's Top Plays - All Markets</span><span class="muted">ranked by quality score · priced plays only</span></div>
     <div id="topPlaysList" style="font-family:'JetBrains Mono',monospace; font-size:12px;">
       <p class="muted" style="padding:14px;">Loading top plays...</p>
     </div>
@@ -951,7 +954,7 @@ fetch('data/data_health.json?t=' + Date.now()).then(function(r){return r.json();
   </section>
 
   <!-- ANALYTICS PANELS -->
-  <section class="grid-3">
+  <section class="grid-3 x-retired">
     <div class="card">
       <div class="card-head"><span>📈 Model vs. Market</span></div>
       <canvas id="modelMarketChart" height="200"></canvas>
@@ -970,7 +973,7 @@ fetch('data/data_health.json?t=' + Date.now()).then(function(r){return r.json();
   </section>
 
   <!-- TODAY'S SLATE -->
-  <section class="section">
+  <section class="section x-retired">
     <div class="section-head">
       <h2>Today's MLB Slate — Modeled</h2>
       <a href="mlb.html" class="link-arrow">Full board →</a>
@@ -1007,7 +1010,7 @@ fetch('data/data_health.json?t=' + Date.now()).then(function(r){return r.json();
       <div class="feature">
         <div class="feature-icon">📊</div>
         <h3>Probability Surfaces</h3>
-        <p>Every line — moneyline, runline, total, first-5, player props — is given a fair price. We expose the gap between our number and the book's.</p>
+        <p>Game lines are compared with DraftKings' posted prices. Player props have no sportsbook price in our free feeds, so they are model projections only.</p>
       </div>
       <div class="feature">
         <div class="feature-icon">🐋</div>
@@ -1022,18 +1025,18 @@ fetch('data/data_health.json?t=' + Date.now()).then(function(r){return r.json();
       <div class="feature">
         <div class="feature-icon">📅</div>
         <h3>Play of the Day</h3>
-        <p>One play. Highest-edge, highest-confidence — every day. Full transparency on price, model probability, Kelly stake, and rationale.</p>
+        <p>At most one play a day, and only when it clears the bar at a real DraftKings price. Many days have no play.</p>
       </div>
       <div class="feature">
         <div class="feature-icon">🧾</div>
         <h3>Public Track Record</h3>
-        <p>Every play we recommend is logged with timestamp, price, result, and CLV. No cherry-picked screenshots. Numbers don't lie.</p>
+        <p>Every pick is logged with its timestamp, price and price source, and result. Corrections and restatements are disclosed with dates.</p>
       </div>
     </div>
   </section>
 
   <!-- NEWSLETTER -->
-  <section class="section newsletter">
+  <section class="section newsletter x-retired">
     <div class="newsletter-card">
       <h2>Get the morning edge.</h2>
       <p>Daily 7:30am ET digest: Play of the Day, sharp flow alerts, slate breakdown. Free, no spam.</p>
@@ -1117,7 +1120,7 @@ Promise.all([
     document.getElementById("golfTourneyPot").textContent =
       `${pot.player}${pot.opponent ? ' vs ' + pot.opponent : ''}`;
     document.getElementById("golfTourneyPotMeta").textContent =
-      `${pot.type} · ${(pot.fair_american >= 0 ? '+' : '') + pot.fair_american} · model ${(pot.model_prob*100).toFixed(1)}%`;
+      `${pot.type} · model projection ${(pot.model_prob*100).toFixed(1)}% · no sportsbook price`;   // 2026-11-03
   } else {
     document.getElementById("golfTourneyPot").textContent = "No qualifying bet";
     document.getElementById("golfTourneyPotMeta").textContent = "—";
@@ -1168,7 +1171,11 @@ fetch("data/multi_sport_top.json?t=" + Date.now(), { cache: "no-cache" })
   .then(r => r.json())
   .then(d => {
     const picks = d.picks || [];
-    if (!picks.length) return;
+    if (!picks.length) {
+      document.getElementById("multiSportTopList").innerHTML =
+        `<p class="muted" style="padding:14px;">No cross-sport pick today: a pick needs a real sportsbook price. ${(d.projections || []).length} model-only projections are not shown as picks.</p>`;
+      return;
+    }
     const fmtAmer = (a) => a == null ? "—" : (a >= 0 ? "+" + a : String(a));
     document.getElementById("multiSportTopMeta").textContent =
       `${d.n_sports || 0} sport${d.n_sports===1?'':'s'} surfaced · refreshed ${(d.generated_at || '').slice(11,16)} UTC`;
@@ -1190,7 +1197,7 @@ fetch("data/multi_sport_top.json?t=" + Date.now(), { cache: "no-cache" })
           </div>
         </div>
         <div style="text-align:right; font-family: 'JetBrains Mono', monospace;
-                    color: ${p.color}; font-size: 16px; font-weight:700;">${fmtAmer(p.fair_american)}</div>
+                    color: ${p.color}; font-size: 16px; font-weight:700;">${fmtAmer(p.market_american)}</div>
       </a>
     `).join("");
   })
@@ -1228,7 +1235,7 @@ const renderSport = (data, cardId, titleId, metaId, bodyId, anchor, emoji) => {
                      : `<span class="muted">${g.status || 'Scheduled'}</span>`;
     return `<div style="padding:8px 0; border-bottom:1px dashed rgba(255,255,255,0.06); display:flex; justify-content:space-between; font-size:12px;">
       <span><strong>${g.away_team}</strong> @ <strong>${g.home_team}</strong> <span class="muted" style="font-size:10px;">${g.away_record} / ${g.home_record}</span></span>
-      <span>${scoreText}${fmtAmer(g.fair_home_american)}/${fmtAmer(g.fair_away_american)} · ${stateBadge}</span>
+      <span>${scoreText}${g.state === 'pre' && g.dk_ml_away != null ? `<span class="muted" style="font-size:10px;">DK</span> ${fmtAmer(g.dk_ml_away)} / ${fmtAmer(g.dk_ml_home)} · ` : ''}${stateBadge}</span>
     </div>`;
   }).join("") + `<a href="${anchor}" class="link-arrow" style="margin-top:6px; display:inline-block;">Full board →</a>`;
 };
@@ -1285,7 +1292,7 @@ fetch("data/today.json", { cache: "no-cache" })
     const rawEdge = Number(pod.edge_pct) || 0;
     const isPreCal = rawEdge >= 15;
     const edgeDisplay = isPreCal
-      ? `+25%+ <span style="font-size:11px; opacity:0.6;">(raw +${rawEdge.toFixed(1)}%)</span>`
+      ? `+${rawEdge.toFixed(1)}% <span style="font-size:11px; opacity:0.6;">(≥15%: unverified — likely model error)</span>`
       : "+" + rawEdge.toFixed(2) + "%";
     setStat(2, "Edge", edgeDisplay, " positive");
     setStat(3, "Confidence", pod.confidence || "--");
@@ -1346,10 +1353,17 @@ fetch("data/today.json", { cache: "no-cache" })
 // Avg CLV tile -- pulls from data/clv_log.json so the metric strip
 // stops claiming a stale "+2.4%" CLV when the log has captured all-zeros.
 // ALSO populates the dashboard CLV / line-movement panel.
+// 2026-11-03: clv_log.json is open->close drift on BOTH sides of every game
+// (mostly Bovada), not CLV on our picks -- CLAUDE.md bans it as a CLV source.
+// The tile reads clv_tracker.json (our leans); none tracked -> "—".
+fetch("data/clv_tracker.json", { cache: "no-cache" })
+  .then(r => r.json())
+  .then(t => { const el = document.getElementById("mClv"); if (el) el.textContent = t && t.n_tracked ? ((t.avg_clv_pp >= 0 ? "+" : "") + Number(t.avg_clv_pp).toFixed(2) + "pp") : "—"; })
+  .catch(() => {});
 fetch("data/clv_log.json", { cache: "no-cache" })
   .then(r => r.json())
   .then(c => {
-    const recs = (c.records || []).filter(r => r.clv_pct != null);
+    const recs = [];   // retired as a CLV source (2026-11-03)
     const el = document.getElementById("mClv");
     if (el) {
       if (!recs.length) { el.textContent = "--"; }
@@ -1393,7 +1407,7 @@ fetch("data/clv_log.json", { cache: "no-cache" })
 fetch("data/clv_log.json", { cache: "no-cache" })
   .then(r => r.json())
   .then(c => {
-    const recs = (c.records || []).filter(r => Math.abs(r.clv_pct || 0) >= 0.5);
+    const recs = [];   // was: stale clv_log line drift since May, counted as "alerts" (2026-11-03)
     const el = document.getElementById("mSharp");
     if (el) el.textContent = recs.length ? String(recs.length) : "--";
   })
@@ -1432,7 +1446,7 @@ fetch("data/clv_log.json", { cache: "no-cache" })
       const tag = document.getElementById("hcAlphaTag");
       if (tag && (a.n_settled || 0) > 0 && (a.n_settled || 0) < 500) {
         tag.style.display = "block";
-        tag.textContent = "⚠ early sample (~2 weeks live) · CLV still flat — promising, not yet proven.";
+        tag.textContent = "⚠ small sample — not proven.";
       }
 
       // All Signals = every model output incl. experimental prop feeds (training).
@@ -1632,6 +1646,7 @@ Promise.all([
 ])
   .then(([d, clv]) => {
     const box = document.getElementById("locksHomeBox");
+    if (!d) return;
     if (!box) return;
     const fmtUnits = u => u == null ? '—' : (u > 0 ? '<span style="color:#58c878;font-weight:700;">+'+u.toFixed(2)+'u</span>' : u < 0 ? '<span style="color:#e35a5a;font-weight:700;">'+u.toFixed(2)+'u</span>' : '0u');
     const fmtPct = p => p == null ? '—' : (p*100).toFixed(1) + '%';
@@ -1663,10 +1678,16 @@ Promise.all([
           <div style="font-size:9px; color:var(--muted,#888); text-transform:uppercase;">Avg CLV</div>
           <div style="font-size:18px; color:var(--muted,#888);">—</div>
         </div>`;
+    // 2026-11-03: 366 of 369 settled locks are PrizePicks props graded at PP's
+    // -136 break-even (unverified import). Lead with the sportsbook-priced line.
+    const bp = d.by_price || {}, sb = bp.sportsbook || {}, pp = bp.prizepicks_unverified || {};
+    d = Object.assign({}, d, { hit_rate: sb.hit_rate, net_units: sb.net_units, roi_pct: sb.roi_pct,
+                               n_settled: sb.n_settled, total_risked_units: sb.total_risked_units, total_locks: sb.n_settled });
     box.innerHTML = `
+      <p class="muted" style="font-size:10.5px; margin:0 0 8px;">Sportsbook-priced locks only: <b>${sb.wins || 0}-${sb.losses || 0}</b>. PrizePicks locks (graded at PP's break-even, unverified) are kept apart: ${pp.wins || 0}-${pp.losses || 0}.</p>
       <div style="display:grid; grid-template-columns: repeat(5, 1fr); gap:10px; margin-bottom:14px;">
         <div style="text-align:center;">
-          <div style="font-size:9px; color:var(--muted,#888); text-transform:uppercase;">Total Locks</div>
+          <div style="font-size:9px; color:var(--muted,#888); text-transform:uppercase;">Settled (book-priced)</div>
           <div style="font-size:18px; font-weight:700; color:#d4a04a;">${d.total_locks || 0}</div>
         </div>
         <div style="text-align:center;">
@@ -1694,8 +1715,9 @@ Promise.all([
   });
 
 // Learning Quality banner -- shows verdict on whether learning is real
-fetch("data/learning_integrity.json?t=" + Date.now(), { cache: "no-cache" })
-  .then(r => r.json())
+// 2026-11-03: retired from the homepage -- its "significance" tested hit rate
+// vs 50%, so 14%-hit families graded "trustworthy". See learning-integrity.html.
+Promise.reject()
   .then(li => {
     const main = document.querySelector("main.container");
     if (!main) return;
@@ -1905,7 +1927,7 @@ fetch("data/calibration_status.json?t=" + Date.now(), { cache: "no-cache" })
       document.getElementById('alphaTitle').textContent =
         (a.sport || '') + ' · ' + (a.player_or_matchup || '') + (a.team ? ' (' + a.team + ')' : '');
       document.getElementById('alphaProb').textContent = fmtPct(a.model_prob);
-      document.getElementById('alphaOdds').textContent = fmtOdds(a.book_american != null ? a.book_american : a.fair_american);
+      document.getElementById('alphaOdds').textContent = a.book_american != null ? fmtOdds(a.book_american) : '—';   // DK price only (2026-11-03)
       document.getElementById('alphaRoi').textContent = fmtSigned(a.roi_per_dollar);
       document.getElementById('alphaType').textContent = typeLabel(d.pick_type);
       document.getElementById('alphaKelly').textContent = a.kelly_fraction != null ? a.kelly_fraction.toFixed(3) : '--';

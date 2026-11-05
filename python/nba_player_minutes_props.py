@@ -18,7 +18,7 @@ Sigma scales with role:
 
 Normal CDF over typical lines around projection.
 
-STRONG when 10%+ edge vs -120 (45.5% breakeven each side).
+flag band (NOT an edge vs a real price; assumed -120 withdrawn 2026-11-03).
 
 Output: data/nba_player_minutes_props.json
 """
@@ -195,7 +195,7 @@ def run() -> Dict[str, Any]:
                 z = (line - proj_mpg) / sigma
                 p_over = 1 - _norm_cdf(z)
                 p_under = 1 - p_over
-                # Edge vs -120 (45.5% breakeven)
+                # flag band vs an ASSUMED -120 -- not an edge (2026-11-03)
                 for direction, p in (("OVER", p_over), ("UNDER", p_under)):
                     if 0.56 <= p <= 0.66:  # 10%+ edge zone
                         edge_amt = p - 0.455
@@ -231,9 +231,10 @@ def run() -> Dict[str, Any]:
         "generated_at": dt.datetime.utcnow().isoformat(timespec="seconds"),
         "n_players": len(rows),
         "n_strong_edges": len(strong),
-        "method_note": "MPG = season_baseline + playoff/blowout/b2b adjustments. "
+        "status": "unvalidated_model_projection",   # (2026-11-03)
+        "method_note": "UNVALIDATED MODEL PROJECTION -- no sportsbook price, not a pick. MPG = season_baseline + playoff/blowout/b2b adjustments. "
                        "Normal CDF over typical DK lines (0.5 increments). "
-                       "STRONG when p in [0.56, 0.66] vs -120 book (45.5% breakeven).",
+                       "flag band p in [0.56, 0.66] (NOT an edge: no sportsbook price; assumed -120 withdrawn 2026-11-03).",
         "rows": rows[:60],
         "strong_edges": strong,
     }

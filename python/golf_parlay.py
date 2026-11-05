@@ -19,6 +19,14 @@ Joint probability:
 
 Output: data/golf_parlays.json
   { tournament, generated_at, n_parlays, parlays: [...] }
+
+PARLAY BOARD RETIRED (2026-11-03): every leg is an unvalidated model
+projection with no sportsbook price, and the old "EV" compared the joint
+model probability with the product of the model's OWN fair odds (and the leg
+labels read "@ -100" as if those were lines). `parlays` is now always empty so
+no desk or cross-sport injector recommends a parlay by default. When a
+tournament is in progress the combinations are kept under `research_exhibit`
+with joint model probability only -- no price, no EV, not a recommendation.
 """
 from __future__ import annotations
 
@@ -68,9 +76,8 @@ def _decimal(american) -> float:
     return 1 + (100 / abs(american))
 
 
-def _ev_pct(joint_prob: float, parlay_decimal: float) -> float:
-    """EV as percent of stake assuming book books at parlay_decimal."""
-    return round(100 * (joint_prob * parlay_decimal - 1), 1)
+# (2026-11-03) _ev_pct removed: it measured the joint model prob against the
+# product of the model's own fair odds -- not an expected value vs any book.
 
 
 def _build_legs() -> List[Dict[str, Any]]:
@@ -88,7 +95,7 @@ def _build_legs() -> List[Dict[str, Any]]:
                 "player": p["name"],
                 "prob": p["p_win"],
                 "fair_american": p.get("fair_win_american"),
-                "label": f"{p['name']} WIN @ {p.get('fair_win_american','?')}",
+                "label": f"{p['name']} WIN (model projection)",   # (2026-11-03) no "@ price"
             })
 
     # TOP5 legs
@@ -99,7 +106,7 @@ def _build_legs() -> List[Dict[str, Any]]:
                 "player": p["name"],
                 "prob": p["p_top5"],
                 "fair_american": p.get("fair_top5_american"),
-                "label": f"{p['name']} TOP 5 @ {p.get('fair_top5_american','?')}",
+                "label": f"{p['name']} TOP 5 (model projection)",   # (2026-11-03) no "@ price"
             })
 
     # TOP10 legs
@@ -110,7 +117,7 @@ def _build_legs() -> List[Dict[str, Any]]:
                 "player": p["name"],
                 "prob": p["p_top10"],
                 "fair_american": p.get("fair_top10_american"),
-                "label": f"{p['name']} TOP 10 @ {p.get('fair_top10_american','?')}",
+                "label": f"{p['name']} TOP 10 (model projection)",   # (2026-11-03) no "@ price"
             })
 
     # MAKE CUT legs (only when cut is in play and prob between 0.50 and 0.85)
@@ -123,7 +130,7 @@ def _build_legs() -> List[Dict[str, Any]]:
                     "player": p["name"],
                     "prob": pc,
                     "fair_american": p.get("fair_makecut_american"),
-                    "label": f"{p['name']} MAKE CUT @ {p.get('fair_makecut_american','?')}",
+                    "label": f"{p['name']} MAKE CUT (model projection)",   # (2026-11-03) no "@ price"
                 })
 
     # H2H legs (one side at a time, only when ~50-70%)
@@ -140,7 +147,7 @@ def _build_legs() -> List[Dict[str, Any]]:
                     "opponent": opp,
                     "prob": prob,
                     "fair_american": fair,
-                    "label": f"{player} beats {opp} @ {fair}",
+                    "label": f"{player} beats {opp} (model projection)",   # (2026-11-03) no "@ price"
                 })
 
     return legs
@@ -161,9 +168,30 @@ def _joint(legs: List[Dict[str, Any]]) -> Tuple[float, float]:
     return prob, decimal
 
 
+RETIRED_NOTE = ("Parlay board retired (2026-11-03): legs are unvalidated model "
+                "projections with no sportsbook price -- not a recommendation.")
+
+
 def run() -> Dict[str, Any]:
     state = _load(STATE_PATH)
     t = state.get("active_tournament") or {}
+    # (2026-11-03) pre-event: nothing to combine (an all-"E" field produced
+    # coin-flip H2H legs and "+700" parlays for a tournament not yet started).
+    if not (t.get("is_in_progress") or t.get("is_complete")):
+        start = (t.get("start_date") or "")[:10]
+        payload = {
+            "generated_at": dt.datetime.now().isoformat(timespec="seconds"),
+            "tournament": t.get("name"),
+            "is_pre_event": True,
+            "note": (f"Tournament starts {start}; projections appear once play begins. "
+                     if start else "") + RETIRED_NOTE,
+            "n_parlays": 0,
+            "parlays": [],
+        }
+        os.makedirs(DATA_DIR, exist_ok=True)
+        with open(OUT_PATH, "w") as f:
+            json.dump(payload, f, indent=2)
+        return payload
     if t.get("is_complete"):
         payload = {
             "generated_at": dt.datetime.now().isoformat(timespec="seconds"),
@@ -200,40 +228,42 @@ def run() -> Dict[str, Any]:
             joint, dec = _joint(list(combo))
             if joint < 0.005:         # parlays below 0.5% are noise
                 continue
-            ev = _ev_pct(joint, dec)
-            fair_american = _amer(joint) if 0 < joint < 1 else 0
+            # (2026-11-03) ev_pct / parlay fair odds removed: the "EV" was the
+            # model's joint prob against the product of its own fair odds.
             # Quality score: prefer balanced parlays in the sweet-spot
             # 1-10% joint prob, n>=2 legs, modest correlation bump
             sweet = 1.0 / (1.0 + abs(joint - 0.05) * 4)
             quality = sweet * (1.0 + (n - 2) * 0.05)
             parlays.append({
                 "n_legs": n,
-                "joint_prob": round(joint, 4),
-                "parlay_fair_decimal": round(dec, 2),
-                "parlay_fair_american": fair_american,
-                "ev_pct": ev,
+                "joint_model_prob": round(joint, 4),
                 "quality_score": round(quality, 4),
                 "legs": [{
                     "kind": l["kind"],
                     "label": l["label"],
                     "player": l["player"],
                     "opponent": l.get("opponent"),
-                    "prob": round(l["prob"], 4),
-                    "fair_american": l["fair_american"],
+                    "model_prob": round(l["prob"], 4),
                 } for l in combo],
             })
 
-    # Sort by quality_score then ev_pct; pick top
-    parlays.sort(key=lambda p: (-p["quality_score"], -p["ev_pct"]))
+    parlays.sort(key=lambda p: -p["quality_score"])
     top = parlays[:MAX_PARLAYS]
 
     payload = {
         "generated_at": dt.datetime.now().isoformat(timespec="seconds"),
         "tournament": t.get("name"),
+        "note": RETIRED_NOTE,
         "n_legs_in_pool": len(pool),
         "n_parlays_evaluated": len(parlays),
-        "n_parlays": len(top),
-        "parlays": top,
+        # (2026-11-03) no recommended parlays, ever, by default
+        "n_parlays": 0,
+        "parlays": [],
+        "research_exhibit": {
+            "label": "research exhibit, not a recommendation -- unvalidated "
+                     "model projections, no sportsbook price, no EV",
+            "combinations": top,
+        },
     }
     os.makedirs(DATA_DIR, exist_ok=True)
     with open(OUT_PATH, "w") as f:
@@ -243,10 +273,10 @@ def run() -> Dict[str, Any]:
 
 if __name__ == "__main__":
     p = run()
-    print(f"Wrote {OUT_PATH}: {p['n_parlays']} top parlays of {p.get('n_parlays_evaluated',0)} evaluated ({p.get('n_legs_in_pool',0)} legs in pool)")
-    for i, par in enumerate(p.get("parlays") or [], 1):
-        amer = par["parlay_fair_american"]
-        sign = "+" if amer >= 0 else ""
-        print(f"  [{i}] {par['n_legs']}-leg @ {sign}{amer} -- joint {par['joint_prob']*100:.2f}% (EV {par['ev_pct']:+.1f}%)")
+    print(f"Wrote {OUT_PATH}: {p['n_parlays']} recommended parlays (board retired 2026-11-03)")
+    print(f"  {p.get('note', '')}")
+    ex = (p.get("research_exhibit") or {}).get("combinations") or []
+    for i, par in enumerate(ex[:5], 1):
+        print(f"  exhibit [{i}] {par['n_legs']}-leg -- joint model prob {par['joint_model_prob']*100:.2f}%")
         for l in par["legs"]:
             print(f"      - {l['label']}")

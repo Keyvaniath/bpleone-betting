@@ -252,7 +252,16 @@ fetch("data/residuals.json", { cache: "no-cache" })
     const keys = Object.keys(markets);
     const blocks = document.getElementById("marketBlocks");
     if (!keys.length) {
-      blocks.innerHTML = `<p class="empty">No settled records yet. Residuals populate once outcomes.py settles tonight's games tomorrow morning.</p>`;
+      // (2026-11-03) off-season empty state: the old copy promised "tomorrow morning"
+      // even with no MLB games being played.
+      const lb = p.lookback_days || 30;
+      const msg = `No settled MLB player props with a recorded projection in the last ${lb} days (${p.total_props_analyzed || 0} analyzed). ` +
+        `MLB is between seasons, so there is nothing to grade — this page fills again once the MLB season resumes and props settle.`;
+      blocks.innerHTML = `<p class="empty">${msg}</p>`;
+      ["playerList", "parkList", "handList"].forEach(id => {
+        const el = document.getElementById(id);
+        if (el) el.innerHTML = `<p class="empty">Off-season — no settled props in the last ${lb} days.</p>`;
+      });
       return;
     }
     blocks.innerHTML = keys.map(k => renderMarketBlock(k, markets[k])).join("");

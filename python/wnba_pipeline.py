@@ -19,6 +19,6 @@ if __name__ == "__main__":
     for g in p.get("games", []):
         try:   # display only: one unpriced row must not fail the module
             print(f"  {g['matchup']} ({g['away_record']} vs {g['home_record']}) "
-                  f"P(home) = {g['p_home_win']*100:.1f}% fair {g['fair_home_american']:+d}/{g['fair_away_american']:+d}")
+                  f"P(home) = {g['p_home_win']*100:.1f}% fair {g.get('fair_home_american')}/{g.get('fair_away_american')}")
         except (TypeError, KeyError, ValueError):
             print(f"  {g.get('matchup') or g.get('name')} (incomplete row)")

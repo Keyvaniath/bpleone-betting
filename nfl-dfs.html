@@ -133,6 +133,21 @@ fetch('data/nfl_dfs.json?t=' + Date.now(), { cache: 'no-cache' })
       return;
     }
     const u = d.universe || {};
+    const SPAN_DAYS = 4;   // DK dates the weekly main slate by its first kickoff (Thu) -> runs through Mon
+    // (2026-11-03) a slate whose start is in the past is NOT current -- say so
+    // instead of presenting last slate's lineups as today's.
+    {
+      const todayEt = new Date().toLocaleDateString('en-CA', { timeZone: 'America/New_York' });
+      const end = new Date(d.slate.start + 'T12:00:00Z');
+      end.setUTCDate(end.getUTCDate() + SPAN_DAYS);
+      if (end.toISOString().slice(0, 10) < todayEt) {
+        const msg = `No current slate — last slate ${d.slate.start} (DraftKings draft group ${d.slate.draft_group_id}). Lineups and projections return with the next slate.`;
+        $('dfs_status').textContent = msg;
+        $('lu_wrap').innerHTML = '<p class="muted">' + msg + '</p>';
+        $('pj_list').innerHTML = '<p class="muted" style="padding:14px;">' + msg + '</p>';
+        return;
+      }
+    }
     $('dfs_status').innerHTML = `DraftKings Classic slate <b>${d.slate.start}</b> · draft group ${d.slate.draft_group_id} · refreshed ${(d.generated_at || '').replace('T', ' ')}`;
     $('m_slate').textContent = d.slate.n_games ?? '--';
     $('m_sal').textContent = d.slate.n_salaried ?? '--';

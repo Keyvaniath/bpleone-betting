@@ -88,11 +88,15 @@
   <div class="info-card">
     <strong style="color:#d4a04a;">How to read this:</strong>
     <span style="color: var(--text-2,#aaa); font-size:13px;">
-      Each source gets a <strong>statistical grade</strong> based on sample size, significance, and calibration.
-      Sources with grade <strong>F or D</strong> have NO weight changes applied — we refuse to "learn" from
-      noise. Sources need at least <strong>20 settled picks</strong> with <strong>p&lt;0.10</strong> before any
-      weight movement, and <strong>50+ picks with CLV&gt;=+2pp and Brier&lt;0.24</strong> for an A grade
-      (trusted edge proven). This is the difference between real ML and curve-fitting.
+      <!-- (2026-11-03) significance is no longer hit rate vs 50% -->
+      Each source gets a <strong>statistical grade</strong> from sample size, calibration, and price.
+      <strong>Calibration test:</strong> wins vs the model's own predicted probabilities — a small p means the
+      probabilities are wrong, not that there is an edge (hit rate vs a 50% coin flip says nothing: a 75%-predicted
+      prop that hits 70% "beats chance" and still loses at its own price).
+      <strong>Edge test:</strong> ROI at a real sportsbook price (class A/B rows only; props graded at the model's own odds never count).
+      Grade <strong>B</strong> = calibrated (Brier&lt;0.24, predictions consistent with outcomes) — honest probabilities, no edge proven.
+      Grade <strong>A</strong> = 50+ book-priced picks with ROI &gt; 0 at p&lt;0.05, calibrated, CLV not negative.
+      Sources with grade <strong>F or D</strong> have NO weight changes applied. Universe: working ledger, settled and not voided.
     </span>
   </div>
 
@@ -103,7 +107,7 @@
       <div>Grade</div>
       <div>Status</div>
       <div>Wilson 95% CI</div>
-      <div>p-value</div>
+      <div>Hit vs pred · calib p</div>
       <div>Brier</div>
       <div>ECE</div>
       <div>CLV</div>
@@ -156,12 +160,15 @@
                    detail: 'Predictions exist but nothing has been settled against outcomes. Once games complete and outcomes are recorded, the learning audit begins.' },
     BOOTSTRAPPING: { cls: 'verdict-bootstrapping', head: '🌱 Bootstrapping — gathering evidence',
                      detail: `Only ${d.n_total_settled_picks} settled picks across ${d.n_sources} sources. We refuse to update weights from noise — the system will start learning once any source clears 20 settled picks.` },
-    LOW_SIGNAL: { cls: 'verdict-low', head: '⚠ Low signal — mostly noise',
-                  detail: `Only ${d.n_trustworthy_sources}/${d.n_sources} sources have statistically significant skill. Lots of picks settled but few sources clearing the bar.` },
-    LEARNING: { cls: 'verdict-learning', head: '📈 Learning — real signal emerging',
-                detail: `${d.n_trustworthy_sources}/${d.n_sources} sources show statistically real edge. Weight updates are happening, conservatively (max ${(d.max_weight_delta_per_cycle*100).toFixed(0)}% per cycle).` },
-    STRONG_SIGNAL: { cls: 'verdict-strong', head: '✅ Strong signal — model has proven edges',
-                     detail: `${d.n_trustworthy_sources}/${d.n_sources} sources A/B graded with p<0.05, CLV>=+2pp, and Brier<0.24. The learning is real and the weights reflect proven skill.` },
+    // (2026-11-03) copy rewritten: "trustworthy" = calibrated probabilities; an edge needs an A grade
+    LOW_SIGNAL: { cls: 'verdict-low', head: '⚠ Low signal — mostly miscalibrated or thin',
+                  detail: `Only ${d.n_trustworthy_sources}/${d.n_sources} sources have calibrated probabilities (B or better); ${d.n_a_grade_sources || 0} show an edge at a sportsbook price. Lots of picks settled but few sources clearing the bar.` },
+    CALIBRATION_ONLY: { cls: 'verdict-learning', head: '📏 Calibrated, no proven edge',
+                        detail: `${d.n_trustworthy_sources}/${d.n_sources} sources have calibrated probabilities, but none shows a statistically significant edge at a sportsbook price (0 A grades).` },
+    LEARNING: { cls: 'verdict-learning', head: '📈 Learning — some calibrated sources',
+                detail: `${d.n_trustworthy_sources}/${d.n_sources} sources graded B or better; ${d.n_a_grade_sources || 0} with an edge at a sportsbook price. Weight updates are capped (max ${(d.max_weight_delta_per_cycle*100).toFixed(0)}% per cycle).` },
+    STRONG_SIGNAL: { cls: 'verdict-strong', head: '✅ Strong signal — edge at a sportsbook price',
+                     detail: `${d.n_a_grade_sources || 0} source(s) A graded: ROI > 0 at a real book price with p<0.05, calibrated, CLV not negative. In-sample; see the track record for held-out results.` },
   };
   const v = verdictMap[d.verdict] || verdictMap.BOOTSTRAPPING;
   card.className = 'verdict-card ' + v.cls;
@@ -189,9 +196,15 @@
         <div class="ci-bar-mark" style="left:${markPos}%;"></div>
       </div><div class="small">${(r.wilson_lo_95||0)*100|0}% — ${(r.wilson_hi_95||0)*100|0}% (mid ${(r.hit_rate||0)*100|0}%)</div>`;
 
-      const pCell = r.is_significant
-        ? `<span class="pos">${r.p_value < 0.001 ? '<0.001' : r.p_value.toFixed(3)}</span>`
-        : `<span class="muted">${r.p_value < 0.001 ? '<0.001' : (r.p_value !== undefined ? r.p_value.toFixed(3) : '--')}</span>`;
+      // (2026-11-03) hit rate vs the model's predicted probability; p from the calibration test
+      const pc = r.p_value_calibration;
+      const pStr = pc == null ? '--' : (pc < 0.001 ? '<0.001' : pc.toFixed(3));
+      const pCell = (r.hit_rate != null && r.mean_predicted != null)
+        ? `${(r.hit_rate*100).toFixed(0)}% vs ${(r.mean_predicted*100).toFixed(0)}% <span class="${r.is_miscalibrated ? 'neg' : 'muted'}">p=${pStr}</span>`
+        : `<span class="muted">--</span>`;
+      const bookCell = (r.n_book_priced || 0) > 0 && r.roi_book_pct != null
+        ? `<div class="small">book-priced: ${r.n_book_priced} · ROI <span class="${r.roi_book_pct >= 0 ? 'pos' : 'neg'}">${r.roi_book_pct >= 0 ? '+' : ''}${fmt(r.roi_book_pct, 1)}%</span></div>`
+        : '';
 
       return `<div class="row cols-source grade-${r.grade}">
         <div><strong>${r.source}</strong></div>
@@ -204,7 +217,7 @@
         <div>${r.clv_pp !== null && r.clv_pp !== undefined ?
           `<span class="${r.clv_pp>=0?'pos':'neg'}">${r.clv_pp>=0?'+':''}${fmt(r.clv_pp, 1)}pp</span>` :
           '<span class="muted">--</span>'}</div>
-        <div>${r.n_settled} (${r.n_hits || 0}W-${r.n_misses || 0}L)</div>
+        <div>${r.n_settled} (${r.n_hits || 0}W-${r.n_misses || 0}L)${r.unverified ? ' <span class="small">· incl. MLB-PP (unverified)</span>' : ''}${bookCell}</div>
       </div>`;
     }).join('');
   }

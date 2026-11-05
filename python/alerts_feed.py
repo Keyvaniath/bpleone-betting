@@ -10,7 +10,7 @@ feed the product layer points returning users at (and the homepage teases).
 It INVENTS no new signals -- it's a reader/ranker over existing artifacts, so it
 can never disagree with the page each item links to. Sources, each best-effort:
   * line_movement.json   movers[steam]      -> STEAM   (sharp money moving a line)
-  * reverse_line_movement strong_only       -> SHARP   (line moved against the public)
+  * reverse_line_movement                   -> SHARP   (disabled 2026-11-03: no public-% source)
   * todays_top_plays      top plays (Kelly)  -> EDGE    (fresh curated model edge)
   * worldcup_cards        best_bets          -> WC      (tournament conviction play)
   * nba_book_edges        games[lean]        -> HOOPS   (model vs the book)
@@ -90,8 +90,8 @@ def _steam(items: List[Dict[str, Any]], ts: str) -> List[Dict[str, Any]]:
         kinds = "+".join(m.get("steam_kind") or []) or "line"
         out.append({
             "type": "STEAM", "icon": "📈", "sport": m.get("sport") or "",
-            "title": f"Steam: {m.get('matchup','')}",
-            "detail": (f"Sharp money toward {toward} — {kinds} moved "
+            "title": f"Line moved: {m.get('matchup','')}{(' (' + m.get('game_date') + ')') if m.get('game_date') else ''}",  # (2026-11-03)
+            "detail": (f"DraftKings line moved toward {toward} — {kinds} moved "   # not proof of sharp money (2026-11-03)
                        f"{mv:.1f}pp{(' / total ' + format(tot, '.1f')) if tot else ''} "
                        f"over {m.get('snapshots','?')} snapshots"),
             "score": _clamp(mv * 4 + tot * 12), "ts": ts, "link": "line-movement.html",
@@ -116,19 +116,32 @@ def _sharp(items: List[Dict[str, Any]], ts: str) -> List[Dict[str, Any]]:
 
 
 def _edge(items: List[Dict[str, Any]], ts: str) -> List[Dict[str, Any]]:
+    """(2026-11-03) EDGE items only from ACTIONABLE rows: the row's market must
+    carry a live DraftKings quote right now (quotes.price_candidate: fresh,
+    pre-start, exact line). The edge is EV at that DK price -- never vs the
+    model's own fair odds -- and the tape carries no stake."""
+    try:
+        import quotes as Q
+    except Exception:
+        import sys as _sys
+        _sys.path.insert(0, os.path.dirname(__file__))
+        import quotes as Q
     out = []
     for p in items:
-        prob = p.get("prob") or 0
-        edge = p.get("edge_pct") or 0
-        kelly = p.get("kelly_fraction") or 0
+        prob = p.get("prob")
+        matchup = p.get("matchup") or p.get("player_or_matchup") or ""
+        pc = Q.price_candidate(p.get("sport") or "", matchup, p.get("market") or "", prob)
+        if not pc["actionable"] or pc["ev"] is None or pc["ev"] <= 0:
+            continue
+        q = pc["quote"]
         name = p.get("player_or_matchup") or p.get("market") or "play"
-        mkt = (p.get("market") or "").replace("PP_", "").replace("_", " ")
+        mkt = (p.get("market") or "").replace("_", " ")
         out.append({
             "type": "EDGE", "icon": "🎯", "sport": p.get("sport") or "",
-            "title": f"Model edge: {name}",
-            "detail": (f"{mkt} — {prob:.0%} model{(' (' + str(p.get('fair_american')) + ')') if p.get('fair_american') else ''}, "
-                       f"{edge:.0f}% edge, {_fmtv(p.get('unit_size_quarter_kelly'), '.2f', kelly)}u ¼-Kelly"),
-            "score": _clamp(30 + kelly * 200 + edge * 0.3), "ts": ts, "link": "todays-top-plays.html",
+            "title": f"Model edge at DK: {name}",
+            "detail": (f"{mkt} — {prob:.0%} model vs DK {q['american']:+d} "
+                       f"(observed {q.get('observed_at')}), EV {pc['ev']*100:+.1f}%"),
+            "score": _clamp(30 + pc["ev"] * 300), "ts": ts, "link": "picks.html",
         })
     return out
 
@@ -188,7 +201,8 @@ def _golf(state: Dict[str, Any], tracker: Dict[str, Any], bestbet: Dict[str, Any
         out.append({
             "type": "GOLF", "icon": "⛳", "sport": "GOLF",
             "title": f"Golf: {tb.get('bet_label') or (str(tb.get('player')) + ' ' + str(tb.get('type') or ''))}",
-            "detail": (f"{p:.0%} model · {tb.get('fair_american')}"
+            # (2026-11-03) no model fair price on the tape: it reads as a book price
+            "detail": (f"{p:.0%} model projection (unvalidated, no sportsbook price)"
                        + (f" · {tb.get('reasoning')}" if tb.get("reasoning") else "")),
             "score": _clamp(45 + p * 100), "ts": ts, "link": "golf-live.html",
         })
@@ -211,8 +225,11 @@ def _golf(state: Dict[str, Any], tracker: Dict[str, Any], bestbet: Dict[str, Any
 
 
 def _tennis(mw: Dict[str, Any], ts: str) -> List[Dict[str, Any]]:
-    """Tennis on the tape: the day's STRONG surface-adjusted match-win edges.
-    Naturally gated -- strong rows only exist on a live slate with rated matchups."""
+    """(2026-11-03) REMOVED from the tape. The tennis match-win rows are a
+    hard-coded 2025 Elo snapshot priced at the model's own fair odds (e.g.
+    "Zverev 76% -316" where -316 was 1/p, not a price): model-only, so they
+    never appear here. Kept as a no-op so the bucket shape is unchanged."""
+    return []
     out: List[Dict[str, Any]] = []
     strong = [r for r in (mw.get("rows") or [])
               if str(r.get("edge_class") or "").startswith("STRONG")]
@@ -246,10 +263,15 @@ def run() -> Dict[str, Any]:
 
     buckets: Dict[str, List[Dict[str, Any]]] = {
         "STEAM": _steam(lm.get("movers") or [], lm.get("generated_at") or ""),
-        "SHARP": _sharp(rlm.get("strong_only") or rlm.get("rlm_picks") or [], rlm.get("generated_at") or ""),
+        # (2026-11-03) no real public-betting % source exists; RLM emits no picks
+        # (its "public_pct" was the opening implied probability). Bucket empty.
+        "SHARP": [],
         "EDGE": _edge((ttp.get("top_5_by_kelly") or []) + (ttp.get("top_25") or []), ttp.get("generated_at") or ""),
         "WC": _wc((wc.get("best_bets") or [])[:8], wc.get("generated_at") or ""),
-        "HOOPS": _hoops([g for g in (bb.get("games") or []) if (g.get("lean_edge_pp") or 0) >= 1.0],
+        # (2026-11-03) a model-vs-book lean is an edge only from a desk whose
+        # verdict passed; NBA/WNBA verdicts are NO EDGE/UNPROVEN -> require it.
+        "HOOPS": _hoops([g for g in (bb.get("games") or []) if (g.get("lean_edge_pp") or 0) >= 1.0
+                         and str(g.get("desk_verdict") or "").lower() not in ("", "no edge", "no_edge", "unproven")],
                         bb.get("generated_at") or ""),
         "GOLF": _golf(g_state, g_track, g_best, g_prev,
                       g_track.get("generated_at") or g_state.get("generated_at") or ""),
@@ -281,11 +303,11 @@ def run() -> Dict[str, Any]:
         "generated_at": dt.datetime.now(dt.timezone.utc).isoformat(timespec="seconds"),
         "n": len(items),
         "counts": counts,
-        "note": ("One value-ranked stream of the desk's strongest ACTIVE signals, aggregated "
-                 "from the modules that run every cycle (steam, reverse line moves, fresh "
-                 "curated model edges, World Cup conviction plays, basketball book edges). It "
-                 "surfaces existing signals — every item links to the page that owns it. "
-                 "Refreshes with the pipeline (~2h)."),
+        "note": ("One value-ranked stream of active signals aggregated from the modules that run "
+                 "every cycle: pre-game DraftKings line moves, model edges ONLY at a live DK price, "
+                 "World Cup plays, basketball leans from a desk whose verdict passed. Model-only "
+                 "projections (tennis Elo, props) are not on the tape. Every item links to the page "
+                 "that owns it. Refreshes with the pipeline (~2h)."),  # (2026-11-03)
         "items": items,
     }
     os.makedirs(DATA_DIR, exist_ok=True)

@@ -22,6 +22,7 @@ the OVERALL DAILY ACTION LIST.
 from __future__ import annotations
 
 import os
+import sys
 import json
 import datetime as dt
 from typing import Any, Dict, List, Optional
@@ -56,32 +57,47 @@ def _safe(x, default=0.0):
         return default
 
 
+_DIRS = ("over", "under", "yes", "no", "home", "away", "plus", "minus")
+
+
 def _market_family(market: str) -> str:
-    """Normalize markets so similar picks cluster together.
-    e.g. '1_plus_hit', '1_plus_HR', '2_plus_hits' -> different families.
-    But 'PP_batter_hits_over_1.5' and '1_plus_hit' = same family."""
+    """(2026-11-03) Parse the STAT token + DIRECTION, so agreement is counted
+    only within one market and one direction. The old substring ladder had
+    `"er" in m` -> 'er' for every OVER/UNDER (and 'hit' for 'pitcher'), so six
+    different props on one player (3PM under, PA under, RA over, REB under ...)
+    counted as six "agreeing sources" for one play.
+      'PA_UNDER_35.5' -> 'pa|under'   'ML_HOME' -> 'ml|home'
+      'HOME_TOTAL_OVER_109.7' -> 'home_total|over'   'BTTS_YES' -> 'btts|yes'"""
     if not market: return "unknown"
-    m = str(market).lower()
-    if "hit" in m and "no" not in m: return "hits"
-    if "hr" in m or "home_run" in m: return "homer"
-    if "rbi" in m: return "rbi"
-    if "tb" in m or "total_base" in m: return "total_bases"
-    if "hrr" in m: return "hrr"
-    if "k" in m and ("over" in m or "strike" in m): return "strikeouts"
-    if "walk" in m or "bb" in m: return "walks"
-    if "er" in m or "earned_run" in m: return "er"
-    if "under" in m and ("game" in m.lower() or len(m) <= 12): return "game_under"
-    if "over" in m and ("game" in m.lower() or len(m) <= 12): return "game_over"
-    if "ml" in m: return "moneyline"
-    if "pts" in m or "points" in m: return "points"
-    if "ast" in m or "assist" in m: return "assists"
-    if "reb" in m or "rebound" in m: return "rebounds"
-    if "3pm" in m or "three" in m: return "threes"
-    if "block" in m: return "blocks"
-    if "steal" in m: return "steals"
-    if "sog" in m or "shot" in m: return "shots"
-    if "goal" in m: return "goal"
-    return m[:20]
+    toks = [t for t in str(market).lower().replace("-", "_").split("_") if t]
+    for i, t in enumerate(toks):
+        if t in ("over", "under", "yes", "no"):
+            stat = "_".join(x for x in toks[:i] if not _is_num(x)) or "game"
+            return f"{stat}|{t}"
+    if len(toks) == 2 and toks[1] == "ml":          # '{TEAM}_ML' -> the team is the side
+        return f"ml|{toks[0]}"
+    # moneyline / spread style: direction is the side token
+    for i, t in enumerate(toks):
+        if t in ("home", "away"):
+            rest = "_".join(x for x in toks[:i] + toks[i + 1:] if not _is_num(x)) or "ml"
+            return f"{rest}|{t}"
+    return "_".join(x for x in toks if not _is_num(x)) + "|?"
+
+
+def _is_num(x: str) -> bool:
+    try:
+        float(x)
+        return True
+    except ValueError:
+        return False
+
+
+def _today_et() -> str:
+    try:
+        from zoneinfo import ZoneInfo
+        return dt.datetime.now(ZoneInfo("America/New_York")).date().isoformat()
+    except Exception:
+        return (dt.datetime.now(dt.timezone.utc) - dt.timedelta(hours=5)).date().isoformat()
 
 
 def _load_grades() -> Dict[str, str]:
@@ -97,13 +113,31 @@ def run() -> Dict[str, Any]:
         picks = list(ledger["by_pick_id"].values())
 
     grades = _load_grades()
+    try:
+        import quotes as Q
+    except Exception:
+        sys.path.insert(0, os.path.dirname(__file__))
+        import quotes as Q
 
-    # Group by (player, market_family) — only consider PENDING picks (current day)
-    today_str = dt.datetime.utcnow().strftime("%Y-%m-%d")
+    # (2026-11-03) Group only PENDING picks on TODAY'S ET slate that are still
+    # PRE-GAME and carry an ACTIONABLE sportsbook quote right now (quotes.py:
+    # DK snapshot, fresh, not started, exact line). The old filter compared the
+    # pick date to the UTC run date, so after 7 PM ET it listed games that had
+    # already ended; props (no sportsbook price in the free feeds) are excluded.
+    today_str = _today_et()
     clusters = defaultdict(list)
+    excluded = defaultdict(int)
     for p in picks:
         if p.get("voided") or (p.get("result") or "pending").lower() not in ("pending", ""): continue
-        if p.get("date") and p["date"] != today_str: continue
+        if (p.get("game_date") or p.get("date")) != today_str:
+            excluded["not_today_et"] += 1
+            continue
+        matchup = p.get("matchup") or p.get("player_or_matchup") or ""
+        pc = Q.price_candidate(p.get("sport") or "", matchup, p.get("market") or "", p.get("prob"))
+        if not pc["actionable"]:
+            excluded[pc["reason"] or "not_actionable"] += 1
+            continue
+        p = dict(p, _quote=pc["quote"], _ev=pc["ev"])
         key = (
             (p.get("player_or_matchup") or "").lower().strip(),
             _market_family(p.get("market") or ""),
@@ -124,6 +158,7 @@ def run() -> Dict[str, Any]:
         confluence_score = len(unique_sources) * grade_weight_sum * (0.5 + avg_prob)
 
         sample = members[0]
+        q = sample.get("_quote") or {}
         scored.append({
             "player_or_matchup": sample.get("player_or_matchup"),
             "market_family": family,
@@ -133,13 +168,15 @@ def run() -> Dict[str, Any]:
             "source_grades": [grades.get(s) or "F" for s in sorted(unique_sources)],
             "avg_prob": round(avg_prob, 3) if avg_prob else None,
             "confluence_score": round(confluence_score, 2),
-            "tier": ("WHALE" if confluence_score >= 6
-                     else "STRONG" if confluence_score >= 4
-                     else "STANDARD"),
+            # (2026-11-03) no WHALE/STRONG tiers: agreement count is not a verdict
+            "desk_verdict": sample.get("desk_verdict"),
             "sample_pick": {
                 "market": sample.get("market"),
-                "fair_american": sample.get("fair_american"),
                 "matchup": sample.get("matchup") or sample.get("player_or_matchup"),
+                "game_date": sample.get("game_date") or sample.get("date"),
+                "book": q.get("book"), "book_american": q.get("american"),
+                "observed_at": q.get("observed_at"), "scheduled_start": q.get("scheduled_start"),
+                "ev_at_book": sample.get("_ev"),
             },
         })
 
@@ -150,11 +187,12 @@ def run() -> Dict[str, Any]:
     out = {
         "generated_at": dt.datetime.utcnow().isoformat(timespec="seconds"),
         "n_clusters": len(scored),
-        "n_top_5_whales": sum(1 for r in top_5 if r["tier"] == "WHALE"),
-        "n_top_5_strong": sum(1 for r in top_5 if r["tier"] == "STRONG"),
+        "date_et": today_str,
+        "excluded": dict(excluded),
         "grade_mult": GRADE_MULT,
-        "method_note": "Confluence = unique_sources × grade_weight_sum × (0.5 + avg_prob). "
-                       "WHALE>=6, STRONG>=4, STANDARD>=2. Only pending picks for today.",
+        "method_note": "Confluence = unique_sources × grade_weight_sum × (0.5 + avg_prob), counted only "
+                       "within one market + direction. Only pending picks on today's ET slate, pre-game, "
+                       "with an actionable DraftKings quote (props have no sportsbook price -> excluded).",
         "top_5": top_5,
         "top_15": top_15,
     }
@@ -165,4 +203,4 @@ def run() -> Dict[str, Any]:
 
 if __name__ == "__main__":
     o = run()
-    print(f"[confluence-5] {o['n_clusters']} clusters | top-5 WHALES: {o['n_top_5_whales']} -> {OUT}")
+    print(f"[confluence-5] {o['n_clusters']} clusters ({o['date_et']} ET) | excluded {o['excluded']} -> {OUT}")

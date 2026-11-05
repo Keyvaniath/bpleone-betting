@@ -49,13 +49,14 @@
 
 <main class="container">
   <section class="page-head">
-    <h1>Line Movement / Steam</h1>
-    <p>Where the market is moving since each line opened — straight from a <b>free</b> live DraftKings feed (ESPN), polled through the day. The <b>moneyline shift</b> (de-vigged, in percentage points) shows which side money came in on; a <b>total move</b> is over/under steam. Big moves are flagged <span style="color:#e8b54e;">STEAM</span> — the "follow the sharp money" signal. No paid key.</p>
+    <h1>Line Movement</h1>
+    <!-- (2026-11-03) upcoming games, pre-game snapshots only; "line moved", not "sharp money" -->
+    <p>How each <b>upcoming</b> game's DraftKings line has moved since it opened, from the free ESPN feed — <b>pre-game snapshots only</b> (games that have started or ended are excluded, so no in-game prices). The <b>moneyline shift</b> is the de-vigged home implied probability, in percentage points; a <b>total move</b> is in points. Big moves are flagged <span style="color:#e8b54e;">STEAM</span>, meaning only that the <b>line moved</b> past a threshold — we have no handle or ticket data, so this says nothing about who bet or why.</p>
   </section>
 
   <div class="sumstrip" id="sum" style="display:flex;gap:10px;margin:14px 0 16px;font-family:'JetBrains Mono',monospace;flex-wrap:wrap;"></div>
   <div class="tscroll">
-    <div class="lmhead"><span>Sport</span><span>Game</span><span>Moneyline move</span><span class="r">Total</span><span>Money toward</span><span>Steam</span></div>
+    <div class="lmhead"><span>Sport</span><span>Game (date ET)</span><span>Moneyline move</span><span class="r">Total</span><span>Line moved toward</span><span>Steam</span></div>
     <div id="rows"><p class="muted">Loading line movement…</p></div>
   </div>
   <p class="muted" id="meta" style="font-family:'JetBrains Mono',monospace;font-size:11px;margin-top:14px;"></p>
@@ -70,9 +71,9 @@ fetch("data/line_movement.json",{cache:"no-cache"}).then(r=>r.json()).then(d=>{
   const m=d.movers||[];
   document.getElementById("sum").innerHTML =
     `<span class="s" style="font-size:12px;padding:8px 13px;border-radius:8px;border:1px solid var(--border,#222a36);"><span class="muted" style="font-size:10px;text-transform:uppercase;">games moving</span> <b style="font-size:15px;">${d.n_games||0}</b></span>
-     <span class="s" style="font-size:12px;padding:8px 13px;border-radius:8px;border:1px solid var(--border,#222a36);"><span class="muted" style="font-size:10px;text-transform:uppercase;">steam</span> <b style="font-size:15px;color:#e8b54e;">${d.n_steam||0}</b></span>`;
+     <span class="s" style="font-size:12px;padding:8px 13px;border-radius:8px;border:1px solid var(--border,#222a36);"><span class="muted" style="font-size:10px;text-transform:uppercase;">steam (line moved past threshold)</span> <b style="font-size:15px;color:#e8b54e;">${d.n_steam||0}</b></span>`;
   const el=document.getElementById("rows");
-  if(!m.length){ el.innerHTML='<p class="muted">No movement recorded yet — fills in as the line is polled open→close through the day (heartbeat runs every couple hours).</p>'; document.getElementById("meta").textContent=(d.note||""); return; }
+  if(!m.length){ el.innerHTML='<p class="muted">No pre-game movement on an upcoming game yet — needs at least two pre-game snapshots per game.</p>'; document.getElementById("meta").textContent=(d.note||""); return; }
   el.innerHTML=m.map(x=>{
     const mlmv = x.ml_move_pp==null ? '<span class="muted">—</span>'
       : `<span class="${x.ml_move_pp>0?'up':'down'}">${x.ml_move_pp>0?'+':''}${x.ml_move_pp}pp</span> <span class="muted">(${ml(x.ml_open.home)}→${ml(x.ml_now.home)} H)</span>`;
@@ -80,13 +81,13 @@ fetch("data/line_movement.json",{cache:"no-cache"}).then(r=>r.json()).then(d=>{
     const toward = x.ml_money_toward ? esc(x.ml_money_toward) : (x.total_money_toward?esc(x.total_money_toward):'—');
     return `<div class="lmrow ${x.steam?'steam':''}">
       <span class="sport">${esc(x.sport)}</span>
-      <span><b>${esc(x.matchup)}</b></span>
+      <span><b>${esc(x.matchup)}</b> <span class="muted" style="font-size:11px;">${esc(x.game_date||'')}</span></span>
       <span>${mlmv}</span>
       <span class="r">${tot}</span>
       <span><b>${toward}</b></span>
       <span>${x.steam?`<span class="steamtag">${(x.steam_kind||[]).join('+')}</span>`:'<span class="muted">—</span>'}</span>
     </div>`;}).join("");
-  document.getElementById("meta").textContent=`${m.length} games · ${(d.source||"")} · ${(d.generated_at||"").replace("T"," ").slice(0,16)} UTC`;
+  document.getElementById("meta").textContent=`${m.length} upcoming games · pre-game snapshots only · ${(d.source||"")} · ${(d.generated_at||"").replace("T"," ").slice(0,16)} UTC`;
 }).catch(()=>{document.getElementById("rows").innerHTML='<p class="muted">Line movement unavailable — pipeline may not have run yet.</p>';});
 </script>
 </body>

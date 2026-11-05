@@ -73,6 +73,8 @@
   <section class="page-head">
     <h1>🎛 Model Control Center</h1>
     <p class="muted" id="status">Loading model state…</p>
+    <!-- (2026-11-03) -->
+    <p style="font-size:12px;color:#d4a04a;margin-top:6px;">admin — disabled on the public site. This is a read-only view of the model's knobs; saving overrides is turned off here.</p>
   </section>
 
   <div class="info-card">
@@ -152,7 +154,7 @@
     <div style="padding: 14px 18px;">
       <h3 style="margin-top:0; color:#d4a04a;">Current overrides JSON</h3>
       <p class="muted" style="font-size: 12px;">
-        This is exactly what gets saved to <code>data/model_overrides.json</code>. The pipeline reads it on next cycle.
+        This is the overrides JSON your edits would produce. Saving is <b>admin — disabled on the public site</b>; nothing on this page changes the live model.
       </p>
       <pre id="export-json" style="background: rgba(0,0,0,0.4); padding: 14px; border-radius: 6px; overflow: auto; max-height: 400px; font-size: 11px; color: #cfcfcf;">{}</pre>
       <button class="btn-ghost" onclick="navigator.clipboard.writeText(document.getElementById('export-json').textContent); this.textContent='Copied!';">Copy to clipboard</button>
@@ -160,12 +162,14 @@
   </section>
 </main>
 
+<!-- (2026-11-03) public admin panel: the save / hard-reset controls that POSTed to the
+     Worker's /admin/save-overrides are hidden here (the Worker route itself is untouched).
+     Edits on this page are local to your browser and are never sent anywhere. -->
 <div class="save-bar">
   <div id="dirty-flag" class="muted" style="font-size: 12px;">No unsaved changes.</div>
   <div style="flex: 1;"></div>
-  <button class="btn-ghost" onclick="resetAll()">Hard reset (clear all overrides)</button>
+  <span class="muted" style="font-size:12px;">admin — disabled on the public site (changes stay in your browser)</span>
   <button class="btn-ghost" onclick="downloadJSON()">Download JSON</button>
-  <button class="btn" onclick="saveOverrides()">Save Overrides</button>
 </div>
 
 <script>
@@ -405,7 +409,10 @@ function setModule(key, enabled) {
   setDirty();
 }
 
+// (2026-11-03) admin — disabled on the public site: never POST overrides from here.
+const PUBLIC_ADMIN_DISABLED = true;
 async function saveOverrides() {
+  if (PUBLIC_ADMIN_DISABLED) { alert('admin — disabled on the public site'); return; }
   STATE.version = (STATE.version || 0) + 1;
   STATE.last_modified = new Date().toISOString();
   // Try to POST to a Cloudflare Worker /save-overrides endpoint

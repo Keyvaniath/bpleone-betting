@@ -12,6 +12,13 @@ For each KBO game, computes:
   - Adjusted home/away run lambdas (factored into Poisson MC)
 
 Output: data/kbo_pitcher_adj.json (feeds into kbo_model via env var)
+
+STARTERS REMOVED (2026-11-03): the "projected starter" was picked by
+day_of_year % 3 from a static, hand-entered May-2026 3-man rotation -- a
+fabricated input, not a probable-pitcher feed. That produced fake named
+matchups on the page and a fake runs adjustment in kbo_model. Until a real
+probable-starter source exists this module emits NO starters and NO
+adjustment (no adjustment is honest; a fake one is not).
 """
 from __future__ import annotations
 
@@ -25,20 +32,8 @@ DATA_DIR = os.path.join(os.path.dirname(__file__), "..", "data")
 STATE_PATH = os.path.join(DATA_DIR, "kbo_state.json")
 OUT_PATH = os.path.join(DATA_DIR, "kbo_pitcher_adj.json")
 
-# KBO rotations (snapshot mid-May 2026). ERA = season ERA.
-# This is a static seed; real-world would scrape weekly from koreabaseball.com.
-KBO_ROTATIONS = {
-    "KIA Tigers":      [("James Naile", 2.95), ("Lim Ki-young", 3.40), ("Yang Hyun-jong", 4.10)],
-    "LG Twins":        [("Casey Kelly", 3.10), ("Eric Yokishi", 3.55), ("Lee Jung-yong", 4.25)],
-    "Samsung Lions":   [("David Buchanan", 3.20), ("Won Tae-in", 3.70), ("Hwang Dong-jae", 4.40)],
-    "Doosan Bears":    [("Brandon Waddell", 3.45), ("Jorge Lopez", 3.80), ("Choi Won-joon", 4.30)],
-    "SSG Landers":     [("Drew Anderson", 3.50), ("Roenis Elias", 3.85), ("Park Jong-hun", 4.35)],
-    "KT Wiz":          [("William Cuevas", 3.55), ("Wes Benjamin", 3.90), ("Ko Young-pyo", 4.50)],
-    "NC Dinos":        [("Eric Peddy", 3.65), ("Daniel Castano", 4.00), ("Lee Jae-hak", 4.60)],
-    "Lotte Giants":    [("Charlie Barnes", 3.80), ("Aaron Wilkerson", 4.20), ("Park Se-woong", 4.85)],
-    "Hanwha Eagles":   [("Felix Pena", 4.15), ("Ricardo Sanchez", 4.55), ("Moon Dong-ju", 4.95)],
-    "Kiwoom Heroes":   [("Hayden Wesneski", 4.40), ("Enmanuel De Jesus", 4.85), ("An Woo-jin", 5.10)],
-}
+# (2026-11-03) KBO_ROTATIONS (static May-2026 3-man rotations) deleted -- see
+# the module docstring. No probable-starter source is wired.
 
 KBO_LEAGUE_AVG_ERA = 4.30   # KBO league average ERA in recent seasons
 
@@ -48,15 +43,6 @@ def _load(p):
     try:
         with open(p) as f: return json.load(f)
     except Exception: return {}
-
-
-def _projected_starter(team: str, day_of_year: int) -> Dict[str, Any]:
-    """Rotate through the 3-man rotation based on day-of-year mod 3.
-    Real systems would track rotation state more carefully."""
-    rotation = KBO_ROTATIONS.get(team, [("Unknown", KBO_LEAGUE_AVG_ERA)])
-    idx = day_of_year % len(rotation)
-    name, era = rotation[idx]
-    return {"name": name, "era": era}
 
 
 def _runs_adjustment(starter_era: float) -> float:
@@ -70,35 +56,20 @@ def _runs_adjustment(starter_era: float) -> float:
 def run() -> Dict[str, Any]:
     state = _load(STATE_PATH)
     matches = state.get("matches") or []
-    day = dt.date.today().timetuple().tm_yday
 
+    # (2026-11-03) no fabricated starters: no probable-pitcher source is
+    # wired, so no game gets a starter or a runs adjustment.
     adjustments: List[Dict[str, Any]] = []
-    for m in matches:
-        home = m.get("home_team")
-        away = m.get("away_team")
-        home_sp = _projected_starter(home, day) if home else None
-        away_sp = _projected_starter(away, day) if away else None
-        home_adj = _runs_adjustment(home_sp["era"]) if home_sp else 0
-        away_adj = _runs_adjustment(away_sp["era"]) if away_sp else 0
-        # Better starter (lower ERA) suppresses opponent runs more
-        # Effect: home_sp's quality affects away_lambda (runs allowed)
-        adjustments.append({
-            "matchup": f"{away} @ {home}",
-            "home_team": home, "away_team": away,
-            "home_starter": home_sp,
-            "away_starter": away_sp,
-            "home_runs_against_adjustment": home_adj,
-            "away_runs_against_adjustment": away_adj,
-            "note": (f"{home_sp['name']} (ERA {home_sp['era']:.2f}) vs "
-                      f"{away_sp['name']} (ERA {away_sp['era']:.2f})"
-                      if home_sp and away_sp else "Rotation unknown"),
-        })
 
     payload = {
         "generated_at": dt.datetime.now().isoformat(timespec="seconds"),
-        "n_games": len(adjustments),
+        "n_games": 0,
+        "n_games_on_slate": len(matches),
         "league_avg_era": KBO_LEAGUE_AVG_ERA,
-        "rotation_size_per_team": 3,
+        "starter_source": None,
+        "note": ("No verified probable-starter data; no starter adjustment is "
+                 "applied. (The former day-of-year rotation guess was removed "
+                 "2026-11-03.)"),
         "adjustments": adjustments,
     }
     os.makedirs(DATA_DIR, exist_ok=True)
@@ -108,6 +79,4 @@ def run() -> Dict[str, Any]:
 
 if __name__ == "__main__":
     p = run()
-    print(f"KBO pitcher adjustments: {p['n_games']} games (league avg ERA {p['league_avg_era']})")
-    for a in p["adjustments"]:
-        print(f"  {a['matchup']}: {a['note']}")
+    print(f"KBO pitcher adjustments: {p['n_games']} games -- {p['note']}")

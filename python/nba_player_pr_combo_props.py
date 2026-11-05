@@ -12,7 +12,7 @@ Method:
 
   Effective sigma_combined = sqrt(sigma_pts^2 + sigma_reb^2) * 1.05
   Normal CDF on typical 0.5-step lines around projection.
-  STRONG when 10%+ edge vs -120 book (p in [0.62, 0.72]).
+  flag band (NOT an edge: no sportsbook prop price exists; the old '10%+ edge vs an assumed -120 book' is withdrawn 2026-11-03) (p in [0.62, 0.72]).
 
 Output: data/nba_player_pr_combo_props.json
 """
@@ -136,10 +136,11 @@ def run() -> Dict[str, Any]:
         "generated_at": dt.datetime.utcnow().isoformat(timespec="seconds"),
         "n_players": len(out_rows),
         "n_strong_edges": len(strong),
-        "method_note": "P+R combo = projected_pts + projected_reb (from main props "
+        "status": "unvalidated_model_projection",   # (2026-11-03)
+        "method_note": "UNVALIDATED MODEL PROJECTION -- no sportsbook price, not a pick. P+R combo = projected_pts + projected_reb (from main props "
                        "modules). Sigma combined = sqrt(sig_p^2 + sig_r^2) * 1.05 "
-                       "(small positive PTS/REB correlation). STRONG when 10%+ edge "
-                       "vs -120 book (p in [0.62, 0.72]).",
+                       "(small positive PTS/REB correlation). flag band (NOT an edge: no sportsbook prop "
+                       "price; assumed -120 withdrawn 2026-11-03) (p in [0.62, 0.72]).",
         "top_15_by_pr": out_rows[:15],
         "strong_edges": strong,
     }

@@ -16,12 +16,19 @@ Approach:
        - pre_end    = ts
        - post_start = ts
        - post_end   = min(ts + 7 days, next change to SAME key, today)
-  3. Compute pre/post Brier from track_record.json (props within window)
-  4. Compute pre/post hit rate
-  5. Assign verdict:
-       - improved if Brier dropped >= 0.005 OR hit_rate climbed >= 1pp
-       - degraded if Brier rose   >= 0.005 OR hit_rate dropped >= 1pp
+  3. Compute pre/post Brier from the REAL settled ledger (2026-11-03: was the
+     deprecated SYNTHETIC track_record.json). Records = all_picks_ledger.json
+     + ledger_archive.json picks that are settled AND NOT voided, result
+     won/lost, with a raw model prob (p_predicted, else prob). MLB-PP
+     (PrizePicks locks-history import, unverified) is excluded.
+  4. Compute pre/post hit rate AND mean predicted prob (hit rate alone moves
+     with the pick mix, so it is shown next to what the model predicted)
+  5. Assign verdict on Brier only (2026-11-03: a hit-rate rise is not an
+     improvement if the predictions rose with it):
+       - improved if Brier dropped >= 0.005
+       - degraded if Brier rose   >= 0.005
        - flat    otherwise
+     Before/after compares different slates -- descriptive, not causal.
   6. Apply ONLY to entries with at least 50 records in each window (else
      mark "insufficient_data" so we don't draw conclusions from noise)
 
@@ -57,7 +64,9 @@ from typing import Any, Dict, List, Optional
 
 DATA_DIR = os.path.join(os.path.dirname(__file__), "..", "data")
 HIST_PATH = os.path.join(DATA_DIR, "config_history.json")
-TR_PATH = os.path.join(DATA_DIR, "track_record.json")
+# (2026-11-03) the real ledger, not the synthetic track_record.json feed
+LEDGER_PATH = os.path.join(DATA_DIR, "all_picks_ledger.json")
+ARCHIVE_PATH = os.path.join(DATA_DIR, "ledger_archive.json")
 OUT_PATH = os.path.join(DATA_DIR, "override_effects.json")
 
 WINDOW_DAYS = 7
@@ -85,9 +94,35 @@ def _parse_ts(s: Optional[str]) -> Optional[dt.datetime]:
         return None
 
 
+def _ledger_records() -> List[Dict[str, Any]]:
+    """(2026-11-03) Settled AND NOT voided ledger picks (working + archive),
+    won/lost only, with a raw model prob; MLB-PP excluded (unverified)."""
+    out: List[Dict[str, Any]] = []
+    for path in (LEDGER_PATH, ARCHIVE_PATH):
+        for p in (_load(path).get("picks") or []):
+            if not p.get("settled") or p.get("voided"):
+                continue
+            if p.get("result") not in ("won", "lost"):
+                continue
+            if p.get("sport") == "MLB-PP" or str(p.get("market") or "").upper().startswith("PP_"):
+                continue
+            prob = p.get("p_predicted")
+            if prob is None:
+                prob = p.get("prob")
+            if prob is None:
+                continue
+            try:
+                prob = float(prob)
+            except (TypeError, ValueError):
+                continue
+            out.append({"date": p.get("date"), "settled_at": p.get("settled_at"),
+                        "p": prob, "won": p.get("result") == "won"})
+    return out
+
+
 def _record_ts(r: Dict[str, Any]) -> Optional[dt.datetime]:
-    """Best-effort to get a settled-on datetime from a track_record prop entry."""
-    for k in ("settled_at", "date", "ts"):
+    """Best-effort game-day datetime for a ledger record (date first)."""
+    for k in ("date", "settled_at", "ts"):
         v = r.get(k)
         if not v:
             continue
@@ -107,33 +142,32 @@ def _window_metrics(records: List[Dict[str, Any]],
         t = _record_ts(r)
         if not t or t < start or t >= end:
             continue
-        if r.get("model_prob_over") is None or r.get("over_hit") is None:
-            continue
         valid.append(r)
     if len(valid) < MIN_RECORDS:
         return {"n": len(valid), "insufficient": True}
+    # (2026-11-03) p = model prob that THIS pick wins; y = it won.
     brier_sum = 0.0
     hits = 0
+    psum = 0.0
     for r in valid:
-        p = max(0.001, min(0.999, float(r["model_prob_over"])))
-        y = 1 if r["over_hit"] else 0
+        p = max(0.001, min(0.999, r["p"]))
+        y = 1 if r["won"] else 0
         brier_sum += (p - y) ** 2
-        side = "OVER" if p >= 0.5 else "UNDER"
-        if (side == "OVER" and y == 1) or (side == "UNDER" and y == 0):
-            hits += 1
+        hits += y
+        psum += p
     return {
         "n": len(valid),
         "brier": round(brier_sum / len(valid), 4),
         "hit_rate": round(hits / len(valid), 4),
+        "mean_pred": round(psum / len(valid), 4),
         "insufficient": False,
     }
 
 
 def run() -> Dict[str, Any]:
     hist = _load(HIST_PATH)
-    tr = _load(TR_PATH)
     entries: List[Dict[str, Any]] = hist.get("entries") or []
-    props: List[Dict[str, Any]] = tr.get("props") or []
+    props: List[Dict[str, Any]] = _ledger_records()   # (2026-11-03) real ledger
     now = dt.datetime.now()
 
     # Pre-index: for each key, the sorted list of all change timestamps
@@ -176,8 +210,9 @@ def run() -> Dict[str, Any]:
         else:
             delta_b = round(post["brier"] - pre["brier"], 4)  # negative = better
             delta_h = round(post["hit_rate"] - pre["hit_rate"], 4)  # positive = better
-            improved = (delta_b <= -BRIER_IMPROVE_THRESH) or (delta_h >= HIT_RATE_IMPROVE_THRESH)
-            degraded = (delta_b >= BRIER_IMPROVE_THRESH) or (delta_h <= -HIT_RATE_IMPROVE_THRESH)
+            # (2026-11-03) Brier only -- hit rate tracks the pick mix
+            improved = delta_b <= -BRIER_IMPROVE_THRESH
+            degraded = delta_b >= BRIER_IMPROVE_THRESH
             if improved and not degraded:
                 verdict, color = "improved", "good"
             elif degraded and not improved:
@@ -205,6 +240,12 @@ def run() -> Dict[str, Any]:
         "generated_at": now.isoformat(timespec="seconds"),
         "window_days": WINDOW_DAYS,
         "min_records": MIN_RECORDS,
+        # (2026-11-03) provenance of the measurement
+        "source": "all_picks_ledger.json + ledger_archive.json (settled AND NOT voided; MLB-PP excluded)",
+        "n_records": len(props),
+        "note": ("Brier of the raw model prob on real settled picks, 7 days before vs after each change. "
+                 "Before/after windows hold different slates and pick mixes -- descriptive, not causal. "
+                 "Calibration only: no price or ROI is involved."),
         "n_changes_analyzed": len(changes),
         "changes": changes[-50:],  # last 50
     }

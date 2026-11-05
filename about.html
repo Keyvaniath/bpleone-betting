@@ -53,7 +53,7 @@
     <div class="card">
       <h3>Founder</h3>
       <p style="color:var(--text-2)"><strong>Brandon Leone</strong> is a former financial analyst (IB / equity research) based in Southern California. He spent half a decade modeling equities and cash flows on Wall Street's clock; now he models baseball games and player props on his own.</p>
-      <p style="color:var(--text-2)">If the underlying math of "what's this company worth?" feels eerily similar to "what's this team's true win probability?" — that's because it is. Both are about pricing uncertainty correctly. The sports market is younger, noisier, and less efficient — which is exactly why there's still alpha here.</p>
+      <p style="color:var(--text-2)">If the underlying math of "what's this company worth?" feels eerily similar to "what's this team's true win probability?" — that's because it is. Both are about pricing uncertainty correctly. The sports market is younger and noisier — which is why it is worth measuring carefully, and publishing the result whichever way it goes.<!-- (2026-11-03) removed the "still alpha here" claim --></p>
       <p class="muted">Reach out: <a href="mailto:brandonpleone@gmail.com">brandonpleone@gmail.com</a></p>
     </div>
   </section>
@@ -62,7 +62,7 @@
     <h3>Our Process</h3>
     <p style="color:var(--text-2)">Every morning at 6:00 AM ET the data pipeline runs autonomously on GitHub Actions. It (1) settles yesterday's projections against final box scores from MLB Stats API, (2) recomputes per-market calibration metrics on the trailing 30 days, (3) pulls today's schedule, lineups, weather (Open-Meteo), home-plate umpire, and DraftKings odds (The Odds API), (4) layers Baseball Savant Statcast metrics (xK%, xBA, xSLG, barrel%), (5) writes today's fair prices for moneyline, total, and the four player-prop markets, plus a side-by-side PrizePicks comparison.</p>
     <p style="color:var(--text-2)">Two more refreshes at 1 PM ET and 6 PM ET catch line moves and confirmed lineups. The parlay engine combines highest-edge legs into 2- and 3-leg suggestions with same-game correlation haircut. The model bias-corrects per market once 30+ outcomes have flowed -- so day 30 trusts the data; day 1 trusts the priors with caps.</p>
-    <p style="color:var(--text-2)">After every game settles, results append to track-record.json (in git history -- no revisions, no cherry-picks). Calibration runs nightly. Brier, log loss, ECE, and ROI roll forward continuously. The model only gets sharper.</p>
+    <p style="color:var(--text-2)">After every game settles, the pick is graded in the all-picks ledger (data/all_picks_ledger.json, kept in git history -- no cherry-picks). When a price or grade turns out wrong, the record is restated and the restatement is disclosed on the <a href="track-record.html">track record</a> with before/after numbers (repriced to the DraftKings line, unpriced picks voided). Calibration runs nightly; Brier, log loss, ECE and ROI roll forward continuously.<!-- (2026-11-03) was "append to track-record.json ... no revisions ... only gets sharper" --></p>
   </section>
 
   <section class="card" style="margin-bottom:28px;">
@@ -71,7 +71,7 @@
       <li><strong>Not a tout service.</strong> We don't sell "locks." There's no such thing. We give you probabilities and rationale; you choose what to bet.</li>
       <li><strong>Not a sportsbook.</strong> We don't take wagers. We don't accept money.</li>
       <li><strong>Not financial advice.</strong> Sports betting is gambling. Bet with money you can afford to lose. 21+ only. 1-800-GAMBLER.</li>
-      <li><strong>Not infallible.</strong> Models can be wrong. Variance is real. Long-term, the math has to play out — and we publish the receipts so you can see it does.</li>
+      <li><strong>Not infallible.</strong> Models can be wrong. Variance is real. We publish the receipts whichever way they go — see the <a href="track-record.html">track record</a> for where the curated record stands today.<!-- (2026-11-03) removed "so you can see it does" --></li>
     </ul>
   </section>
 

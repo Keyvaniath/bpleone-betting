@@ -43,9 +43,12 @@
 
   <section class="page-head">
     <h1>Public Track Record</h1>
-    <p>Every recommendation we've published, logged. Posted price, stake, result, profit, and CLV. No deletions, no cherry-picks. The numbers are the only thing that matters.</p>
+    <!-- (2026-11-03) dropped "No deletions": restatements happen and are disclosed below (repriced to DK, unpriced voided). -->
+    <p>Every recommendation we've published, logged: posted price, stake, result and profit. When a price or a grade turns out to be wrong we restate it and disclose the before/after numbers (see the price-correction notes under Performance by Sport).</p>
   </section>
 
+  <!-- (2026-11-03) the strip is the Play of the Day line only, not the curated or all-picks record -->
+  <div class="muted" style="font-size:11px;text-transform:uppercase;letter-spacing:.5px;margin:0 0 6px;">Play of the Day (1u flat, DK pre-game)</div>
   <section class="metric-strip">
     <div class="metric"><span class="metric-num" id="trkNet">--</span><span class="metric-label">Net Units YTD</span></div>
     <div class="metric"><span class="metric-num" id="trkHit">--</span><span class="metric-label">Hit Rate</span></div>
@@ -80,11 +83,11 @@
   </script>
 
   <!-- Held-out validation: does the curated edge survive out-of-sample? (auto-updating) -->
-  <section class="card" id="oosCard" style="margin-bottom:18px; border-left:3px solid #58c878; display:none;">
+  <section class="card" id="oosCard" style="margin-bottom:18px; border-left:3px solid #8a93a6; display:none;">
     <div class="card-head"><span>🧪 Held-Out Validation — is the edge real, or curve-fit?</span><span class="muted" id="oosMeta">—</span></div>
     <div style="padding:14px 18px;">
       <p id="oosHeadline" style="font-size:13.5px;color:#cfe9d6;line-height:1.6;margin:0 0 12px;font-weight:600;">—</p>
-      <p class="muted" style="font-size:12px;margin:0 0 14px;line-height:1.6;">The headline "<span id="oosLiftNum">+30%</span> curated ROI" is fit on the <em>whole</em> ledger, so we pressure-tested it. We <strong>froze the curation rule on an early window</strong> (which market families to cut), then scored those <strong>pre-committed</strong> cuts on the <strong>unseen later window</strong>. If the edge were curve-fitting, it would collapse out-of-sample. It doesn't:</p>
+      <p class="muted" style="font-size:12px;margin:0 0 14px;line-height:1.6;">The in-sample "<span id="oosLiftNum">--</span> curated ROI" (family-curated replay, mostly at the model's own odds) is fit on the <em>whole</em> ledger, so we pressure-tested it. We <strong>froze the curation rule on an early window</strong> (which market families to cut), then scored those <strong>pre-committed</strong> cuts on the <strong>unseen later window</strong>. A curve-fit result would not hold up out-of-sample. <span id="oosVerdict"></span></p>
       <div id="oosTable" style="font-family:'JetBrains Mono',monospace;"></div>
       <div id="oosPersist" style="margin-top:14px;font-size:12px;color:var(--text-2,#aab3c5);line-height:1.65;"></div>
       <div id="oosConc" style="margin-top:12px;font-size:12px;color:var(--text-2,#aab3c5);line-height:1.65;padding:10px 12px;border:1px solid rgba(224,161,58,.25);border-radius:8px;background:rgba(224,161,58,.05);display:none;"></div>
@@ -103,8 +106,24 @@
       document.getElementById("oosMeta").textContent =
         `${(d.n_settled||0).toLocaleString()} settled · ${d.span ? d.span[0]+'→'+d.span[1] : ''} · ${(d.generated_at||'').replace('T',' ').slice(0,16)}`;
       var _ci = d.holdout_70_ci;
-      var _ciTxt = _ci ? `<br><span style="font-weight:400;color:var(--text-2,#aab3c5);font-size:12.5px;">Statistical significance: held-out 95% CI <b>[${_ci.roi_lo>=0?'+':''}${_ci.roi_lo}%, ${_ci.roi_hi>=0?'+':''}${_ci.roi_hi}%]</b> on n=${_ci.n} — ${_ci.positive?'<b style="color:#58c878;">above zero, so the edge is statistically real, not luck</b>':'includes zero, so not yet distinguishable from luck'} (bootstrap).</span>` : "";
-      document.getElementById("oosHeadline").innerHTML = "✅ " + (d.headline || "") + _ciTxt;
+      // (2026-11-03) three-way CI verdict: above zero / spans zero / entirely below zero.
+      var _ciVerdict = !_ci ? "" : (_ci.roi_lo > 0
+          ? '<b style="color:#58c878;">entire CI above zero (bootstrap, picks treated as independent)</b>'
+          : (_ci.roi_hi < 0
+              ? '<b style="color:#e35a5a;">entire CI below zero: held-out curated is reliably negative</b>'
+              : 'includes zero, so not distinguishable from zero'));
+      var _ciTxt = _ci ? `<br><span style="font-weight:400;color:var(--text-2,#aab3c5);font-size:12.5px;">Held-out 95% CI <b>[${_ci.roi_lo>=0?'+':''}${_ci.roi_lo}%, ${_ci.roi_hi>=0?'+':''}${_ci.roi_hi}%]</b> on n=${_ci.n} — ${_ciVerdict} (bootstrap).</span>` : "";
+      // (2026-11-03) the mark follows the data: ✅ only when the 70/30 held-out ROI is above zero.
+      var _h70 = (d.holdout||[]).find(h => h.split === "70/30") || (d.holdout||[])[0] || {};
+      var _oosPos = (_h70.test_oos_roi || 0) > 0;
+      document.getElementById("oosCard").style.borderLeftColor = _oosPos ? "#58c878" : "#e35a5a";
+      var _hl = document.getElementById("oosHeadline");
+      _hl.style.color = _oosPos ? "#cfe9d6" : "#f0c4c4";
+      _hl.innerHTML = (_oosPos ? "✅ " : "❌ ") + (d.headline || "") + _ciTxt;
+      var _vEl = document.getElementById("oosVerdict");
+      if (_vEl && _h70.split) _vEl.innerHTML = _oosPos
+        ? `On the ${_h70.split} split the curated book held up out-of-sample (<b style="color:#58c878;">+${_h70.test_oos_roi}%</b>):`
+        : `On the ${_h70.split} split it did not: held-out curated <b style="color:#e35a5a;">${_h70.test_oos_roi}%</b> — not profitable out-of-sample (it lost less than the raw firehose's ${_h70.test_raw_roi}%):`;
       // Live-fill the in-sample lift so the prose can never go stale again.
       var _ins = d.in_sample || {};
       if (_ins.curated_roi != null) {
@@ -118,14 +137,14 @@
       const rows = (d.holdout||[]).map(h => `<div style="display:grid;grid-template-columns:${cols};gap:10px;padding:8px 0;border-bottom:1px solid rgba(255,255,255,0.04);font-size:12px;">
         <span><strong>${h.split}</strong></span>
         <span class="muted">${h.train_end}→${h.test_end}</span>
-        <span style="color:#e35a5a;">${fmt(h.test_raw_roi)}</span>
-        <span style="color:#58c878;font-weight:700;">${fmt(h.test_oos_roi)} <span class="muted" style="font-weight:400;">n=${h.test_oos_n}</span></span>
+        <span style="color:${h.test_raw_roi>0?'#58c878':'#e35a5a'};">${fmt(h.test_raw_roi)}</span>
+        <span style="color:${h.test_oos_roi>0?'#58c878':'#e35a5a'};font-weight:700;">${fmt(h.test_oos_roi)} <span class="muted" style="font-weight:400;">n=${h.test_oos_n}</span></span>
         <span>${h.test_oos_hit.toFixed(1)}%</span></div>`).join("");
       document.getElementById("oosTable").innerHTML = head + rows;
       const p = d.persistence || {};
       if (p.n_cut) {
         document.getElementById("oosPersist").innerHTML =
-          `<strong>Persistence check:</strong> of the ${p.n_cut} family-keys cut on the training window, they went on to lose <strong style="color:#e35a5a;">${p.test_net_of_cuts}u</strong> in the unseen window — ${p.kept_losing} kept losing, only ${p.flipped} flipped positive. The losers keep losing: the cuts capture real, persistent −EV families, not noise.`;
+          `<strong>Persistence check:</strong> of the ${p.n_cut} family-keys cut on the training window, they went on to net <strong style="color:${p.test_net_of_cuts>0?'#58c878':'#e35a5a'};">${p.test_net_of_cuts>=0?'+':''}${p.test_net_of_cuts}u</strong> in the unseen window — ${p.kept_losing} kept losing, ${p.flipped} flipped positive. Cutting them helped relative to the raw firehose; it did not make the remaining book profitable.`;  // (2026-11-03) neutral, sign-coloured
       }
       const conc = d.concentration;
       if (conc && conc.note) {
@@ -135,7 +154,9 @@
           (fl ? ` <span class="muted">Flagged &amp; set aside: ${fl}.</span>` : "");
         oc.style.display = "block";
       }
-      document.getElementById("oosCaveats").innerHTML = (d.caveats||[]).map(c=>`<li>${c}</li>`).join("");
+      // (2026-11-03) the producer's "significant WITHIN this sample" caveat is only true when the CI clears zero.
+      var _cav = (d.caveats||[]).filter(c => (_ci && _ci.roi_lo > 0) || !/significant WITHIN/i.test(c));
+      document.getElementById("oosCaveats").innerHTML = _cav.map(c=>`<li>${c}</li>`).join("");
     }).catch(()=>{});
   </script>
 
@@ -160,10 +181,13 @@
         `<span style="color:#e0a13a;">Building</span> — <b>${d.n_settled_since}</b> of ${d.min_meaningful} picks settled since we froze the rule on <b>${d.anchor}</b>. ` +
         `Check back as it fills; a clean prospective sample is worth more than any backtest.`;
     } else {
-      var cav = d.small_sample ? ` <span style="color:#e0a13a;">Small sample (n=${d.n_settled_since}) — early prospective ROI is noisy; expect regression toward the held-out edge.</span>` : "";
+      // (2026-11-03) colour by sign; no "regression toward the held-out edge" (the held-out result is negative).
+      var cav = d.small_sample ? ` <span style="color:#e0a13a;">Small sample (n=${d.n_settled_since}) — early prospective ROI is noisy.</span>` : "";
+      const sc = v => (v > 0 ? '#58c878' : '#e35a5a');
       document.getElementById("fwdBody").innerHTML =
         `Since <b>${d.anchor}</b>, on <b>${d.n_settled_since}</b> picks settled against the frozen rule: ` +
-        `curated <b style="color:#58c878;">${sgn(d.curated_roi)}</b> (hit ${d.curated_hit}%) vs raw firehose <b style="color:#e35a5a;">${sgn(d.raw_roi)}</b>. Zero hindsight.` + cav;
+        `curated <b style="color:${sc(d.curated_roi)};">${sgn(d.curated_roi)}</b> (hit ${d.curated_hit}%) vs raw firehose <b style="color:${sc(d.raw_roi)};">${sgn(d.raw_roi)}</b>` +
+        (d.curated_roi > 0 ? `. Zero hindsight.` : ` — <b>not profitable</b>; curation loses less than the firehose. Zero hindsight. Mostly graded at the model's own odds (calibration, not a betting ROI).`) + cav;
     }
     // Walk-forward LADDER: repeated frozen experiments, each scored on its own future.
     const exps = d.experiments || [];
@@ -174,16 +198,22 @@
           : (e.small_sample ? `<span style="color:#e0a13a;">small n</span>`
                             : `<span style="color:#58c878;">matured</span>`);
         const cROI = e.building ? '<span class="muted">—</span>'
-          : `<b style="color:${e.curated_roi>=0?'#58c878':'#e35a5a'};">${sgn(e.curated_roi)}</b>`;
+          : `<b style="color:${e.curated_roi>0?'#58c878':'#e35a5a'};">${sgn(e.curated_roi)}</b>`;
         const rROI = e.building ? '<span class="muted">—</span>'
-          : `<span style="color:${e.raw_roi>=0?'#58c878':'#e35a5a'};">${sgn(e.raw_roi)}</span>`;
+          : `<span style="color:${e.raw_roi>0?'#58c878':'#e35a5a'};">${sgn(e.raw_roi)}</span>`;
         return `<div style="display:grid;grid-template-columns:110px 70px 70px 90px 90px 1fr;gap:10px;padding:6px 10px;border-bottom:1px solid rgba(255,255,255,.05);font-family:'JetBrains Mono',monospace;font-size:12px;">
           <span>${e.anchor}</span><span class="muted">${e.frozen_cut_size} fam</span>
           <span>n=${e.n_settled_since}</span><span>${cROI}</span><span>${rROI}</span><span>${status}</span></div>`;
       }).join("");
+      // (2026-11-03) "beat raw" is not "profitable": count profitable matured rungs from the data.
+      const _mat = exps.filter(e => !e.building && !e.small_sample);
+      const _prof = _mat.filter(e => (e.curated_roi || 0) > 0).length;
+      const _profTxt = _prof === 0
+        ? `<b style="color:#e35a5a;">none profitable</b> (0/${_mat.length})`
+        : `<b style="color:${_prof === _mat.length ? '#58c878' : '#e0a13a'};">${_prof}/${_mat.length}</b> profitable`;
       document.getElementById("fwdLadder").innerHTML =
         `<div style="font-size:10px;text-transform:uppercase;letter-spacing:.5px;color:#8a93a6;margin-bottom:6px;">
-          Walk-forward ladder — a new rule is frozen each time the last one matures · <b style="color:#58c878;">${d.ladder_beat_raw}/${d.ladder_meaningful}</b> matured rungs beat the raw firehose</div>
+          Walk-forward ladder — a new rule is frozen each time the last one matures · <b>${d.ladder_beat_raw}/${d.ladder_meaningful}</b> matured rungs beat the raw firehose · ${_profTxt}</div>
         <div style="display:grid;grid-template-columns:110px 70px 70px 90px 90px 1fr;gap:10px;padding:4px 10px;font-size:10px;text-transform:uppercase;color:#8a93a6;font-family:'JetBrains Mono',monospace;">
           <span>Frozen on</span><span>Cut</span><span>Since</span><span>Curated</span><span>Raw</span><span>Status</span></div>` + rows +
         `<p class="muted" style="font-size:11px;margin:8px 0 0;line-height:1.6;">${d.ladder_note||''}</p>`;
@@ -192,42 +222,15 @@
   }).catch(()=>{});
   </script>
 
-  <!-- Durable-edge spotlight: deep dive on the one family that carries the edge (auto-updating) -->
-  <section class="card" id="durCard" style="margin-bottom:18px; border-left:3px solid #b08aff; display:none;">
-    <div class="card-head"><span>🔬 Durable-Edge Spotlight</span><span class="muted" id="durMeta">—</span></div>
-    <div style="padding:14px 18px;">
-      <p class="muted" style="font-size:12px;margin:0 0 10px;line-height:1.6;">The held-out test showed the edge is concentrated. This is the deep dive on the one well-sampled, durable family that carries it — stress-tested by sub-condition, with honest sizing.</p>
-      <p style="font-size:13.5px;color:#fff;margin:0 0 6px;font-weight:600;" id="durLabel">—</p>
-      <div id="durStats" style="font-family:'JetBrains Mono',monospace;font-size:13px;margin-bottom:10px;"></div>
-      <p style="font-size:12.5px;line-height:1.6;margin:0 0 10px;color:var(--text-2,#aab3c5);" id="durVerdict"></p>
-      <div id="durSizing" style="font-size:12.5px;line-height:1.6;padding:10px 12px;border:1px solid rgba(176,138,255,.25);border-radius:8px;background:rgba(176,138,255,.05);"></div>
-      <details style="margin-top:12px;"><summary style="cursor:pointer;font-size:11px;color:var(--muted,#888);text-transform:uppercase;letter-spacing:.5px;">Sizing caveats</summary>
-        <ul id="durCaveats" style="font-size:12px;color:var(--text-2,#aab3c5);line-height:1.6;margin:8px 0 0;padding-left:18px;"></ul></details>
-    </div>
-  </section>
-  <script>
-  fetch("data/durable_edge_analysis.json",{cache:"no-cache"}).then(r=>r.json()).then(d=>{
-    if(!d || !d.overall) return;
-    document.getElementById("durCard").style.display="block";
-    document.getElementById("durMeta").textContent = `${d.overall.n} settled · ${(d.generated_at||'').replace('T',' ').slice(0,16)}`;
-    document.getElementById("durLabel").textContent = d.label;
-    const o=d.overall;
-    document.getElementById("durStats").innerHTML =
-      `<b>${o.wins}-${o.losses}</b> &nbsp;·&nbsp; hit <b style="color:#58c878;">${o.hit}%</b> &nbsp;·&nbsp; ROI <b style="color:#58c878;">+${o.roi}%</b> &nbsp;·&nbsp; net <b>${o.net>=0?'+':''}${o.net}u</b>`;
-    document.getElementById("durVerdict").innerHTML = "<b>Verdict —</b> "+d.verdict;
-    const s=d.sizing;
-    document.getElementById("durSizing").innerHTML =
-      `<b style="color:#b08aff;">Sizing:</b> win prob ${(100*s.win_prob).toFixed(0)}% at ~${s.avg_decimal_odds} decimal → EV <b>+${(100*s.ev_per_unit).toFixed(0)}%</b>/unit. `+
-      `Full Kelly is <b>${s.full_kelly_pct}%</b> — far too aggressive; bet <b>${s.recommended}</b> and cap slate exposure (these legs correlate).`;
-    document.getElementById("durCaveats").innerHTML = (d.caveats||[]).map(c=>`<li>${c}</li>`).join("");
-  }).catch(()=>{});
-  </script>
+  <!-- (2026-11-03) Durable-Edge Spotlight REMOVED: it featured a PrizePicks family (mlb_hrr_3.5_under,
+       MLB-PP, unverified locks-history import graded at the -136 break-even) with EV and Kelly sizing.
+       PrizePicks is never featured or Kelly-sized; see the separate PrizePicks line under Performance by Sport. -->
 
   <!-- Family durability scorecard: EVERY surviving family, CI + split-half tiered (auto-updating) -->
-  <section class="card" id="famDurCard" style="margin-bottom:18px; border-left:3px solid #58c878; display:none;">
-    <div class="card-head"><span>🧬 Where the Alpha Lives — family durability</span><span class="muted" id="fdMeta">—</span></div>
+  <section class="card" id="famDurCard" style="margin-bottom:18px; border-left:3px solid #8a93a6; display:none;">
+    <div class="card-head"><span>🧬 Family durability — sportsbook prices only</span><span class="muted" id="fdMeta">—</span></div>
     <div style="padding:14px 18px;">
-      <p class="muted" style="font-size:12px;margin:0 0 12px;line-height:1.6;">Every surviving market family with a real sample, ranked by the <strong>lower bound</strong> of its bootstrap 95% CI — a family is only as good as the worst its sample plausibly allows. <strong>DURABLE</strong> needs a CI floor above zero <em>and</em> a positive ROI in both chronological halves; a hot headline with a CI spanning zero is labeled <strong>FRAGILE</strong>, not edge.</p>
+      <p class="muted" style="font-size:12px;margin:0 0 12px;line-height:1.6;"><!-- (2026-11-03) --><strong>Sportsbook-priced picks only</strong> (price class A/B): PrizePicks (unverified) and rows graded at the model's own odds are excluded<span id="fdUniverse"></span>. Every surviving market family with a real sample, ranked by the <strong>lower bound</strong> of its bootstrap 95% CI — a family is only as good as the worst its sample plausibly allows. <strong>DURABLE</strong> needs a CI floor above zero <em>and</em> a positive ROI in both chronological halves; a hot headline with a CI spanning zero is labeled <strong>FRAGILE</strong>, not edge.</p>
       <div id="fdBook" style="display:none;margin:0 0 12px;padding:10px 14px;border:1px solid rgba(88,200,120,.3);border-radius:8px;font-family:'JetBrains Mono',monospace;font-size:13px;line-height:1.7;"></div>
       <div style="overflow-x:auto;">
         <div style="min-width:640px;">
@@ -241,8 +244,11 @@
   </section>
   <script>
   fetch("data/family_durability.json",{cache:"no-cache"}).then(r=>r.json()).then(d=>{
-    if(!d || !(d.families||[]).length) return;
+    if(!d) return;
     document.getElementById("famDurCard").style.display="block";
+    // (2026-11-03) universe disclosure from the producer
+    if (d.n_settled_all_classes != null) document.getElementById("fdUniverse").textContent =
+      ` (${(d.n_settled_total||0).toLocaleString()} of ${d.n_settled_all_classes.toLocaleString()} settled picks scored; ${(d.n_excluded_class_c||0).toLocaleString()} class C and ${(d.n_excluded_prizepicks||0).toLocaleString()} PrizePicks excluded)`;
     const t=d.tiers||{};
     document.getElementById("fdMeta").textContent =
       `${d.n_families_evaluated} families · ${t.DURABLE||0} durable · ${(d.generated_at||'').replace('T',' ').slice(0,16)}`;
@@ -250,10 +256,16 @@
     const sgn=v=>(v>=0?'+':'')+v+'%';
     const bk=d.durable_book;
     if (bk && bk.n){
+      const bc = bk.roi > 0 ? '#58c878' : '#e35a5a';
       document.getElementById("fdBook").innerHTML =
-        `<span style="color:#8a93a6;">The durable book — only the ${bk.families.length} DURABLE families: </span>` +
-        `<b>${bk.n}</b> settled · ROI <b style="color:#58c878;">${sgn(bk.roi)}</b> · net <b style="color:#58c878;">+${bk.net_units}u</b> · ` +
-        `hit ${(100*bk.hit).toFixed(1)}% · 95% CI <b>[${sgn(bk.ci_lo)}, ${sgn(bk.ci_hi)}]</b> — the CI floor is ${sgn(bk.ci_lo)}.`;
+        `<span style="color:#8a93a6;">The durable book — only the ${bk.families.length} DURABLE families, at sportsbook prices: </span>` +
+        `<b>${bk.n}</b> settled · ROI <b style="color:${bc};">${sgn(bk.roi)}</b> · net <b style="color:${bc};">${bk.net_units>=0?'+':''}${bk.net_units}u</b> · ` +
+        `hit ${(100*bk.hit).toFixed(1)}% · 95% CI <b>[${sgn(bk.ci_lo)}, ${sgn(bk.ci_hi)}]</b>.`;
+      document.getElementById("fdBook").style.display="block";
+    } else {
+      // (2026-11-03) no family clears the bar at book prices -> say so
+      document.getElementById("fdBook").innerHTML =
+        `<b style="color:#e0a13a;">No durable family at sportsbook prices.</b> <span style="color:#8a93a6;">${(d.families||[]).length ? "The families below have a real sample but none has a CI floor above zero and a positive ROI in both halves." : "No family has enough sportsbook-priced picks to score."}</span>`;
       document.getElementById("fdBook").style.display="block";
     }
     document.getElementById("fdRows").innerHTML = d.families.map(f=>{
@@ -274,7 +286,7 @@
   <section id="clvBetCard" class="card" style="margin-bottom: 18px; display:none;">
     <div class="card-head"><span>📈 CLV Per Bet — beating the close</span><span class="muted" id="cpbMeta">--</span></div>
     <div style="padding: 14px 18px;">
-      <p class="muted" style="font-size: 12px; margin: 0 0 12px 0;">Cumulative CLV is the gold-standard proof you bet sharp. Positive CLV = you got value, even on losing plays. Long-run CLV correlates with long-run ROI.</p>
+      <p class="muted" style="font-size: 12px; margin: 0 0 12px 0;">CLV measures whether the price moved toward the pick after it was made. Positive CLV is evidence of value, not proof on its own; it needs a real book price at pick time and at the close. <!-- (2026-11-03) --></p>
       <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-bottom: 14px;">
         <div><div class="muted" style="font-size:10px;text-transform:uppercase;">Overall CLV</div><div id="cpbOverall" style="font-size:22px;font-weight:700;font-family:'JetBrains Mono',monospace;">--</div></div>
         <div><div class="muted" style="font-size:10px;text-transform:uppercase;">Trailing 30d CLV</div><div id="cpb30d" style="font-size:22px;font-weight:700;font-family:'JetBrains Mono',monospace;">--</div></div>
@@ -289,7 +301,7 @@
   <section id="dowCard" class="card" style="margin-bottom: 18px; display:none;">
     <div class="card-head"><span>📅 Day-of-Week Performance</span><span class="muted" id="dowMeta">--</span></div>
     <div style="padding: 14px 18px;">
-      <p class="muted" style="font-size: 12px; margin: 0 0 12px 0;">Settled track record sliced by day-of-week. Use this to spot personal patterns (better on Tuesdays? bad on Sundays?).</p>
+      <p class="muted" style="font-size: 12px; margin: 0 0 12px 0;">Settled ledger sliced by day-of-week, all sources, mostly graded at the model's own odds (calibration, not a betting ROI). Day-of-week differences of this size are usually noise. <!-- (2026-11-03) --></p>
       <div id="dowGrid"></div>
     </div>
   </section>
@@ -328,7 +340,7 @@
       document.getElementById("dowMeta").textContent = `${d.n_settled.toLocaleString()} settled bets`;
       const rowFor = (day) => {
         const roi = day.roi_pct;
-        const color = roi == null ? "var(--muted, #888)" : roi >= 5 ? "#58c878" : roi >= 0 ? "var(--text)" : "#e35a5a";
+        const color = roi == null ? "var(--muted, #888)" : roi > 0 ? "#58c878" : "#e35a5a";  // (2026-11-03) colour by sign
         return `<div style="display:grid; grid-template-columns: 80px 80px 100px 100px 100px; gap: 14px; padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.04); font-family:'JetBrains Mono',monospace; font-size: 12px;">
           <span><strong>${day.dow}</strong></span>
           <span class="muted">${day.n}</span>
@@ -342,7 +354,7 @@
       </div>`;
       let html = headers + days.map(rowFor).join("");
       if (d.best_day && d.worst_day) {
-        html += `<p class="muted" style="margin-top: 14px; font-size: 12px;">Best day: <strong style="color: #58c878;">${d.best_day.dow}</strong> (${(d.best_day.hit_rate*100).toFixed(1)}% hit, +${d.best_day.roi_pct}% ROI) · Worst day: <strong style="color: #e35a5a;">${d.worst_day.dow}</strong> (${(d.worst_day.hit_rate*100).toFixed(1)}% hit, ${d.worst_day.roi_pct >= 0 ? '+' : ''}${d.worst_day.roi_pct}% ROI)</p>`;
+        html += `<p class="muted" style="margin-top: 14px; font-size: 12px;">Best day: <strong style="color: #58c878;">${d.best_day.dow}</strong> (${(d.best_day.hit_rate*100).toFixed(1)}% hit, ${d.best_day.roi_pct >= 0 ? '+' : ''}${d.best_day.roi_pct}% ROI) · Worst day: <strong style="color: #e35a5a;">${d.worst_day.dow}</strong> (${(d.worst_day.hit_rate*100).toFixed(1)}% hit, ${d.worst_day.roi_pct >= 0 ? '+' : ''}${d.worst_day.roi_pct}% ROI)</p>`;
       }
       document.getElementById("dowGrid").innerHTML = html;
     }).catch(() => {});
@@ -352,7 +364,7 @@
   <section id="bySportCard" class="card" style="margin-bottom: 18px; display:none;">
     <div class="card-head"><span>🏟️ Performance by Sport</span><span class="muted" id="bsMeta">--</span></div>
     <div style="padding: 14px 18px;">
-      <p class="muted" style="font-size: 12px; margin: 0 0 12px 0;">Every sport the model grades, settled against real box scores / results. <strong>Includes the experimental prop firehose</strong> (tracked to train the model, not the curated bet list) — so blended ROI runs below the Alpha headline above. "Pend/Void" shows grading coverage: a sport with picks but nothing settled has no outcome feed wired yet.</p>
+      <p class="muted" style="font-size: 12px; margin: 0 0 12px 0;">Every sport the model grades, settled against real box scores / results. <!-- (2026-11-03) --><strong>Almost every row here is price class C</strong>: player props and most desk picks are graded at the model's own fair odds (no sportsbook prop prices are recorded), so per-sport numbers are <strong>calibration, not ROI</strong> — graded at the model's own odds, not a betting ROI. Only MLB moneylines/totals and the NFL/NHL desk game lines carry a sportsbook price (class A/B); their record is the price-class line below. MLB-PP is a PrizePicks import: unverified, not bettable. "Pend/Void" shows grading coverage.</p>
       <div id="bsGrid"></div>
     </div>
   </section>
@@ -369,9 +381,13 @@
       const totalMarkets = sports.reduce((a, s) => a + (s.markets || 0), 0);
       document.getElementById("bsMeta").textContent =
         `${sports.length} sports · ${totalMarkets} market types · ${(d.n_settled || 0).toLocaleString()} settled`;
-      const cols = "84px 76px 54px 64px 70px 50px 78px";
+      // (2026-11-03) by_sport carries no price class; label from what is known: only MLB moneylines/totals
+      // and the NFL/NHL desk game lines are ever book-priced -- every per-sport total is dominated by class C.
+      const PCLS = { "MLB": "B lines + C props", "NFL": "A/B lines + C props", "NHL": "C (desk lines: A/B)", "MLB-PP": "unverified · not bettable" };
+      const pcl = sp => PCLS[sp] || "C";
+      const cols = "84px 76px 54px 1fr 50px 78px";
       const header = `<div style="display:grid;grid-template-columns:${cols};gap:10px;padding:6px 0;color:var(--muted,#888);font-size:10px;text-transform:uppercase;">
-        <span>Sport</span><span>Record</span><span>Hit%</span><span>ROI</span><span>Net</span><span>Mkts</span><span>Pend/Void</span></div>`;
+        <span>Sport</span><span>Record</span><span>Hit%</span><span>Price class</span><span>Mkts</span><span>Pend/Void</span></div>`;
       // NFL props are judged from 10/23 forward (form rule changed): two lines
       // under the NFL total, never summed into one verdict.
       const nflLines = ((d.nfl_props_by_model || {}).lines) || {};
@@ -379,20 +395,18 @@
         const s = nflLines[key];
         if (!s) return "";
         const dec = (s.wins || 0) + (s.losses || 0);
-        const c = s.roi_pct == null ? "var(--muted,#888)" : s.roi_pct >= 0 ? "#58c878" : "#e35a5a";
         return `<div title="${tip}" style="display:grid;grid-template-columns:${cols};gap:10px;padding:5px 0;border-bottom:1px solid rgba(255,255,255,0.03);font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--muted,#9aa3b2);">
           <span>↳ ${label}</span><span>${dec ? s.wins + "-" + s.losses : "—"}</span>
           <span>${s.hit_rate != null ? (s.hit_rate * 100).toFixed(1) + "%" : "—"}</span>
-          <span style="color:${c};">${s.roi_pct != null ? (s.roi_pct >= 0 ? "+" : "") + s.roi_pct + "%" : "—"}</span>
-          <span style="color:${c};">${dec ? (s.net_units >= 0 ? "+" : "") + s.net_units + "u" : "—"}</span>
+          <span>C · calibration, not ROI</span>
           <span></span><span>${s.pending || 0}/${s.void || 0}</span></div>`;
       };
       const nflSub = subRow("form_v2", "props 10/23+", "NFL props priced by the current model (season-to-date form) -- the line we judge")
                    + subRow("form_v1", "props pre-10/23", "NFL props priced by the retired one-game-form model -- record only, never feeds a family verdict");
       const rows = sports.map(s => {
         const dec = (s.wins || 0) + (s.losses || 0);
-        const roiColor = s.roi_pct == null ? "var(--muted,#888)" : s.roi_pct >= 0 ? "#58c878" : "#e35a5a";
         const rec = dec ? `${s.wins}-${s.losses}` : "—";
+        const isPP = s.sport === "MLB-PP";
         const cov = (!s.settled && (s.pending || s.void))
           ? `<span style="color:#e0a13a;" title="No outcome feed wired yet">no feed</span>`
           : `${s.pending || 0}/${s.void || 0}`;
@@ -400,8 +414,7 @@
           <span><strong>${s.sport}</strong></span>
           <span>${rec}</span>
           <span>${s.hit_rate != null ? (s.hit_rate * 100).toFixed(1) + "%" : "—"}</span>
-          <span style="color:${roiColor};">${s.roi_pct != null ? (s.roi_pct >= 0 ? "+" : "") + s.roi_pct + "%" : "—"}</span>
-          <span style="color:${roiColor};">${s.net_units != null ? (s.net_units >= 0 ? "+" : "") + s.net_units + "u" : "—"}</span>
+          <span style="color:${isPP ? '#e0a13a' : 'var(--muted,#9aa3b2)'};font-size:11px;">${pcl(s.sport)}${isPP ? "" : " · calibration, not ROI"}</span>
           <span class="muted">${s.markets || 0}</span>
           <span class="muted">${cov}</span>
         </div>` + (s.sport === "NFL" ? nflSub : "");
@@ -418,11 +431,12 @@
         `${c.counts_text || (c.n_repriced + " re-priced, " + c.n_voided + " voided")}. ${c.record_label || "Curated"} ${c.curated_before} → ${c.curated_after}.</p>`).join("");
       // PrizePicks (2026-11-03): its own line, never part of the curated headline.
       const pp = d.prizepicks;
+      // (2026-11-03) flagged UNVERIFIED: locks-history import, feed dead since 7/9, graded at the -136 break-even.
       const ppNote = (pp && pp.n_settled)
-        ? `<p class="muted" style="font-size:11px;margin:8px 0 0;"><b>PrizePicks line (separate):</b> ${pp.wins}-${pp.losses}, ${pp.net_units >= 0 ? "+" : ""}${pp.net_units}u (${pp.roi_pct >= 0 ? "+" : ""}${pp.roi_pct}%), ${pp.first_date} → ${pp.last_date}. ${pp.definition}</p>` : "";
+        ? `<p class="muted" style="font-size:11px;margin:8px 0 0;"><b>PrizePicks line (separate, <span style="color:#e0a13a;">UNVERIFIED</span> · not bettable):</b> ${pp.wins}-${pp.losses}, ${pp.first_date} → ${pp.last_date}, from a locks-history import; the PrizePicks feed has been dead since 7/9. Graded at PrizePicks' per-leg break-even (−136), not a sportsbook price, and a single leg cannot be bet alone — so no ROI is claimed and it is never part of any headline.</p>` : "";
       // Price provenance (2026-11-03): where every graded price came from.
       const bpc = (d.by_price_class || {}).curated || {}, bpa = (d.by_price_class || {}).all || {};
-      const cls = (b, k) => b[k] ? `${k}: ${b[k].wins}-${b[k].losses} (${b[k].net_units >= 0 ? "+" : ""}${b[k].net_units}u)` : `${k}: none`;
+      const cls = (b, k) => b[k] ? `${k}: ${b[k].wins}-${b[k].losses} (<span style="color:${b[k].net_units > 0 ? "#58c878" : "#e35a5a"};">${b[k].net_units >= 0 ? "+" : ""}${b[k].net_units}u${b[k].roi_pct != null ? ", " + (b[k].roi_pct >= 0 ? "+" : "") + b[k].roi_pct + "%" : ""}</span>)` : `${k}: none`;  // (2026-11-03) sign-coloured
       const provNote = d.by_price_class
         ? `<p class="muted" style="font-size:11px;margin:8px 0 0;"><b>Price provenance:</b> curated ${cls(bpc, "A")} · ${cls(bpc, "B")} · ${cls(bpc, "C")}; all picks ${cls(bpa, "A")} · ${cls(bpa, "B")} · ${cls(bpa, "C")}. A = sportsbook price from a timestamped snapshot at pick time; B = sportsbook price reconstructed from a pre-game snapshot, or stamped without a timestamp; C = no sportsbook price (the model's own odds or PrizePicks' break-even) -- never part of a claim at sportsbook prices.</p>` : "";
       document.getElementById("bsGrid").innerHTML = header + rows + nflNote + rsNote + provNote + ppNote + pcNote;
@@ -433,7 +447,7 @@
   <section id="byStrategyCard" class="card" style="margin-bottom: 18px; display:none;">
     <div class="card-head"><span>🎯 Performance by Strategy</span><span class="muted" id="bstMeta">--</span></div>
     <div style="padding: 14px 18px;">
-      <p class="muted" style="font-size: 12px; margin: 0 0 12px 0;">Realized ROI per pick source. <strong style="color:#58c878;">Featured</strong> = the strategies on the actual bet list (Locks, Top 25, Whale, Sharp, Consensus-hit, POD). Everything else is the experimental firehose, tracked to train the model — shown here, in the open, including the families that bleed.</p>
+      <p class="muted" style="font-size: 12px; margin: 0 0 12px 0;"><!-- (2026-11-03) verdict tags removed; book-priced record leads -->Record per pick source. The <strong>sportsbook</strong> columns are the only betting ROI: picks graded at a real sportsbook price (class A/B), PrizePicks excluded. The greyed all-rows figure <strong>includes PrizePicks (unverified) and model-fair-odds rows; see price classes</strong> under Performance by Sport — it is not a betting ROI. Curated sources are the ones on the bet list; experimental sources are tracked to train the model.</p>
       <div id="bstGrid"></div>
     </div>
   </section>
@@ -446,31 +460,36 @@
       const rows = Object.entries(bsrc).map(([k, v]) => ({ source: k, ...v }))
         .filter(s => ((s.wins || 0) + (s.losses || 0)) >= 5);
       if (!rows.length) return;
-      const feat = rows.filter(s => featured.has(s.source)).sort((a, b) => (b.roi_pct || 0) - (a.roi_pct || 0));
+      const sbN = s => s.sportsbook ? (s.sportsbook.wins || 0) + (s.sportsbook.losses || 0) : 0;
+      const feat = rows.filter(s => featured.has(s.source)).sort((a, b) => sbN(b) - sbN(a) || (b.n || 0) - (a.n || 0));
       const exp = rows.filter(s => !featured.has(s.source)).sort((a, b) => (a.net_units || 0) - (b.net_units || 0)).slice(0, 6);
       if (!feat.length && !exp.length) return;
       document.getElementById("byStrategyCard").style.display = "block";
-      document.getElementById("bstMeta").textContent = `${feat.length} featured · ${exp.length} experimental shown`;
-      const cols = "1fr 80px 50px 64px 74px 88px";
+      document.getElementById("bstMeta").textContent = `${feat.length} curated · ${exp.length} experimental shown`;
+      const cols = "1fr 80px 64px 74px 1.3fr";
       const nice = s => s.replace(/_/g, " ");
+      const sg = v => (v >= 0 ? "+" : "") + v;
       const header = `<div style="display:grid;grid-template-columns:${cols};gap:10px;padding:6px 0;color:var(--muted,#888);font-size:10px;text-transform:uppercase;">
-        <span>Strategy</span><span>Record</span><span>Hit%</span><span>ROI</span><span>Net</span><span>Tag</span></div>`;
-      const render = (s, tag) => {
-        const c = s.roi_pct == null ? "var(--muted,#888)" : s.roi_pct >= 0 ? "#58c878" : "#e35a5a";
+        <span>Strategy</span><span>Sportsbook W-L</span><span>ROI</span><span>Net</span><span>All rows (incl. PrizePicks / model-odds — not a betting ROI)</span></div>`;
+      // (2026-11-03) the sportsbook (class A/B) record leads, coloured by sign; the all-rows number is greyed.
+      const render = (s) => {
+        const sb = s.sportsbook || {};
+        const n = sbN(s);
+        const c = !n ? "var(--muted,#888)" : (sb.net_units > 0 ? "#58c878" : "#e35a5a");
+        const allTxt = `${s.wins || 0}-${s.losses || 0}, hit ${s.hit_rate != null ? (s.hit_rate * 100).toFixed(0) + "%" : "—"}, ${s.net_units != null ? sg(s.net_units) + "u" : "—"}`;
         return `<div style="display:grid;grid-template-columns:${cols};gap:10px;padding:8px 0;border-bottom:1px solid rgba(255,255,255,0.04);font-family:'JetBrains Mono',monospace;font-size:12px;">
           <span><strong>${nice(s.source)}</strong></span>
-          <span>${s.wins || 0}-${s.losses || 0}</span>
-          <span>${s.hit_rate != null ? (s.hit_rate * 100).toFixed(0) + "%" : "—"}</span>
-          <span style="color:${c};">${s.roi_pct != null ? (s.roi_pct >= 0 ? "+" : "") + s.roi_pct + "%" : "—"}</span>
-          <span style="color:${c};">${s.net_units != null ? (s.net_units >= 0 ? "+" : "") + s.net_units + "u" : "—"}</span>
-          <span>${tag}</span></div>`;
+          <span>${n ? sb.wins + "-" + sb.losses : '<span class="muted">none</span>'}</span>
+          <span style="color:${c};">${n && sb.roi_pct != null ? sg(sb.roi_pct) + "%" : "—"}</span>
+          <span style="color:${c};">${n && sb.net_units != null ? sg(sb.net_units) + "u" : "—"}</span>
+          <span style="color:#6f7889;font-size:11px;">${allTxt}</span></div>`;
       };
-      const featTag = `<span style="font-size:9px;padding:1px 6px;border-radius:4px;background:rgba(88,200,120,.15);color:#58c878;">FEATURED</span>`;
-      const expTag = `<span style="font-size:9px;padding:1px 6px;border-radius:4px;background:rgba(255,255,255,.06);color:#8a93a6;">experimental</span>`;
       document.getElementById("bstGrid").innerHTML = header
-        + feat.map(s => render(s, featTag)).join("")
-        + (exp.length ? `<div style="padding:11px 0 4px;color:#8a93a6;font-size:10px;text-transform:uppercase;">Experimental (tracked, not bet) — biggest bleeders</div>` : "")
-        + exp.map(s => render(s, expTag)).join("");
+        + (feat.length ? `<div style="padding:8px 0 4px;color:#8a93a6;font-size:10px;text-transform:uppercase;">Curated sources (the bet list)</div>` : "")
+        + feat.map(render).join("")
+        + (exp.length ? `<div style="padding:11px 0 4px;color:#8a93a6;font-size:10px;text-transform:uppercase;">Experimental (tracked, not bet) — biggest losers at model odds</div>` : "")
+        + exp.map(render).join("")
+        + `<p class="muted" style="font-size:11px;margin:8px 0 0;">Includes PrizePicks (unverified) and model-fair-odds rows in the greyed column; see price classes. A sportsbook sample of a handful of picks is noise, not a verdict.</p>`;
     }).catch(() => {});
   </script>
 
@@ -508,16 +527,16 @@
   </script>
 
   <section class="card" style="margin-bottom: 28px;">
-    <div class="card-head"><span>📈 Cumulative P&L</span><span class="muted">last 30 plays</span></div>
+    <div class="card-head"><span>📈 Cumulative P&L — Play of the Day</span><span class="muted">last 30 plays</span></div>
     <canvas id="plChart" height="220"></canvas>
-    <p class="caption">Running profit/loss over the last 30 settled plays. Smooth-ish upward trend is the point — flat days are normal in a 55% win-rate game.</p>
+    <p class="caption">Running profit/loss over the last 30 settled Plays of the Day, 1u flat at the DraftKings pre-game price. <!-- (2026-11-03) neutral caption --></p>
   </section>
 
   <!-- Full-history equity: the curation story in one chart -->
   <section id="fullEqCard" class="card" style="margin-bottom: 28px; display:none;">
-    <div class="card-head"><span>📊 Full History — Honest Book vs Firehose</span><span class="muted" id="feMeta">--</span></div>
+    <div class="card-head"><span>📊 Family-curated replay (in-sample, model fair odds)</span><span class="muted" id="feMeta">--</span></div>
     <canvas id="feChart" height="230"></canvas>
-    <p class="caption">Every settled pick at flat 1u, replayed chronologically. <span style="color:#58c878;">Green</span> = the honest book (proven-negative families curated out — what the boards actually surface). <span style="color:#e35a5a;">Red</span> = the raw firehose, including every experimental family we track to train the model. Same model, same real outcomes — curation is the difference. Run your own rules in the <a href="strategy-sim.html">Strategy Simulator</a>.</p>
+    <p class="caption"><!-- (2026-11-03) renamed from "Honest Book vs Firehose"; MLB-PP excluded -->Every settled pick at flat 1u, replayed chronologically at its recorded payout, PrizePicks (MLB-PP, unverified) excluded. Blue = the replay with today's proven-negative families removed — chosen with hindsight from these same outcomes, so this line is in-sample. Grey = every settled pick. Most rows are price class C (graded at the model's own fair odds), so neither line is a betting ROI; the sportsbook-priced record is the class A/B line under Performance by Sport. Run your own rules in the <a href="strategy-sim.html">Strategy Simulator</a>.</p>
   </section>
   <script>
   fetch("data/strategy_sim.json", { cache: "no-cache" })
@@ -526,9 +545,13 @@
       const rows = d.rows || [];
       if (rows.length < 50 || typeof Chart === "undefined") return;
       const fams = d.families || [];
-      let all = 0, cur = 0;
+      // (2026-11-03) exclude MLB-PP (unverified PrizePicks import) from both lines
+      const ppIdx = (d.sports || []).indexOf("MLB-PP");
+      let all = 0, cur = 0, nShown = 0;
       const allPts = [], curPts = [], labels = [];
       rows.forEach(r => {
+        if (r[2] === ppIdx) return;
+        nShown++;
         all += r[8];
         allPts.push(+all.toFixed(1));
         if (!fams[r[3]].neg) cur += r[8];
@@ -537,12 +560,12 @@
       });
       document.getElementById("fullEqCard").style.display = "block";
       document.getElementById("feMeta").textContent =
-        `${rows.length.toLocaleString()} picks · honest book ${cur >= 0 ? "+" : ""}${cur.toFixed(0)}u vs firehose ${all >= 0 ? "+" : ""}${all.toFixed(0)}u`;
+        `${nShown.toLocaleString()} picks (MLB-PP excluded) · family-curated ${cur >= 0 ? "+" : ""}${cur.toFixed(0)}u vs all ${all >= 0 ? "+" : ""}${all.toFixed(0)}u (mostly model fair odds)`;
       new Chart(document.getElementById("feChart"), {
         type: "line",
         data: { labels, datasets: [
-          { label: "honest book (curated)", data: curPts, borderColor: "#58c878", backgroundColor: "rgba(88,200,120,.07)", fill: true, borderWidth: 1.6, pointRadius: 0, tension: 0 },
-          { label: "raw firehose (all tracked)", data: allPts, borderColor: "#e35a5a", backgroundColor: "rgba(227,90,90,.05)", fill: true, borderWidth: 1.3, pointRadius: 0, tension: 0 },
+          { label: "family-curated replay (in-sample)", data: curPts, borderColor: "#5fb3e0", backgroundColor: "rgba(95,179,224,.07)", fill: true, borderWidth: 1.6, pointRadius: 0, tension: 0 },
+          { label: "all settled picks", data: allPts, borderColor: "#8a93a6", backgroundColor: "rgba(138,147,166,.05)", fill: true, borderWidth: 1.3, pointRadius: 0, tension: 0 },
         ]},
         options: { responsive: true, maintainAspectRatio: true, animation: false,
           plugins: { legend: { labels: { color: "#8a93a6", font: { size: 10 }, boxWidth: 14 } } },
@@ -577,30 +600,14 @@
     </div>
   </section>
 
-  <section class="card" style="margin-bottom:28px;">
-    <div class="card-head"><span>📋 Full Settled Log</span><span class="muted">filter: last 30</span></div>
-    <div class="filterbar">
-      <label>Bet type:</label>
-      <select><option>All</option><option>ML</option><option>Run Line</option><option>Total</option><option>Prop</option></select>
-      <label>Result:</label>
-      <select><option>All</option><option>WIN</option><option>LOSS</option><option>PUSH</option></select>
-      <label>Confidence:</label>
-      <select><option>All</option><option>High</option><option>Medium</option></select>
-    </div>
-    <div class="table-wrap">
-      <table class="data-table" id="trackTable">
-        <thead>
-          <tr><th>Date</th><th>Play</th><th>Price</th><th>Stake</th><th>Result</th><th>P/L</th><th>CLV</th></tr>
-        </thead>
-        <tbody></tbody>
-      </table>
-    </div>
-  </section>
+  <!-- (2026-11-03) "Full Settled Log" removed: its table was never populated. The real rows are the
+       "Live Settled Plays" card (pod_pl.json) and the full ledger at data/all_picks_ledger.json. -->
 
   <section class="card">
     <div class="card-head"><span>🧾 Methodology Note</span></div>
-    <p style="color:var(--text-2)">All plays are graded against the price displayed when published. We log the closing line at game start to compute CLV. We do not retroactively remove "bad" plays, change stakes after publication, or hide losing months. The total units shown above include all plays — pre-game, in-game, and live.</p>
-    <p style="color:var(--text-2)">Why does this matter? Because most "experts" you'll find online will quietly delete their losses and trumpet their wins. We do the opposite — we log everything precisely so you can validate that the model actually works. A 55-58% hit rate at –110 average vig is the truth of a sharp operation, and that's what we'll deliver if the underlying model is calibrated.</p>
+    <!-- (2026-11-03) rewritten: restatements are disclosed; no hit-rate promise -->
+    <p style="color:var(--text-2)">Every surfaced pick is logged and settled against the real result at 1u flat. Picks are graded at the sportsbook price where one exists (DraftKings pre-game; price class A/B). When we find a graded price was wrong, we restate: picks are repriced to the DraftKings pre-game line, and picks no book ever priced are voided — wins and losses alike. Every restatement is dated and disclosed with the record before and after (the price-correction notes above), and the settled history is hashed into the chain shown at the top of this page.</p>
+    <p style="color:var(--text-2)">Player props are graded at the model's own fair odds (class C) because no sportsbook prop prices are recorded; those numbers measure calibration, not betting ROI. The PrizePicks line is an unverified import and is kept separate from every headline. We make no promise of a future hit rate or ROI.</p>
   </section>
 
 </main>
@@ -647,6 +654,10 @@ fetch("data/pod_pl.json", { cache: "no-cache" })
     const fmtSigned = (v, d = 1, suf = "") => v == null ? "--" : (v >= 0 ? "+" : "") + v.toFixed(d) + suf;
     const setText = (id, v) => { const el = document.getElementById(id); if (el) el.textContent = v; };
     setText("trkNet",   graded.length ? fmtSigned(net,    1, "u") : "--");
+    // (2026-11-03) colour by sign
+    const colour = (id, v) => { const el = document.getElementById(id); if (el && v != null) el.style.color = v > 0 ? "#58c878" : "#e35a5a"; };
+    if (graded.length) { colour("trkNet", net); if (dd < 0) colour("trkDD", dd); }
+    colour("trkRoi", roi);
     setText("trkHit",   hitPct != null ? hitPct.toFixed(1) + "%"   : "--");
     setText("trkRoi",   roi    != null ? fmtSigned(roi,   1, "%")   : "--");
     setText("trkPlays", String(graded.length));
@@ -714,8 +725,9 @@ fetch("data/pod_pl.json", { cache: "no-cache" })
             datasets: [{
               label: "Cumulative units",
               data,
-              borderColor: "#58c878",
-              backgroundColor: "rgba(88,200,120,0.10)",
+              // (2026-11-03) colour by the sign of the running total
+              borderColor: (data.length && data[data.length - 1] > 0) ? "#58c878" : "#e35a5a",
+              backgroundColor: (data.length && data[data.length - 1] > 0) ? "rgba(88,200,120,0.10)" : "rgba(227,90,90,0.08)",
               fill: true,
               tension: 0.25,
               pointRadius: 2,

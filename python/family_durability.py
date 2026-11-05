@@ -19,6 +19,15 @@ finding: instead of "the edge is carried by ~2 families", it names each carrier
 and says whether it has held up over time.
 
 Runs in the daily pipeline after the ledger build. Zero paid data.
+
+SPORTSBOOK PRICES ONLY (2026-11-03): a family's ROI is only a betting ROI when
+its picks were graded at a real sportsbook price. Only picks whose
+price_provenance.class is A (timestamped book snapshot) or B (reconstructed /
+untimestamped book price) are scored here. Class C (the model's own fair odds,
+PrizePicks' -136 break-even, unpriced) and every MLB-PP / PP_* PrizePicks pick
+(unverified locks-history import) are EXCLUDED -- a durable "edge" at the
+model's own odds is calibration, not ROI. If no family survives at book prices
+the durable book is None and the page says so.
 """
 import json
 import os
@@ -33,6 +42,16 @@ OUT = os.path.join(DATA_DIR, "family_durability.json")
 MIN_N = 40        # below this a family isn't worth tiering at all
 DURABLE_N = 100   # DURABLE additionally requires a real sample
 B = 1000          # bootstrap resamples (fixed seed -> deterministic artifact)
+BOOK_CLASSES = ("A", "B")   # (2026-11-03) sportsbook-priced classes only
+
+
+def _price_class(p):
+    return ((p.get("price_provenance") or {}).get("class")) or "C"
+
+
+def _is_prizepicks(p):
+    # (2026-11-03) MLB-PP = PrizePicks locks-history import, unverified, not bettable.
+    return (p.get("sport") == "MLB-PP") or str(p.get("market") or "").upper().startswith("PP_")
 
 
 def _net(p):
@@ -66,6 +85,12 @@ def build():
     settled = [p for p in (d.get("picks") or [])
                if p.get("settled") and p.get("result") in ("won", "lost")
                and not p.get("voided")]
+    # (2026-11-03) Sportsbook prices only: drop PrizePicks + class-C rows.
+    n_all = len(settled)
+    n_pp = sum(1 for p in settled if _is_prizepicks(p))
+    n_c = sum(1 for p in settled if not _is_prizepicks(p) and _price_class(p) not in BOOK_CLASSES)
+    settled = [p for p in settled
+               if not _is_prizepicks(p) and _price_class(p) in BOOK_CLASSES]
     settled.sort(key=lambda p: (p.get("date") or "", p.get("recorded_at") or ""))
 
     cut = set(proven_negative_families())
@@ -128,12 +153,21 @@ def build():
         "durable_book": durable_book,
         "generated_at": datetime.datetime.now().isoformat(timespec="seconds"),
         "n_settled_total": len(settled),
+        # (2026-11-03) universe disclosure: only sportsbook-priced (A/B) picks are scored.
+        "price_classes": list(BOOK_CLASSES),
+        "n_settled_all_classes": n_all,
+        "n_excluded_prizepicks": n_pp,
+        "n_excluded_class_c": n_c,
+        "no_durable_note": (None if durable_book else
+                            "no durable family at sportsbook prices"),
         "n_families_cut": len(cut),
         "n_families_evaluated": len(rows),
         "min_n": MIN_N, "durable_n": DURABLE_N,
         "tiers": tiers,
         "families": rows,
-        "method_note": ("Every surviving (non-cut) family with n >= %d graded picks, ranked by the "
+        "method_note": ("Sportsbook-priced picks only (price class A/B); PrizePicks (MLB-PP, "
+                        "unverified) and class-C rows graded at the model's own odds are excluded. "
+                        "Every surviving (non-cut) family with n >= %d graded picks, ranked by the "
                         "LOWER bound of a %d-resample bootstrap 95%% CI on ROI. DURABLE = CI floor "
                         "above zero AND positive in both chronological halves AND n >= %d. A big "
                         "headline ROI with a CI spanning zero or a losing second half is FRAGILE, "
@@ -142,7 +176,8 @@ def build():
             "Bootstrap CIs treat picks as independent; correlated slates (same game/day) understate variance.",
             "Split-half stability is a coarse regime check, not a forecast.",
             "Families below n=%d are unscored -- absence here is not endorsement." % MIN_N,
-            "All numbers are 1u-flat on the ledger's recorded payouts.",
+            "All numbers are 1u-flat on the ledger's recorded payouts at the sportsbook price (class A/B).",
+            "Working ledger only (the archive is not re-tiered); families are pooled across sports.",
         ],
     }
 

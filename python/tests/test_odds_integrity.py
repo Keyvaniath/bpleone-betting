@@ -306,3 +306,57 @@ def test_ml_reprice_no_longer_stamps_later_prices():
     mr._SEED_CACHE = {}
     mr.apply_ledger(pend, lambda p: "home")
     assert pend[0].get("book_american") is None
+
+
+_NFL_FINALS = [
+    {"id": "9001", "date": "2026-11-08", "away_abbrev": "DEN", "home_abbrev": "CAR",
+     "away_score": 20, "home_score": 17},
+    {"id": "9002", "date": "2026-11-08", "away_abbrev": "NYJ", "home_abbrev": "KC",
+     "away_score": 10, "home_score": 31},
+]
+
+
+def test_nfl_settles_by_event_id():
+    import all_picks_tracker as t
+    p = {"market": "ML_AWAY", "player_or_matchup": "DEN @ CAR", "date": "2026-11-07",
+         "event_id": "9001"}           # UTC-dated a day off: the id still finds it
+    assert t._grade_nfl_pick(p, {}, _NFL_FINALS) == "won"
+    assert "9001" in p["outcome"]["verify"]
+
+
+def test_nfl_refuses_empty_or_mismatched():
+    import all_picks_tracker as t
+    # empty matchup used to match the first game of the day
+    assert t._grade_nfl_pick({"market": "ML_HOME", "player_or_matchup": "",
+                              "date": "2026-11-08"}, {}, _NFL_FINALS) is None
+    # event id that points at a different game -> data error, not a grade
+    assert t._grade_nfl_pick({"market": "ML_HOME", "player_or_matchup": "DEN @ CAR",
+                              "date": "2026-11-08", "event_id": "9002"}, {}, _NFL_FINALS) is None
+    # substring: "KC" must not match "NYJ @ KC" for a pick on another game
+    assert t._grade_nfl_pick({"market": "ML_HOME", "player_or_matchup": "J @ KC",
+                              "date": "2026-11-08"}, {}, _NFL_FINALS) is None
+
+
+def test_nfl_fallback_refuses_ambiguity():
+    import all_picks_tracker as t
+    twice = _NFL_FINALS + [{"date": "2026-11-09", "away_abbrev": "DEN", "home_abbrev": "CAR",
+                            "away_score": 3, "home_score": 30}]
+    assert t._grade_nfl_pick({"market": "ML_AWAY", "player_or_matchup": "DEN @ CAR",
+                              "date": "2026-11-08"}, {}, twice) is None
+
+
+def test_board_never_publishes_the_record_elo(monkeypatch):
+    import board_prior as bp
+    pr = bp.BoardPrior.__new__(bp.BoardPrior)
+    pr.sport, pr.observed_at, pr.verdict = "nba", "2026-11-03T21:51:13", "NO EDGE: x"
+    pr.dk = {"1": {"ml_home": -514, "ml_away": 391}}
+    pr.desk = {}
+    priced, unpriced = {"id": "1", "state": "pre"}, {"id": "2", "state": "pre"}
+    p1 = bp.apply(priced, pr, 0.948)            # 7-game win-pct Elo said 94.8%
+    assert priced["p_source"] == "dk_no_vig" and abs(p1 - 0.804) < 0.002
+    p2 = bp.apply(unpriced, pr, 0.948)
+    assert unpriced["p_home_display"] is None and unpriced["p_home_win_record_elo"] == 0.948
+    for g, p in ((priced, p1), (unpriced, p2)):
+        g["p_home_win"] = p
+        bp.finalize(g, lambda x: round(-100 * x / (1 - x)) if x > 0.5 else round(100 * (1 - x) / x))
+    assert unpriced["fair_home_american"] is None and priced["fair_home_american"] is not None

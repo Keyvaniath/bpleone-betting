@@ -64,7 +64,8 @@
 
   <!-- WHALE PICKS -->
   <section class="card section" style="border-left: 4px solid #d4a04a;">
-    <div class="card-head"><span>🐋 WHALE Picks — Max Confluence</span><span class="muted">size up these</span></div>
+    <!-- (2026-11-03) model-only confluence: no "size up", no edge -->
+    <div class="card-head"><span>🐋 Signal Confluence</span><span class="muted">model projection — unvalidated, no sportsbook price, not a recommendation</span></div>
     <div id="whaleBox"><p class="muted" style="padding:14px;">Loading…</p></div>
   </section>
 
@@ -77,7 +78,7 @@
   <div class="grid-2">
     <!-- SHARP ACTION -->
     <section class="card section">
-      <div class="card-head"><span>📡 Sharp Action (line movement)</span></div>
+      <div class="card-head"><span>📡 Line moved (opening vs latest — not a read on who bet)</span></div>
       <div id="sharpBox"><p class="muted" style="padding:14px;">Loading…</p></div>
     </section>
 
@@ -109,10 +110,10 @@
       <div id="pitchBox"><p class="muted" style="padding:14px;">Loading…</p></div>
     </section>
 
-    <!-- PARLAYS -->
+    <!-- PARLAYS (2026-11-03): off by default, research exhibit only -- no stake, no EV -->
     <section class="card section">
-      <div class="card-head"><span>🎰 Top 2-Leg Parlays</span><span class="muted"><a href="cross-sport-parlays.html" style="color:var(--text-2,#aaa);">All →</a></span></div>
-      <div id="parlayBox"><p class="muted" style="padding:14px;">Loading…</p></div>
+      <div class="card-head"><span>🎰 Parlays — research exhibit, not a recommendation</span><span class="muted"><a href="cross-sport-parlays.html" style="color:var(--text-2,#aaa);">Open exhibit →</a></span></div>
+      <div id="parlayBox"><p class="muted" style="padding:14px;">Parlays are not recommended and carry no stake or EV. The model-projection combinations are on the research exhibit page (hidden by default).</p></div>
     </section>
   </div>
 </main>
@@ -139,9 +140,9 @@ Promise.all([
   const top_whales = ws.filter(w => w.tier === 'WHALE' || w.tier === 'STRONG').slice(0, 8);
   if (top_whales.length) {
     wb.innerHTML = top_whales.map(w => `<div class="row">
-      <span class="pill pill-${w.tier === 'WHALE' ? 'gold' : 'green'}">${w.tier}</span>
+      <span class="pill pill-gold">projection</span>
       <strong>${w.sport}</strong> · <strong>${w.player_or_matchup}</strong> · <span class="muted">${w.market}</span> ·
-      <strong>${(w.prob*100).toFixed(0)}%</strong> · <span class="pos">+${w.edge_pct.toFixed(1)}%</span> ·
+      <strong>${(w.prob*100).toFixed(0)}% model</strong> ·
       <span class="muted">score ${w.confluence_score.toFixed(1)}</span><br>
       <span style="font-size:11px; color:var(--text-2,#aaa); font-style:italic;">${w.reasons.join(' · ')}</span>
     </div>`).join('');
@@ -150,12 +151,12 @@ Promise.all([
   // LOCKS
   const lb = document.getElementById('locksBox');
   if (locks && locks.todays_locks && locks.todays_locks.length) {
-    lb.innerHTML = `<div class="row head"><span>Sport</span> · Pick · Market · Prob · Edge · Fair</div>` +
+    lb.innerHTML = `<div class="row head"><span>Sport</span> · Pick · Market · Prob · Book price</div>` +
       locks.todays_locks.map(L => `<div class="row">
         <span class="pill pill-gold">${L.sport}</span>
         <strong>${L.player_or_matchup}</strong>  ·  <span class="muted">${L.market}</span>  ·
-        <strong>${(L.prob*100).toFixed(0)}%</strong>  ·  <span class="pos">+${(L.edge_pct||0).toFixed(1)}%</span>  ·
-        <span class="muted">${fmtAmer(L.fair_american)}</span><br>
+        <strong>${(L.prob*100).toFixed(0)}%</strong>  ·
+        <span class="muted">${L.book_american != null ? 'DK ' + fmtAmer(L.book_american) : 'no book price'}</span><br>
         <span style="font-size:11px; color:var(--text-2,#aaa); font-style:italic;">💡 ${L.rationale || ''}</span>
       </div>`).join('');
   } else lb.innerHTML = '<p class="muted" style="padding:14px;">No locks yet today.</p>';
@@ -169,7 +170,7 @@ Promise.all([
       <span class="pill pill-green">${s.intensity}</span>
       <strong>${s.matchup}</strong> ${s.market}: ${s.opening_implied_pct}% → <span class="pos">${s.latest_implied_pct}% (+${s.shift_pp}pp)</span>
     </div>`).join('') + neg.slice(0,3).map(s => `<div class="row">
-      <span class="pill pill-red">FADE</span>
+      <span class="pill pill-red">MOVED AWAY</span>
       <strong>${s.matchup}</strong>: ${s.opening_implied_pct}% → <span class="neg">${s.latest_implied_pct}% (${s.shift_pp}pp)</span>
     </div>`).join('');
   } else sb.innerHTML = '<p class="muted" style="padding:14px;">No material line moves yet.</p>';
@@ -224,17 +225,7 @@ Promise.all([
     <strong>${p.pitcher}</strong> proj ${p.projected_ip_today} IP (opp OBP ${p.opp_obp.toFixed(3)})
   </div>`).join('');
 
-  // PARLAYS
-  const plb = document.getElementById('parlayBox');
-  const bal = parlays && parlays.balanced_2_leg_picks || [];
-  if (bal.length) {
-    plb.innerHTML = bal.slice(0,4).map(p => `<div class="row">
-      <strong>${p.legs[0].player_or_matchup}</strong> ${p.legs[0].market} <span class="muted">+</span>
-      <strong>${p.legs[1].player_or_matchup}</strong> ${p.legs[1].market}<br>
-      <span class="muted" style="font-size:11px;">Joint ${(p.joint_prob*100).toFixed(0)}% · fair ${fmtAmer(p.fair_parlay_american)} · </span>
-      <span class="pos" style="font-size:11px;">+${p.edge_pct.toFixed(1)}% edge</span>
-    </div>`).join('');
-  } else plb.innerHTML = '<p class="muted" style="padding:14px;">No balanced parlays.</p>';
+  // PARLAYS: not rendered here (2026-11-03) -- research exhibit page only, off by default
 });
 </script>
 </body>

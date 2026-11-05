@@ -56,32 +56,37 @@
 </header>
 <main class="container">
   <section class="page-head">
-    <h1>🎰 Cross-Sport Parlay Builder</h1>
+    <h1>🎰 Cross-Sport Parlay Builder — research exhibit</h1>
     <p class="muted" id="status">Loading…</p>
   </section>
   <div class="info-card">
-    <strong style="color:#d4a04a;">How this works:</strong>
+    <!-- (2026-11-03) research exhibit, off by default; no "Recommended", no stake, no EV -->
+    <strong style="color:#e3a35a;">Research exhibit, not a recommendation.</strong>
     <span style="color: var(--text-2,#aaa); font-size:13px;">
+      These combine unvalidated model projections; no leg has a sportsbook price, so there is no edge, EV or stake here, and parlays compound the model's error.
+      Hidden by default — use the toggle to view.<br>
       Combines top 25 locks into 2-leg and 3-leg parlays. Independent across sports/games. <strong style="color:#58c878;">v2 correlation matrix</strong>:
       pitcher dominance + opp runs-UNDER gets a +5% joint-prob BOOST (negatively correlated in reality); same-team double-overs penalized 8-10%
-      (positively correlated). Anytime-goal-scorer pairs penalized 4-6%. Filtered to joint_prob ≥35% (2-leg) / ≥20% (3-leg) and edge ≥5%.
+      (positively correlated). Anytime-goal-scorer pairs penalized 4-6%. Filtered to joint_prob ≥35% (2-leg) / ≥20% (3-leg).
     </span>
   </div>
   <section class="metric-strip">
     <div class="metric"><span class="metric-num" id="m_2leg">--</span><span class="metric-label">2-Leg Parlays</span></div>
     <div class="metric"><span class="metric-num" id="m_3leg">--</span><span class="metric-label">3-Leg Parlays</span></div>
-    <div class="metric"><span class="metric-num" id="m_topedge">--</span><span class="metric-label">Top Edge</span></div>
-    <div class="metric"><span class="metric-num" id="m_balanced">--</span><span class="metric-label">Balanced Picks</span></div>
+    <div class="metric"><span class="metric-num" id="m_balanced">--</span><span class="metric-label">40-65% joint</span></div>
   </section>
 
-  <div class="tab-strip">
-    <div class="tab active" data-tab="balanced">Balanced (Recommended)</div>
+  <label style="display:block; margin: 8px 0 12px; font-size:13px; color: var(--text-2,#aaa);">
+    <input type="checkbox" id="showExhibit"> Show the parlay research exhibit (model projections, no sportsbook price, not a recommendation)
+  </label>
+  <div class="tab-strip" id="tabStrip" style="display:none;">
+    <div class="tab active" data-tab="balanced">40-65% joint</div>
     <div class="tab" data-tab="two_leg">All 2-Leg</div>
     <div class="tab" data-tab="three_leg">All 3-Leg</div>
   </div>
 
-  <section class="card">
-    <div class="card-head"><span id="tab_title">⭐ Balanced 2-Leg Parlays (40-65% Joint)</span><span class="muted" id="meta">--</span></div>
+  <section class="card" id="exhibitCard" style="display:none;">
+    <div class="card-head"><span id="tab_title">2-Leg combinations (40-65% joint)</span><span class="muted" id="meta">--</span></div>
     <div id="container" style="padding:14px;"></div>
   </section>
 </main>
@@ -99,8 +104,8 @@ function renderParlays(parlays, isBalanced) {
         <span><span class="sport-pill ${L.sport}">${L.sport}</span></span>
         <span><strong>${L.player_or_matchup || '?'}</strong></span>
         <span class="muted" style="font-size:11px;">${L.market || '?'}</span>
-        <span>${(L.prob*100).toFixed(0)}%</span>
-        <span class="muted">${fmtAmer(L.fair_american)}</span>
+        <span>${(L.prob*100).toFixed(0)}% model</span>
+        <span class="muted">no book price</span>
       </div>`
     ).join('');
     const corrFactor = p.correlation_factor != null ? p.correlation_factor : 1.0;
@@ -114,10 +119,8 @@ function renderParlays(parlays, isBalanced) {
       </div>
       ${legs}
       <div class="parlay-stats">
-        <div class="stat-cell"><div class="stat-num">${(p.joint_prob*100).toFixed(0)}%</div><div class="stat-label">Joint Prob</div></div>
-        <div class="stat-cell"><div class="stat-num">${fmtAmer(p.fair_parlay_american)}</div><div class="stat-label">Fair Odds</div></div>
-        <div class="stat-cell"><div class="stat-num">+${p.edge_pct.toFixed(1)}%</div><div class="stat-label">Edge</div></div>
-        <div class="stat-cell"><div class="stat-num">${p.fair_parlay_decimal.toFixed(2)}x</div><div class="stat-label">Decimal</div></div>
+        <div class="stat-cell"><div class="stat-num">${(p.joint_prob*100).toFixed(0)}%</div><div class="stat-label">Model joint prob</div></div>
+        <div class="stat-cell"><div class="stat-num">—</div><div class="stat-label">No book price · no EV · no stake</div></div>
       </div>
     </div>`;
   }).join('');
@@ -126,9 +129,9 @@ function renderParlays(parlays, isBalanced) {
 function showTab(tab) {
   document.querySelectorAll('.tab').forEach(t => t.classList.toggle('active', t.dataset.tab === tab));
   let rows = [], title = '', isBalanced = false;
-  if (tab === 'balanced') { rows = DATA.balanced_2_leg_picks || []; title = '⭐ Balanced 2-Leg Parlays (40-65% Joint)'; isBalanced = true; }
-  else if (tab === 'two_leg') { rows = DATA.top_2_leg_parlays || []; title = '🎰 All 2-Leg Parlays (by edge)'; }
-  else if (tab === 'three_leg') { rows = DATA.top_3_leg_parlays || []; title = '🎲 3-Leg Parlays (high variance, high reward)'; }
+  if (tab === 'balanced') { rows = DATA.balanced_2_leg_picks || []; title = '2-Leg combinations (40-65% joint) — research exhibit'; isBalanced = true; }
+  else if (tab === 'two_leg') { rows = DATA.top_2_leg_parlays || []; title = 'All 2-leg combinations — research exhibit'; }
+  else if (tab === 'three_leg') { rows = DATA.top_3_leg_parlays || []; title = '3-leg combinations — research exhibit'; }
   document.getElementById('tab_title').textContent = title;
   document.getElementById('container').innerHTML = renderParlays(rows, isBalanced);
   document.getElementById('meta').textContent = `${rows.length} parlays shown`;
@@ -140,12 +143,15 @@ fetch("data/cross_sport_parlays.json?t=" + Date.now(), { cache: "no-cache" })
     DATA = d;
     document.getElementById('m_2leg').textContent = d.n_2_leg || 0;
     document.getElementById('m_3leg').textContent = d.n_3_leg || 0;
-    const top = (d.top_2_leg_parlays || [])[0];
-    document.getElementById('m_topedge').textContent = top ? '+' + top.edge_pct.toFixed(0) + '%' : '--';
     document.getElementById('m_balanced').textContent = (d.balanced_2_leg_picks || []).length;
     document.getElementById('status').textContent = `${d.n_2_leg} 2-leg + ${d.n_3_leg} 3-leg parlays from ${d.n_input_legs || 0} input legs · ${(d.generated_at||'').slice(0,19).replace('T',' ')}`;
     showTab('balanced');
     document.querySelectorAll('.tab').forEach(t => t.addEventListener('click', () => showTab(t.dataset.tab)));
+    const tog = document.getElementById('showExhibit');
+    tog.addEventListener('change', () => {
+      document.getElementById('tabStrip').style.display = tog.checked ? '' : 'none';
+      document.getElementById('exhibitCard').style.display = tog.checked ? '' : 'none';
+    });
   })
   .catch(err => {
     document.getElementById('container').innerHTML = `<p class="muted">Could not load cross_sport_parlays.json (${err.message}).</p>`;

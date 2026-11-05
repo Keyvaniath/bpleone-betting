@@ -28,7 +28,9 @@ NOW = dt.datetime.utcnow()
 
 # code, label, page, ledger_keys, state_file, pot_history_file, prop_probe_globs
 SPORTS: List[Tuple[str, str, str, List[str], Optional[str], Optional[str], List[str]]] = [
-    ("MLB",      "MLB",            "mlb.html",      ["MLB", "MLB-PP"], "matchups.json",        "player_pot_history.json", ["mlb_*props*.json", "mlb_*totals*.json"]),
+    # (2026-11-03) MLB-PP left the MLB row: it is the unverified PrizePicks import
+    # (graded at the -136 break-even, feed dead since 7/9) and never merges into a headline.
+    ("MLB",      "MLB",            "mlb.html",      ["MLB"],           "matchups.json",        "player_pot_history.json", ["mlb_*props*.json", "mlb_*totals*.json"]),
     ("WNBA",     "WNBA",           "wnba.html",     ["WNBA"],          "wnba_state.json",      None,                      ["wnba_*props*.json"]),
     ("GOLF",     "Golf",           "golf.html",     ["GOLF"],          "golf_state.json",      "golf_pot_history.json",   ["golf_*props*.json", "golf_bestbet.json"]),
     ("WORLDCUP", "World Cup",      "worldcup.html", ["WORLDCUP"],      "worldcup_cards.json",  None,                      ["soccer_goalscorer_props.json", "worldcup_cards.json"]),
@@ -91,13 +93,59 @@ def _fresh_h(d: Any) -> Optional[float]:
         return None
 
 
+def _today_et() -> dt.date:
+    """(2026-11-03) Today's date in US Eastern time (zoneinfo, else UTC-5)."""
+    try:
+        from zoneinfo import ZoneInfo
+        return dt.datetime.now(ZoneInfo("America/New_York")).date()
+    except Exception:
+        return (dt.datetime.utcnow() - dt.timedelta(hours=5)).date()
+
+
+def _et_date(v: Any) -> Optional[dt.date]:
+    """(2026-11-03) ISO timestamp (UTC 'Z' or offset) or bare date -> ET calendar date."""
+    if not v:
+        return None
+    s = str(v).strip()
+    try:
+        if len(s) == 10:
+            return dt.date.fromisoformat(s)
+        t = dt.datetime.fromisoformat(s.replace("Z", "+00:00"))
+        if t.tzinfo is None:
+            t = t.replace(tzinfo=dt.timezone.utc)
+        try:
+            from zoneinfo import ZoneInfo
+            return t.astimezone(ZoneInfo("America/New_York")).date()
+        except Exception:
+            return (t.astimezone(dt.timezone.utc) - dt.timedelta(hours=5)).date()
+    except Exception:
+        return None
+
+
 def _games_today(state_file: Optional[str]) -> Tuple[int, Optional[float]]:
     if not state_file:
         return 0, None
     s = _load(os.path.join(DATA_DIR, state_file))
     games = (s.get("games") or s.get("events") or s.get("matches")
              or s.get("cards") or s.get("upcoming_matches") or [])
-    n = len(games) if isinstance(games, list) else 0
+    games = games if isinstance(games, list) else []
+    # (2026-11-03) count only games ON TODAY'S ET DATE (or in progress). State files
+    # also carry last week's finals and next week's fixtures (WNBA 11/01 final, CWS
+    # 6/22 final, CS 11/09), which made off-season desks read LIVE. A game with no
+    # date field at all still counts (no evidence either way).
+    today = _today_et()
+    n = 0
+    for g in games:
+        if not isinstance(g, dict):
+            n += 1
+            continue
+        if str(g.get("state") or "").lower() in ("in", "live", "inprogress", "in_progress"):
+            n += 1
+            continue
+        d = _et_date(g.get("date") or g.get("start_time") or g.get("commence_time")
+                     or g.get("game_date") or g.get("startTime"))
+        if d is None or d == today:
+            n += 1
     # active_tournament style (golf): in progress counts as "a game on the board"
     at = s.get("active_tournament") if isinstance(s, dict) else None
     if not n and isinstance(at, dict) and at.get("name"):
@@ -112,8 +160,21 @@ def _props_count(globs: List[str]) -> int:
             if f in seen:
                 continue
             seen.add(f)
-            total += _list_len(_load(f))
+            d = _load(f)
+            # (2026-11-03) a props file older than 48h is a leftover, not today's board
+            age = _fresh_h(d)
+            if age is not None and age > 48:
+                continue
+            total += _list_len(d)
     return total
+
+
+# (2026-11-03) Price class of each desk's ledger record. Only MLB game lines and the
+# NFL desk game lines carry a sportsbook price (class A/B); everything else -- all
+# player props and every other sport -- is graded at the model's own fair odds (C),
+# so its ROI is calibration, not a betting ROI. by_sport carries no class split.
+BOOK_PRICED_MIX = {"MLB": "mixed: B game lines + C props", "NFL": "mixed: A/B desk game lines + C props"}
+LIVE_STATE_MAX_H = 36   # (2026-11-03) a state file older than this can't show "today"
 
 
 def _ledger_track(keys: List[str], ledger: Dict[str, Any]) -> Dict[str, Any]:
@@ -130,7 +191,8 @@ def _ledger_track(keys: List[str], ledger: Dict[str, Any]) -> Dict[str, Any]:
         net += float(v.get("net_units") or 0)
     decided = wins + losses
     return {"settled": settled, "wins": wins, "losses": losses, "pending": pending,
-            "roi_pct": round(net / decided * 100, 1) if decided else None}
+            "roi_pct": round(net / decided * 100, 1) if decided else None,
+            "hit_rate": round(wins / decided, 4) if decided else None}
 
 
 def _pot_track(pot_file: Optional[str]) -> Dict[str, Any]:
@@ -156,11 +218,14 @@ def run() -> Dict[str, Any]:
         settled = max(led["settled"], pot["settled"])
         pending = max(led["pending"], (pot.get("pending") or 0))
         tracking = settled > 0
-        # status: LIVE if games/props today; else IN-SEASON if recently tracking/
-        # pending; else OFF-SEASON.
-        if n_games > 0 or n_props > 0:
+        # status (2026-11-03): LIVE only when the desk's state shows games TODAY and
+        # that state is fresh -- a leftover props file or an old settled record no
+        # longer makes a dormant desk read LIVE. IN-SEASON = picks pending or fresh
+        # props on the board; else OFF-SEASON.
+        fresh = state_fresh is None or state_fresh <= LIVE_STATE_MAX_H
+        if n_games > 0 and fresh:
             status = "LIVE"
-        elif pending > 0 or settled > 0:
+        elif pending > 0 or (n_props > 0 and fresh):
             status = "IN-SEASON"
         else:
             status = "OFF-SEASON"
@@ -198,6 +263,10 @@ def run() -> Dict[str, Any]:
             "pending": pending,
             "record": f"{led['wins']}-{led['losses']}" if led["wins"] + led["losses"] else None,
             "roi_pct": led["roi_pct"],
+            "hit_rate": led["hit_rate"],
+            # (2026-11-03) price basis of the ledger record; class C -> calibration only
+            "price_basis": BOOK_PRICED_MIX.get(code, "C: model fair odds"),
+            "roi_is_betting_roi": False,
             "track_status": track_status,
             "track_note": track_note,
             "state_fresh_h": round(state_fresh, 1) if state_fresh is not None else None,
@@ -216,10 +285,11 @@ def run() -> Dict[str, Any]:
             "n_games_all_sports": sum(r["games_today"] for r in rows),
             "n_strong_edges_all_sports": sum(r["projections"] for r in rows),
         },
-        "note": ("LIVE = producing picks/props right now; IN-SEASON = active but no slate "
-                 "today; OFF-SEASON = dormant. TRACKING = settles a real record (ledger or "
-                 "pot_history). A LIVE sport that isn't tracking is making picks with no "
-                 "outcome feed to grade them."),
+        "note": ("LIVE = games on today's (fresh) board; IN-SEASON = picks pending or fresh "
+                 "props but no game today; OFF-SEASON = dormant. TRACKING = settles a real "
+                 "record (ledger or pot_history). Per-sport ROI mixes price classes and is "
+                 "mostly at the model's own fair odds (class C) -- calibration, not a "
+                 "betting ROI. MLB-PP (unverified PrizePicks) is not in any row."),   # (2026-11-03)
         "sports": rows,
     }
     os.makedirs(DATA_DIR, exist_ok=True)

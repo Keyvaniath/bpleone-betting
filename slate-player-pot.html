@@ -55,20 +55,23 @@
 </header>
 <main class="container">
   <section class="page-head">
-    <h1>🎯 Slate Player Pot — Every Sport, Every Prop</h1>
+    <h1>🎯 Slate Player Projections — Today's Slate Only</h1>
     <p class="muted" id="status">Loading unified board…</p>
   </section>
   <section class="card" style="margin-bottom: 18px;">
     <div class="card-head"><span>📋 What this is</span></div>
     <div style="padding:14px 18px; font-size:13px; line-height:1.7; color: var(--text-2,#aaa);">
-      <p>Every prop projection at 60-92% probability across <strong>10 sources</strong>: MLB extended, MLB pitcher matchup, MLB batter logs, NBA extended, NBA real props, NHL extended, PrizePicks board, LoL/CS/KBO player props.</p>
-      <p>One ranked board. Filter by sport, search by player. Refreshes every CI cycle.</p>
+      <!-- (2026-11-03) honest framing: model projections, gated on today's real slate -->
+      <p><strong style="color:#e3a35a;">Model projection — unvalidated, no sportsbook price, not a recommendation.</strong>
+      Every row is the model's own probability at a line the model chose; no sportsbook prop price exists in the free feeds, so there is no edge and no stake here.</p>
+      <p>A sport appears only when it has games on today's (ET) slate. Sports with no games today are listed below with the reason.</p>
+      <div id="gate" class="muted" style="font-size:12px;"></div>
     </div>
   </section>
   <section class="metric-strip">
-    <div class="metric"><span class="metric-num" id="m_total">--</span><span class="metric-label">Total Picks</span></div>
-    <div class="metric"><span class="metric-num green" id="m_elite">--</span><span class="metric-label">Elite (≥85%)</span></div>
-    <div class="metric"><span class="metric-num gold" id="m_strong">--</span><span class="metric-label">Strong (70-85%)</span></div>
+    <div class="metric"><span class="metric-num" id="m_total">--</span><span class="metric-label">Projections</span></div>
+    <div class="metric"><span class="metric-num" id="m_elite">--</span><span class="metric-label">Model ≥85%</span></div>
+    <div class="metric"><span class="metric-num" id="m_strong">--</span><span class="metric-label">Model 70-85%</span></div>
     <div class="metric"><span class="metric-num" id="m_sport_top">--</span><span class="metric-label">Top Sport</span></div>
   </section>
   <section class="card" style="margin-bottom: 18px;">
@@ -86,7 +89,7 @@
     </div>
   </section>
   <section class="card">
-    <div class="card-head"><span>📊 Ranked Picks</span><span class="muted" id="meta">--</span></div>
+    <div class="card-head"><span>📊 Model projections (not picks)</span><span class="muted" id="meta">--</span></div>
     <div id="container"></div>
   </section>
 </main>
@@ -94,11 +97,7 @@
 <script>
 let ALL_PICKS = [];
 
-function probClass(p) {
-  if (p >= 0.85) return 'elite';
-  if (p >= 0.70) return 'strong';
-  return 'solid';
-}
+function probClass(p) { return 'solid'; }  // (2026-11-03) no tier colours on unvalidated projections
 
 function render(picks) {
   document.getElementById("m_total").textContent = picks.length;
@@ -109,10 +108,14 @@ function render(picks) {
   const top = Object.entries(bySport).sort((a,b) => b[1]-a[1])[0];
   document.getElementById("m_sport_top").textContent = top ? `${top[0]} ${top[1]}` : "--";
 
-  let html = `<div class="pick-row head"><span>Sport</span><span>Player</span><span>Team</span><span>Market</span><span>Prob</span><span>Fair</span><span>Source</span></div>`;
+  if (!picks.length) {
+    document.getElementById("container").innerHTML = '<p class="muted" style="padding:14px;">No projections: no sport with a model board has games on today\'s slate.</p>';
+    document.getElementById("meta").textContent = '0 projections';
+    return;
+  }
+  let html = `<div class="pick-row head"><span>Sport</span><span>Player</span><span>Team</span><span>Market</span><span>Model P</span><span>Price</span><span>Source</span></div>`;
   for (const p of picks.slice(0, 300)) {
-    const fairStr = (p.fair_american && typeof p.fair_american === 'number')
-      ? (p.fair_american > 0 ? '+'+p.fair_american : ''+p.fair_american) : '--';
+    const fairStr = 'no book price';
     html += `<div class="pick-row">
       <span><span class="sport-pill ${p.sport}">${p.sport}</span></span>
       <span><strong>${p.player}</strong></span>
@@ -127,7 +130,7 @@ function render(picks) {
     html += `<p class="muted" style="padding:14px;">Showing top 300 of ${picks.length}. Apply filters to narrow.</p>`;
   }
   document.getElementById("container").innerHTML = html;
-  document.getElementById("meta").textContent = `${picks.length} picks · ${(new Date()).toLocaleTimeString()}`;
+  document.getElementById("meta").textContent = `${picks.length} projections · ${(new Date()).toLocaleTimeString()}`;
 }
 
 function applyFilters() {
@@ -152,7 +155,11 @@ fetch("data/slate_player_pot.json?t=" + Date.now(), { cache: "no-cache" })
       opt.value = s; opt.textContent = s;
       sel.appendChild(opt);
     }
-    document.getElementById("status").textContent = `${ALL_PICKS.length} picks across ${sports.length} sports · generated ${(d.generated_at||'').slice(0,19).replace('T',' ')}`;
+    document.getElementById("status").textContent = `${ALL_PICKS.length} model projections across ${sports.length} sports with games today (${d.date_et || 'ET'}) · generated ${(d.generated_at||'').slice(0,19).replace('T',' ')}`;
+    const g = d.slate_gate || {}, dr = d.dropped_no_slate_today || {};
+    const closed = Object.entries(g).filter(([s, v]) => !v.open)
+      .map(([s, v]) => `${s}: ${v.reason || 'no games today' + (v.next_game_date ? ' (next ' + v.next_game_date + ')' : '')}${dr[s] ? ' — ' + dr[s] + ' rows withheld' : ''}`);
+    document.getElementById("gate").textContent = closed.length ? 'Not shown — ' + closed.join(' · ') : '';
     render(ALL_PICKS);
   })
   .catch(err => {

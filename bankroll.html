@@ -184,12 +184,12 @@
     <div class="card">
       <div class="card-head"><span>⚙️ Profile Inputs</span></div>
       <div id="bkRealRow" style="display:none; margin-bottom: 14px; border:1px solid rgba(88,200,120,.3); border-radius:8px; padding:10px 12px;">
-        <div class="muted" style="font-size:10px; text-transform:uppercase; letter-spacing:.5px; margin-bottom:4px;">For reference — the real Alpha record</div>
+        <div class="muted" style="font-size:10px; text-transform:uppercase; letter-spacing:.5px; margin-bottom:4px;">For reference — the curated record (1u flat, sportsbook prices)</div><!-- (2026-11-03) was mislabelled "the real Alpha record"; the chip reads ledger_summary.curated -->
         <div id="bkRealMeta" style="font-family:'JetBrains Mono',monospace; font-size:12px;"></div>
-        <p class="muted" style="font-size:10.5px; margin:6px 0 0;">That in-sample edge is far above anything sustainable — compounding it here would print fantasy numbers. Replay it bet-by-bet (non-compounding) in the <a href="strategy-sim.html">Strategy Simulator</a> instead; use this MC for realistic forward profiles (53–58%).</p>
+        <p class="muted" style="font-size:10.5px; margin:6px 0 0;">The curated record is not evidence of an edge to plug in here (see its ROI above). This Monte Carlo shows the variance of whatever win rate and price <i>you</i> assume — it is an illustration, not a forecast of our results. Replay the real ledger bet-by-bet in the <a href="strategy-sim.html">Strategy Simulator</a>.<!-- (2026-11-03) removed the "in-sample edge" / "53–58%" framing --></p>
       </div>
       <label style="display:block; margin-bottom: 12px;">
-        <span class="muted" style="display:block; margin-bottom:4px;">Win Probability (your typical edge)</span>
+        <span class="muted" style="display:block; margin-bottom:4px;">Win Probability (your assumption)</span>
         <input id="bkProb" type="number" min="0.50" max="0.80" step="0.01" value="0.55" style="width:100%; padding:10px 12px; background:var(--bg-1); border:1px solid var(--line); color:var(--text); border-radius:8px; font-family:'JetBrains Mono', monospace;">
       </label>
       <label style="display:block; margin-bottom: 12px;">
@@ -221,7 +221,7 @@
         <div class="factor"><span class="f-name">Median Max DD</span><span class="f-val" id="bkMedDD">—</span></div>
         <div class="factor"><span class="f-name">P90 Max DD</span><span class="f-val negative" id="bkP90DD">—</span></div>
         <div class="factor"><span class="f-name">Ruin Probability</span><span class="f-val" id="bkRuin">—</span></div>
-        <div class="factor"><span class="f-name">Expected ROI</span><span class="f-val positive" id="bkROI">—</span></div>
+        <div class="factor"><span class="f-name">Simulated ROI (your inputs)</span><span class="f-val" id="bkROI">—</span></div>
       </div>
     </div>
   </section>
@@ -229,8 +229,19 @@
   <script>
   // Real-record context chip. Avg win payout derived exactly from the ledger's own
   // convention (win pays b, loss -1): net = wins*b - losses  =>  b = (net+losses)/wins.
-  // Deliberately NOT auto-filled into the MC: compounding an in-sample ~20pp edge
-  // produces fantasy bankrolls; the strategy simulator replays it non-compounding.
+  // Deliberately NOT auto-filled into the MC: the curated record is not a proven
+  // edge (2026-11-03: "~20pp edge" claim removed); the strategy simulator replays it.
+  // The record is graded at sportsbook prices (price class B), so b is an avg book price.
+  // (2026-11-03) colour the simulated ROI by its sign whenever the MC writes it.
+  (function () {
+    const el = document.getElementById("bkROI");
+    if (!el || !window.MutationObserver) return;
+    new MutationObserver(() => {
+      const v = parseFloat(String(el.textContent).replace(/[^0-9.+-]/g, ""));
+      el.classList.remove("positive", "negative");
+      if (isFinite(v)) el.classList.add(v >= 0 ? "positive" : "negative");
+    }).observe(el, { childList: true, characterData: true, subtree: true });
+  })();
   fetch("data/ledger_summary.json", { cache: "no-cache" })
     .then(r => r.json())
     .then(d => {
@@ -241,7 +252,14 @@
       const american = b >= 1 ? Math.round(100 * b) : -Math.round(100 / b);
       document.getElementById("bkRealRow").style.display = "block";
       document.getElementById("bkRealMeta").textContent =
-        `${c.wins}-${c.losses} (${(100 * c.hit_rate).toFixed(1)}% hit) · avg fair price ${american > 0 ? "+" : ""}${american} · ${c.n_settled} settled featured plays`;
+        `${c.wins}-${c.losses} (${(100 * c.hit_rate).toFixed(1)}% hit) · avg book price ${american > 0 ? "+" : ""}${american} · ${c.n_settled} settled featured plays`;
+      // (2026-11-03) show the record's ROI, coloured by sign
+      if (c.roi_pct != null) {
+        const s = document.createElement("span");
+        s.style.color = c.roi_pct >= 0 ? "#58c878" : "#e35a5a";
+        s.textContent = ` · ${c.roi_pct >= 0 ? "+" : ""}${c.roi_pct}% ROI (${c.net_units >= 0 ? "+" : ""}${c.net_units}u)`;
+        document.getElementById("bkRealMeta").appendChild(s);
+      }
     }).catch(() => {});
   </script>
 

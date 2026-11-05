@@ -9,6 +9,13 @@ Joint probability assumes legs are mostly independent (different matches),
 which is reasonable for LoL since each series is independent.
 
 Output: data/lol_parlays.json
+
+PARLAY BOARD RETIRED (2026-11-03): legs are unvalidated ELO projections with
+no sportsbook price, TBD-vs-TBD placeholder series were included as 50% legs,
+and "EV" was the joint model prob against the product of the model's own fair
+odds. `parlays` is now always empty (no parlay is recommended by default); the
+combinations survive only under `research_exhibit` with joint model
+probability -- no price, no EV.
 """
 from __future__ import annotations
 import os, json, datetime as dt, math
@@ -52,7 +59,10 @@ def _decimal(american) -> float:
 def run() -> Dict[str, Any]:
     props = _load(PROPS_PATH)
     matches = [m for m in (props.get("predictions") or [])
-                if not m.get("is_completed")]
+                if not m.get("is_completed")
+                # (2026-11-03) never a placeholder bracket slot
+                and str(m.get("team_a") or "").strip().upper() not in ("", "TBD", "TBA")
+                and str(m.get("team_b") or "").strip().upper() not in ("", "TBD", "TBA")]
     legs: List[Dict[str, Any]] = []
     for m in matches:
         for side, prob, fair, team, opp in (
@@ -92,38 +102,39 @@ def run() -> Dict[str, Any]:
     for n in range(2, MAX_LEGS + 1):
         for combo in combinations(pool[:30], n):    # cap pool
             joint = 1.0
-            decimal = 1.0
             for leg in combo:
                 joint *= leg["prob"]
-                decimal *= _decimal(leg["fair_american"])
             if joint < 0.01: continue
-            ev_pct = round(100 * (joint * decimal - 1), 1)
+            # (2026-11-03) ev_pct / parlay fair odds removed (EV vs own fair odds)
             sweet = 1.0 / (1.0 + abs(joint - 0.10) * 3)
             quality = sweet * (1.0 + (n - 2) * 0.08)
             parlays.append({
                 "n_legs": n,
-                "joint_prob": round(joint, 4),
-                "parlay_fair_decimal": round(decimal, 2),
-                "parlay_fair_american": _american(joint),
-                "ev_pct": ev_pct,
+                "joint_model_prob": round(joint, 4),
                 "quality_score": round(quality, 4),
                 "legs": [{
                     "kind": l["kind"],
                     "label": l["label"],
                     "team": l["team"],
                     "opponent": l["opponent"],
-                    "prob": round(l["prob"], 4),
-                    "fair_american": l["fair_american"],
+                    "model_prob": round(l["prob"], 4),
                 } for l in combo],
             })
-    parlays.sort(key=lambda p: (-p["quality_score"], -p["ev_pct"]))
+    parlays.sort(key=lambda p: -p["quality_score"])
     top = parlays[:MAX_PARLAYS]
     payload = {
         "generated_at": dt.datetime.now().isoformat(timespec="seconds"),
+        "note": ("Parlay board retired (2026-11-03): legs are unvalidated model "
+                 "projections with no sportsbook price -- not a recommendation."),
         "n_legs_in_pool": len(pool),
         "n_parlays_evaluated": len(parlays),
-        "n_parlays": len(top),
-        "parlays": top,
+        "n_parlays": 0,
+        "parlays": [],
+        "research_exhibit": {
+            "label": "research exhibit, not a recommendation -- unvalidated "
+                     "model projections, no sportsbook price, no EV",
+            "combinations": top,
+        },
     }
     os.makedirs(DATA_DIR, exist_ok=True)
     with open(OUT_PATH, "w") as f: json.dump(payload, f, indent=2)
@@ -132,6 +143,7 @@ def run() -> Dict[str, Any]:
 
 if __name__ == "__main__":
     p = run()
-    print(f"LoL parlays: {p['n_parlays']} top of {p['n_parlays_evaluated']} evaluated, {p['n_legs_in_pool']} legs in pool")
-    for i, par in enumerate(p["parlays"][:5], 1):
-        print(f"  [{i}] {par['n_legs']}-leg @ {par['parlay_fair_american']:+d} -- joint {par['joint_prob']*100:.2f}%")
+    print(f"LoL parlays: {p['n_parlays']} recommended (board retired 2026-11-03); "
+          f"{p['n_parlays_evaluated']} exhibit combos from {p['n_legs_in_pool']} legs")
+    for i, par in enumerate(p["research_exhibit"]["combinations"][:5], 1):
+        print(f"  exhibit [{i}] {par['n_legs']}-leg -- joint model prob {par['joint_model_prob']*100:.2f}%")

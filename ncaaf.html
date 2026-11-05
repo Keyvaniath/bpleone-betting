@@ -128,26 +128,30 @@ fetch("data/ncaaf_state.json?t=" + Date.now(), { cache: "no-cache" })
 fetch("data/espn_odds.json?t=" + Date.now(), { cache: "no-cache" })
   .then(r => r.json())
   .then(d => {
-    const rows = (d.games || []).filter(g => (g.sport || '').toUpperCase() === 'NCAAF');
+    // (2026-11-03) pre-game rows with a real DK moneyline only -- finished /
+    // unpriced rows (all-null market) are not book lines.
+    const rows = (d.games || []).filter(g => (g.sport || '').toUpperCase() === 'NCAAF' &&
+      (g.status || '') === 'pre' && g.market && g.market.ml_home != null && g.market.ml_away != null);
     const el = document.getElementById('ln_list');
     if (!el) return;
-    const cols = 'grid-template-columns:1.6fr 90px 90px 90px 110px;';
+    const cols = 'grid-template-columns:1.6fr 90px 90px 100px 110px;';
     if (!rows.length) {
-      el.innerHTML = '<p class="muted" style="padding:14px;">No NCAAF lines on the free feed right now — ESPN posts book lines close to game day.</p>';
+      el.innerHTML = '<p class="muted" style="padding:14px;">No pre-game NCAAF lines on the free feed right now — ESPN posts book lines close to game day.</p>';
       return;
     }
-    el.innerHTML = '<div class="sb-row head" style="' + cols + '"><span>Matchup</span><span>Away ML</span><span>Home ML</span><span>Spread</span><span>Total</span></div>' +
+    const fmtSpr = (s) => s == null ? '—' : (s > 0 ? '+' + s : String(s));   // (2026-11-03) home team's spread
+    el.innerHTML = '<div class="sb-row head" style="' + cols + '"><span>Matchup</span><span>Away ML</span><span>Home ML</span><span>Home spread</span><span>Total</span></div>' +
       rows.map(g => {
         const m = g.market || {};
         return '<div class="sb-row" style="' + cols + '">' +
           '<span><strong>' + g.matchup + '</strong></span>' +
           '<span>' + fmtAmer(m.ml_away) + '</span>' +
           '<span>' + fmtAmer(m.ml_home) + '</span>' +
-          '<span>' + (m.spread != null ? m.spread : '—') + '</span>' +
+          '<span>' + fmtSpr(m.spread) + '</span>' +
           '<span>' + (m.total != null ? 'O/U ' + m.total : '—') + '</span></div>';
       }).join('');
     const meta = document.getElementById('ln_meta');
-    if (meta) meta.textContent = rows.length + ' games · ' + (d.generated_at || '').replace('T', ' ') + ' UTC';
+    if (meta) meta.textContent = rows.length + ' pre-game games · DK snapshot ' + (d.generated_at || '').replace('T', ' ') + ' UTC';
   }).catch(() => {});
 
 // ---- EdgeStat Elo ratings + the honest backtest receipts ----
@@ -249,14 +253,16 @@ fetch("data/cfb_model.json?t=" + Date.now(), { cache: "no-cache" })
         `That is the expected outcome most days: agreeing with a sharp market is not a failure, and we would rather post nothing than manufacture a play.</p>`;
       return;
     }
-    const cols = 'grid-template-columns:1.5fr 70px 90px 90px 80px 1.6fr;';
-    list.innerHTML = '<div class="sb-row head" style="' + cols + '"><span>Matchup</span><span>Side</span><span>Book</span><span>Model</span><span>Edge</span><span>Why</span></div>' +
+    // (2026-11-03) the gap is NOT an edge: the same page shows the close beats
+    // this model and the graduation record is negative. Neutral styling.
+    const cols = 'grid-template-columns:1.5fr 70px 90px 90px 120px 1.6fr;';
+    list.innerHTML = '<div class="sb-row head" style="' + cols + '"><span>Matchup</span><span>Side</span><span>Book</span><span>Model</span><span title="model probability x book price minus 1; the closing line is sharper than this model, so this is not a validated edge">Model-vs-book gap (unvalidated — the close is sharper)</span><span>Why</span></div>' +
       edges.map(e => `<div class="sb-row" style="${cols}">
         <span><strong>${e.matchup}</strong><br><span class="muted" style="font-size:10px;">${e.game_date || ''}</span></span>
         <span style="font-weight:700;">${e.team}</span>
         <span>${fmtAmer(e.book_american)}</span>
         <span>${(e.calibrated_prob * 100).toFixed(1)}%</span>
-        <span style="color:#58c878;font-weight:700;">+${e.edge_pct}%</span>
+        <span class="muted">${e.edge_pct >= 0 ? '+' : ''}${e.edge_pct}%</span>
         <span class="muted" style="font-size:10.5px;line-height:1.5;">${e.why || ''}</span>
       </div>`).join('');
   })

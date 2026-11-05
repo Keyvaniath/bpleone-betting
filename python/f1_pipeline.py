@@ -20,17 +20,28 @@ def _http(url):
 def run() -> Dict[str, Any]:
     sb = _http(URL)
     if not sb:
-        out = {"generated_at": dt.datetime.now().isoformat(timespec="seconds"), "active": False, "n_races": 0, "races": [], "error": "ESPN F1 unreachable"}
+        out = {"generated_at": dt.datetime.now(dt.timezone.utc).replace(tzinfo=None).isoformat(timespec="seconds"), "active": False, "n_races": 0, "races": [], "error": "ESPN F1 unreachable"}
         os.makedirs(DATA_DIR, exist_ok=True)
         with open(OUT_PATH, "w") as f: json.dump(out, f, indent=2)
         return out
 
     races = []
     for ev in (sb.get("events") or []):
-        status = (ev.get("status") or {}).get("type", {})
         comps = ev.get("competitions") or []
-        first = comps[0] if comps else {}
-        competitors = first.get("competitors") or []
+        # (2026-11-03) an F1 event lists every session (FP1, FP2, FP3, Qual,
+        # Race) as a competition; comps[0] is FP1, so the card printed practice
+        # as "Final" with a practice start time. Take the competition whose
+        # type is the Race (abbreviation "Race" / type id 3); if ESPN has not
+        # listed a race session, fall back to the latest session and say which.
+        def _ctype(c):
+            t = c.get("type") or {}
+            return str(t.get("abbreviation") or ""), str(t.get("id") or "")
+        race_c = next((c for c in comps if _ctype(c)[0].lower() == "race" or _ctype(c)[1] == "3"), None)
+        first = race_c or (comps[-1] if comps else {})
+        session = _ctype(first)[0] or None
+        status = ((first.get("status") or {}).get("type") or {}) or (ev.get("status") or {}).get("type", {})
+        competitors = sorted(first.get("competitors") or [],
+                             key=lambda c: (c.get("order") is None, c.get("order") or 0))
         # F1 events have many drivers; pull top 10 by position
         drivers = []
         for c in competitors[:15]:
@@ -45,15 +56,19 @@ def run() -> Dict[str, Any]:
             "id": ev.get("id"),
             "name": ev.get("name"),
             "short_name": ev.get("shortName"),
-            "start_date": ev.get("date"),
+            "session": session,                                  # (2026-11-03) "Race" unless ESPN lacks one
+            "is_race_session": race_c is not None,               # (2026-11-03)
+            "weekend_start": ev.get("date"),                     # (2026-11-03) FP1 time, kept for reference
+            "start_date": first.get("date") or ev.get("date"),   # (2026-11-03) the selected session's start
             "venue": (ev.get("venue") or {}).get("fullName") or (first.get("venue") or {}).get("fullName"),
             "status": status.get("description"),
             "is_complete": status.get("completed", False),
             "drivers": drivers[:10],
         })
 
+    # (2026-11-03) generated_at is UTC (f1.html labels it UTC; it was local time).
     payload = {
-        "generated_at": dt.datetime.now().isoformat(timespec="seconds"),
+        "generated_at": dt.datetime.now(dt.timezone.utc).replace(tzinfo=None).isoformat(timespec="seconds"),
         "active": len(races) > 0,
         "league": "F1",
         "n_races": len(races),

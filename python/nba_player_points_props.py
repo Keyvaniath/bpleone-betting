@@ -122,11 +122,29 @@ TEAM_FULL = {
 }
 
 
+# (2026-11-03) ESPN's display names ("LA Clippers") and bare abbreviations.
+_TEAM_ALIAS = {"la clippers": "LAC", "la lakers": "LAL"}
+_KNOWN_ABBR = set(TEAM_FULL.values())
+_ABBR_FIX = {"GS": "GSW", "NY": "NYK", "NO": "NOP", "SA": "SAS", "UTAH": "UTA", "WSH": "WAS"}
+
+
 def _abbr(name: str) -> str:
-    """Normalize team name to abbreviation."""
+    """Normalize team name to abbreviation.
+
+    (2026-11-03) the old fallback was name[:3].upper(), so "LA Clippers" became
+    "LA " (a team that matches nothing). Now: full name -> alias -> a bare
+    abbreviation -> a unique nickname match (last word); else "" (skip the game
+    rather than invent a code)."""
     if not name: return ""
     n = name.lower().strip()
-    return TEAM_FULL.get(n, name[:3].upper())
+    if n in TEAM_FULL: return TEAM_FULL[n]
+    if n in _TEAM_ALIAS: return _TEAM_ALIAS[n]
+    up = name.strip().upper()
+    if up in _ABBR_FIX: return _ABBR_FIX[up]
+    if up in _KNOWN_ABBR: return up
+    nick = n.split()[-1] if n.split() else ""
+    hits = {ab for full, ab in TEAM_FULL.items() if nick and full.split()[-1] == nick}
+    return hits.pop() if len(hits) == 1 else ""
 
 
 def _load(p):
@@ -160,6 +178,7 @@ def run() -> Dict[str, Any]:
     games = upcoming_games(state)
 
     rows: List[Dict[str, Any]] = []
+    n_excluded_no_games = 0   # (2026-11-03)
 
     for g in games:
         status = (g.get("status") or g.get("state") or "").lower()
@@ -205,6 +224,12 @@ def run() -> Dict[str, Any]:
                 n_games_real = stat["n_games"]
             else:
                 base_ppg = info["ppg"]
+            # (2026-11-03) a player with 0 games this season is projected purely
+            # off the hard-coded 2024-25 table (e.g. Haliburton 18.6, out all
+            # season) -- not a projection of anything real. Exclude him.
+            if ppg_source == "fallback" or not n_games_real:
+                n_excluded_no_games += 1
+                continue
 
             projected_pts = base_ppg * pace_factor * matchup_factor
             sigma = _nd.sd("pts", projected_pts)   # fitted real spread (2026-11-03); was max(4, 25%)
@@ -261,9 +286,17 @@ def run() -> Dict[str, Any]:
         "n_players_projected": len(rows),
         "n_strong_edges": len(strong),
         "n_players_in_db": len(PLAYER_DB),
-        "method_note": "Player PPG × pace × opp_DRtg × matchup factor. Normal CDF with "
-                       "sigma scaled to projected (~25%% of mean). STRONG requires 10%%+ "
-                       "edge against -120 book lines.",
+        "n_excluded_no_games": n_excluded_no_games,   # (2026-11-03)
+        # (2026-11-03) honest note: the player pool is a hand-typed 2024-25
+        # table; PPG = this season's ESPN per-game blended toward last season
+        # by games played (few real games -> mostly prior). No sportsbook prop
+        # price exists, so this is an unvalidated model projection, not a pick.
+        "status": "unvalidated_model_projection",
+        "method_note": "UNVALIDATED MODEL PROJECTION -- no sportsbook price, not a pick. "
+                       "Pool = a hand-typed 2024-25 player table; PPG = ESPN this-season "
+                       "per-game blended toward last season by games played (players with "
+                       "0 games this season excluded) x pace x opp DRtg; Normal spread "
+                       "from the fitted NBA dispersion.",
         "rows": rows,
         "strong_edges": strong,
     }

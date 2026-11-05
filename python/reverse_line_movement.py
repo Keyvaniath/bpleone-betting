@@ -1,6 +1,7 @@
 """
 EdgeStat -- Reverse Line Movement (RLM) detector.
 
+(2026-11-03) DISABLED -- emits no picks: there is no real public-betting-% source.
 Sharp-money signal: when a line moves AGAINST the public bet percentage, that's
 sharp action. Example: 73% of bets on Yankees -150, but line moves to -135 ->
 RLM. Books are protecting against sharps, telling us where they expect the
@@ -54,7 +55,41 @@ def _to_pp(odds_open: float, odds_now: float) -> float:
     return b - a  # positive = line shortened on this side
 
 
+DISABLED_REASON = (
+    "Disabled 2026-11-03: reverse line movement needs the PUBLIC betting percentage, and no "
+    "real public-% (ticket/handle) source exists in our feeds. The old 'public_pct' was the "
+    "OPENING IMPLIED PROBABILITY of the favourite, so every 'RLM' was just a favourite whose "
+    "line drifted -- not books fading the public. No picks are emitted until a real "
+    "public-% feed is wired.")
+
+
 def run() -> Dict[str, Any]:
+    """(2026-11-03) Emits NO picks (see DISABLED_REASON). Shape-identical payload
+    so every consumer (all_picks_tracker, alerts_feed, pages) reads an empty list."""
+    out = {
+        "generated_at": dt.datetime.utcnow().isoformat(timespec="seconds"),
+        "disabled": True,
+        "reason": DISABLED_REASON,
+        "n_total_evaluated": 0,
+        "n_rlm_picks": 0,
+        "n_strong_rlm": 0,
+        "thresholds": {
+            "min_public_pct": MIN_PUBLIC_PCT,
+            "min_line_move_pp": MIN_LINE_MOVE_PP,
+            "strong_threshold_pp": STRONG_RLM_LINE_PP,
+        },
+        "rlm_picks": [],
+        "strong_only": [],
+        "note": DISABLED_REASON,
+    }
+    os.makedirs(os.path.dirname(OUT), exist_ok=True)
+    with open(OUT, "w") as f: json.dump(out, f, indent=2)
+    return out
+
+
+def _run_legacy_detector() -> Dict[str, Any]:
+    """The pre-2026-11-03 detector, kept for reference only; never called. Its
+    `public_pct` is the opening implied probability, NOT public betting %."""
     clv = _load(os.path.join(DATA_DIR, "live_clv.json"))
 
     # live_clv.games is a list of per-game snapshot histories

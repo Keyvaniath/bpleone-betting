@@ -135,9 +135,21 @@ document.querySelectorAll(".mode-pill").forEach(p => {
 
 function calculateHedge() {
   const origStake = parseFloat(document.getElementById("origStake").value) || 0;
-  const origOdds = parseFloat(document.getElementById("origOdds").value) || 0;
-  const hedgeOdds = parseFloat(document.getElementById("hedgeOdds").value) || 0;
+  const origOdds = parseFloat(document.getElementById("origOdds").value);
+  const hedgeOdds = parseFloat(document.getElementById("hedgeOdds").value);
   const partialPct = parseFloat(document.getElementById("partialPct").value) || 50;
+
+  // (2026-11-03) American odds must satisfy |odds| >= 100; anything else is not a
+  // price (decimalFromAmerican silently returned 1.0 and printed nonsense stakes).
+  const bad = [["Original bet odds", origOdds], ["Hedge odds", hedgeOdds]]
+    .filter(([, v]) => !isFinite(v) || Math.abs(v) < 100);
+  if (bad.length || origStake <= 0) {
+    const msgs = bad.map(([n, v]) => `${n} ${isFinite(v) ? v : "(blank)"} is not valid American odds — use +100 or higher, or -100 or lower.`);
+    if (origStake <= 0) msgs.push("Original stake must be greater than 0.");
+    document.getElementById("resultBox").innerHTML =
+      `<p style="color:#e35a5a; font-weight:600;">${msgs.join("<br>")}</p>`;
+    return;
+  }
 
   const origDec = decimalFromAmerican(origOdds);
   const hedgeDec = decimalFromAmerican(hedgeOdds);

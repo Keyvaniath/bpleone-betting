@@ -64,7 +64,8 @@
   </section>
 
   <section class="card" style="margin-bottom: 18px;">
-    <div class="card-head"><span>🔥 Pre-Game Alerts (form-aligned, sweet-spot)</span><span class="muted" id="preMeta">--</span></div>
+    <!-- (2026-11-03) only game-lines-desk probabilities with a passing verdict, at the DK price -->
+    <div class="card-head"><span>🔥 Pre-Game Alerts (game-lines desk, DraftKings priced)</span><span class="muted" id="preMeta">--</span></div>
     <div id="preList"><p class="muted" style="padding:14px;">Loading…</p></div>
   </section>
 
@@ -125,20 +126,21 @@ Promise.all([
   const preAlerts = pre.alerts || [];
   if (preAlerts.length) {
     const fmtAmer = (a) => a == null ? "—" : (a >= 0 ? "+" + a : String(a));
-    document.getElementById("preMeta").textContent =
-      `${(pre.by_confidence || {}).HIGH || 0} HIGH · ${(pre.by_confidence || {}).MED || 0} MED`;
+    document.getElementById("preMeta").textContent = `${preAlerts.length} alerts`;
     document.getElementById("preList").innerHTML = preAlerts.slice(0, 30).map(a => {
-      const cls = a.confidence === 'HIGH' ? 'HOT' : 'HEATING_UP';
-      return `<div class="alert-card ${cls}">
-        <span class="type-pill" style="background:${a.confidence === 'HIGH' ? '#58c878' : '#b450dc'}; color:#fff;">${a.confidence}</span>
+      const obs = a.odds_observed_at ? new Date(String(a.odds_observed_at).replace(/Z?$/, 'Z')).toLocaleTimeString('en-US', {timeZone:'America/New_York', hour:'numeric', minute:'2-digit'}) + ' ET' : '—';
+      return `<div class="alert-card HEATING_UP">
+        <span class="type-pill" style="background:#b450dc; color:#fff;">${a.desk_verdict || ''}</span>
         <strong>${a.team} ${a.side}</strong> vs ${a.opponent}
         <span class="muted" style="font-size:10px;"> · ${a.sport}</span>
-        <span style="float:right; font-family:'JetBrains Mono',monospace; color:#d4a04a;">${fmtAmer(a.fair_american)} · P=${(a.p_pick_side*100).toFixed(1)}%</span>
-        <div style="margin-top:4px; font-size: 11px; color: var(--text-2, #aaa);">${a.matchup} · L10: ${a.team_l10 || '—'} vs ${a.opp_l10 || '—'} · streak ${a.team_streak || '—'} ${a.form_aligned ? '[form aligned]' : ''}</div>
+        <span style="float:right; font-family:'JetBrains Mono',monospace; color:#d4a04a;">DK ${fmtAmer(a.dk_american)} (obs ${obs}) · desk P=${(a.p_pick_side*100).toFixed(1)}%</span>
+        <div style="margin-top:4px; font-size: 11px; color: var(--text-2, #aaa);">${a.matchup} · ${a.game_time || ''}</div>
       </div>`;
     }).join("");
   } else {
-    document.getElementById("preList").innerHTML = '<p class="muted" style="padding:14px;">No pre-game alerts right now.</p>';
+    document.getElementById("preMeta").textContent = '0 alerts';
+    const esc = s => String(s == null ? '' : s).replace(/[&<>]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
+    document.getElementById("preList").innerHTML = `<p class="muted" style="padding:14px;">${esc(pre.note || 'No pre-game alerts right now.')}</p>`;
   }
   renderAlerts();
 });

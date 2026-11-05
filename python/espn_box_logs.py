@@ -288,6 +288,7 @@ def run(cfg: Dict[str, Any], days_back: int = 8, anchor_date: Optional[str] = No
             continue
         date, game = _game_result(summ)
         if game:
+            game["id"] = str(eid)    # ESPN event id: graders settle by it (2026-11-03)
             gk = (game["date"], game["home_abbrev"], game["away_abbrev"])
             if gk not in seen_game:
                 seen_game.add(gk)

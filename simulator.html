@@ -43,7 +43,8 @@
 
   <section class="page-head">
     <h1>Monte Carlo Game Simulator</h1>
-    <p>Plug in two teams. We simulate the game 10,000 times — pitch by pitch, batter by batter — and show you the full distribution of outcomes, fair prices on every market, and live edge vs. the book.</p>
+    <!-- (2026-11-03) copy matches the code: inning-level Poisson, user-entered prices -->
+    <p>Plug in two teams. We simulate the game 10,000 times with an inning-level Poisson run model and show you the full distribution of outcomes and the model's fair price on every market. To see an edge, enter the book's prices yourself — nothing here is a live sportsbook quote, and this toy model is not validated against results.</p>
   </section>
 
   <section class="grid-2">
@@ -75,12 +76,24 @@
         <input id="wind" type="number" min="-20" max="20" step="1" value="-6" style="width:100%; padding:10px 12px; background:var(--bg-1); border:1px solid var(--line); color:var(--text); border-radius:8px; font-family:'JetBrains Mono', monospace;">
       </label>
       <label style="display:block; margin-bottom: 12px;">
-        <span class="muted" style="display:block; margin-bottom:4px;">Market Total (the over/under line)</span>
+        <span class="muted" style="display:block; margin-bottom:4px;">Total line (enter the book's over/under line)</span>
         <input id="marketTotal" type="number" min="5" max="14" step="0.5" value="8.0" style="width:100%; padding:10px 12px; background:var(--bg-1); border:1px solid var(--line); color:var(--text); border-radius:8px; font-family:'JetBrains Mono', monospace;">
       </label>
       <label style="display:block; margin-bottom: 12px;">
-        <span class="muted" style="display:block; margin-bottom:4px;">Market Home ML (American odds)</span>
-        <input id="marketHomeML" type="number" min="-500" max="500" step="1" value="-148" style="width:100%; padding:10px 12px; background:var(--bg-1); border:1px solid var(--line); color:var(--text); border-radius:8px; font-family:'JetBrains Mono', monospace;">
+        <span class="muted" style="display:block; margin-bottom:4px;">Book price — Home ML (American odds; leave empty for fair prices only)</span>
+        <input id="marketHomeML" type="number" min="-1000" max="1000" step="1" value="" placeholder="enter a book price" style="width:100%; padding:10px 12px; background:var(--bg-1); border:1px solid var(--line); color:var(--text); border-radius:8px; font-family:'JetBrains Mono', monospace;">
+      </label>
+      <label style="display:block; margin-bottom: 12px;">
+        <span class="muted" style="display:block; margin-bottom:4px;">Book price — Over (American odds)</span>
+        <input id="marketOverPrice" type="number" min="-1000" max="1000" step="1" value="" placeholder="enter a book price" style="width:100%; padding:10px 12px; background:var(--bg-1); border:1px solid var(--line); color:var(--text); border-radius:8px; font-family:'JetBrains Mono', monospace;">
+      </label>
+      <label style="display:block; margin-bottom: 12px;">
+        <span class="muted" style="display:block; margin-bottom:4px;">Book price — Under (American odds)</span>
+        <input id="marketUnderPrice" type="number" min="-1000" max="1000" step="1" value="" placeholder="enter a book price" style="width:100%; padding:10px 12px; background:var(--bg-1); border:1px solid var(--line); color:var(--text); border-radius:8px; font-family:'JetBrains Mono', monospace;">
+      </label>
+      <label style="display:block; margin-bottom: 12px;">
+        <span class="muted" style="display:block; margin-bottom:4px;">Book price — Home −1.5 run line (American odds)</span>
+        <input id="marketRLPrice" type="number" min="-1000" max="1000" step="1" value="" placeholder="enter a book price" style="width:100%; padding:10px 12px; background:var(--bg-1); border:1px solid var(--line); color:var(--text); border-radius:8px; font-family:'JetBrains Mono', monospace;">
       </label>
       <label style="display:block; margin-bottom: 12px;">
         <span class="muted" style="display:block; margin-bottom:4px;">Number of simulations</span>
@@ -104,10 +117,10 @@
   </section>
 
   <section class="card" style="margin-bottom: 28px;">
-    <div class="card-head"><span>💰 Fair Prices vs. Market</span></div>
+    <div class="card-head"><span>💰 Fair Prices vs. Your Prices</span><span class="muted">edge only vs a price you enter</span></div>
     <div class="table-wrap">
       <table class="data-table" id="pricesTable">
-        <thead><tr><th>Market</th><th>Side</th><th>Model Prob</th><th>Fair Price</th><th>Market Price</th><th>Edge</th><th>Kelly</th><th>Play</th></tr></thead>
+        <thead><tr><th>Market</th><th>Side</th><th>Model Prob</th><th>Fair Price</th><th>Your Book Price</th><th>Edge</th><th>Kelly</th><th>Play</th></tr></thead>
         <tbody></tbody>
       </table>
     </div>
@@ -116,7 +129,7 @@
   <section class="card">
     <div class="card-head"><span>📈 Win Probability Path</span></div>
     <canvas id="convergenceChart" height="180"></canvas>
-    <p class="caption">As more simulations run, the home-win probability estimate converges. This is your model's bootstrap confidence interval — narrower = more certain.</p>
+    <p class="caption">As more simulations run, the home-win probability estimate converges. This shows Monte Carlo noise shrinking — not the model's accuracy, which is unvalidated.</p><!-- (2026-11-03) was mislabelled a confidence interval -->
   </section>
 
 </main>
@@ -149,7 +162,7 @@ fetch("data/today.json", { cache: "no-cache" })
       note.className = "muted";
       note.style.fontSize = "12px";
       note.style.marginTop = "8px";
-      note.innerHTML = `<strong>Today's flagship matchup:</strong> ${pod.matchup} at ${pod.market_price >= 0 ? "+" + pod.market_price : pod.market_price}, model probability ${(pod.model_prob * 100).toFixed(1)}%. The simulator below runs 10,000 PA-level Monte Carlo trials per click.`;
+      note.innerHTML = `<strong>Today's flagship matchup:</strong> ${pod.matchup}${typeof pod.market_price === "number" ? ` at ${pod.market_price >= 0 ? "+" + pod.market_price : pod.market_price}` : " (no book price)"}, model probability ${(pod.model_prob * 100).toFixed(1)}%. The simulator below runs 10,000 inning-level Poisson trials per click.`;
       head.appendChild(note);
     }
   })

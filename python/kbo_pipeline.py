@@ -192,6 +192,20 @@ def run() -> Dict[str, Any]:
         source = "daum_sports (no upcoming games)"
         note = "No upcoming KBO games in the 3-day window (KBO is dark on Mondays / between series)."
 
+    # OFFSEASON STATE (2026-11-03). In November the desk still said "dark on
+    # Mondays / between series". The regular season runs roughly late March to
+    # early October and the postseason ends by early November, so an empty
+    # window in Nov-Feb means the season is over -- say that, and never guess
+    # a next-season date.
+    if upcoming:
+        season_state = "in_season"
+    elif today.month in (11, 12, 1, 2):
+        season_state = "offseason"
+        note = (f"KBO {today.year if today.month >= 11 else today.year - 1} season is over "
+                f"(offseason) -- no games scheduled.")
+    else:
+        season_state = "no_games_in_window"
+
     recent_finals = [g for g in window if g["state"] == "post"][-20:]
 
     standings = [
@@ -208,11 +222,14 @@ def run() -> Dict[str, Any]:
         "data_source": source,
         "is_live_data": True,  # never synthetic anymore
         "season": today.year,
+        "season_state": season_state,
         "n_teams": len(KBO_TEAMS),
         "n_games_today": len(matches),
         "matches": matches,
         "recent_finals": recent_finals,
         "standings_seed": standings,
+        # (2026-11-03) elo_baseline is a hard-coded tier seed, not standings
+        "standings_seed_label": "seed ratings (hard-coded preseason baseline, not live standings)",
         "note": note,
     }
     os.makedirs(DATA_DIR, exist_ok=True)
@@ -223,7 +240,8 @@ def run() -> Dict[str, Any]:
 
 if __name__ == "__main__":
     p = run()
-    print(f"Wrote {OUT_PATH}: {p['n_games_today']} games today (source: {p['data_source']})")
+    print(f"Wrote {OUT_PATH}: {p['n_games_today']} games today (source: {p['data_source']}, state: {p['season_state']})")
+    print(f"  {p['note']}")
     for m in p.get("matches", []):
         sc = ""
         if m.get("home_score") is not None and m.get("away_score") is not None:

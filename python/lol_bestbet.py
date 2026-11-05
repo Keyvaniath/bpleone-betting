@@ -9,6 +9,13 @@ Quality scored by:
   - Sweep value flagged when |elo_diff| > 100
 
 Output: data/lol_bestbet.json
+
+NOT A PICK (2026-11-03): candidates are chosen by a model-probability band
+with no sportsbook price behind them, and the model is unvalidated. The JSON
+keeps its field names (top_bet / runners_up) for consumers, but every row
+carries is_pick=False + not_a_pick_reason, confidence is "UNVALIDATED" (the
+HIGH/MED/LOW band was a quality score, not a measured confidence) and bet_key
+no longer embeds the model's fair price.
 """
 from __future__ import annotations
 import os, json, datetime as dt
@@ -20,6 +27,7 @@ PROPS_PATH = os.path.join(DATA_DIR, "lol_props.json")
 OUT_PATH = os.path.join(DATA_DIR, "lol_bestbet.json")
 
 TIER_1 = {"LCK", "LPL", "LEC", "LCS", "MSI", "Worlds", "First Stand"}
+NOT_A_PICK_REASON = "no sportsbook price; model unvalidated"   # (2026-11-03)
 TIER_2 = {"PCS", "VCS", "CBLOL", "LLA", "LJL", "LCO", "EU Masters"}
 
 
@@ -99,6 +107,10 @@ def run() -> Dict[str, Any]:
     matches = props.get("predictions") or []
     cands: List[Dict[str, Any]] = []
     for m in matches:
+        # (2026-11-03) placeholder bracket slots are never candidates
+        if str(m.get("team_a") or "").strip().upper() in ("", "TBD", "TBA") or \
+           str(m.get("team_b") or "").strip().upper() in ("", "TBD", "TBA"):
+            continue
         for c in _score_match(m):
             cands.append({
                 **c,
@@ -109,7 +121,9 @@ def run() -> Dict[str, Any]:
                     if c["kind"] == "ML"
                     else f"{c['team']} {c['best_of']//2+1}-0 SWEEP vs {c['opponent']} ({c['league']})"
                 ),
-                "bet_key": f"LOL|{c['team']}|{c['kind']}|{c['fair_american']}",
+                "bet_key": f"LOL|{c['team']}|{c['kind']}|model_projection",
+                "is_pick": False,
+                "not_a_pick_reason": NOT_A_PICK_REASON,
             })
 
     if not cands:
@@ -121,15 +135,16 @@ def run() -> Dict[str, Any]:
         }
     else:
         cands.sort(key=lambda c: -c["quality"])
-        def conf(q):
-            if q >= 0.95: return "HIGH"
-            if q >= 0.70: return "MED"
-            return "LOW"
+        # (2026-11-03) HIGH/MED/LOW removed: a probability-band score is not a
+        # validated confidence. Every row is an unvalidated projection.
         for c in cands:
-            c["confidence"] = conf(c["quality"])
+            c["confidence"] = "UNVALIDATED"
             c["quality"] = round(c["quality"], 4)
         payload = {
             "generated_at": dt.datetime.now().isoformat(timespec="seconds"),
+            "label": "model projection -- unvalidated, no sportsbook price, not a recommendation",
+            "is_pick": False,
+            "not_a_pick_reason": NOT_A_PICK_REASON,
             "n_candidates": len(cands),
             "top_bet": cands[0],
             "runners_up": cands[1:5],
@@ -142,9 +157,9 @@ if __name__ == "__main__":
     p = run()
     if p.get("top_bet"):
         b = p["top_bet"]
-        print(f"LoL POT: {b['kind']} {b['team']} ({b['fair_american']}) -- "
-              f"P={b['prob']*100:.1f}% Q={b['quality']} ({b['confidence']})")
+        print(f"LoL model projection (NOT a pick: {b['not_a_pick_reason']}): {b['kind']} {b['team']} vs {b['opponent']} -- "
+              f"model P={b['prob']*100:.1f}%")
         for r in p.get("runners_up", []):
-            print(f"  runner-up: {r['kind']} {r['team']} ({r['fair_american']}) P={r['prob']*100:.1f}%")
+            print(f"  runner-up projection: {r['kind']} {r['team']} model P={r['prob']*100:.1f}%")
     else:
         print(f"LoL POT: {p.get('note')}")

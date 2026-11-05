@@ -45,14 +45,15 @@
 </header>
 <main class="container">
   <section class="page-head">
-    <h1>ATS Dashboard — Against The Spread by Team</h1>
-    <p class="muted" id="status">Loading model-cover% per team across 7 sports…</p>
+    <h1>Record vs Model Spread — by Team</h1>
+    <p class="muted" id="status">Loading cover% vs the model's own spread across 7 sports…</p>
   </section>
   <section class="card" style="margin-bottom: 24px;">
     <div class="card-head"><span>📋 How this works</span></div>
     <div style="padding:14px 18px; font-size:13px; line-height:1.7; color: var(--text-2,#aaa);">
-      <p>For every historical game, we back-compute the model's implied "spread" from ELO diff (ELO_diff / 25 = pts). Compared to actual margin, we tag each game as a team COVER, FAIL, or PUSH.</p>
-      <p>Teams that cover ≥65% of games signal <strong style="color:#58c878">MODEL UNDERRATES</strong>. Teams covering ≤35% signal <strong style="color:#e35a5a">MODEL OVERRATES</strong>. Use this to lean toward / fade specific teams.</p>
+      <!-- (2026-11-03) "vs model spread", not ATS; n >= 20; no lean/fade advice -->
+      <p><strong>This is not a sportsbook against-the-spread record.</strong> For every historical game we back-compute the <em>model's own</em> implied margin from a W-L-record Elo (Elo diff / 25 = pts) and compare it to the actual margin: COVER, FAIL or PUSH <em>vs the model spread</em>.</p>
+      <p>A team needs at least 20 decided games before it gets a signal. Covering ≥65% suggests the model <strong style="color:#58c878">underrates</strong> it; ≤35% suggests it <strong style="color:#e35a5a">overrates</strong> it. That is a model diagnostic, not a betting recommendation.</p>
     </div>
   </section>
   <div id="sportsContainer"></div>
@@ -68,10 +69,12 @@ Promise.all(SPORTS.map(s => fetch(`data/ats_tracker_${s}.json?t=${Date.now()}`, 
     if (!r || !r.teams) return '';
     const sport = SPORTS[i];
     const color = COLORS[sport] || "#888";
-    const teams = Object.values(r.teams).sort((a, b) => b.cover_pct - a.cover_pct);
+    const teams = Object.values(r.teams).filter(t => (t.n_decided ?? t.n_games) >= (r.min_n || 20)).sort((a, b) => b.cover_pct - a.cover_pct);
+    const nThin = Object.keys(r.teams).length - teams.length;
+    if (!teams.length) return `<div class="sport-block" style="border-left: 3px solid ${color};"><h2 style="margin:0 0 6px 0; color:${color};">${sport.toUpperCase()}</h2><p class="muted">No team has ${r.min_n || 20}+ decided games yet (${nThin} teams below the bar).</p></div>`;
     return `<div class="sport-block" style="border-left: 3px solid ${color};">
-      <h2 style="margin:0 0 12px 0; color: ${color};">${sport.toUpperCase()} — ${r.n_teams} teams, ${r.n_games} games</h2>
-      <div class="team-row head"><span>Team</span><span>Cover Rec</span><span>Cover %</span><span>Signal</span></div>
+      <h2 style="margin:0 0 12px 0; color: ${color};">${sport.toUpperCase()} — ${teams.length} teams with ${r.min_n || 20}+ games${nThin ? ' (' + nThin + ' below the bar)' : ''}, ${r.n_games} games</h2>
+      <div class="team-row head"><span>Team</span><span>Rec vs model spread</span><span>Cover %</span><span>Model diagnostic</span></div>
       ${teams.map(t => `<div class="team-row">
         <span><strong>${t.name}</strong> <span class="muted">(${t.n_games}g)</span></span>
         <span>${t.ats_record}</span>

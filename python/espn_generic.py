@@ -37,6 +37,9 @@ def _http(url: str) -> Optional[Dict[str, Any]]:
         return None
 
 
+import board_prior as _bp
+
+
 def _winpct_to_elo(wp: float, base: float = 1500) -> float:
     if wp <= 0.01: return base - 250
     if wp >= 0.99: return base + 250
@@ -133,6 +136,10 @@ def _parse_game(comp: Dict[str, Any], status: Dict[str, Any], cfg: Dict[str, Any
     h_elo = _winpct_to_elo(h_rec["win_pct"])
     a_elo = _winpct_to_elo(a_rec["win_pct"])
     p_prior = _elo_winprob(h_elo, a_elo, hfa=cfg.get("hfa_elo", 35))
+    # 2026-11-03: the record Elo is not validated -> it is NOT the board's
+    # probability when the desk or a DraftKings line exists (board_prior).
+    _g0 = {"id": comp.get("id")}
+    p_prior = _bp.apply(_g0, cfg["_prior"], p_prior) if cfg.get("_prior") else p_prior
 
     state = (status.get("type") or {}).get("state")
     period = status.get("period") or 0
@@ -169,6 +176,7 @@ def _parse_game(comp: Dict[str, Any], status: Dict[str, Any], cfg: Dict[str, Any
         "p_home_win": round(p_home_win, 4),
         "fair_home_american": _american(p_home_win),
         "fair_away_american": _american(1 - p_home_win),
+        **{k: v for k, v in _g0.items() if k != "id"},
     }
 
 
@@ -248,20 +256,23 @@ def run(cfg: Dict[str, Any]) -> Dict[str, Any]:
         with open(out_path, "w") as f: json.dump(out, f, indent=2)
         return out
 
+    cfg = dict(cfg, _prior=_bp.BoardPrior(cfg.get("odds_sport") or sport_key))
     events = sb.get("events") or []
     games: List[Dict[str, Any]] = []
     for ev in events:
         comps = ev.get("competitions") or []
         if not comps: continue
         g = _parse_game(comps[0], ev.get("status") or {}, cfg)
-        # Apply self-training calibration shift to p_home_win
-        if cal_shift != 0 and g.get("state") != "post":
+        # Apply self-training calibration shift to p_home_win (fitted on the
+        # record Elo's errors -> never applied on top of a desk/DK probability)
+        if cal_shift != 0 and g.get("state") != "post" and not g.get("p_source"):
             shifted = max(0.01, min(0.99, g["p_home_win"] + cal_shift))
             g["p_home_win_raw"] = g["p_home_win"]
             g["p_home_win"] = round(shifted, 4)
             g["calibration_shift_pp"] = round(cal_shift * 100, 1)
             g["fair_home_american"] = _american(shifted)
             g["fair_away_american"] = _american(1 - shifted)
+        _bp.finalize(g, _american)
         games.append(g)
 
     season = (sb.get("season") or {}).get("year") or dt.date.today().year
@@ -336,4 +347,4 @@ if __name__ == "__main__":
     p = run(cfg)
     print(f"WNBA: {p.get('n_games_today', 0)} games ({p.get('season_status', '?')})")
     for g in p["games"][:3]:
-        print(f"  {g['matchup']} ({g['away_record']} vs {g['home_record']}) P(home) {g['p_home_win']*100:.1f}% fair {g['fair_home_american']:+d}")
+        print(f"  {g['matchup']} ({g['away_record']} vs {g['home_record']}) P(home) {g['p_home_win']*100:.1f}% fair {g.get('fair_home_american')}")

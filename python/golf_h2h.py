@@ -37,6 +37,9 @@ try:
 except Exception:
     ELITE_PRIOR = {}
 
+MODEL_STATUS = ("unvalidated model projection -- no sportsbook price, "
+                "not a recommendation")
+
 
 def _load(p):
     if not os.path.exists(p):
@@ -79,6 +82,23 @@ def run() -> Dict[str, Any]:
             "generated_at": dt.datetime.now().isoformat(timespec="seconds"),
             "tournament": t.get("name"),
             "note": "no active field" if not field else "tournament complete",
+            "matchups": [],
+        }
+        os.makedirs(DATA_DIR, exist_ok=True)
+        with open(OUT_PATH, "w") as f:
+            json.dump(payload, f, indent=2)
+        return payload
+
+    # PRE-EVENT: NO MATCHUPS (2026-11-03). On an all-"E" scheduled field every
+    # pair simulated to ~50% and was published as a -100/-100 "matchup".
+    if not (t.get("is_in_progress") or t.get("is_complete")):
+        start = (t.get("start_date") or "")[:10]
+        payload = {
+            "generated_at": dt.datetime.now().isoformat(timespec="seconds"),
+            "tournament": t.get("name"),
+            "is_pre_event": True,
+            "note": (f"Tournament starts {start}; projections appear once play begins"
+                     if start else "Tournament has not started; projections appear once play begins"),
             "matchups": [],
         }
         os.makedirs(DATA_DIR, exist_ok=True)
@@ -141,6 +161,7 @@ def run() -> Dict[str, Any]:
         "generated_at": dt.datetime.now().isoformat(timespec="seconds"),
         "tournament": t.get("name"),
         "rounds_left": rounds_left,
+        "model_status": MODEL_STATUS,   # (2026-11-03) not book prices
         "n_matchups": len(matchups),
         "n_sims": N_SIMS,
         "matchups": matchups,

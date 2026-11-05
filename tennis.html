@@ -27,7 +27,7 @@
 <title>Tennis Desk | EdgeStat</title>
 <link rel="stylesheet" href="css/style.css?v=20260908c">
 <style>
-  .tn-row { display:grid; grid-template-columns: 1.7fr 70px 96px 84px 110px 86px; gap:12px; padding:12px 14px; border-bottom:1px solid rgba(255,255,255,0.04); font-family:'JetBrains Mono',monospace; font-size:12px; align-items:center; }
+  .tn-row { display:grid; grid-template-columns: 1.7fr 70px 96px 110px 100px; gap:12px; padding:12px 14px; border-bottom:1px solid rgba(255,255,255,0.04); font-family:'JetBrains Mono',monospace; font-size:12px; align-items:center; }
   .tn-row.head { background:rgba(255,255,255,0.04); color:var(--muted,#888); font-size:10px; text-transform:uppercase; }
   .tn-row.strong { background:rgba(88,200,120,0.06); border-left:2px solid #58c878; }
   .surf { display:inline-block; padding:2px 8px; border-radius:4px; font-size:9.5px; font-weight:700; text-transform:uppercase; letter-spacing:.4px; }
@@ -60,22 +60,23 @@
   <section class="metric-strip">
     <div class="metric"><span class="metric-num" id="m_matches">--</span><span class="metric-label">Upcoming Matches</span></div>
     <div class="metric"><span class="metric-num" id="m_events">--</span><span class="metric-label">Tournaments</span></div>
-    <div class="metric"><span class="metric-num" id="m_edges">--</span><span class="metric-label">Strong Edges</span></div>
+    <!-- (2026-11-03) "Strong Edges" counted model favourites vs an ASSUMED -120 book; now only real-book edges count -->
+    <div class="metric"><span class="metric-num" id="m_edges">--</span><span class="metric-label">Edges vs a real book price</span></div>
     <div class="metric"><span class="metric-num" id="m_tours">--</span><span class="metric-label">Tours</span></div>
   </section>
 
   <section class="card" style="margin-bottom: 24px;">
     <div class="card-head"><span>🎾 Match-Win Board (surface-adjusted ELO)</span><span class="muted" id="mwMeta">--</span></div>
-    <p class="muted" style="font-size: 11px; padding: 8px 16px 0;">P(win) = 1 / (1 + 10^((eloₒₚₚ − eloₚₗₐyₑᵣ)/400)) with a per-surface ELO adjustment. STRONG = model favorite at 60–78% (5%+ edge vs a −120 favorite's 54.5% breakeven).</p>
+    <p class="muted" style="font-size: 11px; padding: 8px 16px 0;">P(win) = 1 / (1 + 10^((eloₒₚₚ − eloₚₗₐyₑᵣ)/400)) with a per-surface ELO adjustment; ELO comes from a hard-coded 2025 snapshot of ~50 players (not live). <strong>Unvalidated model projection — not a recommendation.</strong> An edge is shown only against a real sportsbook price; there are no tennis book prices in the feed right now, so no edge is claimed. In-progress matches are excluded.</p>
     <div class="tn-row head">
-      <span>Match</span><span>Surface</span><span>Model P(fav)</span><span>Fair</span><span>ELO (fav/dog)</span><span>Edge</span>
+      <span>Match</span><span>Surface</span><span>Model P(fav)</span><span>ELO (fav/dog)</span><span>Edge vs book</span>
     </div>
     <div id="mwList"><p class="muted" style="padding:14px;">Loading…</p></div>
   </section>
 
   <section class="card" style="margin-bottom: 24px;">
-    <div class="card-head"><span>🔥 Ace Props (serve × surface × return matchup)</span><span class="muted" id="aceMeta">--</span></div>
-    <p class="muted" style="font-size: 11px; padding: 8px 16px 0;">Projected aces from server quality, surface multiplier (grass ↑, clay ↓) and the opponent's return factor. Lean fires when the projection clears the line with margin.</p>
+    <div class="card-head"><span>🔥 Ace Projections (serve × surface × return matchup)</span><span class="muted" id="aceMeta">--</span></div>
+    <p class="muted" style="font-size: 11px; padding: 8px 16px 0;">Projected aces from a hard-coded per-player serve table, surface multiplier (grass ↑, clay ↓) and the opponent's return factor. <strong>Unvalidated model projection — no sportsbook line or price, not a recommendation.</strong></p>
     <div id="aceList"><p class="muted" style="padding:14px;">Loading ace props…</p></div>
   </section>
 
@@ -88,7 +89,8 @@
     <div class="card-head"><span>📋 Model</span></div>
     <ul style="padding:14px 28px; color: var(--text-2,#aaa); line-height: 1.8;">
       <li>Upcoming ATP + WTA matches pulled live from ESPN's free tennis scoreboard</li>
-      <li>Surface-adjusted ELO (50-player rated database; surface inferred from the event)</li>
+      <li>Surface-adjusted ELO from a hard-coded 2025 snapshot (~50 players; surface inferred from the event) — not live ratings</li>
+      <li>Unvalidated: no edge is claimed without a real sportsbook price</li>
       <li>Match-win, aces, double-faults, set-score, tiebreak and break-of-serve projections</li>
       <li>Results settle off ESPN finals — forward record builds as matches complete</li>
     </ul>
@@ -109,9 +111,11 @@ Promise.all([
   fetch("data/tennis_aces_props.json?t=" + Date.now(), { cache: "no-cache" }).then(r => r.json()).catch(() => ({})),
 ]).then(([state, mw, aces]) => {
   const setText = (id, v) => { const e = document.getElementById(id); if (e) e.textContent = v; };
-  const nMatches = state.n_matches || 0;
+  // (2026-11-03) "upcoming" excludes in-progress matches
+  const upcomingSlate = (state.matches || []).filter(m => !['in','post'].includes(String(m.state || m.status || '').toLowerCase()));
+  const nMatches = upcomingSlate.length;
   const strong = (mw.n_strong_edges || 0) + ((aces.strong_edges || []).length);
-  setText("tnTitle", "Tennis Desk — ATP / WTA Live Board");
+  setText("tnTitle", "Tennis Desk — ATP / WTA Board");
   setText("tnStatus", `${nMatches} upcoming matches · ${(state.tournaments||[]).length} events · source: ${state.data_source || 'ESPN'} · refresh ${(state.generated_at || '').replace('T',' ').slice(0,16)} UTC`);
   setText("m_matches", nMatches);
   setText("m_events", (state.tournaments || []).length);
@@ -120,35 +124,36 @@ Promise.all([
 
   // Match-Win board (strong first)
   const rows = (mw.rows || []).slice().sort((a,b) => (b.edge_class.startsWith("STRONG")?1:0) - (a.edge_class.startsWith("STRONG")?1:0) || Math.max(b.p_p1_wins,b.p_p2_wins) - Math.max(a.p_p1_wins,a.p_p2_wins));
-  document.getElementById("mwMeta").textContent = `${mw.n_matches || 0} rated · ${mw.n_strong_edges || 0} strong`;
+  document.getElementById("mwMeta").textContent = `${mw.n_matches || 0} rated · ${mw.n_with_book_price || 0} with a book price · ${mw.n_strong_edges || 0} edges`;
   document.getElementById("mwList").innerHTML = rows.length ? rows.map(r => {
     const aFav = r.p_p1_wins >= r.p_p2_wins;
     const fav = aFav ? r.p1 : r.p2, dog = aFav ? r.p2 : r.p1;
     const pFav = aFav ? r.p_p1_wins : r.p_p2_wins;
-    const fair = aFav ? r.fair_p1_odds : r.fair_p2_odds;
     const eloFav = aFav ? r.p1_elo : r.p2_elo, eloDog = aFav ? r.p2_elo : r.p1_elo;
-    const strongRow = r.edge_class.startsWith("STRONG");
-    const betKey = `TENNIS|${fav}|ML|${fair}`;
-    return `<div class="tn-row ${strongRow ? 'strong' : ''}" data-bet-key="${esc(betKey)}" data-bet-label="${esc(fav + ' ML vs ' + dog)}" data-bet-play="ML" data-bet-src="TENNIS">
+    // (2026-11-03) STRONG only with a real book price; no fair-odds column; no
+    // TRACK key (it recorded a bet at the model's own fair price).
+    const strongRow = r.edge_class.startsWith("STRONG") && r.best_market && r.best_market.book_p != null;
+    const edgeTxt = strongRow ? `+${(r.best_market.edge*100).toFixed(1)}pp vs book`
+                  : (r.edge_class === "NO_BOOK_PRICE" ? 'no book price' : '—');
+    return `<div class="tn-row ${strongRow ? 'strong' : ''}">
       <span><strong>${esc(fav)}</strong> <span class="muted">vs ${esc(dog)}</span></span>
       <span>${surfPill(r.surface)}</span>
-      <span style="color:${pFav>=0.6?'#58c878':'var(--text-2,#aaa)'}; font-weight:700;">${(pFav*100).toFixed(1)}%</span>
-      <span>${fmtAmer(fair)}</span>
+      <span style="font-weight:700;">${(pFav*100).toFixed(1)}%</span>
       <span class="muted">${eloFav} / ${eloDog}</span>
-      <span><span class="ebadge ${strongRow?'s':'n'}">${strongRow?'STRONG':'—'}</span></span>
+      <span><span class="ebadge ${strongRow?'s':'n'}">${edgeTxt}</span></span>
     </div>`;
   }).join("") : `<p class="muted" style="padding:14px;">No rated matchups on the board right now (slate may be between rounds, or featuring unrated qualifiers).</p>`;
 
   // Ace props (strong first)
-  const aceRows = (aces.rows || []).slice().sort((a,b) => (b.edge_class!=="NONE"?1:0) - (a.edge_class!=="NONE"?1:0));
-  document.getElementById("aceMeta").textContent = `${aceRows.length} projected · ${(aces.strong_edges||[]).length} lean`;
+  // (2026-11-03) projections only: the invented round(proj)±k "lines", fair
+  // prices and OVER/UNDER leans were removed (no aces book line exists).
+  const aceRows = (aces.rows || []).slice();
+  document.getElementById("aceMeta").textContent = `${aceRows.length} projected · model projection, no book line`;
   document.getElementById("aceList").innerHTML = aceRows.length ? aceRows.map(r => {
-    const lean = r.edge_class && r.edge_class !== "NONE" ? r.edge_class.replace("STRONG_","") : null;
-    const bm = r.best_market || {};
     return `<div style="padding:10px 16px; border-bottom:1px solid rgba(255,255,255,0.04); font-family:'JetBrains Mono',monospace; font-size:12px; display:flex; justify-content:space-between; align-items:center; gap:10px;">
       <span><strong>${esc(r.player)}</strong> <span class="muted">vs ${esc(r.opp)}</span> ${surfPill(r.surface)}</span>
-      <span class="muted">proj <strong style="color:var(--text,#ddd);">${(r.projected_aces||0).toFixed(1)}</strong> aces${bm.line!=null?` · line ${bm.line}`:''}</span>
-      <span>${lean ? `<span class="ebadge s">${lean}${bm.fair_odds!=null?' '+fmtAmer(bm.fair_odds):''}</span>` : `<span class="ebadge n">no edge</span>`}</span>
+      <span class="muted">model proj <strong style="color:var(--text,#ddd);">${(r.projected_aces||0).toFixed(1)}</strong> aces (±${(r.sigma||0).toFixed(1)})</span>
+      <span><span class="ebadge n">no book line</span></span>
     </div>`;
   }).join("") : `<p class="muted" style="padding:14px;">No ace projections available.</p>`;
 

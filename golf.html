@@ -56,45 +56,43 @@
     <div class="metric"><span class="metric-num" id="golfRoundsLeft">--</span><span class="metric-label">Rounds Left</span></div>
     <div class="metric"><span class="metric-num" id="golfLeader">--</span><span class="metric-label">Current Leader</span></div>
     <div class="metric"><span class="metric-num" id="golfLeaderScore">--</span><span class="metric-label">Leader Score</span></div>
-    <div class="metric"><span class="metric-num" id="golfTopWinProb">--</span><span class="metric-label">Fav P(win)</span></div>
+    <div class="metric"><span class="metric-num" id="golfTopWinProb">--</span><span class="metric-label">Model fav P(win) (unvalidated)</span></div>
     <div class="metric"><span class="metric-num" id="golfNSims">--</span><span class="metric-label">MC Sims</span></div>
   </section>
 
-  <!-- Play of the Tournament -->
-  <section class="card" style="margin-bottom: 24px; border-left: 3px solid #d4a04a;">
-    <div class="card-head"><span>⛳ Play of the Tournament</span><span class="muted" id="potMeta">--</span></div>
-    <div id="potBox" style="padding: 16px;">
-      <p class="muted">Loading top bet…</p>
+  <!-- (2026-11-03) "Play of the Tournament" card removed: golf_bestbet picks a
+       model-only probability with no sportsbook price and showed the model's
+       own fair odds as the headline price. A model output is not a pick. -->
+  <section class="card" style="margin-bottom: 16px; border-left: 3px solid #888;">
+    <div style="padding: 12px 16px; font-size: 12px;" class="muted" id="golfModelNotice">
+      Every probability on this desk is an <strong>unvalidated model projection — no sportsbook price, not a recommendation</strong>. There is no golf pick, edge, or price here.
     </div>
   </section>
 
   <section class="card" style="margin-bottom: 24px;">
-    <div class="card-head"><span>🏆 Live Leaderboard + Win Probabilities</span><span class="muted" id="golfMeta">--</span></div>
-    <p class="muted" style="font-size: 11px; padding: 8px 16px 0;">Win / Top 5 / Top 10 / Top 20 probabilities and fair American odds from 5K Monte Carlo on remaining rounds. Refresh page during play to update.</p>
-    <div class="golf-row head">
-      <span>Pos</span><span>Player</span><span>Total</span><span>Thru</span><span>P(win)</span><span>Fair</span><span>P(top5)</span><span>P(top10)</span><span>P(top20)</span>
+    <div class="card-head"><span>🏆 Leaderboard + Model Projection (unvalidated)</span><span class="muted" id="golfMeta">--</span></div>
+    <p class="muted" style="font-size: 11px; padding: 8px 16px 0;">Win / Top 5 / Top 10 / Top 20 model probabilities from a Monte Carlo on remaining rounds — unvalidated model projection, no sportsbook price, not a recommendation. Refresh page during play to update.</p>
+    <div class="golf-row head" style="grid-template-columns: 50px 1.8fr 60px 80px 80px 80px 80px 80px;">
+      <span>Pos</span><span>Player</span><span>Total</span><span>Thru</span><span>P(win)</span><span>P(top5)</span><span>P(top10)</span><span>P(top20)</span>
     </div>
     <div id="golfList"><p class="muted" style="padding:14px;">Loading…</p></div>
   </section>
 
   <!-- H2H matchups -->
   <section class="card" style="margin-bottom: 24px;">
-    <div class="card-head"><span>⚔️ Head-to-Head Matchups</span><span class="muted">closest 20 from top 30 (435 pairs total)</span></div>
-    <p class="muted" style="font-size: 11px; padding: 8px 16px 0;">Probability that Player A finishes ahead of Player B for the tournament. Ties = push.</p>
+    <div class="card-head"><span>⚔️ Head-to-Head Model Projections</span><span class="muted" id="h2hMeta">closest 20 from top 30</span></div>
+    <p class="muted" style="font-size: 11px; padding: 8px 16px 0;">Model probability that Player A finishes ahead of Player B (ties split). Unvalidated model projection — no sportsbook price, not a recommendation.</p>
     <div id="h2hList"><p class="muted" style="padding:14px;">Loading H2H matchups…</p></div>
   </section>
 
-  <!-- 2-3 leg golf parlays -->
-  <section class="card" style="margin-bottom: 24px;">
-    <div class="card-head"><span>🎰 2-3 Leg Parlays</span><span class="muted" id="parlayMeta">--</span></div>
-    <p class="muted" style="font-size: 11px; padding: 8px 16px 0;">Top quality-scored parlays from WIN / TOP5 / TOP10 / H2H legs. Mostly-independent legs; same-player legs get a small correlation bump.</p>
-    <div id="parlayList"><p class="muted" style="padding:14px;">Loading parlays…</p></div>
-  </section>
+  <!-- (2026-11-03) 2-3 leg parlay board removed: legs were unpriced model
+       projections labelled "@ -100" and the parlay "EV" was measured against
+       the model's own fair odds. Parlays are not recommended by default. -->
 
   <!-- Make Cut + Top Nationality -->
   <section class="card" style="margin-bottom: 24px;">
     <div class="card-head"><span>🇺🇸 Top American / 🇪🇺 Top European</span><span class="muted" id="natMeta">--</span></div>
-    <p class="muted" style="font-size: 11px; padding: 8px 16px 0;">Probability the named player finishes highest among their nationality bucket.</p>
+    <p class="muted" style="font-size: 11px; padding: 8px 16px 0;">Model probability the named player finishes highest among their nationality bucket. Unvalidated model projection — no sportsbook price, not a recommendation.</p>
     <div id="natList"><p class="muted" style="padding:14px;">Loading…</p></div>
   </section>
 
@@ -107,9 +105,11 @@
         <li>Better players (lower current total) get a slight skill bonus that reduces their expected per-round score.</li>
         <li>Sum simulated remaining-round scores onto current total to get final 72-hole position.</li>
         <li>Tally P(rank=1), P(rank≤5), P(rank≤10), P(rank≤20) across all sims.</li>
-        <li>Convert probabilities → fair American odds with no vig added.</li>
+        <li>A small hard-coded per-player skill prior (not live rankings) is added for well-known players.</li>
       </ul>
-      <p style="margin-top: 14px;">Compare to live sportsbook prices to find +EV. (Bookmaker pricing usually 20-30% vig on outrights — needs ~5% edge to break even after vig.)</p>
+      <!-- (2026-11-03) "Compare to live sportsbook prices to find +EV" removed:
+           the desk has no golf sportsbook prices and the model is unvalidated. -->
+      <p style="margin-top: 14px;">This model has not been validated against settled results and the desk has no golf sportsbook prices, so nothing here is an edge or a recommendation. Before a tournament starts nothing is projected.</p>
     </div>
   </section>
 
@@ -123,9 +123,11 @@ Promise.all([
   fetch("data/golf_props.json?t=" + Date.now(), { cache: "no-cache" }).then(r => r.json()).catch(() => ({})),
   fetch("data/golf_h2h.json?t=" + Date.now(), { cache: "no-cache" }).then(r => r.json()).catch(() => ({})),
   fetch("data/golf_makecut.json?t=" + Date.now(), { cache: "no-cache" }).then(r => r.json()).catch(() => ({})),
-  fetch("data/golf_bestbet.json?t=" + Date.now(), { cache: "no-cache" }).then(r => r.json()).catch(() => ({})),
-  fetch("data/golf_parlays.json?t=" + Date.now(), { cache: "no-cache" }).then(r => r.json()).catch(() => ({})),
-]).then(([state, props, h2h, makecut, bestbet, parlays]) => {
+]).then(([state, props, h2h, makecut]) => {
+  // (2026-11-03) golf_bestbet.json + golf_parlays.json are no longer read:
+  // the Play of the Tournament and the parlay board were model-only "picks"
+  // at the model's own fair odds. Fair-odds columns and TRACK keys (which
+  // recorded bets at a model fair price) are removed from every table below.
   const t = state.active_tournament;
   const setText = (id, v) => { const e = document.getElementById(id); if (e) e.textContent = v; };
 
@@ -136,127 +138,86 @@ Promise.all([
   }
 
   document.getElementById("golfPageTitle").textContent = `Golf Desk — ${t.name}`;
-  document.getElementById("golfStatus").textContent = `${t.status} · round ${t.round || '?'} · ${t.course || ''} · ${(t.start_date || '').slice(0,10)} → ${(t.end_date || '').slice(0,10)}`;
-
   setText("golfField", state.n_players);
+
+  // (2026-11-03) PRE-EVENT: no win probabilities, leader, H2H or nationality
+  // props. A "Scheduled" field is all "E"; field order is not a leaderboard.
+  const started = !!(t.is_in_progress || t.is_complete);
+  if (!started) {
+    const start = (t.start_date || '').slice(0,10);
+    const msg = start ? `Tournament starts ${start}; projections appear once play begins.`
+                      : "Tournament has not started; projections appear once play begins.";
+    document.getElementById("golfStatus").textContent = `${t.status || 'Scheduled'} · ${t.course || ''} · ${msg}`;
+    ["golfRoundsLeft", "golfLeader", "golfLeaderScore", "golfTopWinProb", "golfNSims"].forEach(id => setText(id, "—"));
+    const box = `<p class="muted" style="padding:14px;">${msg}</p>`;
+    document.getElementById("golfList").innerHTML = box;
+    document.getElementById("h2hList").innerHTML = box;
+    document.getElementById("natList").innerHTML = box;
+    setText("golfMeta", `${state.n_players || 0} players in field`);
+    setText("natMeta", "");
+    return;
+  }
+
+  document.getElementById("golfStatus").textContent = `${t.status} · round ${t.round || '?'} · ${t.course || ''} · ${(t.start_date || '').slice(0,10)} → ${(t.end_date || '').slice(0,10)}`;
   setText("golfRoundsLeft", props.rounds_left ?? "—");
   const leader = state.current_leader || {};
   setText("golfLeader", leader.name || "—");
   setText("golfLeaderScore", leader.total_to_par || "—");
-  setText("golfNSims", (props.n_sims || 0).toLocaleString());
+  setText("golfNSims", props.n_sims ? props.n_sims.toLocaleString() : "—");
 
   const players = props.players || [];
   if (players.length) {
     setText("golfTopWinProb", (players[0].p_win * 100).toFixed(1) + "%");
   }
 
-  const fmtAmer = (a) => a == null ? "—" : (a >= 0 ? "+" + a : String(a));
   const rows = players.slice(0, 80).map((p, i) => {
     const isLeader = i === 0;
-    const betKey = `GOLF|${p.name}|win|${p.fair_win_american || '?'}`;
-    return `<div class="golf-row ${isLeader ? 'leader' : ''}"
-                 data-bet-key="${betKey}"
-                 data-bet-label="${p.name} to win ${(t.name || '').replace(/"/g,'&quot;')}"
-                 data-bet-play="WIN"
-                 data-bet-src="GOLF">
+    return `<div class="golf-row ${isLeader ? 'leader' : ''}" style="grid-template-columns: 50px 1.8fr 60px 80px 80px 80px 80px 80px;">
       <span class="muted">${p.current_pos || (i+1)}</span>
       <span><strong>${p.name}</strong> <span class="muted" style="font-size:10px;">${p.country || ''}</span></span>
       <span style="color: ${(p.current_total || '').startsWith('-') ? '#58c878' : (p.current_total || '').startsWith('+') ? '#e35a5a' : 'var(--text-2,#aaa)'};">${p.current_total || '—'}</span>
       <span class="muted">${p.thru ? 'thru ' + p.thru : (p.rounds_played ? 'R' + p.rounds_played : '—')}</span>
-      <span style="color:${p.p_win >= 0.05 ? '#58c878' : 'var(--text-2,#aaa)'}; font-weight:700;">${(p.p_win * 100).toFixed(2)}%</span>
-      <span>${fmtAmer(p.fair_win_american)}</span>
+      <span style="font-weight:700;">${(p.p_win * 100).toFixed(2)}%</span>
       <span>${(p.p_top5 * 100).toFixed(1)}%</span>
       <span>${(p.p_top10 * 100).toFixed(1)}%</span>
       <span>${(p.p_top20 * 100).toFixed(1)}%</span>
     </div>`;
   }).join("");
-  document.getElementById("golfList").innerHTML = rows || `<p class="muted" style="padding:14px;">No players in field.</p>`;
-  document.getElementById("golfMeta").textContent = `${players.length} players · refresh: ${(props.generated_at || '').replace('T',' ')} UTC`;
+  document.getElementById("golfList").innerHTML = rows || `<p class="muted" style="padding:14px;">${props.note || 'No players in field.'}</p>`;
+  document.getElementById("golfMeta").textContent = `${players.length} players · model projection, unvalidated · refresh: ${(props.generated_at || '').replace('T',' ')}`;
 
-  // ---- Play of the Tournament ----
-  const pot = bestbet.top_bet;
-  if (pot) {
-    const ruRows = (bestbet.runners_up || []).map(r => `
-      <div style="display:flex; justify-content:space-between; padding:6px 0; border-top: 1px dashed rgba(255,255,255,0.06); font-size:12px;">
-        <span><span class="muted" style="font-size:10px;">${r.type}</span> <strong>${r.player}${r.opponent ? ` vs ${r.opponent}` : ''}</strong></span>
-        <span>${fmtAmer(r.fair_american)} <span class="muted">(${(r.model_prob*100).toFixed(1)}%)</span></span>
-      </div>`).join("");
-    document.getElementById("potBox").innerHTML = `
-      <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:16px;">
-        <div style="flex:1;">
-          <div style="font-size:11px; color:#d4a04a; text-transform:uppercase; letter-spacing:1px; margin-bottom:6px;">${pot.confidence || 'MED'} CONVICTION · ${pot.type}</div>
-          <div style="font-size:22px; font-weight:700; margin-bottom:4px;">${pot.player}${pot.opponent ? ` vs ${pot.opponent}` : ''}</div>
-          <div class="muted" style="font-size:12px; margin-bottom:10px;">${pot.reasoning || ''}</div>
-        </div>
-        <div style="text-align:right;">
-          <div style="font-size:28px; font-weight:700; color:#d4a04a; font-family:'JetBrains Mono',monospace;">${fmtAmer(pot.fair_american)}</div>
-          <div class="muted" style="font-size:11px;">fair · model ${(pot.model_prob*100).toFixed(1)}%</div>
-          <button class="track-btn" data-bet-key="${pot.bet_key || ''}" data-bet-label="${(pot.bet_label || '').replace(/"/g,'&quot;')}" data-bet-play="${pot.type}" data-bet-src="GOLF_POT" style="margin-top:10px; padding:6px 14px; background:#d4a04a; color:#0a0a0a; border:none; border-radius:4px; cursor:pointer; font-size:11px; font-weight:700; text-transform:uppercase;">TRACK</button>
-        </div>
-      </div>
-      ${ruRows ? `<div style="margin-top:14px; padding-top:10px; border-top:1px solid rgba(255,255,255,0.06);"><div class="muted" style="font-size:10px; text-transform:uppercase; letter-spacing:1px; margin-bottom:4px;">Runners-up</div>${ruRows}</div>` : ''}
-    `;
-    document.getElementById("potMeta").textContent = `n=${bestbet.n_candidates || 0} candidates`;
-  } else {
-    document.getElementById("potBox").innerHTML = `<p class="muted">${bestbet.note || 'No Play of the Tournament right now.'}</p>`;
-  }
-
-  // ---- H2H matchups ----
+  // ---- H2H model projections (probabilities only; no fair odds) ----
   const matchups = (h2h.matchups || []).slice(0, 20);
   if (matchups.length) {
     document.getElementById("h2hList").innerHTML = matchups.map(m => `
-      <div class="golf-row" style="grid-template-columns: 1.4fr 60px 1.4fr 60px 60px;">
+      <div class="golf-row" style="grid-template-columns: 1.4fr 60px 1.4fr 60px;">
         <span><strong>${m.player_a}</strong> <span class="muted" style="font-size:10px;">#${m.a_pos || '?'} ${m.a_total || ''}</span></span>
-        <span style="text-align:center; color:#d4a04a; font-weight:700;">${fmtAmer(m.fair_a_american)}</span>
+        <span style="text-align:center;">${(m.p_a_beats_b * 100).toFixed(1)}%</span>
         <span><strong>${m.player_b}</strong> <span class="muted" style="font-size:10px;">#${m.b_pos || '?'} ${m.b_total || ''}</span></span>
-        <span style="text-align:center; color:#d4a04a; font-weight:700;">${fmtAmer(m.fair_b_american)}</span>
-        <span class="muted" style="text-align:right;">${(m.p_a_beats_b * 100).toFixed(1)}%</span>
+        <span style="text-align:center;">${(m.p_b_beats_a * 100).toFixed(1)}%</span>
       </div>
     `).join("");
   } else {
-    document.getElementById("h2hList").innerHTML = `<p class="muted" style="padding:14px;">${h2h.note || 'No H2H matchups available.'}</p>`;
+    document.getElementById("h2hList").innerHTML = `<p class="muted" style="padding:14px;">${h2h.note || 'No H2H projections available.'}</p>`;
   }
 
-  // ---- Top American / Top European ----
+  // ---- Top American / Top European (probabilities only; no fair odds) ----
   const us = (makecut.players || []).filter(p => p.p_top_american != null).sort((a,b) => -(a.p_top_american) + (b.p_top_american)).slice(0, 8);
   const eu = (makecut.players || []).filter(p => p.p_top_european != null).sort((a,b) => -(a.p_top_european) + (b.p_top_european)).slice(0, 8);
   const renderRow = (p, kind) => {
     const prob = kind === 'us' ? p.p_top_american : p.p_top_european;
-    const fair = kind === 'us' ? p.fair_top_american : p.fair_top_european;
-    return `<div class="golf-row" style="grid-template-columns: 30px 1.4fr 70px 80px 60px;">
+    return `<div class="golf-row" style="grid-template-columns: 30px 1.4fr 70px 80px;">
       <span class="muted">${kind === 'us' ? '🇺🇸' : '🇪🇺'}</span>
       <span><strong>${p.name}</strong> <span class="muted" style="font-size:10px;">${p.country || ''} · #${p.current_pos || '?'}</span></span>
       <span class="muted">${p.current_total || '—'}</span>
-      <span style="color:#d4a04a; font-weight:700;">${fmtAmer(fair)}</span>
       <span>${(prob*100).toFixed(1)}%</span>
     </div>`;
   };
   document.getElementById("natList").innerHTML =
-    (us.length ? `<div class="golf-row head" style="grid-template-columns: 30px 1.4fr 70px 80px 60px;"><span></span><span>Top American</span><span>Total</span><span>Fair</span><span>P</span></div>` + us.map(p => renderRow(p, 'us')).join("") : '') +
-    (eu.length ? `<div class="golf-row head" style="grid-template-columns: 30px 1.4fr 70px 80px 60px; margin-top:6px;"><span></span><span>Top European</span><span>Total</span><span>Fair</span><span>P</span></div>` + eu.map(p => renderRow(p, 'eu')).join("") : '') ||
-    `<p class="muted" style="padding:14px;">No nationality props available.</p>`;
-  document.getElementById("natMeta").textContent = `${us.length} US · ${eu.length} EU candidates`;
-
-  // ---- 2-3 leg golf parlays ----
-  const parList = parlays.parlays || [];
-  if (parList.length) {
-    document.getElementById("parlayList").innerHTML = parList.map((p, i) => {
-      const ams = (p.parlay_fair_american >= 0 ? '+' : '') + p.parlay_fair_american;
-      return `<div style="padding:12px 16px; border-bottom:1px solid rgba(255,255,255,0.04);">
-        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
-          <span><strong style="color:#d4a04a;">#${i+1} · ${p.n_legs}-leg parlay</strong> <span class="muted" style="font-size:11px;">joint ${(p.joint_prob*100).toFixed(2)}%</span></span>
-          <span style="font-family:'JetBrains Mono',monospace; color:#d4a04a; font-weight:700; font-size:14px;">${ams}</span>
-        </div>
-        <ul style="margin:0; padding-left:18px; font-size:12px; color: var(--text-2,#aaa);">
-          ${p.legs.map(l => `<li><span class="muted" style="font-size:10px;">[${l.kind}]</span> ${l.label}</li>`).join("")}
-        </ul>
-      </div>`;
-    }).join("");
-    document.getElementById("parlayMeta").textContent =
-      `${parlays.n_parlays || 0} top of ${parlays.n_parlays_evaluated || 0} evaluated`;
-  } else {
-    document.getElementById("parlayList").innerHTML = `<p class="muted" style="padding:14px;">${parlays.note || 'No parlays available.'}</p>`;
-  }
+    (us.length ? `<div class="golf-row head" style="grid-template-columns: 30px 1.4fr 70px 80px;"><span></span><span>Top American</span><span>Total</span><span>Model P</span></div>` + us.map(p => renderRow(p, 'us')).join("") : '') +
+    (eu.length ? `<div class="golf-row head" style="grid-template-columns: 30px 1.4fr 70px 80px; margin-top:6px;"><span></span><span>Top European</span><span>Total</span><span>Model P</span></div>` + eu.map(p => renderRow(p, 'eu')).join("") : '') ||
+    `<p class="muted" style="padding:14px;">${makecut.note || 'No nationality projections available.'}</p>`;
+  document.getElementById("natMeta").textContent = `${us.length} US · ${eu.length} EU`;
 });
 
 // Auto-refresh every 5 minutes while live

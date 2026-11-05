@@ -72,7 +72,13 @@ def _model_index(sport: str) -> Dict[str, float]:
     """home-team (lowercased) -> model p_home_win for today's upcoming games."""
     idx: Dict[str, float] = {}
     for g in (_load(f"{sport}_state.json").get("games") or []):
-        ph = g.get("p_home_win")
+        # 2026-11-03: only a VALIDATED model probability may disagree with the
+        # book. p_home_win was a record Elo (POR 6% vs book 43% -> "+37pp edge").
+        # The NBA desk's verdict is NO EDGE and WNBA has no desk, so no lean.
+        verdict = (g.get("desk_verdict") or "").upper()
+        if g.get("p_source") != "game_lines_desk" or not verdict or verdict.startswith("NO EDGE"):
+            continue
+        ph = g.get("p_home_display")
         mu = g.get("matchup") or ""
         if ph is None or "@" not in mu:
             continue

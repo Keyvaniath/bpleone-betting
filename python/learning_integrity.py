@@ -5,20 +5,30 @@ Answers the question: "is the model actually learning skill, or fitting noise?"
 
 For each source, computes:
   - Wilson 95% CI on hit rate (NOT naive p-hat -- handles small samples honestly)
-  - Z-score vs 50% chance
-  - Two-sided p-value (binomial test)
+  - (2026-11-03) CALIBRATION test: realized wins vs the model's own predicted
+    probabilities (sum of p), two-sided z / p-value. Significant = the
+    probabilities are WRONG (something to learn), not an edge. The old test vs
+    50% chance said nothing: a 75%-predicted prop that hits 70% "beats chance"
+    and still loses money at its own price.
+  - (2026-11-03) EDGE test: ROI at a REAL sportsbook price -- class A/B rows only
+    (price_provenance.class), one-sample t on per-pick units. Class C rows
+    (model fair odds / PrizePicks break-even) never count toward an edge.
   - Brier score (calibration quality, lower = better) -- requires p_predicted
   - ECE proxy (predicted vs actual hit rate in 0.05 buckets)
   - CLV proxy (entry odds vs closing odds, from all_picks_ledger)
   - Sample-size grade (A/B/C/D/F based on n_settled)
   - Concept drift flag (this-month hit rate vs prior-month significantly different?)
 
-Each source gets a LEARNING_GRADE:
-  A: n>=50, p<0.05, |CLV|>=2pp, brier<0.22  -- TRUSTED, real edge proven
-  B: n>=30, p<0.10, brier<0.24                -- DEVELOPING signal
-  C: n>=20, hit_rate diff from 50% but not yet significant -- WATCH
-  D: n>=10                                     -- TOO EARLY
-  F: n<10                                      -- INSUFFICIENT DATA, ignoring
+Each source gets a LEARNING_GRADE (2026-11-03 rewrite):
+  A: >=50 class A/B picks, ROI > 0 with edge p<0.05, brier<0.24, calibration
+     not rejected, CLV not negative                  -- TRUSTED (edge at a real price)
+  B: n>=30, brier<0.24, calibration not rejected     -- CALIBRATED (probs honest; no edge proven)
+  C: n>=30 but miscalibrated (calibration p<0.05)    -- MISCALIBRATED
+     n 20-29                                         -- WATCH / EMERGING
+  D: n>=10                                           -- TOO EARLY
+  F: n<10                                            -- INSUFFICIENT DATA, ignoring
+STRONG_SIGNAL (aggregate) requires A grades. Universe: working ledger, settled
+AND NOT voided, result won/lost.
 
 Output: data/learning_integrity.json + data/learning_guards.json
 """
@@ -73,6 +83,68 @@ def _binomial_p_value(hits: int, n: int, p0: float = 0.5) -> float:
     return 2 * (1 - _norm_cdf(z))
 
 
+def _y(p: Dict[str, Any]) -> Optional[int]:
+    """(2026-11-03) 1 won / 0 lost / None otherwise. The ledger's `outcome` is a
+    DICT (stat/actual/line), so the old str(outcome).upper() test scored every
+    pick as a loss and the Brier collapsed to mean(p^2)."""
+    r = p.get("result")
+    return 1 if r == "won" else (0 if r == "lost" else None)
+
+
+def _prob(p: Dict[str, Any]) -> Optional[float]:
+    v = p.get("p_predicted")
+    if v is None:
+        v = p.get("prob")
+    try:
+        v = float(v)
+    except (TypeError, ValueError):
+        return None
+    return v if 0.0 < v < 1.0 else None
+
+
+def _norm_sf2(z: float) -> float:
+    return 2 * (1 - 0.5 * (1 + math.erf(abs(z) / math.sqrt(2))))
+
+
+def _calibration_test(picks: List[Dict[str, Any]]) -> Dict[str, Any]:
+    """(2026-11-03) Wins vs the sum of predicted probabilities (Poisson-binomial,
+    normal approx). Two-sided: a small p means the probabilities are off."""
+    n = 0; wins = 0; mu = 0.0; var = 0.0
+    for p in picks:
+        y, q = _y(p), _prob(p)
+        if y is None or q is None:
+            continue
+        n += 1; wins += y; mu += q; var += q * (1 - q)
+    if n < 5 or var <= 0:
+        return {"n": n, "p_value": 1.0, "z": None, "mean_pred": (mu / n if n else None),
+                "hit_rate": (wins / n if n else None)}
+    z = (wins - mu) / math.sqrt(var)
+    return {"n": n, "z": round(z, 2), "p_value": round(_norm_sf2(z), 4),
+            "mean_pred": round(mu / n, 4), "hit_rate": round(wins / n, 4)}
+
+
+def _edge_test(picks: List[Dict[str, Any]]) -> Dict[str, Any]:
+    """(2026-11-03) ROI at a real sportsbook price: class A/B rows with a recorded
+    payout. One-sample t on per-pick units (normal approx). Class C never counts."""
+    us = []
+    for p in picks:
+        cls = ((p.get("price_provenance") or {}).get("class") or "C").upper()
+        if cls not in ("A", "B") or _y(p) is None:
+            continue
+        u = p.get("payout_units")
+        if not isinstance(u, (int, float)):
+            continue
+        us.append(float(u))
+    n = len(us)
+    if n < 10:   # too few book-priced picks for any test
+        return {"n_book": n, "roi_book_pct": (round(100 * us[0], 2) if n == 1 else None), "p_value": 1.0, "t": None}
+    m = sum(us) / n
+    sd = math.sqrt(sum((u - m) ** 2 for u in us) / (n - 1))
+    t = m / (sd / math.sqrt(n)) if sd > 0 else 0.0
+    return {"n_book": n, "roi_book_pct": round(100 * m, 2), "t": round(t, 2),
+            "p_value": round(_norm_sf2(t), 4)}
+
+
 def _brier_score(picks: List[Dict[str, Any]]) -> Optional[float]:
     """Brier score on settled picks where we have a model probability at pick time.
        Brier = mean( (p_predicted - outcome_01)^2 ). Lower is better. 0.25 = chance."""
@@ -80,15 +152,10 @@ def _brier_score(picks: List[Dict[str, Any]]) -> Optional[float]:
     n_valid = 0
     total = 0.0
     for p in picks:
-        prob = p.get("p_predicted") or p.get("model_p") or p.get("fair_p")
-        outcome = p.get("outcome") or p.get("result")
-        if prob is None or outcome is None: continue
-        try:
-            outcome_01 = 1 if str(outcome).upper() in ("WIN", "W", "TRUE", "1", "HIT", "YES") else 0
-            total += (float(prob) - outcome_01) ** 2
-            n_valid += 1
-        except Exception:
-            continue
+        prob, outcome_01 = _prob(p), _y(p)   # (2026-11-03) real result field
+        if prob is None or outcome_01 is None: continue
+        total += (prob - outcome_01) ** 2
+        n_valid += 1
     if n_valid == 0: return None
     return total / n_valid
 
@@ -99,17 +166,11 @@ def _calibration_buckets(picks: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
         i / 10: {"lo": i/10, "hi": (i+1)/10, "n": 0, "hits": 0} for i in range(10)
     }
     for p in picks:
-        prob = p.get("p_predicted") or p.get("model_p") or p.get("fair_p")
-        outcome = p.get("outcome") or p.get("result")
-        if prob is None or outcome is None: continue
-        try:
-            prob = float(prob)
-            outcome_01 = 1 if str(outcome).upper() in ("WIN", "W", "TRUE", "1", "HIT", "YES") else 0
-            bin_key = min(0.9, math.floor(prob * 10) / 10)
-            buckets[bin_key]["n"] += 1
-            buckets[bin_key]["hits"] += outcome_01
-        except Exception:
-            continue
+        prob, outcome_01 = _prob(p), _y(p)   # (2026-11-03) real result field
+        if prob is None or outcome_01 is None: continue
+        bin_key = min(0.9, math.floor(prob * 10) / 10)
+        buckets[bin_key]["n"] += 1
+        buckets[bin_key]["hits"] += outcome_01
     out = []
     for k in sorted(buckets.keys()):
         b = buckets[k]
@@ -135,25 +196,29 @@ def _ece(picks: List[Dict[str, Any]]) -> Optional[float]:
     return ece
 
 
-def _grade(n: int, p_value: float, brier: Optional[float], clv_pp: Optional[float],
-           hit_rate: float) -> Tuple[str, str]:
-    """Sample-size + significance grade for a source's learning quality."""
+def _grade(n: int, calib: Dict[str, Any], edge: Dict[str, Any], brier: Optional[float],
+           clv_pp: Optional[float]) -> Tuple[str, str]:
+    """(2026-11-03) Sample-size + calibration + edge-at-a-real-price grade."""
     if n < 10:
         return "F", "INSUFFICIENT_DATA"
     if n < MIN_N_FOR_LEARNING:
         return "D", "TOO_EARLY"
     if n < 30:
-        if p_value < SIGNIFICANCE_THRESHOLD * 2:
+        if calib.get("p_value", 1.0) < SIGNIFICANCE_THRESHOLD * 2:
             return "C", "EMERGING_SIGNAL"
         return "C", "WATCH"
     # n >= 30
-    has_clv = clv_pp is not None and abs(clv_pp) >= 2.0
-    has_calibration = brier is not None and brier < 0.24
-    if n >= 50 and p_value < SIGNIFICANCE_THRESHOLD and has_clv and has_calibration:
+    calibrated = (brier is not None and brier < 0.24
+                  and calib.get("p_value", 1.0) >= SIGNIFICANCE_THRESHOLD)
+    edge_proven = ((edge.get("n_book") or 0) >= 50
+                   and (edge.get("roi_book_pct") or 0) > 0
+                   and edge.get("p_value", 1.0) < SIGNIFICANCE_THRESHOLD)
+    clv_ok = clv_pp is None or clv_pp >= 0
+    if edge_proven and calibrated and clv_ok:
         return "A", "TRUSTED"
-    if p_value < SIGNIFICANCE_THRESHOLD * 2 and (has_clv or has_calibration):
-        return "B", "DEVELOPING"
-    return "B", "WATCH"
+    if calibrated:
+        return "B", "CALIBRATED"
+    return "C", "MISCALIBRATED"
 
 
 def _drift(picks: List[Dict[str, Any]]) -> Dict[str, Any]:
@@ -169,9 +234,8 @@ def _drift(picks: List[Dict[str, Any]]) -> Dict[str, Any]:
         except Exception:
             continue
         age = (now - d).days
-        outcome = p.get("outcome") or p.get("result")
-        if outcome is None: continue
-        outcome_01 = 1 if str(outcome).upper() in ("WIN", "W", "TRUE", "1", "HIT", "YES") else 0
+        outcome_01 = _y(p)   # (2026-11-03) real result field
+        if outcome_01 is None: continue
         if age <= 30: recent.append(outcome_01)
         elif age <= 60: prior.append(outcome_01)
     if len(recent) < 5 or len(prior) < 5:
@@ -230,6 +294,10 @@ def run() -> Dict[str, Any]:
     for p in picks:
         if p.get("voided"):
             continue  # duplicate-collapsed copies must not enter training/metrics
+        # (2026-11-03) settled AND NOT voided, decided only -- pending picks had
+        # been scored as losses in the Brier/ECE/drift calcs
+        if not p.get("settled") or _y(p) is None:
+            continue
         src = p.get("source") or "unknown"
         picks_by_source.setdefault(src, []).append(p)
         pid = p.get("pick_id") or p.get("id") or f"{src}|{p.get('player')}|{p.get('market')}|{p.get('date')}"
@@ -237,9 +305,12 @@ def run() -> Dict[str, Any]:
 
     rows: List[Dict[str, Any]] = []
     guards: Dict[str, Dict[str, Any]] = {}
-    for source, stats in by_source.items():
-        hits = int(stats.get("wins") or stats.get("hits") or 0)
-        losses = int(stats.get("losses") or stats.get("misses") or 0)
+    # (2026-11-03) counts come from the same filtered picks as every other metric
+    # (by_source is all-time incl. the archive; the picks are the working ledger)
+    for source in sorted(set(by_source) | set(picks_by_source)):
+        _sp = picks_by_source.get(source, [])
+        hits = sum(1 for p in _sp if _y(p) == 1)
+        losses = sum(1 for p in _sp if _y(p) == 0)
         n = hits + losses
         if n == 0:
             rows.append({
@@ -251,10 +322,14 @@ def run() -> Dict[str, Any]:
             continue
 
         wilson_lo, p_hat, wilson_hi = _wilson_ci(hits, n)
-        p_value = _binomial_p_value(hits, n, p0=0.50)
-        z_score = abs(hits - n*0.5) / math.sqrt(n*0.25) if n > 0 else 0
-
         src_picks = picks_by_source.get(source, [])
+        # (2026-11-03) tests vs the predicted probability and at a real price
+        calib = _calibration_test(src_picks)
+        edge = _edge_test(src_picks)
+        # primary p-value for the learning-velocity guard: the edge test where
+        # the source has book-priced picks, else the calibration test
+        p_value = edge["p_value"] if (edge.get("n_book") or 0) >= MIN_N_FOR_LEARNING else calib["p_value"]
+        unverified = any(p.get("sport") == "MLB-PP" for p in src_picks)
         brier = _brier_score(src_picks)
         ece = _ece(src_picks)
         drift = _drift(src_picks)
@@ -274,7 +349,7 @@ def run() -> Dict[str, Any]:
                 continue
         clv_pp = (sum(clv_values) / len(clv_values)) if clv_values else None
 
-        grade, status = _grade(n, p_value, brier, clv_pp, p_hat)
+        grade, status = _grade(n, calib, edge, brier, clv_pp)
         trustworthy = grade in ("A", "B")
 
         rows.append({
@@ -285,9 +360,18 @@ def run() -> Dict[str, Any]:
             "hit_rate": round(p_hat, 3),
             "wilson_lo_95": round(wilson_lo, 3),
             "wilson_hi_95": round(wilson_hi, 3),
-            "z_score_vs_50": round(z_score, 2),
+            # (2026-11-03) replaced z/p vs 50% chance
+            "mean_predicted": calib.get("mean_pred"),
+            "z_vs_predicted": calib.get("z"),
+            "p_value_calibration": calib.get("p_value"),
+            "is_miscalibrated": bool(calib.get("p_value", 1.0) < SIGNIFICANCE_THRESHOLD),
+            "n_book_priced": edge.get("n_book"),
+            "roi_book_pct": edge.get("roi_book_pct"),
+            "p_value_edge": edge.get("p_value"),
+            "is_significant": bool((edge.get("n_book") or 0) >= 30 and (edge.get("roi_book_pct") or 0) > 0
+                                   and edge.get("p_value", 1.0) < SIGNIFICANCE_THRESHOLD),
             "p_value": round(p_value, 4),
-            "is_significant": bool(p_value < SIGNIFICANCE_THRESHOLD),
+            "unverified": unverified,
             "brier_score": round(brier, 4) if brier is not None else None,
             "ece": round(ece, 4) if ece is not None else None,
             "clv_pp": round(clv_pp, 2) if clv_pp is not None else None,
@@ -338,6 +422,11 @@ def run() -> Dict[str, Any]:
         bonus = int(20 * a_grade_n / total)
         learning_quality_score = min(95, base + bonus)
         verdict = "LEARNING" if learning_quality_score < 75 else "STRONG_SIGNAL"
+        # (2026-11-03) STRONG_SIGNAL needs A grades (edge at a real price). Calibrated
+        # probabilities alone are not an edge -- cap the score below the bar.
+        if a_grade_n == 0:
+            learning_quality_score = min(learning_quality_score, 74)
+            verdict = "CALIBRATION_ONLY"
 
     out = {
         "generated_at": dt.datetime.utcnow().isoformat(timespec="seconds"),
@@ -349,13 +438,18 @@ def run() -> Dict[str, Any]:
         "n_insufficient_sources": sum(1 for r in rows if r.get("grade") in ("D", "F")),
         "min_n_for_learning": MIN_N_FOR_LEARNING,
         "significance_threshold": SIGNIFICANCE_THRESHOLD,
+        "n_a_grade_sources": sum(1 for r in rows if r.get("grade") == "A"),
+        "universe": "working ledger, settled AND NOT voided, won/lost (2026-11-03)",
         "max_weight_delta_per_cycle": MAX_WEIGHT_DELTA_PER_CYCLE,
         "rows": rows,
         "cross_source_overlaps": overlaps,
         "interpretation": (
             "F = insufficient data (<10 picks), ignoring this source's signal. "
-            "D = too early (10-19). C = watch (20-29). B = developing real signal (30+, p<0.10). "
-            "A = trusted (50+, p<0.05, brier<0.24, CLV>=+2pp). "
+            "D = too early (10-19). C = watch (20-29), or miscalibrated (30+, wins differ from the "
+            "model's predicted probabilities at p<0.05). B = calibrated (30+, brier<0.24, predictions "
+            "consistent with outcomes) -- honest probabilities, NO edge proven. "
+            "A = trusted: 50+ picks at a real sportsbook price (class A/B) with ROI > 0 at p<0.05, "
+            "calibrated, CLV not negative. Hit rate vs 50% is not a test of skill and is no longer used. "
             "Only A/B sources have weight changes applied. Wilson lower bound used for C+ if available."
         ),
     }

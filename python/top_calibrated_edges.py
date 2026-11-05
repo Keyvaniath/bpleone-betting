@@ -10,10 +10,8 @@ Combines TWO sources of edge into ONE daily action list:
      - calibrated_prob already Bayesian-shrunk toward book
      - calibrated_edge_pct is the honest number
 
-  2. Player-prop strong_edges (todays_top_plays.json)
-     - Uses MODEL fair_decimal (no real book price)
-     - Apply same shrinkage style toward the book breakeven (1/decimal),
-       so player-prop edges show realistic numbers too
+  2. (REMOVED 2026-11-03) player-prop "edges" priced at the model's own fair
+     odds -- "Book %" was 1/model fair and EV was vs the model's own price.
 
 Output: data/top_calibrated_edges.json
   {
@@ -84,35 +82,9 @@ def run() -> Dict[str, Any]:
             "is_underdog": e.get("is_underdog"),
         })
 
-    # ---- Player prop strong edges (model fair odds, shrink toward breakeven) ----
-    for p in (top_plays.get("top_25") or []):
-        model_p = p.get("prob")
-        if model_p is None or model_p < 0.20 or model_p > 0.85: continue
-        dec = p.get("decimal_odds") or _american_to_decimal(p.get("fair_american"))
-        if not dec: continue
-        # The "baseline" for a model-fair-priced pick is the breakeven of the fair odds itself
-        baseline_p = 1.0 / dec
-        # Shrink model prob toward fair-breakeven by similar Bayesian rule
-        cal_p = _shrink(model_p, baseline_p)
-        cal_edge = (cal_p * dec - 1) * 100
-        if cal_edge < 1.0: continue
-        all_edges.append({
-            "source_type": "MODEL_PROP",
-            "sport": p.get("sport"),
-            "matchup": p.get("player_or_matchup"),
-            "side": None,
-            "team": p.get("team"),
-            "market": p.get("market"),
-            "model_prob": round(model_p, 4),
-            "calibrated_prob": round(cal_p, 4),
-            "book_implied": round(baseline_p, 4),
-            "book_american": p.get("fair_american"),
-            "book_decimal": round(dec, 3),
-            "calibrated_edge_pct": round(cal_edge, 2),
-            "raw_edge_pct": p.get("edge_pct"),
-            "kelly": p.get("kelly_fraction"),
-            "is_underdog": (p.get("fair_american") or 0) > 0,
-        })
+    # ---- (2026-11-03) MODEL_PROP branch DELETED. It listed props with "Book %" =
+    # 1/model fair price and "EV" computed against the model's OWN price -- no
+    # sportsbook quote existed. Only REAL_BOOK edges (a DraftKings price) remain.
 
     # Sort by calibrated edge descending
     all_edges.sort(key=lambda e: -e["calibrated_edge_pct"])
@@ -131,8 +103,8 @@ def run() -> Dict[str, Any]:
         "top_25": all_edges[:25],
         "method_note": "Unified calibrated-edges report. REAL_BOOK = priced against the "
                        "live book line (DraftKings game lines via ESPN's free feed, "
-                       "post-shrinkage). MODEL_PROP = model fair-priced (with similar "
-                       "Bayesian shrinkage toward fair-breakeven). Surface 1%+ edges only.",
+                       "post-shrinkage). Surface 1%+ edges only. (2026-11-03) Model-priced "
+                       "props are no longer listed: no sportsbook prop price exists.",
     }
     os.makedirs(os.path.dirname(OUT), exist_ok=True)
     with open(OUT, "w") as f: json.dump(out, f, indent=2)

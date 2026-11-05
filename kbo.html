@@ -27,7 +27,7 @@
 <title>KBO Desk | EdgeStat</title>
 <link rel="stylesheet" href="css/style.css?v=20260908c">
 <style>
-  .kbo-row { display:grid; grid-template-columns: 1.6fr 80px 80px 80px 80px 70px 80px; gap:12px; padding:12px 14px; border-bottom:1px solid rgba(255,255,255,0.04); font-family:'JetBrains Mono',monospace; font-size:12px; align-items:center; }
+  .kbo-row { display:grid; grid-template-columns: 1.6fr 80px 80px 90px 80px; gap:12px; padding:12px 14px; border-bottom:1px solid rgba(255,255,255,0.04); font-family:'JetBrains Mono',monospace; font-size:12px; align-items:center; }
   .kbo-row.head { background:rgba(255,255,255,0.04); color:var(--muted,#888); font-size:10px; text-transform:uppercase; }
   .kbo-row.live { background:rgba(212,160,74,0.06); border-left:2px solid #d4a04a; }
   .standings-row { display:grid; grid-template-columns: 40px 1.4fr 80px 100px; gap:8px; padding:6px 14px; font-family:'JetBrains Mono',monospace; font-size:12px; border-bottom:1px dashed rgba(255,255,255,0.05); }
@@ -55,33 +55,38 @@
   <section class="metric-strip">
     <div class="metric"><span class="metric-num" id="m_games">--</span><span class="metric-label">Games Today</span></div>
     <div class="metric"><span class="metric-num" id="m_teams">--</span><span class="metric-label">Teams</span></div>
-    <div class="metric"><span class="metric-num" id="m_sims">50k</span><span class="metric-label">MC Sims/Game</span></div>
+    <!-- (2026-11-03) was hard-coded "50k"; now bound to kbo_props.n_sims_per_game -->
+    <div class="metric"><span class="metric-num" id="m_sims">--</span><span class="metric-label">MC Sims/Game</span></div>
     <div class="metric"><span class="metric-num" id="m_source">--</span><span class="metric-label">Data Source</span></div>
   </section>
 
-  <section class="card" style="margin-bottom: 24px; border-left: 3px solid #cf3939;">
-    <div class="card-head"><span><span class="kr-flag">🇰🇷</span> Play of the Day</span><span class="muted" id="potMeta">--</span></div>
-    <div id="potBox" style="padding: 16px;"><p class="muted">Loading top KBO bet…</p></div>
+  <!-- (2026-11-03) "Play of the Day" retitled: chosen by a 54-72% model
+       probability band with no sportsbook price; a labelled projection, not a
+       pick. No HIGH/MED band, no fair-price headline, and no TRACK button (it
+       recorded a bet at the model's own fair price). The OVER/UNDER 8.5 rows
+       (hard-coded 55% / -120) no longer exist. -->
+  <section class="card" style="margin-bottom: 24px; border-left: 3px solid #888;">
+    <div class="card-head"><span><span class="kr-flag">🇰🇷</span> Model Projection (not a pick)</span><span class="muted" id="potMeta">--</span></div>
+    <div id="potBox" style="padding: 16px;"><p class="muted">Loading…</p></div>
   </section>
 
-  <!-- Pitcher matchups -->
-  <section class="card" style="margin-bottom: 24px;">
-    <div class="card-head"><span>⚾ Starting Pitcher Matchups</span><span class="muted" id="spMeta">--</span></div>
-    <p class="muted" style="font-size: 11px; padding: 8px 16px 0;">SP rotation (3-man) cycles by day-of-year. Each starter's ERA delta vs league avg (4.30) feeds the opponent's run-lambda.</p>
-    <div id="spList"><p class="muted" style="padding:14px;">Loading…</p></div>
-  </section>
+  <!-- (2026-11-03) "Starting Pitcher Matchups" section removed: starters were
+       picked by day_of_year % 3 from a static May rotation (fabricated
+       matchups). The model now applies no starter adjustment. -->
 
   <section class="card" style="margin-bottom: 24px;">
     <div class="card-head"><span>⚾ Today's KBO Board</span><span class="muted" id="kboMeta">--</span></div>
-    <p class="muted" style="font-size: 11px; padding: 8px 16px 0;">Poisson runs model (50K Monte Carlo per game). Win prob includes home-field +0.2 runs. Self-learning ELO updates with each settled game.</p>
+    <p class="muted" style="font-size: 11px; padding: 8px 16px 0;">Poisson runs model (Monte Carlo per game) on seed ELO ratings; home-field +0.2 runs; no starting-pitcher input. <strong>Unvalidated model projection — no sportsbook price, not a recommendation.</strong></p>
+    <!-- (2026-11-03) "Home Fair"/"Away Fair" columns removed: model break-even odds shown as prices. -->
     <div class="kbo-row head">
-      <span>Matchup</span><span>Total</span><span>Exp H/A</span><span>P(home)</span><span>Home Fair</span><span>Away Fair</span><span>Status</span>
+      <span>Matchup</span><span>Model Total</span><span>Exp H/A</span><span>Model P(home)</span><span>Status</span>
     </div>
     <div id="kboList"><p class="muted" style="padding:14px;">Loading…</p></div>
   </section>
 
   <section class="card" style="margin-bottom: 24px;">
-    <div class="card-head"><span>🏆 KBO 10 Teams (current ELO)</span></div>
+    <!-- (2026-11-03) was "KBO 10 Teams (current ELO)": processed_match_ids == 0, so these are the hard-coded seeds -->
+    <div class="card-head"><span>🏆 KBO 10 Teams — <span id="eloLabel">seed ratings (hard-coded, not live)</span></span></div>
     <div id="standingsList"></div>
   </section>
 
@@ -90,10 +95,11 @@
     <ul style="padding:14px 28px; color: var(--text-2,#aaa); line-height: 1.8;">
       <li>10-team Korean Baseball League: KIA/LG/Samsung/Doosan/SSG/KT/NC/Lotte/Hanwha/Kiwoom</li>
       <li>KBO scoring environment: 4.7 R/G/team (slightly lower than MLB)</li>
-      <li>Knuth Poisson sampler, 50,000 sims per game</li>
+      <li>Knuth Poisson sampler, Monte Carlo per game (count shown above)</li>
       <li>Home-field +0.20 runs (smaller than MLB; KBO HFA is real but modest)</li>
-      <li>ELO baseline rotates by team tier; updates per settled game (K=20)</li>
-      <li>Self-learning: every settled game updates team ELO → next prediction</li>
+      <li>ELO starts from hard-coded team-tier seeds (K=20 update rule); the ratings table says how many real results have been processed</li>
+      <li>No starting-pitcher input (no verified probable-starter feed)</li>
+      <li>Not validated against settled results; the desk has no KBO sportsbook prices, so nothing here is an edge or a pick</li>
     </ul>
   </section>
 
@@ -108,79 +114,51 @@ Promise.all([
   fetch("data/kbo_props.json?t=" + Date.now(), { cache: "no-cache" }).then(r => r.json()).catch(() => ({})),
   fetch("data/kbo_bestbet.json?t=" + Date.now(), { cache: "no-cache" }).then(r => r.json()).catch(() => ({})),
   fetch("data/kbo_elo.json?t=" + Date.now(), { cache: "no-cache" }).then(r => r.json()).catch(() => ({})),
-  fetch("data/kbo_pitcher_adj.json?t=" + Date.now(), { cache: "no-cache" }).then(r => r.json()).catch(() => ({})),
-]).then(([state, props, bestbet, elo, pitcherAdj]) => {
+]).then(([state, props, bestbet, elo]) => {
   const setText = (id, v) => { const e = document.getElementById(id); if (e) e.textContent = v; };
   setText("kboTitle", `KBO — ${state.season} Korean Baseball`);
-  setText("kboStatus", `${state.n_games_today || 0} games today · source: ${state.data_source || '?'} · refresh: ${(state.generated_at || '').replace('T',' ')}`);
+  // (2026-11-03) offseason state: say the season is over instead of "0 games today"
+  if (state.season_state === "offseason") {
+    setText("kboStatus", `${state.note || 'KBO season is over (offseason).'} · refresh: ${(state.generated_at || '').replace('T',' ')}`);
+  } else {
+    setText("kboStatus", `${state.n_games_today || 0} games today · source: ${state.data_source || '?'} · refresh: ${(state.generated_at || '').replace('T',' ')}`);
+  }
   setText("m_games", state.n_games_today || 0);
   setText("m_teams", state.n_teams || 10);
+  setText("m_sims", props.n_sims_per_game ? (props.n_sims_per_game >= 1000 ? Math.round(props.n_sims_per_game / 1000) + 'k' : props.n_sims_per_game) : '—');
   setText("m_source", (state.data_source || '?').slice(0,12));
 
-  // POT
+  // Model projection card (2026-11-03: was "Play of the Day"; not a pick)
   const pot = bestbet.top_bet;
   if (pot) {
     document.getElementById("potBox").innerHTML = `
-      <div style="display:flex; justify-content:space-between; align-items:flex-start;">
-        <div>
-          <div style="font-size:11px; color:#cf3939; text-transform:uppercase; letter-spacing:1px; margin-bottom:6px;">${pot.confidence} · ${pot.kind}</div>
-          <div style="font-size:22px; font-weight:700; margin-bottom:4px;">${pot.label}</div>
-          <div class="muted" style="font-size:12px;">model ${(pot.prob * 100).toFixed(1)}%</div>
-        </div>
-        <div style="text-align:right;">
-          <div style="font-size:28px; font-weight:700; color:#cf3939; font-family:'JetBrains Mono',monospace;">${fmtAmer(pot.fair_american)}</div>
-          <div class="muted" style="font-size:11px;">fair</div>
-          <button class="track-btn" data-bet-key="${pot.bet_key || ''}" data-bet-label="${(pot.label || '').replace(/"/g,'&quot;')}" data-bet-play="${pot.kind}" data-bet-src="KBO" style="margin-top:10px; padding:6px 14px; background:#cf3939; color:#fff; border:none; border-radius:4px; cursor:pointer; font-size:11px; font-weight:700;">TRACK</button>
-        </div>
-      </div>`;
-    document.getElementById("potMeta").textContent = `${bestbet.n_candidates || 0} candidates`;
+      <div style="font-size:11px; color:var(--muted,#888); text-transform:uppercase; letter-spacing:1px; margin-bottom:6px;">Model projection — unvalidated, no sportsbook price, not a recommendation</div>
+      <div style="font-size:18px; font-weight:700; margin-bottom:4px;">${pot.team} <span class="muted" style="font-size:14px;">vs ${pot.opponent || ''}</span></div>
+      <div class="muted" style="font-size:12px;">model ${(pot.prob * 100).toFixed(1)}% for ${pot.team} to win</div>`;
+    document.getElementById("potMeta").textContent = pot.not_a_pick_reason || "not a pick";
   } else {
-    document.getElementById("potBox").innerHTML = `<p class="muted">${bestbet.note || 'No qualifying play.'}</p>`;
+    const msg = state.season_state === "offseason" ? "KBO season is over — nothing to project." : (bestbet.note || 'No KBO games to project.');
+    document.getElementById("potBox").innerHTML = `<p class="muted">${msg}</p>`;
   }
 
   // Game list
   const games = props.predictions || [];
   document.getElementById("kboList").innerHTML = games.length ? games.map(g => {
-    const betKey = `KBO|${g.home_team}|ML|${g.fair_home_american}`;
-    return `<div class="kbo-row"
-                 data-bet-key="${betKey}"
-                 data-bet-label="${g.home_team} ML vs ${g.away_team}"
-                 data-bet-play="ML"
-                 data-bet-src="KBO">
+    // (2026-11-03) no TRACK key: it recorded a bet at the model's fair price
+    return `<div class="kbo-row">
       <span><strong>${g.away_team}</strong> @ <strong>${g.home_team}</strong></span>
       <span class="muted">${g.model_total || '—'}</span>
       <span class="muted">${g.expected_home_runs}/${g.expected_away_runs}</span>
-      <span style="color:${g.p_home_win >= 0.6 ? '#58c878' : g.p_home_win <= 0.4 ? '#e35a5a' : 'var(--text-2,#aaa)'}; font-weight:700;">${(g.p_home_win * 100).toFixed(1)}%</span>
-      <span>${fmtAmer(g.fair_home_american)}</span>
-      <span>${fmtAmer(g.fair_away_american)}</span>
+      <span style="font-weight:700;">${(g.p_home_win * 100).toFixed(1)}%</span>
       <span class="muted">${g.status || 'Scheduled'}</span>
     </div>`;
-  }).join("") : `<p class="muted" style="padding:14px;">No KBO games scheduled.</p>`;
+  }).join("") : `<p class="muted" style="padding:14px;">${state.season_state === "offseason" ? 'KBO season is over (offseason) — no games scheduled.' : 'No KBO games scheduled.'}</p>`;
 
-  // Pitcher matchups
-  const spList = (pitcherAdj.adjustments || []);
-  if (spList.length) {
-    document.getElementById("spList").innerHTML = spList.map(a => {
-      const hs = a.home_starter || {};
-      const as = a.away_starter || {};
-      const hAdj = a.home_runs_against_adjustment || 0;
-      const aAdj = a.away_runs_against_adjustment || 0;
-      return `<div style="padding:10px 16px; border-bottom:1px solid rgba(255,255,255,0.04); font-family:'JetBrains Mono',monospace; font-size:12px;">
-        <div><strong>${a.matchup}</strong></div>
-        <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 6px; font-size: 11px;">
-          <div>Home SP: <strong>${hs.name || '?'}</strong> <span class="muted">ERA ${hs.era != null ? hs.era.toFixed(2) : '?'}</span>
-               <span style="color:${hAdj < 0 ? '#58c878' : '#e35a5a'};">(${hAdj >= 0 ? '+' : ''}${hAdj} R/G vs avg)</span></div>
-          <div>Away SP: <strong>${as.name || '?'}</strong> <span class="muted">ERA ${as.era != null ? as.era.toFixed(2) : '?'}</span>
-               <span style="color:${aAdj < 0 ? '#58c878' : '#e35a5a'};">(${aAdj >= 0 ? '+' : ''}${aAdj} R/G vs avg)</span></div>
-        </div>
-      </div>`;
-    }).join("");
-    document.getElementById("spMeta").textContent = `${spList.length} games · league avg ERA ${pitcherAdj.league_avg_era || '?'}`;
-  } else {
-    document.getElementById("spList").innerHTML = `<p class="muted" style="padding:14px;">No pitcher data.</p>`;
-  }
+  // (2026-11-03) pitcher-matchup rendering removed with the fabricated starters.
 
-  // Standings (sort teams by current ELO)
+  // Ratings table (seed unless real results have been processed)
+  const nProcessed = (elo.processed_match_ids || []).length;
+  setText("eloLabel", nProcessed ? `seed ratings + ${nProcessed} processed results` : "seed ratings (hard-coded, not live)");
   const teams = elo.teams || {};
   const sorted = Object.entries(teams).sort((a,b) => b[1] - a[1]);
   document.getElementById("standingsList").innerHTML = sorted.map(([name, rating], i) => `

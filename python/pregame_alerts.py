@@ -39,73 +39,98 @@ def _team_form(sport: str, team: str) -> Dict[str, Any]:
     return ((tf.get("teams") or {}).get(team) or {})
 
 
+_BLOCKED_VERDICTS = ("NO EDGE", "NO_EDGE", "UNPROVEN", "")
+
+
+def _parse(ts):
+    try:
+        t = dt.datetime.fromisoformat(str(ts).replace("Z", "+00:00"))
+    except Exception:
+        return None
+    return t if t.tzinfo else t.replace(tzinfo=dt.timezone.utc)
+
+
 def run() -> Dict[str, Any]:
+    """(2026-11-03) FAIL CLOSED. The old feed read {sport}_state p_home_win with
+    `or 0.5`, flagged NCAAB/NCAAF games at the default Elo (1500 vs 1500), and
+    printed a model fair price as if it were the line ("HIGH UCLA -179" while DK
+    had UCLA +180). An alert is emitted ONLY when the game's probability comes
+    from the game-lines desk (p_source == "game_lines_desk"), that desk's verdict
+    is not NO EDGE / UNPROVEN, the game is pre-game and not started, and a real
+    DraftKings price exists -- shown with its observed time. Otherwise nothing is
+    emitted and `reasons` says why."""
     now = dt.datetime.now(dt.timezone.utc)
     alerts: List[Dict[str, Any]] = []
+    reasons: Dict[str, Dict[str, int]] = {}
+
+    def _skip(sport, why):
+        reasons.setdefault(sport.upper(), {})
+        reasons[sport.upper()][why] = reasons[sport.upper()].get(why, 0) + 1
 
     for sport in SPORTS_TO_SCAN:
         state = _load(os.path.join(DATA_DIR, f"{sport}_state.json"))
         for g in (state.get("games") or []):
-            if g.get("state") != "pre": continue
-            ph = g.get("p_home_win") or 0.5
-            # Sweet-spot range
-            sweet_home = 0.55 <= ph <= 0.75
-            sweet_away = 0.25 <= ph <= 0.45
-            if not (sweet_home or sweet_away): continue
-
+            if g.get("state") != "pre":
+                _skip(sport, "not pre-game"); continue
+            st = _parse(g.get("date"))
+            if st is None or st <= now:
+                _skip(sport, "started or no start time"); continue
+            if g.get("p_source") != "game_lines_desk":
+                _skip(sport, "no validated model probability (not from the game-lines desk)"); continue
+            verdict = str(g.get("desk_verdict") or "").upper()
+            if verdict in _BLOCKED_VERDICTS:
+                _skip(sport, f"desk verdict {verdict or 'missing'}"); continue
+            ph = g.get("p_home_display")
+            if ph is None:
+                _skip(sport, "no desk probability"); continue
+            ph = float(ph)
+            side = "HOME" if ph >= 0.5 else "AWAY"
+            dk = g.get("dk_ml_home") if side == "HOME" else g.get("dk_ml_away")
+            if dk is None:
+                _skip(sport, "no DraftKings price"); continue
             home, away = g.get("home_team"), g.get("away_team")
+            team, opp = (home, away) if side == "HOME" else (away, home)
+            prob = ph if side == "HOME" else 1 - ph
             home_form = _team_form(sport, home)
             away_form = _team_form(sport, away)
-            home_wpct = ((home_form.get("L10") or {}).get("win_pct") or 0)
-            away_wpct = ((away_form.get("L10") or {}).get("win_pct") or 0)
-            # Form-aligned = the side we favor also has higher L10 win%
-            if sweet_home:
-                aligned = home_wpct >= away_wpct
-                side = "HOME"
-                team = home
-                opp = away
-                prob = ph
-            else:
-                aligned = away_wpct >= home_wpct
-                side = "AWAY"
-                team = away
-                opp = home
-                prob = 1 - ph
-
             alerts.append({
                 "sport": sport.upper(),
                 "matchup": g.get("matchup"),
+                "game_time": g.get("date"),
                 "side": side,
                 "team": team,
                 "opponent": opp,
                 "p_pick_side": round(prob, 4),
-                "fair_american": (g.get("fair_home_american") if side == "HOME"
-                                   else g.get("fair_away_american")),
+                "p_source": "game_lines_desk",
+                "desk_verdict": g.get("desk_verdict"),
+                "dk_american": int(dk),
+                "odds_observed_at": g.get("odds_observed_at"),
                 "team_l10": (home_form.get("L10") or {}).get("record") if side == "HOME"
                             else (away_form.get("L10") or {}).get("record"),
-                "opp_l10": (away_form.get("L10") or {}).get("record") if side == "HOME"
-                           else (home_form.get("L10") or {}).get("record"),
-                "team_streak": home_form.get("current_streak") if side == "HOME" else away_form.get("current_streak"),
-                "form_aligned": aligned,
-                "confidence": ("HIGH" if aligned and prob >= 0.62 else
-                                "MED" if aligned else "LOW"),
             })
 
-    # Sort: high confidence first, then by prob
-    alerts.sort(key=lambda a: ({"HIGH":0,"MED":1,"LOW":2}.get(a["confidence"], 3),
-                                -a["p_pick_side"]))
-
-    by_conf: Dict[str, int] = {}
+    alerts.sort(key=lambda a: -a["p_pick_side"])
     by_sport: Dict[str, int] = {}
     for a in alerts:
-        by_conf[a["confidence"]] = (by_conf.get(a["confidence"]) or 0) + 1
         by_sport[a["sport"]] = (by_sport.get(a["sport"]) or 0) + 1
+
+    note = None
+    if not alerts:
+        top = []
+        for sp, rs in reasons.items():
+            k, v = max(rs.items(), key=lambda kv: kv[1])
+            top.append(f"{sp}: {v} {k}")
+        note = ("No pre-game alerts: an alert needs a game-lines-desk probability whose verdict "
+                "passed (not NO EDGE / UNPROVEN) and a DraftKings price. " + "; ".join(top))
 
     payload = {
         "generated_at": dt.datetime.now().isoformat(timespec="seconds"),
+        "rule": "game-lines desk probability + passing desk verdict + DraftKings price, pre-game only",
         "n_alerts": len(alerts),
-        "by_confidence": by_conf,
+        "by_confidence": {},
         "by_sport": by_sport,
+        "reasons": reasons,
+        "note": note,
         "alerts": alerts,
     }
     os.makedirs(DATA_DIR, exist_ok=True)
@@ -116,10 +141,7 @@ def run() -> Dict[str, Any]:
 if __name__ == "__main__":
     p = run()
     print(f"Pre-game alerts: {p['n_alerts']} total")
-    print(f"  by confidence: {p['by_confidence']}")
-    print(f"  by sport: {p['by_sport']}")
+    if p["note"]:
+        print("  " + p["note"])
     for a in p["alerts"][:10]:
-        align = "[A]" if a["form_aligned"] else "[?]"
-        print(f"  [{a['confidence']:4}] {a['sport']:5} {align} {a['team']} {a['side']} "
-              f"({a['team_l10']} L10, streak {a['team_streak']}) -- "
-              f"P={a['p_pick_side']*100:.1f}%")
+        print(f"  {a['sport']:5} {a['team']} {a['side']} P={a['p_pick_side']*100:.1f}% DK {a['dk_american']:+d} ({a['desk_verdict']})")

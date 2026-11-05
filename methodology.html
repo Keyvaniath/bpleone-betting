@@ -64,14 +64,14 @@
 
   <section class="page-head">
     <h1>Methodology</h1>
-    <p class="lede">The market is a number. We trade the gap between the book's number and ours. That only works if <b>our</b> number is honest — so this page shows the work: how every game and prop is modeled, why the raw model is deliberately distrusted, and how we measure ourselves against the close. No black boxes. Every model below is hand-coded; every metric is computed from a public, append-only ledger.</p>
+    <p class="lede">The market is a number. We trade the gap between the book's number and ours. That only works if <b>our</b> number is honest — so this page shows the work: how every game and prop is modeled, why the raw model is deliberately distrusted, and how we measure ourselves against the close. No black boxes. Every model below is hand-coded; every metric is computed from a public settled ledger, and every restatement of it is disclosed with before/after numbers on the <a href="track-record.html">track record</a>.<!-- (2026-11-03) was "append-only": the ledger is restated (repriced to DK, unpriced voided) and says so --></p>
   </section>
 
   <!-- live credibility strip -->
   <div class="bynum" id="bynum">
-    <span class="b"><span class="lab">settled picks (ledger)</span><b id="mSettled" class="mono">—</b><span class="sub">public, append-only — no revisions</span></span>
+    <span class="b"><span class="lab">settled picks (ledger)</span><b id="mSettled" class="mono">—</b><span class="sub">public · restatements disclosed</span><!-- (2026-11-03) --> </span>
     <span class="b"><span class="lab">model calibration (ECE)</span><b class="mono"><span id="mEceRaw" class="down">—</span> → <span id="mEceCal" class="up">—</span></b><span class="sub">raw model → calibrated</span></span>
-    <span class="b"><span class="lab">curation ROI swing</span><b class="mono"><span id="mCurRaw" class="down">—</span> → <span id="mCurCur" class="up">—</span></b><span class="sub">dropping proven-negative families</span></span>
+    <span class="b"><span class="lab">curation replay swing</span><b class="mono"><span id="mCurRaw">—</span> → <span id="mCurCur">—</span></b><span class="sub">in-sample, model fair odds — not a betting ROI</span><!-- (2026-11-03) colour set by sign in JS --></span>
     <span class="b"><span class="lab">closing line value</span><b id="mClv" class="mono">—</b><span class="sub">beat-the-close rate, published either way</span></span>
   </div>
   <p class="muted2" style="font-size:11px;font-family:'JetBrains Mono',monospace;margin:4px 0 0;" id="bynumNote"></p>
@@ -82,7 +82,7 @@
     <div class="step"><div class="n">01 · INGEST</div><h4>Real data, free first</h4><p>Schedules, box scores, lineups, weather, umpires, and live DraftKings odds — pulled from MLB Stats API, ESPN, Baseball Savant, Open-Meteo. Game lines need <i>no</i> paid key.</p></div>
     <div class="step"><div class="n">02 · MODEL</div><h4>Hand-coded probability</h4><p>Sport-specific models turn features into a fair win/total/prop probability. Bayesian + Poisson, Monte Carlo, gradient-boosted trees, a small MLP — all from scratch.</p></div>
     <div class="step"><div class="n">03 · CALIBRATE</div><h4>Distrust the model</h4><p>The raw model is overconfident. A per-family isotonic transform — learned from settled outcomes — bends each probability toward what actually happened.</p></div>
-    <div class="step"><div class="n">04 · CURATE</div><h4>Drop what loses</h4><p>Market families that lost money over a real sample are hard-excluded from every board. This — not the model — is where the ROI lives.</p></div>
+    <div class="step"><div class="n">04 · CURATE</div><h4>Drop what loses</h4><p>Market families that lost money over a real sample are hard-excluded from every board. It removes losers in-sample; whether that survives out-of-sample is the held-out test below.<!-- (2026-11-03) removed "where the ROI lives" --></p></div>
     <div class="step"><div class="n">05 · GRADE</div><h4>Settle &amp; learn</h4><p>Every pick lands in the ledger, settles against the box score, and feeds calibration + CLV. The loop trains on <i>raw</i> predictions, never its own calibrated output.</p></div>
   </div>
 
@@ -115,10 +115,10 @@
     <span class="tag">Curation · proven-negative families</span>
     <h3>The model finds edges; curation throws out the bad ones</h3>
     <p>A market family is <b>proven-negative</b> once it has lost money over a real sample (n ≥ 25, net ≤ −5u). Those families are <b>hard-excluded</b> from every board we surface. This is the single highest-impact lever in the whole system — and it's not modeling, it's discipline.</p>
-    <div class="eq">Raw firehose, all families &nbsp; <span class="res down" id="mEqRaw">—</span> &nbsp;&nbsp;→&nbsp;&nbsp; honest book, losers dropped &nbsp; <span class="res up" id="mEqCur">—</span> <span class="muted2" id="mEqDetail">(in-sample)</span></div>
-    <p>We publish <i>both</i> numbers — the raw firehose and the curated book — on the <a href="strategy-sim.html">Strategy Simulator</a>, where you can replay the entire ledger yourself with any filter and reproduce the track record exactly.</p>
-    <p id="mHeldoutWrap" style="display:none;margin-top:12px;padding:11px 14px;border:1px solid rgba(88,200,120,.22);border-radius:8px;background:rgba(88,200,120,.04);font-size:13px;line-height:1.6;">
-      <b>And it survives out-of-sample —</b> <span id="mHeldoutBody"></span> <a href="track-record.html" style="color:#58c878;">held-out validation →</a>
+    <div class="eq">Raw firehose, all families &nbsp; <span class="res" id="mEqRaw">—</span> &nbsp;&nbsp;→&nbsp;&nbsp; losers dropped &nbsp; <span class="res" id="mEqCur">—</span> <span class="muted2" id="mEqDetail">(in-sample, model fair odds)</span></div>
+    <p>We publish <i>both</i> numbers — the raw firehose and the curated book — on the <a href="strategy-sim.html">Strategy Simulator</a>, where you can replay the ledger yourself with any filter. Both are replays at the recorded price, which for most rows is the model's own fair odds (price class C) — calibration evidence, not a betting ROI.<!-- (2026-11-03) --></p>
+    <p id="mHeldoutWrap" style="display:none;margin-top:12px;padding:11px 14px;border:1px solid rgba(255,255,255,.12);border-radius:8px;background:rgba(255,255,255,.03);font-size:13px;line-height:1.6;">
+      <b id="mHeldoutLead">Out-of-sample —</b> <span id="mHeldoutBody"></span><!-- (2026-11-03) lead decided by the held-out sign --> <a href="track-record.html" style="color:#58c878;">held-out validation →</a>
     </p>
   </div>
 
@@ -155,7 +155,7 @@
   <div class="deep">
     <span class="tag">Closing line value · the sharp's metric</span>
     <h3>Did the market move to our side?</h3>
-    <p>Winning a bet can be luck. <b>Beating the close</b> is the metric that survives variance: for every game we lean, did the line move <i>toward</i> our side by the time it closed? We snapshot the de-vigged line open→close from free odds and measure the move. It's the cleanest proof of edge independent of any single result.</p>
+    <p>Winning a bet can be luck. <b>Beating the close</b> is the metric that survives variance: for every game we lean, did the line move <i>toward</i> our side by the time it closed? We snapshot the de-vigged line open→close from free odds and measure the move. It's the cleanest test of edge independent of any single result.<!-- (2026-11-03) "proof" → "test" --></p>
     <p>And we publish it <b>even when it's below 50%</b>. Right now the MLB game-line model doesn't consistently beat the close — so the <a href="clv.html">CLV page</a> says exactly that. A desk that only shows you its wins isn't a desk.</p>
   </div>
 
@@ -171,7 +171,7 @@
     <h3>What the numbers do — and don't — mean</h3>
     <ul>
       <li><b>Calibration makes the model <i>true</i>, not <i>profitable</i>.</b> Pricing at your own fair odds is 0-EV by construction. Calibration's job is to make a displayed 70% actually mean 70% — so that real book edges are real, not artifacts of overconfidence.</li>
-      <li><b>ROI comes from curation, not the model.</b> The curated book is just the raw firehose with the proven losers removed. We show the losing firehose right next to it so the lift is auditable. Held out (cut-set frozen on early data, scored on the unseen window) it stays positive but is <b>concentrated</b> in a couple of families — so we publish the per-family decomposition and the robust, small-sample-flagged-excluded figure, not just the headline.</li>
+      <li><b>Curation is a filter, not proof of edge.</b> The curated replay is the raw firehose with the proven losers removed, and the cut is fit on the same outcomes, so in-sample it always looks better. The test is held-out (cut-set frozen on early data, scored on the unseen window): <span id="mHoHonest">see the live figure above</span>. What positive families exist are <b>concentrated</b> in a couple of names — so we publish the per-family decomposition, not just the headline.<!-- (2026-11-03) removed "it stays positive" / "ROI comes from curation" --></li>
       <li><b>CLV is published in both directions.</b> Below-50% beat-the-close rates stay on the site. The metric only means something if you can't hide from it.</li>
       <li><b>Variance is real and the sample is finite.</b> Every probability is a long-run statement. Short runs deviate. Bet accordingly — and only what you can afford to lose. 21+. 1-800-GAMBLER.</li>
     </ul>
@@ -234,9 +234,19 @@ fetch("data/curation_oos_validation.json", { cache: "no-cache" }).then(r => r.js
   if (!h) return;
   const c = d.concentration || {};
   const sgn = v => (v >= 0 ? "+" : "") + v + "%";
-  let body = `freezing the cut-set on early data and scoring the <i>unseen</i> later window gives <b class="up">${sgn(h.test_oos_roi)}</b> held-out (raw firehose <b class="down">${sgn(h.test_raw_roi)}</b> on the same window). `;
+  // (2026-11-03) colour every ROI by its sign; the lead and verdict follow the data.
+  const cls = v => v >= 0 ? "up" : "down";
+  let body = `freezing the cut-set on early data and scoring the <i>unseen</i> later window gives <b class="${cls(h.test_oos_roi)}">${sgn(h.test_oos_roi)}</b> held-out (raw firehose <b class="${cls(h.test_raw_roi)}">${sgn(h.test_raw_roi)}</b> on the same window; graded at the model's own odds — not a betting ROI). `;
+  const ci = d.holdout_70_ci;
+  if (ci && ci.roi_hi < 0) body += `95% CI [${sgn(ci.roi_lo)}, ${sgn(ci.roi_hi)}]: entire CI below zero, so held-out curated is reliably negative. `;
+  else if (ci && ci.roi_lo > 0) body += `95% CI [${sgn(ci.roi_lo)}, ${sgn(ci.roi_hi)}] sits above zero within this sample. `;
+  else if (ci) body += `95% CI [${sgn(ci.roi_lo)}, ${sgn(ci.roi_hi)}] includes zero. `;
   if (c.roi_ex_flagged != null)
-    body += `It's <b>concentrated</b>, though — the top 2 of ${c.n_surviving_families} surviving families carry it; excluding small-sample-flagged families the robust figure is <b class="up">${sgn(c.roi_ex_flagged)}</b>. We publish the full per-family breakdown, not just the headline. `;
+    body += `Excluding small-sample-flagged families the robust figure is <b class="${cls(c.roi_ex_flagged)}">${sgn(c.roi_ex_flagged)}</b>. We publish the full per-family breakdown, not just the headline. `;
+  document.getElementById("mHeldoutLead").textContent = h.test_oos_roi > 0
+    ? "Out-of-sample it stays positive —" : "Out-of-sample it does not hold —";
+  const hh = document.getElementById("mHoHonest");
+  if (hh) hh.innerHTML = `held-out 70/30 curated <b class="${cls(h.test_oos_roi)}">${sgn(h.test_oos_roi)}</b> on n=${h.test_oos_n}`;
   document.getElementById("mHeldoutBody").innerHTML = body;
   document.getElementById("mHeldoutWrap").style.display = "block";
   // Live-fill the curation ROI swing (hero strip + equation) so the numbers can
@@ -244,6 +254,8 @@ fetch("data/curation_oos_validation.json", { cache: "no-cache" }).then(r => r.js
   const ins = d.in_sample || {};
   const set = (id, v) => { const e = document.getElementById(id); if (e) e.textContent = v; };
   if (ins.raw_roi != null && ins.curated_roi != null) {
+    [["mCurRaw", ins.raw_roi], ["mCurCur", ins.curated_roi], ["mEqRaw", ins.raw_roi], ["mEqCur", ins.curated_roi]]
+      .forEach(([id, v]) => { const e = document.getElementById(id); if (e) e.classList.add(v >= 0 ? "up" : "down"); });   // (2026-11-03)
     set("mCurRaw", sgn(ins.raw_roi));
     set("mCurCur", sgn(ins.curated_roi));
     set("mEqRaw", sgn(ins.raw_roi) + " ROI");

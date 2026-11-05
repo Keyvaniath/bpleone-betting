@@ -47,6 +47,22 @@ def _load(p):
     except Exception: return {}
 
 
+def _mlb_offseason() -> bool:
+    """(2026-11-03) today.json is the MLB board; no_games / no games = offseason."""
+    t = _load(os.path.join(DATA_DIR, "today.json"))
+    return bool(t.get("no_games")) or not (t.get("games") or [])
+
+
+def _golf_live_or_done() -> bool:
+    """(2026-11-03) Golf finish positions are real only once the event has
+    started or finished -- a Scheduled event has no leaderboard."""
+    t = (_load(os.path.join(DATA_DIR, "golf_state.json")).get("active_tournament") or {})
+    return bool(t.get("is_in_progress") or t.get("is_complete"))
+
+
+PROJ = "model projection — unvalidated, no sportsbook price, not a recommendation"
+
+
 def run() -> Dict[str, Any]:
     now = dt.datetime.now()
     date = now.date().isoformat()
@@ -76,30 +92,38 @@ def run() -> Dict[str, Any]:
     # Top 5 best bets
     bb = _load(os.path.join(DATA_DIR, "best_bets.json"))
     bets = bb.get("bets") or []
+    # (2026-11-03) best_bets.json is fail-closed upstream: only DK-priced rows.
+    lines.append("## 🎯 Best Bets (sportsbook-priced only)")
     if bets:
-        lines.append("## 🎯 Top 5 Best Bets")
         for b in bets[:5]:
             stars = "★" * (b.get("stars") or 0)
             lines.append(f"{b.get('rank',0)}. **{b.get('label','')}** ({b.get('quality_score',0)}/100 {stars})")
-        lines.append("")
+    else:
+        exc = bb.get("excluded_unpriced") or {}
+        n_exc = sum(exc.values())
+        by = ", ".join(f"{k} {v}" for k, v in sorted(exc.items(), key=lambda kv: -kv[1]))
+        lines.append(f"- No best bet today: a best bet needs a real sportsbook price"
+                     + (f" — {n_exc} model-only projections excluded ({by})." if n_exc else "."))
+    lines.append("")
 
     # Whale picks (max-confluence signal)
     whales = _load(os.path.join(DATA_DIR, "whale_picks.json"))
     top_whales = [w for w in (whales.get("whales") or [])
                     if w.get("tier") in ("WHALE", "STRONG")][:6]
     if top_whales:
-        lines.append("## 🐋 Whale Picks (Max Confluence)")
+        # (2026-11-03) model-only: no edge vs an assumed/own price, no tier-as-pick.
+        lines.append(f"## 🐋 Signal Confluence — {PROJ}")
         for w in top_whales:
-            lines.append(f"- [{w['tier']}] **[{w.get('sport')}]** {w.get('player_or_matchup')} "
-                          f"{w.get('market')} -- {(w.get('prob') or 0)*100:.0f}% / +{_fmtv(w.get('edge_pct'), '.1f', 0)}% "
-                          f"(score {_fmtv(w.get('confluence_score'), '.1f', 0)})")
+            lines.append(f"- **[{w.get('sport')}]** {w.get('player_or_matchup')} "
+                          f"{w.get('market')} -- model {(w.get('prob') or 0)*100:.0f}% "
+                          f"(confluence score {_fmtv(w.get('confluence_score'), '.1f', 0)})")
         lines.append("")
 
     # Sharp action signals
     sharp = _load(os.path.join(DATA_DIR, "sharp_action_radar.json"))
     pos = (sharp.get("positive_signals") or [])[:5]
     if pos:
-        lines.append("## 📡 Sharp Action (Line Movement)")
+        lines.append("## 📡 Line Moved (opening vs latest; not a read on who bet)")  # (2026-11-03)
         for s in pos:
             lines.append(f"- [{s.get('intensity')}] **{s.get('matchup')}** {s.get('market')}: "
                           f"{s.get('opening_implied_pct')}% → {s.get('latest_implied_pct')}% (+{_fmtv(s.get('shift_pp'), '.1f', 0)}pp)")
@@ -109,7 +133,7 @@ def run() -> Dict[str, Any]:
     unders = _load(os.path.join(DATA_DIR, "mlb_unders_alerts.json"))
     strong_u = (unders.get("strong_unders") or [])[:5]
     if strong_u:
-        lines.append("## 📉 Strong UNDER Signals")
+        lines.append(f"## 📉 Model total below market — {PROJ}")  # (2026-11-03)
         for u in strong_u:
             lines.append(f"- [{u.get('tier')} {_fmtv(u.get('under_signal_score'), '.1f', 0)}] **{u.get('matchup')}** "
                           f"model {u.get('model_fair_total')} vs market {u.get('market_total')}")
@@ -125,23 +149,37 @@ def run() -> Dict[str, Any]:
         net = (locks.get("net_units") or 0)
         roi = locks.get("roi_pct")
         l7 = locks.get("last_7_days") or {}
+        # (2026-11-03) Lead with SPORTSBOOK-priced locks. 307 of the all-time
+        # wins are PrizePicks props graded at the venue break-even (unverified).
+        bp = locks.get("by_price") or {}
+        sb = bp.get("sportsbook") or {}
+        pp = bp.get("prizepicks_unverified") or {}
         lines.append("## 🔒 Locks of the Day -- Track Record")
-        lines.append(f"- All-time: **{wins}-{losses}** ({(hit_rate*100):.1f}% hit rate)" if hit_rate is not None
-                      else f"- All-time: {total} locks recorded (0 settled yet)")
-        if roi is not None:
-            lines.append(f"- Net units: **{net:+.2f}u** | ROI: **{roi:+.1f}%**")
+        if sb.get("n_settled"):
+            lines.append(f"- Sportsbook-priced: **{sb.get('wins',0)}-{sb.get('losses',0)}** "
+                          f"(n={sb['n_settled']}; net {_fmtv(sb.get('net_units'), '+.2f', 0)}u, "
+                          f"ROI {_fmtv(sb.get('roi_pct'), '+.1f', 0)}%)"
+                          + (" -- too few to judge" if sb["n_settled"] < 30 else ""))
+        else:
+            lines.append("- Sportsbook-priced: no settled locks yet")
+        if pp.get("n_settled"):
+            lines.append(f"- PrizePicks (unverified, venue break-even, feed dark since 2026-07-09): "
+                          f"{pp.get('wins',0)}-{pp.get('losses',0)} -- not a sportsbook record")
+        if not bp and hit_rate is not None:
+            lines.append(f"- All-time (mixed sportsbook + PrizePicks): {wins}-{losses}")
         if l7.get("hit_rate") is not None:
             lines.append(f"- Last 7d: {l7.get('wins',0)}-{l7.get('losses',0)} ({(l7['hit_rate']*100):.1f}%) | net {_fmtv(l7.get('net_units'), '+.2f', 0)}u")
         todays = locks.get("todays_locks") or []
         if todays:
             lines.append(f"\n**Today's {len(todays)} Locks:**")
             for L in todays:
-                lines.append(f"- [{L.get('sport','?')}] **{L.get('player_or_matchup','?')[:30]}** {L.get('market','?')[:30]} · p={(L.get('prob') or 0)*100:.0f}% edge=+{_fmtv(L.get('edge_pct'), '.1f', 0)}% qK={_fmtv(L.get('unit_size_quarter_kelly'), '.3f', 0)}u")
+                lines.append(f"- [{L.get('sport','?')}] **{(L.get('player_or_matchup') or '?')[:30]}** {(L.get('market') or '?')[:30]} · p={(L.get('prob') or 0)*100:.0f}%")  # (2026-11-03) no edge/stake
         lines.append("")
 
     # Cross-sport parlay recommendations
-    parlays = _load(os.path.join(DATA_DIR, "cross_sport_parlays.json"))
-    balanced = parlays.get("balanced_2_leg_picks") or []
+    # (2026-11-03) Parlays are never recommended by default and never carry a
+    # stake or EV -- the section is removed from the brief.
+    balanced = []
     if balanced:
         lines.append(f"## 🎰 Top Balanced 2-Leg Parlays (40-65% joint)")
         for p in balanced[:3]:
@@ -154,18 +192,23 @@ def run() -> Dict[str, Any]:
     ppot = _load(os.path.join(DATA_DIR, "player_pot.json"))
     top5_players = ppot.get("top_5") or []
     if top5_players:
-        lines.append("## 🎮 Player Play of the Day (cross-sport)")
+        lines.append(f"## 🎮 Player projections (cross-sport) — {PROJ}")  # (2026-11-03)
         for p in top5_players[:5]:
-            lines.append(f"- **[{p.get('sport','?')}]** {p.get('label','')} | {p.get('confidence','MED')} conviction · model {(p.get('prob') or 0)*100:.1f}% fair {p.get('fair_american','?')}")
+            lines.append(f"- **[{p.get('sport','?')}]** {p.get('label','')} · model {(p.get('prob') or 0)*100:.1f}%")
         lines.append("")
 
     # Pre-game alerts (HIGH conviction)
     pre = _load(os.path.join(DATA_DIR, "pregame_alerts.json"))
-    high_pre = [a for a in (pre.get("alerts") or []) if a.get("confidence") == "HIGH"]
+    # (2026-11-03) pregame_alerts now emits only desk-verdict rows with a DK price.
+    high_pre = [a for a in (pre.get("alerts") or []) if a.get("dk_american") is not None]
     if high_pre:
-        lines.append(f"## ⚡ Pre-Game HIGH Conviction ({len(high_pre)})")
+        lines.append(f"## ⚡ Pre-Game (game-lines desk, DK priced) ({len(high_pre)})")
         for a in high_pre[:10]:
-            lines.append(f"- [{a['sport']}] **{a['team']}** {a['side']} ({a.get('team_l10','?')} L10) · model {a['p_pick_side']*100:.1f}% fair {a.get('fair_american','?')}")
+            lines.append(f"- [{a['sport']}] **{a['team']}** {a['side']} · model {a['p_pick_side']*100:.1f}% · DK {a['dk_american']:+d} ({a.get('desk_verdict','')})")
+        lines.append("")
+    elif pre.get("note"):
+        lines.append("## ⚡ Pre-Game")
+        lines.append(f"- {pre['note']}")
         lines.append("")
 
     # Heat/cold alerts
@@ -190,33 +233,39 @@ def run() -> Dict[str, Any]:
 
     # Portfolio
     pf = _load(os.path.join(DATA_DIR, "portfolio_today.json"))
+    # (2026-11-03) sized only at actionable DK quotes (multi_sport_portfolio.py)
     if pf.get("picks"):
-        lines.append(f"## 💰 Today's Portfolio ({pf.get('n_picks', 0)} picks)")
+        lines.append(f"## 💰 Today's Portfolio ({pf.get('n_picks', 0)} DK-priced picks)")
         lines.append(f"- Total stake: **${pf.get('total_stake_dollars', 0)}** ({pf.get('total_stake_pct', 0)}% of $1000 bankroll)")
-        lines.append(f"- Expected EV: **${pf.get('expected_pl', 0)}**")
+        lines.append(f"- Expected EV at DK prices: **${pf.get('expected_pl', 0)}**")
         for p in (pf.get("picks") or [])[:5]:
-            lines.append(f"  - #{p['rank']} [{p['sport']}] ${p['stake_dollars']:.0f} on {p.get('label','')[:60]} (P={p['model_prob']*100:.0f}%)")
+            lines.append(f"  - #{p['rank']} [{p['sport']}] ${p['stake_dollars']:.0f} on {(p.get('label') or '')[:60]} "
+                          f"@ DK {p['book_american']:+d} (observed {p.get('observed_at')}; P={p['model_prob']*100:.0f}%)")
+        lines.append("")
+    elif pf:
+        lines.append("## 💰 Today's Portfolio")
+        lines.append("- No priced picks: a stake is sized only at an actionable DraftKings quote.")
         lines.append("")
 
     # Convergence picks (multi-signal stacked)
     conv = _load(os.path.join(DATA_DIR, "convergence_alerts.json"))
     if conv.get("convergence"):
-        lines.append(f"## 🎯 Convergence Picks ({conv.get('n_games_with_2plus_signals',0)} stacked games)")
-        lines.append(f"- ELITE: **{conv.get('n_elite',0)}** · HIGH: {conv.get('n_high',0)} · MED: {conv.get('n_med',0)}")
+        # (2026-11-03) signal counts, not picks: no tier labels as recommendations
+        lines.append(f"## 🎯 Signal stacking ({conv.get('n_games_with_2plus_signals',0)} games with 2+ signals) — research, not picks")
         for c in conv.get("convergence", [])[:5]:
             sigs = ", ".join(s.get("type","?") for s in c.get("signals",[])[:4])
-            lines.append(f"  - [{c['tier']}] {c['matchup']} : {c['n_signals']} signals ({sigs})")
+            lines.append(f"  - {c['matchup']} : {c['n_signals']} signals ({sigs})")
         lines.append("")
 
     # MLB pitcher matchup K plays
     pm = _load(os.path.join(DATA_DIR, "mlb_pitcher_matchup.json"))
-    if pm.get("matchups"):
+    if pm.get("matchups") and not _mlb_offseason():  # (2026-11-03) offseason: suppressed
         plays = [m["best_k_play"] for m in pm["matchups"] if m.get("best_k_play")]
         plays.sort(key=lambda p: -(p.get("p_over") or 0))
         if plays:
-            lines.append(f"## ⚾ Top MLB Pitcher K Plays ({len(plays)})")
+            lines.append(f"## ⚾ MLB Pitcher K projections ({len(plays)}) — {PROJ}")
             for p in plays[:5]:
-                lines.append(f"- **{p['pitcher']}** OVER {p['line']} K ({p['p_over']*100:.0f}%) fair {p.get('fair_over','?')}")
+                lines.append(f"- **{p['pitcher']}** OVER {p['line']} K (model {p['p_over']*100:.0f}%)")
             lines.append("")
 
     # NBA player heat (L5 vs season splits)
@@ -228,20 +277,20 @@ def run() -> Dict[str, Any]:
             lines.append(f"  - 🔥 **{a['name']}** ({a['team_abbr']}): L5 {a['l5_pts']:.1f}/{a['l5_reb']:.1f}/{a['l5_ast']:.1f} vs season {a['season_pts']:.1f}/{a['season_reb']:.1f}/{a['season_ast']:.1f} [{sig}]")
         for a in (nh.get("cold_players") or [])[:3]:
             sig = ", ".join(a.get("signals") or [])
-            lines.append(f"  - ❄️ **{a['name']}** ({a['team_abbr']}): L5 {a['l5_pts']:.1f} vs season {a['season_pts']:.1f} [{sig}] -- FADE OVER props")
+            lines.append(f"  - ❄️ **{a['name']}** ({a['team_abbr']}): L5 {a['l5_pts']:.1f} vs season {a['season_pts']:.1f} [{sig}]")  # (2026-11-03) no fade advice
         lines.append("")
 
     # UFC fight matchup
     uf = _load(os.path.join(DATA_DIR, "ufc_matchup.json"))
     if (uf.get("n_fights") or 0) > 0:
-        lines.append(f"## 🥊 UFC Fight Matchups ({uf.get('next_event','?')})")
+        lines.append(f"## 🥊 UFC Fight Matchups ({uf.get('next_event','?')}) — {PROJ}")  # (2026-11-03)
         for f in (uf.get("fights") or [])[:5]:
-            lines.append(f"  - [{f['tier']}] **{f['favorite']}** ({f.get('record_a' if f['favorite']==f['fighter_a'] else 'record_b')}) vs {f['underdog']} -- fair {f['fair_favorite_american']:+d}")
+            lines.append(f"  - model favourite **{f['favorite']}** ({f.get('record_a' if f['favorite']==f['fighter_a'] else 'record_b')}) vs {f['underdog']}")
         lines.append("")
 
     # Golf player heat
     gh = _load(os.path.join(DATA_DIR, "golf_player_heat.json"))
-    if (gh.get("n_hot") or 0) > 0:
+    if (gh.get("n_hot") or 0) > 0 and _golf_live_or_done():  # (2026-11-03) no "finished T1" for a Scheduled event
         lines.append(f"## ⛳ Golf Player Heat (from {gh.get('source_tournament','last event')})")
         for a in (gh.get("hot_players") or [])[:5]:
             sig = " · ".join(a.get("signals") or [])
@@ -253,30 +302,31 @@ def run() -> Dict[str, Any]:
 
     # MLB batter heat (L14 vs season splits)
     bh = _load(os.path.join(DATA_DIR, "mlb_batter_heat.json"))
-    if (bh.get("n_hot") or 0) > 0 or (bh.get("n_cold") or 0) > 0:
+    if ((bh.get("n_hot") or 0) > 0 or (bh.get("n_cold") or 0) > 0) and not _mlb_offseason():  # (2026-11-03)
         lines.append(f"## 🔥 MLB Batter Heat ({bh.get('n_hot',0)} HOT / {bh.get('n_cold',0)} COLD)")
         for a in (bh.get("hot_batters") or [])[:5]:
             lines.append(f"  - 🔥 **{a['name']}** ({a['team']}): L14 .{a['l14_avg']*1000:03.0f} / season .{a['season_avg']*1000:03.0f} (+{a['delta_pp']:.0f}pts)")
         for a in (bh.get("cold_batters") or [])[:5]:
-            lines.append(f"  - ❄️ **{a['name']}** ({a['team']}): L14 .{a['l14_avg']*1000:03.0f} / season .{a['season_avg']*1000:03.0f} ({a['delta_pp']:.0f}pts) -- FADE props")
+            lines.append(f"  - ❄️ **{a['name']}** ({a['team']}): L14 .{a['l14_avg']*1000:03.0f} / season .{a['season_avg']*1000:03.0f} ({a['delta_pp']:.0f}pts)")
         lines.append("")
 
     # B2B fatigue alerts
     b2b = _load(os.path.join(DATA_DIR, "b2b_fatigue.json"))
     if (b2b.get("n_fatigued_games_today") or 0) > 0:
-        lines.append(f"## 😴 B2B Fatigue Edges ({b2b['n_fatigued_games_today']})")
+        lines.append(f"## 😴 Back-to-back flags ({b2b['n_fatigued_games_today']}) — schedule fact, not a pick")  # (2026-11-03)
         for sport, alerts in (b2b.get("by_sport") or {}).items():
             for a in (alerts or [])[:3]:
                 if a.get("fatigue_edge") in ("HOME", "AWAY"):
-                    lines.append(f"- [{sport.upper()}] {a.get('recommend')}")
+                    lines.append(f"- [{sport.upper()}] {a.get('matchup','')} ({a.get('game_date','')}): "
+                                 f"{(a.get('fatigue_edge') or '').lower()} team on a back-to-back")
         lines.append("")
 
     # Streak regression
     sr = _load(os.path.join(DATA_DIR, "streak_regression.json"))
     if (sr.get("n_alerts") or 0) > 0:
-        lines.append(f"## 📈 Streak Regression Alerts ({sr['n_alerts']})")
+        lines.append(f"## 📈 Streaks ({sr['n_alerts']}) — record facts, not picks")  # (2026-11-03) no FADE advice
         for a in sr.get("alerts", [])[:5]:
-            lines.append(f"- [{a['sport']}] {a['team']} on {a['streak']} L10 {a.get('l10','?')} -- {a.get('recommendation','')[:80]}")
+            lines.append(f"- [{a['sport']}] {a['team']} on {a['streak']} L10 {a.get('l10','?')}")
         lines.append("")
 
     # Walk-forward trajectory (is each market improving over time?)

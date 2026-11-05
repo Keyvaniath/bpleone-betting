@@ -2,8 +2,8 @@
 EdgeStat -- NBA player rebounds (REB) prop projections.
 
 Per-player projected REB = season_rpg × game_pace_factor × opp_rebound_rate.
-Normal CDF at nearest 0.5 line within 0.75 of projection. STRONG = 10%+
-edge vs -120 book (p in [0.62, 0.72]).
+Normal CDF at nearest 0.5 line within 0.75 of projection. flag band (NOT an edge; no
+sportsbook prop price -- assumed -120 withdrawn 2026-11-03) (p in [0.62, 0.72]).
 
 Output: data/nba_player_rebounds_props.json
 """
@@ -201,8 +201,9 @@ def run() -> Dict[str, Any]:
         "n_players_projected": len(rows),
         "n_strong_edges": len(strong),
         "n_players_in_db": len(PLAYER_DB),
-        "method_note": "NBA player RPG × pace factor. Normal CDF at nearest 0.5 line. "
-                       "STRONG = 10%+ edge vs -120 book (p in [0.62, 0.72]).",
+        "status": "unvalidated_model_projection",   # (2026-11-03)
+        "method_note": "UNVALIDATED MODEL PROJECTION -- no sportsbook price, not a pick. NBA player RPG × pace factor. Normal CDF at nearest 0.5 line. "
+                       "flag band (NOT an edge: no sportsbook prop price exists; the old '10%+ edge vs an assumed -120 book' is withdrawn 2026-11-03) (p in [0.62, 0.72]).",
         "rows": rows,
         "strong_edges": strong,
     }

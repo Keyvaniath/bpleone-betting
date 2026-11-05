@@ -13,7 +13,7 @@ Method:
   Sigma combined = sqrt(sigma_pts^2 + sigma_ast^2) * 1.05 for small positive
   PTS/AST correlation (high-usage games elevate both).
 
-  STRONG when 10%+ edge vs -120 book (p in [0.62, 0.72]).
+  flag band (NOT an edge: no sportsbook prop price exists; the old '10%+ edge vs an assumed -120 book' is withdrawn 2026-11-03) (p in [0.62, 0.72]).
 
 Output: data/nba_player_pa_combo_props.json
 """
@@ -134,9 +134,10 @@ def run() -> Dict[str, Any]:
         "generated_at": dt.datetime.utcnow().isoformat(timespec="seconds"),
         "n_players": len(out_rows),
         "n_strong_edges": len(strong),
-        "method_note": "P+A combo = projected_pts + projected_ast (from main NBA modules). "
+        "status": "unvalidated_model_projection",   # (2026-11-03)
+        "method_note": "UNVALIDATED MODEL PROJECTION -- no sportsbook price, not a pick. P+A combo = projected_pts + projected_ast (from main NBA modules). "
                        "Sigma combined = sqrt(sig_p^2 + sig_a^2) * 1.05. "
-                       "STRONG when p in [0.62, 0.72] vs -120 book.",
+                       "flag band p in [0.62, 0.72] (NOT an edge: no sportsbook price; assumed -120 withdrawn 2026-11-03).",
         "top_15_by_pa": out_rows[:15],
         "strong_edges": strong,
     }

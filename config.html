@@ -66,7 +66,7 @@
   <section id="recsCard" class="card" style="margin-bottom: 18px; display: none; border-color: rgba(212,160,74,0.35);">
     <div class="card-head"><span style="color: #d4a04a;">Model Recommendations</span><span class="muted" id="recsRefresh"></span></div>
     <div style="padding: 6px 14px 14px;">
-      <p class="muted" style="font-size: 12px; margin: 0 0 12px 0;">Auto-generated each cron from calibration / walk-forward / track-record metrics. The model is suggesting these tweaks based on its own performance. <strong>You stay in control</strong> -- click <em>Apply</em> to open <code>runtime_config.json</code> on GitHub pre-filled with the change.</p>
+      <p class="muted" style="font-size: 12px; margin: 0 0 12px 0;">Auto-generated each cron from calibration / walk-forward / alert metrics (2026-11-03: the Kelly-fraction rule is disabled -- it sized from an assumed -110, not real prices). The model is suggesting these tweaks based on its own performance. <strong>You stay in control</strong> -- click <em>Apply</em> to open <code>runtime_config.json</code> on GitHub pre-filled with the change.</p>
       <div id="recsList"></div>
     </div>
   </section>
@@ -87,7 +87,9 @@
   <section id="effectsCard" class="card" style="margin-bottom: 18px; display: none;">
     <div class="card-head"><span>Override Effects</span><span class="muted" id="effCount"></span></div>
     <div style="padding: 4px 14px 14px;">
-      <p class="muted" style="font-size: 12px; margin: 6px 0 12px 0;">Empirical pre/post Brier + hit rate for each override. The "did it help?" half of the closed loop. Requires 50+ settled records on each side of the change to draw a conclusion (else <em>insufficient_data</em>).</p>
+      <!-- (2026-11-03) measured on the REAL settled ledger (settled AND NOT voided, MLB-PP excluded), not the synthetic track_record.json feed -->
+      <p class="muted" style="font-size: 12px; margin: 6px 0 12px 0;">Pre/post Brier of the raw model probability on the <strong>real settled pick ledger</strong> (settled and not voided; PrizePicks imports excluded), 7 days either side of each override. Verdict is on Brier only; hit rate is shown next to the mean predicted probability because it moves with the pick mix. Before/after windows hold different slates, so this is descriptive, not causal. Calibration only: no price or ROI. Requires 50+ settled picks on each side (else <em>insufficient data</em>).</p>
+      <p class="muted" id="effNote" style="font-size: 12px; margin: 0 0 10px 0;"></p>
       <div id="effList"></div>
     </div>
   </section>
@@ -140,13 +142,20 @@ fetch("data/override_effects.json", { cache: "no-cache" })
     const changes = (p.changes || []).slice().reverse();
     if (!changes.length) return;
     document.getElementById("effectsCard").style.display = "block";
-    document.getElementById("effCount").textContent = `${changes.length} change${changes.length===1?'':'s'} measured`;
+    document.getElementById("effCount").textContent = `${changes.length} change${changes.length===1?'':'s'} logged`;
+    // (2026-11-03) say plainly when no change has a measurable window
+    const nMeasured = changes.filter(c => c.verdict !== "insufficient_data").length;
+    if (!nMeasured) document.getElementById("effNote").textContent =
+      `No override has 50+ settled ledger picks on both sides of it (the logged changes predate most of the ledger), so none can be judged yet.`;
     const verdictColor = { improved: "#58c878", flat: "#d4a04a", degraded: "#e35a5a", insufficient_data: "#888" };
     document.getElementById("effList").innerHTML = changes.slice(0, 20).map(c => {
       const color = verdictColor[c.verdict] || "#888";
       const b = c.brier_delta, h = c.hit_rate_delta;
       const bStr = b === null || b === undefined ? "--" : (b > 0 ? "+" : "") + b;
       const hStr = h === null || h === undefined ? "--" : ((h > 0 ? "+" : "") + (h * 100).toFixed(2) + "pp");
+      // (2026-11-03) hit rate vs predicted, post window
+      const po = c.post || {};
+      const calStr = (po.hit_rate != null && po.mean_pred != null) ? `${(po.hit_rate*100).toFixed(1)}% vs ${(po.mean_pred*100).toFixed(1)}% pred` : "--";
       const preN = c.pre && c.pre.n;
       const postN = c.post && c.post.n;
       const oldStr = c.old === null || c.old === undefined ? "unset" : JSON.stringify(c.old);
@@ -160,7 +169,8 @@ fetch("data/override_effects.json", { cache: "no-cache" })
           </div>
           <div style="display:flex; gap: 14px; align-items:center;">
             <span class="muted" style="font-size: 10px;">Brier <span style="color: ${b !== null && b !== undefined && b < 0 ? '#58c878' : b > 0 ? '#e35a5a' : 'var(--muted, #888)'};">${bStr}</span></span>
-            <span class="muted" style="font-size: 10px;">Hit% <span style="color: ${h !== null && h !== undefined && h > 0 ? '#58c878' : h < 0 ? '#e35a5a' : 'var(--muted, #888)'};">${hStr}</span></span>
+            <span class="muted" style="font-size: 10px;">Hit% <span style="color: var(--muted, #888);">${hStr}</span></span><!-- (2026-11-03) hit-rate delta uncoloured: not a verdict -->
+            <span class="muted" style="font-size: 10px;">post ${calStr}</span>
             <span class="muted" style="font-size: 10px;">n=${preN||0}/${postN||0}</span>
             <span style="padding: 2px 8px; border-radius: 3px; font-size: 10px; text-transform: uppercase; font-weight: 600; background: ${color}; color: #1a1a1a;">${c.verdict.replace('_',' ')}</span>
           </div>

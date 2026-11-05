@@ -38,9 +38,17 @@
     const sg = (v) => v == null ? "—" : (v > 0 ? "+" : "") + v;
     const fin = f.n_close_final === f.n_clv ? "" : ` (${f.n_clv - f.n_close_final} not kicked off yet: close = latest line)`;
     const bm = Object.entries(f.by_model || {}).map(([k, v]) => `${esc(k)}: ${v.n} picks, ${sg(v.avg_clv_pts)} pts`).join(" · ");
-    return `<div class="muted" style="margin-top:6px; font-family:'JetBrains Mono',monospace; font-size:11px;">
-        ${bm && Object.keys(f.by_model).length > 1 ? "By model version — " + bm + "<br>" : ""}Forward test: ${f.n_logged} picks logged · settled ${f.settled_w}-${f.settled_l} (${sg(f.units)}u) ·
-        vs the DK close: avg ${sg(f.avg_clv_pts)} pts, beat ${f.beat_close_pct ?? "—"}%, flat ${f.flat_close_pct ?? "—"}%${fin}
+    // (2026-11-03) avg_clv_ev = EV of the logged picks at the NO-VIG DK close --
+    // the plain answer to "were these good bets?". Shown first and in words;
+    // the implied-prob points line stays below it as the detail.
+    const ev = f.avg_clv_ev;
+    const evLine = ev == null ? "" : `<div style="margin-top:6px; font-size:12px; font-weight:700; color:${ev > 0 ? "#58c878" : "#e35a5a"};">
+        Logged picks vs the no-vig DraftKings close: average EV ${ev > 0 ? "+" : ev < 0 ? "−" : ""}${Math.abs(ev * 100).toFixed(2)}% per bet over ${f.n_clv} picks —
+        ${ev > 0 ? "the close says these were +EV bets." : "the close says these were −EV bets (worse than a fair price), whatever the W-L shows."}
+      </div>`;
+    return `${evLine}<div class="muted" style="margin-top:6px; font-family:'JetBrains Mono',monospace; font-size:11px;">
+        ${bm && Object.keys(f.by_model).length > 1 ? "By model version — " + bm + "<br>" : ""}Forward test: ${f.n_logged} picks logged · settled ${f.settled_w}-${f.settled_l} (${sg(f.units)}u, small sample) ·
+        vs the DK close: avg ${sg(f.avg_clv_pts)} implied-prob pts, beat ${f.beat_close_pct ?? "—"}%, flat ${f.flat_close_pct ?? "—"}%${fin}
       </div>`;
   };
   // NFL (2026-10-29): projected starting QB + his edge over the team's usual
@@ -53,6 +61,10 @@
       : (g.p_start != null ? " " + Math.round(g.p_start * 100) + "% (model)" : "");
     return `${esc(g.projected || "?")}${tag}${g.back_to_back ? " · B2B" : ""}`;
   };
+  // (2026-11-03) every DK price carries when it was observed + its snapshot id.
+  const qt = (q) => q && q.observed_at
+    ? `DK price observed ${esc(String(q.observed_at).replace("T", " "))} UTC · snapshot ${esc(q.snapshot_id || "—")}`
+    : "DK price: observation time not recorded";
   fetch("data/game_lines_desk.json?t=" + Date.now(), { cache: "no-cache" })
     .then((r) => r.json())
     .then((d) => {
@@ -83,7 +95,8 @@
             <span>DK ${amer(r.ml_home)} / ${amer(r.ml_away)}</span>
             <span class="muted">home DK ${pct(r.p_home_dk)}</span><span class="muted">model ${pct(r.p_home_elo)}</span><span>${pickTxt}</span>
             ${r.qbs ? `<span></span><span class="muted" style="grid-column: span 5; font-size:10.5px;">QBs: ${qbl(r.qbs.away)} (away) vs ${qbl(r.qbs.home)} (home)${r.pick_blocked ? " · " + esc(r.pick_blocked) : ""}</span>` : ""}
-            ${r.goalies ? `<span></span><span class="muted" style="grid-column: span 5; font-size:10.5px;">in net: ${gl(r.goalies.away)} (away) vs ${gl(r.goalies.home)} (home)${r.pick_blocked ? " · no pick until both are confirmed" : ""}</span>` : ""}</div>`;
+            ${r.goalies ? `<span></span><span class="muted" style="grid-column: span 5; font-size:10.5px;">in net: ${gl(r.goalies.away)} (away) vs ${gl(r.goalies.home)} (home)${r.pick_blocked ? " · no pick until both are confirmed" : ""}</span>` : ""}
+            <span></span><span class="muted" style="grid-column: span 5; font-size:10px;">${qt(r.quote)}</span></div>`;
         }).join("");
         el.innerHTML = head + (rows || `<p class="muted" style="padding:12px 16px;">No games on the DraftKings board.</p>`) +
           `<p class="muted" style="font-size:10.5px; padding:8px 16px 12px; margin:0;">Picks are recorded at the DraftKings price when made and graded on the final score. Not part of the curated record unless the backtest proves out and Brandon promotes it.${s.goalie_model ? " NHL: a game is priced and picked only once ESPN lists both starting goalies as Confirmed; before that the row shows ESPN's expected goalie or the model's projection (% = chance he starts). B2B = second night of a back-to-back." : ""}</p>`;

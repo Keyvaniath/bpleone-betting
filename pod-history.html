@@ -64,15 +64,15 @@
     <div class="metric"><span class="metric-num" id="m_hitrate">--</span><span class="metric-label">Hit Rate</span></div>
     <div class="metric"><span class="metric-num" id="m_roi">--</span><span class="metric-label">ROI</span></div>
     <div class="metric"><span class="metric-num" id="m_units">--</span><span class="metric-label">Net Units</span></div>
-    <div class="metric"><span class="metric-num" id="m_avgedge">--</span><span class="metric-label">Avg Edge</span></div>
+    <div class="metric"><span class="metric-num" id="m_avgedge">--</span><span class="metric-label">Raw model edge (unvalidated)</span></div>
     <div class="metric"><span class="metric-num" id="m_avgkelly">--</span><span class="metric-label">Avg Kelly</span></div>
   </section>
 
   <section class="card" style="margin-bottom: 24px;">
     <div class="card-head"><span>📜 Daily flagship picks (newest first)</span><span class="muted" id="podGen">--</span></div>
-    <p class="muted" style="font-size:11px; padding:8px 16px 0;">Snapshotted automatically every cron from today.json.play_of_day. Settles against the track_record outcomes feed.</p>
+    <p class="muted" style="font-size:11px; padding:8px 16px 0;">Snapshotted automatically every cron from today.json.play_of_day. Graded by the all-picks ledger at the DraftKings pre-game price against the verified final score.<!-- (2026-11-03) was "settles against the track_record outcomes feed" (a deprecated synthetic feed it never used) --></p>
     <div class="pod-row head">
-      <span>Date</span><span>Matchup</span><span>Play</span><span>Edge</span><span>Kelly</span><span>Conf</span><span>Model</span><span>Mkt</span><span>Result</span>
+      <span>Date</span><span>Matchup</span><span>Play</span><span title="the model's own edge vs the recorded price; not validated out-of-sample">Raw model edge (unvalidated)</span><span>Stake</span><span>Conf</span><span>Model</span><span>Mkt</span><span>Result</span>
     </div>
     <div id="podList"><p class="muted" style="padding:14px;">Loading…</p></div>
   </section>
@@ -97,10 +97,10 @@
   <section class="card">
     <div class="card-head"><span>📋 What this is</span></div>
     <div style="padding:14px; font-size:13px; line-height:1.7; color: var(--text-2,#aaa);">
-      <p><strong>Play of the Day</strong> is the single highest-conviction pick the EdgeStat model surfaces each day — the top-EV, slate-confidence-adjusted, walk-forward-validated bet.</p>
+      <p><strong>Play of the Day</strong> is the single highest-conviction pick the EdgeStat model surfaces each day — the top raw-EV, slate-confidence-adjusted bet. Its edge is the model's own estimate and has not been validated out-of-sample.<!-- (2026-11-03) dropped "walk-forward-validated" --></p>
       <p>Every cron snapshot captures today's POD into a rolling record. Each pick is graded by the all-picks ledger at the house price (the DraftKings pre-game line) against the verified final score — the same grading, and the same corrections, as the main track record.</p>
       <p id="podCorrection" class="muted" style="font-size:12px;"></p>
-      <p>This is the public flagship track record — no edits, no cherry-picks, every pick logged the moment it goes live.</p>
+      <p>This is the public flagship track record — no cherry-picks, every pick logged the moment it goes live; restatements (repricing to the DraftKings line, voids) are disclosed above with the before/after record.<!-- (2026-11-03) was "no edits" --></p>
     </div>
   </section>
 
@@ -121,8 +121,12 @@ fetch("data/pod_pl.json?t=" + Date.now(), { cache: "no-cache" })
     setText("m_hitrate", d.hit_rate != null ? (d.hit_rate * 100).toFixed(1) + "%" : "—");
     setText("m_roi",     d.n_settled > 0 && d.roi_pct != null ? ((d.roi_pct >= 0 ? "+" : "") + d.roi_pct.toFixed(1) + "%") : "—");
     setText("m_units",   d.n_settled > 0 && d.net_units != null ? ((d.net_units >= 0 ? "+" : "") + d.net_units.toFixed(2) + "u") : "—");
+    // (2026-11-03) colour ROI / units by sign
+    [["m_roi", d.roi_pct], ["m_units", d.net_units]].forEach(([id, v]) => {
+      const e = document.getElementById(id); if (e && v != null && d.n_settled > 0) e.style.color = v >= 0 ? "#58c878" : "#e35a5a"; });
     setText("m_avgedge", "—");   // Edge varies per pick, not aggregated here
     setText("m_avgkelly", "1.0u (flat)");   // Always 1u flat -- not Kelly
+    { const lab = document.getElementById("m_avgkelly"); if (lab && lab.nextElementSibling) lab.nextElementSibling.textContent = "Stake"; }   // (2026-11-03) no Kelly sizing here
 
     document.getElementById("podGen").textContent = `last refresh: ${(d.generated_at || '').replace('T',' ')} · ${d.total_pods || 0} PODs · ${d.n_settled || 0} settled · 1u flat stake`;
     const cn = document.getElementById("podCorrection");
@@ -143,7 +147,7 @@ fetch("data/pod_pl.json?t=" + Date.now(), { cache: "no-cache" })
         <span class="muted">${(h.date || '').slice(0,10)}</span>
         <span><strong>${h.matchup || '—'}</strong></span>
         <span><strong>${h.label || '—'}</strong></span>
-        <span style="color:#58c878;">+${(h.raw_edge_pct||0).toFixed(1)}%</span>
+        <span class="muted" title="raw model edge (unvalidated)">${h.raw_edge_pct != null ? ((h.raw_edge_pct >= 0 ? '+' : '') + h.raw_edge_pct.toFixed(1) + '%') : '—'}</span>
         <span>1.0u</span>
         <span class="muted">${h.model_prob != null ? (h.model_prob * 100).toFixed(0) + '%' : '—'}</span>
         <span>—</span>
@@ -158,11 +162,17 @@ fetch("data/pod_pl.json?t=" + Date.now(), { cache: "no-cache" })
   });
 
 // Golf POT history
+// (2026-11-03) class C (model fair odds): show hit rate vs the model's average predicted prob, not ROI.
+function avgPred(hist, get) {
+  const ps = (hist || []).filter(h => { const o = (h.outcome || h.result || "").toString().toUpperCase(); return o === "WIN" || o === "LOSS" || o === "WON" || o === "LOST"; })
+    .map(get).filter(v => typeof v === "number");
+  return ps.length ? ` vs ${(100 * ps.reduce((a, b) => a + b, 0) / ps.length).toFixed(1)}% predicted` : "";
+}
 fetch("data/golf_pot_history.json?t=" + Date.now(), { cache: "no-cache" })
   .then(r => r.json())
   .then(d => {
     document.getElementById("golfPotMeta").textContent =
-      `${d.total_pots || 0} POTs · ${d.n_settled || 0} settled · ${d.n_pending || 0} pending · ${d.hit_rate != null ? (d.hit_rate*100).toFixed(1)+'%' : '—'} hit · ${d.roi_pct != null ? (d.roi_pct >= 0 ? '+' : '') + d.roi_pct.toFixed(1)+'%' : '—'} ROI`;
+      `${d.total_pots || 0} POTs · ${d.n_settled || 0} settled · ${d.n_pending || 0} pending · ${d.hit_rate != null ? (d.hit_rate*100).toFixed(1)+'%' : '—'} hit${avgPred(d.history, h => h.model_prob)} · calibration only (model fair odds, no ROI)`;   // (2026-11-03)
     const amer = (a) => a == null ? "—" : (a >= 0 ? "+" + a : String(a));
     const rows = (d.history || []).map(h => {
       const outcome = h.outcome || "PENDING";
@@ -215,9 +225,9 @@ fetch("data/golf_pot_history.json?t=" + Date.now(), { cache: "no-cache" })
     const decided = wins + losses, settled = data.n_settled || 0, pending = data.n_pending || 0;
     const rec = data.record || ((decided || pushes) ? (wins + "-" + losses + (pushes ? "-" + pushes : "")) : null);
     const roi = data.roi_pct, net = data.net_units, hr = data.hit_rate;
-    const roiCol = roi == null ? "#888" : (roi >= 0 ? "#58c878" : "#e35a5a");
+    // (2026-11-03) class C: calibration only -- hit rate vs predicted, no ROI / units.
     const stat = settled > 0
-      ? `<strong style="color:var(--text,#ddd);">${rec || "0-0"}</strong> · ${pct(hr)} hit · <span style="color:${roiCol};">${roi != null ? (roi >= 0 ? "+" : "") + roi.toFixed(1) + "%" : "—"}</span> ROI · ${signU(net)}u net · ${pending} pending`
+      ? `<strong style="color:var(--text,#ddd);">${rec || "0-0"}</strong> · ${pct(hr)} hit${avgPred(data.history, h => h.prob != null ? h.prob : h.model_prob)} · ${pending} pending · <i>graded at the model's own odds — not a betting ROI</i>`
       : `no settled picks yet · ${pending} pending`;
     const head = `<div style="display:flex; align-items:center; gap:10px; flex-wrap:wrap; padding:10px 16px; border-bottom:1px solid rgba(255,255,255,0.05);">
         <span style="font-size:15px;">${d.icon}</span><strong style="color:${d.color};">${d.label}</strong>
@@ -226,7 +236,7 @@ fetch("data/golf_pot_history.json?t=" + Date.now(), { cache: "no-cache" })
       const o = h.outcome || "PENDING";
       const cls = o === "WIN" ? "win" : o === "LOSS" ? "loss" : "";
       const pillCls = o === "WIN" ? "win" : o === "LOSS" ? "loss" : "pending";
-      const pl = h.pl_units != null ? " · " + signU(h.pl_units) + "u" : "";
+      const pl = "";   // (2026-11-03) no per-pick units at model fair odds
       return `<div class="pod-row ${cls}" style="${COLS}">
         <span class="muted">${(h.date || "").slice(0,10)}</span>
         <span><strong>${playLabel(h)}</strong></span>
@@ -254,7 +264,7 @@ fetch("data/golf_pot_history.json?t=" + Date.now(), { cache: "no-cache" })
     // Price basis (2026-10-26): no sportsbook line is captured for these desks --
     // every pick is graded at the model's OWN fair odds, so the ROI measures
     // calibration, not a bettable return. Say so above the cards.
-    const basis = `<p class="muted" style="font-size:11px; line-height:1.6; margin:0 16px 12px;"><b>How to read these (and the golf card above):</b> no sportsbook line is captured for these desks, so each pick is graded at the model's own fair price (the "Fair" column; KBO totals use an assumed 8.5 line). Betting at your own fair price returns 0% when the model is calibrated, so ROI here measures <b>calibration</b>, not a bettable return: below 0% means the model was overconfident. Not comparable to the main Play of the Day record, which is graded at the DraftKings pre-game line.</p>`;
+    const basis = `<p class="muted" style="font-size:11px; line-height:1.6; margin:0 16px 12px;"><b>How to read these (and the golf card above):</b> no sportsbook line is captured for these desks, so each pick is graded at the model's own fair price (the "Fair" column; KBO totals use an assumed 8.5 line). Betting at your own fair price returns 0% when the model is calibrated, so these records are shown as <b>calibration</b> only — hit rate vs the model's average predicted probability; a hit rate below predicted means the model was overconfident. No ROI is shown (2026-11-03). Not comparable to the main Play of the Day record, which is graded at the DraftKings pre-game line.</p>`;
     document.getElementById("deskCards").innerHTML = basis + html;
     document.getElementById("deskMeta").textContent = `${deskLive}/${DESKS.length} desks active · ${totSettled} settled · ${totPending} pending`;
   }).catch(err => {

@@ -116,12 +116,15 @@ fetch("data/linemaker.json", { cache: "no-cache" })
     const head = document.querySelector("main.container .page-head");
     if (!head) return;
     const moves = d.line_moves || d.moves || [];
-    const final = d.final || {};
+    // (2026-11-03) linemaker.json has no `final` block -- the closing state is
+    // `current` {price_a, price_b} and `handle` {imbalance_pct}; the note read "?" every time.
+    const cur = d.current || {}, hd = d.handle || {};
+    const am = v => (v == null ? "?" : (v >= 0 ? "+" + v : String(v)));
     const note = document.createElement("p");
     note.className = "muted";
     note.style.fontSize = "12px";
     note.style.marginTop = "8px";
-    note.innerHTML = `<strong>Bookmaker sim:</strong> ${moves.length} re-shades simulated, final price ${final.current_price_a ? (final.current_price_a >= 0 ? "+" + final.current_price_a : final.current_price_a) : "?"}/${final.current_price_b ? (final.current_price_b >= 0 ? "+" + final.current_price_b : final.current_price_b) : "?"}, handle imbalance ${final.imbalance_pct?.toFixed?.(1) ?? "?"}%. This is the bookie's-eye view of how a line moves in response to incoming action.`;
+    note.innerHTML = `<strong>Bookmaker sim (illustrative, example game):</strong> ${moves.length} re-shades simulated, final price ${am(cur.price_a)}/${am(cur.price_b)}, handle imbalance ${hd.imbalance_pct?.toFixed?.(1) ?? "?"}%. This is the bookie's-eye view of how a line moves in response to incoming action — simulated, not a live market.`;
     head.appendChild(note);
   })
   .catch(err => console.error("linemaker load failed:", err));

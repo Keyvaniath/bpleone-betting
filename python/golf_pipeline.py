@@ -70,8 +70,21 @@ def _parse_competitor(c: Dict[str, Any]) -> Dict[str, Any]:
     athlete = (c.get("athlete") or {})
     score = c.get("score")   # e.g. "-6" overall
     linescores = c.get("linescores") or []
-    rounds_played = len(linescores)
-    last = linescores[-1] if linescores else {}
+    # ROUNDS PLAYED = ROUNDS WITH A SCORE (2026-11-03). ESPN publishes empty
+    # per-round placeholders ({"period": 1}, {"period": 2}) before an event
+    # starts; len(linescores) counted those as 2 rounds played, so a
+    # "Scheduled" WWT field showed "R2" for 120 players and the sims ran 2
+    # rounds on an all-"E" board. Only a round carrying a numeric score or
+    # hole-by-hole entries counts.
+    def _has_score(ls):
+        if not isinstance(ls, dict):
+            return False
+        if isinstance(ls.get("value"), (int, float)):
+            return True
+        return bool(ls.get("linescores"))
+    scored = [ls for ls in linescores if _has_score(ls)]
+    rounds_played = len(scored)
+    last = scored[-1] if scored else {}
     # Per-hole linescores within the last round tell us thru
     hole_scores = (last.get("linescores") or []) if isinstance(last, dict) else []
     thru = len(hole_scores) if hole_scores else (18 if last.get("displayValue") and isinstance(last.get("value"), (int, float)) else 0)
@@ -176,7 +189,12 @@ def run() -> Dict[str, Any]:
             field.append(parsed)
         # Already sorted by ESPN via the `order` field (1 = leader)
         field.sort(key=lambda p: p.get("order") or 999)
-        leader = field[0] if field else None
+        # NO LEADER BEFORE A SHOT IS HIT (2026-11-03). Pre-event, `order` is
+        # just field/tee-sheet order, so field[0] ("Brice Garnett E") was
+        # published as "Current Leader". A leader exists only once somebody
+        # has a scored round.
+        has_scores = any((p.get("rounds_played") or 0) > 0 for p in field)
+        leader = field[0] if (field and has_scores) else None
 
     payload = {
         "generated_at": dt.datetime.now().isoformat(timespec="seconds"),
@@ -189,6 +207,9 @@ def run() -> Dict[str, Any]:
             "round": (ev.get("status") or {}).get("period"),
             "is_complete": status.get("completed", False),
             "is_in_progress": status.get("state") == "in",
+            # (2026-11-03) explicit pre-event flag so downstream models can
+            # refuse to simulate a tournament that has not started.
+            "is_pre_event": status.get("state") == "pre",
         },
         "n_players": len(field),
         "current_leader": leader,

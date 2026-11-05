@@ -46,7 +46,7 @@
   <section class="play-hero">
     <div style="display:flex; align-items:center; gap:14px; margin-bottom: 14px;">
       <span class="pill gold">★ PLAY OF THE DAY</span>
-      <span class="pill green">HIGH CONFIDENCE</span>
+      <span class="pill green" id="podConfPill" style="display:none;">HIGH CONFIDENCE</span>
       <span class="muted">loading tonight's play…</span>
     </div>
     <h1>Loading tonight's play <span class="accent">…</span></h1>
@@ -325,6 +325,13 @@ fetch("data/today.json", { cache: "no-cache" })
         : "Nothing on today's slate cleared the edge bar against a real book line. We don't force plays.";
       const muted = head && head.querySelector(".muted");
       if (muted) muted.textContent = (d.generated_at || "").slice(0, 10);
+      // 2026-11-03: hide the empty tiles + the static confidence pill, and every
+      // card below the hero that would sit on "Loading…" forever.
+      const pill = head && head.querySelector(".pill.green");
+      if (pill) pill.remove();
+      head && head.querySelectorAll(".play-grid, .play-why, .bottom-line").forEach(e => e.style.display = "none");
+      let el = head ? head.nextElementSibling : null;
+      while (el) { if (el.tagName === "SECTION" || el.classList.contains("card") || el.classList.contains("card-row") || el.classList.contains("grid-3")) el.style.display = "none"; el = el.nextElementSibling; }
       return;
     }
     // Find matching game in slate
@@ -365,7 +372,7 @@ fetch("data/today.json", { cache: "no-cache" })
     setStat(1, "Model Prob", (pod.model_prob * 100).toFixed(1) + "%");
     // Cap headline edge in pre-cal so absurd +75% doesn't read as gospel.
     const edgeStr = isPreCal
-      ? `+25%+ <span style="font-size:11px; opacity:0.6;">(raw +${rawEdge.toFixed(1)}%)</span>`
+      ? `+${rawEdge.toFixed(1)}% <span style="font-size:11px; opacity:0.6;">(≥15%: unverified — likely model error)</span>`
       : (rawEdge >= 0 ? "+" : "") + rawEdge.toFixed(2) + "%";
     setStat(2, "Edge", edgeStr, " positive");
     setStat(3, "Confidence", isPreCal ? "calibrating" : (pod.confidence || "--"));

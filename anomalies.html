@@ -51,6 +51,8 @@
     <div class="metric"><span class="metric-num" id="m_streak">--</span><span class="metric-label">Streak Mismatch</span></div>
     <div class="metric"><span class="metric-num" id="m_residual">--</span><span class="metric-label">Residual Divergence</span></div>
     <div class="metric"><span class="metric-num" id="m_over">--</span><span class="metric-label">Over-Heavy</span></div>
+    <!-- (2026-11-03) STEAM tile: pre-game DK line moves on upcoming games -->
+    <div class="metric"><span class="metric-num" id="m_steam">--</span><span class="metric-label">Line moved (steam)</span></div>
   </section>
   <section class="card" style="margin-bottom: 24px;">
     <div class="card-head"><span>📋 What this is</span></div>
@@ -59,7 +61,8 @@
       <ul style="padding-left: 20px;">
         <li><strong>Streak Mismatch:</strong> team on W5+ streak but model rates as coinflip (may be undervalued), or team on L5+ but model still favors them (overvalued)</li>
         <li><strong>Residual Divergence:</strong> team has out/underperformed ELO-expected margin by ≥6 points across recent games — model bias may persist</li>
-        <li><strong>Over-Heavy Team:</strong> team has gone OVER their median total in ≥75% of last 10 games — lean OVER on their next game total</li>
+        <li><strong>Over-Heavy Team:</strong> team has gone OVER their median total in ≥75% of last 10 games (a record fact, not a recommendation)</li>
+        <li><strong>Steam move:</strong> an upcoming game's DraftKings line moved past a threshold since it opened, pre-game snapshots only. It means the line moved — not who bet or why.</li>
       </ul>
     </div>
   </section>
@@ -80,12 +83,14 @@ fetch("data/anomaly_alerts.json?t=" + Date.now(), { cache: "no-cache" })
     document.getElementById("m_streak").textContent = (d.by_type || {}).STREAK_MISMATCH || 0;
     document.getElementById("m_residual").textContent = (d.by_type || {}).RESIDUAL_DIVERGENCE || 0;
     document.getElementById("m_over").textContent = (d.by_type || {}).OVER_HEAVY_TEAM || 0;
+    document.getElementById("m_steam").textContent = (d.by_type || {}).STEAM_MOVE || 0;
     document.getElementById("meta").textContent = `${alerts.length} alerts · by sport: ${Object.entries(d.by_sport || {}).map(([s,n]) => s + ':' + n).join(', ')}`;
-    if (!alerts.length) { document.getElementById("alertsContainer").innerHTML = '<p class="muted" style="padding: 14px;">No active anomalies — model is well-aligned with current form.</p>'; return; }
+    if (!alerts.length) { document.getElementById("alertsContainer").innerHTML = '<p class="muted" style="padding: 14px;">No active anomalies.</p>'; return; }
     const colors = {
       STREAK_MISMATCH: "#b450dc",
       RESIDUAL_DIVERGENCE: "#d4a04a",
       OVER_HEAVY_TEAM: "#58c878",
+      STEAM_MOVE: "#e8b54e",
     };
     document.getElementById("alertsContainer").innerHTML = alerts.map(a => `
       <div class="anomaly-card ${a.type}">
@@ -95,7 +100,7 @@ fetch("data/anomaly_alerts.json?t=" + Date.now(), { cache: "no-cache" })
             <strong style="font-size: 14px;">${a.team}</strong>
             <span class="muted" style="font-size: 11px;">· ${a.sport}</span>
           </div>
-          <span class="muted" style="font-size: 11px;">${a.matchup || ''}</span>
+          <span class="muted" style="font-size: 11px;">${a.matchup || ''}${a.game_date ? ' · ' + a.game_date : ''}</span>
         </div>
         <div style="margin-top: 6px; font-size: 12px; color: var(--text-2, #aaa);">${a.detail}</div>
       </div>

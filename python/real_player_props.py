@@ -16,8 +16,18 @@ convert per-game averages into fair prop odds for common markets:
     - Goals + assists (points) OVER/UNDER
     - Power-play points (less reliable)
 
-Projections use Poisson distribution centered on each player's last-20-game
-average. Fair American odds computed from p(over) / p(under).
+(2026-11-03) WHAT THIS ACTUALLY IS -- the old text above/below overstated it:
+  * Inputs are NOT a last-20-game average. player_stats_<sport>.json blends this
+    season's per-game numbers toward LAST season by games played,
+    w = n/(n+K) (K = 5 NBA/WNBA, 30 NHL), regular season only. Early in a season
+    most of the number is last season.
+  * The lines are the MODEL'S OWN (mean +/- fixed offsets), not sportsbook lines.
+  * Spread: basketball uses the fitted NBA dispersion (nba_dispersion: SD =
+    a*mean^b, negative binomial) -- a Poisson is roughly half the real spread
+    for NBA points. WNBA borrows the NBA fit (not fitted on WNBA). NHL stays
+    Poisson. None of this is validated against outcomes: an unvalidated model
+    projection, not a price and not a pick. The fair_* fields stay in the JSON
+    for internal consumers only; the pages do not show them.
 
 Output: data/real_player_props_<sport>.json
 """
@@ -31,6 +41,18 @@ from typing import Any, Dict, List
 
 
 DATA_DIR = os.path.join(os.path.dirname(__file__), "..", "data")
+
+# (2026-11-03) fitted NBA spread for the basketball markets (Poisson is far too
+# narrow for points). Fail-soft: without the module we fall back to Poisson and
+# the payload says so.
+try:
+    import nba_dispersion as _nd
+except Exception:   # pragma: no cover
+    _nd = None
+_BB_STAT = {"PTS": "pts", "REB": "reb", "AST": "ast", "3PM": "fg3m", "PRA": "pra"}
+_DIST = {"nba": "fitted NBA negative binomial (nba_dispersion)",
+         "wnba": "NBA-fitted negative binomial applied to WNBA (not fitted on WNBA)",
+         "nhl": "Poisson"}
 
 
 def _load(p):
@@ -56,10 +78,15 @@ def _american(p: float) -> int:
 
 
 def _build_prop(lam: float, line: float, market: str) -> Dict[str, Any]:
-    p_over = _poisson_p_over(lam, line)
+    stat = _BB_STAT.get(market)
+    if stat and _nd is not None:   # (2026-11-03) basketball: fitted spread
+        p_over = _nd.p_at_least(stat, int(math.floor(line)) + 1, lam)
+    else:
+        p_over = _poisson_p_over(lam, line)
     return {
         "market": market,
         "line": line,
+        "line_source": "model_generated",   # (2026-11-03) not a sportsbook line
         "model_mean": round(lam, 2),
         "p_over": round(p_over, 4),
         "p_under": round(1 - p_over, 4),
@@ -158,6 +185,13 @@ def fetch_sport(sport_key: str) -> Dict[str, Any]:
     payload = {
         "generated_at": dt.datetime.now().isoformat(timespec="seconds"),
         "sport": sport_key,
+        # (2026-11-03) provenance the pages render instead of "last 20 games".
+        "status": "unvalidated_model_projection",
+        "lines": "model_generated (mean +/- fixed offsets) -- not sportsbook lines",
+        "input_blend": src.get("blend"),
+        "season": src.get("season"),
+        "prior_season": src.get("prior_season"),
+        "distribution": _DIST.get(sport_key, "Poisson") if (_nd is not None or sport_key == "nhl") else "Poisson",
         "n_players": len(out),
         "n_props": sum(len(p["props"]) for p in out),
         "players": out,

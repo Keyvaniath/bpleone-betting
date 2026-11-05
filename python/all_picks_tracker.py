@@ -2513,6 +2513,72 @@ def _grade_cfb_pick(pick: Dict[str, Any],
     return "won" if as_ > hs else "lost"
 
 
+# NFL abbreviation variants seen across ESPN / DK / our desks.
+_NFL_ALIAS = {"WAS": "WSH", "JAC": "JAX", "LA": "LAR", "STL": "LAR",
+              "OAK": "LV", "SD": "LAC", "ARZ": "ARI", "NWE": "NE", "GNB": "GB",
+              "KAN": "KC", "NOR": "NO", "SFO": "SF", "TAM": "TB"}
+
+
+def _nfl_ab(x: Any) -> str:
+    a = str(x or "").strip().upper()
+    return _NFL_ALIAS.get(a, a)
+
+
+def _pick_event_id(pick: Dict[str, Any]) -> str:
+    return str(pick.get("event_id") or (pick.get("quote") or {}).get("event_id") or "").strip()
+
+
+def _find_nfl_game(pick: Dict[str, Any],
+                   games: List[Dict[str, Any]]) -> Optional[Dict[str, Any]]:
+    """The final for an NFL game-level pick, or None (never a guess).
+
+    2026-11-03: settles by ESPN EVENT ID first -- every desk pick carries one.
+    This used to match `matchup in g_mu or g_mu in matchup` on the exact date
+    and take the FIRST hit: an empty matchup matched every game ("" is in any
+    string), a substring could match the wrong team, and a pick dated by its
+    UTC kickoff missed its ET-dated final. Fallback (older rows, or a finals
+    row without an id): both sides equal after aliasing, date exact or +/-1
+    day, and exactly ONE candidate -- NFL teams play once a week, so two
+    candidates means bad data and we refuse to grade.
+    If the event id resolves to a game whose teams don't match the pick's
+    matchup, that is a data error -> None.
+    """
+    matchup = (pick.get("player_or_matchup") or "").strip()
+    parts = [x.strip() for x in matchup.split("@")]
+    if len(parts) != 2 or not parts[0] or not parts[1]:
+        return None
+    pa, ph = _nfl_ab(parts[0]), _nfl_ab(parts[1])
+
+    def _sides_ok(g):
+        return _nfl_ab(g.get("away_abbrev")) == pa and _nfl_ab(g.get("home_abbrev")) == ph
+
+    eid = _pick_event_id(pick)
+    if eid:
+        hit = [g for g in games if str(g.get("id") or "") == eid
+               and g.get("home_score") is not None]
+        if hit:
+            return hit[0] if _sides_ok(hit[0]) else None
+    try:
+        pd0 = dt.date.fromisoformat(str(pick.get("date") or "")[:10])
+    except Exception:
+        return None
+    cands, seen = [], set()
+    for g in games:
+        if g.get("home_score") is None or not _sides_ok(g):
+            continue
+        if eid and g.get("id") and str(g.get("id")) != eid:
+            continue        # a different game between the same teams
+        try:
+            off = abs((dt.date.fromisoformat(str(g.get("date"))[:10]) - pd0).days)
+        except Exception:
+            continue
+        key = (str(g.get("date"))[:10], g.get("home_score"), g.get("away_score"))
+        if off <= 1 and key not in seen:     # the same final in two feeds = one game
+            seen.add(key)
+            cands.append(g)
+    return cands[0] if len(cands) == 1 else None
+
+
 def _grade_nfl_pick(pick: Dict[str, Any], by_name: Dict[str, Any],
                     games: List[Dict[str, Any]]) -> Optional[str]:
     m = (pick.get("market") or "").lower()
@@ -2522,11 +2588,7 @@ def _grade_nfl_pick(pick: Dict[str, Any], by_name: Dict[str, Any],
     # prop whose stat lives in the source falls through to _fb_stat below.
     if ("ml_home" in m or "ml_away" in m
             or ("@" in matchup and re.fullmatch(r"(over|under)_\d+(?:\.\d+)?", m) is not None)):
-        for g in games:
-            if (g.get("date") or "")[:10] != pick.get("date"): continue
-            g_mu = f"{g.get('away_abbrev','')} @ {g.get('home_abbrev','')}".lower()
-            if matchup not in g_mu and g_mu not in matchup: continue
-            if g.get("home_score") is None: continue
+        for g in [x for x in [_find_nfl_game(pick, games)] if x]:
             hs = g.get("home_score") or 0; aws = g.get("away_score") or 0; total = hs + aws
             if "over_" in m or "under_" in m:
                 try: line = float(m.split("_")[-1])
@@ -2538,7 +2600,8 @@ def _grade_nfl_pick(pick: Dict[str, Any], by_name: Dict[str, Any],
             else: result = "won" if aws > hs else "lost"
             pick["outcome"] = {"final_score": f"{g.get('away_abbrev')} {aws} @ {g.get('home_abbrev')} {hs}",
                                "total_points": total,
-                               "verify": f"{g.get('away_abbrev')} @ {g.get('home_abbrev')}: final {aws}-{hs} (total {total}) on {pick.get('date')}"}
+                               "verify": f"{g.get('away_abbrev')} @ {g.get('home_abbrev')}: final {aws}-{hs} (total {total}) on {str(g.get('date'))[:10]}"
+                                         + (f" (ESPN event {g.get('id')})" if g.get("id") else "")}
             return result
         return None
 
@@ -2547,10 +2610,7 @@ def _grade_nfl_pick(pick: Dict[str, Any], by_name: Dict[str, Any],
         return None
     # Team totals -> vs the team's final score.
     if stat in ("_home_total", "_away_total"):
-        for g in games:
-            if (g.get("date") or "")[:10] != pick.get("date"): continue
-            g_mu = f"{g.get('away_abbrev','')} @ {g.get('home_abbrev','')}".lower()
-            if matchup not in g_mu and g_mu not in matchup: continue
+        for g in [x for x in [_find_nfl_game(pick, games)] if x]:
             score = g.get("home_score") if stat == "_home_total" else g.get("away_score")
             if score is None: continue
             over_wins = score > line
@@ -3104,6 +3164,9 @@ def _settle_picks(history: List[Dict[str, Any]]) -> int:
     nba_games = _load(os.path.join(DATA_DIR, "nba_historical.json")).get("games") or []
     nfl_by_name = {_norm_name(k): v for k, v in (_load(os.path.join(DATA_DIR, "nfl_player_gamelogs.json")).get("by_name") or {}).items()}
     nfl_games = _load(os.path.join(DATA_DIR, "nfl_historical.json")).get("games") or []
+    # historical_nfl.json (historical_games.py) carries the ESPN event id; the
+    # box-log finals only do from 2026-11-03. Ids first, so grading by id works.
+    nfl_games = (_load(os.path.join(DATA_DIR, "historical_nfl.json")).get("games") or []) + nfl_games
     ncaaf_games = _load(os.path.join(DATA_DIR, "historical_ncaaf.json")).get("games") or []
     nhl_by_name = {_norm_name(k): v for k, v in (_load(os.path.join(DATA_DIR, "nhl_player_gamelogs.json")).get("by_name") or {}).items()}
     nhl_games = _load(os.path.join(DATA_DIR, "nhl_historical.json")).get("games") or []
@@ -4255,6 +4318,19 @@ def run() -> Dict[str, Any]:
         d = b["wins"] + b["losses"]
         b["hit_rate"] = round(b["wins"] / d, 4) if d > 0 else None
         b["roi_pct"] = round(b["net_units"] / max(1, d) * 100, 2) if d > 0 else None
+    # 2026-11-03: lock_of_day's "338-60 +188u" was 295-52 PrizePicks props at
+    # PP's break-even. Each source carries its record at SPORTSBOOK prices
+    # (class A/B, PrizePicks excluded) beside the all-rows total.
+    for s, b in by_source.items():
+        rows = [p for p in settled if (p.get("source") or "?") == s]
+        b["by_price_class"] = _by_class(rows)
+        bk = [p for p in rows if not _is_pp(p)
+              and ((p.get("price_provenance") or {}).get("class") or "C") in ("A", "B")]
+        bw = sum(p["result"] == "won" for p in bk)
+        bl = sum(p["result"] == "lost" for p in bk)
+        bn = round(sum((p.get("payout_units") or 0) for p in bk), 3)
+        b["sportsbook"] = {"wins": bw, "losses": bl, "net_units": bn,
+                           "roi_pct": round(bn / (bw + bl) * 100, 2) if (bw + bl) else None}
 
     # FAMILY EVIDENCE excludes retired-model NFL props (judged from 10/23
     # forward): prob_calibration's curation reads these two blocks.
@@ -4311,12 +4387,21 @@ def run() -> Dict[str, Any]:
             elif p["result"] == "lost": b["losses"] += 1
             elif p["result"] == "push": b["pushes"] += 1
             b["net_units"] = round(b["net_units"] + (p.get("payout_units") or 0), 3)
+            # (2026-11-03) calibration: these props pay at the model's OWN fair
+            # odds, so the honest read is hit rate vs avg predicted probability
+            # over the decided (W/L) picks -- additive, nothing else changes.
+            if p["result"] in ("won", "lost") and isinstance(p.get("p_predicted"), (int, float)):
+                b["_p_sum"] = b.get("_p_sum", 0.0) + float(p["p_predicted"])
+                b["_p_n"] = b.get("_p_n", 0) + 1
         else:
             b["pending"] += 1
     for r, b in nfl_by_model.items():
         d = b["wins"] + b["losses"]
         b["hit_rate"] = round(b["wins"] / d, 4) if d else None
         b["roi_pct"] = round(b["net_units"] / d * 100, 2) if d else None
+        _pn = b.pop("_p_n", 0); _ps = b.pop("_p_sum", 0.0)
+        b["n_with_p"] = _pn                                          # (2026-11-03)
+        b["avg_p_predicted"] = round(_ps / _pn, 4) if _pn else None  # (2026-11-03)
         b["label"] = ("from 11/3 -- calibrated line selection (judged)" if r == "form_v3"
                       else "10/23-11/2 -- season-to-date form (judged)" if r == "form_v2"
                       else "before 10/23 -- one-game form (retired; record only)")
