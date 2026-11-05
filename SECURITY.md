@@ -41,6 +41,6 @@ open a public issue for security reports. We aim to acknowledge within a few day
   `/db/log-picks` and `/db/settle-picks` are refused while `SYNC_TOKEN` is
   unset (they used to open). The KV -> model_overrides heartbeat step is
   removed; `python/sync_overrides_from_kv.py` needs `EDGESTAT_OVERRIDES_SYNC=1`.
-- To finish: `wrangler secret put ADMIN_TOKEN`, `wrangler secret put SYNC_TOKEN`,
-  the `EDGESTAT_SYNC_TOKEN` GitHub secret (same value), `wrangler deploy`.
-- GitHub Pages "Enforce HTTPS" was off at audit time (owner toggle).
+- Done the same day: ADMIN_TOKEN + SYNC_TOKEN set on the Worker, EDGESTAT_SYNC_TOKEN
+  set in GitHub, Worker deployed (writes answer 401 without the token), GitHub Pages
+  Enforce HTTPS turned on, and the site stopped serving repo internals (_config.yml).

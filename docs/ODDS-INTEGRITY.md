@@ -452,10 +452,16 @@ Verified after the pass: 49 integrity tests, pricing guard green on 16
 surfaces, JS syntax on every edited script, the pages above re-probed on
 localhost.
 
-Left for Brandon (not code): GitHub Pages "Enforce HTTPS" is off
-(http://betting.bpleone.com serves plain HTTP); the three Worker secrets and
-`wrangler deploy` above; counsel review of the legal pages; whether to keep
-serving the repo root (CLAUDE.md, X-LAUNCH-KIT.md, python/, worker source
-are one URL away -- the repo is public anyway); the Odds API key has 500
-requests this month while props.json has 0 props (no MLB; NBA/NFL props
-would be the only sportsbook-priced props on the site).
+Done on Brandon's "flip the https toggle and fix all of those" (same day):
+GitHub Pages Enforce HTTPS is ON (API, verified https_enforced true); the
+Worker has ADMIN_TOKEN and SYNC_TOKEN secrets, the EDGESTAT_SYNC_TOKEN
+GitHub secret matches, and the Worker is deployed (version 173fcae2):
+POST /admin/save-overrides and /db/log-picks answer 401 without the token,
+/db/health 200. The site no longer serves the repo's internals: .nojekyll
+removed and _config.yml excludes *.md, python/, tools/, docs/, the Worker
+source, legal/ and the deploy scripts (the repo itself stays public).
+
+Still Brandon's: counsel review of the legal pages (GO-OFFICIAL checklist),
+and whether to spend the Odds API's 500 monthly requests on NBA/NFL player
+props -- today props.json has 0 props and no prop on the site carries a
+sportsbook price.
