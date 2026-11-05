@@ -2,7 +2,7 @@
 
 ## Slate
 - **0 games** scheduled
-- **No best bet today:** a best bet needs a real sportsbook price — 20 model-only projections excluded (LOL 5, MLS 5, NCAAF 4, NFL 2, NHL 2, NBA 1, EPL 1)
+- **No best bet today:** a best bet needs a real sportsbook price — 18 model-only projections excluded (LOL 5, MLS 5, NCAAF 4, NFL 2, EPL 1, NHL 1)
 
 ## Golf -- World Wide Technology Championship
 - **Field:** 120 players  |  Status: Scheduled (starts 2026-11-05)
@@ -17,8 +17,9 @@
 ## NHL -- REGULAR
 - 11/04 07:30 PM ET: Ottawa Senators @ Buffalo Sabres (0-0-0 vs 0-0-0) 2-1 | no DK price | no validated model probability | Final
 - 11/04 07:30 PM ET: Chicago Blackhawks @ Florida Panthers (0-0-0 vs 0-0-0) 3-5 | no DK price | no validated model probability | Final
-- 11/04 10:00 PM ET: San Jose Sharks @ Los Angeles Kings (7-8-1 vs 4-7-2) 0-1 | no DK price | no validated model probability | In Progress
-- 11/04 10:00 PM ET: Calgary Flames @ Seattle Kraken (7-8-0 vs 8-5-1) 0-0 | no DK price | no validated model probability | In Progress
+- 11/04 10:00 PM ET: San Jose Sharks @ Los Angeles Kings (0-0-0 vs 0-0-0) 2-7 | no DK price | no validated model probability | Final
+- 11/04 10:00 PM ET: Calgary Flames @ Seattle Kraken (0-0-0 vs 0-0-0) 1-2 | no DK price | no validated model probability | Final
+- 11/05 07:00 PM ET: Utah Mammoth @ Montreal Canadiens (10-6-0 vs 9-3-3)  | DK -122/+102 | desk P(home) 47.4% (NO EDGE) | Scheduled
 
 ## LoL Esports -- 0 live, 5 upcoming — model projection — unvalidated, no sportsbook price, not a recommendation
 - [Worlds] 11/05 05:00 PM ET: Dplus KIA vs BILIBILI GAMING BO5 | model P(A) 48.9%

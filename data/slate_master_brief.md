@@ -1,13 +1,13 @@
 # EdgeStat — Tonight's Master Brief
-_Generated 2026-11-05T03:38:39 UTC_
+_Generated 2026-11-05T12:59:43 UTC_
 
 ## Slate Quality
-- **Tier:** STRONG_NIGHT
-- **Score:** 83
-- **Advisory:** Solid slate. Pick top STRONG/LOCK picks; consider Kelly 25-50% sizing.
+- **Tier:** NO_ACTION_NIGHT
+- **Score:** -20
+- **Advisory:** STAND DOWN. Slate has no aligned conviction. Skip betting tonight or watch only.
 - **Total LOCKs:** 0
-- **Total STRONG:** 40
-- **Total FADES:** 77
+- **Total STRONG:** 39
+- **Total FADES:** 176
 
 ## Top 5 Curated Picks
 1. **GOLF / Brice Garnett** (GOLF_PLAYER, score=143.79)
@@ -30,13 +30,13 @@ _Generated 2026-11-05T03:38:39 UTC_
 - **Expected P&L on $100:** $0.0
 
 ## Top Fades
+- **NBA** / PHX (TEAM_FADE)
+  - Fade angle: team total UNDER
 - **NBA** / MIA (TEAM_FADE)
   - Fade angle: team total UNDER
-- **NBA** / HOU (TEAM_FADE)
+- **NBA** / ORL (TEAM_FADE)
   - Fade angle: team total UNDER
-- **NBA** / SAS (TEAM_FADE)
+- **NBA** / GSW (TEAM_FADE)
   - Fade angle: team total UNDER
-- **NBA** / LAC (TEAM_FADE)
-  - Fade angle: team total UNDER
-- **NBA** / CLE (TEAM_FADE)
-  - Fade angle: team total UNDER
+- **NHL** / stuart skinner (GOALIE_FADE)
+  - Fade angle: saves UNDER + win NO
