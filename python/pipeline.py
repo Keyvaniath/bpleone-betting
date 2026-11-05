@@ -115,6 +115,7 @@ def run_pipeline(games: List[Dict[str, Any]]) -> Dict[str, Any]:
                 "away_ml": g.get("market_ml_away"),
                 "total": g.get("market_total"),
                 "book": g.get("market_book"),
+                "observed_at": g.get("market_observed_at"),   # (2026-11-04)
             },
             "weather": {k: v for k, v in (g.get("ctx") or {}).items()
                         if k in ("temp_f", "wind_mph", "is_indoor", "wind_dir_deg",
@@ -129,7 +130,11 @@ def run_pipeline(games: List[Dict[str, Any]]) -> Dict[str, Any]:
         # Track the highest-edge play in the slate.
         for r in proj.recommendations:
             if best is None or r["edge_pct"] > best["edge_pct"]:
-                best = {**r, "matchup": record["matchup"], "time": record["time"]}
+                best = {**r, "matchup": record["matchup"], "time": record["time"],
+                        # (2026-11-04) quote provenance for the pricing guard
+                        "odds_observed_at": g.get("market_observed_at"),
+                        "commence_time": g.get("commence_time"),
+                        "book": g.get("market_book")}
     manifest = {
         "generated_at": dt.datetime.now().isoformat(timespec="seconds"),
         "date": dt.date.today().isoformat(),   # calendar date of the slate (YYYY-MM-DD)
@@ -233,8 +238,12 @@ def _american_to_int(price: Any) -> Optional[int]:
 TAKEABLE_BOOKS = ["draftkings"]
 
 
+_DK_OBSERVED_AT: Optional[str] = None   # (2026-11-04) when the DK snapshot was taken
+
+
 def _espn_dk_lines(max_age_h: float = 6.0) -> Dict[str, Dict[str, Any]]:
     """data/espn_odds.json by_matchup ('AWAY @ HOME' codes) if fresh, else {}."""
+    global _DK_OBSERVED_AT
     p = os.path.join(os.path.dirname(OUT_PATH), "espn_odds.json")
     try:
         with open(p, encoding="utf-8") as f:
@@ -243,6 +252,7 @@ def _espn_dk_lines(max_age_h: float = 6.0) -> Dict[str, Dict[str, Any]]:
         if age.total_seconds() > max_age_h * 3600:
             print(f"  [x] espn_odds.json is {age.total_seconds() / 3600:.1f}h old -- not used")
             return {}
+        _DK_OBSERVED_AT = o.get("generated_at")
         return o.get("by_matchup") or {}
     except Exception as e:
         print(f"  [x] espn_odds.json unreadable: {e}")
@@ -406,6 +416,8 @@ def build_real_slate() -> Optional[List[Dict[str, Any]]]:
         away_tid = sr.team_id(away_name)
         ev = odds_by_pair.get((home_name, away_name))
         prices = _consensus_odds(ev, home_name, away_name) if ev else {"ml_home": None, "ml_away": None, "total": None}
+        if ev and prices.get("ml_home") is not None:
+            prices["observed_at"] = dt.datetime.now().isoformat(timespec="seconds")   # fetched this run
         dk = dk_by_matchup.get(f"{away_code} @ {home_code}") or {}
         if dk.get("ml_home") is not None and dk.get("ml_away") is not None:
             # DraftKings is the house price (the ledger grades at it): it wins
@@ -413,7 +425,8 @@ def build_real_slate() -> Optional[List[Dict[str, Any]]]:
             prices = {"ml_home": dk.get("ml_home"), "ml_away": dk.get("ml_away"),
                       "total": dk.get("total") if dk.get("total") is not None else prices.get("total"),
                       "over_price": dk.get("over_price"), "under_price": dk.get("under_price"),
-                      "book": dk.get("book") or "draftkings"}
+                      "book": dk.get("book") or "draftkings",
+                      "observed_at": _DK_OBSERVED_AT}   # (2026-11-04) quote provenance
 
         # Probable pitchers with IDs (preferred) or names only (fallback).
         pp = sr.probable_pitchers_for_game(g["gamePk"]) or {"home": {}, "away": {}}
@@ -448,6 +461,8 @@ def build_real_slate() -> Optional[List[Dict[str, Any]]]:
             "market_over_price": prices.get("over_price"),
             "market_under_price": prices.get("under_price"),
             "market_book": prices.get("book"),
+            "market_observed_at": prices.get("observed_at"),
+            "commence_time": g.get("time"),
             "away": _team_dict_real(away_tid, away_code),
             "home": _team_dict_real(home_tid, home_code),
             "away_pitcher": _pitcher_dict_real(away_pid, away_pname),
@@ -503,9 +518,37 @@ def build_slate(force_demo: bool = False) -> List[Dict[str, Any]]:
     return [dict(g, is_demo=True) for g in DEMO_SLATE]
 
 
+def _production_manifest(slate: List[Dict[str, Any]], path: str = OUT_PATH) -> Dict[str, Any]:
+    """(2026-11-04) The demo slate never reaches the published today.json. When the
+    real pull FAILS, build_slate returns DEMO_SLATE tagged is_demo -- and no page
+    honours the tag (95 consumers), so on an MLB API outage CIN @ COL ML -110 went
+    out as the Play of the Day (crash replay, network cut). Instead: keep today's
+    last good REAL manifest if one exists (ET date, not demo), else publish an
+    empty slate flagged fetch_error (every consumer runs clean on an empty slate)."""
+    if slate and not any(g.get("is_demo") for g in slate):
+        return run_pipeline(slate)
+    if not slate:
+        return run_pipeline(slate)
+    try:
+        with open(path, encoding="utf-8") as f:
+            prev = json.load(f) or {}
+    except Exception:
+        prev = {}
+    if (prev.get("date") == dt.date.today().isoformat() and not prev.get("is_demo")
+            and prev.get("games")):
+        print("  [!!] real pull failed -- keeping today's last good slate")
+        return {**prev, "fetch_error": True, "kept_from": prev.get("generated_at")}
+    print("  [!!] real pull failed -- publishing an EMPTY slate (fetch_error), never the demo")
+    return {"generated_at": dt.datetime.now().isoformat(timespec="seconds"),
+            "date": dt.date.today().isoformat(), "games": [], "play_of_day": None,
+            "is_demo": False, "no_games": True, "fetch_error": True}
+
+
 if __name__ == "__main__":
-    slate = build_slate(force_demo="--demo" in sys.argv)
-    manifest = run_pipeline(slate)
+    force_demo = "--demo" in sys.argv
+    slate = build_slate(force_demo=force_demo)
+    # --demo is a local/manual mode; production never publishes the demo slate.
+    manifest = run_pipeline(slate) if force_demo else _production_manifest(slate)
     write_manifest(manifest)
     if manifest.get("play_of_day"):
         print(json.dumps(manifest["play_of_day"], indent=2))

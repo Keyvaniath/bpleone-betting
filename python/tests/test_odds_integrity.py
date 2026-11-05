@@ -373,3 +373,67 @@ def test_board_prior_hides_dk_price_in_play():
     pre = {"state": "pre", "p_home_display": 0.6, "dk_ml_home": -150, "dk_ml_away": 130}
     bp.finalize(pre, am)
     assert pre["dk_ml_home"] == -150 and pre["fair_home_american"] == -100
+
+
+# ---- 2026-11-04: pricing guard, event-id quote join, desk gate, DK prop pricing ----
+
+def _nfl_snap(now):
+    return {"generated_at": now.isoformat(), "games": [{
+        "sport": "NFL", "event_id": "401873037", "matchup": "JAX @ BAL", "status": "pre",
+        "commence_time": (now + __import__("datetime").timedelta(hours=20)).isoformat(),
+        "market": {"ml_home": 390, "ml_away": -520, "total": 39.5,
+                   "over_price": -112, "under_price": -108, "book": "draftkings"}}]}
+
+
+def test_find_quote_joins_full_names_by_event_id():
+    import datetime as dt, quotes as Q
+    now = dt.datetime.now(dt.timezone.utc)
+    snap = _nfl_snap(now)
+    full = "Jacksonville Jaguars @ Baltimore Ravens"
+    q, why = Q.find_quote("NFL", full, "ML_HOME", snap)
+    assert q is None and why == Q.R_NO_QUOTE          # the old miss
+    q, why = Q.find_quote("NFL", full, "ML_HOME", snap, event_id="401873037")
+    assert why is None and q["american"] == 390 and q["selection"] == "home"
+    q, _ = Q.find_quote("NBA", full, "ML_HOME", snap, event_id="401873037")
+    assert q is None                                   # sport must still agree
+
+
+def test_verify_pricing_self_test_and_old_artifacts():
+    import verify_pricing as vp
+    assert vp.self_test() == []
+    import datetime as dt
+    now = dt.datetime(2026, 11, 4, 22, 0, tzinfo=dt.timezone.utc)
+    # the 10/12 board shape: a "pick" with only the model's fair price
+    assert vp.check_row({"matchup": "HOU @ SEA", "fair_american": -145}, now)
+    assert not vp.check_row({"matchup": "HOU @ SEA", "fair_american": -145, "actionable": False}, now)
+
+
+def test_best_bets_dk_prop_priced_at_quote_and_fails_closed():
+    import datetime as dt, best_bets as bb
+    now = dt.datetime.now(dt.timezone.utc)
+    row = {"play": "UNDER", "market": "pitcher_strikeouts", "line": 5.5,
+           "dk_over": -120, "dk_under": 100, "model_prob_over": 0.30, "model_prob_under": 0.70,
+           "commence_time": (now + dt.timedelta(hours=3)).isoformat()}
+    out = bb.price_dk_prop(row, (now - dt.timedelta(minutes=30)).isoformat(), now)
+    if out is not None:                                # calibration may shrink it below +2%
+        assert out["american"] == 100 and out["quote"]["provenance"] == "book_snapshot"
+        assert out["ev"] >= bb.DK_PROP_EV_HURDLE
+    stale = bb.price_dk_prop(row, (now - dt.timedelta(hours=5)).isoformat(), now)
+    assert stale is None
+    started = bb.price_dk_prop({**row, "commence_time": (now - dt.timedelta(minutes=1)).isoformat()},
+                               now.isoformat(), now)
+    assert started is None
+    assert bb.price_dk_prop({**row, "dk_under": None}, now.isoformat(), now) is None
+
+
+def test_failed_mlb_pull_never_publishes_the_demo_slate(tmp_path):
+    """(2026-11-04) crash replay: network down -> CIN @ COL ML -110 became the POD."""
+    import json, datetime as dt, pipeline as P
+    demo = [dict(g, is_demo=True) for g in P.DEMO_SLATE]
+    path = str(tmp_path / "today.json")
+    m = P._production_manifest(demo, path)
+    assert m["games"] == [] and m["play_of_day"] is None and m["fetch_error"] and not m["is_demo"]
+    json.dump({"date": dt.date.today().isoformat(), "games": [{"matchup": "MIL @ CHC"}],
+               "is_demo": False, "generated_at": "t0"}, open(path, "w"))
+    m = P._production_manifest(demo, path)
+    assert m["games"] == [{"matchup": "MIL @ CHC"}] and m["kept_from"] == "t0"

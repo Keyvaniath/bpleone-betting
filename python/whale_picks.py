@@ -109,6 +109,8 @@ def run() -> Dict[str, Any]:
             "prob": prob,
             "edge_pct": edge,
             "fair_american": pick.get("fair_american"),
+            "book_american": pick.get("book_american"),   # (2026-11-04) the DK quote
+            "quote": pick.get("quote"),
             "kelly_fraction": pick.get("kelly_fraction"),
             "unit_size_quarter_kelly": pick.get("unit_size_quarter_kelly"),
             "source": pick.get("source"),

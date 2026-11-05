@@ -122,9 +122,10 @@
 
 <h1>🎯 Tonight's Bet Slate</h1>
 <div class="sub">
-  One-page action sheet. The top calibrated edges with recommended stakes
-  using <strong style="color:#d4a04a;">¼-Kelly sizing</strong>. Set your
-  bankroll below — stake column updates instantly.
+  Plays priced at a live DraftKings quote, with what <strong style="color:#d4a04a;">¼-Kelly</strong>
+  would stake at the model's calibrated probability. No edge is proven yet (the held-out
+  record is negative), so treat the stake column as arithmetic, not advice. Many nights
+  the slate is empty: nothing clears the bar at a real price.<!-- (2026-11-04) -->
 </div>
 
 <div class="bankroll-bar">
@@ -179,7 +180,7 @@ function render() {
       </div>
       <div class="bet-detail">
         <div class="detail"><div class="lbl">Cal Prob</div><div class="val">${fmtPct(s.prob)}</div></div>
-        <div class="detail"><div class="lbl">Fair Odds</div><div class="val" style="color:#d4a04a;">${fmtOdds(s.odds)}</div></div>
+        <div class="detail"><div class="lbl">DK Price</div><div class="val" style="color:#d4a04a;">${s.odds != null ? fmtOdds(s.odds) : '—'}</div></div>
         <div class="detail"><div class="lbl">Edge</div><div class="val pos">${fmtSigned(s.edge)}</div></div>
         <div class="detail"><div class="lbl">Kelly</div><div class="val">${(s.kelly||0).toFixed(3)}</div></div>
         <div class="detail"><div class="lbl">Stake (¼-Kelly)</div><div class="val stake">${fmtMoney(s.stake)}</div></div>
@@ -206,7 +207,7 @@ async function loadAll() {
     title: s.title || '—',
     market: s.market || '',
     prob: s.prob,
-    odds: s.fair_american,
+    odds: s.book_american,   // (2026-11-04) the DraftKings price; the slate never shows the model's own fair price as odds
     edge: s.edge_pct,
     kelly: s.kelly_fraction || 0,
   }));

@@ -203,6 +203,10 @@ def _build_new_locks(top_plays: Dict[str, Any]) -> List[Dict[str, Any]]:
             "market_family": _market_family(market),
             "prob": prob,
             "fair_american": fair,
+            # (2026-11-04) the DraftKings quote the top-25 ranked it on -- the
+            # lock used to keep only the model's own fair price
+            "book_american": c.get("book_american"),
+            "quote": c.get("quote"),
             "edge_pct": edge_pct,
             "kelly_fraction": c.get("kelly_fraction"),
             "unit_size_quarter_kelly": kelly_unit,
@@ -427,8 +431,11 @@ def run() -> Dict[str, Any]:
             pick["settled"] = True
             pick["result"] = result
             pick["settled_at"] = dt.datetime.now().isoformat(timespec="seconds")
-            # Compute payout units
-            decimal_odds = _american_to_decimal(pick.get("fair_american"))
+            # Compute payout units -- (2026-11-04) at the DraftKings price the lock
+            # was made at; a lock without one (pre-11/04 props) keeps its old basis
+            decimal_odds = _american_to_decimal(pick.get("book_american")
+                                                if pick.get("book_american") is not None
+                                                else pick.get("fair_american"))
             stake = pick.get("unit_size_quarter_kelly") or 0.02
             if result == "won" and decimal_odds:
                 pick["payout_units"] = round(stake * (decimal_odds - 1), 4)

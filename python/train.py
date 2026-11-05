@@ -33,9 +33,9 @@ def run(name: str, fn) -> None:
 
 
 def train_pipeline():
-    from pipeline import run_pipeline, write_manifest, build_slate
+    from pipeline import write_manifest, build_slate, _production_manifest
     slate = build_slate()
-    manifest = run_pipeline(slate)
+    manifest = _production_manifest(slate)   # (2026-11-04) never the demo slate
     write_manifest(manifest)
 
 

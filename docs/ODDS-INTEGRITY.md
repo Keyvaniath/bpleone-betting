@@ -238,3 +238,52 @@ price, class C, excluded from every sportsbook record); *_pot_history pages
 already render calibration only. docs/ is public, but so is the repo.
 Still open: convergence ELITE = signal count (no price claim; picks hub gates
 it on a quote); odds_key_preflight wording is accurate.
+
+## Pricing guard + quote join (2026-11-04, branch integrity/pricing-guard)
+
+Backlog branch merged to main 39badb82e0 on Brandon's go. Crash replay on the
+merged main: 2/368 failing in base, off-day and nulls (outcomes.py and
+smoke_tests.py, network only).
+
+- `python/verify_pricing.py`: every row on 13 pick surfaces (todays_picks,
+  top plays, best bets, multi-sport top, pregame alerts, bet slate, fades,
+  whales, Alpha) must carry a sportsbook price that is not the model's fair
+  price, observed <= 180 min before the artifact was written, for an event
+  not yet started -- or say it is a projection (actionable/is_pick false). A
+  12-case self-test runs first (a real -110 quote passes; fair-only, stale,
+  started, in-play, non-book and untimestamped prices fail). Wired into
+  daily-pipeline (after every pick producer) and the Smoke Test. Today's
+  artifacts pass with 0 rows; the 10/12 artifacts fail with 151 violations.
+- QUOTE JOIN BUG: espn_odds keys games by abbreviation ("JAX @ BAL"), the
+  sport state files by full name ("Jacksonville Jaguars @ Baltimore Ravens").
+  find_quote matched the strings exactly, so every NFL/NBA/NHL/NCAAF/NCAAB
+  game-line candidate was "no_quote" even with a DK price posted.
+  find_quote/price_candidate now take `event_id` (ESPN id, sport must agree).
+- That miss was hiding a second problem: slate_team_pot read `p_home_win`
+  (live / the record Elo on older states -- DET@MIA went out at 91.6%). It
+  now reads the board's vetted `p_home_display` and carries event_id,
+  p_source, desk_verdict. todays_top_plays ranks a sport-board game line only
+  when p_source is the game-lines desk AND the verdict is PROMISING; DK
+  no-vig is the market itself (reason market_prob), UNPROVEN / NO EDGE desks
+  stay forward tests (reason desk_<verdict>). Today: 15 market_prob, 13
+  desk_unproven, 0 ranked -- the board is still empty, now for the stated
+  reason.
+- best_bets DK props (paid Odds API, the ONLY prop rows with a real book
+  price): each row now carries its DK quote (dk_over/dk_under, fetched at
+  props.json generated_at, commence_time), must pass quotes.actionable, and
+  its edge is the CALIBRATED probability's EV at that price (>= +2%). It used
+  to publish the raw-model edge with no price or time (the CLAUDE.md TODO
+  "apply recalibrate() in the prop edge path").
+- Provenance carried through: locks_of_day (book_american + quote; new locks
+  settle at the DK price), whale_picks, bet_slate (BOOK rows had the DK price
+  in `fair_american`; POD/Alpha now carry the quote; page shows "DK Price"),
+  book_vs_model_team (odds_observed_at per line_source), pipeline.py POD
+  (odds_observed_at, commence_time, book) -> multi_sport_top.
+- DEMO SLATE LEAK (found by the new guard in crash replay): when the MLB pull
+  FAILS, build_slate returns DEMO_SLATE tagged is_demo, and no page honours
+  the tag (~95 today.json consumers) -- with the network down, CIN @ COL ML
+  -110 became the Play of the Day and a multi-sport top pick. pipeline.py and
+  train.py now publish via `_production_manifest`: keep today's last good real
+  slate (fetch_error, kept_from), else an empty slate with fetch_error; the
+  demo slate only with `--demo`. Crash replay after: 2/369 failing (network
+  only) in all three states, pricing guard passing.
