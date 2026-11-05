@@ -1,8 +1,8 @@
 # EdgeStat Daily Summary — 2026-11-05
 
-## 🏥 Model Health: 63.5/100 [OK]
+## 🏥 Model Health: 63.6/100 [OK]
 - Operational but room to improve - check yellow components
-  - 🟢 Calibration Freshness: 99.6/100
+  - 🟢 Calibration Freshness: 100.0/100
   - 🔴 Hit Rate Trend: 55.5/100
   - 🔴 Brier Trend: 17.0/100
   - 🟢 Pipeline Audit: 100.0/100
@@ -67,11 +67,11 @@
   - model favourite **Austin Bashi** (14-2-0) vs Carlos Calderon
 
 ## ⛳ Golf Player Heat (from World Wide Technology Championship)
-  - 🔥 T1 **Harry Hall** (England): -7 total -- finished T1
-  - 🔥 T2 **Matthieu Pavon** (France): -6 total -- finished T2
-  - 🔥 T3 **Nick Dunlap** (USA): -6 total -- finished T3
-  - 🔥 T4 **David Skinns** (England): -5 total -- finished T4
-  - 🔥 T5 **Ryan Gerard** (USA): -5 total -- finished T5
+  - 🔥 T1 **Nick Dunlap** (USA): -9 total -- finished T1
+  - 🔥 T2 **Matthieu Pavon** (France): -7 total -- finished T2
+  - 🔥 T3 **Harry Hall** (England): -7 total -- finished T3
+  - 🔥 T4 **Blades Brown** (USA): -6 total -- finished T4
+  - 🔥 T5 **Taylor Montgomery** (USA): -6 total -- finished T5
 
 ## 😴 Back-to-back flags (3) — schedule fact, not a pick
 - [NBA] Orlando Magic @ Phoenix Suns (2026-11-05): away team on a back-to-back

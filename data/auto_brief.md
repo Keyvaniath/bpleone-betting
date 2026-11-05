@@ -5,20 +5,20 @@
 - **No best bet today:** a best bet needs a real sportsbook price — 26 model-only projections excluded (LOL 5, MLS 5, NCAAF 4, GOLF 4, NFL 3, NHL 2, NBA 1, EPL 1, NCAAB 1)
 
 ## Golf -- World Wide Technology Championship
-- **Leader:** Harry Hall (-7) at #1
+- **Leader:** Nick Dunlap (-9) at #1
 - **Field:** 120 players  |  Status: In Progress
-- **Model projection:** Matthieu Pavon WIN (model 13.8%) — model projection — unvalidated, no sportsbook price, not a recommendation
+- **Model projection:** Kevin Streelman TOP10 (model 14.7%) — model projection — unvalidated, no sportsbook price, not a recommendation
 
 ## NBA -- REGULAR
 - 11/05 09:00 PM ET: Orlando Magic @ Phoenix Suns (2-5 vs 1-5)  | DK -104/-114 | desk P(home) 51.1% (NO EDGE) | Scheduled
-- 11/05 10:00 PM ET: Miami Heat @ Golden State Warriors (3-5 vs 5-3)  | DK +228/-279 | desk P(home) 70.7% (NO EDGE) | Scheduled
+- 11/05 10:00 PM ET: Miami Heat @ Golden State Warriors (3-5 vs 5-3)  | DK +221/-269 | desk P(home) 70.1% (NO EDGE) | Scheduled
 
 ## NHL -- REGULAR
 - 11/05 07:00 PM ET: Utah Mammoth @ Montreal Canadiens (10-6-0 vs 9-3-3)  | DK -122/+102 | desk P(home) 47.4% (NO EDGE) | Scheduled
 - 11/05 07:00 PM ET: Vegas Golden Knights @ Detroit Red Wings (10-5-2 vs 7-6-3)  | DK -142/+120 | desk P(home) 43.6% (NO EDGE) | Scheduled
-- 11/05 07:00 PM ET: Chicago Blackhawks @ Tampa Bay Lightning (4-11-1 vs 9-3-2)  | DK +330/-425 | desk P(home) 77.7% (NO EDGE) | Scheduled
+- 11/05 07:00 PM ET: Chicago Blackhawks @ Tampa Bay Lightning (4-11-1 vs 9-3-2)  | DK +350/-455 | desk P(home) 78.7% (NO EDGE) | Scheduled
 - 11/05 07:00 PM ET: St. Louis Blues @ New Jersey Devils (7-7-1 vs 10-5-0)  | DK +180/-218 | desk P(home) 65.8% (NO EDGE) | Scheduled
-- 11/05 07:00 PM ET: Carolina Hurricanes @ New York Islanders (12-3-2 vs 7-5-2)  | DK -185/+154 | desk P(home) 37.8% (NO EDGE) | Scheduled
+- 11/05 07:00 PM ET: Carolina Hurricanes @ New York Islanders (12-3-2 vs 7-5-2)  | DK -198/+164 | desk P(home) 36.3% (NO EDGE) | Scheduled
 
 ## LoL Esports -- 0 live, 5 upcoming — model projection — unvalidated, no sportsbook price, not a recommendation
 - [Worlds] 11/05 05:00 PM ET: Dplus KIA vs BILIBILI GAMING BO5 | model P(A) 48.9%

@@ -1,9 +1,9 @@
 **EdgeStat -- Tonight's Slate**
-_NO_ACTION_NIGHT_ | L:0 S:13 F:220
+_NO_ACTION_NIGHT_ | L:0 S:9 F:216
 
 :dart: **Top Picks:**
-1. [GOLF] Harry Hall -- Harry Hall (PLAYER_STRONG)
-2. [GOLF] Matthieu Pavon -- Matthieu Pavon (PLAYER_STRONG)
+1. [GOLF] Matthieu Pavon -- Matthieu Pavon (PLAYER_STRONG)
+2. [GOLF] Nick Dunlap -- Nick Dunlap (PLAYER_STRONG)
 
 :coin: Bankroll Advisory: STAND DOWN. Slate has no aligned conviction. Skip betting tonight or watch only.
 
