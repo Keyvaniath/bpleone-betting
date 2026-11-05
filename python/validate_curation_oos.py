@@ -196,8 +196,9 @@ def _concentration(test, tcut):
             f"Concentrated: the top 2 of {len(rows)} surviving families produced "
             f"{net_top2:+.0f}u; the other {len(rows) - 2} combined "
             f"{'made' if net_ex_top2 >= 0 else 'LOST'} {abs(net_ex_top2):.0f}u."
-            + (f" One pillar is flagged small-sample and quarantined; excluding flagged "
-               f"families the held-out edge is {roi_ex_flagged:+.1f}% (n={ex_n})."
+            + (f" {len(flagged)} small-sample famil{'y is' if len(flagged) == 1 else 'ies are'} "
+               f"flagged and set aside; excluding them the held-out ROI is "
+               f"{roi_ex_flagged:+.1f}% (n={ex_n})."   # (2026-11-04) was "One pillar" / "edge"
                if flagged else
                " No surviving family trips the small-sample flag at current thresholds.")
         ),
