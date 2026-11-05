@@ -534,6 +534,28 @@ def _collect_picks_from_sources() -> List[Dict[str, Any]]:
             "fair_american": t.get("market_price"),
         })
 
+    # Cross-sport Play of the Day (2026-11-05): the desk pick featured today.
+    # Listed AFTER the desk rows above, so the add-guard folds this copy onto the
+    # desk's own row as also_sources=pod (pod_pl_tracker mirrors it from there).
+    pod2 = _load(os.path.join(DATA_DIR, "play_of_day.json"))
+    pl = pod2.get("play")
+    if pl and (pl.get("tier") or 0) >= 1 and pl.get("game_date") and pl.get("book_american") is not None:
+        out.append({
+            "source": "pod",
+            "sport": pl.get("sport"),
+            "player_or_matchup": pl.get("matchup"),
+            "market": pl.get("market"),
+            "prob": pl.get("model_prob"),
+            "edge_pct": pl.get("ev_pct"),
+            "fair_american": pl.get("fair_american"),
+            "book_american": pl.get("book_american"),
+            "game_date": pl.get("game_date"),
+            "event_id": pl.get("event_id"),
+            "desk_verdict": pl.get("desk_verdict"),
+            "pod_tier": pl.get("tier"),
+            "quote": pl.get("quote"),
+        })
+
     # MLB pitcher Quality Start strong edges
     qs = _load(os.path.join(DATA_DIR, "mlb_pitcher_quality_start_props.json"))
     for r in (qs.get("strong_edges") or []):

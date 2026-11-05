@@ -1274,6 +1274,30 @@ fetch("data/today.json", { cache: "no-cache" })
       if (mg && d.no_games) mg.textContent = "0";
       const lr = document.getElementById("lastRefresh");
       if (lr) lr.textContent = (d.generated_at || "").replace("T", " ").slice(0, 16) + " UTC";   // (2026-11-05) data time, not the page clock
+      // (2026-11-05) cross-sport Play of the Day: any game-lines desk, major-4 first
+      fetch("data/play_of_day.json?t=" + Date.now(), { cache: "no-cache" }).then(r => r.json()).then(P => {
+        const play = P && P.play;
+        const head = document.querySelector(".play-card .card-head .muted");
+        const mk = m => /^ML/i.test(String(m || "")) ? "moneyline" : String(m || "").replace(/_/g, " ").toLowerCase();
+        const fmtA = a => a == null ? "—" : (a >= 0 ? "+" : "") + a;
+        const pct = p => p == null ? "—" : (p * 100).toFixed(1) + "%";
+        if (play) {
+          if (t) t.innerHTML = `${play.sport} · ${play.team || ""} <span class="accent">${mk(play.market)}</span> <span class="muted" style="font-size:13px;font-weight:400;">${play.matchup}</span>`;
+          if (head) head.textContent = `${P.date_et} · ${play.tier_label || ""}`;
+          if (sm) sm.textContent = play.why || "";
+          const pg = document.querySelector(".play-card .play-grid");
+          if (pg) {
+            pg.style.display = "";
+            pg.innerHTML = [["DK price", fmtA(play.book_american)], ["Desk prob", pct(play.model_prob)], ["DK implied", pct(play.dk_implied)],
+                            ["EV at DK", (play.ev_pct >= 0 ? "+" : "") + Number(play.ev_pct || 0).toFixed(1) + "%"], ["Verdict", play.desk_verdict || "—"], ["Tier", play.tier === 1 ? "validated" : play.tier === 2 ? "forward test" : "experimental"]]
+              .map(([l, v]) => `<div class="play-stat"><div class="stat-label">${l}</div><div class="stat-value-big" style="font-size:16px;">${v}</div></div>`).join("");
+          }
+        } else if (sm && P) {
+          const n = P.next_play;
+          sm.innerHTML = "No play across the desks today (" + (P.no_play_reasons || []).map(r => r.split(" -- ")[0]).slice(0, 4).join("; ") + ")." +
+            (n ? ` <b style="color:#d4a04a;">Next:</b> ${n.game_date} ${n.sport} ${n.team || ""} ${mk(n.market)} ${fmtA(n.book_american)} — ${n.tier_label}.` : "");
+        }
+      }).catch(() => {});
       return;
     }
     // Title

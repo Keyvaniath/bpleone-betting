@@ -108,7 +108,9 @@ jobs:
       # Self-learning -- update every 5 min, all day
       - name: All-picks unified ledger (settle + log)
         working-directory: python
-        run: python all_picks_tracker.py || echo "all_picks_tracker.py" >> "$RUNNER_TEMP/failed_steps.txt"
+        run: |
+          python play_of_day.py || echo "play_of_day.py" >> "$RUNNER_TEMP/failed_steps.txt"
+          python all_picks_tracker.py || echo "all_picks_tracker.py" >> "$RUNNER_TEMP/failed_steps.txt"
       - name: Golf leaderboard + live tracker (was daily-only; a tournament round moves hourly)
         working-directory: python
         run: |

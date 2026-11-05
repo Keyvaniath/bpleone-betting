@@ -54,6 +54,7 @@ PICK_SURFACES: List[Tuple[str, str]] = [
 # (artifact, key) -> a single pick dict (or a no-pick marker).
 SINGLE_PICKS: List[Tuple[str, str]] = [
     ("alpha_pick_of_day.json", "alpha_pick"),
+    ("play_of_day.json", "play"),            # (2026-11-05) cross-sport Play of the Day
 ]
 
 

@@ -87,7 +87,9 @@ jobs:
       # Unified all-picks ledger (every surfaced pick across all modules)
       - name: All-picks unified ledger
         working-directory: python
-        run: python all_picks_tracker.py || echo "all_picks_tracker.py" >> "$RUNNER_TEMP/failed_steps.txt"
+        run: |
+          python play_of_day.py || echo "play_of_day.py" >> "$RUNNER_TEMP/failed_steps.txt"
+          python all_picks_tracker.py || echo "all_picks_tracker.py" >> "$RUNNER_TEMP/failed_steps.txt"
       # Self-learn shrinkage weights (per-source feedback loop)
       - name: Self-learn shrinkage weights
         working-directory: python

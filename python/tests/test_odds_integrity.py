@@ -552,3 +552,84 @@ def test_board_prior_rejects_espn_placeholder_lines(tmp_path, monkeypatch):
     assert f1["p_home_display"] is None and f1["dk_ml_home"] is None and f1.get("dk_placeholder")
     assert f2["p_home_display"] is not None          # -2800 is within the cap: a thin but real market
     assert 0.5 < f3["p_home_display"] < 0.6
+
+
+# ---------------------------------------------------------------- cross-sport Play of the Day (2026-11-05)
+def _pod_fixture(tmp_path, today, obs_minutes_ago=30, nfl_pick=True):
+    now = dt.datetime(2026, 11, 8, 15, 0, tzinfo=dt.timezone.utc)
+    obs = (now - dt.timedelta(minutes=obs_minutes_ago)).isoformat(timespec="seconds").replace("+00:00", "")
+    q = lambda eid, start: {"provenance": "book_snapshot", "book": "draftkings", "observed_at": obs,
+                            "event_id": eid, "scheduled_start": start}
+    nfl_rows = [
+        {"event_id": "1", "matchup": "NYJ @ KC", "commence": "2026-11-08T18:00Z", "p_home": 0.78, "ml_home": -500, "ml_away": 440,
+         "game_date": today, "quote": q("1", "2026-11-08T18:00Z"),
+         "pick": {"side": "away", "market": "ML_AWAY", "team": "NYJ", "prob": 0.22, "book_american": 440, "fair_american": 355, "ev": 0.17} if nfl_pick else None},
+        {"event_id": "2", "matchup": "DAL @ IND", "commence": "2026-11-09T18:00Z", "p_home": 0.37, "ml_home": 195, "ml_away": -238,
+         "game_date": "2026-11-09", "quote": q("2", "2026-11-09T18:00Z"),
+         "pick": {"side": "home", "market": "ML_HOME", "team": "IND", "prob": 0.37, "book_american": 195, "fair_american": 171, "ev": 0.05}},
+    ]
+    gld = {"sports": {"nfl": {"verdict": "UNPROVEN: the blend edges the close", "proven": False, "board": nfl_rows},
+                      "nba": {"verdict": "NO EDGE: the model adds nothing", "proven": False, "w_used": 0.0,
+                              "board": [{"event_id": "3", "matchup": "BOS @ MIA", "game_date": today, "pick": None,
+                                         "ml_home": -120, "ml_away": 100, "p_home": 0.52, "quote": q("3", "2026-11-09T00:30Z")}]}}}
+    cfb = {"board_fresh": True, "games": [], "edges": [
+        {"matchup": "FSU @ BC", "side": "HOME", "team": "BC", "market": "cfb_model_ml_home", "event_id": "9", "game_date": today,
+         "commence_time": "2026-11-08T20:00Z", "calibrated_prob": 0.40, "book_implied_devig": 0.33, "book_american": 200,
+         "fair_american": 150, "edge_pct": 30.0, "odds_observed_at": obs}]}
+    (tmp_path / "game_lines_desk.json").write_text(json.dumps(gld))
+    (tmp_path / "cfb_model.json").write_text(json.dumps(cfb))
+    (tmp_path / "today.json").write_text(json.dumps({"no_games": True, "games": []}))
+    return now
+
+
+def test_play_of_day_prefers_major4_today_and_labels_tier(tmp_path, monkeypatch):
+    import play_of_day as pod
+    import verify_pricing as vp
+    today = "2026-11-08"
+    now = _pod_fixture(tmp_path, today)
+    monkeypatch.setattr(pod, "DATA_DIR", str(tmp_path))
+    monkeypatch.setattr(pod, "OUT", str(tmp_path / "play_of_day.json"))
+    monkeypatch.setattr(pod, "_today_et", lambda: today)
+    out = pod.run(now=now)
+    play = out["play"]
+    # the NFL forward-test play beats a higher-EV college edge (major-4 first, tier first)
+    assert play["sport"] == "NFL" and play["team"] == "NYJ" and play["tier"] == 2
+    assert play["book_american"] == 440 and play["desk_verdict"] == "UNPROVEN" and play["is_pick"] is True
+    assert "forward-test" in play["tier_label"]
+    assert out["next_play"]["game_date"] == "2026-11-09" and out["next_play"]["team"] == "IND"
+    assert vp.check_row(play, now) == []                       # the guard accepts it as a priced pick
+    assert out["by_sport"]["NBA"]["verdict"] == "NO EDGE"
+
+
+def test_play_of_day_no_play_when_quote_stale_or_desk_no_edge(tmp_path, monkeypatch):
+    import play_of_day as pod
+    today = "2026-11-08"
+    now = _pod_fixture(tmp_path, today, obs_minutes_ago=600)   # 10h-old DK quote
+    monkeypatch.setattr(pod, "DATA_DIR", str(tmp_path))
+    monkeypatch.setattr(pod, "OUT", str(tmp_path / "play_of_day.json"))
+    monkeypatch.setattr(pod, "_today_et", lambda: today)
+    out = pod.run(now=now)
+    assert out["play"] is None
+    reasons = " | ".join(out["no_play_reasons"])
+    assert "NFL" in reasons and "NO EDGE" in reasons and "no picks by rule" in reasons
+    # with no major-4 pick, the college edge is the (labelled, tier-3) fallback; the NO EDGE NBA desk never is
+    now = _pod_fixture(tmp_path, today, nfl_pick=False)
+    out = pod.run(now=now)
+    assert out["play"]["sport"] == "NCAAF" and out["play"]["tier"] == 3 and "experimental" in out["play"]["tier_label"]
+    assert all(c["sport"] != "NBA" for c in out["candidates_today"])
+
+
+def test_ledger_harvests_the_cross_sport_pod_after_the_desk_row(tmp_path, monkeypatch):
+    import all_picks_tracker as t
+    today = "2026-11-08"
+    _pod_fixture(tmp_path, today)
+    (tmp_path / "play_of_day.json").write_text(json.dumps({"play": {
+        "sport": "NFL", "matchup": "NYJ @ KC", "market": "ML_AWAY", "model_prob": 0.22, "ev_pct": 17.0,
+        "fair_american": 355, "book_american": 440, "game_date": today, "event_id": "1", "desk_verdict": "UNPROVEN", "tier": 2,
+        "quote": {"provenance": "book_snapshot", "observed_at": "2026-11-08T14:30:00"}}}))
+    monkeypatch.setattr(t, "DATA_DIR", str(tmp_path))
+    rows = t._collect_picks_from_sources()
+    desk = [i for i, r in enumerate(rows) if r.get("source") == "nfl_game_ml" and r.get("player_or_matchup") == "NYJ @ KC"]
+    podr = [i for i, r in enumerate(rows) if r.get("source") == "pod" and r.get("player_or_matchup") == "NYJ @ KC"]
+    assert desk and podr and desk[0] < podr[0]          # desk row first: the add-guard folds the POD onto it
+    assert rows[podr[0]]["book_american"] == 440 and rows[podr[0]]["event_id"] == "1"

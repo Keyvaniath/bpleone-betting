@@ -465,3 +465,43 @@ Still Brandon's: counsel review of the legal pages (GO-OFFICIAL checklist),
 and whether to spend the Odds API's 500 monthly requests on NBA/NFL player
 props -- today props.json has 0 props and no prop on the site carries a
 sportsbook price.
+
+## Play of the Day, cross-sport (2026-11-05, branch launch/audit-1105)
+
+Brandon: "Play of the day can be from any sport -- we prefer it comes from
+one of the major 4: NBA or hockey in the fall, football on Saturday /
+Sunday." It had been MLB-only (today.json), so the page read "No MLB games
+on today's slate" for the whole off-season.
+
+`python/play_of_day.py` -> `data/play_of_day.json`, run right before every
+ledger step (daily x2, heartbeat, live-games). Pool = every game-lines desk
+pick (NFL/NBA/NHL from game_lines_desk.json, the college edge from
+cfb_model.json, the MLB POD from today.json) whose game is TODAY (ET) and
+whose DraftKings quote passes `quotes.actionable` (the desk stores the
+snapshot stamp without the side's price, so the module attaches
+book_american before the check). One play: best EV at the DK price, tier
+first, major-4 before college. The desk's verdict sets the tier and is
+printed on the play:
+
+  0 MLB Play of the Day · 1 validated desk pick (PROMISING) · 2 forward-test
+  play (UNPROVEN: logged at the DK price, graded, never curated) · 3
+  experimental (college; the close is sharper).
+
+A NO EDGE desk (NBA and NHL today, w = 0) makes no picks by rule and so
+cannot produce a play; the page lists each sport's reason instead of
+inventing one, and shows the next dated desk pick ("Next play: Sun NYJ
+moneyline +440, forward test"). The standard is unchanged: nothing without a
+live sportsbook price, nothing that hides its verdict.
+
+Ledger: all_picks_tracker harvests the play as source "pod" AFTER the desk's
+own row, so the add-guard folds it onto that row (also_sources=pod);
+pod_pl_tracker grades it from there, so the POD record on track-record now
+spans sports. verify_pricing checks `play_of_day.json:play` as a pick
+surface. Tests: 3 (major-4 preference over a higher-EV college edge, stale
+quote -> no play, NO EDGE never plays, college fallback labelled tier 3,
+ledger ordering).
+
+What this does NOT do: manufacture NBA/NHL plays. Those desks' own
+validation says the model adds nothing to DraftKings' price; the lever for a
+daily NBA play is the NBA model (injury/availability inputs), not the
+selector.
