@@ -40,7 +40,17 @@ jobs:
       - name: Smoke test (compile + undefined-name scan + run core chain)
         working-directory: python
         run: python smoke_test.py
-      # (2026-11-04) the published pick artifacts at this commit must be sportsbook-priced
+      # (2026-11-04) the published pick artifacts at this commit must be sportsbook-priced.
+      # (2026-11-05) the three surfaces added to the guard on 11/05 are rebuilt
+      # first by THIS commit's code (offline, from committed inputs) so a push
+      # is judged on what its code produces, not on artifacts the previous code
+      # wrote; the daily pipeline then checks the real run.
+      - name: Rebuild newly guarded artifacts
+        working-directory: python
+        run: |
+          python cfb_model.py > /dev/null
+          python player_pot.py > /dev/null
+          python picks_export.py > /dev/null
       - name: Pricing guard (published picks need a real sportsbook quote)
         working-directory: python
         run: python verify_pricing.py

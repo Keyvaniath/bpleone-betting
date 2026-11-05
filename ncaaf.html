@@ -242,6 +242,16 @@ fetch("data/cfb_model.json?t=" + Date.now(), { cache: "no-cache" })
     }
     if (meta) meta.textContent = `${d.n_rated || 0}/${d.n_games || 0} games rated · ${(d.generated_at || '').replace('T', ' ')}`;
     const edges = d.edges || [];
+    if (!edges.length && d.board_fresh === false) {
+      // (2026-11-05) the DraftKings snapshot was too old to price an edge against
+      list.innerHTML =
+        `<p class="muted" style="padding:14px;line-height:1.7;">` +
+        `<b style="color:#e8eef7;">No edge published: the DraftKings board was ` +
+        `${d.board_age_min != null ? Math.round(d.board_age_min) + ' min' : 'of unknown age'} old ` +
+        `when this ran (the bar is 180 min).</b> An edge is only as good as the price it was measured against; ` +
+        `the next refresh re-prices against a fresh board.</p>`;
+      return;
+    }
     if (!edges.length) {
       list.innerHTML =
         `<p class="muted" style="padding:14px;line-height:1.7;">` +

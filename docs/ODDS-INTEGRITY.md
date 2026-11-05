@@ -304,3 +304,28 @@ smoke_tests.py, network only).
   only) in all three states, pricing guard passing.
 
 Merged to main 2026-11-05 (4bf34c0e5b) on Brandon's go.
+
+## Guard coverage + stale boards (2026-11-05, branch integrity/open-items-1105)
+
+A scan of every data/*.json list that carries a price and an edge/play found
+three current surfaces the guard did not check, all now in PICK_SURFACES:
+- `picks_export.json` (public JSON + CSV): team-sport rows used
+  `p_home_win` (the W-L record Elo on older states) and every row shipped at
+  the model's fair price with no projection flag; the MLB POD row read a
+  nonexistent `model_price` and so exported no price at all. Now: the
+  board's vetted `p_home_display`, `price_basis` + `is_pick` on every
+  row (a pick only at a sportsbook price), POD carries its DK `market_price`
+  with observation time.
+- `player_pot.json` (LoL/CS/KBO props, no sportsbook prices them): every
+  row `is_pick: false`, `price_basis: model_fair`. The homepage card was
+  already retired; the briefs already label it projections.
+- `cfb_model.json`: edges carried a real DK price with no observation time.
+  Now `odds_observed_at` + `book`, `generated_at` in UTC (espn_odds is
+  UTC; local time made a fresh quote look like it came from the future), and
+  NO edge when the DK board is > 180 min old (`board_fresh` /
+  `board_age_min`; ncaaf.html says why). Before, the heartbeat could
+  re-price CFB edges against a board hours old.
+Smoke Test rebuilds these three from the commit's own code before the guard
+(so a merge is not judged on artifacts the previous code wrote).
+History files (locks_history, *_pot_history, rollups) are records, not
+current picks, and stay out of the guard.

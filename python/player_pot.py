@@ -1,5 +1,6 @@
 """
-EdgeStat -- Player Play of the Day across LoL/CS/KBO.
+EdgeStat -- top player-prop PROJECTIONS across LoL/CS/KBO (no sportsbook
+prices these markets: model fair odds only, is_pick false).
 
 Scans every player-prop projection and picks the top 5 prop bets by quality:
   - Sweet-spot probability (55-72% for OVER, 28-45% for UNDER)
@@ -186,6 +187,11 @@ def run() -> Dict[str, Any]:
     all_cands.extend(_scan_lol())
     all_cands.extend(_scan_cs())
     all_cands.extend(_scan_kbo())
+    # (2026-11-05) no sportsbook prices these props (LoL/CS/KBO): every row is
+    # a model projection at its own fair odds, never a pick.
+    for c in all_cands:
+        c["is_pick"] = False
+        c["price_basis"] = "model_fair"
     all_cands.sort(key=lambda c: -c["quality_score"])
     top = all_cands[:5]
     by_sport_top = {}

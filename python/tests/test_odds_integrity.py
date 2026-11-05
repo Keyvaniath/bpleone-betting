@@ -327,6 +327,56 @@ def test_ml_reprice_one_shot_never_stamps_a_board_price(tmp_path, monkeypatch):
     assert out.get("book_american") is None
 
 
+def test_picks_export_never_ships_record_elo_or_unflagged_fair_prices(tmp_path, monkeypatch):
+    import picks_export as pe
+    import verify_pricing as vp
+    now = dt.datetime.now(dt.timezone.utc)
+    (tmp_path / "today.json").write_text(json.dumps({"play_of_day": {
+        "matchup": "NYY @ BOS", "label": "BOS_ML", "model_prob": 0.55, "market_price": -120,
+        "edge_pct": 3.0, "odds_observed_at": (now - dt.timedelta(minutes=10)).isoformat(),
+        "commence_time": (now + dt.timedelta(hours=3)).isoformat()}}))
+    (tmp_path / "nba_state.json").write_text(json.dumps({"games": [
+        # record-Elo only (no vetted p_home_display) -> must not be exported
+        {"home_team": "MIA", "away_team": "DET", "p_home_win": 0.916, "home_record": "5-1",
+         "away_record": "1-5", "state": "pre", "fair_home_american": -1090},
+        {"home_team": "BOS", "away_team": "MIL", "p_home_display": 0.62, "p_source": "dk_no_vig",
+         "home_record": "3-2", "away_record": "2-3", "state": "pre"}]}))
+    (tmp_path / "player_pot.json").write_text(json.dumps({"top_5": [
+        {"sport": "LOL", "label": "x OVER 3.5 Kills", "prob": 0.62, "fair_american": -163}]}))
+    monkeypatch.setattr(pe, "DATA_DIR", str(tmp_path))
+    monkeypatch.setattr(pe, "JSON_PATH", str(tmp_path / "out.json"))
+    monkeypatch.setattr(pe, "CSV_PATH", str(tmp_path / "out.csv"))
+    out = pe.run()
+    rows = {r["source_file"] + ":" + str(r["player_or_team"]): r for r in out["picks"]}
+    assert not any(r["player_or_team"] == "MIA" for r in out["picks"])
+    pod = rows["today.json:NYY @ BOS"]
+    assert pod["book_american"] == -120 and pod["is_pick"] and pod["price_basis"] == "sportsbook"
+    assert rows["nba_state.json:BOS"]["is_pick"] is False and rows["nba_state.json:BOS"]["fair_american"] == -163
+    assert rows["player_pot.json:None"]["is_pick"] is False
+    assert all(not vp.check_row(r, now) for r in out["picks"])
+
+
+def test_cfb_edges_need_a_fresh_board_and_carry_its_time(tmp_path, monkeypatch):
+    import cfb_model as cm
+    real = json.load(open(cm.ODDS_PATH, encoding="utf-8"))
+    games = [g for g in real.get("games") or [] if str(g.get("sport")).upper() == "NCAAF"][:40]
+    later = (dt.datetime.utcnow() + dt.timedelta(days=1)).strftime("%Y-%m-%dT%H:%MZ")
+    for g in games:
+        g["status"], g["commence_time"] = "pre", later
+    monkeypatch.setattr(cm, "OUT", str(tmp_path / "cfb.json"))
+    for age, fresh in ((300, False), (20, True)):
+        ts = (dt.datetime.utcnow() - dt.timedelta(minutes=age)).isoformat(timespec="seconds")
+        (tmp_path / "odds.json").write_text(json.dumps({"generated_at": ts, "games": games}))
+        monkeypatch.setattr(cm, "ODDS_PATH", str(tmp_path / "odds.json"))
+        out = cm.run()
+        if not out.get("games"):
+            pytest.skip("no CFB ratings / board in this checkout")
+        assert out["board_fresh"] is fresh
+        if not fresh:
+            assert out["edges"] == []
+        assert all(e["odds_observed_at"] == ts for e in out["edges"])
+
+
 _NFL_FINALS = [
     {"id": "9001", "date": "2026-11-08", "away_abbrev": "DEN", "home_abbrev": "CAR",
      "away_score": 20, "home_score": 17},
