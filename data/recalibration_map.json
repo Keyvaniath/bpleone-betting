@@ -1,13 +1,13 @@
 {
-  "generated_at": "2026-11-04T20:59:21",
-  "n_settled": 13547,
+  "generated_at": "2026-11-05T02:07:27",
+  "n_settled": 13550,
   "n_families_transformed": 62,
   "n_families_bucketed": 26,
   "ece_before": 0.0836,
   "ece_after": 0.0114,
   "ece_improvement": 0.0722,
   "brier_before": 0.21357,
-  "brier_after": 0.19687,
+  "brier_after": 0.19689,
   "method_note": "Per market family, a monotonic (isotonic) curve maps the model's predicted probability to the realized hit rate, learned from settled outcomes. Bucketed for well-sampled families (preserves ranking), a family-average Bayesian blend for mid-sample, identity below that. ECE = expected calibration error (lower = the displayed % is truer). This makes the model honest at the source; it does not create edge (that needs a market price).",
   "families": [
     {
@@ -119,15 +119,15 @@
     },
     {
       "family": "mlb_hit_2.5_over",
-      "n": 36,
+      "n": 37,
       "method": "family_avg",
-      "avg_pred_raw": 0.6755,
-      "avg_pred_calibrated": 0.4606,
-      "realized": 0.3889,
-      "ece_raw": 0.2866,
-      "ece_calibrated": 0.0717,
+      "avg_pred_raw": 0.6772,
+      "avg_pred_calibrated": 0.472,
+      "realized": 0.4054,
+      "ece_raw": 0.2718,
+      "ece_calibrated": 0.0666,
       "transform": {
-        "realized": 0.3889
+        "realized": 0.4054
       }
     },
     {
@@ -276,46 +276,46 @@
     },
     {
       "family": "mlb_hit_1.5_over",
-      "n": 264,
+      "n": 266,
       "method": "bucketed",
-      "avg_pred_raw": 0.5011,
+      "avg_pred_raw": 0.5022,
       "avg_pred_calibrated": 0.3725,
-      "realized": 0.3295,
-      "ece_raw": 0.2001,
-      "ece_calibrated": 0.0696,
+      "realized": 0.3308,
+      "ece_raw": 0.1974,
+      "ece_calibrated": 0.0728,
       "transform": {
         "anchors": [
           [
             0.442,
-            0.3197
+            0.3183
           ],
           [
             0.442,
-            0.3197
+            0.3183
           ],
           [
             0.442,
-            0.3197
+            0.3183
           ],
           [
-            0.4515,
-            0.3197
+            0.4522,
+            0.3183
           ],
           [
-            0.4673,
-            0.3197
+            0.468,
+            0.3183
           ],
           [
-            0.4963,
-            0.3546
+            0.4974,
+            0.3689
           ],
           [
-            0.5654,
-            0.4619
+            0.5742,
+            0.4864
           ],
           [
-            0.702,
-            0.5872
+            0.7021,
+            0.565
           ]
         ]
       }

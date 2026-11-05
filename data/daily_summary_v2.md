@@ -1,18 +1,18 @@
-# EdgeStat Daily Summary — 2026-11-04
+# EdgeStat Daily Summary — 2026-11-05
 
-## 🏥 Model Health: 69.2/100 [OK]
+## 🏥 Model Health: 69.5/100 [OK]
 - Operational but room to improve - check yellow components
-  - 🟢 Calibration Freshness: 99.6/100
-  - 🔴 Hit Rate Trend: 53.8/100
-  - 🔴 Brier Trend: 15.6/100
+  - 🟢 Calibration Freshness: 100.0/100
+  - 🔴 Hit Rate Trend: 53.6/100
+  - 🔴 Brier Trend: 15.4/100
   - 🟢 Pipeline Audit: 100.0/100
   - 🟢 Data Health: 95.5/100
-  - 🟡 Edge Count: 62.9/100
+  - 🟡 Edge Count: 65.7/100
 
 ## 🌐 Slate Overview
-- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.567)
+- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.56)
 - **Total games on board:** 91
-- **Strong home favorites:** 37 | **Strong road dogs:** 25
+- **Strong home favorites:** 36 | **Strong road dogs:** 27
 
 ## 🎯 Top 5 Best Bets
 1. **LOL Inspired UNDER 3.5 Kills** (78/100 ★★★★)
@@ -33,26 +33,26 @@
 - **[LOL]** Hope OVER 4.5 Kills | MED conviction · model 61.3% fair -158
 - **[CS]** torzsi OVER 40.5 Kills (BO3) | MED conviction · model 61.0% fair -157
 
-## ⚡ Pre-Game HIGH Conviction (18)
-- [NBA] **Charlotte Hornets** AWAY (3-5 L10) · model 74.6% fair -294
+## ⚡ Pre-Game HIGH Conviction (15)
 - [NFL] **Denver Broncos** AWAY (None L10) · model 74.5% fair -291
 - [NCAAF] **Ohio State Buckeyes** HOME (None L10) · model 71.8% fair -254
 - [NCAAF] **Houston Cougars** HOME (None L10) · model 71.8% fair -254
 - [NCAAF] **South Carolina Gamecocks** HOME (None L10) · model 70.2% fair -235
 - [NCAAF] **Florida Gators** HOME (None L10) · model 70.2% fair -235
 - [NCAAF] **Notre Dame Fighting Irish** HOME (None L10) · model 70.1% fair -234
-- [NBA] **Oklahoma City Thunder** HOME (4-2 L10) · model 69.6% fair -229
 - [NBA] **San Antonio Spurs** HOME (5-1 L10) · model 69.6% fair -229
 - [NFL] **Seattle Seahawks** HOME (None L10) · model 69.6% fair -229
+- [MLS] **Real Salt Lake** HOME (3-1 L10) · model 67.1% fair -204
+- [NBA] **Miami Heat** AWAY (2-4 L10) · model 66.2% fair -196
 
 ## 🔥/❄️ Heat / Cold Signals
-- Hot teams: **7** | Cold teams: **23** | Over-heavy: 0 | Under-heavy: 45
+- Hot teams: **9** | Cold teams: **24** | Over-heavy: 0 | Under-heavy: 47
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (293)
+## ⚠️ Anomaly Detector (290)
 - RESIDUAL_DIVERGENCE: **18**
 - STREAK_MISMATCH: **2**
-- STEAM_MOVE: **273**
+- STEAM_MOVE: **270**
   - Charlotte Hornets (NBA): Charlotte Hornets UNDERPERFORMING expected margin by 10.9pts in recent games -- model bias may persist
   - Chicago Bulls (NBA): Chicago Bulls UNDERPERFORMING expected margin by 7.8pts in recent games -- model bias may persist
   - Indiana Pacers (NBA): Indiana Pacers UNDERPERFORMING expected margin by 9.8pts in recent games -- model bias may persist
@@ -128,12 +128,12 @@
 
 ## 🧠 Training Convergence
 - ELITE: **0** · HEALTHY: 1 · OK: 0 · DEGRADED: **1**
-  - ⚠️ **batter_hits**: DIVERGENT - consistent same-sign moves (structural issue) (cf=0.9787)
+  - ⚠️ **batter_hits**: DIVERGENT - consistent same-sign moves (structural issue) (cf=0.9911)
 
 ## 🤖 Self-Training Status
-- **NBA**: n=104 games · hit rate 67.3% · bias +0.7pp
-- **NHL**: n=95 games · hit rate 51.6% · bias -2.1pp
-- **WNBA**: n=5 games · hit rate 60.0% · bias -23.7pp
-- **MLS**: n=75 games · hit rate 46.7% · bias -2.7pp
+- **NBA**: n=93 games · hit rate 58.1% · bias +5.1pp
+- **NHL**: n=93 games · hit rate 53.8% · bias -3.7pp
+- **WNBA**: n=4 games · hit rate 50.0% · bias -15.3pp
+- **MLS**: n=60 games · hit rate 43.3% · bias +0.8pp
 - **EPL**: n=30 games · hit rate 50.0% · bias +6.7pp
 - **MLB**: n=5 games · hit rate 80.0% · bias -25.5pp
