@@ -331,7 +331,7 @@ fetch('data/data_health.json?t=' + Date.now()).then(function(r){return r.json();
     <div class="metric"><span class="metric-num" id="mEdges">--</span><span class="metric-label">Edges Found Today</span></div>
     <div class="metric"><span class="metric-num" id="mGames">--</span><span class="metric-label">MLB Games Modeled</span></div>
     <div class="metric"><span class="metric-num" id="mPlusEV">--</span><span class="metric-label">+EV Plays Filtered</span></div>
-    <div class="metric"><span class="metric-num" id="mSharp">--</span><span class="metric-label">Sharp Money Alerts</span></div>
+    <div class="metric"><span class="metric-num" id="mSharp">--</span><span class="metric-label">Line-move alerts</span></div>
     <div class="metric"><span class="metric-num" id="mClv">--</span><span class="metric-label">Avg Closing Line Value</span></div>
     <div class="metric"><span class="metric-num" id="mKelly">--</span><span class="metric-label">Recommended Stake (Kelly)</span></div>
   </section>
@@ -438,7 +438,7 @@ fetch('data/data_health.json?t=' + Date.now()).then(function(r){return r.json();
     const items = (d.items || []).slice(0, 3);
     if (!items.length) return;
     const COL = { STEAM:"#5fb3e0", SHARP:"#b08aff", EDGE:"#58c878", WC:"#ffc15e", HOOPS:"#ff9d5c" };
-    const LAB = { STEAM:"Steam", SHARP:"Sharp", EDGE:"Edge", WC:"World Cup", HOOPS:"Hoops" };
+    const LAB = { STEAM:"Line move", SHARP:"Sharp", EDGE:"Edge", WC:"World Cup", HOOPS:"Hoops" };
     const esc = s => String(s == null ? "" : s).replace(/[&<>]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;"}[c]));
     document.getElementById("liveTapeRows").innerHTML = items.map(i => `
       <a href="${esc(i.link || 'alerts.html')}" style="display:flex;min-width:0;align-items:center;gap:11px;padding:10px 13px;border:1px solid rgba(255,255,255,.07);border-radius:9px;text-decoration:none;font-family:'JetBrains Mono',monospace;">
@@ -539,7 +539,7 @@ fetch('data/data_health.json?t=' + Date.now()).then(function(r){return r.json();
     <div class="card big-card alpha-card" style="background:linear-gradient(135deg,rgba(212,160,74,0.10),rgba(212,160,74,0.02));border:1px solid rgba(212,160,74,0.30);">
       <div class="card-head">
         <span class="pill" style="background:#d4a04a;color:#1a1a1a;font-weight:700;">★ ALPHA PICK</span>
-        <span class="muted" id="alphaStamp">highest-ROI play (not just highest confidence)</span>
+        <span class="muted" id="alphaStamp">at most one play a day, at a live DraftKings price</span>
       </div>
       <h2 class="play-title" id="alphaTitle">Loading…</h2>
       <div class="play-grid">
@@ -1014,8 +1014,8 @@ fetch('data/data_health.json?t=' + Date.now()).then(function(r){return r.json();
       </div>
       <div class="feature">
         <div class="feature-icon">🐋</div>
-        <h3>Sharp Flow Tracker</h3>
-        <p>Real-time detection of "steam moves" and reverse-line movement, so you see when smart money has hit the market — like Unusual Whales for sportsbooks.</p>
+        <h3>Line Movement Tracker</h3>
+        <p>How DraftKings' posted lines move from open to close, snapshot by snapshot. A move is a fact about the price, not proof of who bet it; reverse-line-movement signals are off until they can be tested.</p>
       </div>
       <div class="feature">
         <div class="feature-icon">🎓</div>
