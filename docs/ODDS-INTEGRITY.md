@@ -329,3 +329,24 @@ Smoke Test rebuilds these three from the commit's own code before the guard
 (so a merge is not judged on artifacts the previous code wrote).
 History files (locks_history, *_pot_history, rollups) are records, not
 current picks, and stay out of the guard.
+
+Merged to main 2026-11-05 (ac48825a59) on Brandon's go.
+
+## One Alpha snapshot: site, tweet, email (2026-11-05, branch integrity/alpha-snapshot)
+
+Mandate phase 8. alpha-pick.html, the tweet draft and the email are all
+composed from alpha_pick_record.json in the same run. verify_pricing.py now
+checks that on every run (part 3, with its own 6-case self-test): same
+date, same pick state (pick / no-pick / off-season / withdrawn), and on a
+pick day the DK price in the email subject, the tweet text and the tweet
+payload -- never the model's fair price shown as the odds; an unpriced pick
+shows no price anywhere.
+
+Found while building it: alpha_tweet.json `picks[].odds` carried
+`fair_american` (the model's own price) under the name "odds". The tweet
+TEXT was already on the DK price (11/03); the public JSON field was not.
+Now `odds` = the sportsbook price ("" when none) + `price_basis`.
+Replayed 52 recorded days (8/10 - 11/05) of alpha_pick_record through the
+current composers: 0 disagreements, 0 crashes. No recorded day carries a
+DK price on the pick (pre-11/03 locks are never edited), so the DK path is
+covered by an end-to-end test (fair -150 / DK -125).

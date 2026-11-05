@@ -377,6 +377,31 @@ def test_cfb_edges_need_a_fresh_board_and_carry_its_time(tmp_path, monkeypatch):
         assert all(e["odds_observed_at"] == ts for e in out["edges"])
 
 
+def test_alpha_site_tweet_email_share_one_snapshot(tmp_path, monkeypatch):
+    """A DK-priced pick day through the real composers: tweet text, tweet
+    payload and email subject all carry the DK price, never the model's fair."""
+    import alpha_tweet as at
+    import alpha_email as ae
+    import verify_pricing as vp
+    rec = {"todays": {"date": "2026-11-05", "player_or_matchup": "NYY @ BOS", "market": "ML_HOME",
+                      "sport": "MLB", "model_prob": 0.6, "model_prob_calibrated": 0.58,
+                      "fair_american": -150, "book_american": -125, "rule": "v2"},
+           "record": {"wins": 1, "losses": 0}, "history": []}
+    (tmp_path / "alpha_pick_record.json").write_text(json.dumps(rec))
+    for m in (at, ae):
+        monkeypatch.setattr(m, "DATA_DIR", str(tmp_path))
+    monkeypatch.setattr(at, "REC", str(tmp_path / "alpha_pick_record.json"))
+    monkeypatch.setattr(at, "OUT", str(tmp_path / "alpha_tweet.json"))
+    monkeypatch.setattr(ae, "OUT", str(tmp_path / "alpha_email.json"))
+    monkeypatch.setattr(ae, "EMAIL_DIR", str(tmp_path / "emails"))
+    tw = at.run()
+    em = ae.compose()
+    assert tw["picks"][0]["odds"] == "-125" and "-150" not in tw["tweet"]
+    assert "@ -125" in em["subject"]
+    assert vp.check_alpha_snapshot(rec, tw, em) == []
+    assert vp._snapshot_self_test() == []
+
+
 _NFL_FINALS = [
     {"id": "9001", "date": "2026-11-08", "away_abbrev": "DEN", "home_abbrev": "CAR",
      "away_score": 20, "home_score": 17},

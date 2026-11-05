@@ -149,6 +149,79 @@ def check_artifacts() -> Tuple[int, List[str]]:
     return n_rows, bad
 
 
+def _amer(a) -> str:
+    try:
+        a = int(a)
+    except (TypeError, ValueError):
+        return ""
+    return f"+{a}" if a >= 0 else str(a)
+
+
+def check_alpha_snapshot(rec: Dict[str, Any], tw: Dict[str, Any],
+                         em: Dict[str, Any]) -> List[str]:
+    """(2026-11-05) The website (alpha_pick_record), the tweet draft and the
+    email are composed from ONE snapshot per run: same date, same pick state,
+    same sportsbook price -- and never the model's fair price shown as odds."""
+    today = rec.get("todays") or {}
+    if not today or not tw or not em:
+        return []
+    out = []
+    d_rec, d_tw, d_em = today.get("date"), tw.get("date"), em.get("date")
+    if not (d_rec == d_tw == d_em):
+        out.append(f"alpha snapshot dates differ: record {d_rec} / tweet {d_tw} / email {d_em}")
+    st_rec = "offseason" if today.get("offseason") else ("no_pick" if today.get("no_pick") else "pick")
+    st_tw = "offseason" if tw.get("offseason") else ("no_pick" if tw.get("no_pick") else "pick")
+    st_em = "offseason" if em.get("offseason") else ("no_pick" if em.get("no_pick") else "pick")
+    if today.get("withdrawn"):
+        st_rec = st_em = st_tw = "withdrawn"   # the email carries the correction; tweet may differ
+    if not (st_rec == st_tw == st_em):
+        out.append(f"alpha snapshot state differs: record {st_rec} / tweet {st_tw} / email {st_em}")
+    if st_rec != "pick":
+        return out
+    book, fair = today.get("book_american"), today.get("fair_american")
+    subj, tweet = str(em.get("subject") or ""), str(tw.get("tweet") or "")
+    tw_odds = ((tw.get("picks") or [{}])[0] or {}).get("odds") or ""
+    if book is None:
+        if "@" in subj or tw_odds:
+            out.append("alpha pick has no sportsbook price but the email/tweet shows one")
+    else:
+        if f"@ {_amer(book)}" not in subj:
+            out.append(f"email subject does not carry the DK price {_amer(book)}: {subj!r}")
+        if f"({_amer(book)})" not in tweet:
+            out.append(f"tweet does not carry the DK price {_amer(book)}")
+        if tw_odds != _amer(book):
+            out.append(f"tweet picks[0].odds {tw_odds!r} != DK price {_amer(book)}")
+    if fair is not None and fair != book and (f"@ {_amer(fair)}" in subj or f"({_amer(fair)})" in tweet):
+        out.append(f"the model's fair price {_amer(fair)} is shown as the pick's odds")
+    return out
+
+
+def _snapshot_self_test() -> List[str]:
+    rec = {"todays": {"date": "2026-11-05", "book_american": -125, "fair_american": -150,
+                      "player_or_matchup": "NYY @ BOS", "market": "ML_HOME"}}
+    good_tw = {"date": "2026-11-05", "tweet": "BOS moneyline (NYY @ BOS) (-125) · model 60%",
+               "picks": [{"odds": "-125"}]}
+    good_em = {"date": "2026-11-05", "subject": "Alpha Pick 2026-11-05: BOS moneyline @ -125 (DraftKings)"}
+    cases = [
+        ("consistent pick day", rec, good_tw, good_em, False),
+        ("tweet shows the fair price", rec, {**good_tw, "tweet": "BOS ML (-150)", "picks": [{"odds": "-150"}]}, good_em, True),
+        ("email from a different day", rec, good_tw, {**good_em, "date": "2026-11-04"}, True),
+        ("email says no pick, record has one", rec, good_tw, {**good_em, "no_pick": True}, True),
+        ("off-season everywhere", {"todays": {"date": "2026-11-05", "offseason": True}},
+         {"date": "2026-11-05", "offseason": True, "no_pick": True},
+         {"date": "2026-11-05", "offseason": True, "no_pick": True}, False),
+        ("unpriced pick shown with a price", {"todays": {"date": "2026-11-05", "fair_american": -150}},
+         {"date": "2026-11-05", "tweet": "x", "picks": [{"odds": "-150"}]},
+         {"date": "2026-11-05", "subject": "Alpha Pick: x"}, True),
+    ]
+    fails = []
+    for name, r, t, e, expect_bad in cases:
+        if bool(check_alpha_snapshot(r, t, e)) != expect_bad:
+            fails.append(f"snapshot self-test '{name}': expected {'violation' if expect_bad else 'clean'}, "
+                         f"got {check_alpha_snapshot(r, t, e) or 'clean'}")
+    return fails
+
+
 def self_test() -> List[str]:
     """Each case must produce (or not produce) a violation. Returns failures."""
     now = dt.datetime(2026, 11, 4, 22, 0, tzinfo=dt.timezone.utc)
@@ -194,6 +267,16 @@ def main() -> int:
     if not bad:
         print(f"  [PASS] {n} published pick rows across {len(PICK_SURFACES) + len(SINGLE_PICKS)} "
               "surfaces carry a fresh pre-start sportsbook price")
+    sfails = _snapshot_self_test()
+    for f in sfails:
+        print(f"  [FAIL] {f}")
+    snap = check_alpha_snapshot(_load("alpha_pick_record.json") or {}, _load("alpha_tweet.json") or {},
+                                _load("alpha_email.json") or {})
+    for b in snap:
+        print(f"  [FAIL] {b}")
+    if not sfails and not snap:
+        print("  [PASS] Alpha site / tweet / email share one snapshot (date, pick state, DK price)")
+    fails, bad = fails + sfails, bad + snap
     if fails or bad:
         print("PRICING GUARD FAILED")
         return 1
