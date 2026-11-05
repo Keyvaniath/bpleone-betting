@@ -104,9 +104,11 @@ def run() -> Dict[str, Any]:
         "n_clv_matched": matched,
         "coverage_note": ("CLV covers game moneylines (open->close snapshots). Prop "
                           "sources show no CLV until prop closing-line capture is "
-                          "added. Beating the close (+CLV) is the leading indicator "
-                          "of real edge -- it confirms skill before the win-rate "
-                          "sample is large."),
+                          "added. (2026-11-04) This is open->close line movement "
+                          "toward the pick's side, not the close vs the price the pick "
+                          "was logged at, so it is a direction check, not a CLV proof; "
+                          "a fraction of a point on ~100 picks is indistinguishable "
+                          "from zero."),
         "by_source": rows,
     }
     os.makedirs(DATA_DIR, exist_ok=True)

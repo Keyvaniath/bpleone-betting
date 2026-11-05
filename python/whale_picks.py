@@ -7,8 +7,10 @@ A "whale" pick is where ALL of:
    consensus across multiple deep modules (when applicable)
    positive sharp action / CLV (line moving toward our pick)
 
-These are the picks worth sizing up because the variance is lower
-(multiple independent confirmations).
+(2026-11-04) Input is the fail-closed top-25 board, so every candidate carries a
+live DraftKings quote. Confluence is NOT validated: the signals share inputs, so
+they are not independent confirmations, and no whale tier has a settled record
+that clears zero. Never presented as a reason to size up.
 
 Output: data/whale_picks.json
 """
@@ -128,8 +130,9 @@ def run() -> Dict[str, Any]:
         "whales": whales,
         "note": ("Whale picks = top-25 board picks with high prob + high edge "
                   "PLUS confluence from consensus modules and/or sharp action. "
-                  "WHALE tier (score >= 3.5) is the highest-conviction picks "
-                  "worth sizing UP."),
+                  "Edges are the model's against a live DraftKings quote and are "
+                  "unvalidated; the tiers count overlapping signals and have no "
+                  "proven record -- not a sizing signal."),   # (2026-11-04)
     }
     os.makedirs(DATA_DIR, exist_ok=True)
     with open(OUT, "w") as f: json.dump(payload, f, indent=2)

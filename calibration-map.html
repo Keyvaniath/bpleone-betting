@@ -127,7 +127,7 @@
       const p = d.persistence || {};
       if (p.n_cut) {
         document.getElementById("oosPersist").innerHTML =
-          `<strong>Persistence check:</strong> of the ${p.n_cut} family-keys cut on the training window, they went on to lose <strong style="color:#e35a5a;">${p.test_net_of_cuts}u</strong> in the unseen window — ${p.kept_losing} kept losing, only ${p.flipped} flipped positive. The losers keep losing: the cuts capture real, persistent −EV families, not noise.`;
+          `<strong>Persistence check:</strong> of the ${p.n_cut} family-keys cut on the training window, they went on to ${p.test_net_of_cuts < 0 ? 'lose' : 'make'} <strong style="color:${p.test_net_of_cuts < 0 ? '#e35a5a' : '#58c878'};">${Math.abs(p.test_net_of_cuts)}u</strong> in the unseen window — ${p.kept_losing} kept losing, only ${p.flipped} flipped positive. Cutting them was right, but it did not make the rest of the board profitable (see the held-out ROI above).`;   // (2026-11-04)
       }
       const conc = d.concentration;
       if (conc && conc.note) {

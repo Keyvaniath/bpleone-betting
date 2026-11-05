@@ -15,16 +15,8 @@ Method:
   Scan todays_top_plays.json. Each pick has:
     prob (model)
     decimal_odds (model fair odds)
-  Currently we don't pull live book odds, so we use model decimal_odds
-  as a baseline and look for plays the model thinks are LIVE underdogs
-  (probability 0.30-0.50, fair_american positive).
-
-  When live book odds are wired later (the-odds-api integration), this
-  module will compare model_prob to (1/book_decimal) and surface fades
-  where the gap is genuine.
-
-  For now: surface picks where model_prob is 0.30-0.50 (live underdogs
-  the model thinks are reasonable bets at +150 to +233).
+  (2026-11-04) top_25 rows carry a live DraftKings quote (book_american);
+  ROI = model prob x DK decimal - 1. A row without a DK quote is skipped.
 
 Output: data/fade_picks.json
 """
@@ -71,7 +63,9 @@ def run() -> Dict[str, Any]:
         # FADE = live underdog the model thinks has fair value
         # Model says 30-50% on a side that book likely prices as a dog
         if 0.30 <= prob <= 0.50:
-            dec = p.get("decimal_odds") or _american_to_decimal(p.get("fair_american"))
+            # (2026-11-04) the DraftKings quote only -- never the model's own fair price
+            # (prob x fair decimal - 1 is 0 by construction)
+            dec = _american_to_decimal(p.get("book_american"))
             if not dec or dec < 2.0: continue   # not actually a dog
             roi = prob * dec - 1
             if roi < 0.05: continue   # need 5%+ edge in dog direction
@@ -83,6 +77,7 @@ def run() -> Dict[str, Any]:
                 "market_family": p.get("market_family"),
                 "model_prob": round(prob, 4),
                 "fair_american": p.get("fair_american"),
+                "book_american": p.get("book_american"),
                 "decimal_odds": round(dec, 3),
                 "roi_per_dollar": round(roi, 4),
                 "edge_pct": p.get("edge_pct"),
@@ -102,8 +97,8 @@ def run() -> Dict[str, Any]:
         "top_5_fades": fades[:5],
         "all_fades": fades,
         "method_note": "Fade Picks = live underdogs (model_prob 30-50%) with 5%+ ROI. "
-                       "Inverse of Alpha Pick — these are bets AGAINST the book's "
-                       "favorite. Will get stronger when live book odds wired in.",
+                       "Priced at the live DraftKings quote (the top-25 board is "
+                       "fail-closed); the model edge is unvalidated.",   # (2026-11-04)
     }
     os.makedirs(os.path.dirname(OUT), exist_ok=True)
     with open(OUT, "w") as f: json.dump(out, f, indent=2)
@@ -115,5 +110,5 @@ if __name__ == "__main__":
     print(f"[fade-picks] {o['n_fades']} fades found -> {OUT}")
     for f in o['top_5_fades']:
         print(f"  {f['sport']} {f['player_or_matchup'][:24]} {f['market'][:24]} "
-              f"p={f['model_prob']:.1%} odds={f['fair_american']:+d} "
+              f"p={f['model_prob']:.1%} dk={f.get('book_american')} "
               f"ROI={f['roi_per_dollar']:+.1%}")

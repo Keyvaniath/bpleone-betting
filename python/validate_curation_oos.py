@@ -196,8 +196,9 @@ def _concentration(test, tcut):
             f"Concentrated: the top 2 of {len(rows)} surviving families produced "
             f"{net_top2:+.0f}u; the other {len(rows) - 2} combined "
             f"{'made' if net_ex_top2 >= 0 else 'LOST'} {abs(net_ex_top2):.0f}u."
-            + (f" One pillar is flagged small-sample and quarantined; excluding flagged "
-               f"families the held-out edge is {roi_ex_flagged:+.1f}% (n={ex_n})."
+            + (f" {len(flagged)} small-sample famil{'y is' if len(flagged) == 1 else 'ies are'} "
+               f"flagged and set aside; excluding them the held-out ROI is "
+               f"{roi_ex_flagged:+.1f}% (n={ex_n})."   # (2026-11-04) was "One pillar" / "edge"
                if flagged else
                " No surviving family trips the small-sample flag at current thresholds.")
         ),
@@ -265,23 +266,48 @@ def build():
             "test_net_of_cuts": round(netcuts, 0), "worst": worst,
         },
         "concentration": concentration,
-        "caveats": [
-            "Short sample: ~1 month, single MLB season. The held-out tail is genuinely "
-            "unseen but adjacent in time -- not a cross-season or cross-regime test.",
-            "Concentrated in MLB props. The edge is largely: don't bet structurally "
-            "overpriced longshot overs (HR/XBH overs, to-hit-HR YES) -- a known, "
-            "persistent market inefficiency.",
-            "ROI is measured at the model's fair price / settled outcome. It does NOT yet "
-            "prove we beat the closing line (CLV) -- that requires the live odds feed.",
-            "The 95% CI shows the edge is significant WITHIN this sample (it's not sampling "
-            "noise), but says nothing about regime change -- it's still ~1 month of one "
-            "season. It also treats picks as independent, so same-slate correlation makes "
-            "the true interval a touch wider than shown.",
-        ],
-        "headline": (f"The curation derived on early data still returns "
-                     f"{h70['test_oos_roi']:+.1f}% on the unseen later window, and the "
-                     f"families it cut went on to lose {abs(netcuts):.0f}u out-of-sample."),
+        # (2026-11-04) caveats + headline follow the result. They used to assert "the
+        # edge is significant" and "still returns" whatever the held-out number was --
+        # the page kept saying so after the held-out CI fell entirely below zero.
+        "caveats": _caveats(dates, holdout_ci),
+        "headline": _headline(h70, holdout_ci, netcuts),
     }
+
+
+def _caveats(dates, ci):
+    lo, hi = (ci or {}).get("roi_lo"), (ci or {}).get("roi_hi")
+    out = [f"Sample: {len(dates)} settled days ({dates[0]} to {dates[-1]}), one season. The "
+           "held-out tail is unseen but adjacent in time -- not a cross-season test."]
+    if lo is not None and hi is not None:
+        if lo > 0:
+            out.append(f"Held-out 95% CI [{lo:+.1f}%, {hi:+.1f}%] is above zero within this "
+                       "sample; it says nothing about regime change.")
+        elif hi < 0:
+            out.append(f"Held-out 95% CI [{lo:+.1f}%, {hi:+.1f}%] is entirely below zero: the "
+                       "curated set loses money out of sample. There is no proven edge.")
+        else:
+            out.append(f"Held-out 95% CI [{lo:+.1f}%, {hi:+.1f}%] spans zero: no edge is proven.")
+    out += ["Units are mixed price classes: most rows are graded at the model's own fair odds "
+            "(calibration, not a betting ROI); only sportsbook-priced rows are a betting ROI. "
+            "PrizePicks rows are excluded.",
+            "The CI treats picks as independent; same-slate correlation makes the true "
+            "interval wider than shown."]
+    return out
+
+
+def _headline(h70, ci, netcuts):
+    roi = h70["test_oos_roi"]
+    hi = (ci or {}).get("roi_hi")
+    lo = (ci or {}).get("roi_lo")
+    cut = f"the families it cut lost {abs(netcuts):.0f}u there" if netcuts < 0 else           f"the families it cut made {netcuts:+.0f}u there"
+    if hi is not None and hi < 0:
+        return (f"Curation does not hold up out of sample: the curated set returns {roi:+.1f}% "
+                f"on the unseen later window (95% CI entirely below zero), though {cut}.")
+    if lo is not None and lo > 0:
+        return (f"The curation derived on early data returns {roi:+.1f}% on the unseen later "
+                f"window (95% CI above zero), and {cut}.")
+    return (f"The curated set returns {roi:+.1f}% on the unseen later window; the 95% CI "
+            f"spans zero, so no edge is proven ({cut}).")
 
 
 def write_artifact():

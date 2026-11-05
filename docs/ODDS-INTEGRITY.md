@@ -211,8 +211,30 @@ proof. Fixed (commits on this branch):
   newsletter / default parlay retired, receipts coloured by sign, no clv_log
   "CLV", steam = "line moved", not "sharp money".
 
-Still open after this pass: golf_round_score_props + the other tennis prop
-modules (assumed -120 STRONG rule); *_pot_history settle projections at fair
-odds; validate_curation_oos / self_train / odds_key_preflight / clv_by_source
-producer wording; dow_pl includes MLB-PP; sport_coverage IN-SEASON keyed on a
-props refresh; nba_player_pra_props `_abbr`; docs/ is publicly served.
+Merged to main 2026-11-04 (5d252af7ee) on Brandon's go.
+
+Backlog pass 2026-11-04 (branch integrity/backlog-1104):
+- dow_pl: ROI by day only on sportsbook-priced rows (A/B, PrizePicks out);
+  522 rows, not ~14k; best/worst day needs n >= 30 and the page says a +/-20%
+  gap at n < 100 is noise.
+- sport_coverage: IN-SEASON = pending picks or a game scheduled in the next 14
+  days (state file); a props refresh alone no longer counts (WNBA, World Cup,
+  KBO, CWS were IN-SEASON on one). Desks with no schedule feed (F1) keep the
+  props rule.
+- validate_curation_oos: caveats + headline follow the result (they asserted a
+  significant edge while the held-out CI was [-7.3%, -2.5%]).
+- clv_by_source: "leading indicator of real edge" -> open->close movement is a
+  direction check, not CLV vs the logged price. self_train: "well-calibrated"
+  -> home-bias check only.
+- whale_picks / fade_picks: fade ROI uses the DK quote only (the fair-odds
+  fallback is 0 by construction); whale copy no longer says "size up".
+- nfl-players: P(over) chips neutral (no green/red edge colouring).
+- 12 NBA modules: "LA Clippers" (ESPN's name) -> LAC; it fell back to "LA" and
+  every Clippers player went unpriced.
+
+Reviewed, not changed: the ~46 prop modules with a "STRONG vs hypothetical
+-120" selection bar never store -120 as a price (rows carry the model fair
+price, class C, excluded from every sportsbook record); *_pot_history pages
+already render calibration only. docs/ is public, but so is the repo.
+Still open: convergence ELITE = signal count (no price claim; picks hub gates
+it on a quote); odds_key_preflight wording is accurate.
