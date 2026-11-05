@@ -1,23 +1,23 @@
 {
- "generated_at": "2026-11-05T12:44:09",
+ "generated_at": "2026-11-05T17:01:12",
  "stake_assumption": "1u flat per pick",
- "total_picks": 18687,
- "n_settled": 21402,
- "n_pending": 1203,
+ "total_picks": 18790,
+ "n_settled": 21413,
+ "n_pending": 1295,
  "n_void": 1737,
- "wins": 9910,
- "losses": 11481,
+ "wins": 9917,
+ "losses": 11485,
  "pushes": 11,
- "hit_rate": 0.4633,
- "net_units": -3543.913,
- "roi_pct": -16.57,
- "n_calibrated_picks": 18535,
+ "hit_rate": 0.4634,
+ "net_units": -3544.633,
+ "roi_pct": -16.56,
+ "n_calibrated_picks": 18638,
  "calibrated_reliability": {
-  "n": 15704,
+  "n": 15715,
   "ece_raw": 0.076,
-  "ece_calibrated": 0.0113,
-  "brier_raw": 0.21294,
-  "brier_calibrated": 0.19774,
+  "ece_calibrated": 0.0117,
+  "brier_raw": 0.21295,
+  "brier_calibrated": 0.19777,
   "note": "In-sample over the settled ledger (the isotonic transform is fit on these same outcomes); held-out 70/30 validation is in recalibration_map.json. p_predicted = raw model prob (kept untouched for the learning loop); p_calibrated = honest prob stamped per pick. Lower ECE/Brier on the calibrated column = the displayed % is truer."
  },
  "curated": {
@@ -60,11 +60,11 @@
  "by_price_class": {
   "all": {
    "C": {
-    "n": 20840,
-    "wins": 9611,
-    "losses": 11229,
-    "net_units": -3539.82,
-    "roi_pct": -16.99
+    "n": 20851,
+    "wins": 9618,
+    "losses": 11233,
+    "net_units": -3540.541,
+    "roi_pct": -16.98
    },
    "B": {
     "n": 562,
@@ -92,11 +92,11 @@
  "headline_basis": "all-time: working ledger + data/ledger_archive.json",
  "working_ledger_only": {
   "all": {
-   "n_settled": 15747,
-   "wins": 7051,
-   "losses": 8685,
-   "net_units": -2380.8,
-   "roi_pct": -15.13
+   "n_settled": 15758,
+   "wins": 7058,
+   "losses": 8689,
+   "net_units": -2381.521,
+   "roi_pct": -15.12
   },
   "curated": {
    "n_settled": 514,
@@ -183,21 +183,21 @@
   }
  ],
  "stale_sources_skipped": [],
- "inactive_player_props_blocked": 20,
- "started_game_picks_blocked": 41,
- "past_dated_picks_blocked": 25,
+ "inactive_player_props_blocked": 24,
+ "started_game_picks_blocked": 0,
+ "past_dated_picks_blocked": 18,
  "unpriced_picks_blocked": 0,
  "restatement": {
   "date": "2026-10-23",
   "note": "The headline became ALL-TIME on 2026-10-23. 5,946 settled picks that the old tail-cut eviction had destroyed (May-June 2026, the 07-06 erosion and the run-up to 09-03) were rebuilt from git history at each pick's final state, with today's duplicate-wager rule re-applied, and folded back in. They are mostly the raw May-June MLB prop firehose (2,961-2,983, -1,256.9u), so the firehose ROI fell; the curated record changed by the curated picks among them. Before this date the published numbers covered the working window only -- working_ledger_only keeps that basis.",
   "n_archived_in_headline": 5655
  },
- "n_added_this_run": 0,
+ "n_added_this_run": 6,
  "n_newly_settled_this_run": 0,
  "n_resettled_this_run": 0,
  "n_voided_this_run": 0,
  "n_duplicates_collapsed_this_run": 0,
- "n_duplicate_adds_blocked_this_run": 17,
+ "n_duplicate_adds_blocked_this_run": 19,
  "n_reconciled_settled_voids": 0,
  "n_bootstrapped_from_locks_history": 0,
  "by_source": {
@@ -1488,20 +1488,20 @@
    }
   },
   "nhl_pl_home_plus_1.5": {
-   "n": 45,
-   "wins": 31,
+   "n": 46,
+   "wins": 32,
    "losses": 14,
    "pushes": 0,
-   "net_units": -0.733,
-   "hit_rate": 0.6889,
-   "roi_pct": -1.63,
+   "net_units": -0.358,
+   "hit_rate": 0.6957,
+   "roi_pct": -0.78,
    "by_price_class": {
     "C": {
-     "n": 45,
-     "wins": 31,
+     "n": 46,
+     "wins": 32,
      "losses": 14,
-     "net_units": -0.733,
-     "roi_pct": -1.63
+     "net_units": -0.359,
+     "roi_pct": -0.78
     }
    },
    "sportsbook": {
@@ -1512,20 +1512,20 @@
    }
   },
   "nhl_skater_blocks_over_1.5": {
-   "n": 67,
-   "wins": 34,
+   "n": 68,
+   "wins": 35,
    "losses": 33,
    "pushes": 0,
-   "net_units": -14.76,
-   "hit_rate": 0.5075,
-   "roi_pct": -22.03,
+   "net_units": -14.225,
+   "hit_rate": 0.5147,
+   "roi_pct": -20.92,
    "by_price_class": {
     "C": {
-     "n": 67,
-     "wins": 34,
+     "n": 68,
+     "wins": 35,
      "losses": 33,
-     "net_units": -14.755,
-     "roi_pct": -22.02
+     "net_units": -14.22,
+     "roi_pct": -20.91
     }
    },
    "sportsbook": {
@@ -1608,20 +1608,20 @@
    }
   },
   "nhl_pl_away_plus_1.5": {
-   "n": 59,
-   "wins": 39,
-   "losses": 20,
+   "n": 61,
+   "wins": 40,
+   "losses": 21,
    "pushes": 0,
-   "net_units": -2.406,
-   "hit_rate": 0.661,
-   "roi_pct": -4.08,
+   "net_units": -3.029,
+   "hit_rate": 0.6557,
+   "roi_pct": -4.97,
    "by_price_class": {
     "C": {
-     "n": 59,
-     "wins": 39,
-     "losses": 20,
-     "net_units": -2.409,
-     "roi_pct": -4.08
+     "n": 61,
+     "wins": 40,
+     "losses": 21,
+     "net_units": -3.032,
+     "roi_pct": -4.97
     }
    },
    "sportsbook": {
@@ -4639,20 +4639,20 @@
    }
   },
   "soccer_cards_cards_under_6.0": {
-   "n": 23,
+   "n": 24,
    "wins": 16,
-   "losses": 7,
+   "losses": 8,
    "pushes": 0,
-   "net_units": 0.395,
-   "hit_rate": 0.6957,
-   "roi_pct": 1.72,
+   "net_units": -0.605,
+   "hit_rate": 0.6667,
+   "roi_pct": -2.52,
    "by_price_class": {
     "C": {
-     "n": 23,
+     "n": 24,
      "wins": 16,
-     "losses": 7,
-     "net_units": 0.397,
-     "roi_pct": 1.73
+     "losses": 8,
+     "net_units": -0.603,
+     "roi_pct": -2.51
     }
    },
    "sportsbook": {
@@ -5095,20 +5095,20 @@
    }
   },
   "nhl_skater_hits_over_1.5": {
-   "n": 49,
-   "wins": 30,
+   "n": 51,
+   "wins": 32,
    "losses": 19,
    "pushes": 0,
-   "net_units": -4.391,
-   "hit_rate": 0.6122,
-   "roi_pct": -8.96,
+   "net_units": -3.527,
+   "hit_rate": 0.6275,
+   "roi_pct": -6.92,
    "by_price_class": {
     "C": {
-     "n": 49,
-     "wins": 30,
+     "n": 51,
+     "wins": 32,
      "losses": 19,
-     "net_units": -4.393,
-     "roi_pct": -8.97
+     "net_units": -3.528,
+     "roi_pct": -6.92
     }
    },
    "sportsbook": {
@@ -5119,20 +5119,20 @@
    }
   },
   "nhl_period_p3_over_1.5": {
-   "n": 97,
-   "wins": 66,
-   "losses": 31,
+   "n": 99,
+   "wins": 67,
+   "losses": 32,
    "pushes": 0,
-   "net_units": 6.95,
-   "hit_rate": 0.6804,
-   "roi_pct": 7.16,
+   "net_units": 6.525,
+   "hit_rate": 0.6768,
+   "roi_pct": 6.59,
    "by_price_class": {
     "C": {
-     "n": 97,
-     "wins": 66,
-     "losses": 31,
-     "net_units": 6.93,
-     "roi_pct": 7.14
+     "n": 99,
+     "wins": 67,
+     "losses": 32,
+     "net_units": 6.505,
+     "roi_pct": 6.57
     }
    },
    "sportsbook": {
@@ -8287,20 +8287,20 @@
    }
   },
   "nba_tt_team_pts_under_116.5": {
-   "n": 13,
-   "wins": 11,
-   "losses": 2,
+   "n": 15,
+   "wins": 12,
+   "losses": 3,
    "pushes": 0,
-   "net_units": 3.528,
-   "hit_rate": 0.8462,
-   "roi_pct": 27.14,
+   "net_units": 3.08,
+   "hit_rate": 0.8,
+   "roi_pct": 20.53,
    "by_price_class": {
     "C": {
-     "n": 13,
-     "wins": 11,
-     "losses": 2,
-     "net_units": 3.527,
-     "roi_pct": 27.13
+     "n": 15,
+     "wins": 12,
+     "losses": 3,
+     "net_units": 3.08,
+     "roi_pct": 20.53
     }
    },
    "sportsbook": {
@@ -11289,12 +11289,12 @@
    "hit_rate": 0.4706
   },
   "cards_under": {
-   "n": 223,
+   "n": 224,
    "wins": 139,
-   "losses": 84,
+   "losses": 85,
    "pushes": 0,
-   "net_units": -17.714,
-   "hit_rate": 0.6233
+   "net_units": -18.714,
+   "hit_rate": 0.6205
   },
   "btts_yes": {
    "n": 108,
@@ -11345,28 +11345,28 @@
    "hit_rate": 0.5135
   },
   "home_plus": {
-   "n": 43,
-   "wins": 30,
+   "n": 44,
+   "wins": 31,
    "losses": 13,
    "pushes": 0,
-   "net_units": -0.177,
-   "hit_rate": 0.6977
+   "net_units": 0.198,
+   "hit_rate": 0.7045
   },
   "blocks_over": {
-   "n": 80,
-   "wins": 45,
+   "n": 81,
+   "wins": 46,
    "losses": 35,
    "pushes": 0,
-   "net_units": -10.923,
-   "hit_rate": 0.5625
+   "net_units": -10.388,
+   "hit_rate": 0.5679
   },
   "away_plus": {
-   "n": 56,
-   "wins": 37,
-   "losses": 19,
+   "n": 58,
+   "wins": 38,
+   "losses": 20,
    "pushes": 0,
-   "net_units": -2.396,
-   "hit_rate": 0.6607
+   "net_units": -3.019,
+   "hit_rate": 0.6552
   },
   "pole": {
    "n": 5,
@@ -11745,12 +11745,12 @@
    "hit_rate": 0.5
   },
   "hits_over": {
-   "n": 86,
-   "wins": 45,
+   "n": 88,
+   "wins": 47,
    "losses": 41,
    "pushes": 0,
-   "net_units": -19.492,
-   "hit_rate": 0.5233
+   "net_units": -18.627,
+   "hit_rate": 0.5341
   },
   "anytime_goal_no": {
    "n": 21,
@@ -11761,12 +11761,12 @@
    "hit_rate": 0.7143
   },
   "p3_over": {
-   "n": 97,
-   "wins": 66,
-   "losses": 31,
+   "n": 99,
+   "wins": 67,
+   "losses": 32,
    "pushes": 0,
-   "net_units": 6.95,
-   "hit_rate": 0.6804
+   "net_units": 6.525,
+   "hit_rate": 0.6768
   },
   "steals_over": {
    "n": 23,
@@ -11881,12 +11881,12 @@
    "hit_rate": 0.5625
   },
   "team_pts_under": {
-   "n": 134,
-   "wins": 101,
-   "losses": 33,
+   "n": 136,
+   "wins": 102,
+   "losses": 34,
    "pushes": 0,
-   "net_units": 19.502,
-   "hit_rate": 0.7537
+   "net_units": 19.054,
+   "hit_rate": 0.75
   },
   "pass_int_under": {
    "n": 9,
@@ -12291,12 +12291,12 @@
    "hit_rate": 0.4706
   },
   "cards_under": {
-   "n": 223,
+   "n": 224,
    "wins": 139,
-   "losses": 84,
+   "losses": 85,
    "pushes": 0,
-   "net_units": -17.714,
-   "hit_rate": 0.6233
+   "net_units": -18.714,
+   "hit_rate": 0.6205
   },
   "btts_yes": {
    "n": 108,
@@ -12323,12 +12323,12 @@
    "hit_rate": 0.4142
   },
   "mlb_hit_1.5_over": {
-   "n": 268,
-   "wins": 88,
+   "n": 270,
+   "wins": 90,
    "losses": 180,
    "pushes": 0,
-   "net_units": -97.434,
-   "hit_rate": 0.3284
+   "net_units": -96.569,
+   "hit_rate": 0.3333
   },
   "mlb_hr_0.5_under": {
    "n": 3,
@@ -12347,20 +12347,20 @@
    "hit_rate": 0.5135
   },
   "home_plus": {
-   "n": 43,
-   "wins": 30,
+   "n": 44,
+   "wins": 31,
    "losses": 13,
    "pushes": 0,
-   "net_units": -0.177,
-   "hit_rate": 0.6977
+   "net_units": 0.198,
+   "hit_rate": 0.7045
   },
   "blocks_over": {
-   "n": 80,
-   "wins": 45,
+   "n": 81,
+   "wins": 46,
    "losses": 35,
    "pushes": 0,
-   "net_units": -10.923,
-   "hit_rate": 0.5625
+   "net_units": -10.388,
+   "hit_rate": 0.5679
   },
   "mlb_hrr_4.5_under": {
    "n": 30,
@@ -12371,12 +12371,12 @@
    "hit_rate": 1.0
   },
   "away_plus": {
-   "n": 56,
-   "wins": 37,
-   "losses": 19,
+   "n": 58,
+   "wins": 38,
+   "losses": 20,
    "pushes": 0,
-   "net_units": -2.396,
-   "hit_rate": 0.6607
+   "net_units": -3.019,
+   "hit_rate": 0.6552
   },
   "pole": {
    "n": 5,
@@ -12771,12 +12771,12 @@
    "hit_rate": 0.7143
   },
   "p3_over": {
-   "n": 97,
-   "wins": 66,
-   "losses": 31,
+   "n": 99,
+   "wins": 67,
+   "losses": 32,
    "pushes": 0,
-   "net_units": 6.95,
-   "hit_rate": 0.6804
+   "net_units": 6.525,
+   "hit_rate": 0.6768
   },
   "steals_over": {
    "n": 23,
@@ -12891,12 +12891,12 @@
    "hit_rate": 0.5625
   },
   "team_pts_under": {
-   "n": 134,
-   "wins": 101,
-   "losses": 33,
+   "n": 136,
+   "wins": 102,
+   "losses": 34,
    "pushes": 0,
-   "net_units": 19.502,
-   "hit_rate": 0.7537
+   "net_units": 19.054,
+   "hit_rate": 0.75
   },
   "pass_int_under": {
    "n": 9,
@@ -13110,12 +13110,12 @@
    "markets": 5
   },
   "UFC": {
-   "n": 273,
+   "n": 274,
    "settled": 174,
    "wins": 72,
    "losses": 102,
    "pushes": 0,
-   "pending": 7,
+   "pending": 8,
    "void": 92,
    "net_units": 151.62,
    "hit_rate": 0.4138,
@@ -13136,25 +13136,25 @@
    "markets": 4
   },
   "NHL": {
-   "n": 671,
-   "settled": 396,
-   "wins": 242,
-   "losses": 154,
+   "n": 737,
+   "settled": 404,
+   "wins": 248,
+   "losses": 156,
    "pushes": 0,
-   "pending": 13,
+   "pending": 71,
    "void": 262,
-   "net_units": -26.939,
-   "hit_rate": 0.6111,
-   "roi_pct": -6.8,
+   "net_units": -26.212,
+   "hit_rate": 0.6139,
+   "roi_pct": -6.49,
    "markets": 9
   },
   "F1": {
-   "n": 96,
+   "n": 103,
    "settled": 96,
    "wins": 32,
    "losses": 64,
    "pushes": 0,
-   "pending": 0,
+   "pending": 7,
    "void": 0,
    "net_units": -44.504,
    "hit_rate": 0.3333,
@@ -13175,12 +13175,12 @@
    "markets": 9
   },
   "TENNIS": {
-   "n": 187,
+   "n": 189,
    "settled": 123,
    "wins": 63,
    "losses": 60,
    "pushes": 0,
-   "pending": 9,
+   "pending": 11,
    "void": 55,
    "net_units": -30.615,
    "hit_rate": 0.5122,
@@ -13189,24 +13189,24 @@
   },
   "UCL": {
    "n": 150,
-   "settled": 149,
+   "settled": 150,
    "wins": 100,
-   "losses": 49,
+   "losses": 50,
    "pushes": 0,
-   "pending": 1,
+   "pending": 0,
    "void": 0,
-   "net_units": -0.924,
-   "hit_rate": 0.6711,
-   "roi_pct": -0.62,
+   "net_units": -1.924,
+   "hit_rate": 0.6667,
+   "roi_pct": -1.28,
    "markets": 5
   },
   "NCAAF": {
-   "n": 37,
+   "n": 38,
    "settled": 35,
    "wins": 10,
    "losses": 25,
    "pushes": 0,
-   "pending": 2,
+   "pending": 3,
    "void": 0,
    "net_units": -8.84,
    "hit_rate": 0.2857,
@@ -13240,16 +13240,16 @@
    "markets": 1
   },
   "NBA": {
-   "n": 1691,
-   "settled": 1202,
-   "wins": 774,
-   "losses": 428,
+   "n": 1717,
+   "settled": 1204,
+   "wins": 775,
+   "losses": 429,
    "pushes": 0,
-   "pending": 81,
+   "pending": 105,
    "void": 408,
-   "net_units": -43.724,
-   "hit_rate": 0.6439,
-   "roi_pct": -3.64,
+   "net_units": -44.169,
+   "hit_rate": 0.6437,
+   "roi_pct": -3.67,
    "markets": 16
   }
  },
@@ -13306,343 +13306,13 @@
   "note": "NFL props are judged from 10/23 forward: the simulator's form rule changed, so earlier picks are a different model. They stay on the record as their own line and never feed a family verdict."
  },
  "last_7_days": {
-  "wins": 1120,
-  "losses": 591,
-  "net_units": -61.427,
-  "hit_rate": 0.6546
+  "wins": 1127,
+  "losses": 595,
+  "net_units": -62.148,
+  "hit_rate": 0.6545
  },
  "note": "Unified pick ledger -- records every pick the model surfaces (top_25 board, whales, consensus, unders, sharp action, locks, POD) and settles each against actual outcomes. Per-source W-L feeds back into calibration so the model learns which modules are reliable. THIS is the training signal.",
  "picks": [
-  {
-   "source": "nba_pra_pra_under_37.5",
-   "sport": "NBA",
-   "player_or_matchup": "jalen brunson",
-   "market": "PRA_UNDER_37.5",
-   "prob": 0.713,
-   "fair_american": -248,
-   "p_predicted": 0.713,
-   "matchup": "CHI @ NYK",
-   "date": "2026-11-04",
-   "pick_id": "nba_pra_pra_under_37_5|NBA|jalen_brunson|PRA_UNDER_37_5|2026-11-04",
-   "settled": true,
-   "result": "lost",
-   "payout_units": -1.0,
-   "recorded_at": "2026-11-03T17:38:12",
-   "p_calibrated": 0.6615,
-   "price_provenance": {
-    "inferred": true,
-    "class": "C",
-    "kind": "model_fair"
-   },
-   "outcome": {
-    "stat": "pra",
-    "actual": 39,
-    "line": 37.5,
-    "side": "UNDER",
-    "verify": "jalen brunson \u2014 pra = 39 (line 37.5, bet under) on 2026-11-04"
-   },
-   "settled_at": "2026-11-05T03:38:11"
-  },
-  {
-   "source": "nba_pra_pra_under_35.5",
-   "sport": "NBA",
-   "player_or_matchup": "lebron james",
-   "market": "PRA_UNDER_35.5",
-   "prob": 0.671,
-   "fair_american": -204,
-   "p_predicted": 0.671,
-   "matchup": "PHI @ DET",
-   "date": "2026-11-04",
-   "pick_id": "nba_pra_pra_under_35_5|NBA|lebron_james|PRA_UNDER_35_5|2026-11-04",
-   "settled": true,
-   "result": "won",
-   "payout_units": 0.4902,
-   "recorded_at": "2026-11-03T17:38:12",
-   "p_calibrated": 0.6054,
-   "price_provenance": {
-    "inferred": true,
-    "class": "C",
-    "kind": "model_fair"
-   },
-   "outcome": {
-    "stat": "pra",
-    "actual": 31,
-    "line": 35.5,
-    "side": "UNDER",
-    "verify": "lebron james \u2014 pra = 31 (line 35.5, bet under) on 2026-11-04"
-   },
-   "settled_at": "2026-11-05T03:38:11"
-  },
-  {
-   "source": "nba_pra_pra_under_35.5",
-   "sport": "NBA",
-   "player_or_matchup": "trae young",
-   "market": "PRA_UNDER_35.5",
-   "prob": 0.691,
-   "fair_american": -223,
-   "p_predicted": 0.691,
-   "matchup": "ATL @ WAS",
-   "date": "2026-11-04",
-   "pick_id": "nba_pra_pra_under_35_5|NBA|trae_young|PRA_UNDER_35_5|2026-11-04",
-   "settled": true,
-   "result": "won",
-   "payout_units": 0.4484,
-   "recorded_at": "2026-11-03T17:38:12",
-   "p_calibrated": 0.6615,
-   "price_provenance": {
-    "inferred": true,
-    "class": "C",
-    "kind": "model_fair"
-   },
-   "outcome": {
-    "stat": "pra",
-    "actual": 26,
-    "line": 35.5,
-    "side": "UNDER",
-    "verify": "trae young \u2014 pra = 26 (line 35.5, bet under) on 2026-11-04"
-   },
-   "settled_at": "2026-11-05T02:37:21"
-  },
-  {
-   "source": "nba_pra_pra_under_35.5",
-   "sport": "NBA",
-   "player_or_matchup": "donovan mitchell",
-   "market": "PRA_UNDER_35.5",
-   "prob": 0.699,
-   "fair_american": -232,
-   "p_predicted": 0.699,
-   "matchup": "CLE @ OKC",
-   "date": "2026-11-04",
-   "pick_id": "nba_pra_pra_under_35_5|NBA|donovan_mitchell|PRA_UNDER_35_5|2026-11-04",
-   "settled": true,
-   "result": "lost",
-   "payout_units": -1.0,
-   "recorded_at": "2026-11-03T17:38:12",
-   "p_calibrated": 0.6615,
-   "price_provenance": {
-    "inferred": true,
-    "class": "C",
-    "kind": "model_fair"
-   },
-   "outcome": {
-    "stat": "pra",
-    "actual": 36,
-    "line": 35.5,
-    "side": "UNDER",
-    "verify": "donovan mitchell \u2014 pra = 36 (line 35.5, bet under) on 2026-11-04"
-   },
-   "settled_at": "2026-11-05T03:38:11"
-  },
-  {
-   "source": "nba_pra_pra_under_33.5",
-   "sport": "NBA",
-   "player_or_matchup": "brandon miller",
-   "market": "PRA_UNDER_33.5",
-   "prob": 0.674,
-   "fair_american": -207,
-   "p_predicted": 0.674,
-   "matchup": "CHA @ BKN",
-   "date": "2026-11-04",
-   "pick_id": "nba_pra_pra_under_33_5|NBA|brandon_miller|PRA_UNDER_33_5|2026-11-04",
-   "settled": true,
-   "result": "won",
-   "payout_units": 0.4831,
-   "recorded_at": "2026-11-03T17:38:12",
-   "p_calibrated": 0.6279,
-   "price_provenance": {
-    "inferred": true,
-    "class": "C",
-    "kind": "model_fair"
-   },
-   "outcome": {
-    "stat": "pra",
-    "actual": 15,
-    "line": 33.5,
-    "side": "UNDER",
-    "verify": "brandon miller \u2014 pra = 15 (line 33.5, bet under) on 2026-11-04"
-   },
-   "settled_at": "2026-11-05T03:38:11"
-  },
-  {
-   "source": "nba_pra_pra_under_33.5",
-   "sport": "NBA",
-   "player_or_matchup": "zion williamson",
-   "market": "PRA_UNDER_33.5",
-   "prob": 0.683,
-   "fair_american": -215,
-   "p_predicted": 0.683,
-   "matchup": "UTA @ NOP",
-   "date": "2026-11-04",
-   "pick_id": "nba_pra_pra_under_33_5|NBA|zion_williamson|PRA_UNDER_33_5|2026-11-04",
-   "settled": true,
-   "result": "won",
-   "payout_units": 0.4651,
-   "recorded_at": "2026-11-03T17:38:12",
-   "p_calibrated": 0.6615,
-   "price_provenance": {
-    "inferred": true,
-    "class": "C",
-    "kind": "model_fair"
-   },
-   "outcome": {
-    "stat": "pra",
-    "actual": 29,
-    "line": 33.5,
-    "side": "UNDER",
-    "verify": "zion williamson \u2014 pra = 29 (line 33.5, bet under) on 2026-11-04"
-   },
-   "settled_at": "2026-11-05T09:37:41"
-  },
-  {
-   "source": "nba_pra_pra_under_32.5",
-   "sport": "NBA",
-   "player_or_matchup": "lauri markkanen",
-   "market": "PRA_UNDER_32.5",
-   "prob": 0.675,
-   "fair_american": -207,
-   "p_predicted": 0.675,
-   "matchup": "UTA @ NOP",
-   "date": "2026-11-04",
-   "pick_id": "nba_pra_pra_under_32_5|NBA|lauri_markkanen|PRA_UNDER_32_5|2026-11-04",
-   "settled": true,
-   "result": "lost",
-   "payout_units": -1.0,
-   "recorded_at": "2026-11-03T17:38:12",
-   "p_calibrated": 0.6353,
-   "price_provenance": {
-    "inferred": true,
-    "class": "C",
-    "kind": "model_fair"
-   },
-   "outcome": {
-    "stat": "pra",
-    "actual": 35,
-    "line": 32.5,
-    "side": "UNDER",
-    "verify": "lauri markkanen \u2014 pra = 35 (line 32.5, bet under) on 2026-11-04"
-   },
-   "settled_at": "2026-11-05T09:37:41"
-  },
-  {
-   "source": "nba_pra_pra_under_32.5",
-   "sport": "NBA",
-   "player_or_matchup": "kevin durant",
-   "market": "PRA_UNDER_32.5",
-   "prob": 0.674,
-   "fair_american": -207,
-   "p_predicted": 0.674,
-   "matchup": "MIN @ HOU",
-   "date": "2026-11-04",
-   "pick_id": "nba_pra_pra_under_32_5|NBA|kevin_durant|PRA_UNDER_32_5|2026-11-04",
-   "settled": true,
-   "result": "won",
-   "payout_units": 0.4831,
-   "recorded_at": "2026-11-03T17:38:12",
-   "p_calibrated": 0.6279,
-   "price_provenance": {
-    "inferred": true,
-    "class": "C",
-    "kind": "model_fair"
-   },
-   "outcome": {
-    "stat": "pra",
-    "actual": 28,
-    "line": 32.5,
-    "side": "UNDER",
-    "verify": "kevin durant \u2014 pra = 28 (line 32.5, bet under) on 2026-11-04"
-   },
-   "settled_at": "2026-11-05T09:37:41"
-  },
-  {
-   "source": "nba_pra_pra_under_32.5",
-   "sport": "NBA",
-   "player_or_matchup": "paul george",
-   "market": "PRA_UNDER_32.5",
-   "prob": 0.717,
-   "fair_american": -254,
-   "p_predicted": 0.717,
-   "matchup": "MIL @ BOS",
-   "date": "2026-11-04",
-   "pick_id": "nba_pra_pra_under_32_5|NBA|paul_george|PRA_UNDER_32_5|2026-11-04",
-   "settled": true,
-   "result": "lost",
-   "payout_units": -1.0,
-   "recorded_at": "2026-11-03T17:38:12",
-   "p_calibrated": 0.6615,
-   "price_provenance": {
-    "inferred": true,
-    "class": "C",
-    "kind": "model_fair"
-   },
-   "outcome": {
-    "stat": "pra",
-    "actual": 33,
-    "line": 32.5,
-    "side": "UNDER",
-    "verify": "paul george \u2014 pra = 33 (line 32.5, bet under) on 2026-11-04"
-   },
-   "settled_at": "2026-11-05T03:38:11"
-  },
-  {
-   "source": "nba_pra_pra_under_31.5",
-   "sport": "NBA",
-   "player_or_matchup": "rj barrett",
-   "market": "PRA_UNDER_31.5",
-   "prob": 0.691,
-   "fair_american": -224,
-   "p_predicted": 0.691,
-   "matchup": "TOR @ DEN",
-   "date": "2026-11-04",
-   "pick_id": "nba_pra_pra_under_31_5|NBA|rj_barrett|PRA_UNDER_31_5|2026-11-04",
-   "settled": true,
-   "result": "won",
-   "payout_units": 0.4464,
-   "recorded_at": "2026-11-03T17:38:12",
-   "p_calibrated": 0.6615,
-   "price_provenance": {
-    "inferred": true,
-    "class": "C",
-    "kind": "model_fair"
-   },
-   "outcome": {
-    "stat": "pra",
-    "actual": 30,
-    "line": 31.5,
-    "side": "UNDER",
-    "verify": "rj barrett \u2014 pra = 30 (line 31.5, bet under) on 2026-11-04"
-   },
-   "settled_at": "2026-11-05T09:37:41"
-  },
-  {
-   "source": "nba_pra_pra_under_31.5",
-   "sport": "NBA",
-   "player_or_matchup": "damian lillard",
-   "market": "PRA_UNDER_31.5",
-   "prob": 0.716,
-   "fair_american": -252,
-   "p_predicted": 0.716,
-   "matchup": "POR @ PHX",
-   "date": "2026-11-04",
-   "pick_id": "nba_pra_pra_under_31_5|NBA|damian_lillard|PRA_UNDER_31_5|2026-11-04",
-   "settled": true,
-   "result": "lost",
-   "payout_units": -1.0,
-   "recorded_at": "2026-11-03T17:38:12",
-   "p_calibrated": 0.6615,
-   "price_provenance": {
-    "inferred": true,
-    "class": "C",
-    "kind": "model_fair"
-   },
-   "outcome": {
-    "stat": "pra",
-    "actual": 33,
-    "line": 31.5,
-    "side": "UNDER",
-    "verify": "damian lillard \u2014 pra = 33 (line 31.5, bet under) on 2026-11-04"
-   },
-   "settled_at": "2026-11-05T09:37:41"
-  },
   {
    "source": "nba_pra_pra_under_30.5",
    "sport": "NBA",
@@ -14468,7 +14138,7 @@
    "result": "won",
    "payout_units": 0.5319,
    "recorded_at": "2026-11-03T17:38:12",
-   "p_calibrated": 0.6996,
+   "p_calibrated": 0.7032,
    "price_provenance": {
     "inferred": true,
     "class": "C",
@@ -14498,7 +14168,7 @@
    "result": "won",
    "payout_units": 0.5291,
    "recorded_at": "2026-11-03T17:38:12",
-   "p_calibrated": 0.6996,
+   "p_calibrated": 0.7032,
    "price_provenance": {
     "inferred": true,
     "class": "C",
@@ -14528,7 +14198,7 @@
    "result": "won",
    "payout_units": 0.5236,
    "recorded_at": "2026-11-03T17:38:12",
-   "p_calibrated": 0.6996,
+   "p_calibrated": 0.7032,
    "price_provenance": {
     "inferred": true,
     "class": "C",
@@ -14558,7 +14228,7 @@
    "result": "won",
    "payout_units": 0.5,
    "recorded_at": "2026-11-03T17:38:12",
-   "p_calibrated": 0.7105,
+   "p_calibrated": 0.708,
    "price_provenance": {
     "inferred": true,
     "class": "C",
@@ -14588,7 +14258,7 @@
    "result": "won",
    "payout_units": 0.4926,
    "recorded_at": "2026-11-03T17:38:12",
-   "p_calibrated": 0.7727,
+   "p_calibrated": 0.7561,
    "price_provenance": {
     "inferred": true,
     "class": "C",
@@ -14618,7 +14288,7 @@
    "result": "won",
    "payout_units": 0.4926,
    "recorded_at": "2026-11-03T17:38:12",
-   "p_calibrated": 0.7727,
+   "p_calibrated": 0.7561,
    "price_provenance": {
     "inferred": true,
     "class": "C",
@@ -14648,7 +14318,7 @@
    "result": "won",
    "payout_units": 0.5464,
    "recorded_at": "2026-11-03T17:38:12",
-   "p_calibrated": 0.6996,
+   "p_calibrated": 0.7032,
    "price_provenance": {
     "inferred": true,
     "class": "C",
@@ -14678,7 +14348,7 @@
    "result": "won",
    "payout_units": 0.5,
    "recorded_at": "2026-11-03T17:38:12",
-   "p_calibrated": 0.726,
+   "p_calibrated": 0.72,
    "price_provenance": {
     "inferred": true,
     "class": "C",
@@ -14708,7 +14378,7 @@
    "result": "won",
    "payout_units": 0.5495,
    "recorded_at": "2026-11-03T17:38:12",
-   "p_calibrated": 0.6996,
+   "p_calibrated": 0.7032,
    "price_provenance": {
     "inferred": true,
     "class": "C",
@@ -14738,7 +14408,7 @@
    "result": "won",
    "payout_units": 0.5348,
    "recorded_at": "2026-11-03T17:38:12",
-   "p_calibrated": 0.6996,
+   "p_calibrated": 0.7032,
    "price_provenance": {
     "inferred": true,
     "class": "C",
@@ -14768,7 +14438,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-11-03T17:38:12",
-   "p_calibrated": 0.6996,
+   "p_calibrated": 0.7032,
    "price_provenance": {
     "inferred": true,
     "class": "C",
@@ -14798,7 +14468,7 @@
    "result": "won",
    "payout_units": 0.5181,
    "recorded_at": "2026-11-03T17:38:12",
-   "p_calibrated": 0.6996,
+   "p_calibrated": 0.7032,
    "price_provenance": {
     "inferred": true,
     "class": "C",
@@ -14828,7 +14498,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-11-03T17:38:12",
-   "p_calibrated": 0.7416,
+   "p_calibrated": 0.7321,
    "price_provenance": {
     "inferred": true,
     "class": "C",
@@ -14858,7 +14528,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-11-03T17:38:12",
-   "p_calibrated": 0.6996,
+   "p_calibrated": 0.7032,
    "price_provenance": {
     "inferred": true,
     "class": "C",
@@ -14888,7 +14558,7 @@
    "result": "won",
    "payout_units": 0.5348,
    "recorded_at": "2026-11-03T17:38:12",
-   "p_calibrated": 0.6996,
+   "p_calibrated": 0.7032,
    "price_provenance": {
     "inferred": true,
     "class": "C",
@@ -14918,7 +14588,7 @@
    "result": "won",
    "payout_units": 0.5025,
    "recorded_at": "2026-11-03T17:38:12",
-   "p_calibrated": 0.7105,
+   "p_calibrated": 0.708,
    "price_provenance": {
     "inferred": true,
     "class": "C",
@@ -14948,7 +14618,7 @@
    "result": "won",
    "payout_units": 0.5348,
    "recorded_at": "2026-11-03T17:38:12",
-   "p_calibrated": 0.6996,
+   "p_calibrated": 0.7032,
    "price_provenance": {
     "inferred": true,
     "class": "C",
@@ -14978,7 +14648,7 @@
    "result": "won",
    "payout_units": 0.4975,
    "recorded_at": "2026-11-03T17:38:12",
-   "p_calibrated": 0.726,
+   "p_calibrated": 0.72,
    "price_provenance": {
     "inferred": true,
     "class": "C",
@@ -15008,7 +14678,7 @@
    "result": "won",
    "payout_units": 0.5051,
    "recorded_at": "2026-11-03T17:38:12",
-   "p_calibrated": 0.6996,
+   "p_calibrated": 0.7032,
    "price_provenance": {
     "inferred": true,
     "class": "C",
@@ -15038,7 +14708,7 @@
    "result": "won",
    "payout_units": 0.4808,
    "recorded_at": "2026-11-03T17:38:12",
-   "p_calibrated": 0.8225,
+   "p_calibrated": 0.797,
    "price_provenance": {
     "inferred": true,
     "class": "C",
@@ -15068,7 +14738,7 @@
    "result": "won",
    "payout_units": 0.4717,
    "recorded_at": "2026-11-03T17:38:12",
-   "p_calibrated": 0.8225,
+   "p_calibrated": 0.797,
    "price_provenance": {
     "inferred": true,
     "class": "C",
@@ -15098,7 +14768,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-11-03T17:38:12",
-   "p_calibrated": 0.6996,
+   "p_calibrated": 0.7032,
    "price_provenance": {
     "inferred": true,
     "class": "C",
@@ -15128,7 +14798,7 @@
    "result": "won",
    "payout_units": 0.5051,
    "recorded_at": "2026-11-03T17:38:12",
-   "p_calibrated": 0.6996,
+   "p_calibrated": 0.7032,
    "price_provenance": {
     "inferred": true,
     "class": "C",
@@ -15158,7 +14828,7 @@
    "result": "won",
    "payout_units": 0.4651,
    "recorded_at": "2026-11-03T17:38:12",
-   "p_calibrated": 0.8225,
+   "p_calibrated": 0.797,
    "price_provenance": {
     "inferred": true,
     "class": "C",
@@ -18313,7 +17983,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-11-04T01:32:28",
-   "p_calibrated": 0.5812,
+   "p_calibrated": 0.5892,
    "outcome": {
     "stat": "blk",
     "actual": 0,
@@ -18373,7 +18043,7 @@
    "result": "won",
    "payout_units": 0.5291,
    "recorded_at": "2026-11-04T12:16:15",
-   "p_calibrated": 0.6996,
+   "p_calibrated": 0.7032,
    "outcome": {
     "final_score": "MIA 117 @ LAC 116",
     "team_total": 117,
@@ -18403,7 +18073,7 @@
    "result": "won",
    "payout_units": 0.4831,
    "recorded_at": "2026-11-04T12:16:15",
-   "p_calibrated": 0.8225,
+   "p_calibrated": 0.797,
    "outcome": {
     "final_score": "MIA 117 @ LAC 116",
     "team_total": 117,
@@ -18433,7 +18103,7 @@
    "result": "won",
    "payout_units": 0.431,
    "recorded_at": "2026-11-04T12:44:59",
-   "p_calibrated": 0.6675,
+   "p_calibrated": 0.6627,
    "outcome": {
     "final_score": "OTT 2 @ BUF 1",
     "side": "away",
@@ -18463,7 +18133,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-11-04T12:44:59",
-   "p_calibrated": 0.6613,
+   "p_calibrated": 0.6567,
    "outcome": {
     "final_score": "CHI 3 @ FLA 5",
     "side": "away",
@@ -18472,6 +18142,66 @@
     "verify": "CHI 3 @ FLA 5: away +1.5 \u2014 AWAY_PLUS_1.5"
    },
    "settled_at": "2026-11-05T03:38:11"
+  },
+  {
+   "source": "nhl_pl_away_plus_1.5",
+   "sport": "NHL",
+   "player_or_matchup": "San Jose Sharks @ Los Angeles Kings",
+   "market": "AWAY_PLUS_1.5",
+   "prob": 0.709,
+   "fair_american": -244,
+   "p_predicted": 0.709,
+   "matchup": "San Jose Sharks @ Los Angeles Kings",
+   "price_provenance": {
+    "inferred": false,
+    "class": "C",
+    "kind": "model_fair"
+   },
+   "date": "2026-11-04",
+   "pick_id": "nhl_pl_away_plus_1_5|NHL|San_Jose_Sharks___Los_Angeles_Kings|AWAY_PLUS_1_5|2026-11-04",
+   "settled": true,
+   "result": "lost",
+   "payout_units": -1.0,
+   "recorded_at": "2026-11-04T12:44:59",
+   "p_calibrated": 0.6644,
+   "outcome": {
+    "final_score": "SJ 2 @ LA 7",
+    "side": "away",
+    "line": 1.5,
+    "market": "AWAY_PLUS_1.5",
+    "verify": "SJ 2 @ LA 7: away +1.5 \u2014 AWAY_PLUS_1.5"
+   },
+   "settled_at": "2026-11-05T16:59:23"
+  },
+  {
+   "source": "nhl_pl_home_plus_1.5",
+   "sport": "NHL",
+   "player_or_matchup": "Calgary Flames @ Seattle Kraken",
+   "market": "HOME_PLUS_1.5",
+   "prob": 0.728,
+   "fair_american": -267,
+   "p_predicted": 0.728,
+   "matchup": "Calgary Flames @ Seattle Kraken",
+   "price_provenance": {
+    "inferred": false,
+    "class": "C",
+    "kind": "model_fair"
+   },
+   "date": "2026-11-04",
+   "pick_id": "nhl_pl_home_plus_1_5|NHL|Calgary_Flames___Seattle_Kraken|HOME_PLUS_1_5|2026-11-04",
+   "settled": true,
+   "result": "won",
+   "payout_units": 0.3745,
+   "recorded_at": "2026-11-04T12:44:59",
+   "p_calibrated": 0.7095,
+   "outcome": {
+    "final_score": "CGY 1 @ SEA 2",
+    "side": "home",
+    "line": 1.5,
+    "market": "HOME_PLUS_1.5",
+    "verify": "CGY 1 @ SEA 2: home +1.5 \u2014 HOME_PLUS_1.5"
+   },
+   "settled_at": "2026-11-05T16:59:23"
   },
   {
    "source": "nhl_period_p3_over_1.5",
@@ -18493,7 +18223,7 @@
    "result": "won",
    "payout_units": 0.5747,
    "recorded_at": "2026-11-04T12:44:59",
-   "p_calibrated": 0.6053,
+   "p_calibrated": 0.614,
    "outcome": {
     "period": 3,
     "period_goals": 2,
@@ -18523,7 +18253,7 @@
    "result": "won",
    "payout_units": 0.5747,
    "recorded_at": "2026-11-04T12:44:59",
-   "p_calibrated": 0.6053,
+   "p_calibrated": 0.614,
    "outcome": {
     "period": 3,
     "period_goals": 4,
@@ -18532,6 +18262,66 @@
     "verify": "CHI @ FLA: period 3 goals = 4 (line 1.5, bet over) on 2026-11-04"
    },
    "settled_at": "2026-11-05T03:38:11"
+  },
+  {
+   "source": "nhl_period_p3_over_1.5",
+   "sport": "NHL",
+   "player_or_matchup": "SJS @ LAK",
+   "market": "P3_OVER_1.5",
+   "prob": 0.636,
+   "fair_american": -174,
+   "p_predicted": 0.636,
+   "matchup": "SJS @ LAK",
+   "price_provenance": {
+    "inferred": false,
+    "class": "C",
+    "kind": "model_fair"
+   },
+   "date": "2026-11-04",
+   "pick_id": "nhl_period_p3_over_1_5|NHL|SJS___LAK|P3_OVER_1_5|2026-11-04",
+   "settled": true,
+   "result": "won",
+   "payout_units": 0.5747,
+   "recorded_at": "2026-11-04T12:44:59",
+   "p_calibrated": 0.614,
+   "outcome": {
+    "period": 3,
+    "period_goals": 3,
+    "line": 1.5,
+    "side": "OVER",
+    "verify": "SJ @ LA: period 3 goals = 3 (line 1.5, bet over) on 2026-11-04"
+   },
+   "settled_at": "2026-11-05T16:59:23"
+  },
+  {
+   "source": "nhl_period_p3_over_1.5",
+   "sport": "NHL",
+   "player_or_matchup": "CGY @ SEA",
+   "market": "P3_OVER_1.5",
+   "prob": 0.636,
+   "fair_american": -174,
+   "p_predicted": 0.636,
+   "matchup": "CGY @ SEA",
+   "price_provenance": {
+    "inferred": false,
+    "class": "C",
+    "kind": "model_fair"
+   },
+   "date": "2026-11-04",
+   "pick_id": "nhl_period_p3_over_1_5|NHL|CGY___SEA|P3_OVER_1_5|2026-11-04",
+   "settled": true,
+   "result": "lost",
+   "payout_units": -1.0,
+   "recorded_at": "2026-11-04T12:44:59",
+   "p_calibrated": 0.614,
+   "outcome": {
+    "period": 3,
+    "period_goals": 0,
+    "line": 1.5,
+    "side": "OVER",
+    "verify": "CGY @ SEA: period 3 goals = 0 (line 1.5, bet over) on 2026-11-04"
+   },
+   "settled_at": "2026-11-05T16:59:23"
   },
   {
    "source": "nhl_skater_hits_over_2.5",
@@ -18566,6 +18356,96 @@
   {
    "source": "nhl_skater_hits_over_1.5",
    "sport": "NHL",
+   "player_or_matchup": "ty dellandrea",
+   "market": "HITS_OVER_1.5",
+   "prob": 0.742,
+   "fair_american": -288,
+   "p_predicted": 0.742,
+   "matchup": "SJS @ LAK",
+   "price_provenance": {
+    "inferred": false,
+    "class": "C",
+    "kind": "model_fair"
+   },
+   "date": "2026-11-04",
+   "pick_id": "nhl_skater_hits_over_1_5|NHL|ty_dellandrea|HITS_OVER_1_5|2026-11-04",
+   "settled": true,
+   "result": "won",
+   "payout_units": 0.3472,
+   "recorded_at": "2026-11-04T12:44:59",
+   "p_calibrated": 0.575,
+   "outcome": {
+    "stat": "hits",
+    "actual": 3,
+    "line": 1.5,
+    "side": "OVER",
+    "verify": "ty dellandrea \u2014 hits = 3 (line 1.5, bet over) on 2026-11-04"
+   },
+   "settled_at": "2026-11-05T16:59:23"
+  },
+  {
+   "source": "nhl_skater_blocks_over_1.5",
+   "sport": "NHL",
+   "player_or_matchup": "brandt clarke",
+   "market": "BLOCKS_OVER_1.5",
+   "prob": 0.651,
+   "fair_american": -187,
+   "p_predicted": 0.651,
+   "matchup": "SJS @ LAK",
+   "price_provenance": {
+    "inferred": false,
+    "class": "C",
+    "kind": "model_fair"
+   },
+   "date": "2026-11-04",
+   "pick_id": "nhl_skater_blocks_over_1_5|NHL|brandt_clarke|BLOCKS_OVER_1_5|2026-11-04",
+   "settled": true,
+   "result": "won",
+   "payout_units": 0.5348,
+   "recorded_at": "2026-11-04T12:44:59",
+   "p_calibrated": 0.6114,
+   "outcome": {
+    "stat": "blocks",
+    "actual": 4,
+    "line": 1.5,
+    "side": "OVER",
+    "verify": "brandt clarke \u2014 blocks = 4 (line 1.5, bet over) on 2026-11-04"
+   },
+   "settled_at": "2026-11-05T16:59:23"
+  },
+  {
+   "source": "nhl_skater_hits_over_1.5",
+   "sport": "NHL",
+   "player_or_matchup": "scott laughton",
+   "market": "HITS_OVER_1.5",
+   "prob": 0.659,
+   "fair_american": -193,
+   "p_predicted": 0.659,
+   "matchup": "SJS @ LAK",
+   "price_provenance": {
+    "inferred": false,
+    "class": "C",
+    "kind": "model_fair"
+   },
+   "date": "2026-11-04",
+   "pick_id": "nhl_skater_hits_over_1_5|NHL|scott_laughton|HITS_OVER_1_5|2026-11-04",
+   "settled": true,
+   "result": "won",
+   "payout_units": 0.5181,
+   "recorded_at": "2026-11-04T12:44:59",
+   "p_calibrated": 0.5467,
+   "outcome": {
+    "stat": "hits",
+    "actual": 3,
+    "line": 1.5,
+    "side": "OVER",
+    "verify": "scott laughton \u2014 hits = 3 (line 1.5, bet over) on 2026-11-04"
+   },
+   "settled_at": "2026-11-05T16:59:23"
+  },
+  {
+   "source": "nhl_skater_hits_over_1.5",
+   "sport": "NHL",
    "player_or_matchup": "dylan cozens",
    "market": "HITS_OVER_1.5",
    "prob": 0.704,
@@ -18583,7 +18463,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-11-04T12:44:59",
-   "p_calibrated": 0.5527,
+   "p_calibrated": 0.5749,
    "outcome": {
     "stat": "hits",
     "actual": 1,
@@ -18613,7 +18493,7 @@
    "result": "won",
    "payout_units": 0.5525,
    "recorded_at": "2026-11-04T12:44:59",
-   "p_calibrated": 0.5222,
+   "p_calibrated": 0.5373,
    "outcome": {
     "stat": "hits",
     "actual": 5,
@@ -18673,7 +18553,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-11-04T12:44:59",
-   "p_calibrated": 0.52,
+   "p_calibrated": 0.5348,
    "outcome": {
     "stat": "hits",
     "actual": 1,
@@ -18703,7 +18583,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-11-04T12:44:59",
-   "p_calibrated": 0.5369,
+   "p_calibrated": 0.5549,
    "outcome": {
     "stat": "hits",
     "actual": 1,
@@ -18733,7 +18613,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-11-04T20:18:51",
-   "p_calibrated": 0.6566,
+   "p_calibrated": 0.6527,
    "outcome": {
     "final_score": "Real Betis 1-2 Borussia Dortmund",
     "total_cards": 8,
@@ -19448,6 +19328,133 @@
     "verify": "Sabah FK 1-4 Viking FK: 5 goals (line 2.5) \u2014 TOTAL_OVER_2.5"
    },
    "settled_at": "2026-11-05T08:51:15"
+  },
+  {
+   "source": "nhl_pl_away_plus_1.5",
+   "sport": "NHL",
+   "player_or_matchup": "Calgary Flames @ Seattle Kraken",
+   "market": "AWAY_PLUS_1.5",
+   "prob": 0.726,
+   "fair_american": -265,
+   "p_predicted": 0.726,
+   "matchup": "Calgary Flames @ Seattle Kraken",
+   "price_provenance": {
+    "inferred": false,
+    "class": "C",
+    "kind": "model_fair"
+   },
+   "date": "2026-11-04",
+   "pick_id": "nhl_pl_away_plus_1_5|NHL|Calgary_Flames___Seattle_Kraken|AWAY_PLUS_1_5|2026-11-04",
+   "settled": true,
+   "result": "won",
+   "payout_units": 0.3774,
+   "recorded_at": "2026-11-04T21:00:51",
+   "p_calibrated": 0.6673,
+   "outcome": {
+    "final_score": "CGY 1 @ SEA 2",
+    "side": "away",
+    "line": 1.5,
+    "market": "AWAY_PLUS_1.5",
+    "verify": "CGY 1 @ SEA 2: away +1.5 \u2014 AWAY_PLUS_1.5"
+   },
+   "settled_at": "2026-11-05T16:59:23"
+  },
+  {
+   "source": "soccer_cards_cards_under_6.0",
+   "sport": "UCL",
+   "player_or_matchup": "Napoli @ FC Porto",
+   "market": "CARDS_UNDER_6.0",
+   "prob": 0.683,
+   "fair_american": -215,
+   "p_predicted": 0.683,
+   "matchup": "Napoli @ FC Porto",
+   "price_provenance": {
+    "inferred": false,
+    "class": "C",
+    "kind": "model_fair"
+   },
+   "date": "2026-11-04",
+   "pick_id": "soccer_cards_cards_under_6_0|UCL|Napoli___FC_Porto|CARDS_UNDER_6_0|2026-11-04",
+   "settled": true,
+   "result": "lost",
+   "payout_units": -1.0,
+   "recorded_at": "2026-11-05T02:39:12",
+   "p_calibrated": 0.6527,
+   "outcome": {
+    "final_score": "Napoli 1-4 FC Porto",
+    "total_cards": 6,
+    "total_goals": 5,
+    "scorers": [
+     "jan bednarek",
+     "scott mctominay",
+     "gabri veiga",
+     "jakub kiwior",
+     "samu aghehowa"
+    ],
+    "market": "CARDS_UNDER_6.0",
+    "verify": "Napoli 1-4 FC Porto: 6 cards (line 6.0) \u2014 CARDS_UNDER_6.0"
+   },
+   "settled_at": "2026-11-05T16:59:23"
+  },
+  {
+   "source": "nba_tt_team_pts_under_116.5",
+   "sport": "NBA",
+   "player_or_matchup": "LAC (MIA @ LAC)",
+   "market": "TEAM_PTS_UNDER_116.5",
+   "prob": 0.644,
+   "fair_american": -181,
+   "p_predicted": 0.644,
+   "matchup": "MIA @ LAC",
+   "price_provenance": {
+    "inferred": false,
+    "class": "C",
+    "kind": "model_fair"
+   },
+   "date": "2026-11-04",
+   "pick_id": "nba_tt_team_pts_under_116_5|NBA|LAC__MIA___LAC_|TEAM_PTS_UNDER_116_5|2026-11-04",
+   "settled": true,
+   "result": "won",
+   "payout_units": 0.5525,
+   "recorded_at": "2026-11-05T03:40:14",
+   "p_calibrated": 0.7032,
+   "outcome": {
+    "final_score": "MIA 117 @ LAC 116",
+    "team_total": 116,
+    "line": 116.5,
+    "side": "UNDER",
+    "verify": "MIA @ LAC: home scored 116 (line 116.5, bet under) on 2026-11-04"
+   },
+   "settled_at": "2026-11-05T16:59:23"
+  },
+  {
+   "source": "nba_tt_team_pts_under_116.5",
+   "sport": "NBA",
+   "player_or_matchup": "MIA (MIA @ LAC)",
+   "market": "TEAM_PTS_UNDER_116.5",
+   "prob": 0.676,
+   "fair_american": -209,
+   "p_predicted": 0.676,
+   "matchup": "MIA @ LAC",
+   "price_provenance": {
+    "inferred": false,
+    "class": "C",
+    "kind": "model_fair"
+   },
+   "date": "2026-11-04",
+   "pick_id": "nba_tt_team_pts_under_116_5|NBA|MIA__MIA___LAC_|TEAM_PTS_UNDER_116_5|2026-11-04",
+   "settled": true,
+   "result": "lost",
+   "payout_units": -1.0,
+   "recorded_at": "2026-11-05T03:40:14",
+   "p_calibrated": 0.797,
+   "outcome": {
+    "final_score": "MIA 117 @ LAC 116",
+    "team_total": 117,
+    "line": 116.5,
+    "side": "UNDER",
+    "verify": "MIA @ LAC: away scored 117 (line 116.5, bet under) on 2026-11-04"
+   },
+   "settled_at": "2026-11-05T16:59:23"
   }
  ],
  "recent_window": 200,
@@ -19455,5 +19462,5 @@
   "2026-05-19",
   "2026-11-04"
  ],
- "digest_generated_at": "2026-11-05T12:44:13"
+ "digest_generated_at": "2026-11-05T17:01:15"
 }

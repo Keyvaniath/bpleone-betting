@@ -2,24 +2,21 @@
 
 ## Slate
 - **0 games** scheduled
-- **No best bet today:** a best bet needs a real sportsbook price — 18 model-only projections excluded (LOL 5, MLS 5, NCAAF 4, NFL 2, EPL 1, NHL 1)
+- **No best bet today:** a best bet needs a real sportsbook price — 19 model-only projections excluded (LOL 5, MLS 5, NCAAF 4, NFL 3, EPL 1, NHL 1)
 
 ## Golf -- World Wide Technology Championship
 - **Field:** 120 players  |  Status: Scheduled (starts 2026-11-05)
 
 ## NBA -- REGULAR
-- 11/04 07:00 PM ET: Philadelphia 76ers @ Detroit Pistons (8-1 vs 6-2) 112-106 | no DK price | no validated model probability | Final
-- 11/04 07:00 PM ET: Atlanta Hawks @ Washington Wizards (5-4 vs 4-4) 120-105 | no DK price | no validated model probability | Final
-- 11/04 07:30 PM ET: Milwaukee Bucks @ Boston Celtics (1-7 vs 6-2) 102-109 | no DK price | no validated model probability | Final
-- 11/04 07:30 PM ET: Charlotte Hornets @ Brooklyn Nets (3-6 vs 2-6) 104-114 | no DK price | no validated model probability | Final
-- 11/04 07:30 PM ET: Chicago Bulls @ New York Knicks (1-7 vs 4-4) 105-135 | no DK price | no validated model probability | Final
+- 11/05 09:00 PM ET: Orlando Magic @ Phoenix Suns (2-5 vs 1-5)  | DK -104/-114 | desk P(home) 51.1% (NO EDGE) | Scheduled
+- 11/05 10:00 PM ET: Miami Heat @ Golden State Warriors (3-5 vs 5-3)  | DK +230/-281 | desk P(home) 70.9% (NO EDGE) | Scheduled
 
 ## NHL -- REGULAR
-- 11/04 07:30 PM ET: Ottawa Senators @ Buffalo Sabres (0-0-0 vs 0-0-0) 2-1 | no DK price | no validated model probability | Final
-- 11/04 07:30 PM ET: Chicago Blackhawks @ Florida Panthers (0-0-0 vs 0-0-0) 3-5 | no DK price | no validated model probability | Final
-- 11/04 10:00 PM ET: San Jose Sharks @ Los Angeles Kings (0-0-0 vs 0-0-0) 2-7 | no DK price | no validated model probability | Final
-- 11/04 10:00 PM ET: Calgary Flames @ Seattle Kraken (0-0-0 vs 0-0-0) 1-2 | no DK price | no validated model probability | Final
 - 11/05 07:00 PM ET: Utah Mammoth @ Montreal Canadiens (10-6-0 vs 9-3-3)  | DK -122/+102 | desk P(home) 47.4% (NO EDGE) | Scheduled
+- 11/05 07:00 PM ET: Vegas Golden Knights @ Detroit Red Wings (10-5-2 vs 7-6-3)  | DK -142/+120 | desk P(home) 43.6% (NO EDGE) | Scheduled
+- 11/05 07:00 PM ET: Chicago Blackhawks @ Tampa Bay Lightning (4-11-1 vs 9-3-2)  | DK +330/-425 | desk P(home) 77.7% (NO EDGE) | Scheduled
+- 11/05 07:00 PM ET: St. Louis Blues @ New Jersey Devils (7-7-1 vs 10-5-0)  | DK +180/-218 | desk P(home) 65.8% (NO EDGE) | Scheduled
+- 11/05 07:00 PM ET: Carolina Hurricanes @ New York Islanders (12-3-2 vs 7-5-2)  | DK -185/+154 | desk P(home) 37.8% (NO EDGE) | Scheduled
 
 ## LoL Esports -- 0 live, 5 upcoming — model projection — unvalidated, no sportsbook price, not a recommendation
 - [Worlds] 11/05 05:00 PM ET: Dplus KIA vs BILIBILI GAMING BO5 | model P(A) 48.9%
