@@ -4,7 +4,7 @@
 
 _Pipeline health: **WARNING** (7/15 artifacts ok; 8 empty, 0 stale)._ 
 
-_Generated at 2026-11-06T16:30:24 UTC. Game lines source: **DraftKings via ESPN (154 pre-game priced games, observed 2026-11-06T16:30:14 UTC)**._
+_Generated at 2026-11-06T20:29:16 UTC. Game lines source: **DraftKings via ESPN (155 pre-game priced games, observed 2026-11-06T20:29:08 UTC)**._
 
 ## Self-Learning Loop
 

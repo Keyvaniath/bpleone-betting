@@ -1,20 +1,20 @@
 # EdgeStat — Tonight's Master Brief
-_Generated 2026-11-06T16:30:14 UTC_
+_Generated 2026-11-06T20:29:08 UTC_
 
 ## Slate Quality
 - **Tier:** NO_ACTION_NIGHT
-- **Score:** -66
+- **Score:** -55
 - **Advisory:** STAND DOWN. Slate has no aligned conviction. Skip betting tonight or watch only.
 - **Total LOCKs:** 0
 - **Total STRONG:** 12
-- **Total FADES:** 114
+- **Total FADES:** 103
 
 ## Top 5 Curated Picks
-1. **GOLF / Chris Kirk** (GOLF_PLAYER, score=145.21)
-   - Play: Chris Kirk (PLAYER_STRONG)
+1. **GOLF / Ben James** (GOLF_PLAYER, score=139.29)
+   - Play: Ben James (PLAYER_STRONG)
    - Rationale: Cross-sport top pick (GOLF_PLAYER)
-2. **GOLF / Nick Dunlap** (GOLF_PLAYER, score=110.57)
-   - Play: Nick Dunlap (PLAYER_STRONG)
+2. **GOLF / Zac Blair** (GOLF_PLAYER, score=105.29)
+   - Play: Zac Blair (PLAYER_STRONG)
    - Rationale: Cross-sport top pick (GOLF_PLAYER)
 3. **NBA / ATL** (NBA_TEAM, score=70.0)
    - Play: ATL (TEAM_STRONG)
@@ -25,9 +25,9 @@ _Generated 2026-11-06T16:30:14 UTC_
 
 ## Top Events Board
 - **GOLF** / ? (TOURNAMENT_STRONG)
-  - Chris Kirk top 10 finish
-  - Nick Dunlap top 10 finish
+  - Ben James top 10 finish
   - Zac Blair top 10 finish
+  - Chris Kirk top 10 finish
 
 ## Slate ROI Projection
 - **Picks:** 0
@@ -40,9 +40,9 @@ _Generated 2026-11-06T16:30:14 UTC_
   - Fade angle: team total UNDER
 - **NBA** / POR (TEAM_FADE)
   - Fade angle: team total UNDER
-- **NBA** / NOP (TEAM_FADE)
-  - Fade angle: team total UNDER
 - **NBA** / TOR (TEAM_FADE)
   - Fade angle: team total UNDER
-- **NBA** / MIL (TEAM_FADE)
+- **NBA** / NOP (TEAM_FADE)
+  - Fade angle: team total UNDER
+- **NBA** / PHI (TEAM_FADE)
   - Fade angle: team total UNDER

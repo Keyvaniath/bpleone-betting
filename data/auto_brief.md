@@ -2,12 +2,12 @@
 
 ## Slate
 - **0 games** scheduled
-- **No best bet today:** a best bet needs a real sportsbook price — 27 model-only projections excluded (NBA 5, LOL 5, MLS 5, NCAAF 5, GOLF 4, NFL 2, EPL 1)
+- **No best bet today:** a best bet needs a real sportsbook price — 31 model-only projections excluded (NBA 7, LOL 5, MLS 5, NCAAF 5, GOLF 4, NFL 2, NHL 2, EPL 1)
 
 ## Golf -- World Wide Technology Championship
-- **Leader:** Ben James (-9) at #1
+- **Leader:** Ben James (-10) at #1
 - **Field:** 120 players  |  Status: In Progress
-- **Model projection:** Rico Hoey TOP10 (model 15.0%) — model projection — unvalidated, no sportsbook price, not a recommendation
+- **Model projection:** Zac Blair WIN (model 11.5%) — model projection — unvalidated, no sportsbook price, not a recommendation
 
 ## NBA -- REGULAR
 - 11/06 07:00 PM ET: Washington Wizards @ Atlanta Hawks (4-4 vs 5-4)  | DK +241/-297 | desk P(home) 71.8% (NO EDGE) | Scheduled
@@ -18,7 +18,7 @@
 
 ## NHL -- REGULAR
 - 11/06 07:00 PM ET: Columbus Blue Jackets @ Buffalo Sabres (7-7-0 vs 7-5-3)  | DK +142/-170 | desk P(home) 60.4% (NO EDGE) | Scheduled
-- 11/06 08:00 PM ET: San Jose Sharks @ Minnesota Wild (7-9-1 vs 11-3-3)  | DK +210/-258 | desk P(home) 69.1% (NO EDGE) | Scheduled
+- 11/06 08:00 PM ET: San Jose Sharks @ Minnesota Wild (7-9-1 vs 11-3-3)  | DK +220/-270 | desk P(home) 70.0% (NO EDGE) | Scheduled
 - 11/06 08:00 PM ET: Anaheim Ducks @ Calgary Flames (8-7-1 vs 7-8-1)  | DK +124/-148 | desk P(home) 57.2% (NO EDGE) | Scheduled
 
 ## LoL Esports -- 0 live, 4 upcoming — model projection — unvalidated, no sportsbook price, not a recommendation
