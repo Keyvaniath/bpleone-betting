@@ -1,9 +1,10 @@
 **EdgeStat -- Tonight's Slate**
-_NO_ACTION_NIGHT_ | L:0 S:12 F:108
+_NO_ACTION_NIGHT_ | L:0 S:12 F:114
 
 :dart: **Top Picks:**
 1. [GOLF] Chris Kirk -- Chris Kirk (PLAYER_STRONG)
 2. [GOLF] Nick Dunlap -- Nick Dunlap (PLAYER_STRONG)
+3. [NBA] ATL -- ATL (TEAM_STRONG)
 
 :coin: Bankroll Advisory: STAND DOWN. Slate has no aligned conviction. Skip betting tonight or watch only.
 

@@ -1,27 +1,27 @@
-# Tonight's Slate Brief — 2026-11-05
+# Tonight's Slate Brief — 2026-11-06
 
 ## Slate
 - **0 games** scheduled
-- **No best bet today:** a best bet needs a real sportsbook price — 26 model-only projections excluded (LOL 5, MLS 5, NCAAF 4, GOLF 4, NFL 3, NHL 2, NBA 1, EPL 1, NCAAB 1)
+- **No best bet today:** a best bet needs a real sportsbook price — 27 model-only projections excluded (NBA 5, LOL 5, MLS 5, NCAAF 5, GOLF 4, NFL 2, EPL 1)
 
 ## Golf -- World Wide Technology Championship
-- **Leader:** Nick Dunlap (-9) at #1
+- **Leader:** Ben James (-9) at #1
 - **Field:** 120 players  |  Status: In Progress
-- **Model projection:** Kevin Streelman TOP10 (model 14.7%) — model projection — unvalidated, no sportsbook price, not a recommendation
+- **Model projection:** Rico Hoey TOP10 (model 15.0%) — model projection — unvalidated, no sportsbook price, not a recommendation
 
 ## NBA -- REGULAR
-- 11/05 09:00 PM ET: Orlando Magic @ Phoenix Suns (2-5 vs 1-5)  | DK -104/-114 | desk P(home) 51.1% (NO EDGE) | Scheduled
-- 11/05 10:00 PM ET: Miami Heat @ Golden State Warriors (3-5 vs 5-3)  | DK +221/-269 | desk P(home) 70.1% (NO EDGE) | Scheduled
+- 11/06 07:00 PM ET: Washington Wizards @ Atlanta Hawks (4-4 vs 5-4)  | DK +241/-297 | desk P(home) 71.8% (NO EDGE) | Scheduled
+- 11/06 07:00 PM ET: Boston Celtics @ Charlotte Hornets (6-2 vs 3-6)  | DK -324/+261 | desk P(home) 26.6% (NO EDGE) | Scheduled
+- 11/06 07:30 PM ET: Philadelphia 76ers @ Cleveland Cavaliers (8-1 vs 4-4)  | DK -148/+124 | desk P(home) 42.8% (NO EDGE) | Scheduled
+- 11/06 08:00 PM ET: Utah Jazz @ Dallas Mavericks (1-7 vs 4-4)  | DK +227/-277 | desk P(home) 70.6% (NO EDGE) | Scheduled
+- 11/06 08:00 PM ET: Oklahoma City Thunder @ Memphis Grizzlies (6-2 vs 6-2)  | DK -170/+142 | desk P(home) 39.6% (NO EDGE) | Scheduled
 
 ## NHL -- REGULAR
-- 11/05 07:00 PM ET: Utah Mammoth @ Montreal Canadiens (10-6-0 vs 9-3-3)  | DK -122/+102 | desk P(home) 47.4% (NO EDGE) | Scheduled
-- 11/05 07:00 PM ET: Vegas Golden Knights @ Detroit Red Wings (10-5-2 vs 7-6-3)  | DK -142/+120 | desk P(home) 43.6% (NO EDGE) | Scheduled
-- 11/05 07:00 PM ET: Chicago Blackhawks @ Tampa Bay Lightning (4-11-1 vs 9-3-2)  | DK +350/-455 | desk P(home) 78.7% (NO EDGE) | Scheduled
-- 11/05 07:00 PM ET: St. Louis Blues @ New Jersey Devils (7-7-1 vs 10-5-0)  | DK +180/-218 | desk P(home) 65.8% (NO EDGE) | Scheduled
-- 11/05 07:00 PM ET: Carolina Hurricanes @ New York Islanders (12-3-2 vs 7-5-2)  | DK -198/+164 | desk P(home) 36.3% (NO EDGE) | Scheduled
+- 11/06 07:00 PM ET: Columbus Blue Jackets @ Buffalo Sabres (7-7-0 vs 7-5-3)  | DK +142/-170 | desk P(home) 60.4% (NO EDGE) | Scheduled
+- 11/06 08:00 PM ET: San Jose Sharks @ Minnesota Wild (7-9-1 vs 11-3-3)  | DK +210/-258 | desk P(home) 69.1% (NO EDGE) | Scheduled
+- 11/06 08:00 PM ET: Anaheim Ducks @ Calgary Flames (8-7-1 vs 7-8-1)  | DK +124/-148 | desk P(home) 57.2% (NO EDGE) | Scheduled
 
-## LoL Esports -- 0 live, 5 upcoming — model projection — unvalidated, no sportsbook price, not a recommendation
-- [Worlds] 11/05 05:00 PM ET: Dplus KIA vs BILIBILI GAMING BO5 | model P(A) 48.9%
+## LoL Esports -- 0 live, 4 upcoming — model projection — unvalidated, no sportsbook price, not a recommendation
 - [Worlds] 11/06 05:00 PM ET: T1 vs Karmine Corp BO5 | model P(A) 37.3%
 - [Worlds] 11/07 05:00 PM ET: Gen.G Esports vs Invictus Gaming BO5 | model P(A) 62.6%
 
