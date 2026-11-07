@@ -2,7 +2,7 @@
 
 ## Slate
 - **0 games** scheduled
-- **No best bet today:** a best bet needs a real sportsbook price — 24 model-only projections excluded (LOL 5, MLS 5, NCAAF 5, GOLF 4, NFL 2, NCAAB 2, NHL 1)
+- **No best bet today:** a best bet needs a real sportsbook price — 23 model-only projections excluded (LOL 5, MLS 5, NCAAF 5, GOLF 4, NFL 2, EPL 1, NHL 1)
 
 ## Golf -- World Wide Technology Championship
 - **Leader:** Ben James (-15) at #1
@@ -10,18 +10,18 @@
 - **Model projection:** Austin Eckroat TOP5 (model 14.9%) — model projection — unvalidated, no sportsbook price, not a recommendation
 
 ## NBA -- REGULAR
-- 11/06 07:00 PM ET: Washington Wizards @ Atlanta Hawks (4-5 vs 6-4) 132-139 | no DK price | no validated model probability | Final
-- 11/06 07:00 PM ET: Boston Celtics @ Charlotte Hornets (7-2 vs 3-7) 119-80 | no DK price | no validated model probability | Final
-- 11/06 07:30 PM ET: Philadelphia 76ers @ Cleveland Cavaliers (8-2 vs 5-4) 95-119 | no DK price | no validated model probability | Final
-- 11/06 08:00 PM ET: Utah Jazz @ Dallas Mavericks (1-8 vs 5-4) 100-112 | no DK price | no validated model probability | Final
-- 11/06 08:00 PM ET: Oklahoma City Thunder @ Memphis Grizzlies (7-2 vs 6-3) 128-97 | no DK price | no validated model probability | Final
+- 11/07 05:00 PM ET: Denver Nuggets @ Indiana Pacers (4-3 vs 3-6)  | DK -268/+220 | desk P(home) 30.0% (NO EDGE) | Scheduled
+- 11/07 07:30 PM ET: Brooklyn Nets @ Atlanta Hawks (2-6 vs 6-4)  | DK +221/-269 | desk P(home) 70.1% (NO EDGE) | Scheduled
+- 11/07 08:00 PM ET: New York Knicks @ Cleveland Cavaliers (4-4 vs 5-4)  | DK -191/+160 | desk P(home) 37.0% (NO EDGE) | Scheduled
+- 11/07 08:00 PM ET: Washington Wizards @ Oklahoma City Thunder (4-5 vs 7-2)  | DK +424/-567 | desk P(home) 81.7% (NO EDGE) | Scheduled
+- 11/07 08:30 PM ET: Orlando Magic @ Golden State Warriors (2-6 vs 6-3)  | DK +180/-217 | desk P(home) 65.7% (NO EDGE) | Scheduled
 
 ## NHL -- REGULAR
-- 11/06 07:00 PM ET: Columbus Blue Jackets @ Buffalo Sabres (0-0-0 vs 0-0-0) 2-5 | no DK price | no validated model probability | Final
-- 11/06 08:00 PM ET: San Jose Sharks @ Minnesota Wild (0-0-0 vs 0-0-0) 1-4 | no DK price | no validated model probability | Final
-- 11/06 08:00 PM ET: Anaheim Ducks @ Calgary Flames (0-0-0 vs 0-0-0) 5-3 | no DK price | no validated model probability | Final
-- 11/07 12:30 PM ET: Florida Panthers @ Washington Capitals (9-5-2 vs 8-6-0)  | DK +102/-122 | desk P(home) 52.6% (NO EDGE) | Scheduled
-- 11/07 01:00 PM ET: St. Louis Blues @ Nashville Predators (7-7-2 vs 7-4-5)  | DK -110/-110 | desk P(home) 50.0% (NO EDGE) | Scheduled
+- 11/07 12:30 PM ET: Florida Panthers @ Washington Capitals (9-5-2 vs 8-6-0) 2-1 | no DK price | no validated model probability | End of Period
+- 11/07 01:00 PM ET: St. Louis Blues @ Nashville Predators (7-7-2 vs 7-4-5) 1-0 | no DK price | no validated model probability | In Progress
+- 11/07 05:00 PM ET: New York Rangers @ Seattle Kraken (9-7-1 vs 9-5-1)  | DK -135/+114 | desk P(home) 44.9% (NO EDGE) | Scheduled
+- 11/07 07:00 PM ET: Montreal Canadiens @ Toronto Maple Leafs (10-3-3 vs 8-7-2)  | DK -122/+102 | desk P(home) 47.4% (NO EDGE) | Scheduled
+- 11/07 07:00 PM ET: Utah Mammoth @ Ottawa Senators (10-6-1 vs 10-6-1)  | DK -120/+100 | desk P(home) 47.8% (NO EDGE) | Scheduled
 
 ## LoL Esports -- 0 live, 3 upcoming — model projection — unvalidated, no sportsbook price, not a recommendation
 - [Worlds] 11/07 05:00 PM ET: Gen.G Esports vs Invictus Gaming BO5 | model P(A) 62.6%

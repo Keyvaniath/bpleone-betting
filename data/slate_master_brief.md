@@ -1,13 +1,13 @@
 # EdgeStat — Tonight's Master Brief
-_Generated 2026-11-07T15:24:36 UTC_
+_Generated 2026-11-07T18:41:50 UTC_
 
 ## Slate Quality
 - **Tier:** NO_ACTION_NIGHT
-- **Score:** -136
+- **Score:** -117
 - **Advisory:** STAND DOWN. Slate has no aligned conviction. Skip betting tonight or watch only.
 - **Total LOCKs:** 0
 - **Total STRONG:** 16
-- **Total FADES:** 200
+- **Total FADES:** 181
 
 ## Top 5 Curated Picks
 1. **GOLF / Ben James** (GOLF_PLAYER, score=198.79)
@@ -41,5 +41,5 @@ _Generated 2026-11-07T15:24:36 UTC_
   - Fade angle: team total UNDER
 - **NBA** / GSW (TEAM_FADE)
   - Fade angle: team total UNDER
-- **NBA** / POR (TEAM_FADE)
+- **NBA** / HOU (TEAM_FADE)
   - Fade angle: team total UNDER

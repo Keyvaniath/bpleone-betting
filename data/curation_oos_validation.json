@@ -1,14 +1,14 @@
 {
-  "generated_at": "2026-11-07T15:24:28",
-  "n_settled": 15528,
+  "generated_at": "2026-11-07T18:41:41",
+  "n_settled": 15529,
   "span": [
     "2026-05-24",
-    "2026-11-06"
+    "2026-11-07"
   ],
-  "n_days": 153,
+  "n_days": 154,
   "in_sample": {
     "raw_roi": -16.6,
-    "raw_n": 15517,
+    "raw_n": 15518,
     "curated_roi": 6.9,
     "curated_n": 4304,
     "curated_hit": 69.3,
@@ -24,21 +24,21 @@
     {
       "split": "60/40",
       "train_start": "2026-05-24",
-      "train_end": "2026-09-04",
-      "test_end": "2026-11-06",
-      "train_n": 9268,
-      "families_cut": 21,
-      "test_raw_roi": -6.3,
-      "test_oos_roi": -2.2,
+      "train_end": "2026-09-05",
+      "test_end": "2026-11-07",
+      "train_n": 9312,
+      "families_cut": 20,
+      "test_raw_roi": -6.4,
+      "test_oos_roi": -2.1,
       "test_oos_hit": 67.5,
-      "test_oos_n": 4858,
-      "test_leak_roi": 4.5
+      "test_oos_n": 4925,
+      "test_leak_roi": 4.4
     },
     {
       "split": "70/30",
       "train_start": "2026-05-24",
       "train_end": "2026-09-20",
-      "test_end": "2026-11-06",
+      "test_end": "2026-11-07",
       "train_n": 10885,
       "families_cut": 23,
       "test_raw_roi": -4.8,
@@ -50,14 +50,14 @@
     {
       "split": "80/20",
       "train_start": "2026-05-24",
-      "train_end": "2026-10-06",
-      "test_end": "2026-11-06",
-      "train_n": 11731,
+      "train_end": "2026-10-07",
+      "test_end": "2026-11-07",
+      "train_n": 11734,
       "families_cut": 26,
       "test_raw_roi": -4.1,
       "test_oos_roi": -1.9,
       "test_oos_hit": 67.3,
-      "test_oos_n": 3133,
+      "test_oos_n": 3131,
       "test_leak_roi": 4.2
     }
   ],
@@ -77,7 +77,7 @@
     "n_cut": 23,
     "kept_losing": 11,
     "flipped": 4,
-    "test_net_of_cuts": -114.0,
+    "test_net_of_cuts": -115.0,
     "worst": [
       {
         "family": "top",
@@ -85,12 +85,12 @@
         "net": -31.9
       },
       {
-        "family": "mlb_xbh_0.5_over",
+        "family": "1_plus_xbh",
         "n": 60,
         "net": -20.6
       },
       {
-        "family": "1_plus_xbh",
+        "family": "mlb_xbh_0.5_over",
         "n": 60,
         "net": -20.6
       },
@@ -228,10 +228,10 @@
     "note": "Concentrated: the top 2 of 81 surviving families produced +30u; the other 79 combined LOST 181u. 5 small-sample families are flagged and set aside; excluding them the held-out ROI is -4.7% (n=3304)."
   },
   "caveats": [
-    "Sample: 153 settled days (2026-05-24 to 2026-11-06), one season. The held-out tail is unseen but adjacent in time -- not a cross-season test.",
+    "Sample: 154 settled days (2026-05-24 to 2026-11-07), one season. The held-out tail is unseen but adjacent in time -- not a cross-season test.",
     "Held-out 95% CI [-7.0%, -2.1%] is entirely below zero: the curated set loses money out of sample. There is no proven edge.",
     "Units are mixed price classes: most rows are graded at the model's own fair odds (calibration, not a betting ROI); only sportsbook-priced rows are a betting ROI. PrizePicks rows are excluded.",
     "The CI treats picks as independent; same-slate correlation makes the true interval wider than shown."
   ],
-  "headline": "Curation does not hold up out of sample: the curated set returns -4.5% on the unseen later window (95% CI entirely below zero), though the families it cut lost 114u there."
+  "headline": "Curation does not hold up out of sample: the curated set returns -4.5% on the unseen later window (95% CI entirely below zero), though the families it cut lost 115u there."
 }
