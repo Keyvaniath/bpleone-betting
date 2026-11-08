@@ -1,5 +1,5 @@
 **EdgeStat -- Tonight's Slate**
-_NO_ACTION_NIGHT_ | L:0 S:13 F:108
+_NO_ACTION_NIGHT_ | L:0 S:13 F:100
 
 :dart: **Top Picks:**
 1. [GOLF] Ben James -- Ben James (PLAYER_STRONG)
