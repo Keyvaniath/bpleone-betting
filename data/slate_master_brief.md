@@ -1,30 +1,30 @@
 # EdgeStat — Tonight's Master Brief
-_Generated 2026-11-08T01:18:02 UTC_
+_Generated 2026-11-08T15:47:11 UTC_
 
 ## Slate Quality
 - **Tier:** NO_ACTION_NIGHT
-- **Score:** -70
+- **Score:** -56
 - **Advisory:** STAND DOWN. Slate has no aligned conviction. Skip betting tonight or watch only.
 - **Total LOCKs:** 0
-- **Total STRONG:** 12
-- **Total FADES:** 118
+- **Total STRONG:** 13
+- **Total FADES:** 108
 
 ## Top 5 Curated Picks
-1. **GOLF / Ben James** (GOLF_PLAYER, score=210.07)
+1. **GOLF / Ben James** (GOLF_PLAYER, score=218.07)
    - Play: Ben James (PLAYER_STRONG)
    - Rationale: Cross-sport top pick (GOLF_PLAYER)
-2. **GOLF / Peter Malnati** (GOLF_PLAYER, score=176.21)
-   - Play: Peter Malnati (PLAYER_STRONG)
+2. **GOLF / Ryan Gerard** (GOLF_PLAYER, score=173.0)
+   - Play: Ryan Gerard (PLAYER_STRONG)
    - Rationale: Cross-sport top pick (GOLF_PLAYER)
-3. **NBA / OKC** (NBA_TEAM, score=70.0)
-   - Play: OKC (TEAM_STRONG)
+3. **NBA / MIN** (NBA_TEAM, score=70.0)
+   - Play: MIN (TEAM_STRONG)
    - Rationale: Cross-sport top pick (NBA_TEAM)
 
 ## Top Events Board
 - **GOLF** / ? (TOURNAMENT_STRONG)
   - Ben James top 10 finish
-  - Peter Malnati top 10 finish
-  - Zac Blair top 10 finish
+  - Ryan Gerard top 10 finish
+  - Chris Kirk top 10 finish
 
 ## Slate ROI Projection
 - **Picks:** 0
@@ -33,13 +33,13 @@ _Generated 2026-11-08T01:18:02 UTC_
 - **Expected P&L on $100:** $0.0
 
 ## Top Fades
-- **NBA** / WAS (TEAM_FADE)
+- **NBA** / lamelo ball (PLAYER_FADE)
+  - Fade angle: PTS UNDER + PRA UNDER (multi-prop)
+- **NBA** / BKN (TEAM_FADE)
   - Fade angle: team total UNDER
-- **NBA** / PHX (TEAM_FADE)
+- **NBA** / CHI (TEAM_FADE)
   - Fade angle: team total UNDER
-- **NBA** / GSW (TEAM_FADE)
+- **NBA** / UTA (TEAM_FADE)
   - Fade angle: team total UNDER
-- **NBA** / ORL (TEAM_FADE)
-  - Fade angle: team total UNDER
-- **NBA** / CLE (TEAM_FADE)
+- **NBA** / DET (TEAM_FADE)
   - Fade angle: team total UNDER

@@ -1,10 +1,10 @@
 **EdgeStat -- Tonight's Slate**
-_NO_ACTION_NIGHT_ | L:0 S:12 F:118
+_NO_ACTION_NIGHT_ | L:0 S:13 F:108
 
 :dart: **Top Picks:**
 1. [GOLF] Ben James -- Ben James (PLAYER_STRONG)
-2. [GOLF] Peter Malnati -- Peter Malnati (PLAYER_STRONG)
-3. [NBA] OKC -- OKC (TEAM_STRONG)
+2. [GOLF] Ryan Gerard -- Ryan Gerard (PLAYER_STRONG)
+3. [NBA] MIN -- MIN (TEAM_STRONG)
 
 :coin: Bankroll Advisory: STAND DOWN. Slate has no aligned conviction. Skip betting tonight or watch only.
 
