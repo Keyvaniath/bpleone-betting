@@ -1,10 +1,10 @@
 **EdgeStat -- Tonight's Slate**
-_NO_ACTION_NIGHT_ | L:0 S:10 F:54
+_NO_ACTION_NIGHT_ | L:0 S:6 F:59
 
 :dart: **Top Picks:**
 1. [GOLF] Ben James -- Ben James (PLAYER_STRONG)
-2. [GOLF] Chris Kirk -- Chris Kirk (PLAYER_STRONG)
-3. [NBA] MIN -- MIN (TEAM_STRONG)
+2. [GOLF] Blades Brown -- Blades Brown (PLAYER_STRONG)
+3. [NBA] DET -- DET (TEAM_STRONG)
 
 :coin: Bankroll Advisory: STAND DOWN. Slate has no aligned conviction. Skip betting tonight or watch only.
 
