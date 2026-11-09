@@ -2,14 +2,14 @@
 
 ## Slate
 - **0 games** scheduled
-- **No best bet today:** a best bet needs a real sportsbook price — 8 model-only projections excluded (LOL 4, NHL 2, NBA 1, NCAAB 1)
+- **No best bet today:** a best bet needs a real sportsbook price — 12 model-only projections excluded (LOL 4, NBA 3, NCAAB 2, NHL 2, NFL 1)
 
 ## NBA -- REGULAR
-- 11/09 07:00 PM ET: Los Angeles Lakers @ Atlanta Hawks (9-2 vs 7-4)  | DK -141/+119 | desk P(home) 43.8% (NO EDGE) | Scheduled
-- 11/09 07:00 PM ET: Cleveland Cavaliers @ Charlotte Hornets (5-5 vs 3-7)  | DK -356/+284 | desk P(home) 25.0% (NO EDGE) | Scheduled
-- 11/09 07:00 PM ET: Washington Wizards @ Detroit Pistons (4-6 vs 6-3)  | DK +376/-490 | desk P(home) 79.8% (NO EDGE) | Scheduled
-- 11/09 07:30 PM ET: Memphis Grizzlies @ Toronto Raptors (6-3 vs 5-4)  | DK +131/-156 | desk P(home) 58.5% (NO EDGE) | Scheduled
-- 11/09 08:00 PM ET: Indiana Pacers @ Dallas Mavericks (3-7 vs 6-4)  | DK +120/-142 | desk P(home) 56.4% (NO EDGE) | Scheduled
+- 11/09 07:00 PM ET: Los Angeles Lakers @ Atlanta Hawks (9-2 vs 7-4)  | DK +101/-120 | desk P(home) 52.3% (NO EDGE) | Scheduled
+- 11/09 07:00 PM ET: Cleveland Cavaliers @ Charlotte Hornets (5-5 vs 3-7)  | DK -337/+270 | desk P(home) 25.9% (NO EDGE) | Scheduled
+- 11/09 07:00 PM ET: Washington Wizards @ Detroit Pistons (4-6 vs 6-3)  | DK +394/-518 | desk P(home) 80.5% (NO EDGE) | Scheduled
+- 11/09 07:30 PM ET: Memphis Grizzlies @ Toronto Raptors (6-3 vs 5-4)  | DK +120/-142 | desk P(home) 56.4% (NO EDGE) | Scheduled
+- 11/09 08:00 PM ET: Indiana Pacers @ Dallas Mavericks (3-7 vs 6-4)  | DK +143/-170 | desk P(home) 60.5% (NO EDGE) | Scheduled
 
 ## NHL -- REGULAR
 - 11/09 08:00 PM ET: New York Rangers @ Edmonton Oilers (10-7-1 vs 12-3-3)  | DK +136/-162 | desk P(home) 59.3% (NO EDGE) | Scheduled
