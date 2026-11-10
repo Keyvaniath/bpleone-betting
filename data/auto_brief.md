@@ -1,20 +1,22 @@
-# Tonight's Slate Brief — 2026-11-09
+# Tonight's Slate Brief — 2026-11-10
 
 ## Slate
 - **0 games** scheduled
-- **No best bet today:** a best bet needs a real sportsbook price — 12 model-only projections excluded (LOL 4, NBA 3, NCAAB 2, NHL 2, NFL 1)
+- **No best bet today:** a best bet needs a real sportsbook price — 6 model-only projections excluded (LOL 4, NHL 2)
 
 ## NBA -- REGULAR
-- 11/09 07:00 PM ET: Los Angeles Lakers @ Atlanta Hawks (9-2 vs 7-4)  | DK +101/-120 | desk P(home) 52.3% (NO EDGE) | Scheduled
-- 11/09 07:00 PM ET: Cleveland Cavaliers @ Charlotte Hornets (5-5 vs 3-7)  | DK -337/+270 | desk P(home) 25.9% (NO EDGE) | Scheduled
-- 11/09 07:00 PM ET: Washington Wizards @ Detroit Pistons (4-6 vs 6-3)  | DK +394/-518 | desk P(home) 80.5% (NO EDGE) | Scheduled
-- 11/09 07:30 PM ET: Memphis Grizzlies @ Toronto Raptors (6-3 vs 5-4)  | DK +120/-142 | desk P(home) 56.4% (NO EDGE) | Scheduled
-- 11/09 08:00 PM ET: Indiana Pacers @ Dallas Mavericks (3-7 vs 6-4)  | DK +143/-170 | desk P(home) 60.5% (NO EDGE) | Scheduled
+- 11/09 07:00 PM ET: Los Angeles Lakers @ Atlanta Hawks (10-2 vs 7-5) 124-114 | no DK price | no validated model probability | Final
+- 11/09 07:00 PM ET: Cleveland Cavaliers @ Charlotte Hornets (5-6 vs 4-7) 112-124 | no DK price | no validated model probability | Final
+- 11/09 07:00 PM ET: Washington Wizards @ Detroit Pistons (4-7 vs 7-3) 111-122 | no DK price | no validated model probability | Final
+- 11/09 07:30 PM ET: Memphis Grizzlies @ Toronto Raptors (7-3 vs 5-5) 118-102 | no DK price | no validated model probability | Final
+- 11/09 08:00 PM ET: Indiana Pacers @ Dallas Mavericks (3-8 vs 7-4) 122-125 | no DK price | no validated model probability | Final
 
 ## NHL -- REGULAR
-- 11/09 08:00 PM ET: New York Rangers @ Edmonton Oilers (10-7-1 vs 12-3-3)  | DK +136/-162 | desk P(home) 59.3% (NO EDGE) | Scheduled
-- 11/09 09:30 PM ET: Philadelphia Flyers @ Vancouver Canucks (4-10-5 vs 3-15-1)  | DK -135/+114 | desk P(home) 44.9% (NO EDGE) | Scheduled
-- 11/09 10:00 PM ET: New York Islanders @ San Jose Sharks (7-6-3 vs 7-11-1)  | DK -142/+120 | desk P(home) 43.6% (NO EDGE) | Scheduled
+- 11/09 08:00 PM ET: New York Rangers @ Edmonton Oilers (0-0-0 vs 0-0-0) 1-3 | no DK price | no validated model probability | Final
+- 11/09 09:30 PM ET: Philadelphia Flyers @ Vancouver Canucks (0-0-0 vs 0-0-0) 3-1 | no DK price | no validated model probability | Final
+- 11/09 10:00 PM ET: New York Islanders @ San Jose Sharks (0-0-0 vs 0-0-0) 2-3 | no DK price | no validated model probability | Final
+- 11/10 07:00 PM ET: Colorado Avalanche @ Toronto Maple Leafs (10-6-2 vs 8-9-2)  | DK -155/+130 | desk P(home) 41.7% (NO EDGE) | Scheduled
+- 11/10 07:00 PM ET: Minnesota Wild @ Montreal Canadiens (12-3-4 vs 11-3-3)  | DK -125/+105 | desk P(home) 46.8% (NO EDGE) | Scheduled
 
 ## LoL Esports -- 0 live, 1 upcoming — model projection — unvalidated, no sportsbook price, not a recommendation
 - [Worlds] 11/14 02:00 PM ET: Gen.G Esports vs BILIBILI GAMING BO5 | model P(A) 59.5%

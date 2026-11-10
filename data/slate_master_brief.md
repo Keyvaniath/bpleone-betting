@@ -1,27 +1,27 @@
 # EdgeStat — Tonight's Master Brief
-_Generated 2026-11-10T04:10:54 UTC_
+_Generated 2026-11-10T13:18:38 UTC_
 
 ## Slate Quality
 - **Tier:** NO_ACTION_NIGHT
-- **Score:** -2
+- **Score:** -80
 - **Advisory:** STAND DOWN. Slate has no aligned conviction. Skip betting tonight or watch only.
 - **Total LOCKs:** 0
 - **Total STRONG:** 5
-- **Total FADES:** 22
+- **Total FADES:** 100
 
 ## Top 5 Curated Picks
-1. **GOLF / Michael Kim** (GOLF_PLAYER, score=219.29)
-   - Play: Michael Kim (PLAYER_STRONG)
+1. **GOLF / David Ford** (GOLF_PLAYER, score=219.29)
+   - Play: David Ford (PLAYER_STRONG)
    - Rationale: Cross-sport top pick (GOLF_PLAYER)
-2. **GOLF / Kensei Hirata** (GOLF_PLAYER, score=219.29)
-   - Play: Kensei Hirata (PLAYER_STRONG)
+2. **GOLF / Blades Brown** (GOLF_PLAYER, score=219.29)
+   - Play: Blades Brown (PLAYER_STRONG)
    - Rationale: Cross-sport top pick (GOLF_PLAYER)
 
 ## Top Events Board
 - **GOLF** / ? (TOURNAMENT_STRONG)
-  - Michael Kim top 10 finish
-  - Kensei Hirata top 10 finish
+  - David Ford top 10 finish
   - Blades Brown top 10 finish
+  - Kensei Hirata top 10 finish
 
 ## Slate ROI Projection
 - **Picks:** 0
@@ -30,13 +30,13 @@ _Generated 2026-11-10T04:10:54 UTC_
 - **Expected P&L on $100:** $0.0
 
 ## Top Fades
-- **NBA** / NOP (TEAM_FADE)
+- **NBA** / POR (TEAM_FADE)
   - Fade angle: team total UNDER
-- **NBA** / GSW (TEAM_FADE)
+- **NBA** / PHI (TEAM_FADE)
   - Fade angle: team total UNDER
-- **NBA** / SAS (TEAM_FADE)
+- **NBA** / PHX (TEAM_FADE)
   - Fade angle: team total UNDER
-- **NHL** / joseph woll (GOALIE_FADE)
-  - Fade angle: saves UNDER + win NO
-- **NHL** / thatcher demko (GOALIE_FADE)
-  - Fade angle: saves UNDER + win NO
+- **NBA** / MIL (TEAM_FADE)
+  - Fade angle: team total UNDER
+- **NBA** / MIA (TEAM_FADE)
+  - Fade angle: team total UNDER

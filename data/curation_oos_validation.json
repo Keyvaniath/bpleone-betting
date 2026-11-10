@@ -1,22 +1,22 @@
 {
-  "generated_at": "2026-11-10T04:10:46",
-  "n_settled": 16981,
+  "generated_at": "2026-11-10T13:18:28",
+  "n_settled": 17174,
   "span": [
     "2026-05-24",
     "2026-11-09"
   ],
   "n_days": 156,
   "in_sample": {
-    "raw_roi": -15.0,
-    "raw_n": 16970,
-    "curated_roi": 6.3,
-    "curated_n": 5487,
-    "curated_hit": 71.2,
+    "raw_roi": -14.7,
+    "raw_n": 17163,
+    "curated_roi": 6.4,
+    "curated_n": 5622,
+    "curated_hit": 71.4,
     "families_cut": 41,
     "curated_roi_ci": {
-      "roi_lo": 4.2,
-      "roi_hi": 8.4,
-      "n": 5487,
+      "roi_lo": 4.3,
+      "roi_hi": 8.5,
+      "n": 5622,
       "positive": true
     }
   },
@@ -28,11 +28,11 @@
       "test_end": "2026-11-09",
       "train_n": 9427,
       "families_cut": 21,
-      "test_raw_roi": -4.5,
-      "test_oos_roi": -0.7,
-      "test_oos_hit": 69.3,
-      "test_oos_n": 6018,
-      "test_leak_roi": 4.2
+      "test_raw_roi": -4.2,
+      "test_oos_roi": -0.5,
+      "test_oos_hit": 69.5,
+      "test_oos_n": 6201,
+      "test_leak_roi": 4.4
     },
     {
       "split": "70/30",
@@ -41,11 +41,11 @@
       "test_end": "2026-11-09",
       "train_n": 11562,
       "families_cut": 23,
-      "test_raw_roi": -2.8,
-      "test_oos_roi": -0.9,
-      "test_oos_hit": 69.3,
-      "test_oos_n": 4703,
-      "test_leak_roi": 4.1
+      "test_raw_roi": -2.5,
+      "test_oos_roi": -0.7,
+      "test_oos_hit": 69.6,
+      "test_oos_n": 4885,
+      "test_leak_roi": 4.4
     },
     {
       "split": "80/20",
@@ -54,30 +54,30 @@
       "test_end": "2026-11-09",
       "train_n": 11743,
       "families_cut": 26,
-      "test_raw_roi": -2.3,
-      "test_oos_roi": -0.4,
-      "test_oos_hit": 69.5,
-      "test_oos_n": 4272,
-      "test_leak_roi": 4.4
+      "test_raw_roi": -2.0,
+      "test_oos_roi": -0.3,
+      "test_oos_hit": 69.7,
+      "test_oos_n": 4443,
+      "test_leak_roi": 4.6
     }
   ],
   "holdout_70_ci": {
-    "roi_lo": -2.8,
-    "roi_hi": 1.0,
-    "n": 4703,
+    "roi_lo": -2.5,
+    "roi_hi": 1.1,
+    "n": 4885,
     "positive": false
   },
   "holdout_robust_ci": {
-    "roi_lo": -3.4,
-    "roi_hi": 0.5,
-    "n": 4673,
+    "roi_lo": -3.1,
+    "roi_hi": 0.7,
+    "n": 4855,
     "positive": false
   },
   "persistence": {
     "n_cut": 23,
     "kept_losing": 9,
     "flipped": 0,
-    "test_net_of_cuts": -115.0,
+    "test_net_of_cuts": -114.0,
     "worst": [
       {
         "family": "top",
@@ -100,46 +100,54 @@
         "net": -8.3
       },
       {
-        "family": "pass_yds_under",
-        "n": 75,
-        "net": -8.0
-      },
-      {
         "family": "hits_2plus_yes",
         "n": 10,
+        "net": -7.7
+      },
+      {
+        "family": "pass_yds_under",
+        "n": 76,
         "net": -7.7
       }
     ]
   },
   "concentration": {
     "n_surviving_families": 80,
-    "curated_net": -42.5,
-    "curated_n": 4703,
+    "curated_net": -33.7,
+    "curated_n": 4885,
     "top2": [
       {
         "family": "longest_rec_under",
-        "n": 540,
-        "net": 35.3,
-        "roi": 6.5
+        "n": 563,
+        "net": 40.3,
+        "roi": 7.2
       },
       {
-        "family": "fight_r1_finish_yes",
-        "n": 26,
-        "net": 21.0,
-        "roi": 80.6
+        "family": "longest_rush_under",
+        "n": 262,
+        "net": 21.3,
+        "roi": 8.1
       }
     ],
-    "net_top2": 56.2,
-    "net_ex_top2": -98.7,
-    "roi_ex_flagged": -1.4,
-    "n_ex_flagged": 4673,
+    "net_top2": 61.6,
+    "net_ex_top2": -95.3,
+    "roi_ex_flagged": -1.2,
+    "n_ex_flagged": 4855,
     "top_contributors": [
       {
         "family": "longest_rec_under",
-        "n": 540,
-        "net": 35.3,
-        "roi": 6.5,
-        "hit": 79.1,
+        "n": 563,
+        "net": 40.3,
+        "roi": 7.2,
+        "hit": 79.6,
+        "flagged": false
+      },
+      {
+        "family": "longest_rush_under",
+        "n": 262,
+        "net": 21.3,
+        "roi": 8.1,
+        "hit": 82.1,
         "flagged": false
       },
       {
@@ -151,35 +159,27 @@
         "flagged": true
       },
       {
-        "family": "longest_rush_under",
-        "n": 253,
-        "net": 18.8,
-        "roi": 7.4,
-        "hit": 81.4,
-        "flagged": false
-      },
-      {
         "family": "team_pts_under",
-        "n": 174,
-        "net": 17.4,
-        "roi": 10.0,
-        "hit": 72.4,
-        "flagged": false
-      },
-      {
-        "family": "p3_over",
-        "n": 131,
-        "net": 12.3,
-        "roi": 9.4,
-        "hit": 69.5,
+        "n": 186,
+        "net": 19.2,
+        "roi": 10.3,
+        "hit": 72.6,
         "flagged": false
       },
       {
         "family": "steals_over",
-        "n": 41,
-        "net": 10.9,
-        "roi": 26.5,
-        "hit": 85.4,
+        "n": 45,
+        "net": 11.4,
+        "roi": 25.3,
+        "hit": 84.4,
+        "flagged": false
+      },
+      {
+        "family": "rec_yds_under",
+        "n": 457,
+        "net": 11.2,
+        "roi": 2.4,
+        "hit": 78.1,
         "flagged": false
       }
     ],
@@ -225,13 +225,13 @@
         "flagged": true
       }
     ],
-    "note": "Concentrated: the top 2 of 80 surviving families produced +56u; the other 78 combined LOST 99u. 5 small-sample families are flagged and set aside; excluding them the held-out ROI is -1.4% (n=4673)."
+    "note": "Concentrated: the top 2 of 80 surviving families produced +62u; the other 78 combined LOST 95u. 5 small-sample families are flagged and set aside; excluding them the held-out ROI is -1.2% (n=4855)."
   },
   "caveats": [
     "Sample: 156 settled days (2026-05-24 to 2026-11-09), one season. The held-out tail is unseen but adjacent in time -- not a cross-season test.",
-    "Held-out 95% CI [-2.8%, +1.0%] spans zero: no edge is proven.",
+    "Held-out 95% CI [-2.5%, +1.1%] spans zero: no edge is proven.",
     "Units are mixed price classes: most rows are graded at the model's own fair odds (calibration, not a betting ROI); only sportsbook-priced rows are a betting ROI. PrizePicks rows are excluded.",
     "The CI treats picks as independent; same-slate correlation makes the true interval wider than shown."
   ],
-  "headline": "The curated set returns -0.9% on the unseen later window; the 95% CI spans zero, so no edge is proven (the families it cut lost 115u there)."
+  "headline": "The curated set returns -0.7% on the unseen later window; the 95% CI spans zero, so no edge is proven (the families it cut lost 114u there)."
 }
