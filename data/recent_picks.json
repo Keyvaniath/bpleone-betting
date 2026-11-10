@@ -1,23 +1,23 @@
 {
- "generated_at": "2026-11-09T23:34:22",
+ "generated_at": "2026-11-10T02:55:23",
  "stake_assumption": "1u flat per pick",
  "total_picks": 20000,
  "n_settled": 23126,
- "n_pending": 593,
- "n_void": 1936,
- "wins": 11188,
- "losses": 11927,
+ "n_pending": 569,
+ "n_void": 1960,
+ "wins": 11189,
+ "losses": 11926,
  "pushes": 11,
- "hit_rate": 0.484,
- "net_units": -3481.172,
- "roi_pct": -15.06,
- "n_calibrated_picks": 19886,
+ "hit_rate": 0.4841,
+ "net_units": -3479.636,
+ "roi_pct": -15.05,
+ "n_calibrated_picks": 19887,
  "calibrated_reliability": {
   "n": 17419,
   "ece_raw": 0.0685,
   "ece_calibrated": 0.0093,
-  "brier_raw": 0.20949,
-  "brier_calibrated": 0.19542,
+  "brier_raw": 0.20947,
+  "brier_calibrated": 0.19544,
   "note": "In-sample over the settled ledger (the isotonic transform is fit on these same outcomes); held-out 70/30 validation is in recalibration_map.json. p_predicted = raw model prob (kept untouched for the learning loop); p_calibrated = honest prob stamped per pick. Lower ECE/Brier on the calibrated column = the displayed % is truer."
  },
  "curated": {
@@ -40,10 +40,10 @@
   "definition": "Featured/recommended plays only -- Lock of the Day, Top 25, Whale, Sharp, Consensus (hit), Under Alerts, POD. Excludes the experimental prop feeds, which are tracked to train the model, not bet.",
   "last_30": {
    "wins": 6,
-   "losses": 9,
-   "net_units": -4.792,
-   "roi_pct": -31.95,
-   "hit_rate": 0.4
+   "losses": 8,
+   "net_units": -3.792,
+   "roi_pct": -27.09,
+   "hit_rate": 0.4286
   }
  },
  "prizepicks": {
@@ -61,10 +61,10 @@
   "all": {
    "C": {
     "n": 22557,
-    "wins": 10887,
-    "losses": 11670,
-    "net_units": -3473.065,
-    "roi_pct": -15.4
+    "wins": 10888,
+    "losses": 11669,
+    "net_units": -3471.53,
+    "roi_pct": -15.39
    },
    "B": {
     "n": 562,
@@ -100,10 +100,10 @@
  "working_ledger_only": {
   "all": {
    "n_settled": 17471,
-   "wins": 8329,
-   "losses": 9131,
-   "net_units": -2318.06,
-   "roi_pct": -13.28
+   "wins": 8330,
+   "losses": 9130,
+   "net_units": -2316.524,
+   "roi_pct": -13.27
   },
   "curated": {
    "n_settled": 514,
@@ -147,7 +147,7 @@
    "date": "2026-11-03",
    "label": "placeholder prices",
    "n_repriced": 109,
-   "n_voided": 322,
+   "n_voided": 321,
    "curated_before": "912-420 (+13.87%, +184.81u)",
    "curated_after": "803-345 (+13.73%, +157.67u)",
    "note": "Every settled pick still graded at a -110 that no book posted -- the grader's fallback when a pick had no price, or a board that filled in -110 when its line was missing -- was checked against the prices books actually posted before first pitch (git history: DraftKings, then the Odds API, then Bovada; the exact line for totals, never a snapshot after first pitch). Found: graded at that real price. Not found -- every player prop (1+ hit, home run: no sportsbook prop prices were ever recorded) and the totals no book showed -- voided, wins and losses alike. The 1+ hit props had been overpaid at -110 (real prices run near -250): curated drops ~27u. The home-run props had been underpaid (real prices run +300 and longer) and were not curated: the all-picks line moves from -3,732u to -3,644u."
@@ -157,7 +157,7 @@
    "label": "NBA grading",
    "n_repriced": 0,
    "n_voided": 0,
-   "counts_text": "520 settled (190 had been voided as unsettleable, 330 sat pending), 3 re-graded against the right game",
+   "counts_text": "520 settled (190 had been voided as unsettleable, 330 sat pending), 4 re-graded against the right game",
    "record_label": "NBA picks (not part of the curated record)",
    "curated_before": "270-160 (-25.20u), 570 void",
    "curated_after": "596-337 (-40.01u), 380 void",
@@ -190,7 +190,7 @@
   }
  ],
  "stale_sources_skipped": [],
- "inactive_player_props_blocked": 4,
+ "inactive_player_props_blocked": 7,
  "started_game_picks_blocked": 0,
  "past_dated_picks_blocked": 72,
  "unpriced_picks_blocked": 0,
@@ -199,12 +199,12 @@
   "note": "The headline became ALL-TIME on 2026-10-23. 5,946 settled picks that the old tail-cut eviction had destroyed (May-June 2026, the 07-06 erosion and the run-up to 09-03) were rebuilt from git history at each pick's final state, with today's duplicate-wager rule re-applied, and folded back in. They are mostly the raw May-June MLB prop firehose (2,961-2,983, -1,256.9u), so the firehose ROI fell; the curated record changed by the curated picks among them. Before this date the published numbers covered the working window only -- working_ledger_only keeps that basis.",
   "n_archived_in_headline": 5655
  },
- "n_added_this_run": 16,
+ "n_added_this_run": 1,
  "n_newly_settled_this_run": 0,
- "n_resettled_this_run": 0,
- "n_voided_this_run": 0,
+ "n_resettled_this_run": 3,
+ "n_voided_this_run": 25,
  "n_duplicates_collapsed_this_run": 0,
- "n_duplicate_adds_blocked_this_run": 11,
+ "n_duplicate_adds_blocked_this_run": 18,
  "n_reconciled_settled_voids": 0,
  "n_bootstrapped_from_locks_history": 0,
  "by_source": {
@@ -5247,19 +5247,19 @@
   },
   "nba_tov_tov_under_3.5": {
    "n": 48,
-   "wins": 19,
-   "losses": 29,
+   "wins": 20,
+   "losses": 28,
    "pushes": 0,
-   "net_units": -19.398,
-   "hit_rate": 0.3958,
-   "roi_pct": -40.41,
+   "net_units": -17.84,
+   "hit_rate": 0.4167,
+   "roi_pct": -37.17,
    "by_price_class": {
     "C": {
      "n": 48,
-     "wins": 19,
-     "losses": 29,
-     "net_units": -19.396,
-     "roi_pct": -40.41
+     "wins": 20,
+     "losses": 28,
+     "net_units": -17.838,
+     "roi_pct": -37.16
     }
    },
    "sportsbook": {
@@ -6135,19 +6135,19 @@
   },
   "nba_reb_reb_over_6.5": {
    "n": 9,
-   "wins": 3,
-   "losses": 6,
+   "wins": 4,
+   "losses": 5,
    "pushes": 0,
-   "net_units": -4.396,
-   "hit_rate": 0.3333,
-   "roi_pct": -48.84,
+   "net_units": -2.831,
+   "hit_rate": 0.4444,
+   "roi_pct": -31.46,
    "by_price_class": {
     "C": {
      "n": 9,
-     "wins": 3,
-     "losses": 6,
-     "net_units": -4.395,
-     "roi_pct": -48.83
+     "wins": 4,
+     "losses": 5,
+     "net_units": -2.83,
+     "roi_pct": -31.44
     }
    },
    "sportsbook": {
@@ -9382,19 +9382,19 @@
   },
   "nba_fta_fta_under_5.5": {
    "n": 6,
-   "wins": 4,
-   "losses": 2,
+   "wins": 3,
+   "losses": 3,
    "pushes": 0,
-   "net_units": 0.367,
-   "hit_rate": 0.6667,
-   "roi_pct": 6.12,
+   "net_units": -1.221,
+   "hit_rate": 0.5,
+   "roi_pct": -20.35,
    "by_price_class": {
     "C": {
      "n": 6,
-     "wins": 4,
-     "losses": 2,
-     "net_units": 0.367,
-     "roi_pct": 6.12
+     "wins": 3,
+     "losses": 3,
+     "net_units": -1.221,
+     "roi_pct": -20.35
     }
    },
    "sportsbook": {
@@ -11984,11 +11984,11 @@
   },
   "tov_under": {
    "n": 102,
-   "wins": 61,
-   "losses": 41,
+   "wins": 62,
+   "losses": 40,
    "pushes": 0,
-   "net_units": -11.246,
-   "hit_rate": 0.598
+   "net_units": -9.687,
+   "hit_rate": 0.6078
   },
   "pra_under": {
    "n": 266,
@@ -12056,11 +12056,11 @@
   },
   "reb_over": {
    "n": 55,
-   "wins": 23,
-   "losses": 32,
+   "wins": 24,
+   "losses": 31,
    "pushes": 0,
-   "net_units": -19.065,
-   "hit_rate": 0.4182
+   "net_units": -17.5,
+   "hit_rate": 0.4364
   },
   "ra_over": {
    "n": 36,
@@ -12080,11 +12080,11 @@
   },
   "fta_under": {
    "n": 141,
-   "wins": 89,
-   "losses": 52,
+   "wins": 88,
+   "losses": 53,
    "pushes": 0,
-   "net_units": -6.438,
-   "hit_rate": 0.6312
+   "net_units": -8.026,
+   "hit_rate": 0.6241
   },
   "team_pts_under": {
    "n": 174,
@@ -12994,11 +12994,11 @@
   },
   "tov_under": {
    "n": 102,
-   "wins": 61,
-   "losses": 41,
+   "wins": 62,
+   "losses": 40,
    "pushes": 0,
-   "net_units": -11.246,
-   "hit_rate": 0.598
+   "net_units": -9.687,
+   "hit_rate": 0.6078
   },
   "pra_under": {
    "n": 266,
@@ -13066,11 +13066,11 @@
   },
   "reb_over": {
    "n": 55,
-   "wins": 23,
-   "losses": 32,
+   "wins": 24,
+   "losses": 31,
    "pushes": 0,
-   "net_units": -19.065,
-   "hit_rate": 0.4182
+   "net_units": -17.5,
+   "hit_rate": 0.4364
   },
   "ra_over": {
    "n": 36,
@@ -13090,11 +13090,11 @@
   },
   "fta_under": {
    "n": 141,
-   "wins": 89,
-   "losses": 52,
+   "wins": 88,
+   "losses": 53,
    "pushes": 0,
-   "net_units": -6.438,
-   "hit_rate": 0.6312
+   "net_units": -8.026,
+   "hit_rate": 0.6241
   },
   "team_pts_under": {
    "n": 174,
@@ -13251,13 +13251,13 @@
  },
  "by_sport": {
   "MLB": {
-   "n": 14033,
+   "n": 14032,
    "settled": 13787,
    "wins": 5016,
    "losses": 8760,
    "pushes": 11,
    "pending": 0,
-   "void": 246,
+   "void": 245,
    "net_units": -3620.602,
    "hit_rate": 0.3641,
    "roi_pct": -26.28,
@@ -13347,8 +13347,8 @@
    "wins": 374,
    "losses": 204,
    "pushes": 0,
-   "pending": 24,
-   "void": 280,
+   "pending": 23,
+   "void": 281,
    "net_units": -9.606,
    "hit_rate": 0.6471,
    "roi_pct": -1.66,
@@ -13386,8 +13386,8 @@
    "wins": 67,
    "losses": 64,
    "pushes": 0,
-   "pending": 8,
-   "void": 60,
+   "pending": 5,
+   "void": 63,
    "net_units": -32.798,
    "hit_rate": 0.5115,
    "roi_pct": -25.04,
@@ -13420,13 +13420,13 @@
    "markets": 1
   },
   "NFL": {
-   "n": 4535,
+   "n": 4536,
    "settled": 3599,
    "wins": 2637,
    "losses": 962,
    "pushes": 0,
-   "pending": 412,
-   "void": 524,
+   "pending": 393,
+   "void": 544,
    "net_units": -43.959,
    "hit_rate": 0.7327,
    "roi_pct": -1.22,
@@ -13448,14 +13448,14 @@
   "NBA": {
    "n": 2129,
    "settled": 1474,
-   "wins": 963,
-   "losses": 511,
+   "wins": 964,
+   "losses": 510,
    "pushes": 0,
-   "pending": 139,
-   "void": 516,
-   "net_units": -32.311,
-   "hit_rate": 0.6533,
-   "roi_pct": -2.19,
+   "pending": 138,
+   "void": 517,
+   "net_units": -30.767,
+   "hit_rate": 0.654,
+   "roi_pct": -2.09,
    "markets": 16
   }
  },
@@ -13494,13 +13494,13 @@
     "label": "10/23-11/2 -- season-to-date form (judged)"
    },
    "form_v3": {
-    "n": 1522,
+    "n": 1523,
     "settled": 1110,
     "wins": 878,
     "losses": 232,
     "pushes": 0,
-    "pending": 412,
-    "void": 0,
+    "pending": 393,
+    "void": 20,
     "net_units": 47.588,
     "hit_rate": 0.791,
     "roi_pct": 4.29,
@@ -13512,10 +13512,10 @@
   "note": "NFL props are judged from 10/23 forward: the simulator's form rule changed, so earlier picks are a different model. They stay on the record as their own line and never feed a family verdict."
  },
  "last_7_days": {
-  "wins": 1686,
-  "losses": 654,
-  "net_units": 63.963,
-  "hit_rate": 0.7205
+  "wins": 1583,
+  "losses": 609,
+  "net_units": 45.569,
+  "hit_rate": 0.7222
  },
  "note": "Unified pick ledger -- records every pick the model surfaces (top_25 board, whales, consensus, unders, sharp action, locks, POD) and settles each against actual outcomes. Per-source W-L feeds back into calibration so the model learns which modules are reliable. THIS is the training signal.",
  "picks": [
@@ -19695,5 +19695,5 @@
   "2026-05-19",
   "2026-11-09"
  ],
- "digest_generated_at": "2026-11-09T23:34:24"
+ "digest_generated_at": "2026-11-10T02:55:27"
 }
