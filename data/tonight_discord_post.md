@@ -1,10 +1,9 @@
 **EdgeStat -- Tonight's Slate**
-_NO_ACTION_NIGHT_ | L:0 S:6 F:59
+_NO_ACTION_NIGHT_ | L:0 S:5 F:22
 
 :dart: **Top Picks:**
-1. [GOLF] Kensei Hirata -- Kensei Hirata (PLAYER_STRONG)
-2. [GOLF] Michael Kim -- Michael Kim (PLAYER_STRONG)
-3. [NBA] DET -- DET (TEAM_STRONG)
+1. [GOLF] Michael Kim -- Michael Kim (PLAYER_STRONG)
+2. [GOLF] Kensei Hirata -- Kensei Hirata (PLAYER_STRONG)
 
 :coin: Bankroll Advisory: STAND DOWN. Slate has no aligned conviction. Skip betting tonight or watch only.
 
