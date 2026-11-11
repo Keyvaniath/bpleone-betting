@@ -1,18 +1,18 @@
-# EdgeStat Daily Summary — 2026-11-10
+# EdgeStat Daily Summary — 2026-11-11
 
-## 🏥 Model Health: 64.1/100 [OK]
+## 🏥 Model Health: 69.1/100 [OK]
 - Operational but room to improve - check yellow components
   - 🟢 Calibration Freshness: 100.0/100
-  - 🟡 Hit Rate Trend: 65.0/100
-  - 🔴 Brier Trend: 28.2/100
+  - 🟡 Hit Rate Trend: 70.4/100
+  - 🔴 Brier Trend: 34.1/100
   - 🟢 Pipeline Audit: 100.0/100
-  - 🟡 Data Health: 77.3/100
+  - 🟢 Data Health: 90.9/100
   - 🔴 Edge Count: 0/100
 
 ## 🌐 Slate Overview
-- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.561)
-- **Total games on board:** 33
-- **Strong home favorites:** 15 | **Strong road dogs:** 6
+- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.584)
+- **Total games on board:** 41
+- **Strong home favorites:** 21 | **Strong road dogs:** 10
 
 ## 🎯 Best Bets (sportsbook-priced only)
 - No best bet today: a best bet needs a real sportsbook price — 6 model-only projections excluded (LOL 4, NHL 2).
@@ -29,15 +29,15 @@
 - **[CS]** torzsi OVER 40.5 Kills (BO3) · model 61.0%
 
 ## ⚡ Pre-Game
-- No pre-game alerts: an alert needs a game-lines-desk probability whose verdict passed (not NO EDGE / UNPROVEN) and a DraftKings price. NBA: 6 desk verdict NO EDGE; NHL: 7 desk verdict NO EDGE; WNBA: 1 not pre-game; MLS: 15 not pre-game; EPL: 5 not pre-game; UCL: 9 not pre-game; NFL: 15 not pre-game; NCAAF: 20 no validated model probability (not from the game-lines desk); NCAAB: 5 not pre-game; CWS: 1 not pre-game
+- No pre-game alerts: an alert needs a game-lines-desk probability whose verdict passed (not NO EDGE / UNPROVEN) and a DraftKings price. NBA: 4 desk verdict NO EDGE; NHL: 6 not pre-game; WNBA: 1 not pre-game; MLS: 15 not pre-game; EPL: 5 not pre-game; UCL: 9 not pre-game; NFL: 15 not pre-game; NCAAF: 20 no validated model probability (not from the game-lines desk); NCAAB: 4 started or no start time; CWS: 1 not pre-game
 
 ## 🔥/❄️ Heat / Cold Signals
-- Hot teams: **12** | Cold teams: **19** | Over-heavy: 0 | Under-heavy: 38
+- Hot teams: **15** | Cold teams: **20** | Over-heavy: 0 | Under-heavy: 34
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (104)
+## ⚠️ Anomaly Detector (125)
 - RESIDUAL_DIVERGENCE: **11**
-- STEAM_MOVE: **93**
+- STEAM_MOVE: **114**
   - Milwaukee Bucks (NBA): Milwaukee Bucks UNDERPERFORMING expected margin by 8.1pts in recent games -- model bias may persist
   - Philadelphia 76ers (NBA): Philadelphia 76ers UNDERPERFORMING expected margin by 7.8pts in recent games -- model bias may persist
   - Phoenix Suns (NBA): Phoenix Suns OUTPERFORMING expected margin by 6.7pts in recent games -- model bias may persist
@@ -47,12 +47,12 @@
 ## 💰 Today's Portfolio
 - No priced picks: a stake is sized only at an actionable DraftKings quote.
 
-## 🎯 Signal stacking (18 games with 2+ signals) — research, not picks
+## 🎯 Signal stacking (16 games with 2+ signals) — research, not picks
   - Milwaukee Bucks @ New York Knicks : 5 signals (HEAT_COLD, HEAT_COLD, HEAT_COLD, HEAT_COLD)
   - Miami Heat @ Utah Jazz : 4 signals (HEAT_COLD, HEAT_COLD, HEAT_COLD, ANOMALY)
   - Orlando Magic @ Sacramento Kings : 4 signals (HEAT_COLD, HEAT_COLD, HEAT_COLD, HEAT_COLD)
   - Colorado Avalanche @ Toronto Maple Leafs : 4 signals (HEAT_COLD, HEAT_COLD, HEAT_COLD, ANOMALY)
-  - San Antonio Spurs @ Phoenix Suns : 3 signals (HEAT_COLD, HEAT_COLD, ANOMALY)
+  - LA Clippers @ Phoenix Suns : 3 signals (HEAT_COLD, HEAT_COLD, ANOMALY)
 
 ## 🏀 NBA Player Heat (6 HOT / 8 COLD)
   - 🔥 **Klay Thompson** (MIA): L5 21.6/1.6/2.8 vs season 13.7/1.8/1.7 [PTS +7.9]
@@ -70,16 +70,6 @@
   - model favourite **Bilal Hasan** (10-0-0) vs Luis Gurule
   - model favourite **Jim Miller** (39-19-0) vs Terrance McKinney
   - model favourite **Caio Borralho** (18-2-0) vs Yousri Belgaroui
-
-## ⛳ Golf Player Heat (from World Wide Technology Championship)
-  - 🔥 T3 **Michael Kim** (USA): -22 total -- finished T3, Sunday -2.5 vs tourney avg
-  - 🔥 T4 **Kensei Hirata** (Japan): -21 total -- finished T4, Sunday -0.8 vs tourney avg
-  - 🔥 T5 **David Ford** (USA): -20 total -- finished T5, Sunday -1.0 vs tourney avg
-  - 🔥 T6 **Alvaro Ortiz** (Mexico): -19 total -- finished T6
-  - 🔥 T7 **Denny McCarthy** (USA): -19 total -- finished T7
-  - ❄️ **Joe Highsmith** (USA): Sunday +4.5 vs tourney avg
-  - ❄️ **Matt Kuchar** (USA): Sunday +4.5 vs tourney avg
-  - ❄️ **Pontus Nyholm** (Sweden): Sunday +4.5 vs tourney avg
 
 ## 😴 Back-to-back flags (1) — schedule fact, not a pick
 - [NBA] LA Clippers @ Phoenix Suns (2026-11-10): away team on a back-to-back
@@ -102,9 +92,9 @@
 - ELITE: **1** · HEALTHY: 0 · OK: 0 · DEGRADED: **1**
 
 ## 🤖 Self-Training Status
-- **NBA**: n=102 games · hit rate 66.7% · bias +0.8pp
-- **NHL**: n=98 games · hit rate 48.0% · bias -1.4pp
+- **NBA**: n=98 games · hit rate 65.3% · bias +2.0pp
+- **NHL**: n=87 games · hit rate 52.9% · bias -3.4pp
 - **WNBA**: n=2 games · hit rate 50.0% · bias -69.7pp
 - **MLS**: n=60 games · hit rate 46.7% · bias -2.3pp
 - **EPL**: n=30 games · hit rate 40.0% · bias -2.2pp
-- **MLB**: n=2 games · hit rate 50.0% · bias +24.5pp
+- **MLB**: n=1 games · hit rate 0.0% · bias +53.6pp

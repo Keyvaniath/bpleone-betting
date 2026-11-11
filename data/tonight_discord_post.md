@@ -1,10 +1,10 @@
 **EdgeStat -- Tonight's Slate**
-_NO_ACTION_NIGHT_ | L:0 S:5 F:100
+_STRONG_NIGHT_ | L:0 S:39 F:92
 
 :dart: **Top Picks:**
-1. [GOLF] Ben James -- Ben James (PLAYER_STRONG)
-2. [GOLF] David Ford -- David Ford (PLAYER_STRONG)
+1. [GOLF] C.T. Pan -- C.T. Pan (PLAYER_STRONG)
+2. [GOLF] Erik van Rooyen -- Erik van Rooyen (PLAYER_STRONG)
 
-:coin: Bankroll Advisory: STAND DOWN. Slate has no aligned conviction. Skip betting tonight or watch only.
+:coin: Bankroll Advisory: Solid slate. Pick top STRONG/LOCK picks; consider Kelly 25-50% sizing.
 
 _EdgeStat: ML-driven sports betting analytics. Not financial advice._

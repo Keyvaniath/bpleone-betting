@@ -1,13 +1,13 @@
 {
-  "generated_at": "2026-11-10T20:58:23",
-  "n_settled": 15708,
+  "generated_at": "2026-11-11T01:55:55",
+  "n_settled": 15714,
   "n_families_transformed": 70,
   "n_families_bucketed": 32,
   "ece_before": 0.072,
-  "ece_after": 0.0117,
-  "ece_improvement": 0.0603,
-  "brier_before": 0.20936,
-  "brier_after": 0.19446,
+  "ece_after": 0.0115,
+  "ece_improvement": 0.0605,
+  "brier_before": 0.20937,
+  "brier_after": 0.19447,
   "method_note": "Per market family, a monotonic (isotonic) curve maps the model's predicted probability to the realized hit rate, learned from settled outcomes. Bucketed for well-sampled families (preserves ranking), a family-average Bayesian blend for mid-sample, identity below that. ECE = expected calibration error (lower = the displayed % is truer). This makes the model honest at the source; it does not create edge (that needs a market price).",
   "families": [
     {
@@ -306,46 +306,46 @@
     },
     {
       "family": "mlb_hit_1.5_over",
-      "n": 357,
+      "n": 359,
       "method": "bucketed",
-      "avg_pred_raw": 0.547,
-      "avg_pred_calibrated": 0.4595,
-      "realized": 0.4342,
-      "ece_raw": 0.1536,
-      "ece_calibrated": 0.0391,
+      "avg_pred_raw": 0.5475,
+      "avg_pred_calibrated": 0.4617,
+      "realized": 0.4373,
+      "ece_raw": 0.1547,
+      "ece_calibrated": 0.0508,
       "transform": {
         "anchors": [
           [
             0.442,
-            0.3084
+            0.3057
           ],
           [
             0.442,
-            0.3084
+            0.3057
           ],
           [
-            0.45,
-            0.3084
+            0.4506,
+            0.3057
           ],
           [
-            0.4737,
-            0.3084
+            0.4746,
+            0.3057
           ],
           [
-            0.522,
-            0.3555
+            0.5258,
+            0.3805
           ],
           [
             0.6434,
             0.6793
           ],
           [
-            0.6814,
-            0.6974
+            0.6811,
+            0.7001
           ],
           [
             0.7202,
-            0.6974
+            0.7001
           ]
         ]
       }
@@ -888,36 +888,6 @@
       }
     },
     {
-      "family": "blocks_over",
-      "n": 108,
-      "method": "bucketed",
-      "avg_pred_raw": 0.645,
-      "avg_pred_calibrated": 0.5969,
-      "realized": 0.5833,
-      "ece_raw": 0.0617,
-      "ece_calibrated": 0.0135,
-      "transform": {
-        "anchors": [
-          [
-            0.5922,
-            0.5155
-          ],
-          [
-            0.6223,
-            0.6312
-          ],
-          [
-            0.6609,
-            0.6312
-          ],
-          [
-            0.7046,
-            0.6312
-          ]
-        ]
-      }
-    },
-    {
       "family": "blk_stl_under",
       "n": 72,
       "method": "family_avg",
@@ -998,6 +968,36 @@
           [
             0.6652,
             0.7069
+          ]
+        ]
+      }
+    },
+    {
+      "family": "blocks_over",
+      "n": 109,
+      "method": "bucketed",
+      "avg_pred_raw": 0.6444,
+      "avg_pred_calibrated": 0.6007,
+      "realized": 0.5872,
+      "ece_raw": 0.0572,
+      "ece_calibrated": 0.0135,
+      "transform": {
+        "anchors": [
+          [
+            0.5917,
+            0.541
+          ],
+          [
+            0.6204,
+            0.6257
+          ],
+          [
+            0.6603,
+            0.6257
+          ],
+          [
+            0.7046,
+            0.6257
           ]
         ]
       }
@@ -1292,52 +1292,14 @@
       }
     },
     {
-      "family": "fta_under",
-      "n": 157,
-      "method": "bucketed",
-      "avg_pred_raw": 0.6639,
-      "avg_pred_calibrated": 0.6321,
-      "realized": 0.6178,
-      "ece_raw": 0.046,
-      "ece_calibrated": 0.0142,
-      "transform": {
-        "anchors": [
-          [
-            0.6277,
-            0.6148
-          ],
-          [
-            0.6421,
-            0.6148
-          ],
-          [
-            0.6538,
-            0.6148
-          ],
-          [
-            0.6683,
-            0.6499
-          ],
-          [
-            0.6865,
-            0.6499
-          ],
-          [
-            0.7045,
-            0.6499
-          ]
-        ]
-      }
-    },
-    {
       "family": "pra_under",
-      "n": 281,
+      "n": 282,
       "method": "bucketed",
       "avg_pred_raw": 0.6871,
-      "avg_pred_calibrated": 0.6558,
-      "realized": 0.6441,
-      "ece_raw": 0.043,
-      "ece_calibrated": 0.0117,
+      "avg_pred_calibrated": 0.654,
+      "realized": 0.6418,
+      "ece_raw": 0.0452,
+      "ece_calibrated": 0.0121,
       "transform": {
         "anchors": [
           [
@@ -1346,31 +1308,69 @@
           ],
           [
             0.6691,
-            0.6671
+            0.665
           ],
           [
             0.6769,
-            0.6671
+            0.665
           ],
           [
             0.6838,
-            0.6671
+            0.665
           ],
           [
-            0.6914,
-            0.6671
+            0.6913,
+            0.665
           ],
           [
-            0.6992,
-            0.6671
+            0.6991,
+            0.665
           ],
           [
             0.7072,
-            0.6671
+            0.665
           ],
           [
             0.7163,
-            0.6671
+            0.665
+          ]
+        ]
+      }
+    },
+    {
+      "family": "fta_under",
+      "n": 159,
+      "method": "bucketed",
+      "avg_pred_raw": 0.6639,
+      "avg_pred_calibrated": 0.631,
+      "realized": 0.6164,
+      "ece_raw": 0.0476,
+      "ece_calibrated": 0.0147,
+      "transform": {
+        "anchors": [
+          [
+            0.6273,
+            0.5928
+          ],
+          [
+            0.6419,
+            0.6225
+          ],
+          [
+            0.6541,
+            0.6225
+          ],
+          [
+            0.6686,
+            0.6496
+          ],
+          [
+            0.6865,
+            0.6496
+          ],
+          [
+            0.7048,
+            0.6496
           ]
         ]
       }
