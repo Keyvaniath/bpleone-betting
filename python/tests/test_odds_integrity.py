@@ -867,3 +867,23 @@ def test_nba_moneyline_is_graded_on_the_final_by_event_id():
     # no event id: the date + teams path finds the same game; a game that has not been played is not graded
     assert t._grade_wnba_pick({"sport": "NBA", "market": "ML_HOME", "player_or_matchup": "BOS @ MIA", "date": "2026-11-08"}, {}, games) == "won"
     assert t._grade_wnba_pick({"sport": "NBA", "market": "ML_HOME", "player_or_matchup": "LAL @ DEN", "date": "2026-11-08", "event_id": "90"}, {}, games) is None
+
+
+def test_lean_forward_record_counts_only_live_settled_leans():
+    import all_picks_tracker as t
+    h = [{"source": "sport_lean", "sport": "NBA", "player_or_matchup": "GS @ HOU", "market": "ML_HOME", "book_american": -264,
+          "date": "2026-11-11", "settled": True, "result": "won", "payout_units": 0.379, "outcome": {"final_score": "GS 101 @ HOU 112"}},
+         {"source": "sport_lean", "sport": "NHL", "player_or_matchup": "PHI @ EDM", "market": "ML_HOME", "book_american": -192,
+          "date": "2026-11-11", "settled": True, "result": "lost", "payout_units": -1.0},
+         {"source": "sport_lean", "sport": "NHL", "player_or_matchup": "PIT @ SJ", "market": "ML_AWAY", "book_american": -142,
+          "date": "2026-11-12", "settled": False},
+         {"source": "sport_lean", "sport": "NBA", "player_or_matchup": "A @ B", "market": "ML_HOME", "book_american": -150,
+          "date": "2026-11-12", "settled": True, "voided": True, "result": "won", "payout_units": 0.67},      # voided: not counted
+         {"source": "pod", "sport": "NFL", "player_or_matchup": "X @ Y", "market": "ML_HOME", "date": "2026-11-09",
+          "settled": True, "result": "won", "payout_units": 1.0}]                                             # not a lean
+    b = t._sport_leans_block(h)
+    assert (b["n_settled"], b["wins"], b["losses"], b["n_pending"]) == (2, 1, 1, 1) and abs(b["net_units"] + 0.621) < 1e-9
+    assert b["by_sport"]["NBA"]["wins"] == 1 and b["by_sport"]["NHL"]["n_pending"] == 1
+    assert b["first_date"] == "2026-11-11" and [r["team"] for r in b["recent"]] == ["PIT", "EDM", "HOU"]
+    assert b["recent"][0]["result"] == "pending" and b["recent"][2]["final"] == "GS 101 @ HOU 112"
+    assert "never part of the curated record" in b["definition"]

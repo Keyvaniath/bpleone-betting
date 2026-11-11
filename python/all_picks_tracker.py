@@ -3213,6 +3213,46 @@ def _grade_nhl_pick(pick: Dict[str, Any], by_name: Dict[str, Any],
     return None
 
 
+def _sport_leans_block(history: List[Dict[str, Any]]) -> Dict[str, Any]:
+    """Forward record of the per-sport model leans (source "sport_lean")."""
+    rows = [p for p in history if p.get("source") == "sport_lean" and not p.get("voided")]
+    done = [p for p in rows if p.get("settled") and p.get("result") in ("won", "lost", "push")]
+
+    def line(ps: List[Dict[str, Any]]) -> Dict[str, Any]:
+        w = sum(1 for p in ps if p["result"] == "won")
+        l = sum(1 for p in ps if p["result"] == "lost")
+        net = round(sum((p.get("payout_units") or 0) for p in ps), 3)
+        return {"n_settled": len(ps), "wins": w, "losses": l, "net_units": net,
+                "roi_pct": round(net / (w + l) * 100, 2) if (w + l) else None}
+
+    def team(p: Dict[str, Any]) -> str:
+        parts = [x.strip() for x in str(p.get("player_or_matchup") or "").split("@", 1)]
+        if len(parts) != 2:
+            return ""
+        return parts[1] if str(p.get("market") or "").upper().endswith("HOME") else parts[0]
+
+    by_sport = {}
+    for sp in sorted({str(p.get("sport") or "").upper() for p in rows}):
+        by_sport[sp] = dict(line([p for p in done if str(p.get("sport") or "").upper() == sp]),
+                            n_pending=sum(1 for p in rows if str(p.get("sport") or "").upper() == sp and not p.get("settled")))
+    recent = sorted(rows, key=lambda p: (str(p.get("date") or ""), str(p.get("sport") or "")), reverse=True)[:12]
+    return dict(
+        line(done),
+        n_pending=sum(1 for p in rows if not p.get("settled")),
+        first_date=min((str(p.get("date"))[:10] for p in rows), default=None),
+        last_date=max((str(p.get("date"))[:10] for p in rows), default=None),
+        by_sport=by_sport,
+        recent=[{"date": str(p.get("date") or "")[:10], "sport": p.get("sport"), "matchup": p.get("player_or_matchup"),
+                 "team": team(p), "market": p.get("market"), "book_american": p.get("book_american"),
+                 "result": p.get("result") if p.get("settled") else "pending",
+                 "payout_units": p.get("payout_units") if p.get("settled") else None,
+                 "final": (p.get("outcome") or {}).get("final_score")} for p in recent],
+        definition=("Model leans: the per-sport play on a day a desk has no pick with an edge -- the favourite its "
+                    "model and DraftKings both favour. Logged at the DraftKings price, graded on the final score. "
+                    "Not an edge (expected value is the book's margin) and never part of the curated record."),
+    )
+
+
 def _settle_picks(history: List[Dict[str, Any]]) -> int:
     """Try to settle each unsettled pick. Returns count newly settled."""
     n_settled = 0
@@ -4347,6 +4387,12 @@ def run() -> Dict[str, Any]:
                        "curated headline (split out 2026-11-03)."),
     }
 
+    # MODEL LEANS (2026-11-11): the per-sport play on a day a desk has no EV
+    # pick (source "sport_lean"). Not curated, not an edge -- so it gets its own
+    # public line: the forward record of every lean actually logged, at the
+    # DraftKings price it was logged at, with the most recent results.
+    sport_leans = _sport_leans_block(history)
+
     # RECENT FORM (trailing 30 days by pick date): the all-time number alone
     # invites "did we get worse?" confusion whenever its average drifts a point
     # -- surface the recent window beside it so drift always has context.
@@ -4574,6 +4620,7 @@ def run() -> Dict[str, Any]:
         "calibrated_reliability": calibrated_reliability,
         "curated": curated,
         "prizepicks": prizepicks,
+        "sport_leans": sport_leans,
         "by_price_class": by_price_class,
         "headline_basis": "all-time: working ledger + data/ledger_archive.json",
         "working_ledger_only": _working_only,

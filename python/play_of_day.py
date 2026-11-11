@@ -462,6 +462,8 @@ def run(now: Optional[dt.datetime] = None) -> Dict[str, Any]:
         "no_play_reasons": reasons,
         "slate_today": slate,
         "odds_observed_at": (_load("espn_odds.json") or {}).get("generated_at"),
+        # the forward record of every lean actually logged (written by the ledger's previous run)
+        "lean_forward": (_load("ledger_summary.json") or {}).get("sport_leans"),
         "by_sport": by_sport,
     }
     payload["post"] = _post(payload)

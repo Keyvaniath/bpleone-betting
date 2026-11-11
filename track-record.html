@@ -441,7 +441,12 @@
       const cls = (b, k) => b[k] ? `${k}: ${b[k].wins}-${b[k].losses} (<span style="color:${b[k].net_units > 0 ? "#58c878" : "#e35a5a"};">${b[k].net_units >= 0 ? "+" : ""}${b[k].net_units}u${b[k].roi_pct != null ? ", " + (b[k].roi_pct >= 0 ? "+" : "") + b[k].roi_pct + "%" : ""}</span>)` : `${k}: none`;  // (2026-11-03) sign-coloured
       const provNote = d.by_price_class
         ? `<p class="muted" style="font-size:11px;margin:8px 0 0;"><b>Price provenance:</b> curated ${cls(bpc, "A")} · ${cls(bpc, "B")} · ${cls(bpc, "C")}; all picks ${cls(bpa, "A")} · ${cls(bpa, "B")} · ${cls(bpa, "C")}. A = sportsbook price from a timestamped snapshot at pick time; B = sportsbook price reconstructed from a pre-game snapshot, or stamped without a timestamp; C = no sportsbook price (the model's own odds or PrizePicks' break-even) -- never part of a claim at sportsbook prices.</p>` : "";
-      document.getElementById("bsGrid").innerHTML = header + rows + nflNote + rsNote + provNote + ppNote + pcNote;
+      // Model leans (2026-11-11): the per-sport play on a no-pick day. Its own line, never curated.
+      const ln = d.sport_leans;
+      const lnNote = (ln && (ln.n_settled || ln.n_pending))
+        ? `<p class="muted" style="font-size:11px;margin:8px 0 0;"><b>Model leans (separate · not an edge · not curated):</b> ${ln.wins}-${ln.losses}, <span style="color:${ln.net_units > 0 ? "#58c878" : ln.net_units < 0 ? "#e35a5a" : "inherit"};">${ln.net_units >= 0 ? "+" : "−"}${Math.abs(ln.net_units).toFixed(2)}u</span>${ln.n_pending ? ", " + ln.n_pending + " pending" : ""}, since ${ln.first_date}. A lean is the play shown for a sport on a day its desk has no pick with an edge: the favourite its model and DraftKings both favour, logged at the DraftKings price. Its expected value is the book&#39;s margin, so it is tracked here and kept out of the curated record. <a href="play-of-day.html" style="color:#7fb0e8;">Today&#39;s plays →</a></p>`
+        : "";
+      document.getElementById("bsGrid").innerHTML = header + rows + nflNote + rsNote + provNote + ppNote + lnNote + pcNote;
     }).catch(() => {});
   </script>
 

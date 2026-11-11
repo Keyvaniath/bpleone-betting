@@ -682,3 +682,14 @@ a fresh, pre-start DraftKings quote or it is not shown.
 
 Tests: lean rule + record; per-sport plays and featuring order; ledger source;
 NBA moneyline grading. 62 pass.
+
+LEANS ARE ACCOUNTED FOR IN PUBLIC (same night). ledger_summary.json gains
+`sport_leans`: the forward record of every lean actually logged (W-L, units at
+the DraftKings price logged, pending, by sport, the 12 most recent with
+finals). Voided rows are excluded. play_of_day.json carries it as
+`lean_forward` (from the ledger's previous run) and the "Today's play in each
+sport" card shows "Leans logged so far" with the latest results;
+track-record.html shows it as its own line next to the PrizePicks line:
+"separate, not an edge, not curated". The walk-forward backtest and the
+forward record are two different numbers and are labelled as such.
+
