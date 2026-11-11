@@ -614,3 +614,25 @@ startup with no jobs (not a Jekyll error); the next build succeeded.
 
 CI on the merge: Smoke Test green, Daily pipeline green (failure gate clean,
 which includes the pricing guard and the integrity tests).
+
+5. PUSHED ON HIS "push it" (c25bf2ba35): the alpha-pick script fix, the script
+   parser in the Smoke Test, and the share card. Verified live: the Alpha hero
+   script runs, the share text is in play_of_day.json, Smoke Test green in CI
+   with the new steps.
+
+6. SELF-AUDIT AFTER THE DEPLOY, two more checks.
+   a. RUNTIME CRAWL: all 136 root pages loaded in a browser on localhost, each
+      given time to finish its fetches; uncaught errors, unhandled rejections,
+      console.error and visible "undefined / NaN / [object Object] / Loading /
+      Failed to load" text were collected. Result: none on any page. (The hook
+      attaches just after navigation, so an error thrown in the very first
+      inline script could be missed; the syntax parser covers that class.)
+   b. DEAD REFERENCES: tools/check_site_refs.py resolves every local href, src
+      and fetch target on every page and script (1,469 references) against what
+      the Pages build serves (tracked, not excluded by _config.yml, no "_" or
+      "." path segment). One real defect: 404.html pointed at a favicon that
+      does not exist, and its links were relative, so the 404 page shown for a
+      nested path (/a/b) linked to /a/index.html. Now absolute paths and the
+      real icon. The checker runs in the Smoke Test and under pytest
+      (`test_every_local_page_reference_is_served`).
+

@@ -743,3 +743,17 @@ def test_every_inline_page_script_parses():
     root = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", ".."))
     r = subprocess.run([node, os.path.join(root, "tools", "check_inline_js.js"), root], capture_output=True, text=True, timeout=120)
     assert r.returncode == 0, r.stdout[-2000:]
+
+
+# ---------------------------------------------------------------- page references resolve (2026-11-11)
+def test_every_local_page_reference_is_served():
+    """A link, script, image or fetch target on a page must be a file the Pages
+    build serves: tracked, not excluded by _config.yml, no "_" or "." segment.
+    (404.html shipped pointing at a favicon that does not exist.)"""
+    import subprocess
+    root = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", ".."))
+    if not os.path.isdir(os.path.join(root, ".git")):
+        pytest.skip("not a git checkout")
+    r = subprocess.run([sys.executable, os.path.join(root, "tools", "check_site_refs.py")], capture_output=True, text=True, timeout=120)
+    assert r.returncode == 0, r.stdout[-2000:]
+
