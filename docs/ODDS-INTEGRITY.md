@@ -553,3 +553,54 @@ plays Sat 11/14 (college, experimental) and Sun 11/15 (NFL forward tests).
 play-of-day.html now also shows today's major-sport board at DraftKings
 (prices, not picks). What would change the answer for NBA/NHL: a model that
 beats the DK close in the walk-forward test -- not a looser selector.
+
+## 2026-11-11 (later): merged to main, two deploy defects fixed, totals tested
+
+`launch/audit-1105` merged to main (38f0bbcb1b) on Brandon's "merge the audit".
+GitHub had an Actions/Pages outage at the time: the first Pages run died at
+startup with no jobs (not a Jekyll error); the next build succeeded.
+
+1. JEKYLL EXCLUDE LIST HID THREE CONTENT FILES. `*.md` is excluded from the
+   site so CLAUDE.md and the launch kit are not served, but brief.html and
+   daily-summary.html fetch data/auto_brief.md, data/daily_summary.md and
+   data/daily_summary_v2.md. Fix in `_config.yml`: `include:` those basenames
+   (include beats exclude in Jekyll 3.10's entry filter) and
+   `optional_front_matter: enabled: false` (GitHub Pages enables that plugin by
+   default; it would render Markdown without front matter to .html). Verified
+   live after the build: the three files 200 as text/markdown; CLAUDE.md,
+   python/, tools/, docs/, cloudflare-worker/, legal/, *.bat, _config.yml all
+   404; 171 pages/scripts/assets byte-identical to the repo. Test:
+   `test_pages_config_serves_every_markdown_file_a_page_fetches`.
+
+2. AN UNESCAPED APOSTROPHE KILLED A SCRIPT BLOCK. The 11/5 audit changed a
+   default string in alpha-pick.html to "No prop projections on today's slate."
+   inside a single-quoted JS string: a syntax error, so that whole inline
+   script (the Alpha Props slate) did not run. It reached main with the merge
+   and was live for about an hour. Nothing caught it because the Smoke Test
+   only ran on python changes and no check parsed page scripts. Now:
+   `tools/check_inline_js.js` parses (never executes) every inline script on
+   every root page plus js/*.js and sw.js (217 scripts); the Smoke Test runs it
+   and the integrity tests on page/script pushes too; pytest wraps it
+   (`test_every_inline_page_script_parses`).
+   RULE: text inside a JS string on a page uses &#39; for an apostrophe.
+
+3. TOTALS: NO EDGE ON ALL THREE SPORTS (do not re-run with the same inputs).
+   Question: moneylines give no NBA/NHL play; do totals? The line history has
+   DraftKings' real over/under prices (spread prices are NOT recorded, so a
+   spread desk cannot be priced honestly and was not attempted). Pre-registered:
+   additive offence/defence EWMA chosen on LAST season only; this season's
+   DK-priced games; the desk's own gate (blend weight w fitted on the over/under
+   log loss vs DraftKings' no-vig over probability; NO EDGE when w = 0).
+     NFL n=136: DK 0.6923, model 0.7399, w=0. Betting the raw model: 45-50, -9.8%.
+     NBA n=159: DK 0.6933, model 0.7501, w=0. Raw model: 65-70, -8.1%.
+     NHL n=291: DK 0.6915, model 0.7065, w=0. Raw model: 30-59, -36.7%.
+   (Coin flip = 0.6931: DraftKings' totals are priced to a coin flip and a
+   points-for/points-against model is worse than that.) A first pass compared
+   squared error against the posted NUMBER and made NHL look marginal (blend
+   w=0.65): wrong test -- in the NHL the book moves the price, not the 6.5, so
+   the comparison has to be against the price. Script: tools/totals_study.py.
+   A totals desk would need inputs the market does not already have in the
+   price (confirmed lineups/goalies at bet time, pace/shot-quality data).
+
+CI on the merge: Smoke Test green, Daily pipeline green (failure gate clean,
+which includes the pricing guard and the integrity tests).

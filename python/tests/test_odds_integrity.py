@@ -700,3 +700,18 @@ def test_pages_config_serves_every_markdown_file_a_page_fetches():
                 fetched.add(os.path.basename(path))
     assert fetched, "expected brief.html / daily-summary.html to fetch Markdown"
     assert fetched <= included, f"fetched but not served by the Pages build: {sorted(fetched - included)}"
+
+
+# ---------------------------------------------------------------- page scripts parse (2026-11-11)
+def test_every_inline_page_script_parses():
+    """An unescaped apostrophe inside a single-quoted JS string in alpha-pick.html
+    (2026-11-05) killed that page's whole script block and nothing caught it.
+    tools/check_inline_js.js parses (never runs) every inline script and js file."""
+    import shutil
+    import subprocess
+    node = shutil.which("node")
+    if not node:
+        pytest.skip("node is not installed")
+    root = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", ".."))
+    r = subprocess.run([node, os.path.join(root, "tools", "check_inline_js.js"), root], capture_output=True, text=True, timeout=120)
+    assert r.returncode == 0, r.stdout[-2000:]
