@@ -887,3 +887,47 @@ def test_lean_forward_record_counts_only_live_settled_leans():
     assert b["first_date"] == "2026-11-11" and [r["team"] for r in b["recent"]] == ["PIT", "EDM", "HOU"]
     assert b["recent"][0]["result"] == "pending" and b["recent"][2]["final"] == "GS 101 @ HOU 112"
     assert "never part of the curated record" in b["definition"]
+
+
+def test_sport_plays_history_separates_desk_picks_from_leans(tmp_path, monkeypatch):
+    import all_picks_tracker as t
+    import play_of_day as pod
+    h = [{"source": "nfl_game_ml", "also_sources": ["pod", "sport_play"], "sport": "NFL", "player_or_matchup": "HOU @ CLE",
+          "market": "ML_HOME", "book_american": 190, "date": "2026-11-15", "settled": True, "result": "won", "payout_units": 1.9},
+         {"source": "nfl_game_ml", "sport": "NFL", "player_or_matchup": "SF @ DAL", "market": "ML_AWAY", "book_american": -205,
+          "date": "2026-11-15", "settled": True, "result": "lost", "payout_units": -1.0},                      # a desk pick, not the sport play
+         {"source": "sport_lean", "sport": "NBA", "player_or_matchup": "GS @ HOU", "market": "ML_HOME", "book_american": -264,
+          "date": "2026-11-11", "settled": True, "result": "lost", "payout_units": -1.0},
+         {"source": "sport_lean", "sport": "NHL", "player_or_matchup": "PHI @ EDM", "market": "ML_HOME", "book_american": -192,
+          "date": "2026-11-12", "settled": False}]
+    b = t._sport_plays_block(h)
+    assert (b["desk_picks"]["wins"], b["desk_picks"]["losses"], b["desk_picks"]["net_units"]) == (1, 0, 1.9)
+    assert (b["leans"]["wins"], b["leans"]["losses"], b["leans"]["n_pending"]) == (0, 1, 1)
+    assert [(r["sport"], r["kind"], r["team"], r["result"]) for r in b["recent"]] == [
+        ("NFL", "desk pick", "CLE", "won"), ("NHL", "lean", "EDM", "pending"), ("NBA", "lean", "HOU", "lost")]
+    assert "never summed" in b["definition"]
+    # the collector tags a desk-pick sport play as "sport_play" (after the desk row) and never as a lean
+    today = "2026-11-08"
+    monkeypatch.setattr(pod, "DATA_DIR", str(tmp_path))
+    monkeypatch.setattr(pod, "OUT", str(tmp_path / "play_of_day.json"))
+    monkeypatch.setattr(pod, "_today_et", lambda: today)
+    out = pod.run(now=_lean_fixture(tmp_path, today, nfl_pick=True))
+    out.pop("generated_at")
+    (tmp_path / "play_of_day.json").write_text(json.dumps(out))
+    monkeypatch.setattr(t, "DATA_DIR", str(tmp_path))
+    rows = t._collect_picks_from_sources()
+    src = [(r["source"], r["sport"]) for r in rows if r.get("source") in ("sport_play", "sport_lean")]
+    assert src == [("sport_play", "NFL"), ("sport_lean", "NBA")]
+    desk_i = next(i for i, r in enumerate(rows) if r.get("source") == "nfl_game_ml" and r.get("player_or_matchup") == "NYJ @ KC")
+    play_i = next(i for i, r in enumerate(rows) if r.get("source") == "sport_play")
+    assert desk_i < play_i and not t_is_curated_source("sport_play") and not t_is_curated_source("sport_lean")
+
+
+def t_is_curated_source(src):
+    """Mirror of the ledger's curated-prefix rule, read from its source so the test fails if a prefix ever swallows these."""
+    import re
+    path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "all_picks_tracker.py")
+    text = open(path, encoding="utf-8").read()
+    m = re.search(r"_CURATED_PREFIXES = \(([^)]*)\)", text)
+    prefixes = re.findall(r'"([^"]+)"', m.group(1))
+    return any(src == p or src.startswith(p) for p in prefixes)

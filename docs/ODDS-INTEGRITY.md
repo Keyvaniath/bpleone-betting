@@ -693,3 +693,12 @@ track-record.html shows it as its own line next to the PrizePicks line:
 "separate, not an edge, not curated". The walk-forward backtest and the
 forward record are two different numbers and are labelled as such.
 
+PLAYS HISTORY, ALL TIERS (same night). A sport play that is a desk pick
+(tiers 1-3) is now tagged in the ledger as `sport_play`: listed after the desk
+rows, so the add-guard folds it onto the desk's own row as
+also_sources=sport_play (one row, attribution only; matches no curated prefix,
+which a test reads from the ledger source). ledger_summary.json gains
+`sport_plays`: desk picks and leans counted SEPARATELY (never summed) plus the
+16 most recent plays with results. play-of-day.html shows "Plays logged so
+far" from it (falls back to the leans-only block on older data).
+
