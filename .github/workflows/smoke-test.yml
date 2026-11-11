@@ -23,6 +23,7 @@ on:
       - 'sw.js'
       - '_config.yml'
       - 'tools/check_inline_js.js'
+      - 'tools/check_site_refs.py'
   workflow_dispatch:
 
 permissions:
@@ -49,6 +50,10 @@ jobs:
       # must parse (parse only, nothing is executed).
       - name: Page scripts parse
         run: node tools/check_inline_js.js .
+      # (2026-11-11) every local file a page links, loads or fetches must be one
+      # the Pages build serves (tracked, not excluded by _config.yml).
+      - name: Page references resolve
+        run: python tools/check_site_refs.py
       - name: Odds-integrity tests
         run: |
           pip install -q pytest
