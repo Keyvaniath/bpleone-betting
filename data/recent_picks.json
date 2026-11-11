@@ -1,23 +1,23 @@
 {
- "generated_at": "2026-11-11T01:59:11",
+ "generated_at": "2026-11-11T07:05:50",
  "stake_assumption": "1u flat per pick",
  "total_picks": 20000,
- "n_settled": 23326,
- "n_pending": 466,
- "n_void": 1863,
- "wins": 11339,
- "losses": 11976,
+ "n_settled": 23391,
+ "n_pending": 404,
+ "n_void": 1860,
+ "wins": 11387,
+ "losses": 11993,
  "pushes": 11,
- "hit_rate": 0.4863,
- "net_units": -3470.843,
- "roi_pct": -14.89,
+ "hit_rate": 0.487,
+ "net_units": -3463.179,
+ "roi_pct": -14.81,
  "n_calibrated_picks": 19929,
  "calibrated_reliability": {
-  "n": 17617,
-  "ece_raw": 0.0674,
-  "ece_calibrated": 0.0096,
-  "brier_raw": 0.20908,
-  "brier_calibrated": 0.19524,
+  "n": 17682,
+  "ece_raw": 0.0669,
+  "ece_calibrated": 0.0093,
+  "brier_raw": 0.20905,
+  "brier_calibrated": 0.19532,
   "note": "In-sample over the settled ledger (the isotonic transform is fit on these same outcomes); held-out 70/30 validation is in recalibration_map.json. p_predicted = raw model prob (kept untouched for the learning loop); p_calibrated = honest prob stamped per pick. Lower ECE/Brier on the calibrated column = the displayed % is truer."
  },
  "curated": {
@@ -60,11 +60,11 @@
  "by_price_class": {
   "all": {
    "C": {
-    "n": 22756,
-    "wins": 11038,
-    "losses": 11718,
-    "net_units": -3461.736,
-    "roi_pct": -15.21
+    "n": 22821,
+    "wins": 11086,
+    "losses": 11735,
+    "net_units": -3454.072,
+    "roi_pct": -15.14
    },
    "B": {
     "n": 562,
@@ -99,11 +99,11 @@
  "headline_basis": "all-time: working ledger + data/ledger_archive.json",
  "working_ledger_only": {
   "all": {
-   "n_settled": 17671,
-   "wins": 8480,
-   "losses": 9180,
-   "net_units": -2307.731,
-   "roi_pct": -13.07
+   "n_settled": 17736,
+   "wins": 8528,
+   "losses": 9197,
+   "net_units": -2300.067,
+   "roi_pct": -12.98
   },
   "curated": {
    "n_settled": 514,
@@ -157,7 +157,7 @@
    "label": "NBA grading",
    "n_repriced": 0,
    "n_voided": 0,
-   "counts_text": "520 settled (190 had been voided as unsettleable, 330 sat pending), 4 re-graded against the right game",
+   "counts_text": "520 settled (190 had been voided as unsettleable, 330 sat pending), 6 re-graded against the right game",
    "record_label": "NBA picks (not part of the curated record)",
    "curated_before": "270-160 (-25.20u), 570 void",
    "curated_after": "596-337 (-40.01u), 380 void",
@@ -192,16 +192,16 @@
  "stale_sources_skipped": [],
  "inactive_player_props_blocked": 0,
  "started_game_picks_blocked": 16,
- "past_dated_picks_blocked": 72,
+ "past_dated_picks_blocked": 93,
  "unpriced_picks_blocked": 0,
  "restatement": {
   "date": "2026-10-23",
   "note": "The headline became ALL-TIME on 2026-10-23. 5,946 settled picks that the old tail-cut eviction had destroyed (May-June 2026, the 07-06 erosion and the run-up to 09-03) were rebuilt from git history at each pick's final state, with today's duplicate-wager rule re-applied, and folded back in. They are mostly the raw May-June MLB prop firehose (2,961-2,983, -1,256.9u), so the firehose ROI fell; the curated record changed by the curated picks among them. Before this date the published numbers covered the working window only -- working_ledger_only keeps that basis.",
   "n_archived_in_headline": 5655
  },
- "n_added_this_run": 0,
- "n_newly_settled_this_run": 0,
- "n_resettled_this_run": 0,
+ "n_added_this_run": 3,
+ "n_newly_settled_this_run": 65,
+ "n_resettled_this_run": 2,
  "n_voided_this_run": 0,
  "n_duplicates_collapsed_this_run": 0,
  "n_duplicate_adds_blocked_this_run": 12,
@@ -5174,20 +5174,20 @@
    }
   },
   "nba_steals_over_0.5": {
-   "n": 46,
-   "wins": 39,
-   "losses": 7,
+   "n": 52,
+   "wins": 41,
+   "losses": 11,
    "pushes": 0,
-   "net_units": 11.725,
-   "hit_rate": 0.8478,
-   "roi_pct": 25.49,
+   "net_units": 8.655,
+   "hit_rate": 0.7885,
+   "roi_pct": 16.64,
    "by_price_class": {
     "C": {
-     "n": 46,
-     "wins": 39,
-     "losses": 7,
-     "net_units": 11.726,
-     "roi_pct": 25.49
+     "n": 52,
+     "wins": 41,
+     "losses": 11,
+     "net_units": 8.655,
+     "roi_pct": 16.64
     }
    },
    "sportsbook": {
@@ -5246,20 +5246,20 @@
    }
   },
   "nba_tov_tov_under_3.5": {
-   "n": 51,
-   "wins": 22,
+   "n": 55,
+   "wins": 26,
    "losses": 29,
    "pushes": 0,
-   "net_units": -17.699,
-   "hit_rate": 0.4314,
-   "roi_pct": -34.7,
+   "net_units": -15.811,
+   "hit_rate": 0.4727,
+   "roi_pct": -28.75,
    "by_price_class": {
     "C": {
-     "n": 51,
-     "wins": 22,
+     "n": 55,
+     "wins": 26,
      "losses": 29,
-     "net_units": -17.697,
-     "roi_pct": -34.7
+     "net_units": -15.81,
+     "roi_pct": -28.75
     }
    },
    "sportsbook": {
@@ -5294,20 +5294,20 @@
    }
   },
   "nba_pra_pra_under_37.5": {
-   "n": 21,
-   "wins": 12,
+   "n": 23,
+   "wins": 14,
    "losses": 9,
    "pushes": 0,
-   "net_units": -3.537,
-   "hit_rate": 0.5714,
-   "roi_pct": -16.84,
+   "net_units": -2.568,
+   "hit_rate": 0.6087,
+   "roi_pct": -11.17,
    "by_price_class": {
     "C": {
-     "n": 21,
-     "wins": 12,
+     "n": 23,
+     "wins": 14,
      "losses": 9,
-     "net_units": -3.537,
-     "roi_pct": -16.84
+     "net_units": -2.568,
+     "roi_pct": -11.17
     }
    },
    "sportsbook": {
@@ -5534,20 +5534,20 @@
    }
   },
   "nba_blocks_over_0.5": {
-   "n": 17,
+   "n": 18,
    "wins": 10,
-   "losses": 7,
+   "losses": 8,
    "pushes": 0,
-   "net_units": -1.929,
-   "hit_rate": 0.5882,
-   "roi_pct": -11.35,
+   "net_units": -2.929,
+   "hit_rate": 0.5556,
+   "roi_pct": -16.27,
    "by_price_class": {
     "C": {
-     "n": 17,
+     "n": 18,
      "wins": 10,
-     "losses": 7,
-     "net_units": -1.929,
-     "roi_pct": -11.35
+     "losses": 8,
+     "net_units": -2.929,
+     "roi_pct": -16.27
     }
    },
    "sportsbook": {
@@ -5606,20 +5606,20 @@
    }
   },
   "nba_3pm_3pm_under_3.0": {
-   "n": 9,
-   "wins": 3,
+   "n": 10,
+   "wins": 4,
    "losses": 6,
    "pushes": 0,
-   "net_units": -4.804,
-   "hit_rate": 0.3333,
-   "roi_pct": -53.38,
+   "net_units": -4.407,
+   "hit_rate": 0.4,
+   "roi_pct": -44.07,
    "by_price_class": {
     "C": {
-     "n": 9,
-     "wins": 3,
+     "n": 10,
+     "wins": 4,
      "losses": 6,
-     "net_units": -4.803,
-     "roi_pct": -53.37
+     "net_units": -4.406,
+     "roi_pct": -44.06
     }
    },
    "sportsbook": {
@@ -5630,20 +5630,20 @@
    }
   },
   "nba_3pm_3pm_over_1.5": {
-   "n": 12,
-   "wins": 10,
+   "n": 14,
+   "wins": 12,
    "losses": 2,
    "pushes": 0,
-   "net_units": 3.463,
-   "hit_rate": 0.8333,
-   "roi_pct": 28.86,
+   "net_units": 4.569,
+   "hit_rate": 0.8571,
+   "roi_pct": 32.64,
    "by_price_class": {
     "C": {
-     "n": 12,
-     "wins": 10,
+     "n": 14,
+     "wins": 12,
      "losses": 2,
-     "net_units": 3.464,
-     "roi_pct": 28.87
+     "net_units": 4.57,
+     "roi_pct": 32.64
     }
    },
    "sportsbook": {
@@ -5654,20 +5654,20 @@
    }
   },
   "nba_3pm_3pm_under_2.5": {
-   "n": 40,
-   "wins": 28,
+   "n": 42,
+   "wins": 30,
    "losses": 12,
    "pushes": 0,
-   "net_units": 1.874,
-   "hit_rate": 0.7,
-   "roi_pct": 4.69,
+   "net_units": 2.737,
+   "hit_rate": 0.7143,
+   "roi_pct": 6.52,
    "by_price_class": {
     "C": {
-     "n": 40,
-     "wins": 28,
+     "n": 42,
+     "wins": 30,
      "losses": 12,
-     "net_units": 1.875,
-     "roi_pct": 4.69
+     "net_units": 2.739,
+     "roi_pct": 6.52
     }
    },
    "sportsbook": {
@@ -5750,20 +5750,20 @@
    }
   },
   "nba_tov_tov_under_2.5": {
-   "n": 30,
-   "wins": 19,
+   "n": 32,
+   "wins": 21,
    "losses": 11,
    "pushes": 0,
-   "net_units": -1.502,
-   "hit_rate": 0.6333,
-   "roi_pct": -5.01,
+   "net_units": -0.431,
+   "hit_rate": 0.6562,
+   "roi_pct": -1.35,
    "by_price_class": {
     "C": {
-     "n": 30,
-     "wins": 19,
+     "n": 32,
+     "wins": 21,
      "losses": 11,
-     "net_units": -1.501,
-     "roi_pct": -5.0
+     "net_units": -0.43,
+     "roi_pct": -1.34
     }
    },
    "sportsbook": {
@@ -5798,20 +5798,20 @@
    }
   },
   "nba_pra_pra_under_42.5": {
-   "n": 14,
-   "wins": 10,
+   "n": 15,
+   "wins": 11,
    "losses": 4,
    "pushes": 0,
-   "net_units": 0.28,
-   "hit_rate": 0.7143,
-   "roi_pct": 2.0,
+   "net_units": 0.804,
+   "hit_rate": 0.7333,
+   "roi_pct": 5.36,
    "by_price_class": {
     "C": {
-     "n": 14,
-     "wins": 10,
+     "n": 15,
+     "wins": 11,
      "losses": 4,
-     "net_units": 0.28,
-     "roi_pct": 2.0
+     "net_units": 0.804,
+     "roi_pct": 5.36
     }
    },
    "sportsbook": {
@@ -5846,20 +5846,20 @@
    }
   },
   "nba_pra_pra_under_39.5": {
-   "n": 24,
+   "n": 25,
    "wins": 17,
-   "losses": 7,
+   "losses": 8,
    "pushes": 0,
-   "net_units": 0.598,
-   "hit_rate": 0.7083,
-   "roi_pct": 2.49,
+   "net_units": -0.403,
+   "hit_rate": 0.68,
+   "roi_pct": -1.61,
    "by_price_class": {
     "C": {
-     "n": 24,
+     "n": 25,
      "wins": 17,
-     "losses": 7,
-     "net_units": 0.599,
-     "roi_pct": 2.5
+     "losses": 8,
+     "net_units": -0.401,
+     "roi_pct": -1.6
     }
    },
    "sportsbook": {
@@ -5870,20 +5870,20 @@
    }
   },
   "nba_pra_pra_under_38.5": {
-   "n": 21,
-   "wins": 12,
+   "n": 23,
+   "wins": 14,
    "losses": 9,
    "pushes": 0,
-   "net_units": -3.391,
-   "hit_rate": 0.5714,
-   "roi_pct": -16.15,
+   "net_units": -2.377,
+   "hit_rate": 0.6087,
+   "roi_pct": -10.33,
    "by_price_class": {
     "C": {
-     "n": 21,
-     "wins": 12,
+     "n": 23,
+     "wins": 14,
      "losses": 9,
-     "net_units": -3.39,
-     "roi_pct": -16.14
+     "net_units": -2.375,
+     "roi_pct": -10.33
     }
    },
    "sportsbook": {
@@ -5894,20 +5894,20 @@
    }
   },
   "nba_pra_pra_under_36.5": {
-   "n": 20,
-   "wins": 11,
+   "n": 21,
+   "wins": 12,
    "losses": 9,
    "pushes": 0,
-   "net_units": -4.118,
-   "hit_rate": 0.55,
-   "roi_pct": -20.59,
+   "net_units": -3.6,
+   "hit_rate": 0.5714,
+   "roi_pct": -17.14,
    "by_price_class": {
     "C": {
-     "n": 20,
-     "wins": 11,
+     "n": 21,
+     "wins": 12,
      "losses": 9,
-     "net_units": -4.118,
-     "roi_pct": -20.59
+     "net_units": -3.6,
+     "roi_pct": -17.14
     }
    },
    "sportsbook": {
@@ -5918,20 +5918,20 @@
    }
   },
   "nba_pra_pra_under_35.5": {
-   "n": 18,
-   "wins": 11,
+   "n": 19,
+   "wins": 12,
    "losses": 7,
    "pushes": 0,
-   "net_units": -2.008,
-   "hit_rate": 0.6111,
-   "roi_pct": -11.16,
+   "net_units": -1.465,
+   "hit_rate": 0.6316,
+   "roi_pct": -7.71,
    "by_price_class": {
     "C": {
-     "n": 18,
-     "wins": 11,
+     "n": 19,
+     "wins": 12,
      "losses": 7,
-     "net_units": -2.006,
-     "roi_pct": -11.14
+     "net_units": -1.463,
+     "roi_pct": -7.7
     }
    },
    "sportsbook": {
@@ -5966,20 +5966,20 @@
    }
   },
   "nba_pra_pra_under_33.5": {
-   "n": 20,
-   "wins": 13,
+   "n": 21,
+   "wins": 14,
    "losses": 7,
    "pushes": 0,
-   "net_units": -1.119,
-   "hit_rate": 0.65,
-   "roi_pct": -5.59,
+   "net_units": -0.664,
+   "hit_rate": 0.6667,
+   "roi_pct": -3.16,
    "by_price_class": {
     "C": {
-     "n": 20,
-     "wins": 13,
+     "n": 21,
+     "wins": 14,
      "losses": 7,
-     "net_units": -1.119,
-     "roi_pct": -5.59
+     "net_units": -0.664,
+     "roi_pct": -3.16
     }
    },
    "sportsbook": {
@@ -5990,20 +5990,20 @@
    }
   },
   "nba_pra_pra_under_32.5": {
-   "n": 21,
-   "wins": 11,
+   "n": 22,
+   "wins": 12,
    "losses": 10,
    "pushes": 0,
-   "net_units": -5.055,
-   "hit_rate": 0.5238,
-   "roi_pct": -24.07,
+   "net_units": -4.558,
+   "hit_rate": 0.5455,
+   "roi_pct": -20.72,
    "by_price_class": {
     "C": {
-     "n": 21,
-     "wins": 11,
+     "n": 22,
+     "wins": 12,
      "losses": 10,
-     "net_units": -5.056,
-     "roi_pct": -24.08
+     "net_units": -4.558,
+     "roi_pct": -20.72
     }
    },
    "sportsbook": {
@@ -6014,20 +6014,20 @@
    }
   },
   "nba_pra_pra_under_31.5": {
-   "n": 18,
+   "n": 19,
    "wins": 12,
-   "losses": 6,
+   "losses": 7,
    "pushes": 0,
-   "net_units": -0.59,
-   "hit_rate": 0.6667,
-   "roi_pct": -3.28,
+   "net_units": -1.59,
+   "hit_rate": 0.6316,
+   "roi_pct": -8.37,
    "by_price_class": {
     "C": {
-     "n": 18,
+     "n": 19,
      "wins": 12,
-     "losses": 6,
-     "net_units": -0.588,
-     "roi_pct": -3.27
+     "losses": 7,
+     "net_units": -1.588,
+     "roi_pct": -8.36
     }
    },
    "sportsbook": {
@@ -6710,20 +6710,20 @@
    }
   },
   "nba_pr_pr_under_30.5": {
-   "n": 2,
-   "wins": 0,
+   "n": 3,
+   "wins": 1,
    "losses": 2,
    "pushes": 0,
-   "net_units": -2.0,
-   "hit_rate": 0.0,
-   "roi_pct": -100.0,
+   "net_units": -1.386,
+   "hit_rate": 0.3333,
+   "roi_pct": -46.2,
    "by_price_class": {
     "C": {
-     "n": 2,
-     "wins": 0,
+     "n": 3,
+     "wins": 1,
      "losses": 2,
-     "net_units": -2.0,
-     "roi_pct": -100.0
+     "net_units": -1.386,
+     "roi_pct": -46.2
     }
    },
    "sportsbook": {
@@ -6878,20 +6878,20 @@
    }
   },
   "nba_ra_ra_over_7.5": {
-   "n": 4,
-   "wins": 3,
+   "n": 5,
+   "wins": 4,
    "losses": 1,
    "pushes": 0,
-   "net_units": 0.398,
-   "hit_rate": 0.75,
-   "roi_pct": 9.95,
+   "net_units": 0.906,
+   "hit_rate": 0.8,
+   "roi_pct": 18.12,
    "by_price_class": {
     "C": {
-     "n": 4,
-     "wins": 3,
+     "n": 5,
+     "wins": 4,
      "losses": 1,
-     "net_units": 0.397,
-     "roi_pct": 9.93
+     "net_units": 0.905,
+     "roi_pct": 18.1
     }
    },
    "sportsbook": {
@@ -6926,20 +6926,20 @@
    }
   },
   "nba_pra_pra_under_49.5": {
-   "n": 3,
-   "wins": 3,
+   "n": 4,
+   "wins": 4,
    "losses": 0,
    "pushes": 0,
-   "net_units": 1.508,
+   "net_units": 2.103,
    "hit_rate": 1.0,
-   "roi_pct": 50.27,
+   "roi_pct": 52.58,
    "by_price_class": {
     "C": {
-     "n": 3,
-     "wins": 3,
+     "n": 4,
+     "wins": 4,
      "losses": 0,
-     "net_units": 1.509,
-     "roi_pct": 50.3
+     "net_units": 2.104,
+     "roi_pct": 52.6
     }
    },
    "sportsbook": {
@@ -7190,20 +7190,20 @@
    }
   },
   "nba_blocks_over_1.5": {
-   "n": 9,
+   "n": 10,
    "wins": 5,
-   "losses": 4,
+   "losses": 5,
    "pushes": 0,
-   "net_units": -1.292,
-   "hit_rate": 0.5556,
-   "roi_pct": -14.36,
+   "net_units": -2.292,
+   "hit_rate": 0.5,
+   "roi_pct": -22.92,
    "by_price_class": {
     "C": {
-     "n": 9,
+     "n": 10,
      "wins": 5,
-     "losses": 4,
-     "net_units": -1.292,
-     "roi_pct": -14.36
+     "losses": 5,
+     "net_units": -2.292,
+     "roi_pct": -22.92
     }
    },
    "sportsbook": {
@@ -7214,20 +7214,20 @@
    }
   },
   "nba_3pm_3pm_under_4.5": {
-   "n": 4,
-   "wins": 1,
+   "n": 5,
+   "wins": 2,
    "losses": 3,
    "pushes": 0,
-   "net_units": -2.468,
-   "hit_rate": 0.25,
-   "roi_pct": -61.7,
+   "net_units": -1.978,
+   "hit_rate": 0.4,
+   "roi_pct": -39.56,
    "by_price_class": {
     "C": {
-     "n": 4,
-     "wins": 1,
+     "n": 5,
+     "wins": 2,
      "losses": 3,
-     "net_units": -2.468,
-     "roi_pct": -61.7
+     "net_units": -1.978,
+     "roi_pct": -39.56
     }
    },
    "sportsbook": {
@@ -7286,20 +7286,20 @@
    }
   },
   "nba_tov_tov_under_3.0": {
-   "n": 6,
-   "wins": 3,
+   "n": 7,
+   "wins": 4,
    "losses": 3,
    "pushes": 0,
-   "net_units": -1.788,
-   "hit_rate": 0.5,
-   "roi_pct": -29.8,
+   "net_units": -1.383,
+   "hit_rate": 0.5714,
+   "roi_pct": -19.76,
    "by_price_class": {
     "C": {
-     "n": 6,
-     "wins": 3,
+     "n": 7,
+     "wins": 4,
      "losses": 3,
-     "net_units": -1.788,
-     "roi_pct": -29.8
+     "net_units": -1.383,
+     "roi_pct": -19.76
     }
    },
    "sportsbook": {
@@ -7406,20 +7406,20 @@
    }
   },
   "nba_fta_fta_under_3.5": {
-   "n": 9,
-   "wins": 7,
+   "n": 10,
+   "wins": 8,
    "losses": 2,
    "pushes": 0,
-   "net_units": 1.795,
-   "hit_rate": 0.7778,
-   "roi_pct": 19.94,
+   "net_units": 2.313,
+   "hit_rate": 0.8,
+   "roi_pct": 23.13,
    "by_price_class": {
     "C": {
-     "n": 9,
-     "wins": 7,
+     "n": 10,
+     "wins": 8,
      "losses": 2,
-     "net_units": 1.795,
-     "roi_pct": 19.94
+     "net_units": 2.313,
+     "roi_pct": 23.13
     }
    },
    "sportsbook": {
@@ -8054,20 +8054,20 @@
    }
   },
   "nba_fta_fta_under_7.5": {
-   "n": 5,
-   "wins": 2,
+   "n": 6,
+   "wins": 3,
    "losses": 3,
    "pushes": 0,
-   "net_units": -1.82,
-   "hit_rate": 0.4,
-   "roi_pct": -36.4,
+   "net_units": -1.218,
+   "hit_rate": 0.5,
+   "roi_pct": -20.3,
    "by_price_class": {
     "C": {
-     "n": 5,
-     "wins": 2,
+     "n": 6,
+     "wins": 3,
      "losses": 3,
-     "net_units": -1.82,
-     "roi_pct": -36.4
+     "net_units": -1.218,
+     "roi_pct": -20.3
     }
    },
    "sportsbook": {
@@ -8078,20 +8078,20 @@
    }
   },
   "nba_fta_fta_under_7.0": {
-   "n": 34,
+   "n": 35,
    "wins": 20,
-   "losses": 14,
+   "losses": 15,
    "pushes": 0,
-   "net_units": -3.74,
-   "hit_rate": 0.5882,
-   "roi_pct": -11.0,
+   "net_units": -4.74,
+   "hit_rate": 0.5714,
+   "roi_pct": -13.54,
    "by_price_class": {
     "C": {
-     "n": 34,
+     "n": 35,
      "wins": 20,
-     "losses": 14,
-     "net_units": -3.741,
-     "roi_pct": -11.0
+     "losses": 15,
+     "net_units": -4.741,
+     "roi_pct": -13.55
     }
    },
    "sportsbook": {
@@ -8102,20 +8102,20 @@
    }
   },
   "nba_fta_fta_under_6.5": {
-   "n": 8,
-   "wins": 5,
+   "n": 9,
+   "wins": 6,
    "losses": 3,
    "pushes": 0,
-   "net_units": -0.135,
-   "hit_rate": 0.625,
-   "roi_pct": -1.69,
+   "net_units": 0.43,
+   "hit_rate": 0.6667,
+   "roi_pct": 4.78,
    "by_price_class": {
     "C": {
-     "n": 8,
-     "wins": 5,
+     "n": 9,
+     "wins": 6,
      "losses": 3,
-     "net_units": -0.135,
-     "roi_pct": -1.69
+     "net_units": 0.43,
+     "roi_pct": 4.78
     }
    },
    "sportsbook": {
@@ -8174,20 +8174,20 @@
    }
   },
   "nba_tt_team_pts_under_122.5": {
-   "n": 16,
-   "wins": 10,
+   "n": 17,
+   "wins": 11,
    "losses": 6,
    "pushes": 0,
-   "net_units": -0.687,
-   "hit_rate": 0.625,
-   "roi_pct": -4.29,
+   "net_units": -0.112,
+   "hit_rate": 0.6471,
+   "roi_pct": -0.66,
    "by_price_class": {
     "C": {
-     "n": 16,
-     "wins": 10,
+     "n": 17,
+     "wins": 11,
      "losses": 6,
-     "net_units": -0.689,
-     "roi_pct": -4.31
+     "net_units": -0.114,
+     "roi_pct": -0.67
     }
    },
    "sportsbook": {
@@ -8222,20 +8222,20 @@
    }
   },
   "nba_tt_team_pts_under_119.5": {
-   "n": 25,
-   "wins": 18,
+   "n": 26,
+   "wins": 19,
    "losses": 7,
    "pushes": 0,
-   "net_units": 2.596,
-   "hit_rate": 0.72,
-   "roi_pct": 10.38,
+   "net_units": 3.086,
+   "hit_rate": 0.7308,
+   "roi_pct": 11.87,
    "by_price_class": {
     "C": {
-     "n": 25,
-     "wins": 18,
+     "n": 26,
+     "wins": 19,
      "losses": 7,
-     "net_units": 2.595,
-     "roi_pct": 10.38
+     "net_units": 3.085,
+     "roi_pct": 11.87
     }
    },
    "sportsbook": {
@@ -8246,20 +8246,20 @@
    }
   },
   "nba_tt_team_pts_under_118.5": {
-   "n": 26,
-   "wins": 19,
-   "losses": 7,
+   "n": 29,
+   "wins": 21,
+   "losses": 8,
    "pushes": 0,
-   "net_units": 3.031,
-   "hit_rate": 0.7308,
-   "roi_pct": 11.66,
+   "net_units": 3.098,
+   "hit_rate": 0.7241,
+   "roi_pct": 10.68,
    "by_price_class": {
     "C": {
-     "n": 26,
-     "wins": 19,
-     "losses": 7,
-     "net_units": 3.03,
-     "roi_pct": 11.65
+     "n": 29,
+     "wins": 21,
+     "losses": 8,
+     "net_units": 3.097,
+     "roi_pct": 10.68
     }
    },
    "sportsbook": {
@@ -8270,20 +8270,20 @@
    }
   },
   "nba_tt_team_pts_under_117.5": {
-   "n": 19,
-   "wins": 14,
+   "n": 20,
+   "wins": 15,
    "losses": 5,
    "pushes": 0,
-   "net_units": 2.212,
-   "hit_rate": 0.7368,
-   "roi_pct": 11.64,
+   "net_units": 2.697,
+   "hit_rate": 0.75,
+   "roi_pct": 13.48,
    "by_price_class": {
     "C": {
-     "n": 19,
-     "wins": 14,
+     "n": 20,
+     "wins": 15,
      "losses": 5,
-     "net_units": 2.21,
-     "roi_pct": 11.63
+     "net_units": 2.695,
+     "roi_pct": 13.47
     }
    },
    "sportsbook": {
@@ -8294,20 +8294,20 @@
    }
   },
   "nba_tt_team_pts_under_116.5": {
-   "n": 24,
-   "wins": 17,
+   "n": 26,
+   "wins": 19,
    "losses": 7,
    "pushes": 0,
-   "net_units": 1.654,
-   "hit_rate": 0.7083,
-   "roi_pct": 6.89,
+   "net_units": 2.655,
+   "hit_rate": 0.7308,
+   "roi_pct": 10.21,
    "by_price_class": {
     "C": {
-     "n": 24,
-     "wins": 17,
+     "n": 26,
+     "wins": 19,
      "losses": 7,
-     "net_units": 1.653,
-     "roi_pct": 6.89
+     "net_units": 2.654,
+     "roi_pct": 10.21
     }
    },
    "sportsbook": {
@@ -8318,20 +8318,20 @@
    }
   },
   "nba_tt_team_pts_under_115.5": {
-   "n": 11,
-   "wins": 7,
+   "n": 12,
+   "wins": 8,
    "losses": 4,
    "pushes": 0,
-   "net_units": -0.384,
-   "hit_rate": 0.6364,
-   "roi_pct": -3.49,
+   "net_units": 0.151,
+   "hit_rate": 0.6667,
+   "roi_pct": 1.26,
    "by_price_class": {
     "C": {
-     "n": 11,
-     "wins": 7,
+     "n": 12,
+     "wins": 8,
      "losses": 4,
-     "net_units": -0.384,
-     "roi_pct": -3.49
+     "net_units": 0.151,
+     "roi_pct": 1.26
     }
    },
    "sportsbook": {
@@ -8534,20 +8534,20 @@
    }
   },
   "nba_ra_ra_over_6.5": {
-   "n": 2,
-   "wins": 2,
+   "n": 3,
+   "wins": 3,
    "losses": 0,
    "pushes": 0,
-   "net_units": 0.914,
+   "net_units": 1.381,
    "hit_rate": 1.0,
-   "roi_pct": 45.7,
+   "roi_pct": 46.03,
    "by_price_class": {
     "C": {
-     "n": 2,
-     "wins": 2,
+     "n": 3,
+     "wins": 3,
      "losses": 0,
-     "net_units": 0.914,
-     "roi_pct": 45.7
+     "net_units": 1.381,
+     "roi_pct": 46.03
     }
    },
    "sportsbook": {
@@ -8630,20 +8630,20 @@
    }
   },
   "nba_fta_fta_under_6.0": {
-   "n": 28,
+   "n": 29,
    "wins": 18,
-   "losses": 10,
+   "losses": 11,
    "pushes": 0,
-   "net_units": -1.228,
-   "hit_rate": 0.6429,
-   "roi_pct": -4.39,
+   "net_units": -2.228,
+   "hit_rate": 0.6207,
+   "roi_pct": -7.68,
    "by_price_class": {
     "C": {
-     "n": 28,
+     "n": 29,
      "wins": 18,
-     "losses": 10,
-     "net_units": -1.229,
-     "roi_pct": -4.39
+     "losses": 11,
+     "net_units": -2.229,
+     "roi_pct": -7.69
     }
    },
    "sportsbook": {
@@ -8654,20 +8654,20 @@
    }
   },
   "nba_fta_fta_under_5.0": {
-   "n": 23,
+   "n": 24,
    "wins": 16,
-   "losses": 7,
+   "losses": 8,
    "pushes": 0,
-   "net_units": 0.139,
-   "hit_rate": 0.6957,
-   "roi_pct": 0.6,
+   "net_units": -0.861,
+   "hit_rate": 0.6667,
+   "roi_pct": -3.59,
    "by_price_class": {
     "C": {
-     "n": 23,
+     "n": 24,
      "wins": 16,
-     "losses": 7,
-     "net_units": 0.138,
-     "roi_pct": 0.6
+     "losses": 8,
+     "net_units": -0.862,
+     "roi_pct": -3.59
     }
    },
    "sportsbook": {
@@ -8678,20 +8678,20 @@
    }
   },
   "nba_tt_team_pts_under_120.5": {
-   "n": 17,
-   "wins": 13,
-   "losses": 4,
+   "n": 19,
+   "wins": 14,
+   "losses": 5,
    "pushes": 0,
-   "net_units": 2.816,
-   "hit_rate": 0.7647,
-   "roi_pct": 16.56,
+   "net_units": 2.332,
+   "hit_rate": 0.7368,
+   "roi_pct": 12.27,
    "by_price_class": {
     "C": {
-     "n": 17,
-     "wins": 13,
-     "losses": 4,
-     "net_units": 2.817,
-     "roi_pct": 16.57
+     "n": 19,
+     "wins": 14,
+     "losses": 5,
+     "net_units": 2.333,
+     "roi_pct": 12.28
     }
    },
    "sportsbook": {
@@ -8846,20 +8846,20 @@
    }
   },
   "nba_ra_ra_under_15.5": {
-   "n": 3,
-   "wins": 2,
+   "n": 5,
+   "wins": 4,
    "losses": 1,
    "pushes": 0,
-   "net_units": -0.116,
-   "hit_rate": 0.6667,
-   "roi_pct": -3.87,
+   "net_units": 0.864,
+   "hit_rate": 0.8,
+   "roi_pct": 17.28,
    "by_price_class": {
     "C": {
-     "n": 3,
-     "wins": 2,
+     "n": 5,
+     "wins": 4,
      "losses": 1,
-     "net_units": -0.116,
-     "roi_pct": -3.87
+     "net_units": 0.863,
+     "roi_pct": 17.26
     }
    },
    "sportsbook": {
@@ -8870,20 +8870,20 @@
    }
   },
   "nba_3pm_3pm_under_1.0": {
-   "n": 1,
-   "wins": 1,
+   "n": 2,
+   "wins": 2,
    "losses": 0,
    "pushes": 0,
-   "net_units": 0.588,
+   "net_units": 1.187,
    "hit_rate": 1.0,
-   "roi_pct": 58.8,
+   "roi_pct": 59.35,
    "by_price_class": {
     "C": {
-     "n": 1,
-     "wins": 1,
+     "n": 2,
+     "wins": 2,
      "losses": 0,
-     "net_units": 0.588,
-     "roi_pct": 58.8
+     "net_units": 1.187,
+     "roi_pct": 59.35
     }
    },
    "sportsbook": {
@@ -8918,20 +8918,20 @@
    }
   },
   "nba_pra_pra_under_44.5": {
-   "n": 2,
-   "wins": 1,
+   "n": 3,
+   "wins": 2,
    "losses": 1,
    "pushes": 0,
-   "net_units": -0.524,
-   "hit_rate": 0.5,
-   "roi_pct": -26.2,
+   "net_units": 0.044,
+   "hit_rate": 0.6667,
+   "roi_pct": 1.47,
    "by_price_class": {
     "C": {
-     "n": 2,
-     "wins": 1,
+     "n": 3,
+     "wins": 2,
      "losses": 1,
-     "net_units": -0.524,
-     "roi_pct": -26.2
+     "net_units": 0.044,
+     "roi_pct": 1.47
     }
    },
    "sportsbook": {
@@ -8966,20 +8966,20 @@
    }
   },
   "nba_tt_team_pts_under_114.5": {
-   "n": 7,
+   "n": 8,
    "wins": 5,
-   "losses": 2,
+   "losses": 3,
    "pushes": 0,
-   "net_units": 0.587,
-   "hit_rate": 0.7143,
-   "roi_pct": 8.39,
+   "net_units": -0.413,
+   "hit_rate": 0.625,
+   "roi_pct": -5.16,
    "by_price_class": {
     "C": {
-     "n": 7,
+     "n": 8,
      "wins": 5,
-     "losses": 2,
-     "net_units": 0.586,
-     "roi_pct": 8.37
+     "losses": 3,
+     "net_units": -0.414,
+     "roi_pct": -5.17
     }
    },
    "sportsbook": {
@@ -9837,20 +9837,20 @@
    }
   },
   "nba_fta_fta_under_4.5": {
-   "n": 7,
-   "wins": 4,
+   "n": 8,
+   "wins": 5,
    "losses": 3,
    "pushes": 0,
-   "net_units": -0.766,
-   "hit_rate": 0.5714,
-   "roi_pct": -10.94,
+   "net_units": -0.191,
+   "hit_rate": 0.625,
+   "roi_pct": -2.39,
    "by_price_class": {
     "C": {
-     "n": 7,
-     "wins": 4,
+     "n": 8,
+     "wins": 5,
      "losses": 3,
-     "net_units": -0.766,
-     "roi_pct": -10.94
+     "net_units": -0.191,
+     "roi_pct": -2.39
     }
    },
    "sportsbook": {
@@ -11109,20 +11109,20 @@
    }
   },
   "nba_ast_ast_over_1.5": {
-   "n": 1,
-   "wins": 0,
+   "n": 2,
+   "wins": 1,
    "losses": 1,
    "pushes": 0,
-   "net_units": -1.0,
-   "hit_rate": 0.0,
-   "roi_pct": -100.0,
+   "net_units": -0.468,
+   "hit_rate": 0.5,
+   "roi_pct": -23.4,
    "by_price_class": {
     "C": {
-     "n": 1,
-     "wins": 0,
+     "n": 2,
+     "wins": 1,
      "losses": 1,
-     "net_units": -1.0,
-     "roi_pct": -100.0
+     "net_units": -0.468,
+     "roi_pct": -23.4
     }
    },
    "sportsbook": {
@@ -11157,20 +11157,20 @@
    }
   },
   "nba_reb_reb_under_2.5": {
-   "n": 1,
+   "n": 2,
    "wins": 1,
-   "losses": 0,
+   "losses": 1,
    "pushes": 0,
-   "net_units": 0.513,
-   "hit_rate": 1.0,
-   "roi_pct": 51.3,
+   "net_units": -0.487,
+   "hit_rate": 0.5,
+   "roi_pct": -24.35,
    "by_price_class": {
     "C": {
-     "n": 1,
+     "n": 2,
      "wins": 1,
-     "losses": 0,
-     "net_units": 0.513,
-     "roi_pct": 51.3
+     "losses": 1,
+     "net_units": -0.487,
+     "roi_pct": -24.35
     }
    },
    "sportsbook": {
@@ -11181,19 +11181,19 @@
    }
   },
   "nba_pra_pra_under_28.5": {
-   "n": 1,
+   "n": 2,
    "wins": 0,
-   "losses": 1,
+   "losses": 2,
    "pushes": 0,
-   "net_units": -1.0,
+   "net_units": -2.0,
    "hit_rate": 0.0,
    "roi_pct": -100.0,
    "by_price_class": {
     "C": {
-     "n": 1,
+     "n": 2,
      "wins": 0,
-     "losses": 1,
-     "net_units": -1.0,
+     "losses": 2,
+     "net_units": -2.0,
      "roi_pct": -100.0
     }
    },
@@ -11243,6 +11243,78 @@
      "losses": 1,
      "net_units": -1.0,
      "roi_pct": -100.0
+    }
+   },
+   "sportsbook": {
+    "wins": 0,
+    "losses": 0,
+    "net_units": 0,
+    "roi_pct": null
+   }
+  },
+  "nba_pa_pa_under_22.0": {
+   "n": 1,
+   "wins": 1,
+   "losses": 0,
+   "pushes": 0,
+   "net_units": 0.595,
+   "hit_rate": 1.0,
+   "roi_pct": 59.5,
+   "by_price_class": {
+    "C": {
+     "n": 1,
+     "wins": 1,
+     "losses": 0,
+     "net_units": 0.595,
+     "roi_pct": 59.5
+    }
+   },
+   "sportsbook": {
+    "wins": 0,
+    "losses": 0,
+    "net_units": 0,
+    "roi_pct": null
+   }
+  },
+  "nba_pa_pa_under_14.0": {
+   "n": 1,
+   "wins": 0,
+   "losses": 1,
+   "pushes": 0,
+   "net_units": -1.0,
+   "hit_rate": 0.0,
+   "roi_pct": -100.0,
+   "by_price_class": {
+    "C": {
+     "n": 1,
+     "wins": 0,
+     "losses": 1,
+     "net_units": -1.0,
+     "roi_pct": -100.0
+    }
+   },
+   "sportsbook": {
+    "wins": 0,
+    "losses": 0,
+    "net_units": 0,
+    "roi_pct": null
+   }
+  },
+  "nba_pr_pr_under_25.5": {
+   "n": 1,
+   "wins": 1,
+   "losses": 0,
+   "pushes": 0,
+   "net_units": 0.61,
+   "hit_rate": 1.0,
+   "roi_pct": 61.0,
+   "by_price_class": {
+    "C": {
+     "n": 1,
+     "wins": 1,
+     "losses": 0,
+     "net_units": 0.61,
+     "roi_pct": 61.0
     }
    },
    "sportsbook": {
@@ -11479,20 +11551,20 @@
    "hit_rate": 0.7552
   },
   "3pm_under": {
-   "n": 177,
-   "wins": 118,
+   "n": 182,
+   "wins": 123,
    "losses": 59,
    "pushes": 0,
-   "net_units": -2.298,
-   "hit_rate": 0.6667
+   "net_units": 0.051,
+   "hit_rate": 0.6758
   },
   "3pm_over": {
-   "n": 49,
-   "wins": 36,
+   "n": 51,
+   "wins": 38,
    "losses": 13,
    "pushes": 0,
-   "net_units": 5.377,
-   "hit_rate": 0.7347
+   "net_units": 6.483,
+   "hit_rate": 0.7451
   },
   "blk_stl_over": {
    "n": 40,
@@ -11615,12 +11687,12 @@
    "hit_rate": 1.0
   },
   "ast_over": {
-   "n": 39,
-   "wins": 19,
+   "n": 40,
+   "wins": 20,
    "losses": 20,
    "pushes": 0,
-   "net_units": -9.345,
-   "hit_rate": 0.4872
+   "net_units": -8.813,
+   "hit_rate": 0.5
   },
   "home_plus": {
    "n": 61,
@@ -11631,12 +11703,12 @@
    "hit_rate": 0.6885
   },
   "blocks_over": {
-   "n": 109,
+   "n": 111,
    "wins": 64,
-   "losses": 45,
+   "losses": 47,
    "pushes": 0,
-   "net_units": -9.333,
-   "hit_rate": 0.5872
+   "net_units": -11.333,
+   "hit_rate": 0.5766
   },
   "away_plus": {
    "n": 76,
@@ -12047,28 +12119,28 @@
    "hit_rate": 0.6866
   },
   "steals_over": {
-   "n": 45,
-   "wins": 38,
-   "losses": 7,
+   "n": 51,
+   "wins": 40,
+   "losses": 11,
    "pushes": 0,
-   "net_units": 11.376,
-   "hit_rate": 0.8444
+   "net_units": 8.304,
+   "hit_rate": 0.7843
   },
   "tov_under": {
-   "n": 111,
-   "wins": 70,
+   "n": 118,
+   "wins": 77,
    "losses": 41,
    "pushes": 0,
-   "net_units": -6.932,
-   "hit_rate": 0.6306
+   "net_units": -3.571,
+   "hit_rate": 0.6525
   },
   "pra_under": {
-   "n": 282,
-   "wins": 181,
-   "losses": 101,
+   "n": 296,
+   "wins": 192,
+   "losses": 104,
    "pushes": 0,
-   "net_units": -18.338,
-   "hit_rate": 0.6418
+   "net_units": -15.654,
+   "hit_rate": 0.6486
   },
   "anytime_goal_yes": {
    "n": 1,
@@ -12079,28 +12151,28 @@
    "hit_rate": 0.0
   },
   "reb_under": {
-   "n": 52,
+   "n": 53,
    "wins": 37,
-   "losses": 15,
+   "losses": 16,
    "pushes": 0,
-   "net_units": 5.915,
-   "hit_rate": 0.7115
+   "net_units": 4.915,
+   "hit_rate": 0.6981
   },
   "pa_under": {
-   "n": 123,
-   "wins": 81,
-   "losses": 42,
+   "n": 125,
+   "wins": 82,
+   "losses": 43,
    "pushes": 0,
-   "net_units": 0.485,
-   "hit_rate": 0.6585
+   "net_units": 0.08,
+   "hit_rate": 0.656
   },
   "pr_under": {
-   "n": 97,
-   "wins": 56,
+   "n": 99,
+   "wins": 58,
    "losses": 41,
    "pushes": 0,
-   "net_units": -12.27,
-   "hit_rate": 0.5773
+   "net_units": -11.046,
+   "hit_rate": 0.5859
   },
   "rec_yds_under": {
    "n": 313,
@@ -12135,36 +12207,36 @@
    "hit_rate": 0.4364
   },
   "ra_over": {
-   "n": 36,
-   "wins": 26,
+   "n": 38,
+   "wins": 28,
    "losses": 10,
    "pushes": 0,
-   "net_units": 1.409,
-   "hit_rate": 0.7222
+   "net_units": 2.384,
+   "hit_rate": 0.7368
   },
   "ra_under": {
-   "n": 39,
-   "wins": 27,
+   "n": 41,
+   "wins": 29,
    "losses": 12,
    "pushes": 0,
-   "net_units": -0.016,
-   "hit_rate": 0.6923
+   "net_units": 0.964,
+   "hit_rate": 0.7073
   },
   "fta_under": {
-   "n": 159,
-   "wins": 98,
-   "losses": 61,
+   "n": 166,
+   "wins": 102,
+   "losses": 64,
    "pushes": 0,
-   "net_units": -11.29,
-   "hit_rate": 0.6164
+   "net_units": -12.03,
+   "hit_rate": 0.6145
   },
   "team_pts_under": {
-   "n": 186,
-   "wins": 135,
-   "losses": 51,
+   "n": 198,
+   "wins": 144,
+   "losses": 54,
    "pushes": 0,
-   "net_units": 19.181,
-   "hit_rate": 0.7258
+   "net_units": 20.849,
+   "hit_rate": 0.7273
   },
   "pass_int_under": {
    "n": 14,
@@ -12465,20 +12537,20 @@
    "hit_rate": 0.7552
   },
   "3pm_under": {
-   "n": 177,
-   "wins": 118,
+   "n": 182,
+   "wins": 123,
    "losses": 59,
    "pushes": 0,
-   "net_units": -2.298,
-   "hit_rate": 0.6667
+   "net_units": 0.051,
+   "hit_rate": 0.6758
   },
   "3pm_over": {
-   "n": 49,
-   "wins": 36,
+   "n": 51,
+   "wins": 38,
    "losses": 13,
    "pushes": 0,
-   "net_units": 5.377,
-   "hit_rate": 0.7347
+   "net_units": 6.483,
+   "hit_rate": 0.7451
   },
   "blk_stl_over": {
    "n": 40,
@@ -12617,12 +12689,12 @@
    "hit_rate": 1.0
   },
   "ast_over": {
-   "n": 39,
-   "wins": 19,
+   "n": 40,
+   "wins": 20,
    "losses": 20,
    "pushes": 0,
-   "net_units": -9.345,
-   "hit_rate": 0.4872
+   "net_units": -8.813,
+   "hit_rate": 0.5
   },
   "home_plus": {
    "n": 61,
@@ -12633,12 +12705,12 @@
    "hit_rate": 0.6885
   },
   "blocks_over": {
-   "n": 109,
+   "n": 111,
    "wins": 64,
-   "losses": 45,
+   "losses": 47,
    "pushes": 0,
-   "net_units": -9.333,
-   "hit_rate": 0.5872
+   "net_units": -11.333,
+   "hit_rate": 0.5766
   },
   "mlb_hrr_4.5_under": {
    "n": 30,
@@ -13057,28 +13129,28 @@
    "hit_rate": 0.6866
   },
   "steals_over": {
-   "n": 45,
-   "wins": 38,
-   "losses": 7,
+   "n": 51,
+   "wins": 40,
+   "losses": 11,
    "pushes": 0,
-   "net_units": 11.376,
-   "hit_rate": 0.8444
+   "net_units": 8.304,
+   "hit_rate": 0.7843
   },
   "tov_under": {
-   "n": 111,
-   "wins": 70,
+   "n": 118,
+   "wins": 77,
    "losses": 41,
    "pushes": 0,
-   "net_units": -6.932,
-   "hit_rate": 0.6306
+   "net_units": -3.571,
+   "hit_rate": 0.6525
   },
   "pra_under": {
-   "n": 282,
-   "wins": 181,
-   "losses": 101,
+   "n": 296,
+   "wins": 192,
+   "losses": 104,
    "pushes": 0,
-   "net_units": -18.338,
-   "hit_rate": 0.6418
+   "net_units": -15.654,
+   "hit_rate": 0.6486
   },
   "anytime_goal_yes": {
    "n": 1,
@@ -13089,28 +13161,28 @@
    "hit_rate": 0.0
   },
   "reb_under": {
-   "n": 52,
+   "n": 53,
    "wins": 37,
-   "losses": 15,
+   "losses": 16,
    "pushes": 0,
-   "net_units": 5.915,
-   "hit_rate": 0.7115
+   "net_units": 4.915,
+   "hit_rate": 0.6981
   },
   "pa_under": {
-   "n": 123,
-   "wins": 81,
-   "losses": 42,
+   "n": 125,
+   "wins": 82,
+   "losses": 43,
    "pushes": 0,
-   "net_units": 0.485,
-   "hit_rate": 0.6585
+   "net_units": 0.08,
+   "hit_rate": 0.656
   },
   "pr_under": {
-   "n": 97,
-   "wins": 56,
+   "n": 99,
+   "wins": 58,
    "losses": 41,
    "pushes": 0,
-   "net_units": -12.27,
-   "hit_rate": 0.5773
+   "net_units": -11.046,
+   "hit_rate": 0.5859
   },
   "rec_yds_under": {
    "n": 313,
@@ -13145,36 +13217,36 @@
    "hit_rate": 0.4364
   },
   "ra_over": {
-   "n": 36,
-   "wins": 26,
+   "n": 38,
+   "wins": 28,
    "losses": 10,
    "pushes": 0,
-   "net_units": 1.409,
-   "hit_rate": 0.7222
+   "net_units": 2.384,
+   "hit_rate": 0.7368
   },
   "ra_under": {
-   "n": 39,
-   "wins": 27,
+   "n": 41,
+   "wins": 29,
    "losses": 12,
    "pushes": 0,
-   "net_units": -0.016,
-   "hit_rate": 0.6923
+   "net_units": 0.964,
+   "hit_rate": 0.7073
   },
   "fta_under": {
-   "n": 159,
-   "wins": 98,
-   "losses": 61,
+   "n": 166,
+   "wins": 102,
+   "losses": 64,
    "pushes": 0,
-   "net_units": -11.29,
-   "hit_rate": 0.6164
+   "net_units": -12.03,
+   "hit_rate": 0.6145
   },
   "team_pts_under": {
-   "n": 186,
-   "wins": 135,
-   "losses": 51,
+   "n": 198,
+   "wins": 144,
+   "losses": 54,
    "pushes": 0,
-   "net_units": 19.181,
-   "hit_rate": 0.7258
+   "net_units": 20.849,
+   "hit_rate": 0.7273
   },
   "pass_int_under": {
    "n": 14,
@@ -13497,8 +13569,8 @@
    "wins": 2724,
    "losses": 971,
    "pushes": 0,
-   "pending": 297,
-   "void": 538,
+   "pending": 300,
+   "void": 535,
    "net_units": -25.058,
    "hit_rate": 0.7372,
    "roi_pct": -0.68,
@@ -13506,15 +13578,15 @@
   },
   "NBA": {
    "n": 2210,
-   "settled": 1556,
-   "wins": 1014,
-   "losses": 542,
+   "settled": 1621,
+   "wins": 1062,
+   "losses": 559,
    "pushes": 0,
-   "pending": 117,
+   "pending": 52,
    "void": 537,
-   "net_units": -38.565,
-   "hit_rate": 0.6517,
-   "roi_pct": -2.48,
+   "net_units": -30.898,
+   "hit_rate": 0.6552,
+   "roi_pct": -1.91,
    "markets": 16
   },
   "KBO": {
@@ -13536,13 +13608,13 @@
   "current": "form_v3",
   "lines": {
    "form_v1": {
-    "n": 2303,
+    "n": 2300,
     "settled": 1903,
     "wins": 1344,
     "losses": 559,
     "pushes": 0,
     "pending": 0,
-    "void": 400,
+    "void": 397,
     "net_units": -76.054,
     "hit_rate": 0.7063,
     "roi_pct": -4.0,
@@ -13566,12 +13638,12 @@
     "label": "10/23-11/2 -- season-to-date form (judged)"
    },
    "form_v3": {
-    "n": 1523,
+    "n": 1526,
     "settled": 1206,
     "wins": 965,
     "losses": 241,
     "pushes": 0,
-    "pending": 297,
+    "pending": 300,
     "void": 20,
     "net_units": 66.478,
     "hit_rate": 0.8002,
@@ -13584,2028 +13656,13 @@
   "note": "NFL props are judged from 10/23 forward: the simulator's form rule changed, so earlier picks are a different model. They stay on the record as their own line and never feed a family verdict."
  },
  "last_7_days": {
-  "wins": 1590,
-  "losses": 581,
-  "net_units": 56.759,
-  "hit_rate": 0.7324
+  "wins": 1638,
+  "losses": 598,
+  "net_units": 64.423,
+  "hit_rate": 0.7326
  },
  "note": "Unified pick ledger -- records every pick the model surfaces (top_25 board, whales, consensus, unders, sharp action, locks, POD) and settles each against actual outcomes. Per-source W-L feeds back into calibration so the model learns which modules are reliable. THIS is the training signal.",
  "picks": [
-  {
-   "source": "nfl_longest_rush",
-   "sport": "NFL",
-   "player_or_matchup": "josh allen",
-   "market": "LONGEST_RUSH_UNDER_24.5",
-   "prob": 0.792,
-   "fair_american": -380,
-   "p_predicted": 0.872,
-   "matchup": "BUF @ MIN",
-   "model_rule": "form_v3",
-   "price_provenance": {
-    "inferred": false,
-    "class": "C",
-    "kind": "model_fair"
-   },
-   "date": "2026-11-09",
-   "pick_id": "nfl_longest_rush|NFL|josh_allen|LONGEST_RUSH_UNDER_24_5|2026-11-09",
-   "settled": true,
-   "result": "won",
-   "payout_units": 0.2632,
-   "recorded_at": "2026-11-04T12:44:59",
-   "p_calibrated": 0.9116,
-   "outcome": {
-    "stat": "longest_rush",
-    "actual": 7,
-    "line": 24.5,
-    "side": "UNDER",
-    "verify": "josh allen \u2014 longest_rush = 7 (line 24.5, bet under) on 2026-11-09"
-   },
-   "settled_at": "2026-11-10T13:18:10"
-  },
-  {
-   "source": "nfl_rec_yds",
-   "sport": "NFL",
-   "player_or_matchup": "jordan addison",
-   "market": "REC_YDS_UNDER_69.5",
-   "prob": 0.79,
-   "fair_american": -376,
-   "p_predicted": 0.822,
-   "matchup": "BUF @ MIN",
-   "model_rule": "form_v3",
-   "price_provenance": {
-    "inferred": false,
-    "class": "C",
-    "kind": "model_fair"
-   },
-   "date": "2026-11-09",
-   "pick_id": "nfl_rec_yds|NFL|jordan_addison|REC_YDS_UNDER_69_5|2026-11-09",
-   "settled": true,
-   "result": "won",
-   "payout_units": 0.266,
-   "recorded_at": "2026-11-04T12:44:59",
-   "p_calibrated": 0.8616,
-   "outcome": {
-    "stat": "rec_yds",
-    "actual": 28,
-    "line": 69.5,
-    "side": "UNDER",
-    "verify": "jordan addison \u2014 rec_yds = 28 (line 69.5, bet under) on 2026-11-09"
-   },
-   "settled_at": "2026-11-10T13:18:10"
-  },
-  {
-   "source": "nfl_rec_yds",
-   "sport": "NFL",
-   "player_or_matchup": "tj hockenson",
-   "market": "REC_YDS_UNDER_59.5",
-   "prob": 0.79,
-   "fair_american": -376,
-   "p_predicted": 0.807,
-   "matchup": "BUF @ MIN",
-   "model_rule": "form_v3",
-   "price_provenance": {
-    "inferred": false,
-    "class": "C",
-    "kind": "model_fair"
-   },
-   "date": "2026-11-09",
-   "pick_id": "nfl_rec_yds|NFL|tj_hockenson|REC_YDS_UNDER_59_5|2026-11-09",
-   "settled": true,
-   "result": "won",
-   "payout_units": 0.266,
-   "recorded_at": "2026-11-04T12:44:59",
-   "p_calibrated": 0.8571,
-   "outcome": {
-    "stat": "rec_yds",
-    "actual": 33,
-    "line": 59.5,
-    "side": "UNDER",
-    "verify": "tj hockenson \u2014 rec_yds = 33 (line 59.5, bet under) on 2026-11-09"
-   },
-   "settled_at": "2026-11-10T13:18:10"
-  },
-  {
-   "source": "nfl_rec_yds",
-   "sport": "NFL",
-   "player_or_matchup": "aaron jones",
-   "market": "REC_YDS_UNDER_39.5",
-   "prob": 0.79,
-   "fair_american": -376,
-   "p_predicted": 0.951,
-   "matchup": "BUF @ MIN",
-   "model_rule": "form_v3",
-   "price_provenance": {
-    "inferred": false,
-    "class": "C",
-    "kind": "model_fair"
-   },
-   "date": "2026-11-09",
-   "pick_id": "nfl_rec_yds|NFL|aaron_jones|REC_YDS_UNDER_39_5|2026-11-09",
-   "settled": true,
-   "result": "won",
-   "payout_units": 0.266,
-   "recorded_at": "2026-11-04T12:44:59",
-   "p_calibrated": 0.865,
-   "outcome": {
-    "stat": "rec_yds",
-    "actual": 5,
-    "line": 39.5,
-    "side": "UNDER",
-    "verify": "aaron jones \u2014 rec_yds = 5 (line 39.5, bet under) on 2026-11-09"
-   },
-   "settled_at": "2026-11-10T13:18:10"
-  },
-  {
-   "source": "nfl_rec_yds",
-   "sport": "NFL",
-   "player_or_matchup": "keon coleman",
-   "market": "REC_YDS_UNDER_59.5",
-   "prob": 0.79,
-   "fair_american": -376,
-   "p_predicted": 0.82,
-   "matchup": "BUF @ MIN",
-   "model_rule": "form_v3",
-   "price_provenance": {
-    "inferred": false,
-    "class": "C",
-    "kind": "model_fair"
-   },
-   "date": "2026-11-09",
-   "pick_id": "nfl_rec_yds|NFL|keon_coleman|REC_YDS_UNDER_59_5|2026-11-09",
-   "settled": true,
-   "result": "won",
-   "payout_units": 0.266,
-   "recorded_at": "2026-11-04T12:44:59",
-   "p_calibrated": 0.861,
-   "outcome": {
-    "stat": "rec_yds",
-    "actual": 17,
-    "line": 59.5,
-    "side": "UNDER",
-    "verify": "keon coleman \u2014 rec_yds = 17 (line 59.5, bet under) on 2026-11-09"
-   },
-   "settled_at": "2026-11-10T13:18:10"
-  },
-  {
-   "source": "nfl_rec_yds",
-   "sport": "NFL",
-   "player_or_matchup": "james cook",
-   "market": "REC_YDS_UNDER_39.5",
-   "prob": 0.79,
-   "fair_american": -376,
-   "p_predicted": 0.931,
-   "matchup": "BUF @ MIN",
-   "model_rule": "form_v3",
-   "price_provenance": {
-    "inferred": false,
-    "class": "C",
-    "kind": "model_fair"
-   },
-   "date": "2026-11-09",
-   "pick_id": "nfl_rec_yds|NFL|james_cook|REC_YDS_UNDER_39_5|2026-11-09",
-   "settled": true,
-   "result": "won",
-   "payout_units": 0.266,
-   "recorded_at": "2026-11-04T12:44:59",
-   "p_calibrated": 0.865,
-   "outcome": {
-    "stat": "rec_yds",
-    "actual": 0,
-    "line": 39.5,
-    "side": "UNDER",
-    "verify": "james cook \u2014 rec_yds = 0 (line 39.5, bet under) on 2026-11-09"
-   },
-   "settled_at": "2026-11-10T13:18:10"
-  },
-  {
-   "source": "nfl_rec_yds",
-   "sport": "NFL",
-   "player_or_matchup": "ty johnson",
-   "market": "REC_YDS_UNDER_49.5",
-   "prob": 0.79,
-   "fair_american": -376,
-   "p_predicted": 0.807,
-   "matchup": "BUF @ MIN",
-   "model_rule": "form_v3",
-   "price_provenance": {
-    "inferred": false,
-    "class": "C",
-    "kind": "model_fair"
-   },
-   "date": "2026-11-09",
-   "pick_id": "nfl_rec_yds|NFL|ty_johnson|REC_YDS_UNDER_49_5|2026-11-09",
-   "settled": true,
-   "result": "won",
-   "payout_units": 0.266,
-   "recorded_at": "2026-11-04T12:44:59",
-   "p_calibrated": 0.8571,
-   "outcome": {
-    "stat": "rec_yds",
-    "actual": 36,
-    "line": 49.5,
-    "side": "UNDER",
-    "verify": "ty johnson \u2014 rec_yds = 36 (line 49.5, bet under) on 2026-11-09"
-   },
-   "settled_at": "2026-11-10T13:18:10"
-  },
-  {
-   "source": "nfl_rec_yds",
-   "sport": "NFL",
-   "player_or_matchup": "dalton kincaid",
-   "market": "REC_YDS_UNDER_79.5",
-   "prob": 0.79,
-   "fair_american": -376,
-   "p_predicted": 0.789,
-   "matchup": "BUF @ MIN",
-   "model_rule": "form_v3",
-   "price_provenance": {
-    "inferred": false,
-    "class": "C",
-    "kind": "model_fair"
-   },
-   "date": "2026-11-09",
-   "pick_id": "nfl_rec_yds|NFL|dalton_kincaid|REC_YDS_UNDER_79_5|2026-11-09",
-   "settled": true,
-   "result": "won",
-   "payout_units": 0.266,
-   "recorded_at": "2026-11-04T12:44:59",
-   "p_calibrated": 0.8238,
-   "outcome": {
-    "stat": "rec_yds",
-    "actual": 28,
-    "line": 79.5,
-    "side": "UNDER",
-    "verify": "dalton kincaid \u2014 rec_yds = 28 (line 79.5, bet under) on 2026-11-09"
-   },
-   "settled_at": "2026-11-10T13:18:10"
-  },
-  {
-   "source": "nfl_rec_yds",
-   "sport": "NFL",
-   "player_or_matchup": "dawson knox",
-   "market": "REC_YDS_UNDER_39.5",
-   "prob": 0.79,
-   "fair_american": -376,
-   "p_predicted": 0.996,
-   "matchup": "BUF @ MIN",
-   "model_rule": "form_v3",
-   "price_provenance": {
-    "inferred": false,
-    "class": "C",
-    "kind": "model_fair"
-   },
-   "date": "2026-11-09",
-   "pick_id": "nfl_rec_yds|NFL|dawson_knox|REC_YDS_UNDER_39_5|2026-11-09",
-   "settled": true,
-   "result": "won",
-   "payout_units": 0.266,
-   "recorded_at": "2026-11-04T12:44:59",
-   "p_calibrated": 0.865,
-   "outcome": {
-    "stat": "rec_yds",
-    "actual": 37,
-    "line": 39.5,
-    "side": "UNDER",
-    "verify": "dawson knox \u2014 rec_yds = 37 (line 39.5, bet under) on 2026-11-09"
-   },
-   "settled_at": "2026-11-10T13:18:10"
-  },
-  {
-   "source": "nfl_rec_yds",
-   "sport": "NFL",
-   "player_or_matchup": "khalil shakir",
-   "market": "REC_YDS_UNDER_69.5",
-   "prob": 0.79,
-   "fair_american": -376,
-   "p_predicted": 0.785,
-   "matchup": "BUF @ MIN",
-   "model_rule": "form_v3",
-   "price_provenance": {
-    "inferred": false,
-    "class": "C",
-    "kind": "model_fair"
-   },
-   "date": "2026-11-09",
-   "pick_id": "nfl_rec_yds|NFL|khalil_shakir|REC_YDS_UNDER_69_5|2026-11-09",
-   "settled": true,
-   "result": "won",
-   "payout_units": 0.266,
-   "recorded_at": "2026-11-04T12:44:59",
-   "p_calibrated": 0.8097,
-   "outcome": {
-    "stat": "rec_yds",
-    "actual": 58,
-    "line": 69.5,
-    "side": "UNDER",
-    "verify": "khalil shakir \u2014 rec_yds = 58 (line 69.5, bet under) on 2026-11-09"
-   },
-   "settled_at": "2026-11-10T13:18:10"
-  },
-  {
-   "source": "nfl_longest_rush",
-   "sport": "NFL",
-   "player_or_matchup": "jordan mason",
-   "market": "LONGEST_RUSH_UNDER_24.5",
-   "prob": 0.789,
-   "fair_american": -374,
-   "p_predicted": 0.858,
-   "matchup": "BUF @ MIN",
-   "model_rule": "form_v3",
-   "price_provenance": {
-    "inferred": false,
-    "class": "C",
-    "kind": "model_fair"
-   },
-   "date": "2026-11-09",
-   "pick_id": "nfl_longest_rush|NFL|jordan_mason|LONGEST_RUSH_UNDER_24_5|2026-11-09",
-   "settled": true,
-   "result": "won",
-   "payout_units": 0.2674,
-   "recorded_at": "2026-11-04T12:44:59",
-   "p_calibrated": 0.9074,
-   "outcome": {
-    "stat": "longest_rush",
-    "actual": 11,
-    "line": 24.5,
-    "side": "UNDER",
-    "verify": "jordan mason \u2014 longest_rush = 11 (line 24.5, bet under) on 2026-11-09"
-   },
-   "settled_at": "2026-11-10T13:18:10"
-  },
-  {
-   "source": "nfl_longest_rush",
-   "sport": "NFL",
-   "player_or_matchup": "aaron jones",
-   "market": "LONGEST_RUSH_UNDER_24.5",
-   "prob": 0.783,
-   "fair_american": -361,
-   "p_predicted": 0.825,
-   "matchup": "BUF @ MIN",
-   "model_rule": "form_v3",
-   "price_provenance": {
-    "inferred": false,
-    "class": "C",
-    "kind": "model_fair"
-   },
-   "date": "2026-11-09",
-   "pick_id": "nfl_longest_rush|NFL|aaron_jones|LONGEST_RUSH_UNDER_24_5|2026-11-09",
-   "settled": true,
-   "result": "won",
-   "payout_units": 0.277,
-   "recorded_at": "2026-11-04T12:44:59",
-   "p_calibrated": 0.8959,
-   "outcome": {
-    "stat": "longest_rush",
-    "actual": 5,
-    "line": 24.5,
-    "side": "UNDER",
-    "verify": "aaron jones \u2014 longest_rush = 5 (line 24.5, bet under) on 2026-11-09"
-   },
-   "settled_at": "2026-11-10T13:18:10"
-  },
-  {
-   "source": "nfl_rush_yds",
-   "sport": "NFL",
-   "player_or_matchup": "jordan mason",
-   "market": "RUSH_YDS_UNDER_89.5",
-   "prob": 0.781,
-   "fair_american": -357,
-   "p_predicted": 0.929,
-   "matchup": "BUF @ MIN",
-   "model_rule": "form_v3",
-   "price_provenance": {
-    "inferred": false,
-    "class": "C",
-    "kind": "model_fair"
-   },
-   "date": "2026-11-09",
-   "pick_id": "nfl_rush_yds|NFL|jordan_mason|RUSH_YDS_UNDER_89_5|2026-11-09",
-   "settled": true,
-   "result": "won",
-   "payout_units": 0.2801,
-   "recorded_at": "2026-11-04T12:44:59",
-   "p_calibrated": 0.9311,
-   "outcome": {
-    "stat": "rush_yds",
-    "actual": 35,
-    "line": 89.5,
-    "side": "UNDER",
-    "verify": "jordan mason \u2014 rush_yds = 35 (line 89.5, bet under) on 2026-11-09"
-   },
-   "settled_at": "2026-11-10T13:18:10"
-  },
-  {
-   "source": "nfl_pass_cmp",
-   "sport": "NFL",
-   "player_or_matchup": "josh allen",
-   "market": "PASS_CMP_UNDER_23.5",
-   "prob": 0.779,
-   "fair_american": -352,
-   "p_predicted": 0.779,
-   "matchup": "BUF @ MIN",
-   "model_rule": "form_v3",
-   "price_provenance": {
-    "inferred": false,
-    "class": "C",
-    "kind": "model_fair"
-   },
-   "date": "2026-11-09",
-   "pick_id": "nfl_pass_cmp|NFL|josh_allen|PASS_CMP_UNDER_23_5|2026-11-09",
-   "settled": true,
-   "result": "won",
-   "payout_units": 0.2841,
-   "recorded_at": "2026-11-04T12:44:59",
-   "p_calibrated": 0.7699,
-   "outcome": {
-    "stat": "pass_cmp",
-    "actual": 21,
-    "line": 23.5,
-    "side": "UNDER",
-    "verify": "josh allen \u2014 pass_cmp = 21 (line 23.5, bet under) on 2026-11-09"
-   },
-   "settled_at": "2026-11-10T13:18:10"
-  },
-  {
-   "source": "nfl_rec",
-   "sport": "NFL",
-   "player_or_matchup": "justin jefferson",
-   "market": "REC_OVER_4.5",
-   "prob": 0.778,
-   "fair_american": -350,
-   "p_predicted": 0.758,
-   "matchup": "BUF @ MIN",
-   "model_rule": "form_v3",
-   "price_provenance": {
-    "inferred": false,
-    "class": "C",
-    "kind": "model_fair"
-   },
-   "date": "2026-11-09",
-   "pick_id": "nfl_rec|NFL|justin_jefferson|REC_OVER_4_5|2026-11-09",
-   "settled": true,
-   "result": "lost",
-   "payout_units": -1.0,
-   "recorded_at": "2026-11-04T12:44:59",
-   "p_calibrated": 0.7644,
-   "outcome": {
-    "stat": "rec",
-    "actual": 3,
-    "line": 4.5,
-    "side": "OVER",
-    "verify": "justin jefferson \u2014 rec = 3 (line 4.5, bet over) on 2026-11-09"
-   },
-   "settled_at": "2026-11-10T13:18:10"
-  },
-  {
-   "source": "nfl_pass_yds",
-   "sport": "NFL",
-   "player_or_matchup": "josh allen",
-   "market": "PASS_YDS_UNDER_299.5",
-   "prob": 0.777,
-   "fair_american": -349,
-   "p_predicted": 0.777,
-   "matchup": "BUF @ MIN",
-   "model_rule": "form_v3",
-   "price_provenance": {
-    "inferred": false,
-    "class": "C",
-    "kind": "model_fair"
-   },
-   "date": "2026-11-09",
-   "pick_id": "nfl_pass_yds|NFL|josh_allen|PASS_YDS_UNDER_299_5|2026-11-09",
-   "settled": true,
-   "result": "won",
-   "payout_units": 0.2865,
-   "recorded_at": "2026-11-04T12:44:59",
-   "p_calibrated": 0.715,
-   "outcome": {
-    "stat": "pass_yds",
-    "actual": 234,
-    "line": 299.5,
-    "side": "UNDER",
-    "verify": "josh allen \u2014 pass_yds = 234 (line 299.5, bet under) on 2026-11-09"
-   },
-   "settled_at": "2026-11-10T13:18:10"
-  },
-  {
-   "source": "nfl_rec_yds",
-   "sport": "NFL",
-   "player_or_matchup": "dj moore",
-   "market": "REC_YDS_UNDER_79.5",
-   "prob": 0.773,
-   "fair_american": -341,
-   "p_predicted": 0.752,
-   "matchup": "BUF @ MIN",
-   "model_rule": "form_v3",
-   "price_provenance": {
-    "inferred": false,
-    "class": "C",
-    "kind": "model_fair"
-   },
-   "date": "2026-11-09",
-   "pick_id": "nfl_rec_yds|NFL|dj_moore|REC_YDS_UNDER_79_5|2026-11-09",
-   "settled": true,
-   "result": "won",
-   "payout_units": 0.2933,
-   "recorded_at": "2026-11-04T12:44:59",
-   "p_calibrated": 0.7876,
-   "outcome": {
-    "stat": "rec_yds",
-    "actual": 25,
-    "line": 79.5,
-    "side": "UNDER",
-    "verify": "dj moore \u2014 rec_yds = 25 (line 79.5, bet under) on 2026-11-09"
-   },
-   "settled_at": "2026-11-10T13:18:10"
-  },
-  {
-   "source": "nfl_rec",
-   "sport": "NFL",
-   "player_or_matchup": "jordan addison",
-   "market": "REC_UNDER_4.5",
-   "prob": 0.77,
-   "fair_american": -334,
-   "p_predicted": 0.806,
-   "matchup": "BUF @ MIN",
-   "model_rule": "form_v3",
-   "price_provenance": {
-    "inferred": false,
-    "class": "C",
-    "kind": "model_fair"
-   },
-   "date": "2026-11-09",
-   "pick_id": "nfl_rec|NFL|jordan_addison|REC_UNDER_4_5|2026-11-09",
-   "settled": true,
-   "result": "won",
-   "payout_units": 0.2994,
-   "recorded_at": "2026-11-04T12:44:59",
-   "p_calibrated": 0.8259,
-   "outcome": {
-    "stat": "rec",
-    "actual": 2,
-    "line": 4.5,
-    "side": "UNDER",
-    "verify": "jordan addison \u2014 rec = 2 (line 4.5, bet under) on 2026-11-09"
-   },
-   "settled_at": "2026-11-10T13:18:10"
-  },
-  {
-   "source": "nfl_rec",
-   "sport": "NFL",
-   "player_or_matchup": "tj hockenson",
-   "market": "REC_UNDER_5.5",
-   "prob": 0.77,
-   "fair_american": -334,
-   "p_predicted": 0.858,
-   "matchup": "BUF @ MIN",
-   "model_rule": "form_v3",
-   "price_provenance": {
-    "inferred": false,
-    "class": "C",
-    "kind": "model_fair"
-   },
-   "date": "2026-11-09",
-   "pick_id": "nfl_rec|NFL|tj_hockenson|REC_UNDER_5_5|2026-11-09",
-   "settled": true,
-   "result": "won",
-   "payout_units": 0.2994,
-   "recorded_at": "2026-11-04T12:44:59",
-   "p_calibrated": 0.8307,
-   "outcome": {
-    "stat": "rec",
-    "actual": 4,
-    "line": 5.5,
-    "side": "UNDER",
-    "verify": "tj hockenson \u2014 rec = 4 (line 5.5, bet under) on 2026-11-09"
-   },
-   "settled_at": "2026-11-10T13:18:10"
-  },
-  {
-   "source": "nfl_rec",
-   "sport": "NFL",
-   "player_or_matchup": "aaron jones",
-   "market": "REC_UNDER_4.5",
-   "prob": 0.77,
-   "fair_american": -334,
-   "p_predicted": 0.9,
-   "matchup": "BUF @ MIN",
-   "model_rule": "form_v3",
-   "price_provenance": {
-    "inferred": false,
-    "class": "C",
-    "kind": "model_fair"
-   },
-   "date": "2026-11-09",
-   "pick_id": "nfl_rec|NFL|aaron_jones|REC_UNDER_4_5|2026-11-09",
-   "settled": true,
-   "result": "won",
-   "payout_units": 0.2994,
-   "recorded_at": "2026-11-04T12:44:59",
-   "p_calibrated": 0.8336,
-   "outcome": {
-    "stat": "rec",
-    "actual": 1,
-    "line": 4.5,
-    "side": "UNDER",
-    "verify": "aaron jones \u2014 rec = 1 (line 4.5, bet under) on 2026-11-09"
-   },
-   "settled_at": "2026-11-10T13:18:10"
-  },
-  {
-   "source": "nfl_rec",
-   "sport": "NFL",
-   "player_or_matchup": "keon coleman",
-   "market": "REC_UNDER_4.5",
-   "prob": 0.77,
-   "fair_american": -334,
-   "p_predicted": 0.828,
-   "matchup": "BUF @ MIN",
-   "model_rule": "form_v3",
-   "price_provenance": {
-    "inferred": false,
-    "class": "C",
-    "kind": "model_fair"
-   },
-   "date": "2026-11-09",
-   "pick_id": "nfl_rec|NFL|keon_coleman|REC_UNDER_4_5|2026-11-09",
-   "settled": true,
-   "result": "won",
-   "payout_units": 0.2994,
-   "recorded_at": "2026-11-04T12:44:59",
-   "p_calibrated": 0.8303,
-   "outcome": {
-    "stat": "rec",
-    "actual": 3,
-    "line": 4.5,
-    "side": "UNDER",
-    "verify": "keon coleman \u2014 rec = 3 (line 4.5, bet under) on 2026-11-09"
-   },
-   "settled_at": "2026-11-10T13:18:10"
-  },
-  {
-   "source": "nfl_rec",
-   "sport": "NFL",
-   "player_or_matchup": "james cook",
-   "market": "REC_UNDER_3.5",
-   "prob": 0.77,
-   "fair_american": -334,
-   "p_predicted": 0.859,
-   "matchup": "BUF @ MIN",
-   "model_rule": "form_v3",
-   "price_provenance": {
-    "inferred": false,
-    "class": "C",
-    "kind": "model_fair"
-   },
-   "date": "2026-11-09",
-   "pick_id": "nfl_rec|NFL|james_cook|REC_UNDER_3_5|2026-11-09",
-   "settled": true,
-   "result": "won",
-   "payout_units": 0.2994,
-   "recorded_at": "2026-11-04T12:44:59",
-   "p_calibrated": 0.8308,
-   "outcome": {
-    "stat": "rec",
-    "actual": 0,
-    "line": 3.5,
-    "side": "UNDER",
-    "verify": "james cook \u2014 rec = 0 (line 3.5, bet under) on 2026-11-09"
-   },
-   "settled_at": "2026-11-10T13:18:10"
-  },
-  {
-   "source": "nfl_rec",
-   "sport": "NFL",
-   "player_or_matchup": "ty johnson",
-   "market": "REC_UNDER_2.5",
-   "prob": 0.77,
-   "fair_american": -334,
-   "p_predicted": 0.831,
-   "matchup": "BUF @ MIN",
-   "model_rule": "form_v3",
-   "price_provenance": {
-    "inferred": false,
-    "class": "C",
-    "kind": "model_fair"
-   },
-   "date": "2026-11-09",
-   "pick_id": "nfl_rec|NFL|ty_johnson|REC_UNDER_2_5|2026-11-09",
-   "settled": true,
-   "result": "won",
-   "payout_units": 0.2994,
-   "recorded_at": "2026-11-04T12:44:59",
-   "p_calibrated": 0.8303,
-   "outcome": {
-    "stat": "rec",
-    "actual": 2,
-    "line": 2.5,
-    "side": "UNDER",
-    "verify": "ty johnson \u2014 rec = 2 (line 2.5, bet under) on 2026-11-09"
-   },
-   "settled_at": "2026-11-10T13:18:10"
-  },
-  {
-   "source": "nfl_rec",
-   "sport": "NFL",
-   "player_or_matchup": "dalton kincaid",
-   "market": "REC_UNDER_5.5",
-   "prob": 0.77,
-   "fair_american": -334,
-   "p_predicted": 0.869,
-   "matchup": "BUF @ MIN",
-   "model_rule": "form_v3",
-   "price_provenance": {
-    "inferred": false,
-    "class": "C",
-    "kind": "model_fair"
-   },
-   "date": "2026-11-09",
-   "pick_id": "nfl_rec|NFL|dalton_kincaid|REC_UNDER_5_5|2026-11-09",
-   "settled": true,
-   "result": "won",
-   "payout_units": 0.2994,
-   "recorded_at": "2026-11-04T12:44:59",
-   "p_calibrated": 0.8317,
-   "outcome": {
-    "stat": "rec",
-    "actual": 3,
-    "line": 5.5,
-    "side": "UNDER",
-    "verify": "dalton kincaid \u2014 rec = 3 (line 5.5, bet under) on 2026-11-09"
-   },
-   "settled_at": "2026-11-10T13:18:10"
-  },
-  {
-   "source": "nfl_rec",
-   "sport": "NFL",
-   "player_or_matchup": "dawson knox",
-   "market": "REC_UNDER_3.5",
-   "prob": 0.77,
-   "fair_american": -334,
-   "p_predicted": 0.887,
-   "matchup": "BUF @ MIN",
-   "model_rule": "form_v3",
-   "price_provenance": {
-    "inferred": false,
-    "class": "C",
-    "kind": "model_fair"
-   },
-   "date": "2026-11-09",
-   "pick_id": "nfl_rec|NFL|dawson_knox|REC_UNDER_3_5|2026-11-09",
-   "settled": true,
-   "result": "lost",
-   "payout_units": -1.0,
-   "recorded_at": "2026-11-04T12:44:59",
-   "p_calibrated": 0.8333,
-   "outcome": {
-    "stat": "rec",
-    "actual": 4,
-    "line": 3.5,
-    "side": "UNDER",
-    "verify": "dawson knox \u2014 rec = 4 (line 3.5, bet under) on 2026-11-09"
-   },
-   "settled_at": "2026-11-10T13:18:10"
-  },
-  {
-   "source": "nfl_rec",
-   "sport": "NFL",
-   "player_or_matchup": "dj moore",
-   "market": "REC_UNDER_4.5",
-   "prob": 0.77,
-   "fair_american": -334,
-   "p_predicted": 0.802,
-   "matchup": "BUF @ MIN",
-   "model_rule": "form_v3",
-   "price_provenance": {
-    "inferred": false,
-    "class": "C",
-    "kind": "model_fair"
-   },
-   "date": "2026-11-09",
-   "pick_id": "nfl_rec|NFL|dj_moore|REC_UNDER_4_5|2026-11-09",
-   "settled": true,
-   "result": "won",
-   "payout_units": 0.2994,
-   "recorded_at": "2026-11-04T12:44:59",
-   "p_calibrated": 0.823,
-   "outcome": {
-    "stat": "rec",
-    "actual": 3,
-    "line": 4.5,
-    "side": "UNDER",
-    "verify": "dj moore \u2014 rec = 3 (line 4.5, bet under) on 2026-11-09"
-   },
-   "settled_at": "2026-11-10T13:18:10"
-  },
-  {
-   "source": "nfl_longest_rush",
-   "sport": "NFL",
-   "player_or_matchup": "james cook",
-   "market": "LONGEST_RUSH_UNDER_24.5",
-   "prob": 0.759,
-   "fair_american": -315,
-   "p_predicted": 0.695,
-   "matchup": "BUF @ MIN",
-   "model_rule": "form_v3",
-   "price_provenance": {
-    "inferred": false,
-    "class": "C",
-    "kind": "model_fair"
-   },
-   "date": "2026-11-09",
-   "pick_id": "nfl_longest_rush|NFL|james_cook|LONGEST_RUSH_UNDER_24_5|2026-11-09",
-   "settled": true,
-   "result": "won",
-   "payout_units": 0.3175,
-   "recorded_at": "2026-11-04T12:44:59",
-   "p_calibrated": 0.7818,
-   "outcome": {
-    "stat": "longest_rush",
-    "actual": 11,
-    "line": 24.5,
-    "side": "UNDER",
-    "verify": "james cook \u2014 longest_rush = 11 (line 24.5, bet under) on 2026-11-09"
-   },
-   "settled_at": "2026-11-10T13:18:10"
-  },
-  {
-   "source": "nfl_rush_yds",
-   "sport": "NFL",
-   "player_or_matchup": "aaron jones",
-   "market": "RUSH_YDS_UNDER_89.5",
-   "prob": 0.756,
-   "fair_american": -310,
-   "p_predicted": 0.835,
-   "matchup": "BUF @ MIN",
-   "model_rule": "form_v3",
-   "price_provenance": {
-    "inferred": false,
-    "class": "C",
-    "kind": "model_fair"
-   },
-   "date": "2026-11-09",
-   "pick_id": "nfl_rush_yds|NFL|aaron_jones|RUSH_YDS_UNDER_89_5|2026-11-09",
-   "settled": true,
-   "result": "won",
-   "payout_units": 0.3226,
-   "recorded_at": "2026-11-04T12:44:59",
-   "p_calibrated": 0.8105,
-   "outcome": {
-    "stat": "rush_yds",
-    "actual": 16,
-    "line": 89.5,
-    "side": "UNDER",
-    "verify": "aaron jones \u2014 rush_yds = 16 (line 89.5, bet under) on 2026-11-09"
-   },
-   "settled_at": "2026-11-10T13:18:10"
-  },
-  {
-   "source": "nfl_longest_reception",
-   "sport": "NFL",
-   "player_or_matchup": "jordan addison",
-   "market": "LONGEST_REC_UNDER_29.5",
-   "prob": 0.748,
-   "fair_american": -297,
-   "p_predicted": 0.774,
-   "matchup": "BUF @ MIN",
-   "model_rule": "form_v3",
-   "price_provenance": {
-    "inferred": false,
-    "class": "C",
-    "kind": "model_fair"
-   },
-   "date": "2026-11-09",
-   "pick_id": "nfl_longest_reception|NFL|jordan_addison|LONGEST_REC_UNDER_29_5|2026-11-09",
-   "settled": true,
-   "result": "won",
-   "payout_units": 0.3367,
-   "recorded_at": "2026-11-04T12:44:59",
-   "p_calibrated": 0.7659,
-   "outcome": {
-    "stat": "longest_reception",
-    "actual": 16,
-    "line": 29.5,
-    "side": "UNDER",
-    "verify": "jordan addison \u2014 longest_reception = 16 (line 29.5, bet under) on 2026-11-09"
-   },
-   "settled_at": "2026-11-10T13:18:10"
-  },
-  {
-   "source": "nfl_longest_reception",
-   "sport": "NFL",
-   "player_or_matchup": "tj hockenson",
-   "market": "LONGEST_REC_UNDER_24.5",
-   "prob": 0.748,
-   "fair_american": -297,
-   "p_predicted": 0.779,
-   "matchup": "BUF @ MIN",
-   "model_rule": "form_v3",
-   "price_provenance": {
-    "inferred": false,
-    "class": "C",
-    "kind": "model_fair"
-   },
-   "date": "2026-11-09",
-   "pick_id": "nfl_longest_reception|NFL|tj_hockenson|LONGEST_REC_UNDER_24_5|2026-11-09",
-   "settled": true,
-   "result": "won",
-   "payout_units": 0.3367,
-   "recorded_at": "2026-11-04T12:44:59",
-   "p_calibrated": 0.7669,
-   "outcome": {
-    "stat": "longest_reception",
-    "actual": 14,
-    "line": 24.5,
-    "side": "UNDER",
-    "verify": "tj hockenson \u2014 longest_reception = 14 (line 24.5, bet under) on 2026-11-09"
-   },
-   "settled_at": "2026-11-10T13:18:10"
-  },
-  {
-   "source": "nfl_longest_reception",
-   "sport": "NFL",
-   "player_or_matchup": "justin jefferson",
-   "market": "LONGEST_REC_UNDER_29.5",
-   "prob": 0.748,
-   "fair_american": -297,
-   "p_predicted": 0.852,
-   "matchup": "BUF @ MIN",
-   "model_rule": "form_v3",
-   "price_provenance": {
-    "inferred": false,
-    "class": "C",
-    "kind": "model_fair"
-   },
-   "date": "2026-11-09",
-   "pick_id": "nfl_longest_reception|NFL|justin_jefferson|LONGEST_REC_UNDER_29_5|2026-11-09",
-   "settled": true,
-   "result": "won",
-   "payout_units": 0.3367,
-   "recorded_at": "2026-11-04T12:44:59",
-   "p_calibrated": 0.8072,
-   "outcome": {
-    "stat": "longest_reception",
-    "actual": 24,
-    "line": 29.5,
-    "side": "UNDER",
-    "verify": "justin jefferson \u2014 longest_reception = 24 (line 29.5, bet under) on 2026-11-09"
-   },
-   "settled_at": "2026-11-10T13:18:10"
-  },
-  {
-   "source": "nfl_longest_reception",
-   "sport": "NFL",
-   "player_or_matchup": "aaron jones",
-   "market": "LONGEST_REC_UNDER_19.5",
-   "prob": 0.748,
-   "fair_american": -297,
-   "p_predicted": 0.96,
-   "matchup": "BUF @ MIN",
-   "model_rule": "form_v3",
-   "price_provenance": {
-    "inferred": false,
-    "class": "C",
-    "kind": "model_fair"
-   },
-   "date": "2026-11-09",
-   "pick_id": "nfl_longest_reception|NFL|aaron_jones|LONGEST_REC_UNDER_19_5|2026-11-09",
-   "settled": true,
-   "result": "won",
-   "payout_units": 0.3367,
-   "recorded_at": "2026-11-04T12:44:59",
-   "p_calibrated": 0.9227,
-   "outcome": {
-    "stat": "longest_reception",
-    "actual": 5,
-    "line": 19.5,
-    "side": "UNDER",
-    "verify": "aaron jones \u2014 longest_reception = 5 (line 19.5, bet under) on 2026-11-09"
-   },
-   "settled_at": "2026-11-10T13:18:10"
-  },
-  {
-   "source": "nfl_longest_reception",
-   "sport": "NFL",
-   "player_or_matchup": "keon coleman",
-   "market": "LONGEST_REC_UNDER_29.5",
-   "prob": 0.748,
-   "fair_american": -297,
-   "p_predicted": 0.844,
-   "matchup": "BUF @ MIN",
-   "model_rule": "form_v3",
-   "price_provenance": {
-    "inferred": false,
-    "class": "C",
-    "kind": "model_fair"
-   },
-   "date": "2026-11-09",
-   "pick_id": "nfl_longest_reception|NFL|keon_coleman|LONGEST_REC_UNDER_29_5|2026-11-09",
-   "settled": true,
-   "result": "won",
-   "payout_units": 0.3367,
-   "recorded_at": "2026-11-04T12:44:59",
-   "p_calibrated": 0.7987,
-   "outcome": {
-    "stat": "longest_reception",
-    "actual": 11,
-    "line": 29.5,
-    "side": "UNDER",
-    "verify": "keon coleman \u2014 longest_reception = 11 (line 29.5, bet under) on 2026-11-09"
-   },
-   "settled_at": "2026-11-10T13:18:10"
-  },
-  {
-   "source": "nfl_longest_reception",
-   "sport": "NFL",
-   "player_or_matchup": "james cook",
-   "market": "LONGEST_REC_UNDER_19.5",
-   "prob": 0.748,
-   "fair_american": -297,
-   "p_predicted": 0.912,
-   "matchup": "BUF @ MIN",
-   "model_rule": "form_v3",
-   "price_provenance": {
-    "inferred": false,
-    "class": "C",
-    "kind": "model_fair"
-   },
-   "date": "2026-11-09",
-   "pick_id": "nfl_longest_reception|NFL|james_cook|LONGEST_REC_UNDER_19_5|2026-11-09",
-   "settled": true,
-   "result": "won",
-   "payout_units": 0.3367,
-   "recorded_at": "2026-11-04T12:44:59",
-   "p_calibrated": 0.8629,
-   "outcome": {
-    "stat": "longest_reception",
-    "actual": 0,
-    "line": 19.5,
-    "side": "UNDER",
-    "verify": "james cook \u2014 longest_reception = 0 (line 19.5, bet under) on 2026-11-09"
-   },
-   "settled_at": "2026-11-10T13:18:10"
-  },
-  {
-   "source": "nfl_longest_reception",
-   "sport": "NFL",
-   "player_or_matchup": "ty johnson",
-   "market": "LONGEST_REC_UNDER_29.5",
-   "prob": 0.748,
-   "fair_american": -297,
-   "p_predicted": 0.747,
-   "matchup": "BUF @ MIN",
-   "model_rule": "form_v3",
-   "price_provenance": {
-    "inferred": false,
-    "class": "C",
-    "kind": "model_fair"
-   },
-   "date": "2026-11-09",
-   "pick_id": "nfl_longest_reception|NFL|ty_johnson|LONGEST_REC_UNDER_29_5|2026-11-09",
-   "settled": true,
-   "result": "lost",
-   "payout_units": -1.0,
-   "recorded_at": "2026-11-04T12:44:59",
-   "p_calibrated": 0.7607,
-   "outcome": {
-    "stat": "longest_reception",
-    "actual": 36,
-    "line": 29.5,
-    "side": "UNDER",
-    "verify": "ty johnson \u2014 longest_reception = 36 (line 29.5, bet under) on 2026-11-09"
-   },
-   "settled_at": "2026-11-10T13:18:10"
-  },
-  {
-   "source": "nfl_longest_reception",
-   "sport": "NFL",
-   "player_or_matchup": "dalton kincaid",
-   "market": "LONGEST_REC_UNDER_34.5",
-   "prob": 0.748,
-   "fair_american": -297,
-   "p_predicted": 0.767,
-   "matchup": "BUF @ MIN",
-   "model_rule": "form_v3",
-   "price_provenance": {
-    "inferred": false,
-    "class": "C",
-    "kind": "model_fair"
-   },
-   "date": "2026-11-09",
-   "pick_id": "nfl_longest_reception|NFL|dalton_kincaid|LONGEST_REC_UNDER_34_5|2026-11-09",
-   "settled": true,
-   "result": "won",
-   "payout_units": 0.3367,
-   "recorded_at": "2026-11-04T12:44:59",
-   "p_calibrated": 0.7638,
-   "outcome": {
-    "stat": "longest_reception",
-    "actual": 12,
-    "line": 34.5,
-    "side": "UNDER",
-    "verify": "dalton kincaid \u2014 longest_reception = 12 (line 34.5, bet under) on 2026-11-09"
-   },
-   "settled_at": "2026-11-10T13:18:10"
-  },
-  {
-   "source": "nfl_longest_reception",
-   "sport": "NFL",
-   "player_or_matchup": "dawson knox",
-   "market": "LONGEST_REC_UNDER_19.5",
-   "prob": 0.748,
-   "fair_american": -297,
-   "p_predicted": 0.993,
-   "matchup": "BUF @ MIN",
-   "model_rule": "form_v3",
-   "price_provenance": {
-    "inferred": false,
-    "class": "C",
-    "kind": "model_fair"
-   },
-   "date": "2026-11-09",
-   "pick_id": "nfl_longest_reception|NFL|dawson_knox|LONGEST_REC_UNDER_19_5|2026-11-09",
-   "settled": true,
-   "result": "won",
-   "payout_units": 0.3367,
-   "recorded_at": "2026-11-04T12:44:59",
-   "p_calibrated": 0.9819,
-   "outcome": {
-    "stat": "longest_reception",
-    "actual": 12,
-    "line": 19.5,
-    "side": "UNDER",
-    "verify": "dawson knox \u2014 longest_reception = 12 (line 19.5, bet under) on 2026-11-09"
-   },
-   "settled_at": "2026-11-10T13:18:10"
-  },
-  {
-   "source": "nfl_longest_reception",
-   "sport": "NFL",
-   "player_or_matchup": "khalil shakir",
-   "market": "LONGEST_REC_UNDER_24.5",
-   "prob": 0.748,
-   "fair_american": -297,
-   "p_predicted": 0.759,
-   "matchup": "BUF @ MIN",
-   "model_rule": "form_v3",
-   "price_provenance": {
-    "inferred": false,
-    "class": "C",
-    "kind": "model_fair"
-   },
-   "date": "2026-11-09",
-   "pick_id": "nfl_longest_reception|NFL|khalil_shakir|LONGEST_REC_UNDER_24_5|2026-11-09",
-   "settled": true,
-   "result": "won",
-   "payout_units": 0.3367,
-   "recorded_at": "2026-11-04T12:44:59",
-   "p_calibrated": 0.7613,
-   "outcome": {
-    "stat": "longest_reception",
-    "actual": 22,
-    "line": 24.5,
-    "side": "UNDER",
-    "verify": "khalil shakir \u2014 longest_reception = 22 (line 24.5, bet under) on 2026-11-09"
-   },
-   "settled_at": "2026-11-10T13:18:10"
-  },
-  {
-   "source": "nfl_longest_reception",
-   "sport": "NFL",
-   "player_or_matchup": "dj moore",
-   "market": "LONGEST_REC_UNDER_34.5",
-   "prob": 0.719,
-   "fair_american": -256,
-   "p_predicted": 0.674,
-   "matchup": "BUF @ MIN",
-   "model_rule": "form_v3",
-   "price_provenance": {
-    "inferred": false,
-    "class": "C",
-    "kind": "model_fair"
-   },
-   "date": "2026-11-09",
-   "pick_id": "nfl_longest_reception|NFL|dj_moore|LONGEST_REC_UNDER_34_5|2026-11-09",
-   "settled": true,
-   "result": "won",
-   "payout_units": 0.3906,
-   "recorded_at": "2026-11-04T12:44:59",
-   "p_calibrated": 0.7016,
-   "outcome": {
-    "stat": "longest_reception",
-    "actual": 15,
-    "line": 34.5,
-    "side": "UNDER",
-    "verify": "dj moore \u2014 longest_reception = 15 (line 34.5, bet under) on 2026-11-09"
-   },
-   "settled_at": "2026-11-10T13:18:10"
-  },
-  {
-   "source": "nfl_rec_yds",
-   "sport": "NFL",
-   "player_or_matchup": "justin jefferson",
-   "market": "REC_YDS_UNDER_79.5",
-   "prob": 0.707,
-   "fair_american": -241,
-   "p_predicted": 0.702,
-   "matchup": "BUF @ MIN",
-   "model_rule": "form_v3",
-   "price_provenance": {
-    "inferred": false,
-    "class": "C",
-    "kind": "model_fair"
-   },
-   "date": "2026-11-09",
-   "pick_id": "nfl_rec_yds|NFL|justin_jefferson|REC_YDS_UNDER_79_5|2026-11-09",
-   "settled": true,
-   "result": "won",
-   "payout_units": 0.4149,
-   "recorded_at": "2026-11-04T12:44:59",
-   "p_calibrated": 0.7399,
-   "outcome": {
-    "stat": "rec_yds",
-    "actual": 58,
-    "line": 79.5,
-    "side": "UNDER",
-    "verify": "justin jefferson \u2014 rec_yds = 58 (line 79.5, bet under) on 2026-11-09"
-   },
-   "settled_at": "2026-11-10T13:18:10"
-  },
-  {
-   "source": "nfl_pass_td",
-   "sport": "NFL",
-   "player_or_matchup": "josh allen",
-   "market": "PASS_TD_UNDER_2.5",
-   "prob": 0.705,
-   "fair_american": -239,
-   "p_predicted": 0.705,
-   "matchup": "BUF @ MIN",
-   "model_rule": "form_v3",
-   "price_provenance": {
-    "inferred": false,
-    "class": "C",
-    "kind": "model_fair"
-   },
-   "date": "2026-11-09",
-   "pick_id": "nfl_pass_td|NFL|josh_allen|PASS_TD_UNDER_2_5|2026-11-09",
-   "settled": true,
-   "result": "won",
-   "payout_units": 0.4184,
-   "recorded_at": "2026-11-04T12:44:59",
-   "p_calibrated": 0.7122,
-   "outcome": {
-    "stat": "pass_td",
-    "actual": 1,
-    "line": 2.5,
-    "side": "UNDER",
-    "verify": "josh allen \u2014 pass_td = 1 (line 2.5, bet under) on 2026-11-09"
-   },
-   "settled_at": "2026-11-10T13:18:10"
-  },
-  {
-   "source": "nfl_rush_yds",
-   "sport": "NFL",
-   "player_or_matchup": "james cook",
-   "market": "RUSH_YDS_OVER_39.5",
-   "prob": 0.68,
-   "fair_american": -213,
-   "p_predicted": 0.927,
-   "matchup": "BUF @ MIN",
-   "model_rule": "form_v3",
-   "price_provenance": {
-    "inferred": false,
-    "class": "C",
-    "kind": "model_fair"
-   },
-   "date": "2026-11-09",
-   "pick_id": "nfl_rush_yds|NFL|james_cook|RUSH_YDS_OVER_39_5|2026-11-09",
-   "settled": true,
-   "result": "won",
-   "payout_units": 0.4695,
-   "recorded_at": "2026-11-04T12:44:59",
-   "p_calibrated": 0.7119,
-   "outcome": {
-    "stat": "rush_yds",
-    "actual": 107,
-    "line": 39.5,
-    "side": "OVER",
-    "verify": "james cook \u2014 rush_yds = 107 (line 39.5, bet over) on 2026-11-09"
-   },
-   "settled_at": "2026-11-10T13:18:10"
-  },
-  {
-   "source": "nfl_anytime_td",
-   "sport": "NFL",
-   "player_or_matchup": "james cook",
-   "market": "ANYTIME_TD_YES",
-   "prob": 0.574,
-   "fair_american": -134,
-   "p_predicted": 0.574,
-   "matchup": "BUF @ MIN",
-   "model_rule": "form_v3",
-   "price_provenance": {
-    "inferred": false,
-    "class": "C",
-    "kind": "model_fair"
-   },
-   "date": "2026-11-09",
-   "pick_id": "nfl_anytime_td|NFL|james_cook|ANYTIME_TD_YES|2026-11-09",
-   "settled": true,
-   "result": "won",
-   "payout_units": 0.7463,
-   "recorded_at": "2026-11-04T12:44:59",
-   "p_calibrated": 0.574,
-   "outcome": {
-    "stat": "anytime_td",
-    "actual": 1,
-    "line": 0.5,
-    "side": "OVER",
-    "verify": "james cook \u2014 anytime_td = 1 (line 0.5, bet over) on 2026-11-09"
-   },
-   "settled_at": "2026-11-10T13:18:10"
-  },
-  {
-   "source": "nfl_rush_yds",
-   "sport": "NFL",
-   "player_or_matchup": "jordan mason",
-   "market": "RUSH_YDS_UNDER_79.5",
-   "prob": 0.797,
-   "fair_american": -392,
-   "p_predicted": 0.885,
-   "matchup": "BUF @ MIN",
-   "model_rule": "form_v3",
-   "price_provenance": {
-    "inferred": false,
-    "class": "C",
-    "kind": "model_fair"
-   },
-   "date": "2026-11-09",
-   "pick_id": "nfl_rush_yds|NFL|jordan_mason|RUSH_YDS_UNDER_79_5|2026-11-09",
-   "settled": true,
-   "result": "won",
-   "payout_units": 0.2551,
-   "recorded_at": "2026-11-06T16:31:33",
-   "p_calibrated": 0.8203,
-   "outcome": {
-    "stat": "rush_yds",
-    "actual": 35,
-    "line": 79.5,
-    "side": "UNDER",
-    "verify": "jordan mason \u2014 rush_yds = 35 (line 79.5, bet under) on 2026-11-09"
-   },
-   "settled_at": "2026-11-10T13:18:10"
-  },
-  {
-   "source": "nfl_rec",
-   "sport": "NFL",
-   "player_or_matchup": "aaron jones",
-   "market": "REC_UNDER_3.5",
-   "prob": 0.794,
-   "fair_american": -385,
-   "p_predicted": 0.784,
-   "matchup": "BUF @ MIN",
-   "model_rule": "form_v3",
-   "price_provenance": {
-    "inferred": false,
-    "class": "C",
-    "kind": "model_fair"
-   },
-   "date": "2026-11-09",
-   "pick_id": "nfl_rec|NFL|aaron_jones|REC_UNDER_3_5|2026-11-09",
-   "settled": true,
-   "result": "won",
-   "payout_units": 0.2597,
-   "recorded_at": "2026-11-06T16:31:33",
-   "p_calibrated": 0.8049,
-   "outcome": {
-    "stat": "rec",
-    "actual": 1,
-    "line": 3.5,
-    "side": "UNDER",
-    "verify": "aaron jones \u2014 rec = 1 (line 3.5, bet under) on 2026-11-09"
-   },
-   "settled_at": "2026-11-10T13:18:10"
-  },
-  {
-   "source": "nfl_rec",
-   "sport": "NFL",
-   "player_or_matchup": "dalton kincaid",
-   "market": "REC_UNDER_4.5",
-   "prob": 0.789,
-   "fair_american": -373,
-   "p_predicted": 0.776,
-   "matchup": "BUF @ MIN",
-   "model_rule": "form_v3",
-   "price_provenance": {
-    "inferred": false,
-    "class": "C",
-    "kind": "model_fair"
-   },
-   "date": "2026-11-09",
-   "pick_id": "nfl_rec|NFL|dalton_kincaid|REC_UNDER_4_5|2026-11-09",
-   "settled": true,
-   "result": "won",
-   "payout_units": 0.2681,
-   "recorded_at": "2026-11-06T16:31:33",
-   "p_calibrated": 0.7825,
-   "outcome": {
-    "stat": "rec",
-    "actual": 3,
-    "line": 4.5,
-    "side": "UNDER",
-    "verify": "dalton kincaid \u2014 rec = 3 (line 4.5, bet under) on 2026-11-09"
-   },
-   "settled_at": "2026-11-10T13:18:10"
-  },
-  {
-   "source": "nfl_rush_yds",
-   "sport": "NFL",
-   "player_or_matchup": "josh allen",
-   "market": "RUSH_YDS_UNDER_59.5",
-   "prob": 0.787,
-   "fair_american": -369,
-   "p_predicted": 0.845,
-   "matchup": "BUF @ MIN",
-   "model_rule": "form_v3",
-   "price_provenance": {
-    "inferred": false,
-    "class": "C",
-    "kind": "model_fair"
-   },
-   "date": "2026-11-09",
-   "pick_id": "nfl_rush_yds|NFL|josh_allen|RUSH_YDS_UNDER_59_5|2026-11-09",
-   "settled": true,
-   "result": "won",
-   "payout_units": 0.271,
-   "recorded_at": "2026-11-06T16:31:33",
-   "p_calibrated": 0.8105,
-   "outcome": {
-    "stat": "rush_yds",
-    "actual": 15,
-    "line": 59.5,
-    "side": "UNDER",
-    "verify": "josh allen \u2014 rush_yds = 15 (line 59.5, bet under) on 2026-11-09"
-   },
-   "settled_at": "2026-11-10T13:18:10"
-  },
-  {
-   "source": "nfl_rec",
-   "sport": "NFL",
-   "player_or_matchup": "tj hockenson",
-   "market": "REC_UNDER_4.5",
-   "prob": 0.787,
-   "fair_american": -369,
-   "p_predicted": 0.746,
-   "matchup": "BUF @ MIN",
-   "model_rule": "form_v3",
-   "price_provenance": {
-    "inferred": false,
-    "class": "C",
-    "kind": "model_fair"
-   },
-   "date": "2026-11-09",
-   "pick_id": "nfl_rec|NFL|tj_hockenson|REC_UNDER_4_5|2026-11-09",
-   "settled": true,
-   "result": "won",
-   "payout_units": 0.271,
-   "recorded_at": "2026-11-06T16:31:33",
-   "p_calibrated": 0.7501,
-   "outcome": {
-    "stat": "rec",
-    "actual": 4,
-    "line": 4.5,
-    "side": "UNDER",
-    "verify": "tj hockenson \u2014 rec = 4 (line 4.5, bet under) on 2026-11-09"
-   },
-   "settled_at": "2026-11-10T13:18:10"
-  },
-  {
-   "source": "nfl_longest_rush",
-   "sport": "NFL",
-   "player_or_matchup": "ray davis",
-   "market": "LONGEST_RUSH_UNDER_12.5",
-   "prob": 0.786,
-   "fair_american": -367,
-   "p_predicted": 0.815,
-   "matchup": "BUF @ MIN",
-   "model_rule": "form_v3",
-   "price_provenance": {
-    "inferred": false,
-    "class": "C",
-    "kind": "model_fair"
-   },
-   "date": "2026-11-09",
-   "pick_id": "nfl_longest_rush|NFL|ray_davis|LONGEST_RUSH_UNDER_12_5|2026-11-09",
-   "settled": true,
-   "result": "won",
-   "payout_units": 0.2725,
-   "recorded_at": "2026-11-06T16:31:33",
-   "p_calibrated": 0.8923,
-   "outcome": {
-    "stat": "longest_rush",
-    "actual": 2,
-    "line": 12.5,
-    "side": "UNDER",
-    "verify": "ray davis \u2014 longest_rush = 2 (line 12.5, bet under) on 2026-11-09"
-   },
-   "settled_at": "2026-11-10T13:18:10"
-  },
-  {
-   "source": "nfl_rec",
-   "sport": "NFL",
-   "player_or_matchup": "khalil shakir",
-   "market": "REC_OVER_3.5",
-   "prob": 0.75,
-   "fair_american": -300,
-   "p_predicted": 0.645,
-   "matchup": "BUF @ MIN",
-   "model_rule": "form_v3",
-   "price_provenance": {
-    "inferred": false,
-    "class": "C",
-    "kind": "model_fair"
-   },
-   "date": "2026-11-09",
-   "pick_id": "nfl_rec|NFL|khalil_shakir|REC_OVER_3_5|2026-11-09",
-   "settled": true,
-   "result": "won",
-   "payout_units": 0.3333,
-   "recorded_at": "2026-11-06T16:31:33",
-   "p_calibrated": 0.6819,
-   "outcome": {
-    "stat": "rec",
-    "actual": 4,
-    "line": 3.5,
-    "side": "OVER",
-    "verify": "khalil shakir \u2014 rec = 4 (line 3.5, bet over) on 2026-11-09"
-   },
-   "settled_at": "2026-11-10T13:18:10"
-  },
-  {
-   "source": "nfl_longest_reception",
-   "sport": "NFL",
-   "player_or_matchup": "keon coleman",
-   "market": "LONGEST_REC_UNDER_24.5",
-   "prob": 0.747,
-   "fair_american": -295,
-   "p_predicted": 0.738,
-   "matchup": "BUF @ MIN",
-   "model_rule": "form_v3",
-   "price_provenance": {
-    "inferred": false,
-    "class": "C",
-    "kind": "model_fair"
-   },
-   "date": "2026-11-09",
-   "pick_id": "nfl_longest_reception|NFL|keon_coleman|LONGEST_REC_UNDER_24_5|2026-11-09",
-   "settled": true,
-   "result": "won",
-   "payout_units": 0.339,
-   "recorded_at": "2026-11-06T16:31:33",
-   "p_calibrated": 0.7607,
-   "outcome": {
-    "stat": "longest_reception",
-    "actual": 11,
-    "line": 24.5,
-    "side": "UNDER",
-    "verify": "keon coleman \u2014 longest_reception = 11 (line 24.5, bet under) on 2026-11-09"
-   },
-   "settled_at": "2026-11-10T13:18:10"
-  },
-  {
-   "source": "nfl_rec_yds",
-   "sport": "NFL",
-   "player_or_matchup": "keon coleman",
-   "market": "REC_YDS_UNDER_39.5",
-   "prob": 0.74,
-   "fair_american": -284,
-   "p_predicted": 0.622,
-   "matchup": "BUF @ MIN",
-   "model_rule": "form_v3",
-   "price_provenance": {
-    "inferred": false,
-    "class": "C",
-    "kind": "model_fair"
-   },
-   "date": "2026-11-09",
-   "pick_id": "nfl_rec_yds|NFL|keon_coleman|REC_YDS_UNDER_39_5|2026-11-09",
-   "settled": true,
-   "result": "won",
-   "payout_units": 0.3521,
-   "recorded_at": "2026-11-06T16:31:33",
-   "p_calibrated": 0.6632,
-   "outcome": {
-    "stat": "rec_yds",
-    "actual": 17,
-    "line": 39.5,
-    "side": "UNDER",
-    "verify": "keon coleman \u2014 rec_yds = 17 (line 39.5, bet under) on 2026-11-09"
-   },
-   "settled_at": "2026-11-10T13:18:10"
-  },
-  {
-   "source": "nfl_rec_yds",
-   "sport": "NFL",
-   "player_or_matchup": "ty johnson",
-   "market": "REC_YDS_UNDER_39.5",
-   "prob": 0.74,
-   "fair_american": -284,
-   "p_predicted": 0.724,
-   "matchup": "BUF @ MIN",
-   "model_rule": "form_v3",
-   "price_provenance": {
-    "inferred": false,
-    "class": "C",
-    "kind": "model_fair"
-   },
-   "date": "2026-11-09",
-   "pick_id": "nfl_rec_yds|NFL|ty_johnson|REC_YDS_UNDER_39_5|2026-11-09",
-   "settled": true,
-   "result": "won",
-   "payout_units": 0.3521,
-   "recorded_at": "2026-11-06T16:31:33",
-   "p_calibrated": 0.7684,
-   "outcome": {
-    "stat": "rec_yds",
-    "actual": 36,
-    "line": 39.5,
-    "side": "UNDER",
-    "verify": "ty johnson \u2014 rec_yds = 36 (line 39.5, bet under) on 2026-11-09"
-   },
-   "settled_at": "2026-11-10T13:18:10"
-  },
-  {
-   "source": "nfl_rec_yds",
-   "sport": "NFL",
-   "player_or_matchup": "dj moore",
-   "market": "REC_YDS_UNDER_49.5",
-   "prob": 0.74,
-   "fair_american": -284,
-   "p_predicted": 0.526,
-   "matchup": "BUF @ MIN",
-   "model_rule": "form_v3",
-   "price_provenance": {
-    "inferred": false,
-    "class": "C",
-    "kind": "model_fair"
-   },
-   "date": "2026-11-09",
-   "pick_id": "nfl_rec_yds|NFL|dj_moore|REC_YDS_UNDER_49_5|2026-11-09",
-   "settled": true,
-   "result": "won",
-   "payout_units": 0.3521,
-   "recorded_at": "2026-11-06T16:31:33",
-   "p_calibrated": 0.618,
-   "outcome": {
-    "stat": "rec_yds",
-    "actual": 25,
-    "line": 49.5,
-    "side": "UNDER",
-    "verify": "dj moore \u2014 rec_yds = 25 (line 49.5, bet under) on 2026-11-09"
-   },
-   "settled_at": "2026-11-10T13:18:10"
-  },
-  {
-   "source": "nfl_rec_yds",
-   "sport": "NFL",
-   "player_or_matchup": "jordan addison",
-   "market": "REC_YDS_UNDER_39.5",
-   "prob": 0.74,
-   "fair_american": -284,
-   "p_predicted": 0.549,
-   "matchup": "BUF @ MIN",
-   "model_rule": "form_v3",
-   "price_provenance": {
-    "inferred": false,
-    "class": "C",
-    "kind": "model_fair"
-   },
-   "date": "2026-11-09",
-   "pick_id": "nfl_rec_yds|NFL|jordan_addison|REC_YDS_UNDER_39_5|2026-11-09",
-   "settled": true,
-   "result": "won",
-   "payout_units": 0.3521,
-   "recorded_at": "2026-11-06T16:31:33",
-   "p_calibrated": 0.6213,
-   "outcome": {
-    "stat": "rec_yds",
-    "actual": 28,
-    "line": 39.5,
-    "side": "UNDER",
-    "verify": "jordan addison \u2014 rec_yds = 28 (line 39.5, bet under) on 2026-11-09"
-   },
-   "settled_at": "2026-11-10T13:18:10"
-  },
-  {
-   "source": "nfl_rec_yds",
-   "sport": "NFL",
-   "player_or_matchup": "tj hockenson",
-   "market": "REC_YDS_UNDER_39.5",
-   "prob": 0.74,
-   "fair_american": -284,
-   "p_predicted": 0.59,
-   "matchup": "BUF @ MIN",
-   "model_rule": "form_v3",
-   "price_provenance": {
-    "inferred": false,
-    "class": "C",
-    "kind": "model_fair"
-   },
-   "date": "2026-11-09",
-   "pick_id": "nfl_rec_yds|NFL|tj_hockenson|REC_YDS_UNDER_39_5|2026-11-09",
-   "settled": true,
-   "result": "won",
-   "payout_units": 0.3521,
-   "recorded_at": "2026-11-06T16:31:33",
-   "p_calibrated": 0.6448,
-   "outcome": {
-    "stat": "rec_yds",
-    "actual": 33,
-    "line": 39.5,
-    "side": "UNDER",
-    "verify": "tj hockenson \u2014 rec_yds = 33 (line 39.5, bet under) on 2026-11-09"
-   },
-   "settled_at": "2026-11-10T13:18:10"
-  },
-  {
-   "source": "nfl_rec_yds",
-   "sport": "NFL",
-   "player_or_matchup": "justin jefferson",
-   "market": "REC_YDS_UNDER_69.5",
-   "prob": 0.74,
-   "fair_american": -284,
-   "p_predicted": 0.597,
-   "matchup": "BUF @ MIN",
-   "model_rule": "form_v3",
-   "price_provenance": {
-    "inferred": false,
-    "class": "C",
-    "kind": "model_fair"
-   },
-   "date": "2026-11-09",
-   "pick_id": "nfl_rec_yds|NFL|justin_jefferson|REC_YDS_UNDER_69_5|2026-11-09",
-   "settled": true,
-   "result": "won",
-   "payout_units": 0.3521,
-   "recorded_at": "2026-11-06T16:31:33",
-   "p_calibrated": 0.6488,
-   "outcome": {
-    "stat": "rec_yds",
-    "actual": 58,
-    "line": 69.5,
-    "side": "UNDER",
-    "verify": "justin jefferson \u2014 rec_yds = 58 (line 69.5, bet under) on 2026-11-09"
-   },
-   "settled_at": "2026-11-10T13:18:10"
-  },
-  {
-   "source": "nfl_longest_reception",
-   "sport": "NFL",
-   "player_or_matchup": "justin jefferson",
-   "market": "LONGEST_REC_UNDER_24.5",
-   "prob": 0.735,
-   "fair_american": -278,
-   "p_predicted": 0.722,
-   "matchup": "BUF @ MIN",
-   "model_rule": "form_v3",
-   "price_provenance": {
-    "inferred": false,
-    "class": "C",
-    "kind": "model_fair"
-   },
-   "date": "2026-11-09",
-   "pick_id": "nfl_longest_reception|NFL|justin_jefferson|LONGEST_REC_UNDER_24_5|2026-11-09",
-   "settled": true,
-   "result": "won",
-   "payout_units": 0.3597,
-   "recorded_at": "2026-11-06T16:31:33",
-   "p_calibrated": 0.7553,
-   "outcome": {
-    "stat": "longest_reception",
-    "actual": 24,
-    "line": 24.5,
-    "side": "UNDER",
-    "verify": "justin jefferson \u2014 longest_reception = 24 (line 24.5, bet under) on 2026-11-09"
-   },
-   "settled_at": "2026-11-10T13:18:10"
-  },
-  {
-   "source": "nfl_rec",
-   "sport": "NFL",
-   "player_or_matchup": "dawson knox",
-   "market": "REC_UNDER_2.5",
-   "prob": 0.728,
-   "fair_american": -267,
-   "p_predicted": 0.723,
-   "matchup": "BUF @ MIN",
-   "model_rule": "form_v3",
-   "price_provenance": {
-    "inferred": false,
-    "class": "C",
-    "kind": "model_fair"
-   },
-   "date": "2026-11-09",
-   "pick_id": "nfl_rec|NFL|dawson_knox|REC_UNDER_2_5|2026-11-09",
-   "settled": true,
-   "result": "lost",
-   "payout_units": -1.0,
-   "recorded_at": "2026-11-06T16:31:33",
-   "p_calibrated": 0.6927,
-   "outcome": {
-    "stat": "rec",
-    "actual": 4,
-    "line": 2.5,
-    "side": "UNDER",
-    "verify": "dawson knox \u2014 rec = 4 (line 2.5, bet under) on 2026-11-09"
-   },
-   "settled_at": "2026-11-10T13:18:10"
-  },
-  {
-   "source": "nfl_rec",
-   "sport": "NFL",
-   "player_or_matchup": "jordan addison",
-   "market": "REC_OVER_2.5",
-   "prob": 0.723,
-   "fair_american": -261,
-   "p_predicted": 0.56,
-   "matchup": "BUF @ MIN",
-   "model_rule": "form_v3",
-   "price_provenance": {
-    "inferred": false,
-    "class": "C",
-    "kind": "model_fair"
-   },
-   "date": "2026-11-09",
-   "pick_id": "nfl_rec|NFL|jordan_addison|REC_OVER_2_5|2026-11-09",
-   "settled": true,
-   "result": "lost",
-   "payout_units": -1.0,
-   "recorded_at": "2026-11-06T16:31:33",
-   "p_calibrated": 0.635,
-   "outcome": {
-    "stat": "rec",
-    "actual": 2,
-    "line": 2.5,
-    "side": "OVER",
-    "verify": "jordan addison \u2014 rec = 2 (line 2.5, bet over) on 2026-11-09"
-   },
-   "settled_at": "2026-11-10T13:18:10"
-  },
-  {
-   "source": "nfl_rec",
-   "sport": "NFL",
-   "player_or_matchup": "keon coleman",
-   "market": "REC_OVER_2.5",
-   "prob": 0.717,
-   "fair_american": -254,
-   "p_predicted": 0.543,
-   "matchup": "BUF @ MIN",
-   "model_rule": "form_v3",
-   "price_provenance": {
-    "inferred": false,
-    "class": "C",
-    "kind": "model_fair"
-   },
-   "date": "2026-11-09",
-   "pick_id": "nfl_rec|NFL|keon_coleman|REC_OVER_2_5|2026-11-09",
-   "settled": true,
-   "result": "won",
-   "payout_units": 0.3937,
-   "recorded_at": "2026-11-06T16:31:33",
-   "p_calibrated": 0.6324,
-   "outcome": {
-    "stat": "rec",
-    "actual": 3,
-    "line": 2.5,
-    "side": "OVER",
-    "verify": "keon coleman \u2014 rec = 3 (line 2.5, bet over) on 2026-11-09"
-   },
-   "settled_at": "2026-11-10T13:18:10"
-  },
-  {
-   "source": "nfl_rec",
-   "sport": "NFL",
-   "player_or_matchup": "dj moore",
-   "market": "REC_OVER_2.5",
-   "prob": 0.716,
-   "fair_american": -252,
-   "p_predicted": 0.539,
-   "matchup": "BUF @ MIN",
-   "model_rule": "form_v3",
-   "price_provenance": {
-    "inferred": false,
-    "class": "C",
-    "kind": "model_fair"
-   },
-   "date": "2026-11-09",
-   "pick_id": "nfl_rec|NFL|dj_moore|REC_OVER_2_5|2026-11-09",
-   "settled": true,
-   "result": "won",
-   "payout_units": 0.3968,
-   "recorded_at": "2026-11-06T16:31:33",
-   "p_calibrated": 0.6324,
-   "outcome": {
-    "stat": "rec",
-    "actual": 3,
-    "line": 2.5,
-    "side": "OVER",
-    "verify": "dj moore \u2014 rec = 3 (line 2.5, bet over) on 2026-11-09"
-   },
-   "settled_at": "2026-11-10T13:18:10"
-  },
-  {
-   "source": "nfl_longest_reception",
-   "sport": "NFL",
-   "player_or_matchup": "dj moore",
-   "market": "LONGEST_REC_UNDER_29.5",
-   "prob": 0.707,
-   "fair_american": -241,
-   "p_predicted": 0.569,
-   "matchup": "BUF @ MIN",
-   "model_rule": "form_v3",
-   "price_provenance": {
-    "inferred": false,
-    "class": "C",
-    "kind": "model_fair"
-   },
-   "date": "2026-11-09",
-   "pick_id": "nfl_longest_reception|NFL|dj_moore|LONGEST_REC_UNDER_29_5|2026-11-09",
-   "settled": true,
-   "result": "won",
-   "payout_units": 0.4149,
-   "recorded_at": "2026-11-06T16:31:33",
-   "p_calibrated": 0.6741,
-   "outcome": {
-    "stat": "longest_reception",
-    "actual": 15,
-    "line": 29.5,
-    "side": "UNDER",
-    "verify": "dj moore \u2014 longest_reception = 15 (line 29.5, bet under) on 2026-11-09"
-   },
-   "settled_at": "2026-11-10T13:18:10"
-  },
-  {
-   "source": "nfl_rec",
-   "sport": "NFL",
-   "player_or_matchup": "james cook",
-   "market": "REC_UNDER_2.5",
-   "prob": 0.645,
-   "fair_american": -182,
-   "p_predicted": 0.694,
-   "matchup": "BUF @ MIN",
-   "model_rule": "form_v3",
-   "price_provenance": {
-    "inferred": false,
-    "class": "C",
-    "kind": "model_fair"
-   },
-   "date": "2026-11-09",
-   "pick_id": "nfl_rec|NFL|james_cook|REC_UNDER_2_5|2026-11-09",
-   "settled": true,
-   "result": "won",
-   "payout_units": 0.5495,
-   "recorded_at": "2026-11-06T16:31:33",
-   "p_calibrated": 0.6,
-   "outcome": {
-    "stat": "rec",
-    "actual": 0,
-    "line": 2.5,
-    "side": "UNDER",
-    "verify": "james cook \u2014 rec = 0 (line 2.5, bet under) on 2026-11-09"
-   },
-   "settled_at": "2026-11-10T13:18:10"
-  },
-  {
-   "source": "nfl_rush_yds",
-   "sport": "NFL",
-   "player_or_matchup": "josh allen",
-   "market": "RUSH_YDS_UNDER_69.5",
-   "prob": 0.797,
-   "fair_american": -394,
-   "p_predicted": 0.905,
-   "matchup": "BUF @ MIN",
-   "model_rule": "form_v3",
-   "price_provenance": {
-    "inferred": false,
-    "class": "C",
-    "kind": "model_fair"
-   },
-   "date": "2026-11-09",
-   "pick_id": "nfl_rush_yds|NFL|josh_allen|RUSH_YDS_UNDER_69_5|2026-11-09",
-   "settled": true,
-   "result": "won",
-   "payout_units": 0.2538,
-   "recorded_at": "2026-11-08T18:57:29",
-   "p_calibrated": 0.8707,
-   "outcome": {
-    "stat": "rush_yds",
-    "actual": 15,
-    "line": 69.5,
-    "side": "UNDER",
-    "verify": "josh allen \u2014 rush_yds = 15 (line 69.5, bet under) on 2026-11-09"
-   },
-   "settled_at": "2026-11-10T13:18:10"
-  },
   {
    "source": "nfl_rec",
    "sport": "NFL",
@@ -19506,6 +17563,906 @@
    "settled_at": "2026-11-10T12:45:59"
   },
   {
+   "source": "nba_blocks_over_1.5",
+   "sport": "NBA",
+   "player_or_matchup": "myles turner",
+   "market": "BLOCKS_OVER_1.5",
+   "prob": 0.638,
+   "fair_american": -176,
+   "p_predicted": 0.638,
+   "matchup": "MIL @ NYK",
+   "price_provenance": {
+    "inferred": false,
+    "class": "C",
+    "kind": "model_fair"
+   },
+   "date": "2026-11-10",
+   "pick_id": "nba_blocks_over_1_5|NBA|myles_turner|BLOCKS_OVER_1_5|2026-11-10",
+   "settled": true,
+   "result": "lost",
+   "payout_units": -1.0,
+   "recorded_at": "2026-11-10T13:20:05",
+   "p_calibrated": 0.6257,
+   "outcome": {
+    "stat": "blk",
+    "actual": 1,
+    "line": 1.5,
+    "side": "OVER",
+    "verify": "myles turner \u2014 blk = 1 (line 1.5, bet over) on 2026-11-10"
+   },
+   "settled_at": "2026-11-11T07:05:50"
+  },
+  {
+   "source": "nba_steals_over_0.5",
+   "sport": "NBA",
+   "player_or_matchup": "shai gilgeous-alexander",
+   "market": "STEALS_OVER_0.5",
+   "prob": 0.682,
+   "fair_american": -215,
+   "p_predicted": 0.682,
+   "matchup": "OKC @ POR",
+   "price_provenance": {
+    "inferred": false,
+    "class": "C",
+    "kind": "model_fair"
+   },
+   "date": "2026-11-10",
+   "pick_id": "nba_steals_over_0_5|NBA|shai_gilgeous_alexander|STEALS_OVER_0_5|2026-11-10",
+   "settled": true,
+   "result": "lost",
+   "payout_units": -1.0,
+   "recorded_at": "2026-11-10T13:20:05",
+   "p_calibrated": 0.8102,
+   "outcome": {
+    "stat": "stl",
+    "actual": 0,
+    "line": 0.5,
+    "side": "OVER",
+    "verify": "shai gilgeous-alexander \u2014 stl = 0 (line 0.5, bet over) on 2026-11-10"
+   },
+   "settled_at": "2026-11-11T07:05:50"
+  },
+  {
+   "source": "nba_steals_over_0.5",
+   "sport": "NBA",
+   "player_or_matchup": "isaiah hartenstein",
+   "market": "STEALS_OVER_0.5",
+   "prob": 0.682,
+   "fair_american": -215,
+   "p_predicted": 0.682,
+   "matchup": "OKC @ POR",
+   "price_provenance": {
+    "inferred": false,
+    "class": "C",
+    "kind": "model_fair"
+   },
+   "date": "2026-11-10",
+   "pick_id": "nba_steals_over_0_5|NBA|isaiah_hartenstein|STEALS_OVER_0_5|2026-11-10",
+   "settled": true,
+   "result": "lost",
+   "payout_units": -1.0,
+   "recorded_at": "2026-11-10T13:20:05",
+   "p_calibrated": 0.8102,
+   "outcome": {
+    "stat": "stl",
+    "actual": 0,
+    "line": 0.5,
+    "side": "OVER",
+    "verify": "isaiah hartenstein \u2014 stl = 0 (line 0.5, bet over) on 2026-11-10"
+   },
+   "settled_at": "2026-11-11T07:05:50"
+  },
+  {
+   "source": "nba_blocks_over_0.5",
+   "sport": "NBA",
+   "player_or_matchup": "brook lopez",
+   "market": "BLOCKS_OVER_0.5",
+   "prob": 0.658,
+   "fair_american": -192,
+   "p_predicted": 0.658,
+   "matchup": "LAC @ PHX",
+   "price_provenance": {
+    "inferred": false,
+    "class": "C",
+    "kind": "model_fair"
+   },
+   "date": "2026-11-10",
+   "pick_id": "nba_blocks_over_0_5|NBA|brook_lopez|BLOCKS_OVER_0_5|2026-11-10",
+   "settled": true,
+   "result": "lost",
+   "payout_units": -1.0,
+   "recorded_at": "2026-11-10T13:20:05",
+   "p_calibrated": 0.6257,
+   "outcome": {
+    "stat": "blk",
+    "actual": 0,
+    "line": 0.5,
+    "side": "OVER",
+    "verify": "brook lopez \u2014 blk = 0 (line 0.5, bet over) on 2026-11-10"
+   },
+   "settled_at": "2026-11-11T07:05:50"
+  },
+  {
+   "source": "nba_steals_over_0.5",
+   "sport": "NBA",
+   "player_or_matchup": "jaylen brown",
+   "market": "STEALS_OVER_0.5",
+   "prob": 0.677,
+   "fair_american": -209,
+   "p_predicted": 0.677,
+   "matchup": "BOS @ PHI",
+   "price_provenance": {
+    "inferred": false,
+    "class": "C",
+    "kind": "model_fair"
+   },
+   "date": "2026-11-10",
+   "pick_id": "nba_steals_over_0_5|NBA|jaylen_brown|STEALS_OVER_0_5|2026-11-10",
+   "settled": true,
+   "result": "won",
+   "payout_units": 0.4785,
+   "recorded_at": "2026-11-10T13:20:05",
+   "p_calibrated": 0.8092,
+   "outcome": {
+    "stat": "stl",
+    "actual": 2,
+    "line": 0.5,
+    "side": "OVER",
+    "verify": "jaylen brown \u2014 stl = 2 (line 0.5, bet over) on 2026-11-10"
+   },
+   "settled_at": "2026-11-11T07:05:50"
+  },
+  {
+   "source": "nba_steals_over_0.5",
+   "sport": "NBA",
+   "player_or_matchup": "alex caruso",
+   "market": "STEALS_OVER_0.5",
+   "prob": 0.66,
+   "fair_american": -194,
+   "p_predicted": 0.66,
+   "matchup": "OKC @ POR",
+   "price_provenance": {
+    "inferred": false,
+    "class": "C",
+    "kind": "model_fair"
+   },
+   "date": "2026-11-10",
+   "pick_id": "nba_steals_over_0_5|NBA|alex_caruso|STEALS_OVER_0_5|2026-11-10",
+   "settled": true,
+   "result": "lost",
+   "payout_units": -1.0,
+   "recorded_at": "2026-11-10T13:20:05",
+   "p_calibrated": 0.8056,
+   "outcome": {
+    "stat": "stl",
+    "actual": 0,
+    "line": 0.5,
+    "side": "OVER",
+    "verify": "alex caruso \u2014 stl = 0 (line 0.5, bet over) on 2026-11-10"
+   },
+   "settled_at": "2026-11-11T07:05:50"
+  },
+  {
+   "source": "nba_steals_over_0.5",
+   "sport": "NBA",
+   "player_or_matchup": "franz wagner",
+   "market": "STEALS_OVER_0.5",
+   "prob": 0.689,
+   "fair_american": -222,
+   "p_predicted": 0.689,
+   "matchup": "ORL @ SAC",
+   "price_provenance": {
+    "inferred": false,
+    "class": "C",
+    "kind": "model_fair"
+   },
+   "date": "2026-11-10",
+   "pick_id": "nba_steals_over_0_5|NBA|franz_wagner|STEALS_OVER_0_5|2026-11-10",
+   "settled": true,
+   "result": "won",
+   "payout_units": 0.4505,
+   "recorded_at": "2026-11-10T13:20:05",
+   "p_calibrated": 0.8117,
+   "outcome": {
+    "stat": "stl",
+    "actual": 2,
+    "line": 0.5,
+    "side": "OVER",
+    "verify": "franz wagner \u2014 stl = 2 (line 0.5, bet over) on 2026-11-10"
+   },
+   "settled_at": "2026-11-11T07:05:50"
+  },
+  {
+   "source": "nba_steals_over_0.5",
+   "sport": "NBA",
+   "player_or_matchup": "jrue holiday",
+   "market": "STEALS_OVER_0.5",
+   "prob": 0.636,
+   "fair_american": -175,
+   "p_predicted": 0.636,
+   "matchup": "OKC @ POR",
+   "price_provenance": {
+    "inferred": false,
+    "class": "C",
+    "kind": "model_fair"
+   },
+   "date": "2026-11-10",
+   "pick_id": "nba_steals_over_0_5|NBA|jrue_holiday|STEALS_OVER_0_5|2026-11-10",
+   "settled": true,
+   "result": "lost",
+   "payout_units": -1.0,
+   "recorded_at": "2026-11-10T13:20:05",
+   "p_calibrated": 0.8005,
+   "outcome": {
+    "stat": "stl",
+    "actual": 0,
+    "line": 0.5,
+    "side": "OVER",
+    "verify": "jrue holiday \u2014 stl = 0 (line 0.5, bet over) on 2026-11-10"
+   },
+   "settled_at": "2026-11-11T07:05:50"
+  },
+  {
+   "source": "nba_3pm_3pm_under_4.5",
+   "sport": "NBA",
+   "player_or_matchup": "klay thompson",
+   "market": "3PM_UNDER_4.5",
+   "prob": 0.671,
+   "fair_american": -204,
+   "p_predicted": 0.671,
+   "matchup": "MIA @ UTA",
+   "price_provenance": {
+    "inferred": false,
+    "class": "C",
+    "kind": "model_fair"
+   },
+   "date": "2026-11-10",
+   "pick_id": "nba_3pm_3pm_under_4_5|NBA|klay_thompson|3PM_UNDER_4_5|2026-11-10",
+   "settled": true,
+   "result": "won",
+   "payout_units": 0.4902,
+   "recorded_at": "2026-11-10T13:20:05",
+   "p_calibrated": 0.6968,
+   "outcome": {
+    "stat": "fg3m",
+    "actual": 2,
+    "line": 4.5,
+    "side": "UNDER",
+    "verify": "klay thompson \u2014 fg3m = 2 (line 4.5, bet under) on 2026-11-10"
+   },
+   "settled_at": "2026-11-11T07:05:50"
+  },
+  {
+   "source": "nba_3pm_3pm_under_3.0",
+   "sport": "NBA",
+   "player_or_matchup": "jalen brunson",
+   "market": "3PM_UNDER_3.0",
+   "prob": 0.716,
+   "fair_american": -252,
+   "p_predicted": 0.716,
+   "matchup": "MIL @ NYK",
+   "price_provenance": {
+    "inferred": false,
+    "class": "C",
+    "kind": "model_fair"
+   },
+   "date": "2026-11-10",
+   "pick_id": "nba_3pm_3pm_under_3_0|NBA|jalen_brunson|3PM_UNDER_3_0|2026-11-10",
+   "settled": true,
+   "result": "won",
+   "payout_units": 0.3968,
+   "recorded_at": "2026-11-10T13:20:05",
+   "p_calibrated": 0.7184,
+   "outcome": {
+    "stat": "fg3m",
+    "actual": 1,
+    "line": 3.0,
+    "side": "UNDER",
+    "verify": "jalen brunson \u2014 fg3m = 1 (line 3.0, bet under) on 2026-11-10"
+   },
+   "settled_at": "2026-11-11T07:05:50"
+  },
+  {
+   "source": "nba_3pm_3pm_over_1.5",
+   "sport": "NBA",
+   "player_or_matchup": "anfernee simons",
+   "market": "3PM_OVER_1.5",
+   "prob": 0.652,
+   "fair_american": -187,
+   "p_predicted": 0.652,
+   "matchup": "BOS @ PHI",
+   "price_provenance": {
+    "inferred": false,
+    "class": "C",
+    "kind": "model_fair"
+   },
+   "date": "2026-11-10",
+   "pick_id": "nba_3pm_3pm_over_1_5|NBA|anfernee_simons|3PM_OVER_1_5|2026-11-10",
+   "settled": true,
+   "result": "won",
+   "payout_units": 0.5348,
+   "recorded_at": "2026-11-10T13:20:05",
+   "p_calibrated": 0.7184,
+   "outcome": {
+    "stat": "fg3m",
+    "actual": 3,
+    "line": 1.5,
+    "side": "OVER",
+    "verify": "anfernee simons \u2014 fg3m = 3 (line 1.5, bet over) on 2026-11-10"
+   },
+   "settled_at": "2026-11-11T07:05:50"
+  },
+  {
+   "source": "nba_3pm_3pm_over_1.5",
+   "sport": "NBA",
+   "player_or_matchup": "jrue holiday",
+   "market": "3PM_OVER_1.5",
+   "prob": 0.637,
+   "fair_american": -175,
+   "p_predicted": 0.637,
+   "matchup": "OKC @ POR",
+   "price_provenance": {
+    "inferred": false,
+    "class": "C",
+    "kind": "model_fair"
+   },
+   "date": "2026-11-10",
+   "pick_id": "nba_3pm_3pm_over_1_5|NBA|jrue_holiday|3PM_OVER_1_5|2026-11-10",
+   "settled": true,
+   "result": "won",
+   "payout_units": 0.5714,
+   "recorded_at": "2026-11-10T13:20:05",
+   "p_calibrated": 0.7155,
+   "outcome": {
+    "stat": "fg3m",
+    "actual": 2,
+    "line": 1.5,
+    "side": "OVER",
+    "verify": "jrue holiday \u2014 fg3m = 2 (line 1.5, bet over) on 2026-11-10"
+   },
+   "settled_at": "2026-11-11T07:05:50"
+  },
+  {
+   "source": "nba_3pm_3pm_under_2.5",
+   "sport": "NBA",
+   "player_or_matchup": "derrick white",
+   "market": "3PM_UNDER_2.5",
+   "prob": 0.69,
+   "fair_american": -223,
+   "p_predicted": 0.69,
+   "matchup": "BOS @ PHI",
+   "price_provenance": {
+    "inferred": false,
+    "class": "C",
+    "kind": "model_fair"
+   },
+   "date": "2026-11-10",
+   "pick_id": "nba_3pm_3pm_under_2_5|NBA|derrick_white|3PM_UNDER_2_5|2026-11-10",
+   "settled": true,
+   "result": "won",
+   "payout_units": 0.4484,
+   "recorded_at": "2026-11-10T13:20:05",
+   "p_calibrated": 0.6968,
+   "outcome": {
+    "stat": "fg3m",
+    "actual": 1,
+    "line": 2.5,
+    "side": "UNDER",
+    "verify": "derrick white \u2014 fg3m = 1 (line 2.5, bet under) on 2026-11-10"
+   },
+   "settled_at": "2026-11-11T07:05:50"
+  },
+  {
+   "source": "nba_3pm_3pm_under_2.5",
+   "sport": "NBA",
+   "player_or_matchup": "jaylen brown",
+   "market": "3PM_UNDER_2.5",
+   "prob": 0.707,
+   "fair_american": -241,
+   "p_predicted": 0.707,
+   "matchup": "BOS @ PHI",
+   "price_provenance": {
+    "inferred": false,
+    "class": "C",
+    "kind": "model_fair"
+   },
+   "date": "2026-11-10",
+   "pick_id": "nba_3pm_3pm_under_2_5|NBA|jaylen_brown|3PM_UNDER_2_5|2026-11-10",
+   "settled": true,
+   "result": "won",
+   "payout_units": 0.4149,
+   "recorded_at": "2026-11-10T13:20:05",
+   "p_calibrated": 0.7034,
+   "outcome": {
+    "stat": "fg3m",
+    "actual": 1,
+    "line": 2.5,
+    "side": "UNDER",
+    "verify": "jaylen brown \u2014 fg3m = 1 (line 2.5, bet under) on 2026-11-10"
+   },
+   "settled_at": "2026-11-11T07:05:50"
+  },
+  {
+   "source": "nba_3pm_3pm_under_1.0",
+   "sport": "NBA",
+   "player_or_matchup": "mikal bridges",
+   "market": "3PM_UNDER_1.0",
+   "prob": 0.626,
+   "fair_american": -167,
+   "p_predicted": 0.626,
+   "matchup": "MIL @ NYK",
+   "price_provenance": {
+    "inferred": false,
+    "class": "C",
+    "kind": "model_fair"
+   },
+   "date": "2026-11-10",
+   "pick_id": "nba_3pm_3pm_under_1_0|NBA|mikal_bridges|3PM_UNDER_1_0|2026-11-10",
+   "settled": true,
+   "result": "won",
+   "payout_units": 0.5988,
+   "recorded_at": "2026-11-10T13:20:05",
+   "p_calibrated": 0.5902,
+   "outcome": {
+    "stat": "fg3m",
+    "actual": 0,
+    "line": 1.0,
+    "side": "UNDER",
+    "verify": "mikal bridges \u2014 fg3m = 0 (line 1.0, bet under) on 2026-11-10"
+   },
+   "settled_at": "2026-11-11T07:05:50"
+  },
+  {
+   "source": "nba_tov_tov_under_3.5",
+   "sport": "NBA",
+   "player_or_matchup": "joel embiid",
+   "market": "TOV_UNDER_3.5",
+   "prob": 0.668,
+   "fair_american": -201,
+   "p_predicted": 0.668,
+   "matchup": "BOS @ PHI",
+   "price_provenance": {
+    "inferred": false,
+    "class": "C",
+    "kind": "model_fair"
+   },
+   "date": "2026-11-10",
+   "pick_id": "nba_tov_tov_under_3_5|NBA|joel_embiid|TOV_UNDER_3_5|2026-11-10",
+   "settled": true,
+   "result": "won",
+   "payout_units": 0.4975,
+   "recorded_at": "2026-11-10T13:20:05",
+   "p_calibrated": 0.6261,
+   "outcome": {
+    "stat": "to",
+    "actual": 2,
+    "line": 3.5,
+    "side": "UNDER",
+    "verify": "joel embiid \u2014 to = 2 (line 3.5, bet under) on 2026-11-10"
+   },
+   "settled_at": "2026-11-11T07:05:50"
+  },
+  {
+   "source": "nba_tov_tov_under_3.5",
+   "sport": "NBA",
+   "player_or_matchup": "karl-anthony towns",
+   "market": "TOV_UNDER_3.5",
+   "prob": 0.679,
+   "fair_american": -212,
+   "p_predicted": 0.679,
+   "matchup": "MIL @ NYK",
+   "price_provenance": {
+    "inferred": false,
+    "class": "C",
+    "kind": "model_fair"
+   },
+   "date": "2026-11-10",
+   "pick_id": "nba_tov_tov_under_3_5|NBA|karl_anthony_towns|TOV_UNDER_3_5|2026-11-10",
+   "settled": true,
+   "result": "won",
+   "payout_units": 0.4717,
+   "recorded_at": "2026-11-10T13:20:05",
+   "p_calibrated": 0.6653,
+   "outcome": {
+    "stat": "to",
+    "actual": 3,
+    "line": 3.5,
+    "side": "UNDER",
+    "verify": "karl-anthony towns \u2014 to = 3 (line 3.5, bet under) on 2026-11-10"
+   },
+   "settled_at": "2026-11-11T07:05:50"
+  },
+  {
+   "source": "nba_tov_tov_under_3.5",
+   "sport": "NBA",
+   "player_or_matchup": "damian lillard",
+   "market": "TOV_UNDER_3.5",
+   "prob": 0.682,
+   "fair_american": -215,
+   "p_predicted": 0.682,
+   "matchup": "OKC @ POR",
+   "price_provenance": {
+    "inferred": false,
+    "class": "C",
+    "kind": "model_fair"
+   },
+   "date": "2026-11-10",
+   "pick_id": "nba_tov_tov_under_3_5|NBA|damian_lillard|TOV_UNDER_3_5|2026-11-10",
+   "settled": true,
+   "result": "won",
+   "payout_units": 0.4651,
+   "recorded_at": "2026-11-10T13:20:05",
+   "p_calibrated": 0.6734,
+   "outcome": {
+    "stat": "to",
+    "actual": 0,
+    "line": 3.5,
+    "side": "UNDER",
+    "verify": "damian lillard \u2014 to = 0 (line 3.5, bet under) on 2026-11-10"
+   },
+   "settled_at": "2026-11-11T07:05:50"
+  },
+  {
+   "source": "nba_tov_tov_under_3.5",
+   "sport": "NBA",
+   "player_or_matchup": "lebron james",
+   "market": "TOV_UNDER_3.5",
+   "prob": 0.688,
+   "fair_american": -221,
+   "p_predicted": 0.688,
+   "matchup": "BOS @ PHI",
+   "price_provenance": {
+    "inferred": false,
+    "class": "C",
+    "kind": "model_fair"
+   },
+   "date": "2026-11-10",
+   "pick_id": "nba_tov_tov_under_3_5|NBA|lebron_james|TOV_UNDER_3_5|2026-11-10",
+   "settled": true,
+   "result": "won",
+   "payout_units": 0.4525,
+   "recorded_at": "2026-11-10T13:20:05",
+   "p_calibrated": 0.6835,
+   "outcome": {
+    "stat": "to",
+    "actual": 1,
+    "line": 3.5,
+    "side": "UNDER",
+    "verify": "lebron james \u2014 to = 1 (line 3.5, bet under) on 2026-11-10"
+   },
+   "settled_at": "2026-11-11T07:05:50"
+  },
+  {
+   "source": "nba_tov_tov_under_3.0",
+   "sport": "NBA",
+   "player_or_matchup": "jayson tatum",
+   "market": "TOV_UNDER_3.0",
+   "prob": 0.712,
+   "fair_american": -247,
+   "p_predicted": 0.712,
+   "matchup": "BOS @ PHI",
+   "price_provenance": {
+    "inferred": false,
+    "class": "C",
+    "kind": "model_fair"
+   },
+   "date": "2026-11-10",
+   "pick_id": "nba_tov_tov_under_3_0|NBA|jayson_tatum|TOV_UNDER_3_0|2026-11-10",
+   "settled": true,
+   "result": "won",
+   "payout_units": 0.4049,
+   "recorded_at": "2026-11-10T13:20:05",
+   "p_calibrated": 0.7114,
+   "outcome": {
+    "stat": "to",
+    "actual": 3,
+    "line": 3.0,
+    "side": "UNDER",
+    "verify": "jayson tatum \u2014 to = 3 (line 3.0, bet under) on 2026-11-10"
+   },
+   "settled_at": "2026-11-11T07:05:50"
+  },
+  {
+   "source": "nba_tov_tov_under_2.5",
+   "sport": "NBA",
+   "player_or_matchup": "shai gilgeous-alexander",
+   "market": "TOV_UNDER_2.5",
+   "prob": 0.638,
+   "fair_american": -176,
+   "p_predicted": 0.638,
+   "matchup": "OKC @ POR",
+   "price_provenance": {
+    "inferred": false,
+    "class": "C",
+    "kind": "model_fair"
+   },
+   "date": "2026-11-10",
+   "pick_id": "nba_tov_tov_under_2_5|NBA|shai_gilgeous_alexander|TOV_UNDER_2_5|2026-11-10",
+   "settled": true,
+   "result": "won",
+   "payout_units": 0.5682,
+   "recorded_at": "2026-11-10T13:20:05",
+   "p_calibrated": 0.5915,
+   "outcome": {
+    "stat": "to",
+    "actual": 2,
+    "line": 2.5,
+    "side": "UNDER",
+    "verify": "shai gilgeous-alexander \u2014 to = 2 (line 2.5, bet under) on 2026-11-10"
+   },
+   "settled_at": "2026-11-11T07:05:50"
+  },
+  {
+   "source": "nba_tov_tov_under_2.5",
+   "sport": "NBA",
+   "player_or_matchup": "tyrese maxey",
+   "market": "TOV_UNDER_2.5",
+   "prob": 0.666,
+   "fair_american": -199,
+   "p_predicted": 0.666,
+   "matchup": "BOS @ PHI",
+   "price_provenance": {
+    "inferred": false,
+    "class": "C",
+    "kind": "model_fair"
+   },
+   "date": "2026-11-10",
+   "pick_id": "nba_tov_tov_under_2_5|NBA|tyrese_maxey|TOV_UNDER_2_5|2026-11-10",
+   "settled": true,
+   "result": "won",
+   "payout_units": 0.5025,
+   "recorded_at": "2026-11-10T13:20:05",
+   "p_calibrated": 0.619,
+   "outcome": {
+    "stat": "to",
+    "actual": 2,
+    "line": 2.5,
+    "side": "UNDER",
+    "verify": "tyrese maxey \u2014 to = 2 (line 2.5, bet under) on 2026-11-10"
+   },
+   "settled_at": "2026-11-11T07:05:50"
+  },
+  {
+   "source": "nba_pra_pra_under_49.5",
+   "sport": "NBA",
+   "player_or_matchup": "giannis antetokounmpo",
+   "market": "PRA_UNDER_49.5",
+   "prob": 0.627,
+   "fair_american": -168,
+   "p_predicted": 0.627,
+   "matchup": "MIA @ UTA",
+   "price_provenance": {
+    "inferred": false,
+    "class": "C",
+    "kind": "model_fair"
+   },
+   "date": "2026-11-10",
+   "pick_id": "nba_pra_pra_under_49_5|NBA|giannis_antetokounmpo|PRA_UNDER_49_5|2026-11-10",
+   "settled": true,
+   "result": "won",
+   "payout_units": 0.5952,
+   "recorded_at": "2026-11-10T13:20:05",
+   "p_calibrated": 0.5709,
+   "outcome": {
+    "stat": "pra",
+    "actual": 45,
+    "line": 49.5,
+    "side": "UNDER",
+    "verify": "giannis antetokounmpo \u2014 pra = 45 (line 49.5, bet under) on 2026-11-10"
+   },
+   "settled_at": "2026-11-11T07:05:50"
+  },
+  {
+   "source": "nba_pra_pra_under_44.5",
+   "sport": "NBA",
+   "player_or_matchup": "shai gilgeous-alexander",
+   "market": "PRA_UNDER_44.5",
+   "prob": 0.638,
+   "fair_american": -176,
+   "p_predicted": 0.638,
+   "matchup": "OKC @ POR",
+   "price_provenance": {
+    "inferred": false,
+    "class": "C",
+    "kind": "model_fair"
+   },
+   "date": "2026-11-10",
+   "pick_id": "nba_pra_pra_under_44_5|NBA|shai_gilgeous_alexander|PRA_UNDER_44_5|2026-11-10",
+   "settled": true,
+   "result": "won",
+   "payout_units": 0.5682,
+   "recorded_at": "2026-11-10T13:20:05",
+   "p_calibrated": 0.5709,
+   "outcome": {
+    "stat": "pra",
+    "actual": 37,
+    "line": 44.5,
+    "side": "UNDER",
+    "verify": "shai gilgeous-alexander \u2014 pra = 37 (line 44.5, bet under) on 2026-11-10"
+   },
+   "settled_at": "2026-11-11T07:05:50"
+  },
+  {
+   "source": "nba_pra_pra_under_42.5",
+   "sport": "NBA",
+   "player_or_matchup": "jayson tatum",
+   "market": "PRA_UNDER_42.5",
+   "prob": 0.656,
+   "fair_american": -191,
+   "p_predicted": 0.656,
+   "matchup": "BOS @ PHI",
+   "price_provenance": {
+    "inferred": false,
+    "class": "C",
+    "kind": "model_fair"
+   },
+   "date": "2026-11-10",
+   "pick_id": "nba_pra_pra_under_42_5|NBA|jayson_tatum|PRA_UNDER_42_5|2026-11-10",
+   "settled": true,
+   "result": "won",
+   "payout_units": 0.5236,
+   "recorded_at": "2026-11-10T13:20:05",
+   "p_calibrated": 0.5898,
+   "outcome": {
+    "stat": "pra",
+    "actual": 31,
+    "line": 42.5,
+    "side": "UNDER",
+    "verify": "jayson tatum \u2014 pra = 31 (line 42.5, bet under) on 2026-11-10"
+   },
+   "settled_at": "2026-11-11T07:05:50"
+  },
+  {
+   "source": "nba_pra_pra_under_39.5",
+   "sport": "NBA",
+   "player_or_matchup": "karl-anthony towns",
+   "market": "PRA_UNDER_39.5",
+   "prob": 0.656,
+   "fair_american": -191,
+   "p_predicted": 0.656,
+   "matchup": "MIL @ NYK",
+   "price_provenance": {
+    "inferred": false,
+    "class": "C",
+    "kind": "model_fair"
+   },
+   "date": "2026-11-10",
+   "pick_id": "nba_pra_pra_under_39_5|NBA|karl_anthony_towns|PRA_UNDER_39_5|2026-11-10",
+   "settled": true,
+   "result": "lost",
+   "payout_units": -1.0,
+   "recorded_at": "2026-11-10T13:20:05",
+   "p_calibrated": 0.5898,
+   "outcome": {
+    "stat": "pra",
+    "actual": 40,
+    "line": 39.5,
+    "side": "UNDER",
+    "verify": "karl-anthony towns \u2014 pra = 40 (line 39.5, bet under) on 2026-11-10"
+   },
+   "settled_at": "2026-11-11T07:05:50"
+  },
+  {
+   "source": "nba_pra_pra_under_38.5",
+   "sport": "NBA",
+   "player_or_matchup": "tyrese maxey",
+   "market": "PRA_UNDER_38.5",
+   "prob": 0.653,
+   "fair_american": -189,
+   "p_predicted": 0.653,
+   "matchup": "BOS @ PHI",
+   "price_provenance": {
+    "inferred": false,
+    "class": "C",
+    "kind": "model_fair"
+   },
+   "date": "2026-11-10",
+   "pick_id": "nba_pra_pra_under_38_5|NBA|tyrese_maxey|PRA_UNDER_38_5|2026-11-10",
+   "settled": true,
+   "result": "won",
+   "payout_units": 0.5291,
+   "recorded_at": "2026-11-10T13:20:05",
+   "p_calibrated": 0.5726,
+   "outcome": {
+    "stat": "pra",
+    "actual": 29,
+    "line": 38.5,
+    "side": "UNDER",
+    "verify": "tyrese maxey \u2014 pra = 29 (line 38.5, bet under) on 2026-11-10"
+   },
+   "settled_at": "2026-11-11T07:05:50"
+  },
+  {
+   "source": "nba_pra_pra_under_38.5",
+   "sport": "NBA",
+   "player_or_matchup": "jalen brunson",
+   "market": "PRA_UNDER_38.5",
+   "prob": 0.673,
+   "fair_american": -206,
+   "p_predicted": 0.673,
+   "matchup": "MIL @ NYK",
+   "price_provenance": {
+    "inferred": false,
+    "class": "C",
+    "kind": "model_fair"
+   },
+   "date": "2026-11-10",
+   "pick_id": "nba_pra_pra_under_38_5|NBA|jalen_brunson|PRA_UNDER_38_5|2026-11-10",
+   "settled": true,
+   "result": "won",
+   "payout_units": 0.4854,
+   "recorded_at": "2026-11-10T13:20:05",
+   "p_calibrated": 0.665,
+   "outcome": {
+    "stat": "pra",
+    "actual": 29,
+    "line": 38.5,
+    "side": "UNDER",
+    "verify": "jalen brunson \u2014 pra = 29 (line 38.5, bet under) on 2026-11-10"
+   },
+   "settled_at": "2026-11-11T07:05:50"
+  },
+  {
+   "source": "nba_pra_pra_under_37.5",
+   "sport": "NBA",
+   "player_or_matchup": "franz wagner",
+   "market": "PRA_UNDER_37.5",
+   "prob": 0.657,
+   "fair_american": -192,
+   "p_predicted": 0.657,
+   "matchup": "ORL @ SAC",
+   "price_provenance": {
+    "inferred": false,
+    "class": "C",
+    "kind": "model_fair"
+   },
+   "date": "2026-11-10",
+   "pick_id": "nba_pra_pra_under_37_5|NBA|franz_wagner|PRA_UNDER_37_5|2026-11-10",
+   "settled": true,
+   "result": "lost",
+   "payout_units": -1.0,
+   "recorded_at": "2026-11-10T13:20:05",
+   "p_calibrated": 0.5956,
+   "outcome": {
+    "stat": "pra",
+    "actual": 47,
+    "line": 37.5,
+    "side": "UNDER",
+    "verify": "franz wagner \u2014 pra = 47 (line 37.5, bet under) on 2026-11-10"
+   },
+   "settled_at": "2026-11-11T07:05:50"
+  },
+  {
+   "source": "nba_pra_pra_under_37.5",
+   "sport": "NBA",
+   "player_or_matchup": "jaylen brown",
+   "market": "PRA_UNDER_37.5",
+   "prob": 0.67,
+   "fair_american": -203,
+   "p_predicted": 0.67,
+   "matchup": "BOS @ PHI",
+   "price_provenance": {
+    "inferred": false,
+    "class": "C",
+    "kind": "model_fair"
+   },
+   "date": "2026-11-10",
+   "pick_id": "nba_pra_pra_under_37_5|NBA|jaylen_brown|PRA_UNDER_37_5|2026-11-10",
+   "settled": true,
+   "result": "won",
+   "payout_units": 0.4926,
+   "recorded_at": "2026-11-10T13:20:05",
+   "p_calibrated": 0.665,
+   "outcome": {
+    "stat": "pra",
+    "actual": 20,
+    "line": 37.5,
+    "side": "UNDER",
+    "verify": "jaylen brown \u2014 pra = 20 (line 37.5, bet under) on 2026-11-10"
+   },
+   "settled_at": "2026-11-11T07:05:50"
+  },
+  {
    "source": "nba_pra_pra_under_37.5",
    "sport": "NBA",
    "player_or_matchup": "devin booker",
@@ -19522,18 +18479,207 @@
    "date": "2026-11-10",
    "pick_id": "nba_pra_pra_under_37_5|NBA|devin_booker|PRA_UNDER_37_5|2026-11-10",
    "settled": true,
+   "result": "won",
+   "payout_units": 0.4762,
+   "recorded_at": "2026-11-10T13:20:05",
+   "p_calibrated": 0.665,
+   "outcome": {
+    "stat": "pra",
+    "actual": 25,
+    "line": 37.5,
+    "side": "UNDER",
+    "verify": "devin booker \u2014 pra = 25 (line 37.5, bet under) on 2026-11-10",
+    "check": "re-graded from lost: wrong game (UTC-dated pick)"
+   },
+   "settled_at": "2026-11-11T01:29:20",
+   "resettle_log": [
+    {
+     "at": "2026-11-11T07:05:51",
+     "from": "lost",
+     "to": "won",
+     "reason": "graded against the wrong game (pick dated by UTC tip-off; matchup-checked re-grade)"
+    }
+   ]
+  },
+  {
+   "source": "nba_pra_pra_under_36.5",
+   "sport": "NBA",
+   "player_or_matchup": "domantas sabonis",
+   "market": "PRA_UNDER_36.5",
+   "prob": 0.658,
+   "fair_american": -193,
+   "p_predicted": 0.658,
+   "matchup": "ORL @ SAC",
+   "price_provenance": {
+    "inferred": false,
+    "class": "C",
+    "kind": "model_fair"
+   },
+   "date": "2026-11-10",
+   "pick_id": "nba_pra_pra_under_36_5|NBA|domantas_sabonis|PRA_UNDER_36_5|2026-11-10",
+   "settled": true,
+   "result": "won",
+   "payout_units": 0.5181,
+   "recorded_at": "2026-11-10T13:20:05",
+   "p_calibrated": 0.6013,
+   "outcome": {
+    "stat": "pra",
+    "actual": 7,
+    "line": 36.5,
+    "side": "UNDER",
+    "verify": "domantas sabonis \u2014 pra = 7 (line 36.5, bet under) on 2026-11-10"
+   },
+   "settled_at": "2026-11-11T07:05:50"
+  },
+  {
+   "source": "nba_pra_pra_under_35.5",
+   "sport": "NBA",
+   "player_or_matchup": "joel embiid",
+   "market": "PRA_UNDER_35.5",
+   "prob": 0.648,
+   "fair_american": -184,
+   "p_predicted": 0.648,
+   "matchup": "BOS @ PHI",
+   "price_provenance": {
+    "inferred": false,
+    "class": "C",
+    "kind": "model_fair"
+   },
+   "date": "2026-11-10",
+   "pick_id": "nba_pra_pra_under_35_5|NBA|joel_embiid|PRA_UNDER_35_5|2026-11-10",
+   "settled": true,
+   "result": "won",
+   "payout_units": 0.5435,
+   "recorded_at": "2026-11-10T13:20:05",
+   "p_calibrated": 0.5709,
+   "outcome": {
+    "stat": "pra",
+    "actual": 23,
+    "line": 35.5,
+    "side": "UNDER",
+    "verify": "joel embiid \u2014 pra = 23 (line 35.5, bet under) on 2026-11-10"
+   },
+   "settled_at": "2026-11-11T07:05:50"
+  },
+  {
+   "source": "nba_pra_pra_under_33.5",
+   "sport": "NBA",
+   "player_or_matchup": "lebron james",
+   "market": "PRA_UNDER_33.5",
+   "prob": 0.688,
+   "fair_american": -220,
+   "p_predicted": 0.688,
+   "matchup": "BOS @ PHI",
+   "price_provenance": {
+    "inferred": false,
+    "class": "C",
+    "kind": "model_fair"
+   },
+   "date": "2026-11-10",
+   "pick_id": "nba_pra_pra_under_33_5|NBA|lebron_james|PRA_UNDER_33_5|2026-11-10",
+   "settled": true,
+   "result": "won",
+   "payout_units": 0.4545,
+   "recorded_at": "2026-11-10T13:20:05",
+   "p_calibrated": 0.665,
+   "outcome": {
+    "stat": "pra",
+    "actual": 24,
+    "line": 33.5,
+    "side": "UNDER",
+    "verify": "lebron james \u2014 pra = 24 (line 33.5, bet under) on 2026-11-10"
+   },
+   "settled_at": "2026-11-11T07:05:50"
+  },
+  {
+   "source": "nba_pra_pra_under_32.5",
+   "sport": "NBA",
+   "player_or_matchup": "darius garland",
+   "market": "PRA_UNDER_32.5",
+   "prob": 0.668,
+   "fair_american": -201,
+   "p_predicted": 0.668,
+   "matchup": "LAC @ PHX",
+   "price_provenance": {
+    "inferred": false,
+    "class": "C",
+    "kind": "model_fair"
+   },
+   "date": "2026-11-10",
+   "pick_id": "nba_pra_pra_under_32_5|NBA|darius_garland|PRA_UNDER_32_5|2026-11-10",
+   "settled": true,
+   "result": "won",
+   "payout_units": 0.4975,
+   "recorded_at": "2026-11-10T13:20:05",
+   "p_calibrated": 0.6587,
+   "outcome": {
+    "stat": "pra",
+    "actual": 24,
+    "line": 32.5,
+    "side": "UNDER",
+    "verify": "darius garland \u2014 pra = 24 (line 32.5, bet under) on 2026-11-10"
+   },
+   "settled_at": "2026-11-11T07:05:50"
+  },
+  {
+   "source": "nba_pra_pra_under_31.5",
+   "sport": "NBA",
+   "player_or_matchup": "paul george",
+   "market": "PRA_UNDER_31.5",
+   "prob": 0.674,
+   "fair_american": -206,
+   "p_predicted": 0.674,
+   "matchup": "BOS @ PHI",
+   "price_provenance": {
+    "inferred": false,
+    "class": "C",
+    "kind": "model_fair"
+   },
+   "date": "2026-11-10",
+   "pick_id": "nba_pra_pra_under_31_5|NBA|paul_george|PRA_UNDER_31_5|2026-11-10",
+   "settled": true,
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-11-10T13:20:05",
    "p_calibrated": 0.665,
    "outcome": {
     "stat": "pra",
-    "actual": 38,
-    "line": 37.5,
+    "actual": 42,
+    "line": 31.5,
     "side": "UNDER",
-    "verify": "devin booker \u2014 pra = 38 (line 37.5, bet under) on 2026-11-09"
+    "verify": "paul george \u2014 pra = 42 (line 31.5, bet under) on 2026-11-10"
    },
-   "settled_at": "2026-11-11T01:29:20"
+   "settled_at": "2026-11-11T07:05:50"
+  },
+  {
+   "source": "nba_pra_pra_under_28.5",
+   "sport": "NBA",
+   "player_or_matchup": "damian lillard",
+   "market": "PRA_UNDER_28.5",
+   "prob": 0.677,
+   "fair_american": -210,
+   "p_predicted": 0.677,
+   "matchup": "OKC @ POR",
+   "price_provenance": {
+    "inferred": false,
+    "class": "C",
+    "kind": "model_fair"
+   },
+   "date": "2026-11-10",
+   "pick_id": "nba_pra_pra_under_28_5|NBA|damian_lillard|PRA_UNDER_28_5|2026-11-10",
+   "settled": true,
+   "result": "lost",
+   "payout_units": -1.0,
+   "recorded_at": "2026-11-10T13:20:05",
+   "p_calibrated": 0.665,
+   "outcome": {
+    "stat": "pra",
+    "actual": 31,
+    "line": 28.5,
+    "side": "UNDER",
+    "verify": "damian lillard \u2014 pra = 31 (line 28.5, bet under) on 2026-11-10"
+   },
+   "settled_at": "2026-11-11T07:05:50"
   },
   {
    "source": "nba_fta_fta_under_7.5",
@@ -19552,18 +18698,237 @@
    "date": "2026-11-10",
    "pick_id": "nba_fta_fta_under_7_5|NBA|devin_booker|FTA_UNDER_7_5|2026-11-10",
    "settled": true,
+   "result": "won",
+   "payout_units": 0.6024,
+   "recorded_at": "2026-11-10T13:20:05",
+   "p_calibrated": 0.5928,
+   "outcome": {
+    "stat": "fta",
+    "actual": 4,
+    "line": 7.5,
+    "side": "UNDER",
+    "verify": "devin booker \u2014 fta = 4 (line 7.5, bet under) on 2026-11-10",
+    "check": "re-graded from lost: wrong game (UTC-dated pick)"
+   },
+   "settled_at": "2026-11-11T01:29:20",
+   "resettle_log": [
+    {
+     "at": "2026-11-11T07:05:51",
+     "from": "lost",
+     "to": "won",
+     "reason": "graded against the wrong game (pick dated by UTC tip-off; matchup-checked re-grade)"
+    }
+   ]
+  },
+  {
+   "source": "nba_fta_fta_under_7.5",
+   "sport": "NBA",
+   "player_or_matchup": "jalen brunson",
+   "market": "FTA_UNDER_7.5",
+   "prob": 0.627,
+   "fair_american": -168,
+   "p_predicted": 0.627,
+   "matchup": "MIL @ NYK",
+   "price_provenance": {
+    "inferred": false,
+    "class": "C",
+    "kind": "model_fair"
+   },
+   "date": "2026-11-10",
+   "pick_id": "nba_fta_fta_under_7_5|NBA|jalen_brunson|FTA_UNDER_7_5|2026-11-10",
+   "settled": true,
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-11-10T13:20:05",
    "p_calibrated": 0.5928,
    "outcome": {
     "stat": "fta",
-    "actual": 10,
+    "actual": 8,
     "line": 7.5,
     "side": "UNDER",
-    "verify": "devin booker \u2014 fta = 10 (line 7.5, bet under) on 2026-11-09"
+    "verify": "jalen brunson \u2014 fta = 8 (line 7.5, bet under) on 2026-11-10"
    },
-   "settled_at": "2026-11-11T01:29:20"
+   "settled_at": "2026-11-11T07:05:50"
+  },
+  {
+   "source": "nba_fta_fta_under_7.0",
+   "sport": "NBA",
+   "player_or_matchup": "joel embiid",
+   "market": "FTA_UNDER_7.0",
+   "prob": 0.633,
+   "fair_american": -173,
+   "p_predicted": 0.633,
+   "matchup": "BOS @ PHI",
+   "price_provenance": {
+    "inferred": false,
+    "class": "C",
+    "kind": "model_fair"
+   },
+   "date": "2026-11-10",
+   "pick_id": "nba_fta_fta_under_7_0|NBA|joel_embiid|FTA_UNDER_7_0|2026-11-10",
+   "settled": true,
+   "result": "lost",
+   "payout_units": -1.0,
+   "recorded_at": "2026-11-10T13:20:05",
+   "p_calibrated": 0.6044,
+   "outcome": {
+    "stat": "fta",
+    "actual": 13,
+    "line": 7.0,
+    "side": "UNDER",
+    "verify": "joel embiid \u2014 fta = 13 (line 7.0, bet under) on 2026-11-10"
+   },
+   "settled_at": "2026-11-11T07:05:50"
+  },
+  {
+   "source": "nba_fta_fta_under_6.5",
+   "sport": "NBA",
+   "player_or_matchup": "damian lillard",
+   "market": "FTA_UNDER_6.5",
+   "prob": 0.638,
+   "fair_american": -177,
+   "p_predicted": 0.638,
+   "matchup": "OKC @ POR",
+   "price_provenance": {
+    "inferred": false,
+    "class": "C",
+    "kind": "model_fair"
+   },
+   "date": "2026-11-10",
+   "pick_id": "nba_fta_fta_under_6_5|NBA|damian_lillard|FTA_UNDER_6_5|2026-11-10",
+   "settled": true,
+   "result": "won",
+   "payout_units": 0.565,
+   "recorded_at": "2026-11-10T13:20:05",
+   "p_calibrated": 0.6146,
+   "outcome": {
+    "stat": "fta",
+    "actual": 5,
+    "line": 6.5,
+    "side": "UNDER",
+    "verify": "damian lillard \u2014 fta = 5 (line 6.5, bet under) on 2026-11-10"
+   },
+   "settled_at": "2026-11-11T07:05:50"
+  },
+  {
+   "source": "nba_fta_fta_under_6.0",
+   "sport": "NBA",
+   "player_or_matchup": "franz wagner",
+   "market": "FTA_UNDER_6.0",
+   "prob": 0.666,
+   "fair_american": -199,
+   "p_predicted": 0.666,
+   "matchup": "ORL @ SAC",
+   "price_provenance": {
+    "inferred": false,
+    "class": "C",
+    "kind": "model_fair"
+   },
+   "date": "2026-11-10",
+   "pick_id": "nba_fta_fta_under_6_0|NBA|franz_wagner|FTA_UNDER_6_0|2026-11-10",
+   "settled": true,
+   "result": "lost",
+   "payout_units": -1.0,
+   "recorded_at": "2026-11-10T13:20:05",
+   "p_calibrated": 0.6447,
+   "outcome": {
+    "stat": "fta",
+    "actual": 10,
+    "line": 6.0,
+    "side": "UNDER",
+    "verify": "franz wagner \u2014 fta = 10 (line 6.0, bet under) on 2026-11-10"
+   },
+   "settled_at": "2026-11-11T07:05:50"
+  },
+  {
+   "source": "nba_fta_fta_under_5.0",
+   "sport": "NBA",
+   "player_or_matchup": "karl-anthony towns",
+   "market": "FTA_UNDER_5.0",
+   "prob": 0.678,
+   "fair_american": -211,
+   "p_predicted": 0.678,
+   "matchup": "MIL @ NYK",
+   "price_provenance": {
+    "inferred": false,
+    "class": "C",
+    "kind": "model_fair"
+   },
+   "date": "2026-11-10",
+   "pick_id": "nba_fta_fta_under_5_0|NBA|karl_anthony_towns|FTA_UNDER_5_0|2026-11-10",
+   "settled": true,
+   "result": "lost",
+   "payout_units": -1.0,
+   "recorded_at": "2026-11-10T13:20:05",
+   "p_calibrated": 0.6496,
+   "outcome": {
+    "stat": "fta",
+    "actual": 14,
+    "line": 5.0,
+    "side": "UNDER",
+    "verify": "karl-anthony towns \u2014 fta = 14 (line 5.0, bet under) on 2026-11-10"
+   },
+   "settled_at": "2026-11-11T07:05:50"
+  },
+  {
+   "source": "nba_fta_fta_under_4.5",
+   "sport": "NBA",
+   "player_or_matchup": "darius garland",
+   "market": "FTA_UNDER_4.5",
+   "prob": 0.634,
+   "fair_american": -174,
+   "p_predicted": 0.634,
+   "matchup": "LAC @ PHX",
+   "price_provenance": {
+    "inferred": false,
+    "class": "C",
+    "kind": "model_fair"
+   },
+   "date": "2026-11-10",
+   "pick_id": "nba_fta_fta_under_4_5|NBA|darius_garland|FTA_UNDER_4_5|2026-11-10",
+   "settled": true,
+   "result": "won",
+   "payout_units": 0.5747,
+   "recorded_at": "2026-11-10T13:20:05",
+   "p_calibrated": 0.6064,
+   "outcome": {
+    "stat": "fta",
+    "actual": 2,
+    "line": 4.5,
+    "side": "UNDER",
+    "verify": "darius garland \u2014 fta = 2 (line 4.5, bet under) on 2026-11-10"
+   },
+   "settled_at": "2026-11-11T07:05:50"
+  },
+  {
+   "source": "nba_fta_fta_under_3.5",
+   "sport": "NBA",
+   "player_or_matchup": "paul george",
+   "market": "FTA_UNDER_3.5",
+   "prob": 0.659,
+   "fair_american": -193,
+   "p_predicted": 0.659,
+   "matchup": "BOS @ PHI",
+   "price_provenance": {
+    "inferred": false,
+    "class": "C",
+    "kind": "model_fair"
+   },
+   "date": "2026-11-10",
+   "pick_id": "nba_fta_fta_under_3_5|NBA|paul_george|FTA_UNDER_3_5|2026-11-10",
+   "settled": true,
+   "result": "won",
+   "payout_units": 0.5181,
+   "recorded_at": "2026-11-10T13:20:05",
+   "p_calibrated": 0.6317,
+   "outcome": {
+    "stat": "fta",
+    "actual": 2,
+    "line": 3.5,
+    "side": "UNDER",
+    "verify": "paul george \u2014 fta = 2 (line 3.5, bet under) on 2026-11-10"
+   },
+   "settled_at": "2026-11-11T07:05:50"
   },
   {
    "source": "nba_fta_fta_under_3.0",
@@ -19594,6 +18959,366 @@
     "verify": "jalen green \u2014 fta = 2 (line 3.0, bet under) on 2026-11-09"
    },
    "settled_at": "2026-11-11T01:29:20"
+  },
+  {
+   "source": "nba_tt_team_pts_under_122.5",
+   "sport": "NBA",
+   "player_or_matchup": "OKC (OKC @ POR)",
+   "market": "TEAM_PTS_UNDER_122.5",
+   "prob": 0.635,
+   "fair_american": -174,
+   "p_predicted": 0.635,
+   "matchup": "OKC @ POR",
+   "price_provenance": {
+    "inferred": false,
+    "class": "C",
+    "kind": "model_fair"
+   },
+   "date": "2026-11-10",
+   "pick_id": "nba_tt_team_pts_under_122_5|NBA|OKC__OKC___POR_|TEAM_PTS_UNDER_122_5|2026-11-10",
+   "settled": true,
+   "result": "won",
+   "payout_units": 0.5747,
+   "recorded_at": "2026-11-10T13:20:05",
+   "p_calibrated": 0.6839,
+   "outcome": {
+    "final_score": "OKC 103 @ POR 123",
+    "team_total": 103,
+    "line": 122.5,
+    "side": "UNDER",
+    "verify": "OKC @ POR: away scored 103 (line 122.5, bet under) on 2026-11-10"
+   },
+   "settled_at": "2026-11-11T07:05:50"
+  },
+  {
+   "source": "nba_tt_team_pts_under_120.5",
+   "sport": "NBA",
+   "player_or_matchup": "BOS (BOS @ PHI)",
+   "market": "TEAM_PTS_UNDER_120.5",
+   "prob": 0.643,
+   "fair_american": -180,
+   "p_predicted": 0.643,
+   "matchup": "BOS @ PHI",
+   "price_provenance": {
+    "inferred": false,
+    "class": "C",
+    "kind": "model_fair"
+   },
+   "date": "2026-11-10",
+   "pick_id": "nba_tt_team_pts_under_120_5|NBA|BOS__BOS___PHI_|TEAM_PTS_UNDER_120_5|2026-11-10",
+   "settled": true,
+   "result": "lost",
+   "payout_units": -1.0,
+   "recorded_at": "2026-11-10T13:20:05",
+   "p_calibrated": 0.6839,
+   "outcome": {
+    "final_score": "BOS 123 @ PHI 101",
+    "team_total": 123,
+    "line": 120.5,
+    "side": "UNDER",
+    "verify": "BOS @ PHI: away scored 123 (line 120.5, bet under) on 2026-11-10"
+   },
+   "settled_at": "2026-11-11T07:05:50"
+  },
+  {
+   "source": "nba_tt_team_pts_under_120.5",
+   "sport": "NBA",
+   "player_or_matchup": "MIA (MIA @ UTA)",
+   "market": "TEAM_PTS_UNDER_120.5",
+   "prob": 0.659,
+   "fair_american": -194,
+   "p_predicted": 0.659,
+   "matchup": "MIA @ UTA",
+   "price_provenance": {
+    "inferred": false,
+    "class": "C",
+    "kind": "model_fair"
+   },
+   "date": "2026-11-10",
+   "pick_id": "nba_tt_team_pts_under_120_5|NBA|MIA__MIA___UTA_|TEAM_PTS_UNDER_120_5|2026-11-10",
+   "settled": true,
+   "result": "won",
+   "payout_units": 0.5155,
+   "recorded_at": "2026-11-10T13:20:05",
+   "p_calibrated": 0.703,
+   "outcome": {
+    "final_score": "MIA 115 @ UTAH 109",
+    "team_total": 115,
+    "line": 120.5,
+    "side": "UNDER",
+    "verify": "MIA @ UTAH: away scored 115 (line 120.5, bet under) on 2026-11-10"
+   },
+   "settled_at": "2026-11-11T07:05:50"
+  },
+  {
+   "source": "nba_tt_team_pts_under_119.5",
+   "sport": "NBA",
+   "player_or_matchup": "LAC (LAC @ PHX)",
+   "market": "TEAM_PTS_UNDER_119.5",
+   "prob": 0.671,
+   "fair_american": -204,
+   "p_predicted": 0.671,
+   "matchup": "LAC @ PHX",
+   "price_provenance": {
+    "inferred": false,
+    "class": "C",
+    "kind": "model_fair"
+   },
+   "date": "2026-11-10",
+   "pick_id": "nba_tt_team_pts_under_119_5|NBA|LAC__LAC___PHX_|TEAM_PTS_UNDER_119_5|2026-11-10",
+   "settled": true,
+   "result": "won",
+   "payout_units": 0.4902,
+   "recorded_at": "2026-11-10T13:20:05",
+   "p_calibrated": 0.7387,
+   "outcome": {
+    "final_score": "LAC 110 @ PHX 133",
+    "team_total": 110,
+    "line": 119.5,
+    "side": "UNDER",
+    "verify": "LAC @ PHX: away scored 110 (line 119.5, bet under) on 2026-11-10"
+   },
+   "settled_at": "2026-11-11T07:05:50"
+  },
+  {
+   "source": "nba_tt_team_pts_under_118.5",
+   "sport": "NBA",
+   "player_or_matchup": "NYK (MIL @ NYK)",
+   "market": "TEAM_PTS_UNDER_118.5",
+   "prob": 0.649,
+   "fair_american": -185,
+   "p_predicted": 0.649,
+   "matchup": "MIL @ NYK",
+   "price_provenance": {
+    "inferred": false,
+    "class": "C",
+    "kind": "model_fair"
+   },
+   "date": "2026-11-10",
+   "pick_id": "nba_tt_team_pts_under_118_5|NBA|NYK__MIL___NYK_|TEAM_PTS_UNDER_118_5|2026-11-10",
+   "settled": true,
+   "result": "won",
+   "payout_units": 0.5405,
+   "recorded_at": "2026-11-10T13:20:05",
+   "p_calibrated": 0.6839,
+   "outcome": {
+    "final_score": "MIL 85 @ NY 117",
+    "team_total": 85,
+    "line": 118.5,
+    "side": "UNDER",
+    "verify": "MIL @ NY: away scored 85 (line 118.5, bet under) on 2026-11-10"
+   },
+   "settled_at": "2026-11-11T07:05:50"
+  },
+  {
+   "source": "nba_tt_team_pts_under_118.5",
+   "sport": "NBA",
+   "player_or_matchup": "SAC (ORL @ SAC)",
+   "market": "TEAM_PTS_UNDER_118.5",
+   "prob": 0.655,
+   "fair_american": -190,
+   "p_predicted": 0.655,
+   "matchup": "ORL @ SAC",
+   "price_provenance": {
+    "inferred": false,
+    "class": "C",
+    "kind": "model_fair"
+   },
+   "date": "2026-11-10",
+   "pick_id": "nba_tt_team_pts_under_118_5|NBA|SAC__ORL___SAC_|TEAM_PTS_UNDER_118_5|2026-11-10",
+   "settled": true,
+   "result": "won",
+   "payout_units": 0.5263,
+   "recorded_at": "2026-11-10T13:20:05",
+   "p_calibrated": 0.6932,
+   "outcome": {
+    "final_score": "ORL 107 @ SAC 100",
+    "team_total": 100,
+    "line": 118.5,
+    "side": "UNDER",
+    "verify": "ORL @ SAC: home scored 100 (line 118.5, bet under) on 2026-11-10"
+   },
+   "settled_at": "2026-11-11T07:05:50"
+  },
+  {
+   "source": "nba_tt_team_pts_under_118.5",
+   "sport": "NBA",
+   "player_or_matchup": "PHX (LAC @ PHX)",
+   "market": "TEAM_PTS_UNDER_118.5",
+   "prob": 0.675,
+   "fair_american": -208,
+   "p_predicted": 0.675,
+   "matchup": "LAC @ PHX",
+   "price_provenance": {
+    "inferred": false,
+    "class": "C",
+    "kind": "model_fair"
+   },
+   "date": "2026-11-10",
+   "pick_id": "nba_tt_team_pts_under_118_5|NBA|PHX__LAC___PHX_|TEAM_PTS_UNDER_118_5|2026-11-10",
+   "settled": true,
+   "result": "lost",
+   "payout_units": -1.0,
+   "recorded_at": "2026-11-10T13:20:05",
+   "p_calibrated": 0.7716,
+   "outcome": {
+    "final_score": "LAC 110 @ PHX 133",
+    "team_total": 133,
+    "line": 118.5,
+    "side": "UNDER",
+    "verify": "LAC @ PHX: home scored 133 (line 118.5, bet under) on 2026-11-10"
+   },
+   "settled_at": "2026-11-11T07:05:50"
+  },
+  {
+   "source": "nba_tt_team_pts_under_117.5",
+   "sport": "NBA",
+   "player_or_matchup": "ORL (ORL @ SAC)",
+   "market": "TEAM_PTS_UNDER_117.5",
+   "prob": 0.673,
+   "fair_american": -206,
+   "p_predicted": 0.673,
+   "matchup": "ORL @ SAC",
+   "price_provenance": {
+    "inferred": false,
+    "class": "C",
+    "kind": "model_fair"
+   },
+   "date": "2026-11-10",
+   "pick_id": "nba_tt_team_pts_under_117_5|NBA|ORL__ORL___SAC_|TEAM_PTS_UNDER_117_5|2026-11-10",
+   "settled": true,
+   "result": "won",
+   "payout_units": 0.4854,
+   "recorded_at": "2026-11-10T13:20:05",
+   "p_calibrated": 0.7581,
+   "outcome": {
+    "final_score": "ORL 107 @ SAC 100",
+    "team_total": 107,
+    "line": 117.5,
+    "side": "UNDER",
+    "verify": "ORL @ SAC: away scored 107 (line 117.5, bet under) on 2026-11-10"
+   },
+   "settled_at": "2026-11-11T07:05:50"
+  },
+  {
+   "source": "nba_tt_team_pts_under_116.5",
+   "sport": "NBA",
+   "player_or_matchup": "MIL (MIL @ NYK)",
+   "market": "TEAM_PTS_UNDER_116.5",
+   "prob": 0.659,
+   "fair_american": -193,
+   "p_predicted": 0.659,
+   "matchup": "MIL @ NYK",
+   "price_provenance": {
+    "inferred": false,
+    "class": "C",
+    "kind": "model_fair"
+   },
+   "date": "2026-11-10",
+   "pick_id": "nba_tt_team_pts_under_116_5|NBA|MIL__MIL___NYK_|TEAM_PTS_UNDER_116_5|2026-11-10",
+   "settled": true,
+   "result": "won",
+   "payout_units": 0.5181,
+   "recorded_at": "2026-11-10T13:20:05",
+   "p_calibrated": 0.703,
+   "outcome": {
+    "final_score": "MIL 85 @ NY 117",
+    "team_total": 85,
+    "line": 116.5,
+    "side": "UNDER",
+    "verify": "MIL @ NY: away scored 85 (line 116.5, bet under) on 2026-11-10"
+   },
+   "settled_at": "2026-11-11T07:05:50"
+  },
+  {
+   "source": "nba_tt_team_pts_under_116.5",
+   "sport": "NBA",
+   "player_or_matchup": "UTA (MIA @ UTA)",
+   "market": "TEAM_PTS_UNDER_116.5",
+   "prob": 0.674,
+   "fair_american": -207,
+   "p_predicted": 0.674,
+   "matchup": "MIA @ UTA",
+   "price_provenance": {
+    "inferred": false,
+    "class": "C",
+    "kind": "model_fair"
+   },
+   "date": "2026-11-10",
+   "pick_id": "nba_tt_team_pts_under_116_5|NBA|UTA__MIA___UTA_|TEAM_PTS_UNDER_116_5|2026-11-10",
+   "settled": true,
+   "result": "won",
+   "payout_units": 0.4831,
+   "recorded_at": "2026-11-10T13:20:05",
+   "p_calibrated": 0.7677,
+   "outcome": {
+    "final_score": "MIA 115 @ UTAH 109",
+    "team_total": 115,
+    "line": 116.5,
+    "side": "UNDER",
+    "verify": "MIA @ UTAH: away scored 115 (line 116.5, bet under) on 2026-11-10"
+   },
+   "settled_at": "2026-11-11T07:05:50"
+  },
+  {
+   "source": "nba_tt_team_pts_under_115.5",
+   "sport": "NBA",
+   "player_or_matchup": "PHI (BOS @ PHI)",
+   "market": "TEAM_PTS_UNDER_115.5",
+   "prob": 0.651,
+   "fair_american": -187,
+   "p_predicted": 0.651,
+   "matchup": "BOS @ PHI",
+   "price_provenance": {
+    "inferred": false,
+    "class": "C",
+    "kind": "model_fair"
+   },
+   "date": "2026-11-10",
+   "pick_id": "nba_tt_team_pts_under_115_5|NBA|PHI__BOS___PHI_|TEAM_PTS_UNDER_115_5|2026-11-10",
+   "settled": true,
+   "result": "won",
+   "payout_units": 0.5348,
+   "recorded_at": "2026-11-10T13:20:05",
+   "p_calibrated": 0.6839,
+   "outcome": {
+    "final_score": "BOS 123 @ PHI 101",
+    "team_total": 101,
+    "line": 115.5,
+    "side": "UNDER",
+    "verify": "BOS @ PHI: home scored 101 (line 115.5, bet under) on 2026-11-10"
+   },
+   "settled_at": "2026-11-11T07:05:50"
+  },
+  {
+   "source": "nba_tt_team_pts_under_114.5",
+   "sport": "NBA",
+   "player_or_matchup": "POR (OKC @ POR)",
+   "market": "TEAM_PTS_UNDER_114.5",
+   "prob": 0.673,
+   "fair_american": -205,
+   "p_predicted": 0.673,
+   "matchup": "OKC @ POR",
+   "price_provenance": {
+    "inferred": false,
+    "class": "C",
+    "kind": "model_fair"
+   },
+   "date": "2026-11-10",
+   "pick_id": "nba_tt_team_pts_under_114_5|NBA|POR__OKC___POR_|TEAM_PTS_UNDER_114_5|2026-11-10",
+   "settled": true,
+   "result": "lost",
+   "payout_units": -1.0,
+   "recorded_at": "2026-11-10T13:20:05",
+   "p_calibrated": 0.7581,
+   "outcome": {
+    "final_score": "OKC 103 @ POR 123",
+    "team_total": 123,
+    "line": 114.5,
+    "side": "UNDER",
+    "verify": "OKC @ POR: home scored 123 (line 114.5, bet under) on 2026-11-10"
+   },
+   "settled_at": "2026-11-11T07:05:50"
   },
   {
    "source": "nhl_skater_blocks_over_1.5",
@@ -19684,6 +19409,306 @@
     "verify": "brandon duhaime \u2014 hits = 3 (line 1.5, bet over) on 2026-11-08"
    },
    "settled_at": "2026-11-11T01:29:20"
+  },
+  {
+   "source": "nba_reb_reb_under_2.5",
+   "sport": "NBA",
+   "player_or_matchup": "darius garland",
+   "market": "REB_UNDER_2.5",
+   "prob": 0.701,
+   "fair_american": -234,
+   "p_predicted": 0.701,
+   "matchup": "LAC @ PHX",
+   "price_provenance": {
+    "inferred": false,
+    "class": "C",
+    "kind": "model_fair"
+   },
+   "date": "2026-11-10",
+   "pick_id": "nba_reb_reb_under_2_5|NBA|darius_garland|REB_UNDER_2_5|2026-11-10",
+   "settled": true,
+   "result": "lost",
+   "payout_units": -1.0,
+   "recorded_at": "2026-11-10T13:20:05",
+   "p_calibrated": 0.7095,
+   "outcome": {
+    "stat": "reb",
+    "actual": 5,
+    "line": 2.5,
+    "side": "UNDER",
+    "verify": "darius garland \u2014 reb = 5 (line 2.5, bet under) on 2026-11-10"
+   },
+   "settled_at": "2026-11-11T07:05:50"
+  },
+  {
+   "source": "nba_ast_ast_over_1.5",
+   "sport": "NBA",
+   "player_or_matchup": "scoot henderson",
+   "market": "AST_OVER_1.5",
+   "prob": 0.653,
+   "fair_american": -188,
+   "p_predicted": 0.653,
+   "matchup": "OKC @ POR",
+   "price_provenance": {
+    "inferred": false,
+    "class": "C",
+    "kind": "model_fair"
+   },
+   "date": "2026-11-10",
+   "pick_id": "nba_ast_ast_over_1_5|NBA|scoot_henderson|AST_OVER_1_5|2026-11-10",
+   "settled": true,
+   "result": "won",
+   "payout_units": 0.5319,
+   "recorded_at": "2026-11-10T13:20:05",
+   "p_calibrated": 0.5262,
+   "outcome": {
+    "stat": "ast",
+    "actual": 4,
+    "line": 1.5,
+    "side": "OVER",
+    "verify": "scoot henderson \u2014 ast = 4 (line 1.5, bet over) on 2026-11-10"
+   },
+   "settled_at": "2026-11-11T07:05:50"
+  },
+  {
+   "source": "nba_pa_pa_under_22.0",
+   "sport": "NBA",
+   "player_or_matchup": "domantas sabonis",
+   "market": "PA_UNDER_22.0",
+   "prob": 0.626,
+   "fair_american": -168,
+   "p_predicted": 0.626,
+   "matchup": "ORL @ SAC",
+   "price_provenance": {
+    "inferred": false,
+    "class": "C",
+    "kind": "model_fair"
+   },
+   "date": "2026-11-10",
+   "pick_id": "nba_pa_pa_under_22_0|NBA|domantas_sabonis|PA_UNDER_22_0|2026-11-10",
+   "settled": true,
+   "result": "won",
+   "payout_units": 0.5952,
+   "recorded_at": "2026-11-10T13:20:05",
+   "p_calibrated": 0.6077,
+   "outcome": {
+    "stat": "pts_ast",
+    "actual": 5,
+    "line": 22.0,
+    "side": "UNDER",
+    "verify": "domantas sabonis \u2014 pts_ast = 5 (line 22.0, bet under) on 2026-11-10"
+   },
+   "settled_at": "2026-11-11T07:05:50"
+  },
+  {
+   "source": "nba_pa_pa_under_14.0",
+   "sport": "NBA",
+   "player_or_matchup": "anfernee simons",
+   "market": "PA_UNDER_14.0",
+   "prob": 0.676,
+   "fair_american": -209,
+   "p_predicted": 0.676,
+   "matchup": "BOS @ PHI",
+   "price_provenance": {
+    "inferred": false,
+    "class": "C",
+    "kind": "model_fair"
+   },
+   "date": "2026-11-10",
+   "pick_id": "nba_pa_pa_under_14_0|NBA|anfernee_simons|PA_UNDER_14_0|2026-11-10",
+   "settled": true,
+   "result": "lost",
+   "payout_units": -1.0,
+   "recorded_at": "2026-11-10T13:20:05",
+   "p_calibrated": 0.7099,
+   "outcome": {
+    "stat": "pts_ast",
+    "actual": 17,
+    "line": 14.0,
+    "side": "UNDER",
+    "verify": "anfernee simons \u2014 pts_ast = 17 (line 14.0, bet under) on 2026-11-10"
+   },
+   "settled_at": "2026-11-11T07:05:50"
+  },
+  {
+   "source": "nba_pr_pr_under_30.5",
+   "sport": "NBA",
+   "player_or_matchup": "domantas sabonis",
+   "market": "PR_UNDER_30.5",
+   "prob": 0.62,
+   "fair_american": -163,
+   "p_predicted": 0.62,
+   "matchup": "ORL @ SAC",
+   "price_provenance": {
+    "inferred": false,
+    "class": "C",
+    "kind": "model_fair"
+   },
+   "date": "2026-11-10",
+   "pick_id": "nba_pr_pr_under_30_5|NBA|domantas_sabonis|PR_UNDER_30_5|2026-11-10",
+   "settled": true,
+   "result": "won",
+   "payout_units": 0.6135,
+   "recorded_at": "2026-11-10T13:20:05",
+   "p_calibrated": 0.5817,
+   "outcome": {
+    "stat": "pts_reb",
+    "actual": 2,
+    "line": 30.5,
+    "side": "UNDER",
+    "verify": "domantas sabonis \u2014 pts_reb = 2 (line 30.5, bet under) on 2026-11-10"
+   },
+   "settled_at": "2026-11-11T07:05:50"
+  },
+  {
+   "source": "nba_pr_pr_under_25.5",
+   "sport": "NBA",
+   "player_or_matchup": "lebron james",
+   "market": "PR_UNDER_25.5",
+   "prob": 0.621,
+   "fair_american": -164,
+   "p_predicted": 0.621,
+   "matchup": "BOS @ PHI",
+   "price_provenance": {
+    "inferred": false,
+    "class": "C",
+    "kind": "model_fair"
+   },
+   "date": "2026-11-10",
+   "pick_id": "nba_pr_pr_under_25_5|NBA|lebron_james|PR_UNDER_25_5|2026-11-10",
+   "settled": true,
+   "result": "won",
+   "payout_units": 0.6098,
+   "recorded_at": "2026-11-10T13:20:05",
+   "p_calibrated": 0.5817,
+   "outcome": {
+    "stat": "pts_reb",
+    "actual": 19,
+    "line": 25.5,
+    "side": "UNDER",
+    "verify": "lebron james \u2014 pts_reb = 19 (line 25.5, bet under) on 2026-11-10"
+   },
+   "settled_at": "2026-11-11T07:05:50"
+  },
+  {
+   "source": "nba_ra_ra_under_15.5",
+   "sport": "NBA",
+   "player_or_matchup": "jayson tatum",
+   "market": "RA_UNDER_15.5",
+   "prob": 0.643,
+   "fair_american": -180,
+   "p_predicted": 0.643,
+   "matchup": "BOS @ PHI",
+   "price_provenance": {
+    "inferred": false,
+    "class": "C",
+    "kind": "model_fair"
+   },
+   "date": "2026-11-10",
+   "pick_id": "nba_ra_ra_under_15_5|NBA|jayson_tatum|RA_UNDER_15_5|2026-11-10",
+   "settled": true,
+   "result": "won",
+   "payout_units": 0.5556,
+   "recorded_at": "2026-11-10T13:20:05",
+   "p_calibrated": 0.6807,
+   "outcome": {
+    "stat": "reb_ast",
+    "actual": 10,
+    "line": 15.5,
+    "side": "UNDER",
+    "verify": "jayson tatum \u2014 reb_ast = 10 (line 15.5, bet under) on 2026-11-10"
+   },
+   "settled_at": "2026-11-11T07:05:50"
+  },
+  {
+   "source": "nba_ra_ra_under_15.5",
+   "sport": "NBA",
+   "player_or_matchup": "lebron james",
+   "market": "RA_UNDER_15.5",
+   "prob": 0.703,
+   "fair_american": -236,
+   "p_predicted": 0.703,
+   "matchup": "BOS @ PHI",
+   "price_provenance": {
+    "inferred": false,
+    "class": "C",
+    "kind": "model_fair"
+   },
+   "date": "2026-11-10",
+   "pick_id": "nba_ra_ra_under_15_5|NBA|lebron_james|RA_UNDER_15_5|2026-11-10",
+   "settled": true,
+   "result": "won",
+   "payout_units": 0.4237,
+   "recorded_at": "2026-11-10T13:20:05",
+   "p_calibrated": 0.6948,
+   "outcome": {
+    "stat": "reb_ast",
+    "actual": 13,
+    "line": 15.5,
+    "side": "UNDER",
+    "verify": "lebron james \u2014 reb_ast = 13 (line 15.5, bet under) on 2026-11-10"
+   },
+   "settled_at": "2026-11-11T07:05:50"
+  },
+  {
+   "source": "nba_ra_ra_over_7.5",
+   "sport": "NBA",
+   "player_or_matchup": "shai gilgeous-alexander",
+   "market": "RA_OVER_7.5",
+   "prob": 0.664,
+   "fair_american": -197,
+   "p_predicted": 0.664,
+   "matchup": "OKC @ POR",
+   "price_provenance": {
+    "inferred": false,
+    "class": "C",
+    "kind": "model_fair"
+   },
+   "date": "2026-11-10",
+   "pick_id": "nba_ra_ra_over_7_5|NBA|shai_gilgeous_alexander|RA_OVER_7_5|2026-11-10",
+   "settled": true,
+   "result": "won",
+   "payout_units": 0.5076,
+   "recorded_at": "2026-11-10T13:20:05",
+   "p_calibrated": 0.7077,
+   "outcome": {
+    "stat": "reb_ast",
+    "actual": 11,
+    "line": 7.5,
+    "side": "OVER",
+    "verify": "shai gilgeous-alexander \u2014 reb_ast = 11 (line 7.5, bet over) on 2026-11-10"
+   },
+   "settled_at": "2026-11-11T07:05:50"
+  },
+  {
+   "source": "nba_ra_ra_over_6.5",
+   "sport": "NBA",
+   "player_or_matchup": "darius garland",
+   "market": "RA_OVER_6.5",
+   "prob": 0.682,
+   "fair_american": -214,
+   "p_predicted": 0.682,
+   "matchup": "LAC @ PHX",
+   "price_provenance": {
+    "inferred": false,
+    "class": "C",
+    "kind": "model_fair"
+   },
+   "date": "2026-11-10",
+   "pick_id": "nba_ra_ra_over_6_5|NBA|darius_garland|RA_OVER_6_5|2026-11-10",
+   "settled": true,
+   "result": "won",
+   "payout_units": 0.4673,
+   "recorded_at": "2026-11-10T13:20:05",
+   "p_calibrated": 0.7121,
+   "outcome": {
+    "stat": "reb_ast",
+    "actual": 11,
+    "line": 6.5,
+    "side": "OVER",
+    "verify": "darius garland \u2014 reb_ast = 11 (line 6.5, bet over) on 2026-11-10"
+   },
+   "settled_at": "2026-11-11T07:05:50"
   }
  ],
  "recent_window": 200,
@@ -19691,5 +19716,5 @@
   "2026-05-19",
   "2026-11-10"
  ],
- "digest_generated_at": "2026-11-11T01:59:15"
+ "digest_generated_at": "2026-11-11T07:05:54"
 }
