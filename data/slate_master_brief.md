@@ -1,13 +1,13 @@
 # EdgeStat — Tonight's Master Brief
-_Generated 2026-11-11T01:55:34 UTC_
+_Generated 2026-11-11T16:53:43 UTC_
 
 ## Slate Quality
-- **Tier:** STRONG_NIGHT
-- **Score:** 64
-- **Advisory:** Solid slate. Pick top STRONG/LOCK picks; consider Kelly 25-50% sizing.
+- **Tier:** MODEST_NIGHT
+- **Score:** 25
+- **Advisory:** Light slate. Limit to 1-3 strongest plays; use 25% Kelly or less.
 - **Total LOCKs:** 0
-- **Total STRONG:** 39
-- **Total FADES:** 92
+- **Total STRONG:** 40
+- **Total FADES:** 135
 
 ## Top 5 Curated Picks
 1. **GOLF / C.T. Pan** (GOLF_PLAYER, score=143.79)
@@ -32,11 +32,11 @@ _Generated 2026-11-11T01:55:34 UTC_
 ## Top Fades
 - **NBA** / POR (TEAM_FADE)
   - Fade angle: team total UNDER
-- **NBA** / PHI (TEAM_FADE)
+- **NBA** / BKN (TEAM_FADE)
   - Fade angle: team total UNDER
-- **NBA** / PHX (TEAM_FADE)
+- **NBA** / GSW (TEAM_FADE)
   - Fade angle: team total UNDER
-- **NBA** / MIA (TEAM_FADE)
+- **NBA** / CHI (TEAM_FADE)
   - Fade angle: team total UNDER
-- **NBA** / LAC (TEAM_FADE)
+- **NBA** / UTA (TEAM_FADE)
   - Fade angle: team total UNDER
