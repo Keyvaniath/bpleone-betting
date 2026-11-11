@@ -168,18 +168,28 @@ def _mlb_pod(today: Dict[str, Any], today_et: str) -> Optional[Dict[str, Any]]:
     }
 
 
+def _amer(a) -> str:
+    try:
+        a = int(a)
+    except (TypeError, ValueError):
+        return "n/a"
+    return f"+{a}" if a >= 0 else str(a)
+
+
 def _why(c: Dict[str, Any]) -> str:
-    p = c.get("model_prob"); dk = c.get("dk_implied"); ev = c.get("ev_pct")
-    mk = str(c.get('market') or '')
-    mk_h = "moneyline" if mk.upper().startswith("ML") or mk.lower().endswith("_ml_home") or mk.lower().endswith("_ml_away") else mk.replace('_', ' ').lower()
-    bits = [f"{c['sport']} {c.get('team') or ''} {mk_h} ({c['matchup']})".strip()]
-    if p is not None and dk is not None:
-        bits.append(f"desk {p*100:.1f}% vs DraftKings' no-vig {dk*100:.1f}% at {c['book_american']:+d}")
-    elif p is not None:
-        bits.append(f"model {p*100:.1f}% at {c['book_american']:+d}")
-    if ev is not None:
+    """One-line reason. Display text: never raises on a missing number."""
+    p, dk, ev = c.get("model_prob"), c.get("dk_implied"), c.get("ev_pct")
+    mk = str(c.get("market") or "")
+    mk_h = "moneyline" if mk.upper().startswith("ML") or mk.lower().endswith(("_ml_home", "_ml_away")) else mk.replace("_", " ").lower()
+    bits = [f"{c.get('sport') or ''} {c.get('team') or ''} {mk_h} ({c.get('matchup') or ''})".strip()]
+    px = _amer(c.get("book_american"))
+    if isinstance(p, (int, float)) and isinstance(dk, (int, float)):
+        bits.append(f"desk {p * 100:.1f}% vs DraftKings' no-vig {dk * 100:.1f}% at {px}")
+    elif isinstance(p, (int, float)):
+        bits.append(f"model {p * 100:.1f}% at {px}")
+    if isinstance(ev, (int, float)):
         bits.append(f"EV {ev:+.1f}% at the DK price")
-    bits.append(TIER_LABEL.get(c["tier"], ""))
+    bits.append(TIER_LABEL.get(c.get("tier"), ""))
     return " · ".join(b for b in bits if b)
 
 
