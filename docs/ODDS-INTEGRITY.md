@@ -581,7 +581,8 @@ startup with no jobs (not a Jekyll error); the next build succeeded.
    `tools/check_inline_js.js` parses (never executes) every inline script on
    every root page plus js/*.js and sw.js (217 scripts); the Smoke Test runs it
    and the integrity tests on page/script pushes too; pytest wraps it
-   (`test_every_inline_page_script_parses`).
+   (`test_every_inline_page_script_parses`). The same check caught a second
+   instance in the share card below before it left the machine.
    RULE: text inside a JS string on a page uses &#39; for an apostrophe.
 
 3. TOTALS: NO EDGE ON ALL THREE SPORTS (do not re-run with the same inputs).
@@ -601,6 +602,15 @@ startup with no jobs (not a Jekyll error); the next build succeeded.
    the comparison has to be against the price. Script: tools/totals_study.py.
    A totals desk would need inputs the market does not already have in the
    price (confirmed lineups/goalies at bet time, pace/shot-quality data).
+
+4. SHARE TEXT FOR THE DAY'S CARD. play_of_day.json now carries `post`: a
+   copy-ready text (<= 280 chars) for the play or the no-play day, shown on
+   play-of-day.html with Copy / Open in Bluesky / Open in Threads. DRAFT ONLY:
+   nothing posts by itself (machine writes, Brandon sends; no X link). A price
+   appears only for today's play -- actionable by construction -- with the
+   desk's tier and the time the price was seen; the next play is named without
+   a price; a no-play day says why. Test:
+   `test_play_of_day_post_quotes_a_price_only_for_todays_play`.
 
 CI on the merge: Smoke Test green, Daily pipeline green (failure gate clean,
 which includes the pricing guard and the integrity tests).

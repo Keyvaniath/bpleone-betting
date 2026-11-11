@@ -48,7 +48,7 @@ bpleone-site/
   tiered by the desk verdict: 1 validated / 2 forward test / 3 experimental
   college). A NO EDGE desk (NBA, NHL today) never produces a play; a no-play
   day lists each sport's reason, the next dated play and the day's DK board
-  ("prices, not picks").
+  ("prices, not picks"). `post` = copy-ready share text, DRAFT ONLY.
   (2) DO NOT ADD A "LEAN" TIER: betting NBA/NHL model-vs-DK disagreements loses
   under every rule this season (NBA -10.6% to -43%, NHL -3.8% to -21.4%).
   Totals are NO EDGE on NFL/NBA/NHL too (tools/totals_study.py); spread prices
