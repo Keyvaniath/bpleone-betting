@@ -1,12 +1,23 @@
 {
-  "generated_at": "2026-11-11T16:54:09",
+  "generated_at": "2026-11-11T21:11:53",
   "form_rule": "form_v3",
   "season_status": "regular",
-  "n_props": 654,
-  "n_strong_edges": 654,
+  "n_props": 609,
+  "n_strong_edges": 609,
   "n_players_in_db": 28,
   "n_players_projected": 249,
   "n_inactive_dropped": 76,
+  "qb_uncertain_teams": [
+    "BAL",
+    "KC",
+    "LAC",
+    "MIA",
+    "MIN",
+    "NYG",
+    "PHI",
+    "SEA"
+  ],
+  "n_qb_uncertain_dropped": 45,
   "inactive_dropped": [
     "A.J. Brown",
     "AJ Dillon",
@@ -88,42 +99,6 @@
   "universe_note": "Universe = curated priors + 2025 season baselines + current-season gamelogs (rookies enter after 3 games).",
   "method_note": "NFL model-conviction props (odds-independent). Per-game projection (season base, refreshed from gamelogs in-season, opponent-defense adjusted) feeds a play-level Monte Carlo (nfl_simulator: NegBinomial counts x Gamma per-event yards, Poisson TD/INT) -- backtested better-calibrated than the prior normal-CDF (ECE 0.027 vs 0.046 on 21.8k 2025 pairs). Prices yds/cmp/rec/longest/TD/INT/anytime-TD off the simulated sample; surfaces the standard line the model leans on (p in [0.58,0.80]). Empty off-season; auto-activates Week 1.",
   "rows": [
-    {
-      "matchup": "LAC @ BAL",
-      "game_date": "2026-11-16",
-      "player": "lamar jackson",
-      "team": "BAL",
-      "opp_team": "LAC",
-      "stat_type": "pass_int",
-      "opp_factor": 0.976,
-      "projection": 0.19,
-      "edge_class": "MODEL_UNDER",
-      "best_market": {
-        "market": "PASS_INT_UNDER_0.5",
-        "p": 0.832,
-        "fair_odds": -494,
-        "line": 0.5,
-        "side": "UNDER"
-      }
-    },
-    {
-      "matchup": "LAC @ BAL",
-      "game_date": "2026-11-16",
-      "player": "tyler huntley",
-      "team": "BAL",
-      "opp_team": "LAC",
-      "stat_type": "pass_int",
-      "opp_factor": 0.976,
-      "projection": 0.2,
-      "edge_class": "MODEL_UNDER",
-      "best_market": {
-        "market": "PASS_INT_UNDER_0.5",
-        "p": 0.815,
-        "fair_odds": -441,
-        "line": 0.5,
-        "side": "UNDER"
-      }
-    },
     {
       "matchup": "WSH @ NYG",
       "game_date": "2026-11-12",
@@ -504,25 +479,6 @@
       }
     },
     {
-      "matchup": "LAC @ BAL",
-      "game_date": "2026-11-16",
-      "player": "tyler huntley",
-      "team": "BAL",
-      "opp_team": "LAC",
-      "stat_type": "pass_cmp",
-      "opp_factor": 0.976,
-      "projection": 17.41,
-      "edge_class": "MODEL_UNDER",
-      "best_market": {
-        "market": "PASS_CMP_UNDER_23.5",
-        "p": 0.794,
-        "p_raw": 0.888,
-        "fair_odds": -385,
-        "line": 23.5,
-        "side": "UNDER"
-      }
-    },
-    {
       "matchup": "NE @ DET",
       "game_date": "2026-11-15",
       "player": "amonra st brown",
@@ -557,25 +513,6 @@
         "p_raw": 0.839,
         "fair_odds": -384,
         "line": 29.5,
-        "side": "UNDER"
-      }
-    },
-    {
-      "matchup": "MIN @ GB",
-      "game_date": "2026-11-15",
-      "player": "kyler murray",
-      "team": "MIN",
-      "opp_team": "GB",
-      "stat_type": "pass_cmp",
-      "opp_factor": 0.97,
-      "projection": 17.74,
-      "edge_class": "MODEL_UNDER",
-      "best_market": {
-        "market": "PASS_CMP_UNDER_23.5",
-        "p": 0.793,
-        "p_raw": 0.883,
-        "fair_odds": -382,
-        "line": 23.5,
         "side": "UNDER"
       }
     },
@@ -658,25 +595,6 @@
     {
       "matchup": "MIA @ IND",
       "game_date": "2026-11-15",
-      "player": "malik willis",
-      "team": "MIA",
-      "opp_team": "IND",
-      "stat_type": "pass_cmp",
-      "opp_factor": 1.024,
-      "projection": 16.04,
-      "edge_class": "MODEL_UNDER",
-      "best_market": {
-        "market": "PASS_CMP_UNDER_21.5",
-        "p": 0.792,
-        "p_raw": 0.879,
-        "fair_odds": -380,
-        "line": 21.5,
-        "side": "UNDER"
-      }
-    },
-    {
-      "matchup": "MIA @ IND",
-      "game_date": "2026-11-15",
       "player": "laquon treadwell",
       "team": "IND",
       "opp_team": "MIA",
@@ -753,25 +671,6 @@
     {
       "matchup": "KC @ ATL",
       "game_date": "2026-11-15",
-      "player": "emmett johnson",
-      "team": "KC",
-      "opp_team": "ATL",
-      "stat_type": "rec_yds",
-      "opp_factor": 1.03,
-      "projection": 37.42,
-      "edge_class": "MODEL_UNDER",
-      "best_market": {
-        "market": "REC_YDS_UNDER_59.5",
-        "p": 0.791,
-        "p_raw": 0.769,
-        "fair_odds": -378,
-        "line": 59.5,
-        "side": "UNDER"
-      }
-    },
-    {
-      "matchup": "KC @ ATL",
-      "game_date": "2026-11-15",
       "player": "jahan dotson",
       "team": "ATL",
       "opp_team": "KC",
@@ -804,6 +703,25 @@
         "p_raw": 0.772,
         "fair_odds": -378,
         "line": 39.5,
+        "side": "UNDER"
+      }
+    },
+    {
+      "matchup": "KC @ ATL",
+      "game_date": "2026-11-15",
+      "player": "emmett johnson",
+      "team": "KC",
+      "opp_team": "ATL",
+      "stat_type": "rec_yds",
+      "opp_factor": 1.03,
+      "projection": 37.42,
+      "edge_class": "MODEL_UNDER",
+      "best_market": {
+        "market": "REC_YDS_UNDER_59.5",
+        "p": 0.791,
+        "p_raw": 0.769,
+        "fair_odds": -378,
+        "line": 59.5,
         "side": "UNDER"
       }
     },
@@ -918,25 +836,6 @@
         "p_raw": 0.768,
         "fair_odds": -378,
         "line": 39.5,
-        "side": "UNDER"
-      }
-    },
-    {
-      "matchup": "MIN @ GB",
-      "game_date": "2026-11-15",
-      "player": "carson wentz",
-      "team": "MIN",
-      "opp_team": "GB",
-      "stat_type": "pass_cmp",
-      "opp_factor": 0.97,
-      "projection": 12.7,
-      "edge_class": "MODEL_UNDER",
-      "best_market": {
-        "market": "PASS_CMP_UNDER_17.5",
-        "p": 0.791,
-        "p_raw": 0.877,
-        "fair_odds": -379,
-        "line": 17.5,
         "side": "UNDER"
       }
     },
@@ -1171,25 +1070,6 @@
     {
       "matchup": "SF @ DAL",
       "game_date": "2026-11-15",
-      "player": "ryan flournoy",
-      "team": "DAL",
-      "opp_team": "SF",
-      "stat_type": "rec_yds",
-      "opp_factor": 0.988,
-      "projection": 39.32,
-      "edge_class": "MODEL_UNDER",
-      "best_market": {
-        "market": "REC_YDS_UNDER_59.5",
-        "p": 0.791,
-        "p_raw": 0.761,
-        "fair_odds": -378,
-        "line": 59.5,
-        "side": "UNDER"
-      }
-    },
-    {
-      "matchup": "SF @ DAL",
-      "game_date": "2026-11-15",
       "player": "demarcus robinson",
       "team": "SF",
       "opp_team": "DAL",
@@ -1203,6 +1083,25 @@
         "p_raw": 0.76,
         "fair_odds": -377,
         "line": 49.5,
+        "side": "UNDER"
+      }
+    },
+    {
+      "matchup": "SF @ DAL",
+      "game_date": "2026-11-15",
+      "player": "ryan flournoy",
+      "team": "DAL",
+      "opp_team": "SF",
+      "stat_type": "rec_yds",
+      "opp_factor": 0.988,
+      "projection": 39.32,
+      "edge_class": "MODEL_UNDER",
+      "best_market": {
+        "market": "REC_YDS_UNDER_59.5",
+        "p": 0.791,
+        "p_raw": 0.761,
+        "fair_odds": -378,
+        "line": 59.5,
         "side": "UNDER"
       }
     },
@@ -1359,25 +1258,6 @@
       }
     },
     {
-      "matchup": "LAC @ BAL",
-      "game_date": "2026-11-16",
-      "player": "lamar jackson",
-      "team": "BAL",
-      "opp_team": "LAC",
-      "stat_type": "pass_cmp",
-      "opp_factor": 0.976,
-      "projection": 16.39,
-      "edge_class": "MODEL_UNDER",
-      "best_market": {
-        "market": "PASS_CMP_UNDER_21.5",
-        "p": 0.79,
-        "p_raw": 0.871,
-        "fair_odds": -376,
-        "line": 21.5,
-        "side": "UNDER"
-      }
-    },
-    {
       "matchup": "LAR @ ARI",
       "game_date": "2026-11-15",
       "player": "michael wilson",
@@ -1450,25 +1330,6 @@
         "p_raw": 0.74,
         "fair_odds": -373,
         "line": 12.5,
-        "side": "UNDER"
-      }
-    },
-    {
-      "matchup": "WSH @ NYG",
-      "game_date": "2026-11-12",
-      "player": "jj mccarthy",
-      "team": "NYG",
-      "opp_team": "WSH",
-      "stat_type": "pass_cmp",
-      "opp_factor": 1.03,
-      "projection": 16.43,
-      "edge_class": "MODEL_UNDER",
-      "best_market": {
-        "market": "PASS_CMP_UNDER_21.5",
-        "p": 0.788,
-        "p_raw": 0.861,
-        "fair_odds": -371,
-        "line": 21.5,
         "side": "UNDER"
       }
     },
@@ -1551,25 +1412,6 @@
     {
       "matchup": "KC @ ATL",
       "game_date": "2026-11-15",
-      "player": "justin fields",
-      "team": "KC",
-      "opp_team": "ATL",
-      "stat_type": "longest_rush",
-      "opp_factor": 1.012,
-      "projection": 13.0,
-      "edge_class": "MODEL_UNDER",
-      "best_market": {
-        "market": "LONGEST_RUSH_UNDER_16.5",
-        "p": 0.788,
-        "p_raw": 0.732,
-        "fair_odds": -371,
-        "line": 16.5,
-        "side": "UNDER"
-      }
-    },
-    {
-      "matchup": "KC @ ATL",
-      "game_date": "2026-11-15",
       "player": "michael penix",
       "team": "ATL",
       "opp_team": "KC",
@@ -1583,6 +1425,25 @@
         "p_raw": 0.861,
         "fair_odds": -371,
         "line": 23.5,
+        "side": "UNDER"
+      }
+    },
+    {
+      "matchup": "KC @ ATL",
+      "game_date": "2026-11-15",
+      "player": "justin fields",
+      "team": "KC",
+      "opp_team": "ATL",
+      "stat_type": "longest_rush",
+      "opp_factor": 1.012,
+      "projection": 13.0,
+      "edge_class": "MODEL_UNDER",
+      "best_market": {
+        "market": "LONGEST_RUSH_UNDER_16.5",
+        "p": 0.788,
+        "p_raw": 0.732,
+        "fair_odds": -371,
+        "line": 16.5,
         "side": "UNDER"
       }
     },
@@ -1684,25 +1545,6 @@
     {
       "matchup": "MIN @ GB",
       "game_date": "2026-11-15",
-      "player": "marshawn lloyd",
-      "team": "GB",
-      "opp_team": "MIN",
-      "stat_type": "longest_rush",
-      "opp_factor": 0.94,
-      "projection": 9.63,
-      "edge_class": "MODEL_UNDER",
-      "best_market": {
-        "market": "LONGEST_RUSH_UNDER_12.5",
-        "p": 0.788,
-        "p_raw": 0.734,
-        "fair_odds": -372,
-        "line": 12.5,
-        "side": "UNDER"
-      }
-    },
-    {
-      "matchup": "MIN @ GB",
-      "game_date": "2026-11-15",
       "player": "kyler murray",
       "team": "MIN",
       "opp_team": "GB",
@@ -1716,6 +1558,25 @@
         "p_raw": 0.766,
         "fair_odds": -373,
         "line": 19.5,
+        "side": "UNDER"
+      }
+    },
+    {
+      "matchup": "MIN @ GB",
+      "game_date": "2026-11-15",
+      "player": "marshawn lloyd",
+      "team": "GB",
+      "opp_team": "MIN",
+      "stat_type": "longest_rush",
+      "opp_factor": 0.94,
+      "projection": 9.63,
+      "edge_class": "MODEL_UNDER",
+      "best_market": {
+        "market": "LONGEST_RUSH_UNDER_12.5",
+        "p": 0.788,
+        "p_raw": 0.734,
+        "fair_odds": -372,
+        "line": 12.5,
         "side": "UNDER"
       }
     },
@@ -1855,6 +1716,25 @@
     {
       "matchup": "SEA @ LV",
       "game_date": "2026-11-15",
+      "player": "ashton jeanty",
+      "team": "LV",
+      "opp_team": "SEA",
+      "stat_type": "longest_rush",
+      "opp_factor": 1.024,
+      "projection": 15.43,
+      "edge_class": "MODEL_UNDER",
+      "best_market": {
+        "market": "LONGEST_RUSH_UNDER_19.5",
+        "p": 0.788,
+        "p_raw": 0.752,
+        "fair_odds": -373,
+        "line": 19.5,
+        "side": "UNDER"
+      }
+    },
+    {
+      "matchup": "SEA @ LV",
+      "game_date": "2026-11-15",
       "player": "george holani",
       "team": "SEA",
       "opp_team": "LV",
@@ -1904,25 +1784,6 @@
         "market": "LONGEST_RUSH_UNDER_19.5",
         "p": 0.788,
         "p_raw": 0.768,
-        "fair_odds": -373,
-        "line": 19.5,
-        "side": "UNDER"
-      }
-    },
-    {
-      "matchup": "SEA @ LV",
-      "game_date": "2026-11-15",
-      "player": "ashton jeanty",
-      "team": "LV",
-      "opp_team": "SEA",
-      "stat_type": "longest_rush",
-      "opp_factor": 1.024,
-      "projection": 15.43,
-      "edge_class": "MODEL_UNDER",
-      "best_market": {
-        "market": "LONGEST_RUSH_UNDER_19.5",
-        "p": 0.788,
-        "p_raw": 0.752,
         "fair_odds": -373,
         "line": 19.5,
         "side": "UNDER"
@@ -2058,25 +1919,6 @@
         "p_raw": 0.739,
         "fair_odds": -373,
         "line": 19.5,
-        "side": "UNDER"
-      }
-    },
-    {
-      "matchup": "WSH @ NYG",
-      "game_date": "2026-11-12",
-      "player": "jameis winston",
-      "team": "NYG",
-      "opp_team": "WSH",
-      "stat_type": "pass_cmp",
-      "opp_factor": 1.03,
-      "projection": 16.64,
-      "edge_class": "MODEL_UNDER",
-      "best_market": {
-        "market": "PASS_CMP_UNDER_21.5",
-        "p": 0.787,
-        "p_raw": 0.856,
-        "fair_odds": -369,
-        "line": 21.5,
         "side": "UNDER"
       }
     },
@@ -2385,25 +2227,6 @@
       }
     },
     {
-      "matchup": "SEA @ LV",
-      "game_date": "2026-11-15",
-      "player": "drew lock",
-      "team": "SEA",
-      "opp_team": "LV",
-      "stat_type": "pass_cmp",
-      "opp_factor": 1.036,
-      "projection": 20.22,
-      "edge_class": "MODEL_UNDER",
-      "best_market": {
-        "market": "PASS_CMP_UNDER_25.5",
-        "p": 0.786,
-        "p_raw": 0.853,
-        "fair_odds": -367,
-        "line": 25.5,
-        "side": "UNDER"
-      }
-    },
-    {
       "matchup": "LAC @ BAL",
       "game_date": "2026-11-16",
       "player": "omarion hampton",
@@ -2438,25 +2261,6 @@
         "p_raw": 0.748,
         "fair_odds": -367,
         "line": 49.5,
-        "side": "UNDER"
-      }
-    },
-    {
-      "matchup": "LAC @ BAL",
-      "game_date": "2026-11-16",
-      "player": "justin herbert",
-      "team": "LAC",
-      "opp_team": "BAL",
-      "stat_type": "pass_cmp",
-      "opp_factor": 0.94,
-      "projection": 18.47,
-      "edge_class": "MODEL_UNDER",
-      "best_market": {
-        "market": "PASS_CMP_UNDER_23.5",
-        "p": 0.786,
-        "p_raw": 0.854,
-        "fair_odds": -368,
-        "line": 23.5,
         "side": "UNDER"
       }
     },
@@ -2689,25 +2493,6 @@
       }
     },
     {
-      "matchup": "SEA @ LV",
-      "game_date": "2026-11-15",
-      "player": "sam darnold",
-      "team": "SEA",
-      "opp_team": "LV",
-      "stat_type": "pass_cmp",
-      "opp_factor": 1.036,
-      "projection": 18.66,
-      "edge_class": "MODEL_UNDER",
-      "best_market": {
-        "market": "PASS_CMP_UNDER_23.5",
-        "p": 0.784,
-        "p_raw": 0.845,
-        "fair_odds": -363,
-        "line": 23.5,
-        "side": "UNDER"
-      }
-    },
-    {
       "matchup": "SF @ DAL",
       "game_date": "2026-11-15",
       "player": "brock purdy",
@@ -2748,6 +2533,25 @@
     {
       "matchup": "WSH @ NYG",
       "game_date": "2026-11-12",
+      "player": "malachi fields",
+      "team": "NYG",
+      "opp_team": "WSH",
+      "stat_type": "longest_reception",
+      "opp_factor": 1.03,
+      "projection": 21.02,
+      "edge_class": "MODEL_UNDER",
+      "best_market": {
+        "market": "LONGEST_REC_UNDER_34.5",
+        "p": 0.783,
+        "p_raw": 0.829,
+        "fair_odds": -361,
+        "line": 34.5,
+        "side": "UNDER"
+      }
+    },
+    {
+      "matchup": "WSH @ NYG",
+      "game_date": "2026-11-12",
       "player": "van jefferson",
       "team": "WSH",
       "opp_team": "NYG",
@@ -2780,25 +2584,6 @@
         "p_raw": 0.74,
         "fair_odds": -361,
         "line": 49.5,
-        "side": "UNDER"
-      }
-    },
-    {
-      "matchup": "WSH @ NYG",
-      "game_date": "2026-11-12",
-      "player": "malachi fields",
-      "team": "NYG",
-      "opp_team": "WSH",
-      "stat_type": "longest_reception",
-      "opp_factor": 1.03,
-      "projection": 21.02,
-      "edge_class": "MODEL_UNDER",
-      "best_market": {
-        "market": "LONGEST_REC_UNDER_34.5",
-        "p": 0.783,
-        "p_raw": 0.829,
-        "fair_odds": -361,
-        "line": 34.5,
         "side": "UNDER"
       }
     },
@@ -2843,25 +2628,6 @@
     {
       "matchup": "SF @ DAL",
       "game_date": "2026-11-15",
-      "player": "george pickens",
-      "team": "DAL",
-      "opp_team": "SF",
-      "stat_type": "rec",
-      "opp_factor": 0.988,
-      "projection": 5.35,
-      "edge_class": "MODEL_OVER",
-      "best_market": {
-        "market": "REC_OVER_3.5",
-        "p": 0.783,
-        "p_raw": 0.768,
-        "fair_odds": -361,
-        "line": 3.5,
-        "side": "OVER"
-      }
-    },
-    {
-      "matchup": "SF @ DAL",
-      "game_date": "2026-11-15",
       "player": "kaelon black",
       "team": "SF",
       "opp_team": "DAL",
@@ -2876,6 +2642,25 @@
         "fair_odds": -360,
         "line": 19.5,
         "side": "UNDER"
+      }
+    },
+    {
+      "matchup": "SF @ DAL",
+      "game_date": "2026-11-15",
+      "player": "george pickens",
+      "team": "DAL",
+      "opp_team": "SF",
+      "stat_type": "rec",
+      "opp_factor": 0.988,
+      "projection": 5.35,
+      "edge_class": "MODEL_OVER",
+      "best_market": {
+        "market": "REC_OVER_3.5",
+        "p": 0.783,
+        "p_raw": 0.768,
+        "fair_odds": -361,
+        "line": 3.5,
+        "side": "OVER"
       }
     },
     {
@@ -2894,25 +2679,6 @@
         "p_raw": 0.704,
         "fair_odds": -361,
         "line": 19.5,
-        "side": "UNDER"
-      }
-    },
-    {
-      "matchup": "LAC @ BAL",
-      "game_date": "2026-11-16",
-      "player": "justin herbert",
-      "team": "LAC",
-      "opp_team": "BAL",
-      "stat_type": "longest_rush",
-      "opp_factor": 0.97,
-      "projection": 13.14,
-      "edge_class": "MODEL_UNDER",
-      "best_market": {
-        "market": "LONGEST_RUSH_UNDER_16.5",
-        "p": 0.783,
-        "p_raw": 0.703,
-        "fair_odds": -361,
-        "line": 16.5,
         "side": "UNDER"
       }
     },
@@ -2951,6 +2717,25 @@
         "p_raw": 0.779,
         "fair_odds": -362,
         "line": 59.5,
+        "side": "UNDER"
+      }
+    },
+    {
+      "matchup": "LAC @ BAL",
+      "game_date": "2026-11-16",
+      "player": "justin herbert",
+      "team": "LAC",
+      "opp_team": "BAL",
+      "stat_type": "longest_rush",
+      "opp_factor": 0.97,
+      "projection": 13.14,
+      "edge_class": "MODEL_UNDER",
+      "best_market": {
+        "market": "LONGEST_RUSH_UNDER_16.5",
+        "p": 0.783,
+        "p_raw": 0.703,
+        "fair_odds": -361,
+        "line": 16.5,
         "side": "UNDER"
       }
     },
@@ -3069,24 +2854,6 @@
       }
     },
     {
-      "matchup": "LAC @ BAL",
-      "game_date": "2026-11-16",
-      "player": "jacoby brissett",
-      "team": "BAL",
-      "opp_team": "LAC",
-      "stat_type": "pass_td",
-      "opp_factor": 0.976,
-      "projection": 1.61,
-      "edge_class": "MODEL_UNDER",
-      "best_market": {
-        "market": "PASS_TD_UNDER_2.5",
-        "p": 0.782,
-        "fair_odds": -360,
-        "line": 2.5,
-        "side": "UNDER"
-      }
-    },
-    {
       "matchup": "JAX @ TEN",
       "game_date": "2026-11-15",
       "player": "nate boerkircher",
@@ -3184,44 +2951,6 @@
     {
       "matchup": "WSH @ NYG",
       "game_date": "2026-11-12",
-      "player": "stefon diggs",
-      "team": "WSH",
-      "opp_team": "NYG",
-      "stat_type": "longest_reception",
-      "opp_factor": 1.012,
-      "projection": 17.49,
-      "edge_class": "MODEL_UNDER",
-      "best_market": {
-        "market": "LONGEST_REC_UNDER_24.5",
-        "p": 0.78,
-        "p_raw": 0.827,
-        "fair_odds": -355,
-        "line": 24.5,
-        "side": "UNDER"
-      }
-    },
-    {
-      "matchup": "WSH @ NYG",
-      "game_date": "2026-11-12",
-      "player": "austin ekeler",
-      "team": "WSH",
-      "opp_team": "NYG",
-      "stat_type": "longest_rush",
-      "opp_factor": 1.03,
-      "projection": 10.12,
-      "edge_class": "MODEL_UNDER",
-      "best_market": {
-        "market": "LONGEST_RUSH_UNDER_12.5",
-        "p": 0.78,
-        "p_raw": 0.685,
-        "fair_odds": -355,
-        "line": 12.5,
-        "side": "UNDER"
-      }
-    },
-    {
-      "matchup": "WSH @ NYG",
-      "game_date": "2026-11-12",
       "player": "devin singletary",
       "team": "NYG",
       "opp_team": "WSH",
@@ -3277,6 +3006,44 @@
       }
     },
     {
+      "matchup": "WSH @ NYG",
+      "game_date": "2026-11-12",
+      "player": "stefon diggs",
+      "team": "WSH",
+      "opp_team": "NYG",
+      "stat_type": "longest_reception",
+      "opp_factor": 1.012,
+      "projection": 17.49,
+      "edge_class": "MODEL_UNDER",
+      "best_market": {
+        "market": "LONGEST_REC_UNDER_24.5",
+        "p": 0.78,
+        "p_raw": 0.827,
+        "fair_odds": -355,
+        "line": 24.5,
+        "side": "UNDER"
+      }
+    },
+    {
+      "matchup": "WSH @ NYG",
+      "game_date": "2026-11-12",
+      "player": "austin ekeler",
+      "team": "WSH",
+      "opp_team": "NYG",
+      "stat_type": "longest_rush",
+      "opp_factor": 1.03,
+      "projection": 10.12,
+      "edge_class": "MODEL_UNDER",
+      "best_market": {
+        "market": "LONGEST_RUSH_UNDER_12.5",
+        "p": 0.78,
+        "p_raw": 0.685,
+        "fair_odds": -355,
+        "line": 12.5,
+        "side": "UNDER"
+      }
+    },
+    {
       "matchup": "NE @ DET",
       "game_date": "2026-11-15",
       "player": "jahmyr gibbs",
@@ -3290,6 +3057,25 @@
         "market": "LONGEST_RUSH_UNDER_24.5",
         "p": 0.78,
         "p_raw": 0.631,
+        "fair_odds": -354,
+        "line": 24.5,
+        "side": "UNDER"
+      }
+    },
+    {
+      "matchup": "KC @ ATL",
+      "game_date": "2026-11-15",
+      "player": "bijan robinson",
+      "team": "ATL",
+      "opp_team": "KC",
+      "stat_type": "longest_rush",
+      "opp_factor": 0.982,
+      "projection": 22.83,
+      "edge_class": "MODEL_UNDER",
+      "best_market": {
+        "market": "LONGEST_RUSH_UNDER_24.5",
+        "p": 0.78,
+        "p_raw": 0.643,
         "fair_odds": -354,
         "line": 24.5,
         "side": "UNDER"
@@ -3353,25 +3139,6 @@
       }
     },
     {
-      "matchup": "KC @ ATL",
-      "game_date": "2026-11-15",
-      "player": "bijan robinson",
-      "team": "ATL",
-      "opp_team": "KC",
-      "stat_type": "longest_rush",
-      "opp_factor": 0.982,
-      "projection": 22.83,
-      "edge_class": "MODEL_UNDER",
-      "best_market": {
-        "market": "LONGEST_RUSH_UNDER_24.5",
-        "p": 0.78,
-        "p_raw": 0.643,
-        "fair_odds": -354,
-        "line": 24.5,
-        "side": "UNDER"
-      }
-    },
-    {
       "matchup": "HOU @ CLE",
       "game_date": "2026-11-15",
       "player": "dylan sampson",
@@ -3412,25 +3179,6 @@
     {
       "matchup": "MIN @ GB",
       "game_date": "2026-11-15",
-      "player": "josh jacobs",
-      "team": "GB",
-      "opp_team": "MIN",
-      "stat_type": "longest_rush",
-      "opp_factor": 0.94,
-      "projection": 14.72,
-      "edge_class": "MODEL_UNDER",
-      "best_market": {
-        "market": "LONGEST_RUSH_UNDER_16.5",
-        "p": 0.78,
-        "p_raw": 0.664,
-        "fair_odds": -354,
-        "line": 16.5,
-        "side": "UNDER"
-      }
-    },
-    {
-      "matchup": "MIN @ GB",
-      "game_date": "2026-11-15",
       "player": "jordan addison",
       "team": "MIN",
       "opp_team": "GB",
@@ -3461,6 +3209,25 @@
         "market": "LONGEST_RUSH_UNDER_16.5",
         "p": 0.78,
         "p_raw": 0.518,
+        "fair_odds": -354,
+        "line": 16.5,
+        "side": "UNDER"
+      }
+    },
+    {
+      "matchup": "MIN @ GB",
+      "game_date": "2026-11-15",
+      "player": "josh jacobs",
+      "team": "GB",
+      "opp_team": "MIN",
+      "stat_type": "longest_rush",
+      "opp_factor": 0.94,
+      "projection": 14.72,
+      "edge_class": "MODEL_UNDER",
+      "best_market": {
+        "market": "LONGEST_RUSH_UNDER_16.5",
+        "p": 0.78,
+        "p_raw": 0.664,
         "fair_odds": -354,
         "line": 16.5,
         "side": "UNDER"
@@ -3735,25 +3502,6 @@
     {
       "matchup": "SF @ DAL",
       "game_date": "2026-11-15",
-      "player": "javonte williams",
-      "team": "DAL",
-      "opp_team": "SF",
-      "stat_type": "longest_rush",
-      "opp_factor": 0.982,
-      "projection": 18.91,
-      "edge_class": "MODEL_UNDER",
-      "best_market": {
-        "market": "LONGEST_RUSH_UNDER_19.5",
-        "p": 0.78,
-        "p_raw": 0.599,
-        "fair_odds": -354,
-        "line": 19.5,
-        "side": "UNDER"
-      }
-    },
-    {
-      "matchup": "SF @ DAL",
-      "game_date": "2026-11-15",
       "player": "brock purdy",
       "team": "SF",
       "opp_team": "DAL",
@@ -3786,6 +3534,25 @@
         "p_raw": 0.734,
         "fair_odds": -356,
         "line": 79.5,
+        "side": "UNDER"
+      }
+    },
+    {
+      "matchup": "SF @ DAL",
+      "game_date": "2026-11-15",
+      "player": "javonte williams",
+      "team": "DAL",
+      "opp_team": "SF",
+      "stat_type": "longest_rush",
+      "opp_factor": 0.982,
+      "projection": 18.91,
+      "edge_class": "MODEL_UNDER",
+      "best_market": {
+        "market": "LONGEST_RUSH_UNDER_19.5",
+        "p": 0.78,
+        "p_raw": 0.599,
+        "fair_odds": -354,
+        "line": 19.5,
         "side": "UNDER"
       }
     },
@@ -3824,44 +3591,6 @@
         "p_raw": 0.611,
         "fair_odds": -354,
         "line": 24.5,
-        "side": "UNDER"
-      }
-    },
-    {
-      "matchup": "LAC @ BAL",
-      "game_date": "2026-11-16",
-      "player": "keaton mitchell",
-      "team": "LAC",
-      "opp_team": "BAL",
-      "stat_type": "longest_rush",
-      "opp_factor": 0.97,
-      "projection": 11.43,
-      "edge_class": "MODEL_UNDER",
-      "best_market": {
-        "market": "LONGEST_RUSH_UNDER_12.5",
-        "p": 0.78,
-        "p_raw": 0.62,
-        "fair_odds": -354,
-        "line": 12.5,
-        "side": "UNDER"
-      }
-    },
-    {
-      "matchup": "LAC @ BAL",
-      "game_date": "2026-11-16",
-      "player": "kimani vidal",
-      "team": "LAC",
-      "opp_team": "BAL",
-      "stat_type": "longest_rush",
-      "opp_factor": 0.97,
-      "projection": 14.31,
-      "edge_class": "MODEL_UNDER",
-      "best_market": {
-        "market": "LONGEST_RUSH_UNDER_16.5",
-        "p": 0.78,
-        "p_raw": 0.664,
-        "fair_odds": -354,
-        "line": 16.5,
         "side": "UNDER"
       }
     },
@@ -3917,6 +3646,44 @@
         "market": "LONGEST_RUSH_UNDER_16.5",
         "p": 0.78,
         "p_raw": 0.504,
+        "fair_odds": -354,
+        "line": 16.5,
+        "side": "UNDER"
+      }
+    },
+    {
+      "matchup": "LAC @ BAL",
+      "game_date": "2026-11-16",
+      "player": "keaton mitchell",
+      "team": "LAC",
+      "opp_team": "BAL",
+      "stat_type": "longest_rush",
+      "opp_factor": 0.97,
+      "projection": 11.43,
+      "edge_class": "MODEL_UNDER",
+      "best_market": {
+        "market": "LONGEST_RUSH_UNDER_12.5",
+        "p": 0.78,
+        "p_raw": 0.62,
+        "fair_odds": -354,
+        "line": 12.5,
+        "side": "UNDER"
+      }
+    },
+    {
+      "matchup": "LAC @ BAL",
+      "game_date": "2026-11-16",
+      "player": "kimani vidal",
+      "team": "LAC",
+      "opp_team": "BAL",
+      "stat_type": "longest_rush",
+      "opp_factor": 0.97,
+      "projection": 14.31,
+      "edge_class": "MODEL_UNDER",
+      "best_market": {
+        "market": "LONGEST_RUSH_UNDER_16.5",
+        "p": 0.78,
+        "p_raw": 0.664,
         "fair_odds": -354,
         "line": 16.5,
         "side": "UNDER"
@@ -4095,25 +3862,6 @@
     {
       "matchup": "SF @ DAL",
       "game_date": "2026-11-15",
-      "player": "tyler goodson",
-      "team": "DAL",
-      "opp_team": "SF",
-      "stat_type": "rush_yds",
-      "opp_factor": 0.982,
-      "projection": 26.7,
-      "edge_class": "MODEL_UNDER",
-      "best_market": {
-        "market": "RUSH_YDS_UNDER_39.5",
-        "p": 0.776,
-        "p_raw": 0.77,
-        "fair_odds": -346,
-        "line": 39.5,
-        "side": "UNDER"
-      }
-    },
-    {
-      "matchup": "SF @ DAL",
-      "game_date": "2026-11-15",
       "player": "christian mccaffrey",
       "team": "SF",
       "opp_team": "DAL",
@@ -4127,6 +3875,25 @@
         "p_raw": 0.773,
         "fair_odds": -345,
         "line": 5.5,
+        "side": "UNDER"
+      }
+    },
+    {
+      "matchup": "SF @ DAL",
+      "game_date": "2026-11-15",
+      "player": "tyler goodson",
+      "team": "DAL",
+      "opp_team": "SF",
+      "stat_type": "rush_yds",
+      "opp_factor": 0.982,
+      "projection": 26.7,
+      "edge_class": "MODEL_UNDER",
+      "best_market": {
+        "market": "RUSH_YDS_UNDER_39.5",
+        "p": 0.776,
+        "p_raw": 0.77,
+        "fair_odds": -346,
+        "line": 39.5,
         "side": "UNDER"
       }
     },
@@ -4279,25 +4046,6 @@
         "p_raw": 0.821,
         "fair_odds": -342,
         "line": 34.5,
-        "side": "UNDER"
-      }
-    },
-    {
-      "matchup": "KC @ ATL",
-      "game_date": "2026-11-15",
-      "player": "justin fields",
-      "team": "KC",
-      "opp_team": "ATL",
-      "stat_type": "pass_cmp",
-      "opp_factor": 1.03,
-      "projection": 21.13,
-      "edge_class": "MODEL_UNDER",
-      "best_market": {
-        "market": "PASS_CMP_UNDER_25.5",
-        "p": 0.774,
-        "p_raw": 0.795,
-        "fair_odds": -342,
-        "line": 25.5,
         "side": "UNDER"
       }
     },
@@ -4701,25 +4449,6 @@
     {
       "matchup": "WSH @ NYG",
       "game_date": "2026-11-12",
-      "player": "antonio williams",
-      "team": "WSH",
-      "opp_team": "NYG",
-      "stat_type": "longest_reception",
-      "opp_factor": 1.012,
-      "projection": 17.21,
-      "edge_class": "MODEL_UNDER",
-      "best_market": {
-        "market": "LONGEST_REC_UNDER_24.5",
-        "p": 0.767,
-        "p_raw": 0.786,
-        "fair_odds": -329,
-        "line": 24.5,
-        "side": "UNDER"
-      }
-    },
-    {
-      "matchup": "WSH @ NYG",
-      "game_date": "2026-11-12",
       "player": "malik nabers",
       "team": "NYG",
       "opp_team": "WSH",
@@ -4733,6 +4462,25 @@
         "p_raw": 0.811,
         "fair_odds": -329,
         "line": 34.5,
+        "side": "UNDER"
+      }
+    },
+    {
+      "matchup": "WSH @ NYG",
+      "game_date": "2026-11-12",
+      "player": "antonio williams",
+      "team": "WSH",
+      "opp_team": "NYG",
+      "stat_type": "longest_reception",
+      "opp_factor": 1.012,
+      "projection": 17.21,
+      "edge_class": "MODEL_UNDER",
+      "best_market": {
+        "market": "LONGEST_REC_UNDER_24.5",
+        "p": 0.767,
+        "p_raw": 0.786,
+        "fair_odds": -329,
+        "line": 24.5,
         "side": "UNDER"
       }
     },
@@ -4853,6 +4601,25 @@
     {
       "matchup": "MIN @ GB",
       "game_date": "2026-11-15",
+      "player": "tj hockenson",
+      "team": "MIN",
+      "opp_team": "GB",
+      "stat_type": "longest_reception",
+      "opp_factor": 0.97,
+      "projection": 17.65,
+      "edge_class": "MODEL_UNDER",
+      "best_market": {
+        "market": "LONGEST_REC_UNDER_24.5",
+        "p": 0.767,
+        "p_raw": 0.788,
+        "fair_odds": -329,
+        "line": 24.5,
+        "side": "UNDER"
+      }
+    },
+    {
+      "matchup": "MIN @ GB",
+      "game_date": "2026-11-15",
       "player": "josh jacobs",
       "team": "GB",
       "opp_team": "MIN",
@@ -4904,25 +4671,6 @@
         "p_raw": 0.778,
         "fair_odds": -329,
         "line": 19.5,
-        "side": "UNDER"
-      }
-    },
-    {
-      "matchup": "MIN @ GB",
-      "game_date": "2026-11-15",
-      "player": "tj hockenson",
-      "team": "MIN",
-      "opp_team": "GB",
-      "stat_type": "longest_reception",
-      "opp_factor": 0.97,
-      "projection": 17.65,
-      "edge_class": "MODEL_UNDER",
-      "best_market": {
-        "market": "LONGEST_REC_UNDER_24.5",
-        "p": 0.767,
-        "p_raw": 0.788,
-        "fair_odds": -329,
-        "line": 24.5,
         "side": "UNDER"
       }
     },
@@ -5119,25 +4867,6 @@
     {
       "matchup": "SEA @ LV",
       "game_date": "2026-11-15",
-      "player": "zach charbonnet",
-      "team": "SEA",
-      "opp_team": "LV",
-      "stat_type": "rush_yds",
-      "opp_factor": 1.042,
-      "projection": 50.59,
-      "edge_class": "MODEL_UNDER",
-      "best_market": {
-        "market": "RUSH_YDS_UNDER_69.5",
-        "p": 0.767,
-        "p_raw": 0.761,
-        "fair_odds": -330,
-        "line": 69.5,
-        "side": "UNDER"
-      }
-    },
-    {
-      "matchup": "SEA @ LV",
-      "game_date": "2026-11-15",
       "player": "jalen nailor",
       "team": "LV",
       "opp_team": "SEA",
@@ -5151,6 +4880,25 @@
         "p_raw": 0.787,
         "fair_odds": -329,
         "line": 19.5,
+        "side": "UNDER"
+      }
+    },
+    {
+      "matchup": "SEA @ LV",
+      "game_date": "2026-11-15",
+      "player": "zach charbonnet",
+      "team": "SEA",
+      "opp_team": "LV",
+      "stat_type": "rush_yds",
+      "opp_factor": 1.042,
+      "projection": 50.59,
+      "edge_class": "MODEL_UNDER",
+      "best_market": {
+        "market": "RUSH_YDS_UNDER_69.5",
+        "p": 0.767,
+        "p_raw": 0.761,
+        "fair_odds": -330,
+        "line": 69.5,
         "side": "UNDER"
       }
     },
@@ -5347,63 +5095,6 @@
     {
       "matchup": "LAC @ BAL",
       "game_date": "2026-11-16",
-      "player": "tre harris",
-      "team": "LAC",
-      "opp_team": "BAL",
-      "stat_type": "longest_reception",
-      "opp_factor": 0.94,
-      "projection": 21.14,
-      "edge_class": "MODEL_UNDER",
-      "best_market": {
-        "market": "LONGEST_REC_UNDER_34.5",
-        "p": 0.767,
-        "p_raw": 0.796,
-        "fair_odds": -329,
-        "line": 34.5,
-        "side": "UNDER"
-      }
-    },
-    {
-      "matchup": "LAC @ BAL",
-      "game_date": "2026-11-16",
-      "player": "quentin johnston",
-      "team": "LAC",
-      "opp_team": "BAL",
-      "stat_type": "longest_reception",
-      "opp_factor": 0.94,
-      "projection": 16.83,
-      "edge_class": "MODEL_UNDER",
-      "best_market": {
-        "market": "LONGEST_REC_UNDER_24.5",
-        "p": 0.767,
-        "p_raw": 0.806,
-        "fair_odds": -329,
-        "line": 24.5,
-        "side": "UNDER"
-      }
-    },
-    {
-      "matchup": "LAC @ BAL",
-      "game_date": "2026-11-16",
-      "player": "charlie kolar",
-      "team": "LAC",
-      "opp_team": "BAL",
-      "stat_type": "longest_reception",
-      "opp_factor": 0.94,
-      "projection": 12.85,
-      "edge_class": "MODEL_UNDER",
-      "best_market": {
-        "market": "LONGEST_REC_UNDER_19.5",
-        "p": 0.767,
-        "p_raw": 0.791,
-        "fair_odds": -329,
-        "line": 19.5,
-        "side": "UNDER"
-      }
-    },
-    {
-      "matchup": "LAC @ BAL",
-      "game_date": "2026-11-16",
       "player": "mark andrews",
       "team": "BAL",
       "opp_team": "LAC",
@@ -5472,6 +5163,63 @@
         "market": "LONGEST_REC_UNDER_19.5",
         "p": 0.767,
         "p_raw": 0.804,
+        "fair_odds": -329,
+        "line": 19.5,
+        "side": "UNDER"
+      }
+    },
+    {
+      "matchup": "LAC @ BAL",
+      "game_date": "2026-11-16",
+      "player": "tre harris",
+      "team": "LAC",
+      "opp_team": "BAL",
+      "stat_type": "longest_reception",
+      "opp_factor": 0.94,
+      "projection": 21.14,
+      "edge_class": "MODEL_UNDER",
+      "best_market": {
+        "market": "LONGEST_REC_UNDER_34.5",
+        "p": 0.767,
+        "p_raw": 0.796,
+        "fair_odds": -329,
+        "line": 34.5,
+        "side": "UNDER"
+      }
+    },
+    {
+      "matchup": "LAC @ BAL",
+      "game_date": "2026-11-16",
+      "player": "quentin johnston",
+      "team": "LAC",
+      "opp_team": "BAL",
+      "stat_type": "longest_reception",
+      "opp_factor": 0.94,
+      "projection": 16.83,
+      "edge_class": "MODEL_UNDER",
+      "best_market": {
+        "market": "LONGEST_REC_UNDER_24.5",
+        "p": 0.767,
+        "p_raw": 0.806,
+        "fair_odds": -329,
+        "line": 24.5,
+        "side": "UNDER"
+      }
+    },
+    {
+      "matchup": "LAC @ BAL",
+      "game_date": "2026-11-16",
+      "player": "charlie kolar",
+      "team": "LAC",
+      "opp_team": "BAL",
+      "stat_type": "longest_reception",
+      "opp_factor": 0.94,
+      "projection": 12.85,
+      "edge_class": "MODEL_UNDER",
+      "best_market": {
+        "market": "LONGEST_REC_UNDER_19.5",
+        "p": 0.767,
+        "p_raw": 0.791,
         "fair_odds": -329,
         "line": 19.5,
         "side": "UNDER"
@@ -5782,25 +5530,6 @@
       }
     },
     {
-      "matchup": "MIN @ GB",
-      "game_date": "2026-11-15",
-      "player": "carson wentz",
-      "team": "MIN",
-      "opp_team": "GB",
-      "stat_type": "pass_yds",
-      "opp_factor": 0.97,
-      "projection": 115.76,
-      "edge_class": "MODEL_UNDER",
-      "best_market": {
-        "market": "PASS_YDS_UNDER_299.5",
-        "p": 0.764,
-        "p_raw": 1.0,
-        "fair_odds": -323,
-        "line": 299.5,
-        "side": "UNDER"
-      }
-    },
-    {
       "matchup": "BUF @ NYJ",
       "game_date": "2026-11-15",
       "player": "isaiah williams",
@@ -5858,44 +5587,6 @@
       }
     },
     {
-      "matchup": "KC @ ATL",
-      "game_date": "2026-11-15",
-      "player": "justin fields",
-      "team": "KC",
-      "opp_team": "ATL",
-      "stat_type": "pass_yds",
-      "opp_factor": 1.03,
-      "projection": 144.27,
-      "edge_class": "MODEL_UNDER",
-      "best_market": {
-        "market": "PASS_YDS_UNDER_299.5",
-        "p": 0.763,
-        "p_raw": 0.997,
-        "fair_odds": -322,
-        "line": 299.5,
-        "side": "UNDER"
-      }
-    },
-    {
-      "matchup": "KC @ ATL",
-      "game_date": "2026-11-15",
-      "player": "patrick mahomes",
-      "team": "KC",
-      "opp_team": "ATL",
-      "stat_type": "pass_cmp",
-      "opp_factor": 1.03,
-      "projection": 22.06,
-      "edge_class": "MODEL_UNDER",
-      "best_market": {
-        "market": "PASS_CMP_UNDER_25.5",
-        "p": 0.763,
-        "p_raw": 0.746,
-        "fair_odds": -321,
-        "line": 25.5,
-        "side": "UNDER"
-      }
-    },
-    {
       "matchup": "HOU @ CLE",
       "game_date": "2026-11-15",
       "player": "shedeur sanders",
@@ -5949,25 +5640,6 @@
         "p_raw": 0.764,
         "fair_odds": -322,
         "line": 24.5,
-        "side": "UNDER"
-      }
-    },
-    {
-      "matchup": "LAC @ BAL",
-      "game_date": "2026-11-16",
-      "player": "tyler huntley",
-      "team": "BAL",
-      "opp_team": "LAC",
-      "stat_type": "pass_yds",
-      "opp_factor": 0.976,
-      "projection": 143.41,
-      "edge_class": "MODEL_UNDER",
-      "best_market": {
-        "market": "PASS_YDS_UNDER_299.5",
-        "p": 0.763,
-        "p_raw": 0.996,
-        "fair_odds": -322,
-        "line": 299.5,
         "side": "UNDER"
       }
     },
@@ -6068,25 +5740,6 @@
     {
       "matchup": "WSH @ NYG",
       "game_date": "2026-11-12",
-      "player": "chig okonkwo",
-      "team": "WSH",
-      "opp_team": "NYG",
-      "stat_type": "longest_reception",
-      "opp_factor": 1.012,
-      "projection": 18.59,
-      "edge_class": "MODEL_UNDER",
-      "best_market": {
-        "market": "LONGEST_REC_UNDER_24.5",
-        "p": 0.761,
-        "p_raw": 0.746,
-        "fair_odds": -318,
-        "line": 24.5,
-        "side": "UNDER"
-      }
-    },
-    {
-      "matchup": "WSH @ NYG",
-      "game_date": "2026-11-12",
       "player": "darnell mooney",
       "team": "NYG",
       "opp_team": "WSH",
@@ -6100,6 +5753,25 @@
         "p_raw": 0.756,
         "fair_odds": -318,
         "line": 19.5,
+        "side": "UNDER"
+      }
+    },
+    {
+      "matchup": "WSH @ NYG",
+      "game_date": "2026-11-12",
+      "player": "chig okonkwo",
+      "team": "WSH",
+      "opp_team": "NYG",
+      "stat_type": "longest_reception",
+      "opp_factor": 1.012,
+      "projection": 18.59,
+      "edge_class": "MODEL_UNDER",
+      "best_market": {
+        "market": "LONGEST_REC_UNDER_24.5",
+        "p": 0.761,
+        "p_raw": 0.746,
+        "fair_odds": -318,
+        "line": 24.5,
         "side": "UNDER"
       }
     },
@@ -6138,6 +5810,44 @@
         "p_raw": 0.744,
         "fair_odds": -318,
         "line": 34.5,
+        "side": "UNDER"
+      }
+    },
+    {
+      "matchup": "KC @ ATL",
+      "game_date": "2026-11-15",
+      "player": "jahan dotson",
+      "team": "ATL",
+      "opp_team": "KC",
+      "stat_type": "longest_reception",
+      "opp_factor": 0.976,
+      "projection": 24.14,
+      "edge_class": "MODEL_UNDER",
+      "best_market": {
+        "market": "LONGEST_REC_UNDER_34.5",
+        "p": 0.761,
+        "p_raw": 0.73,
+        "fair_odds": -318,
+        "line": 34.5,
+        "side": "UNDER"
+      }
+    },
+    {
+      "matchup": "KC @ ATL",
+      "game_date": "2026-11-15",
+      "player": "drake london",
+      "team": "ATL",
+      "opp_team": "KC",
+      "stat_type": "longest_reception",
+      "opp_factor": 0.976,
+      "projection": 23.89,
+      "edge_class": "MODEL_UNDER",
+      "best_market": {
+        "market": "LONGEST_REC_UNDER_29.5",
+        "p": 0.761,
+        "p_raw": 0.747,
+        "fair_odds": -318,
+        "line": 29.5,
         "side": "UNDER"
       }
     },
@@ -6218,44 +5928,6 @@
       }
     },
     {
-      "matchup": "KC @ ATL",
-      "game_date": "2026-11-15",
-      "player": "jahan dotson",
-      "team": "ATL",
-      "opp_team": "KC",
-      "stat_type": "longest_reception",
-      "opp_factor": 0.976,
-      "projection": 24.14,
-      "edge_class": "MODEL_UNDER",
-      "best_market": {
-        "market": "LONGEST_REC_UNDER_34.5",
-        "p": 0.761,
-        "p_raw": 0.73,
-        "fair_odds": -318,
-        "line": 34.5,
-        "side": "UNDER"
-      }
-    },
-    {
-      "matchup": "KC @ ATL",
-      "game_date": "2026-11-15",
-      "player": "drake london",
-      "team": "ATL",
-      "opp_team": "KC",
-      "stat_type": "longest_reception",
-      "opp_factor": 0.976,
-      "projection": 23.89,
-      "edge_class": "MODEL_UNDER",
-      "best_market": {
-        "market": "LONGEST_REC_UNDER_29.5",
-        "p": 0.761,
-        "p_raw": 0.747,
-        "fair_odds": -318,
-        "line": 29.5,
-        "side": "UNDER"
-      }
-    },
-    {
       "matchup": "HOU @ CLE",
       "game_date": "2026-11-15",
       "player": "kc concepcion",
@@ -6328,25 +6000,6 @@
         "p_raw": 0.739,
         "fair_odds": -318,
         "line": 24.5,
-        "side": "UNDER"
-      }
-    },
-    {
-      "matchup": "MIN @ GB",
-      "game_date": "2026-11-15",
-      "player": "kyler murray",
-      "team": "MIN",
-      "opp_team": "GB",
-      "stat_type": "pass_yds",
-      "opp_factor": 0.97,
-      "projection": 164.49,
-      "edge_class": "MODEL_UNDER",
-      "best_market": {
-        "market": "PASS_YDS_UNDER_299.5",
-        "p": 0.761,
-        "p_raw": 0.987,
-        "fair_odds": -318,
-        "line": 299.5,
         "side": "UNDER"
       }
     },
@@ -6562,25 +6215,6 @@
     {
       "matchup": "SEA @ LV",
       "game_date": "2026-11-15",
-      "player": "jadarian price",
-      "team": "SEA",
-      "opp_team": "LV",
-      "stat_type": "rush_yds",
-      "opp_factor": 1.042,
-      "projection": 36.11,
-      "edge_class": "MODEL_UNDER",
-      "best_market": {
-        "market": "RUSH_YDS_UNDER_49.5",
-        "p": 0.761,
-        "p_raw": 0.754,
-        "fair_odds": -319,
-        "line": 49.5,
-        "side": "UNDER"
-      }
-    },
-    {
-      "matchup": "SEA @ LV",
-      "game_date": "2026-11-15",
       "player": "jack bech",
       "team": "LV",
       "opp_team": "SEA",
@@ -6613,6 +6247,25 @@
         "p_raw": 0.734,
         "fair_odds": -318,
         "line": 34.5,
+        "side": "UNDER"
+      }
+    },
+    {
+      "matchup": "SEA @ LV",
+      "game_date": "2026-11-15",
+      "player": "jadarian price",
+      "team": "SEA",
+      "opp_team": "LV",
+      "stat_type": "rush_yds",
+      "opp_factor": 1.042,
+      "projection": 36.11,
+      "edge_class": "MODEL_UNDER",
+      "best_market": {
+        "market": "RUSH_YDS_UNDER_49.5",
+        "p": 0.761,
+        "p_raw": 0.754,
+        "fair_odds": -319,
+        "line": 49.5,
         "side": "UNDER"
       }
     },
@@ -6695,25 +6348,6 @@
     {
       "matchup": "LAC @ BAL",
       "game_date": "2026-11-16",
-      "player": "ladd mcconkey",
-      "team": "LAC",
-      "opp_team": "BAL",
-      "stat_type": "longest_reception",
-      "opp_factor": 0.94,
-      "projection": 18.86,
-      "edge_class": "MODEL_UNDER",
-      "best_market": {
-        "market": "LONGEST_REC_UNDER_24.5",
-        "p": 0.761,
-        "p_raw": 0.748,
-        "fair_odds": -318,
-        "line": 24.5,
-        "side": "UNDER"
-      }
-    },
-    {
-      "matchup": "LAC @ BAL",
-      "game_date": "2026-11-16",
       "player": "zay flowers",
       "team": "BAL",
       "opp_team": "LAC",
@@ -6731,21 +6365,21 @@
       }
     },
     {
-      "matchup": "WSH @ NYG",
-      "game_date": "2026-11-12",
-      "player": "jameis winston",
-      "team": "NYG",
-      "opp_team": "WSH",
-      "stat_type": "pass_yds",
-      "opp_factor": 1.03,
-      "projection": 170.12,
+      "matchup": "LAC @ BAL",
+      "game_date": "2026-11-16",
+      "player": "ladd mcconkey",
+      "team": "LAC",
+      "opp_team": "BAL",
+      "stat_type": "longest_reception",
+      "opp_factor": 0.94,
+      "projection": 18.86,
       "edge_class": "MODEL_UNDER",
       "best_market": {
-        "market": "PASS_YDS_UNDER_299.5",
-        "p": 0.759,
-        "p_raw": 0.978,
-        "fair_odds": -315,
-        "line": 299.5,
+        "market": "LONGEST_REC_UNDER_24.5",
+        "p": 0.761,
+        "p_raw": 0.748,
+        "fair_odds": -318,
+        "line": 24.5,
         "side": "UNDER"
       }
     },
@@ -6765,25 +6399,6 @@
         "p_raw": 0.717,
         "fair_odds": -314,
         "line": 59.5,
-        "side": "UNDER"
-      }
-    },
-    {
-      "matchup": "MIN @ GB",
-      "game_date": "2026-11-15",
-      "player": "kirk cousins",
-      "team": "MIN",
-      "opp_team": "GB",
-      "stat_type": "pass_cmp",
-      "opp_factor": 0.97,
-      "projection": 22.45,
-      "edge_class": "MODEL_UNDER",
-      "best_market": {
-        "market": "PASS_CMP_UNDER_25.5",
-        "p": 0.759,
-        "p_raw": 0.728,
-        "fair_odds": -314,
-        "line": 25.5,
         "side": "UNDER"
       }
     },
@@ -6901,25 +6516,6 @@
       }
     },
     {
-      "matchup": "MIA @ IND",
-      "game_date": "2026-11-15",
-      "player": "malik willis",
-      "team": "MIA",
-      "opp_team": "IND",
-      "stat_type": "pass_yds",
-      "opp_factor": 1.024,
-      "projection": 182.0,
-      "edge_class": "MODEL_UNDER",
-      "best_market": {
-        "market": "PASS_YDS_UNDER_299.5",
-        "p": 0.754,
-        "p_raw": 0.956,
-        "fair_odds": -307,
-        "line": 299.5,
-        "side": "UNDER"
-      }
-    },
-    {
       "matchup": "CAR @ NO",
       "game_date": "2026-11-15",
       "player": "jalen coker",
@@ -7033,21 +6629,21 @@
       }
     },
     {
-      "matchup": "LAC @ BAL",
-      "game_date": "2026-11-16",
-      "player": "justin herbert",
-      "team": "LAC",
-      "opp_team": "BAL",
-      "stat_type": "pass_int",
-      "opp_factor": 0.94,
-      "projection": 1.36,
-      "edge_class": "MODEL_OVER",
+      "matchup": "KC @ ATL",
+      "game_date": "2026-11-15",
+      "player": "michael penix",
+      "team": "ATL",
+      "opp_team": "KC",
+      "stat_type": "pass_td",
+      "opp_factor": 0.976,
+      "projection": 0.98,
+      "edge_class": "MODEL_UNDER",
       "best_market": {
-        "market": "PASS_INT_OVER_0.5",
-        "p": 0.753,
-        "fair_odds": -306,
-        "line": 0.5,
-        "side": "OVER"
+        "market": "PASS_TD_UNDER_1.5",
+        "p": 0.752,
+        "fair_odds": -302,
+        "line": 1.5,
+        "side": "UNDER"
       }
     },
     {
@@ -7066,24 +6662,6 @@
         "p_raw": 0.711,
         "fair_odds": -302,
         "line": 79.5,
-        "side": "UNDER"
-      }
-    },
-    {
-      "matchup": "KC @ ATL",
-      "game_date": "2026-11-15",
-      "player": "michael penix",
-      "team": "ATL",
-      "opp_team": "KC",
-      "stat_type": "pass_td",
-      "opp_factor": 0.976,
-      "projection": 0.98,
-      "edge_class": "MODEL_UNDER",
-      "best_market": {
-        "market": "PASS_TD_UNDER_1.5",
-        "p": 0.752,
-        "fair_odds": -302,
-        "line": 1.5,
         "side": "UNDER"
       }
     },
@@ -7261,6 +6839,25 @@
     {
       "matchup": "MIN @ GB",
       "game_date": "2026-11-15",
+      "player": "tj hockenson",
+      "team": "MIN",
+      "opp_team": "GB",
+      "stat_type": "rec",
+      "opp_factor": 0.97,
+      "projection": 3.38,
+      "edge_class": "MODEL_UNDER",
+      "best_market": {
+        "market": "REC_UNDER_4.5",
+        "p": 0.75,
+        "p_raw": 0.742,
+        "fair_odds": -300,
+        "line": 4.5,
+        "side": "UNDER"
+      }
+    },
+    {
+      "matchup": "MIN @ GB",
+      "game_date": "2026-11-15",
       "player": "marshawn lloyd",
       "team": "GB",
       "opp_team": "MIN",
@@ -7293,25 +6890,6 @@
         "p_raw": 0.758,
         "fair_odds": -300,
         "line": 3.5,
-        "side": "UNDER"
-      }
-    },
-    {
-      "matchup": "MIN @ GB",
-      "game_date": "2026-11-15",
-      "player": "tj hockenson",
-      "team": "MIN",
-      "opp_team": "GB",
-      "stat_type": "rec",
-      "opp_factor": 0.97,
-      "projection": 3.38,
-      "edge_class": "MODEL_UNDER",
-      "best_market": {
-        "market": "REC_UNDER_4.5",
-        "p": 0.75,
-        "p_raw": 0.742,
-        "fair_odds": -300,
-        "line": 4.5,
         "side": "UNDER"
       }
     },
@@ -7679,25 +7257,6 @@
     {
       "matchup": "LAC @ BAL",
       "game_date": "2026-11-16",
-      "player": "oronde gadsden",
-      "team": "LAC",
-      "opp_team": "BAL",
-      "stat_type": "rec",
-      "opp_factor": 0.94,
-      "projection": 3.24,
-      "edge_class": "MODEL_UNDER",
-      "best_market": {
-        "market": "REC_UNDER_4.5",
-        "p": 0.75,
-        "p_raw": 0.746,
-        "fair_odds": -300,
-        "line": 4.5,
-        "side": "UNDER"
-      }
-    },
-    {
-      "matchup": "LAC @ BAL",
-      "game_date": "2026-11-16",
       "player": "zay flowers",
       "team": "BAL",
       "opp_team": "LAC",
@@ -7711,6 +7270,25 @@
         "p_raw": 0.744,
         "fair_odds": -300,
         "line": 6.5,
+        "side": "UNDER"
+      }
+    },
+    {
+      "matchup": "LAC @ BAL",
+      "game_date": "2026-11-16",
+      "player": "oronde gadsden",
+      "team": "LAC",
+      "opp_team": "BAL",
+      "stat_type": "rec",
+      "opp_factor": 0.94,
+      "projection": 3.24,
+      "edge_class": "MODEL_UNDER",
+      "best_market": {
+        "market": "REC_UNDER_4.5",
+        "p": 0.75,
+        "p_raw": 0.746,
+        "fair_odds": -300,
+        "line": 4.5,
         "side": "UNDER"
       }
     },
@@ -7829,25 +7407,6 @@
       }
     },
     {
-      "matchup": "LAC @ BAL",
-      "game_date": "2026-11-16",
-      "player": "justin herbert",
-      "team": "LAC",
-      "opp_team": "BAL",
-      "stat_type": "pass_yds",
-      "opp_factor": 0.94,
-      "projection": 196.79,
-      "edge_class": "MODEL_UNDER",
-      "best_market": {
-        "market": "PASS_YDS_UNDER_299.5",
-        "p": 0.748,
-        "p_raw": 0.927,
-        "fair_odds": -296,
-        "line": 299.5,
-        "side": "UNDER"
-      }
-    },
-    {
       "matchup": "WSH @ NYG",
       "game_date": "2026-11-12",
       "player": "malachi fields",
@@ -7962,98 +7521,6 @@
       }
     },
     {
-      "matchup": "MIN @ GB",
-      "game_date": "2026-11-15",
-      "player": "carson wentz",
-      "team": "MIN",
-      "opp_team": "GB",
-      "stat_type": "pass_td",
-      "opp_factor": 0.97,
-      "projection": 0.99,
-      "edge_class": "MODEL_UNDER",
-      "best_market": {
-        "market": "PASS_TD_UNDER_1.5",
-        "p": 0.746,
-        "fair_odds": -294,
-        "line": 1.5,
-        "side": "UNDER"
-      }
-    },
-    {
-      "matchup": "SEA @ LV",
-      "game_date": "2026-11-15",
-      "player": "drew lock",
-      "team": "SEA",
-      "opp_team": "LV",
-      "stat_type": "pass_td",
-      "opp_factor": 1.036,
-      "projection": 1.71,
-      "edge_class": "MODEL_UNDER",
-      "best_market": {
-        "market": "PASS_TD_UNDER_2.5",
-        "p": 0.746,
-        "fair_odds": -294,
-        "line": 2.5,
-        "side": "UNDER"
-      }
-    },
-    {
-      "matchup": "LAC @ BAL",
-      "game_date": "2026-11-16",
-      "player": "lamar jackson",
-      "team": "BAL",
-      "opp_team": "LAC",
-      "stat_type": "pass_yds",
-      "opp_factor": 0.976,
-      "projection": 196.23,
-      "edge_class": "MODEL_UNDER",
-      "best_market": {
-        "market": "PASS_YDS_UNDER_299.5",
-        "p": 0.746,
-        "p_raw": 0.921,
-        "fair_odds": -294,
-        "line": 299.5,
-        "side": "UNDER"
-      }
-    },
-    {
-      "matchup": "LAC @ BAL",
-      "game_date": "2026-11-16",
-      "player": "lamar jackson",
-      "team": "BAL",
-      "opp_team": "LAC",
-      "stat_type": "pass_td",
-      "opp_factor": 0.976,
-      "projection": 1.74,
-      "edge_class": "MODEL_UNDER",
-      "best_market": {
-        "market": "PASS_TD_UNDER_2.5",
-        "p": 0.746,
-        "fair_odds": -293,
-        "line": 2.5,
-        "side": "UNDER"
-      }
-    },
-    {
-      "matchup": "WSH @ NYG",
-      "game_date": "2026-11-12",
-      "player": "jj mccarthy",
-      "team": "NYG",
-      "opp_team": "WSH",
-      "stat_type": "pass_yds",
-      "opp_factor": 1.03,
-      "projection": 196.71,
-      "edge_class": "MODEL_UNDER",
-      "best_market": {
-        "market": "PASS_YDS_UNDER_299.5",
-        "p": 0.745,
-        "p_raw": 0.916,
-        "fair_odds": -293,
-        "line": 299.5,
-        "side": "UNDER"
-      }
-    },
-    {
       "matchup": "WSH @ NYG",
       "game_date": "2026-11-12",
       "player": "jayden daniels",
@@ -8147,25 +7614,6 @@
       }
     },
     {
-      "matchup": "SEA @ LV",
-      "game_date": "2026-11-15",
-      "player": "drew lock",
-      "team": "SEA",
-      "opp_team": "LV",
-      "stat_type": "pass_yds",
-      "opp_factor": 1.036,
-      "projection": 206.0,
-      "edge_class": "MODEL_UNDER",
-      "best_market": {
-        "market": "PASS_YDS_UNDER_299.5",
-        "p": 0.744,
-        "p_raw": 0.909,
-        "fair_odds": -290,
-        "line": 299.5,
-        "side": "UNDER"
-      }
-    },
-    {
       "matchup": "PIT @ CIN",
       "game_date": "2026-11-15",
       "player": "tee higgins",
@@ -8255,44 +7703,6 @@
         "p": 0.742,
         "p_raw": 0.651,
         "fair_odds": -288,
-        "line": 25.5,
-        "side": "UNDER"
-      }
-    },
-    {
-      "matchup": "LAC @ BAL",
-      "game_date": "2026-11-16",
-      "player": "jacoby brissett",
-      "team": "BAL",
-      "opp_team": "LAC",
-      "stat_type": "pass_yds",
-      "opp_factor": 0.976,
-      "projection": 216.28,
-      "edge_class": "MODEL_UNDER",
-      "best_market": {
-        "market": "PASS_YDS_UNDER_299.5",
-        "p": 0.742,
-        "p_raw": 0.899,
-        "fair_odds": -287,
-        "line": 299.5,
-        "side": "UNDER"
-      }
-    },
-    {
-      "matchup": "LAC @ BAL",
-      "game_date": "2026-11-16",
-      "player": "jacoby brissett",
-      "team": "BAL",
-      "opp_team": "LAC",
-      "stat_type": "pass_cmp",
-      "opp_factor": 0.976,
-      "projection": 23.72,
-      "edge_class": "MODEL_UNDER",
-      "best_market": {
-        "market": "PASS_CMP_UNDER_25.5",
-        "p": 0.741,
-        "p_raw": 0.647,
-        "fair_odds": -286,
         "line": 25.5,
         "side": "UNDER"
       }
@@ -8447,24 +7857,6 @@
         "fair_odds": -280,
         "line": 39.5,
         "side": "OVER"
-      }
-    },
-    {
-      "matchup": "MIN @ GB",
-      "game_date": "2026-11-15",
-      "player": "kirk cousins",
-      "team": "MIN",
-      "opp_team": "GB",
-      "stat_type": "pass_td",
-      "opp_factor": 0.97,
-      "projection": 0.98,
-      "edge_class": "MODEL_UNDER",
-      "best_market": {
-        "market": "PASS_TD_UNDER_1.5",
-        "p": 0.736,
-        "fair_odds": -280,
-        "line": 1.5,
-        "side": "UNDER"
       }
     },
     {
@@ -8812,25 +8204,6 @@
     {
       "matchup": "SEA @ LV",
       "game_date": "2026-11-15",
-      "player": "sam darnold",
-      "team": "SEA",
-      "opp_team": "LV",
-      "stat_type": "pass_yds",
-      "opp_factor": 1.036,
-      "projection": 225.88,
-      "edge_class": "MODEL_UNDER",
-      "best_market": {
-        "market": "PASS_YDS_UNDER_299.5",
-        "p": 0.729,
-        "p_raw": 0.84,
-        "fair_odds": -269,
-        "line": 299.5,
-        "side": "UNDER"
-      }
-    },
-    {
-      "matchup": "SEA @ LV",
-      "game_date": "2026-11-15",
       "player": "mike washington",
       "team": "LV",
       "opp_team": "SEA",
@@ -8907,6 +8280,25 @@
     {
       "matchup": "LAC @ BAL",
       "game_date": "2026-11-16",
+      "player": "derrick henry",
+      "team": "BAL",
+      "opp_team": "LAC",
+      "stat_type": "rush_yds",
+      "opp_factor": 0.988,
+      "projection": 78.96,
+      "edge_class": "MODEL_UNDER",
+      "best_market": {
+        "market": "RUSH_YDS_UNDER_89.5",
+        "p": 0.729,
+        "p_raw": 0.661,
+        "fair_odds": -269,
+        "line": 89.5,
+        "side": "UNDER"
+      }
+    },
+    {
+      "matchup": "LAC @ BAL",
+      "game_date": "2026-11-16",
       "player": "omarion hampton",
       "team": "LAC",
       "opp_team": "BAL",
@@ -8939,25 +8331,6 @@
         "p_raw": 0.676,
         "fair_odds": -269,
         "line": 39.5,
-        "side": "UNDER"
-      }
-    },
-    {
-      "matchup": "LAC @ BAL",
-      "game_date": "2026-11-16",
-      "player": "derrick henry",
-      "team": "BAL",
-      "opp_team": "LAC",
-      "stat_type": "rush_yds",
-      "opp_factor": 0.988,
-      "projection": 78.96,
-      "edge_class": "MODEL_UNDER",
-      "best_market": {
-        "market": "RUSH_YDS_UNDER_89.5",
-        "p": 0.729,
-        "p_raw": 0.661,
-        "fair_odds": -269,
-        "line": 89.5,
         "side": "UNDER"
       }
     },
@@ -9208,25 +8581,6 @@
       }
     },
     {
-      "matchup": "MIN @ GB",
-      "game_date": "2026-11-15",
-      "player": "kirk cousins",
-      "team": "MIN",
-      "opp_team": "GB",
-      "stat_type": "pass_yds",
-      "opp_factor": 0.97,
-      "projection": 238.29,
-      "edge_class": "MODEL_UNDER",
-      "best_market": {
-        "market": "PASS_YDS_UNDER_299.5",
-        "p": 0.721,
-        "p_raw": 0.804,
-        "fair_odds": -258,
-        "line": 299.5,
-        "side": "UNDER"
-      }
-    },
-    {
       "matchup": "LAR @ ARI",
       "game_date": "2026-11-15",
       "player": "matthew stafford",
@@ -9280,24 +8634,6 @@
         "p_raw": 0.946,
         "fair_odds": -256,
         "line": 39.5,
-        "side": "OVER"
-      }
-    },
-    {
-      "matchup": "SEA @ LV",
-      "game_date": "2026-11-15",
-      "player": "sam darnold",
-      "team": "SEA",
-      "opp_team": "LV",
-      "stat_type": "pass_int",
-      "opp_factor": 1.036,
-      "projection": 1.3,
-      "edge_class": "MODEL_OVER",
-      "best_market": {
-        "market": "PASS_INT_OVER_0.5",
-        "p": 0.719,
-        "fair_odds": -256,
-        "line": 0.5,
         "side": "OVER"
       }
     },
@@ -9700,24 +9036,6 @@
       }
     },
     {
-      "matchup": "WSH @ NYG",
-      "game_date": "2026-11-12",
-      "player": "jj mccarthy",
-      "team": "NYG",
-      "opp_team": "WSH",
-      "stat_type": "pass_int",
-      "opp_factor": 1.03,
-      "projection": 0.36,
-      "edge_class": "MODEL_UNDER",
-      "best_market": {
-        "market": "PASS_INT_UNDER_0.5",
-        "p": 0.706,
-        "fair_odds": -240,
-        "line": 0.5,
-        "side": "UNDER"
-      }
-    },
-    {
       "matchup": "KC @ ATL",
       "game_date": "2026-11-15",
       "player": "drake london",
@@ -9890,25 +9208,6 @@
     {
       "matchup": "SF @ DAL",
       "game_date": "2026-11-15",
-      "player": "dak prescott",
-      "team": "DAL",
-      "opp_team": "SF",
-      "stat_type": "pass_yds",
-      "opp_factor": 0.988,
-      "projection": 259.86,
-      "edge_class": "MODEL_UNDER",
-      "best_market": {
-        "market": "PASS_YDS_UNDER_299.5",
-        "p": 0.702,
-        "p_raw": 0.718,
-        "fair_odds": -236,
-        "line": 299.5,
-        "side": "UNDER"
-      }
-    },
-    {
-      "matchup": "SF @ DAL",
-      "game_date": "2026-11-15",
       "player": "brock purdy",
       "team": "SF",
       "opp_team": "DAL",
@@ -9921,6 +9220,25 @@
         "p": 0.702,
         "p_raw": 0.716,
         "fair_odds": -235,
+        "line": 299.5,
+        "side": "UNDER"
+      }
+    },
+    {
+      "matchup": "SF @ DAL",
+      "game_date": "2026-11-15",
+      "player": "dak prescott",
+      "team": "DAL",
+      "opp_team": "SF",
+      "stat_type": "pass_yds",
+      "opp_factor": 0.988,
+      "projection": 259.86,
+      "edge_class": "MODEL_UNDER",
+      "best_market": {
+        "market": "PASS_YDS_UNDER_299.5",
+        "p": 0.702,
+        "p_raw": 0.718,
+        "fair_odds": -236,
         "line": 299.5,
         "side": "UNDER"
       }
@@ -10115,25 +9433,6 @@
       }
     },
     {
-      "matchup": "KC @ ATL",
-      "game_date": "2026-11-15",
-      "player": "patrick mahomes",
-      "team": "KC",
-      "opp_team": "ATL",
-      "stat_type": "pass_yds",
-      "opp_factor": 1.03,
-      "projection": 263.44,
-      "edge_class": "MODEL_UNDER",
-      "best_market": {
-        "market": "PASS_YDS_UNDER_299.5",
-        "p": 0.696,
-        "p_raw": 0.69,
-        "fair_odds": -229,
-        "line": 299.5,
-        "side": "UNDER"
-      }
-    },
-    {
       "matchup": "NE @ DET",
       "game_date": "2026-11-15",
       "player": "jared goff",
@@ -10281,24 +9580,6 @@
         "p_raw": 0.723,
         "fair_odds": -225,
         "line": 2.5,
-        "side": "UNDER"
-      }
-    },
-    {
-      "matchup": "WSH @ NYG",
-      "game_date": "2026-11-12",
-      "player": "jameis winston",
-      "team": "NYG",
-      "opp_team": "WSH",
-      "stat_type": "pass_td",
-      "opp_factor": 1.03,
-      "projection": 1.14,
-      "edge_class": "MODEL_UNDER",
-      "best_market": {
-        "market": "PASS_TD_UNDER_1.5",
-        "p": 0.692,
-        "fair_odds": -225,
-        "line": 1.5,
         "side": "UNDER"
       }
     },
@@ -10927,24 +10208,6 @@
       }
     },
     {
-      "matchup": "WSH @ NYG",
-      "game_date": "2026-11-12",
-      "player": "jj mccarthy",
-      "team": "NYG",
-      "opp_team": "WSH",
-      "stat_type": "pass_td",
-      "opp_factor": 1.03,
-      "projection": 1.16,
-      "edge_class": "MODEL_UNDER",
-      "best_market": {
-        "market": "PASS_TD_UNDER_1.5",
-        "p": 0.673,
-        "fair_odds": -206,
-        "line": 1.5,
-        "side": "UNDER"
-      }
-    },
-    {
       "matchup": "PIT @ CIN",
       "game_date": "2026-11-15",
       "player": "joe burrow",
@@ -11491,24 +10754,6 @@
       }
     },
     {
-      "matchup": "MIN @ GB",
-      "game_date": "2026-11-15",
-      "player": "kyler murray",
-      "team": "MIN",
-      "opp_team": "GB",
-      "stat_type": "pass_int",
-      "opp_factor": 0.97,
-      "projection": 0.51,
-      "edge_class": "MODEL_UNDER",
-      "best_market": {
-        "market": "PASS_INT_UNDER_0.5",
-        "p": 0.603,
-        "fair_odds": -152,
-        "line": 0.5,
-        "side": "UNDER"
-      }
-    },
-    {
       "matchup": "JAX @ TEN",
       "game_date": "2026-11-15",
       "player": "trevor lawrence",
@@ -11681,6 +10926,25 @@
     {
       "matchup": "MIN @ GB",
       "game_date": "2026-11-15",
+      "player": "aaron jones",
+      "team": "MIN",
+      "opp_team": "GB",
+      "stat_type": "rec",
+      "opp_factor": 0.97,
+      "projection": 2.27,
+      "edge_class": "MODEL_UNDER",
+      "best_market": {
+        "market": "REC_UNDER_2.5",
+        "p": 0.6,
+        "p_raw": 0.615,
+        "fair_odds": -150,
+        "line": 2.5,
+        "side": "UNDER"
+      }
+    },
+    {
+      "matchup": "MIN @ GB",
+      "game_date": "2026-11-15",
       "player": "josh jacobs",
       "team": "GB",
       "opp_team": "MIN",
@@ -11711,25 +10975,6 @@
         "market": "REC_UNDER_2.5",
         "p": 0.6,
         "p_raw": 0.502,
-        "fair_odds": -150,
-        "line": 2.5,
-        "side": "UNDER"
-      }
-    },
-    {
-      "matchup": "MIN @ GB",
-      "game_date": "2026-11-15",
-      "player": "aaron jones",
-      "team": "MIN",
-      "opp_team": "GB",
-      "stat_type": "rec",
-      "opp_factor": 0.97,
-      "projection": 2.27,
-      "edge_class": "MODEL_UNDER",
-      "best_market": {
-        "market": "REC_UNDER_2.5",
-        "p": 0.6,
-        "p_raw": 0.615,
         "fair_odds": -150,
         "line": 2.5,
         "side": "UNDER"
@@ -11966,25 +11211,6 @@
     {
       "matchup": "SEA @ LV",
       "game_date": "2026-11-15",
-      "player": "jadarian price",
-      "team": "SEA",
-      "opp_team": "LV",
-      "stat_type": "rec",
-      "opp_factor": 1.036,
-      "projection": 1.95,
-      "edge_class": "MODEL_UNDER",
-      "best_market": {
-        "market": "REC_UNDER_2.5",
-        "p": 0.6,
-        "p_raw": 0.692,
-        "fair_odds": -150,
-        "line": 2.5,
-        "side": "UNDER"
-      }
-    },
-    {
-      "matchup": "SEA @ LV",
-      "game_date": "2026-11-15",
       "player": "michael mayer",
       "team": "LV",
       "opp_team": "SEA",
@@ -11996,6 +11222,25 @@
         "market": "REC_UNDER_2.5",
         "p": 0.6,
         "p_raw": 0.505,
+        "fair_odds": -150,
+        "line": 2.5,
+        "side": "UNDER"
+      }
+    },
+    {
+      "matchup": "SEA @ LV",
+      "game_date": "2026-11-15",
+      "player": "jadarian price",
+      "team": "SEA",
+      "opp_team": "LV",
+      "stat_type": "rec",
+      "opp_factor": 1.036,
+      "projection": 1.95,
+      "edge_class": "MODEL_UNDER",
+      "best_market": {
+        "market": "REC_UNDER_2.5",
+        "p": 0.6,
+        "p_raw": 0.692,
         "fair_odds": -150,
         "line": 2.5,
         "side": "UNDER"
@@ -12192,24 +11437,6 @@
       }
     },
     {
-      "matchup": "MIN @ GB",
-      "game_date": "2026-11-15",
-      "player": "kirk cousins",
-      "team": "MIN",
-      "opp_team": "GB",
-      "stat_type": "pass_int",
-      "opp_factor": 0.97,
-      "projection": 0.89,
-      "edge_class": "MODEL_OVER",
-      "best_market": {
-        "market": "PASS_INT_OVER_0.5",
-        "p": 0.596,
-        "fair_odds": -148,
-        "line": 0.5,
-        "side": "OVER"
-      }
-    },
-    {
       "matchup": "HOU @ CLE",
       "game_date": "2026-11-15",
       "player": "cj stroud",
@@ -12228,24 +11455,6 @@
       }
     },
     {
-      "matchup": "LAC @ BAL",
-      "game_date": "2026-11-16",
-      "player": "jacoby brissett",
-      "team": "BAL",
-      "opp_team": "LAC",
-      "stat_type": "pass_int",
-      "opp_factor": 0.976,
-      "projection": 0.88,
-      "edge_class": "MODEL_OVER",
-      "best_market": {
-        "market": "PASS_INT_OVER_0.5",
-        "p": 0.594,
-        "fair_odds": -146,
-        "line": 0.5,
-        "side": "OVER"
-      }
-    },
-    {
       "matchup": "WSH @ NYG",
       "game_date": "2026-11-12",
       "player": "cam skattebo",
@@ -12260,42 +11469,6 @@
         "fair_odds": -145,
         "line": 0.5,
         "side": "YES"
-      }
-    },
-    {
-      "matchup": "KC @ ATL",
-      "game_date": "2026-11-15",
-      "player": "patrick mahomes",
-      "team": "KC",
-      "opp_team": "ATL",
-      "stat_type": "pass_int",
-      "opp_factor": 1.03,
-      "projection": 0.52,
-      "edge_class": "MODEL_UNDER",
-      "best_market": {
-        "market": "PASS_INT_UNDER_0.5",
-        "p": 0.589,
-        "fair_odds": -143,
-        "line": 0.5,
-        "side": "UNDER"
-      }
-    },
-    {
-      "matchup": "KC @ ATL",
-      "game_date": "2026-11-15",
-      "player": "patrick mahomes",
-      "team": "KC",
-      "opp_team": "ATL",
-      "stat_type": "pass_td",
-      "opp_factor": 1.03,
-      "projection": 1.97,
-      "edge_class": "MODEL_OVER",
-      "best_market": {
-        "market": "PASS_TD_OVER_1.5",
-        "p": 0.586,
-        "fair_odds": -141,
-        "line": 1.5,
-        "side": "OVER"
       }
     },
     {
@@ -12454,42 +11627,6 @@
   ],
   "strong_edges": [
     {
-      "matchup": "LAC @ BAL",
-      "game_date": "2026-11-16",
-      "player": "lamar jackson",
-      "team": "BAL",
-      "opp_team": "LAC",
-      "stat_type": "pass_int",
-      "opp_factor": 0.976,
-      "projection": 0.19,
-      "edge_class": "MODEL_UNDER",
-      "best_market": {
-        "market": "PASS_INT_UNDER_0.5",
-        "p": 0.832,
-        "fair_odds": -494,
-        "line": 0.5,
-        "side": "UNDER"
-      }
-    },
-    {
-      "matchup": "LAC @ BAL",
-      "game_date": "2026-11-16",
-      "player": "tyler huntley",
-      "team": "BAL",
-      "opp_team": "LAC",
-      "stat_type": "pass_int",
-      "opp_factor": 0.976,
-      "projection": 0.2,
-      "edge_class": "MODEL_UNDER",
-      "best_market": {
-        "market": "PASS_INT_UNDER_0.5",
-        "p": 0.815,
-        "fair_odds": -441,
-        "line": 0.5,
-        "side": "UNDER"
-      }
-    },
-    {
       "matchup": "WSH @ NYG",
       "game_date": "2026-11-12",
       "player": "van jefferson",
@@ -12869,25 +12006,6 @@
       }
     },
     {
-      "matchup": "LAC @ BAL",
-      "game_date": "2026-11-16",
-      "player": "tyler huntley",
-      "team": "BAL",
-      "opp_team": "LAC",
-      "stat_type": "pass_cmp",
-      "opp_factor": 0.976,
-      "projection": 17.41,
-      "edge_class": "MODEL_UNDER",
-      "best_market": {
-        "market": "PASS_CMP_UNDER_23.5",
-        "p": 0.794,
-        "p_raw": 0.888,
-        "fair_odds": -385,
-        "line": 23.5,
-        "side": "UNDER"
-      }
-    },
-    {
       "matchup": "NE @ DET",
       "game_date": "2026-11-15",
       "player": "amonra st brown",
@@ -12922,25 +12040,6 @@
         "p_raw": 0.839,
         "fair_odds": -384,
         "line": 29.5,
-        "side": "UNDER"
-      }
-    },
-    {
-      "matchup": "MIN @ GB",
-      "game_date": "2026-11-15",
-      "player": "kyler murray",
-      "team": "MIN",
-      "opp_team": "GB",
-      "stat_type": "pass_cmp",
-      "opp_factor": 0.97,
-      "projection": 17.74,
-      "edge_class": "MODEL_UNDER",
-      "best_market": {
-        "market": "PASS_CMP_UNDER_23.5",
-        "p": 0.793,
-        "p_raw": 0.883,
-        "fair_odds": -382,
-        "line": 23.5,
         "side": "UNDER"
       }
     },
@@ -13023,25 +12122,6 @@
     {
       "matchup": "MIA @ IND",
       "game_date": "2026-11-15",
-      "player": "malik willis",
-      "team": "MIA",
-      "opp_team": "IND",
-      "stat_type": "pass_cmp",
-      "opp_factor": 1.024,
-      "projection": 16.04,
-      "edge_class": "MODEL_UNDER",
-      "best_market": {
-        "market": "PASS_CMP_UNDER_21.5",
-        "p": 0.792,
-        "p_raw": 0.879,
-        "fair_odds": -380,
-        "line": 21.5,
-        "side": "UNDER"
-      }
-    },
-    {
-      "matchup": "MIA @ IND",
-      "game_date": "2026-11-15",
       "player": "laquon treadwell",
       "team": "IND",
       "opp_team": "MIA",
@@ -13118,25 +12198,6 @@
     {
       "matchup": "KC @ ATL",
       "game_date": "2026-11-15",
-      "player": "emmett johnson",
-      "team": "KC",
-      "opp_team": "ATL",
-      "stat_type": "rec_yds",
-      "opp_factor": 1.03,
-      "projection": 37.42,
-      "edge_class": "MODEL_UNDER",
-      "best_market": {
-        "market": "REC_YDS_UNDER_59.5",
-        "p": 0.791,
-        "p_raw": 0.769,
-        "fair_odds": -378,
-        "line": 59.5,
-        "side": "UNDER"
-      }
-    },
-    {
-      "matchup": "KC @ ATL",
-      "game_date": "2026-11-15",
       "player": "jahan dotson",
       "team": "ATL",
       "opp_team": "KC",
@@ -13169,6 +12230,25 @@
         "p_raw": 0.772,
         "fair_odds": -378,
         "line": 39.5,
+        "side": "UNDER"
+      }
+    },
+    {
+      "matchup": "KC @ ATL",
+      "game_date": "2026-11-15",
+      "player": "emmett johnson",
+      "team": "KC",
+      "opp_team": "ATL",
+      "stat_type": "rec_yds",
+      "opp_factor": 1.03,
+      "projection": 37.42,
+      "edge_class": "MODEL_UNDER",
+      "best_market": {
+        "market": "REC_YDS_UNDER_59.5",
+        "p": 0.791,
+        "p_raw": 0.769,
+        "fair_odds": -378,
+        "line": 59.5,
         "side": "UNDER"
       }
     },
@@ -13283,25 +12363,6 @@
         "p_raw": 0.768,
         "fair_odds": -378,
         "line": 39.5,
-        "side": "UNDER"
-      }
-    },
-    {
-      "matchup": "MIN @ GB",
-      "game_date": "2026-11-15",
-      "player": "carson wentz",
-      "team": "MIN",
-      "opp_team": "GB",
-      "stat_type": "pass_cmp",
-      "opp_factor": 0.97,
-      "projection": 12.7,
-      "edge_class": "MODEL_UNDER",
-      "best_market": {
-        "market": "PASS_CMP_UNDER_17.5",
-        "p": 0.791,
-        "p_raw": 0.877,
-        "fair_odds": -379,
-        "line": 17.5,
         "side": "UNDER"
       }
     },
@@ -13536,25 +12597,6 @@
     {
       "matchup": "SF @ DAL",
       "game_date": "2026-11-15",
-      "player": "ryan flournoy",
-      "team": "DAL",
-      "opp_team": "SF",
-      "stat_type": "rec_yds",
-      "opp_factor": 0.988,
-      "projection": 39.32,
-      "edge_class": "MODEL_UNDER",
-      "best_market": {
-        "market": "REC_YDS_UNDER_59.5",
-        "p": 0.791,
-        "p_raw": 0.761,
-        "fair_odds": -378,
-        "line": 59.5,
-        "side": "UNDER"
-      }
-    },
-    {
-      "matchup": "SF @ DAL",
-      "game_date": "2026-11-15",
       "player": "demarcus robinson",
       "team": "SF",
       "opp_team": "DAL",
@@ -13568,6 +12610,25 @@
         "p_raw": 0.76,
         "fair_odds": -377,
         "line": 49.5,
+        "side": "UNDER"
+      }
+    },
+    {
+      "matchup": "SF @ DAL",
+      "game_date": "2026-11-15",
+      "player": "ryan flournoy",
+      "team": "DAL",
+      "opp_team": "SF",
+      "stat_type": "rec_yds",
+      "opp_factor": 0.988,
+      "projection": 39.32,
+      "edge_class": "MODEL_UNDER",
+      "best_market": {
+        "market": "REC_YDS_UNDER_59.5",
+        "p": 0.791,
+        "p_raw": 0.761,
+        "fair_odds": -378,
+        "line": 59.5,
         "side": "UNDER"
       }
     },
@@ -13724,25 +12785,6 @@
       }
     },
     {
-      "matchup": "LAC @ BAL",
-      "game_date": "2026-11-16",
-      "player": "lamar jackson",
-      "team": "BAL",
-      "opp_team": "LAC",
-      "stat_type": "pass_cmp",
-      "opp_factor": 0.976,
-      "projection": 16.39,
-      "edge_class": "MODEL_UNDER",
-      "best_market": {
-        "market": "PASS_CMP_UNDER_21.5",
-        "p": 0.79,
-        "p_raw": 0.871,
-        "fair_odds": -376,
-        "line": 21.5,
-        "side": "UNDER"
-      }
-    },
-    {
       "matchup": "LAR @ ARI",
       "game_date": "2026-11-15",
       "player": "michael wilson",
@@ -13815,25 +12857,6 @@
         "p_raw": 0.74,
         "fair_odds": -373,
         "line": 12.5,
-        "side": "UNDER"
-      }
-    },
-    {
-      "matchup": "WSH @ NYG",
-      "game_date": "2026-11-12",
-      "player": "jj mccarthy",
-      "team": "NYG",
-      "opp_team": "WSH",
-      "stat_type": "pass_cmp",
-      "opp_factor": 1.03,
-      "projection": 16.43,
-      "edge_class": "MODEL_UNDER",
-      "best_market": {
-        "market": "PASS_CMP_UNDER_21.5",
-        "p": 0.788,
-        "p_raw": 0.861,
-        "fair_odds": -371,
-        "line": 21.5,
         "side": "UNDER"
       }
     },
@@ -13916,25 +12939,6 @@
     {
       "matchup": "KC @ ATL",
       "game_date": "2026-11-15",
-      "player": "justin fields",
-      "team": "KC",
-      "opp_team": "ATL",
-      "stat_type": "longest_rush",
-      "opp_factor": 1.012,
-      "projection": 13.0,
-      "edge_class": "MODEL_UNDER",
-      "best_market": {
-        "market": "LONGEST_RUSH_UNDER_16.5",
-        "p": 0.788,
-        "p_raw": 0.732,
-        "fair_odds": -371,
-        "line": 16.5,
-        "side": "UNDER"
-      }
-    },
-    {
-      "matchup": "KC @ ATL",
-      "game_date": "2026-11-15",
       "player": "michael penix",
       "team": "ATL",
       "opp_team": "KC",
@@ -13948,6 +12952,25 @@
         "p_raw": 0.861,
         "fair_odds": -371,
         "line": 23.5,
+        "side": "UNDER"
+      }
+    },
+    {
+      "matchup": "KC @ ATL",
+      "game_date": "2026-11-15",
+      "player": "justin fields",
+      "team": "KC",
+      "opp_team": "ATL",
+      "stat_type": "longest_rush",
+      "opp_factor": 1.012,
+      "projection": 13.0,
+      "edge_class": "MODEL_UNDER",
+      "best_market": {
+        "market": "LONGEST_RUSH_UNDER_16.5",
+        "p": 0.788,
+        "p_raw": 0.732,
+        "fair_odds": -371,
+        "line": 16.5,
         "side": "UNDER"
       }
     },
@@ -14049,25 +13072,6 @@
     {
       "matchup": "MIN @ GB",
       "game_date": "2026-11-15",
-      "player": "marshawn lloyd",
-      "team": "GB",
-      "opp_team": "MIN",
-      "stat_type": "longest_rush",
-      "opp_factor": 0.94,
-      "projection": 9.63,
-      "edge_class": "MODEL_UNDER",
-      "best_market": {
-        "market": "LONGEST_RUSH_UNDER_12.5",
-        "p": 0.788,
-        "p_raw": 0.734,
-        "fair_odds": -372,
-        "line": 12.5,
-        "side": "UNDER"
-      }
-    },
-    {
-      "matchup": "MIN @ GB",
-      "game_date": "2026-11-15",
       "player": "kyler murray",
       "team": "MIN",
       "opp_team": "GB",
@@ -14081,6 +13085,25 @@
         "p_raw": 0.766,
         "fair_odds": -373,
         "line": 19.5,
+        "side": "UNDER"
+      }
+    },
+    {
+      "matchup": "MIN @ GB",
+      "game_date": "2026-11-15",
+      "player": "marshawn lloyd",
+      "team": "GB",
+      "opp_team": "MIN",
+      "stat_type": "longest_rush",
+      "opp_factor": 0.94,
+      "projection": 9.63,
+      "edge_class": "MODEL_UNDER",
+      "best_market": {
+        "market": "LONGEST_RUSH_UNDER_12.5",
+        "p": 0.788,
+        "p_raw": 0.734,
+        "fair_odds": -372,
+        "line": 12.5,
         "side": "UNDER"
       }
     },
@@ -14220,6 +13243,25 @@
     {
       "matchup": "SEA @ LV",
       "game_date": "2026-11-15",
+      "player": "ashton jeanty",
+      "team": "LV",
+      "opp_team": "SEA",
+      "stat_type": "longest_rush",
+      "opp_factor": 1.024,
+      "projection": 15.43,
+      "edge_class": "MODEL_UNDER",
+      "best_market": {
+        "market": "LONGEST_RUSH_UNDER_19.5",
+        "p": 0.788,
+        "p_raw": 0.752,
+        "fair_odds": -373,
+        "line": 19.5,
+        "side": "UNDER"
+      }
+    },
+    {
+      "matchup": "SEA @ LV",
+      "game_date": "2026-11-15",
       "player": "george holani",
       "team": "SEA",
       "opp_team": "LV",
@@ -14269,25 +13311,6 @@
         "market": "LONGEST_RUSH_UNDER_19.5",
         "p": 0.788,
         "p_raw": 0.768,
-        "fair_odds": -373,
-        "line": 19.5,
-        "side": "UNDER"
-      }
-    },
-    {
-      "matchup": "SEA @ LV",
-      "game_date": "2026-11-15",
-      "player": "ashton jeanty",
-      "team": "LV",
-      "opp_team": "SEA",
-      "stat_type": "longest_rush",
-      "opp_factor": 1.024,
-      "projection": 15.43,
-      "edge_class": "MODEL_UNDER",
-      "best_market": {
-        "market": "LONGEST_RUSH_UNDER_19.5",
-        "p": 0.788,
-        "p_raw": 0.752,
         "fair_odds": -373,
         "line": 19.5,
         "side": "UNDER"
@@ -14423,25 +13446,6 @@
         "p_raw": 0.739,
         "fair_odds": -373,
         "line": 19.5,
-        "side": "UNDER"
-      }
-    },
-    {
-      "matchup": "WSH @ NYG",
-      "game_date": "2026-11-12",
-      "player": "jameis winston",
-      "team": "NYG",
-      "opp_team": "WSH",
-      "stat_type": "pass_cmp",
-      "opp_factor": 1.03,
-      "projection": 16.64,
-      "edge_class": "MODEL_UNDER",
-      "best_market": {
-        "market": "PASS_CMP_UNDER_21.5",
-        "p": 0.787,
-        "p_raw": 0.856,
-        "fair_odds": -369,
-        "line": 21.5,
         "side": "UNDER"
       }
     },
@@ -14750,25 +13754,6 @@
       }
     },
     {
-      "matchup": "SEA @ LV",
-      "game_date": "2026-11-15",
-      "player": "drew lock",
-      "team": "SEA",
-      "opp_team": "LV",
-      "stat_type": "pass_cmp",
-      "opp_factor": 1.036,
-      "projection": 20.22,
-      "edge_class": "MODEL_UNDER",
-      "best_market": {
-        "market": "PASS_CMP_UNDER_25.5",
-        "p": 0.786,
-        "p_raw": 0.853,
-        "fair_odds": -367,
-        "line": 25.5,
-        "side": "UNDER"
-      }
-    },
-    {
       "matchup": "LAC @ BAL",
       "game_date": "2026-11-16",
       "player": "omarion hampton",
@@ -14803,25 +13788,6 @@
         "p_raw": 0.748,
         "fair_odds": -367,
         "line": 49.5,
-        "side": "UNDER"
-      }
-    },
-    {
-      "matchup": "LAC @ BAL",
-      "game_date": "2026-11-16",
-      "player": "justin herbert",
-      "team": "LAC",
-      "opp_team": "BAL",
-      "stat_type": "pass_cmp",
-      "opp_factor": 0.94,
-      "projection": 18.47,
-      "edge_class": "MODEL_UNDER",
-      "best_market": {
-        "market": "PASS_CMP_UNDER_23.5",
-        "p": 0.786,
-        "p_raw": 0.854,
-        "fair_odds": -368,
-        "line": 23.5,
         "side": "UNDER"
       }
     },
@@ -15054,25 +14020,6 @@
       }
     },
     {
-      "matchup": "SEA @ LV",
-      "game_date": "2026-11-15",
-      "player": "sam darnold",
-      "team": "SEA",
-      "opp_team": "LV",
-      "stat_type": "pass_cmp",
-      "opp_factor": 1.036,
-      "projection": 18.66,
-      "edge_class": "MODEL_UNDER",
-      "best_market": {
-        "market": "PASS_CMP_UNDER_23.5",
-        "p": 0.784,
-        "p_raw": 0.845,
-        "fair_odds": -363,
-        "line": 23.5,
-        "side": "UNDER"
-      }
-    },
-    {
       "matchup": "SF @ DAL",
       "game_date": "2026-11-15",
       "player": "brock purdy",
@@ -15113,6 +14060,25 @@
     {
       "matchup": "WSH @ NYG",
       "game_date": "2026-11-12",
+      "player": "malachi fields",
+      "team": "NYG",
+      "opp_team": "WSH",
+      "stat_type": "longest_reception",
+      "opp_factor": 1.03,
+      "projection": 21.02,
+      "edge_class": "MODEL_UNDER",
+      "best_market": {
+        "market": "LONGEST_REC_UNDER_34.5",
+        "p": 0.783,
+        "p_raw": 0.829,
+        "fair_odds": -361,
+        "line": 34.5,
+        "side": "UNDER"
+      }
+    },
+    {
+      "matchup": "WSH @ NYG",
+      "game_date": "2026-11-12",
       "player": "van jefferson",
       "team": "WSH",
       "opp_team": "NYG",
@@ -15145,25 +14111,6 @@
         "p_raw": 0.74,
         "fair_odds": -361,
         "line": 49.5,
-        "side": "UNDER"
-      }
-    },
-    {
-      "matchup": "WSH @ NYG",
-      "game_date": "2026-11-12",
-      "player": "malachi fields",
-      "team": "NYG",
-      "opp_team": "WSH",
-      "stat_type": "longest_reception",
-      "opp_factor": 1.03,
-      "projection": 21.02,
-      "edge_class": "MODEL_UNDER",
-      "best_market": {
-        "market": "LONGEST_REC_UNDER_34.5",
-        "p": 0.783,
-        "p_raw": 0.829,
-        "fair_odds": -361,
-        "line": 34.5,
         "side": "UNDER"
       }
     },
@@ -15208,25 +14155,6 @@
     {
       "matchup": "SF @ DAL",
       "game_date": "2026-11-15",
-      "player": "george pickens",
-      "team": "DAL",
-      "opp_team": "SF",
-      "stat_type": "rec",
-      "opp_factor": 0.988,
-      "projection": 5.35,
-      "edge_class": "MODEL_OVER",
-      "best_market": {
-        "market": "REC_OVER_3.5",
-        "p": 0.783,
-        "p_raw": 0.768,
-        "fair_odds": -361,
-        "line": 3.5,
-        "side": "OVER"
-      }
-    },
-    {
-      "matchup": "SF @ DAL",
-      "game_date": "2026-11-15",
       "player": "kaelon black",
       "team": "SF",
       "opp_team": "DAL",
@@ -15241,6 +14169,25 @@
         "fair_odds": -360,
         "line": 19.5,
         "side": "UNDER"
+      }
+    },
+    {
+      "matchup": "SF @ DAL",
+      "game_date": "2026-11-15",
+      "player": "george pickens",
+      "team": "DAL",
+      "opp_team": "SF",
+      "stat_type": "rec",
+      "opp_factor": 0.988,
+      "projection": 5.35,
+      "edge_class": "MODEL_OVER",
+      "best_market": {
+        "market": "REC_OVER_3.5",
+        "p": 0.783,
+        "p_raw": 0.768,
+        "fair_odds": -361,
+        "line": 3.5,
+        "side": "OVER"
       }
     },
     {
@@ -15259,25 +14206,6 @@
         "p_raw": 0.704,
         "fair_odds": -361,
         "line": 19.5,
-        "side": "UNDER"
-      }
-    },
-    {
-      "matchup": "LAC @ BAL",
-      "game_date": "2026-11-16",
-      "player": "justin herbert",
-      "team": "LAC",
-      "opp_team": "BAL",
-      "stat_type": "longest_rush",
-      "opp_factor": 0.97,
-      "projection": 13.14,
-      "edge_class": "MODEL_UNDER",
-      "best_market": {
-        "market": "LONGEST_RUSH_UNDER_16.5",
-        "p": 0.783,
-        "p_raw": 0.703,
-        "fair_odds": -361,
-        "line": 16.5,
         "side": "UNDER"
       }
     },
@@ -15316,6 +14244,25 @@
         "p_raw": 0.779,
         "fair_odds": -362,
         "line": 59.5,
+        "side": "UNDER"
+      }
+    },
+    {
+      "matchup": "LAC @ BAL",
+      "game_date": "2026-11-16",
+      "player": "justin herbert",
+      "team": "LAC",
+      "opp_team": "BAL",
+      "stat_type": "longest_rush",
+      "opp_factor": 0.97,
+      "projection": 13.14,
+      "edge_class": "MODEL_UNDER",
+      "best_market": {
+        "market": "LONGEST_RUSH_UNDER_16.5",
+        "p": 0.783,
+        "p_raw": 0.703,
+        "fair_odds": -361,
+        "line": 16.5,
         "side": "UNDER"
       }
     },
@@ -15434,24 +14381,6 @@
       }
     },
     {
-      "matchup": "LAC @ BAL",
-      "game_date": "2026-11-16",
-      "player": "jacoby brissett",
-      "team": "BAL",
-      "opp_team": "LAC",
-      "stat_type": "pass_td",
-      "opp_factor": 0.976,
-      "projection": 1.61,
-      "edge_class": "MODEL_UNDER",
-      "best_market": {
-        "market": "PASS_TD_UNDER_2.5",
-        "p": 0.782,
-        "fair_odds": -360,
-        "line": 2.5,
-        "side": "UNDER"
-      }
-    },
-    {
       "matchup": "JAX @ TEN",
       "game_date": "2026-11-15",
       "player": "nate boerkircher",
@@ -15549,44 +14478,6 @@
     {
       "matchup": "WSH @ NYG",
       "game_date": "2026-11-12",
-      "player": "stefon diggs",
-      "team": "WSH",
-      "opp_team": "NYG",
-      "stat_type": "longest_reception",
-      "opp_factor": 1.012,
-      "projection": 17.49,
-      "edge_class": "MODEL_UNDER",
-      "best_market": {
-        "market": "LONGEST_REC_UNDER_24.5",
-        "p": 0.78,
-        "p_raw": 0.827,
-        "fair_odds": -355,
-        "line": 24.5,
-        "side": "UNDER"
-      }
-    },
-    {
-      "matchup": "WSH @ NYG",
-      "game_date": "2026-11-12",
-      "player": "austin ekeler",
-      "team": "WSH",
-      "opp_team": "NYG",
-      "stat_type": "longest_rush",
-      "opp_factor": 1.03,
-      "projection": 10.12,
-      "edge_class": "MODEL_UNDER",
-      "best_market": {
-        "market": "LONGEST_RUSH_UNDER_12.5",
-        "p": 0.78,
-        "p_raw": 0.685,
-        "fair_odds": -355,
-        "line": 12.5,
-        "side": "UNDER"
-      }
-    },
-    {
-      "matchup": "WSH @ NYG",
-      "game_date": "2026-11-12",
       "player": "devin singletary",
       "team": "NYG",
       "opp_team": "WSH",
@@ -15642,6 +14533,44 @@
       }
     },
     {
+      "matchup": "WSH @ NYG",
+      "game_date": "2026-11-12",
+      "player": "stefon diggs",
+      "team": "WSH",
+      "opp_team": "NYG",
+      "stat_type": "longest_reception",
+      "opp_factor": 1.012,
+      "projection": 17.49,
+      "edge_class": "MODEL_UNDER",
+      "best_market": {
+        "market": "LONGEST_REC_UNDER_24.5",
+        "p": 0.78,
+        "p_raw": 0.827,
+        "fair_odds": -355,
+        "line": 24.5,
+        "side": "UNDER"
+      }
+    },
+    {
+      "matchup": "WSH @ NYG",
+      "game_date": "2026-11-12",
+      "player": "austin ekeler",
+      "team": "WSH",
+      "opp_team": "NYG",
+      "stat_type": "longest_rush",
+      "opp_factor": 1.03,
+      "projection": 10.12,
+      "edge_class": "MODEL_UNDER",
+      "best_market": {
+        "market": "LONGEST_RUSH_UNDER_12.5",
+        "p": 0.78,
+        "p_raw": 0.685,
+        "fair_odds": -355,
+        "line": 12.5,
+        "side": "UNDER"
+      }
+    },
+    {
       "matchup": "NE @ DET",
       "game_date": "2026-11-15",
       "player": "jahmyr gibbs",
@@ -15655,6 +14584,25 @@
         "market": "LONGEST_RUSH_UNDER_24.5",
         "p": 0.78,
         "p_raw": 0.631,
+        "fair_odds": -354,
+        "line": 24.5,
+        "side": "UNDER"
+      }
+    },
+    {
+      "matchup": "KC @ ATL",
+      "game_date": "2026-11-15",
+      "player": "bijan robinson",
+      "team": "ATL",
+      "opp_team": "KC",
+      "stat_type": "longest_rush",
+      "opp_factor": 0.982,
+      "projection": 22.83,
+      "edge_class": "MODEL_UNDER",
+      "best_market": {
+        "market": "LONGEST_RUSH_UNDER_24.5",
+        "p": 0.78,
+        "p_raw": 0.643,
         "fair_odds": -354,
         "line": 24.5,
         "side": "UNDER"
@@ -15718,25 +14666,6 @@
       }
     },
     {
-      "matchup": "KC @ ATL",
-      "game_date": "2026-11-15",
-      "player": "bijan robinson",
-      "team": "ATL",
-      "opp_team": "KC",
-      "stat_type": "longest_rush",
-      "opp_factor": 0.982,
-      "projection": 22.83,
-      "edge_class": "MODEL_UNDER",
-      "best_market": {
-        "market": "LONGEST_RUSH_UNDER_24.5",
-        "p": 0.78,
-        "p_raw": 0.643,
-        "fair_odds": -354,
-        "line": 24.5,
-        "side": "UNDER"
-      }
-    },
-    {
       "matchup": "HOU @ CLE",
       "game_date": "2026-11-15",
       "player": "dylan sampson",
@@ -15777,25 +14706,6 @@
     {
       "matchup": "MIN @ GB",
       "game_date": "2026-11-15",
-      "player": "josh jacobs",
-      "team": "GB",
-      "opp_team": "MIN",
-      "stat_type": "longest_rush",
-      "opp_factor": 0.94,
-      "projection": 14.72,
-      "edge_class": "MODEL_UNDER",
-      "best_market": {
-        "market": "LONGEST_RUSH_UNDER_16.5",
-        "p": 0.78,
-        "p_raw": 0.664,
-        "fair_odds": -354,
-        "line": 16.5,
-        "side": "UNDER"
-      }
-    },
-    {
-      "matchup": "MIN @ GB",
-      "game_date": "2026-11-15",
       "player": "jordan addison",
       "team": "MIN",
       "opp_team": "GB",
@@ -15826,6 +14736,25 @@
         "market": "LONGEST_RUSH_UNDER_16.5",
         "p": 0.78,
         "p_raw": 0.518,
+        "fair_odds": -354,
+        "line": 16.5,
+        "side": "UNDER"
+      }
+    },
+    {
+      "matchup": "MIN @ GB",
+      "game_date": "2026-11-15",
+      "player": "josh jacobs",
+      "team": "GB",
+      "opp_team": "MIN",
+      "stat_type": "longest_rush",
+      "opp_factor": 0.94,
+      "projection": 14.72,
+      "edge_class": "MODEL_UNDER",
+      "best_market": {
+        "market": "LONGEST_RUSH_UNDER_16.5",
+        "p": 0.78,
+        "p_raw": 0.664,
         "fair_odds": -354,
         "line": 16.5,
         "side": "UNDER"
@@ -16100,25 +15029,6 @@
     {
       "matchup": "SF @ DAL",
       "game_date": "2026-11-15",
-      "player": "javonte williams",
-      "team": "DAL",
-      "opp_team": "SF",
-      "stat_type": "longest_rush",
-      "opp_factor": 0.982,
-      "projection": 18.91,
-      "edge_class": "MODEL_UNDER",
-      "best_market": {
-        "market": "LONGEST_RUSH_UNDER_19.5",
-        "p": 0.78,
-        "p_raw": 0.599,
-        "fair_odds": -354,
-        "line": 19.5,
-        "side": "UNDER"
-      }
-    },
-    {
-      "matchup": "SF @ DAL",
-      "game_date": "2026-11-15",
       "player": "brock purdy",
       "team": "SF",
       "opp_team": "DAL",
@@ -16151,6 +15061,25 @@
         "p_raw": 0.734,
         "fair_odds": -356,
         "line": 79.5,
+        "side": "UNDER"
+      }
+    },
+    {
+      "matchup": "SF @ DAL",
+      "game_date": "2026-11-15",
+      "player": "javonte williams",
+      "team": "DAL",
+      "opp_team": "SF",
+      "stat_type": "longest_rush",
+      "opp_factor": 0.982,
+      "projection": 18.91,
+      "edge_class": "MODEL_UNDER",
+      "best_market": {
+        "market": "LONGEST_RUSH_UNDER_19.5",
+        "p": 0.78,
+        "p_raw": 0.599,
+        "fair_odds": -354,
+        "line": 19.5,
         "side": "UNDER"
       }
     },
@@ -16189,44 +15118,6 @@
         "p_raw": 0.611,
         "fair_odds": -354,
         "line": 24.5,
-        "side": "UNDER"
-      }
-    },
-    {
-      "matchup": "LAC @ BAL",
-      "game_date": "2026-11-16",
-      "player": "keaton mitchell",
-      "team": "LAC",
-      "opp_team": "BAL",
-      "stat_type": "longest_rush",
-      "opp_factor": 0.97,
-      "projection": 11.43,
-      "edge_class": "MODEL_UNDER",
-      "best_market": {
-        "market": "LONGEST_RUSH_UNDER_12.5",
-        "p": 0.78,
-        "p_raw": 0.62,
-        "fair_odds": -354,
-        "line": 12.5,
-        "side": "UNDER"
-      }
-    },
-    {
-      "matchup": "LAC @ BAL",
-      "game_date": "2026-11-16",
-      "player": "kimani vidal",
-      "team": "LAC",
-      "opp_team": "BAL",
-      "stat_type": "longest_rush",
-      "opp_factor": 0.97,
-      "projection": 14.31,
-      "edge_class": "MODEL_UNDER",
-      "best_market": {
-        "market": "LONGEST_RUSH_UNDER_16.5",
-        "p": 0.78,
-        "p_raw": 0.664,
-        "fair_odds": -354,
-        "line": 16.5,
         "side": "UNDER"
       }
     },
@@ -16282,6 +15173,44 @@
         "market": "LONGEST_RUSH_UNDER_16.5",
         "p": 0.78,
         "p_raw": 0.504,
+        "fair_odds": -354,
+        "line": 16.5,
+        "side": "UNDER"
+      }
+    },
+    {
+      "matchup": "LAC @ BAL",
+      "game_date": "2026-11-16",
+      "player": "keaton mitchell",
+      "team": "LAC",
+      "opp_team": "BAL",
+      "stat_type": "longest_rush",
+      "opp_factor": 0.97,
+      "projection": 11.43,
+      "edge_class": "MODEL_UNDER",
+      "best_market": {
+        "market": "LONGEST_RUSH_UNDER_12.5",
+        "p": 0.78,
+        "p_raw": 0.62,
+        "fair_odds": -354,
+        "line": 12.5,
+        "side": "UNDER"
+      }
+    },
+    {
+      "matchup": "LAC @ BAL",
+      "game_date": "2026-11-16",
+      "player": "kimani vidal",
+      "team": "LAC",
+      "opp_team": "BAL",
+      "stat_type": "longest_rush",
+      "opp_factor": 0.97,
+      "projection": 14.31,
+      "edge_class": "MODEL_UNDER",
+      "best_market": {
+        "market": "LONGEST_RUSH_UNDER_16.5",
+        "p": 0.78,
+        "p_raw": 0.664,
         "fair_odds": -354,
         "line": 16.5,
         "side": "UNDER"
@@ -16460,25 +15389,6 @@
     {
       "matchup": "SF @ DAL",
       "game_date": "2026-11-15",
-      "player": "tyler goodson",
-      "team": "DAL",
-      "opp_team": "SF",
-      "stat_type": "rush_yds",
-      "opp_factor": 0.982,
-      "projection": 26.7,
-      "edge_class": "MODEL_UNDER",
-      "best_market": {
-        "market": "RUSH_YDS_UNDER_39.5",
-        "p": 0.776,
-        "p_raw": 0.77,
-        "fair_odds": -346,
-        "line": 39.5,
-        "side": "UNDER"
-      }
-    },
-    {
-      "matchup": "SF @ DAL",
-      "game_date": "2026-11-15",
       "player": "christian mccaffrey",
       "team": "SF",
       "opp_team": "DAL",
@@ -16492,6 +15402,25 @@
         "p_raw": 0.773,
         "fair_odds": -345,
         "line": 5.5,
+        "side": "UNDER"
+      }
+    },
+    {
+      "matchup": "SF @ DAL",
+      "game_date": "2026-11-15",
+      "player": "tyler goodson",
+      "team": "DAL",
+      "opp_team": "SF",
+      "stat_type": "rush_yds",
+      "opp_factor": 0.982,
+      "projection": 26.7,
+      "edge_class": "MODEL_UNDER",
+      "best_market": {
+        "market": "RUSH_YDS_UNDER_39.5",
+        "p": 0.776,
+        "p_raw": 0.77,
+        "fair_odds": -346,
+        "line": 39.5,
         "side": "UNDER"
       }
     },
@@ -16644,25 +15573,6 @@
         "p_raw": 0.821,
         "fair_odds": -342,
         "line": 34.5,
-        "side": "UNDER"
-      }
-    },
-    {
-      "matchup": "KC @ ATL",
-      "game_date": "2026-11-15",
-      "player": "justin fields",
-      "team": "KC",
-      "opp_team": "ATL",
-      "stat_type": "pass_cmp",
-      "opp_factor": 1.03,
-      "projection": 21.13,
-      "edge_class": "MODEL_UNDER",
-      "best_market": {
-        "market": "PASS_CMP_UNDER_25.5",
-        "p": 0.774,
-        "p_raw": 0.795,
-        "fair_odds": -342,
-        "line": 25.5,
         "side": "UNDER"
       }
     },
@@ -17066,25 +15976,6 @@
     {
       "matchup": "WSH @ NYG",
       "game_date": "2026-11-12",
-      "player": "antonio williams",
-      "team": "WSH",
-      "opp_team": "NYG",
-      "stat_type": "longest_reception",
-      "opp_factor": 1.012,
-      "projection": 17.21,
-      "edge_class": "MODEL_UNDER",
-      "best_market": {
-        "market": "LONGEST_REC_UNDER_24.5",
-        "p": 0.767,
-        "p_raw": 0.786,
-        "fair_odds": -329,
-        "line": 24.5,
-        "side": "UNDER"
-      }
-    },
-    {
-      "matchup": "WSH @ NYG",
-      "game_date": "2026-11-12",
       "player": "malik nabers",
       "team": "NYG",
       "opp_team": "WSH",
@@ -17098,6 +15989,25 @@
         "p_raw": 0.811,
         "fair_odds": -329,
         "line": 34.5,
+        "side": "UNDER"
+      }
+    },
+    {
+      "matchup": "WSH @ NYG",
+      "game_date": "2026-11-12",
+      "player": "antonio williams",
+      "team": "WSH",
+      "opp_team": "NYG",
+      "stat_type": "longest_reception",
+      "opp_factor": 1.012,
+      "projection": 17.21,
+      "edge_class": "MODEL_UNDER",
+      "best_market": {
+        "market": "LONGEST_REC_UNDER_24.5",
+        "p": 0.767,
+        "p_raw": 0.786,
+        "fair_odds": -329,
+        "line": 24.5,
         "side": "UNDER"
       }
     },
@@ -17218,6 +16128,25 @@
     {
       "matchup": "MIN @ GB",
       "game_date": "2026-11-15",
+      "player": "tj hockenson",
+      "team": "MIN",
+      "opp_team": "GB",
+      "stat_type": "longest_reception",
+      "opp_factor": 0.97,
+      "projection": 17.65,
+      "edge_class": "MODEL_UNDER",
+      "best_market": {
+        "market": "LONGEST_REC_UNDER_24.5",
+        "p": 0.767,
+        "p_raw": 0.788,
+        "fair_odds": -329,
+        "line": 24.5,
+        "side": "UNDER"
+      }
+    },
+    {
+      "matchup": "MIN @ GB",
+      "game_date": "2026-11-15",
       "player": "josh jacobs",
       "team": "GB",
       "opp_team": "MIN",
@@ -17269,25 +16198,6 @@
         "p_raw": 0.778,
         "fair_odds": -329,
         "line": 19.5,
-        "side": "UNDER"
-      }
-    },
-    {
-      "matchup": "MIN @ GB",
-      "game_date": "2026-11-15",
-      "player": "tj hockenson",
-      "team": "MIN",
-      "opp_team": "GB",
-      "stat_type": "longest_reception",
-      "opp_factor": 0.97,
-      "projection": 17.65,
-      "edge_class": "MODEL_UNDER",
-      "best_market": {
-        "market": "LONGEST_REC_UNDER_24.5",
-        "p": 0.767,
-        "p_raw": 0.788,
-        "fair_odds": -329,
-        "line": 24.5,
         "side": "UNDER"
       }
     },
@@ -17484,25 +16394,6 @@
     {
       "matchup": "SEA @ LV",
       "game_date": "2026-11-15",
-      "player": "zach charbonnet",
-      "team": "SEA",
-      "opp_team": "LV",
-      "stat_type": "rush_yds",
-      "opp_factor": 1.042,
-      "projection": 50.59,
-      "edge_class": "MODEL_UNDER",
-      "best_market": {
-        "market": "RUSH_YDS_UNDER_69.5",
-        "p": 0.767,
-        "p_raw": 0.761,
-        "fair_odds": -330,
-        "line": 69.5,
-        "side": "UNDER"
-      }
-    },
-    {
-      "matchup": "SEA @ LV",
-      "game_date": "2026-11-15",
       "player": "jalen nailor",
       "team": "LV",
       "opp_team": "SEA",
@@ -17516,6 +16407,25 @@
         "p_raw": 0.787,
         "fair_odds": -329,
         "line": 19.5,
+        "side": "UNDER"
+      }
+    },
+    {
+      "matchup": "SEA @ LV",
+      "game_date": "2026-11-15",
+      "player": "zach charbonnet",
+      "team": "SEA",
+      "opp_team": "LV",
+      "stat_type": "rush_yds",
+      "opp_factor": 1.042,
+      "projection": 50.59,
+      "edge_class": "MODEL_UNDER",
+      "best_market": {
+        "market": "RUSH_YDS_UNDER_69.5",
+        "p": 0.767,
+        "p_raw": 0.761,
+        "fair_odds": -330,
+        "line": 69.5,
         "side": "UNDER"
       }
     },
@@ -17712,63 +16622,6 @@
     {
       "matchup": "LAC @ BAL",
       "game_date": "2026-11-16",
-      "player": "tre harris",
-      "team": "LAC",
-      "opp_team": "BAL",
-      "stat_type": "longest_reception",
-      "opp_factor": 0.94,
-      "projection": 21.14,
-      "edge_class": "MODEL_UNDER",
-      "best_market": {
-        "market": "LONGEST_REC_UNDER_34.5",
-        "p": 0.767,
-        "p_raw": 0.796,
-        "fair_odds": -329,
-        "line": 34.5,
-        "side": "UNDER"
-      }
-    },
-    {
-      "matchup": "LAC @ BAL",
-      "game_date": "2026-11-16",
-      "player": "quentin johnston",
-      "team": "LAC",
-      "opp_team": "BAL",
-      "stat_type": "longest_reception",
-      "opp_factor": 0.94,
-      "projection": 16.83,
-      "edge_class": "MODEL_UNDER",
-      "best_market": {
-        "market": "LONGEST_REC_UNDER_24.5",
-        "p": 0.767,
-        "p_raw": 0.806,
-        "fair_odds": -329,
-        "line": 24.5,
-        "side": "UNDER"
-      }
-    },
-    {
-      "matchup": "LAC @ BAL",
-      "game_date": "2026-11-16",
-      "player": "charlie kolar",
-      "team": "LAC",
-      "opp_team": "BAL",
-      "stat_type": "longest_reception",
-      "opp_factor": 0.94,
-      "projection": 12.85,
-      "edge_class": "MODEL_UNDER",
-      "best_market": {
-        "market": "LONGEST_REC_UNDER_19.5",
-        "p": 0.767,
-        "p_raw": 0.791,
-        "fair_odds": -329,
-        "line": 19.5,
-        "side": "UNDER"
-      }
-    },
-    {
-      "matchup": "LAC @ BAL",
-      "game_date": "2026-11-16",
       "player": "mark andrews",
       "team": "BAL",
       "opp_team": "LAC",
@@ -17837,6 +16690,63 @@
         "market": "LONGEST_REC_UNDER_19.5",
         "p": 0.767,
         "p_raw": 0.804,
+        "fair_odds": -329,
+        "line": 19.5,
+        "side": "UNDER"
+      }
+    },
+    {
+      "matchup": "LAC @ BAL",
+      "game_date": "2026-11-16",
+      "player": "tre harris",
+      "team": "LAC",
+      "opp_team": "BAL",
+      "stat_type": "longest_reception",
+      "opp_factor": 0.94,
+      "projection": 21.14,
+      "edge_class": "MODEL_UNDER",
+      "best_market": {
+        "market": "LONGEST_REC_UNDER_34.5",
+        "p": 0.767,
+        "p_raw": 0.796,
+        "fair_odds": -329,
+        "line": 34.5,
+        "side": "UNDER"
+      }
+    },
+    {
+      "matchup": "LAC @ BAL",
+      "game_date": "2026-11-16",
+      "player": "quentin johnston",
+      "team": "LAC",
+      "opp_team": "BAL",
+      "stat_type": "longest_reception",
+      "opp_factor": 0.94,
+      "projection": 16.83,
+      "edge_class": "MODEL_UNDER",
+      "best_market": {
+        "market": "LONGEST_REC_UNDER_24.5",
+        "p": 0.767,
+        "p_raw": 0.806,
+        "fair_odds": -329,
+        "line": 24.5,
+        "side": "UNDER"
+      }
+    },
+    {
+      "matchup": "LAC @ BAL",
+      "game_date": "2026-11-16",
+      "player": "charlie kolar",
+      "team": "LAC",
+      "opp_team": "BAL",
+      "stat_type": "longest_reception",
+      "opp_factor": 0.94,
+      "projection": 12.85,
+      "edge_class": "MODEL_UNDER",
+      "best_market": {
+        "market": "LONGEST_REC_UNDER_19.5",
+        "p": 0.767,
+        "p_raw": 0.791,
         "fair_odds": -329,
         "line": 19.5,
         "side": "UNDER"
@@ -18147,25 +17057,6 @@
       }
     },
     {
-      "matchup": "MIN @ GB",
-      "game_date": "2026-11-15",
-      "player": "carson wentz",
-      "team": "MIN",
-      "opp_team": "GB",
-      "stat_type": "pass_yds",
-      "opp_factor": 0.97,
-      "projection": 115.76,
-      "edge_class": "MODEL_UNDER",
-      "best_market": {
-        "market": "PASS_YDS_UNDER_299.5",
-        "p": 0.764,
-        "p_raw": 1.0,
-        "fair_odds": -323,
-        "line": 299.5,
-        "side": "UNDER"
-      }
-    },
-    {
       "matchup": "BUF @ NYJ",
       "game_date": "2026-11-15",
       "player": "isaiah williams",
@@ -18223,44 +17114,6 @@
       }
     },
     {
-      "matchup": "KC @ ATL",
-      "game_date": "2026-11-15",
-      "player": "justin fields",
-      "team": "KC",
-      "opp_team": "ATL",
-      "stat_type": "pass_yds",
-      "opp_factor": 1.03,
-      "projection": 144.27,
-      "edge_class": "MODEL_UNDER",
-      "best_market": {
-        "market": "PASS_YDS_UNDER_299.5",
-        "p": 0.763,
-        "p_raw": 0.997,
-        "fair_odds": -322,
-        "line": 299.5,
-        "side": "UNDER"
-      }
-    },
-    {
-      "matchup": "KC @ ATL",
-      "game_date": "2026-11-15",
-      "player": "patrick mahomes",
-      "team": "KC",
-      "opp_team": "ATL",
-      "stat_type": "pass_cmp",
-      "opp_factor": 1.03,
-      "projection": 22.06,
-      "edge_class": "MODEL_UNDER",
-      "best_market": {
-        "market": "PASS_CMP_UNDER_25.5",
-        "p": 0.763,
-        "p_raw": 0.746,
-        "fair_odds": -321,
-        "line": 25.5,
-        "side": "UNDER"
-      }
-    },
-    {
       "matchup": "HOU @ CLE",
       "game_date": "2026-11-15",
       "player": "shedeur sanders",
@@ -18314,25 +17167,6 @@
         "p_raw": 0.764,
         "fair_odds": -322,
         "line": 24.5,
-        "side": "UNDER"
-      }
-    },
-    {
-      "matchup": "LAC @ BAL",
-      "game_date": "2026-11-16",
-      "player": "tyler huntley",
-      "team": "BAL",
-      "opp_team": "LAC",
-      "stat_type": "pass_yds",
-      "opp_factor": 0.976,
-      "projection": 143.41,
-      "edge_class": "MODEL_UNDER",
-      "best_market": {
-        "market": "PASS_YDS_UNDER_299.5",
-        "p": 0.763,
-        "p_raw": 0.996,
-        "fair_odds": -322,
-        "line": 299.5,
         "side": "UNDER"
       }
     },
@@ -18433,25 +17267,6 @@
     {
       "matchup": "WSH @ NYG",
       "game_date": "2026-11-12",
-      "player": "chig okonkwo",
-      "team": "WSH",
-      "opp_team": "NYG",
-      "stat_type": "longest_reception",
-      "opp_factor": 1.012,
-      "projection": 18.59,
-      "edge_class": "MODEL_UNDER",
-      "best_market": {
-        "market": "LONGEST_REC_UNDER_24.5",
-        "p": 0.761,
-        "p_raw": 0.746,
-        "fair_odds": -318,
-        "line": 24.5,
-        "side": "UNDER"
-      }
-    },
-    {
-      "matchup": "WSH @ NYG",
-      "game_date": "2026-11-12",
       "player": "darnell mooney",
       "team": "NYG",
       "opp_team": "WSH",
@@ -18465,6 +17280,25 @@
         "p_raw": 0.756,
         "fair_odds": -318,
         "line": 19.5,
+        "side": "UNDER"
+      }
+    },
+    {
+      "matchup": "WSH @ NYG",
+      "game_date": "2026-11-12",
+      "player": "chig okonkwo",
+      "team": "WSH",
+      "opp_team": "NYG",
+      "stat_type": "longest_reception",
+      "opp_factor": 1.012,
+      "projection": 18.59,
+      "edge_class": "MODEL_UNDER",
+      "best_market": {
+        "market": "LONGEST_REC_UNDER_24.5",
+        "p": 0.761,
+        "p_raw": 0.746,
+        "fair_odds": -318,
+        "line": 24.5,
         "side": "UNDER"
       }
     },
@@ -18503,6 +17337,44 @@
         "p_raw": 0.744,
         "fair_odds": -318,
         "line": 34.5,
+        "side": "UNDER"
+      }
+    },
+    {
+      "matchup": "KC @ ATL",
+      "game_date": "2026-11-15",
+      "player": "jahan dotson",
+      "team": "ATL",
+      "opp_team": "KC",
+      "stat_type": "longest_reception",
+      "opp_factor": 0.976,
+      "projection": 24.14,
+      "edge_class": "MODEL_UNDER",
+      "best_market": {
+        "market": "LONGEST_REC_UNDER_34.5",
+        "p": 0.761,
+        "p_raw": 0.73,
+        "fair_odds": -318,
+        "line": 34.5,
+        "side": "UNDER"
+      }
+    },
+    {
+      "matchup": "KC @ ATL",
+      "game_date": "2026-11-15",
+      "player": "drake london",
+      "team": "ATL",
+      "opp_team": "KC",
+      "stat_type": "longest_reception",
+      "opp_factor": 0.976,
+      "projection": 23.89,
+      "edge_class": "MODEL_UNDER",
+      "best_market": {
+        "market": "LONGEST_REC_UNDER_29.5",
+        "p": 0.761,
+        "p_raw": 0.747,
+        "fair_odds": -318,
+        "line": 29.5,
         "side": "UNDER"
       }
     },
@@ -18583,44 +17455,6 @@
       }
     },
     {
-      "matchup": "KC @ ATL",
-      "game_date": "2026-11-15",
-      "player": "jahan dotson",
-      "team": "ATL",
-      "opp_team": "KC",
-      "stat_type": "longest_reception",
-      "opp_factor": 0.976,
-      "projection": 24.14,
-      "edge_class": "MODEL_UNDER",
-      "best_market": {
-        "market": "LONGEST_REC_UNDER_34.5",
-        "p": 0.761,
-        "p_raw": 0.73,
-        "fair_odds": -318,
-        "line": 34.5,
-        "side": "UNDER"
-      }
-    },
-    {
-      "matchup": "KC @ ATL",
-      "game_date": "2026-11-15",
-      "player": "drake london",
-      "team": "ATL",
-      "opp_team": "KC",
-      "stat_type": "longest_reception",
-      "opp_factor": 0.976,
-      "projection": 23.89,
-      "edge_class": "MODEL_UNDER",
-      "best_market": {
-        "market": "LONGEST_REC_UNDER_29.5",
-        "p": 0.761,
-        "p_raw": 0.747,
-        "fair_odds": -318,
-        "line": 29.5,
-        "side": "UNDER"
-      }
-    },
-    {
       "matchup": "HOU @ CLE",
       "game_date": "2026-11-15",
       "player": "kc concepcion",
@@ -18693,25 +17527,6 @@
         "p_raw": 0.739,
         "fair_odds": -318,
         "line": 24.5,
-        "side": "UNDER"
-      }
-    },
-    {
-      "matchup": "MIN @ GB",
-      "game_date": "2026-11-15",
-      "player": "kyler murray",
-      "team": "MIN",
-      "opp_team": "GB",
-      "stat_type": "pass_yds",
-      "opp_factor": 0.97,
-      "projection": 164.49,
-      "edge_class": "MODEL_UNDER",
-      "best_market": {
-        "market": "PASS_YDS_UNDER_299.5",
-        "p": 0.761,
-        "p_raw": 0.987,
-        "fair_odds": -318,
-        "line": 299.5,
         "side": "UNDER"
       }
     },
@@ -18927,25 +17742,6 @@
     {
       "matchup": "SEA @ LV",
       "game_date": "2026-11-15",
-      "player": "jadarian price",
-      "team": "SEA",
-      "opp_team": "LV",
-      "stat_type": "rush_yds",
-      "opp_factor": 1.042,
-      "projection": 36.11,
-      "edge_class": "MODEL_UNDER",
-      "best_market": {
-        "market": "RUSH_YDS_UNDER_49.5",
-        "p": 0.761,
-        "p_raw": 0.754,
-        "fair_odds": -319,
-        "line": 49.5,
-        "side": "UNDER"
-      }
-    },
-    {
-      "matchup": "SEA @ LV",
-      "game_date": "2026-11-15",
       "player": "jack bech",
       "team": "LV",
       "opp_team": "SEA",
@@ -18978,6 +17774,25 @@
         "p_raw": 0.734,
         "fair_odds": -318,
         "line": 34.5,
+        "side": "UNDER"
+      }
+    },
+    {
+      "matchup": "SEA @ LV",
+      "game_date": "2026-11-15",
+      "player": "jadarian price",
+      "team": "SEA",
+      "opp_team": "LV",
+      "stat_type": "rush_yds",
+      "opp_factor": 1.042,
+      "projection": 36.11,
+      "edge_class": "MODEL_UNDER",
+      "best_market": {
+        "market": "RUSH_YDS_UNDER_49.5",
+        "p": 0.761,
+        "p_raw": 0.754,
+        "fair_odds": -319,
+        "line": 49.5,
         "side": "UNDER"
       }
     },
@@ -19060,25 +17875,6 @@
     {
       "matchup": "LAC @ BAL",
       "game_date": "2026-11-16",
-      "player": "ladd mcconkey",
-      "team": "LAC",
-      "opp_team": "BAL",
-      "stat_type": "longest_reception",
-      "opp_factor": 0.94,
-      "projection": 18.86,
-      "edge_class": "MODEL_UNDER",
-      "best_market": {
-        "market": "LONGEST_REC_UNDER_24.5",
-        "p": 0.761,
-        "p_raw": 0.748,
-        "fair_odds": -318,
-        "line": 24.5,
-        "side": "UNDER"
-      }
-    },
-    {
-      "matchup": "LAC @ BAL",
-      "game_date": "2026-11-16",
       "player": "zay flowers",
       "team": "BAL",
       "opp_team": "LAC",
@@ -19096,21 +17892,21 @@
       }
     },
     {
-      "matchup": "WSH @ NYG",
-      "game_date": "2026-11-12",
-      "player": "jameis winston",
-      "team": "NYG",
-      "opp_team": "WSH",
-      "stat_type": "pass_yds",
-      "opp_factor": 1.03,
-      "projection": 170.12,
+      "matchup": "LAC @ BAL",
+      "game_date": "2026-11-16",
+      "player": "ladd mcconkey",
+      "team": "LAC",
+      "opp_team": "BAL",
+      "stat_type": "longest_reception",
+      "opp_factor": 0.94,
+      "projection": 18.86,
       "edge_class": "MODEL_UNDER",
       "best_market": {
-        "market": "PASS_YDS_UNDER_299.5",
-        "p": 0.759,
-        "p_raw": 0.978,
-        "fair_odds": -315,
-        "line": 299.5,
+        "market": "LONGEST_REC_UNDER_24.5",
+        "p": 0.761,
+        "p_raw": 0.748,
+        "fair_odds": -318,
+        "line": 24.5,
         "side": "UNDER"
       }
     },
@@ -19130,25 +17926,6 @@
         "p_raw": 0.717,
         "fair_odds": -314,
         "line": 59.5,
-        "side": "UNDER"
-      }
-    },
-    {
-      "matchup": "MIN @ GB",
-      "game_date": "2026-11-15",
-      "player": "kirk cousins",
-      "team": "MIN",
-      "opp_team": "GB",
-      "stat_type": "pass_cmp",
-      "opp_factor": 0.97,
-      "projection": 22.45,
-      "edge_class": "MODEL_UNDER",
-      "best_market": {
-        "market": "PASS_CMP_UNDER_25.5",
-        "p": 0.759,
-        "p_raw": 0.728,
-        "fair_odds": -314,
-        "line": 25.5,
         "side": "UNDER"
       }
     },
@@ -19266,25 +18043,6 @@
       }
     },
     {
-      "matchup": "MIA @ IND",
-      "game_date": "2026-11-15",
-      "player": "malik willis",
-      "team": "MIA",
-      "opp_team": "IND",
-      "stat_type": "pass_yds",
-      "opp_factor": 1.024,
-      "projection": 182.0,
-      "edge_class": "MODEL_UNDER",
-      "best_market": {
-        "market": "PASS_YDS_UNDER_299.5",
-        "p": 0.754,
-        "p_raw": 0.956,
-        "fair_odds": -307,
-        "line": 299.5,
-        "side": "UNDER"
-      }
-    },
-    {
       "matchup": "CAR @ NO",
       "game_date": "2026-11-15",
       "player": "jalen coker",
@@ -19398,21 +18156,21 @@
       }
     },
     {
-      "matchup": "LAC @ BAL",
-      "game_date": "2026-11-16",
-      "player": "justin herbert",
-      "team": "LAC",
-      "opp_team": "BAL",
-      "stat_type": "pass_int",
-      "opp_factor": 0.94,
-      "projection": 1.36,
-      "edge_class": "MODEL_OVER",
+      "matchup": "KC @ ATL",
+      "game_date": "2026-11-15",
+      "player": "michael penix",
+      "team": "ATL",
+      "opp_team": "KC",
+      "stat_type": "pass_td",
+      "opp_factor": 0.976,
+      "projection": 0.98,
+      "edge_class": "MODEL_UNDER",
       "best_market": {
-        "market": "PASS_INT_OVER_0.5",
-        "p": 0.753,
-        "fair_odds": -306,
-        "line": 0.5,
-        "side": "OVER"
+        "market": "PASS_TD_UNDER_1.5",
+        "p": 0.752,
+        "fair_odds": -302,
+        "line": 1.5,
+        "side": "UNDER"
       }
     },
     {
@@ -19431,24 +18189,6 @@
         "p_raw": 0.711,
         "fair_odds": -302,
         "line": 79.5,
-        "side": "UNDER"
-      }
-    },
-    {
-      "matchup": "KC @ ATL",
-      "game_date": "2026-11-15",
-      "player": "michael penix",
-      "team": "ATL",
-      "opp_team": "KC",
-      "stat_type": "pass_td",
-      "opp_factor": 0.976,
-      "projection": 0.98,
-      "edge_class": "MODEL_UNDER",
-      "best_market": {
-        "market": "PASS_TD_UNDER_1.5",
-        "p": 0.752,
-        "fair_odds": -302,
-        "line": 1.5,
         "side": "UNDER"
       }
     },
@@ -19626,6 +18366,25 @@
     {
       "matchup": "MIN @ GB",
       "game_date": "2026-11-15",
+      "player": "tj hockenson",
+      "team": "MIN",
+      "opp_team": "GB",
+      "stat_type": "rec",
+      "opp_factor": 0.97,
+      "projection": 3.38,
+      "edge_class": "MODEL_UNDER",
+      "best_market": {
+        "market": "REC_UNDER_4.5",
+        "p": 0.75,
+        "p_raw": 0.742,
+        "fair_odds": -300,
+        "line": 4.5,
+        "side": "UNDER"
+      }
+    },
+    {
+      "matchup": "MIN @ GB",
+      "game_date": "2026-11-15",
       "player": "marshawn lloyd",
       "team": "GB",
       "opp_team": "MIN",
@@ -19658,25 +18417,6 @@
         "p_raw": 0.758,
         "fair_odds": -300,
         "line": 3.5,
-        "side": "UNDER"
-      }
-    },
-    {
-      "matchup": "MIN @ GB",
-      "game_date": "2026-11-15",
-      "player": "tj hockenson",
-      "team": "MIN",
-      "opp_team": "GB",
-      "stat_type": "rec",
-      "opp_factor": 0.97,
-      "projection": 3.38,
-      "edge_class": "MODEL_UNDER",
-      "best_market": {
-        "market": "REC_UNDER_4.5",
-        "p": 0.75,
-        "p_raw": 0.742,
-        "fair_odds": -300,
-        "line": 4.5,
         "side": "UNDER"
       }
     },
@@ -20044,25 +18784,6 @@
     {
       "matchup": "LAC @ BAL",
       "game_date": "2026-11-16",
-      "player": "oronde gadsden",
-      "team": "LAC",
-      "opp_team": "BAL",
-      "stat_type": "rec",
-      "opp_factor": 0.94,
-      "projection": 3.24,
-      "edge_class": "MODEL_UNDER",
-      "best_market": {
-        "market": "REC_UNDER_4.5",
-        "p": 0.75,
-        "p_raw": 0.746,
-        "fair_odds": -300,
-        "line": 4.5,
-        "side": "UNDER"
-      }
-    },
-    {
-      "matchup": "LAC @ BAL",
-      "game_date": "2026-11-16",
       "player": "zay flowers",
       "team": "BAL",
       "opp_team": "LAC",
@@ -20076,6 +18797,25 @@
         "p_raw": 0.744,
         "fair_odds": -300,
         "line": 6.5,
+        "side": "UNDER"
+      }
+    },
+    {
+      "matchup": "LAC @ BAL",
+      "game_date": "2026-11-16",
+      "player": "oronde gadsden",
+      "team": "LAC",
+      "opp_team": "BAL",
+      "stat_type": "rec",
+      "opp_factor": 0.94,
+      "projection": 3.24,
+      "edge_class": "MODEL_UNDER",
+      "best_market": {
+        "market": "REC_UNDER_4.5",
+        "p": 0.75,
+        "p_raw": 0.746,
+        "fair_odds": -300,
+        "line": 4.5,
         "side": "UNDER"
       }
     },
@@ -20194,25 +18934,6 @@
       }
     },
     {
-      "matchup": "LAC @ BAL",
-      "game_date": "2026-11-16",
-      "player": "justin herbert",
-      "team": "LAC",
-      "opp_team": "BAL",
-      "stat_type": "pass_yds",
-      "opp_factor": 0.94,
-      "projection": 196.79,
-      "edge_class": "MODEL_UNDER",
-      "best_market": {
-        "market": "PASS_YDS_UNDER_299.5",
-        "p": 0.748,
-        "p_raw": 0.927,
-        "fair_odds": -296,
-        "line": 299.5,
-        "side": "UNDER"
-      }
-    },
-    {
       "matchup": "WSH @ NYG",
       "game_date": "2026-11-12",
       "player": "malachi fields",
@@ -20327,98 +19048,6 @@
       }
     },
     {
-      "matchup": "MIN @ GB",
-      "game_date": "2026-11-15",
-      "player": "carson wentz",
-      "team": "MIN",
-      "opp_team": "GB",
-      "stat_type": "pass_td",
-      "opp_factor": 0.97,
-      "projection": 0.99,
-      "edge_class": "MODEL_UNDER",
-      "best_market": {
-        "market": "PASS_TD_UNDER_1.5",
-        "p": 0.746,
-        "fair_odds": -294,
-        "line": 1.5,
-        "side": "UNDER"
-      }
-    },
-    {
-      "matchup": "SEA @ LV",
-      "game_date": "2026-11-15",
-      "player": "drew lock",
-      "team": "SEA",
-      "opp_team": "LV",
-      "stat_type": "pass_td",
-      "opp_factor": 1.036,
-      "projection": 1.71,
-      "edge_class": "MODEL_UNDER",
-      "best_market": {
-        "market": "PASS_TD_UNDER_2.5",
-        "p": 0.746,
-        "fair_odds": -294,
-        "line": 2.5,
-        "side": "UNDER"
-      }
-    },
-    {
-      "matchup": "LAC @ BAL",
-      "game_date": "2026-11-16",
-      "player": "lamar jackson",
-      "team": "BAL",
-      "opp_team": "LAC",
-      "stat_type": "pass_yds",
-      "opp_factor": 0.976,
-      "projection": 196.23,
-      "edge_class": "MODEL_UNDER",
-      "best_market": {
-        "market": "PASS_YDS_UNDER_299.5",
-        "p": 0.746,
-        "p_raw": 0.921,
-        "fair_odds": -294,
-        "line": 299.5,
-        "side": "UNDER"
-      }
-    },
-    {
-      "matchup": "LAC @ BAL",
-      "game_date": "2026-11-16",
-      "player": "lamar jackson",
-      "team": "BAL",
-      "opp_team": "LAC",
-      "stat_type": "pass_td",
-      "opp_factor": 0.976,
-      "projection": 1.74,
-      "edge_class": "MODEL_UNDER",
-      "best_market": {
-        "market": "PASS_TD_UNDER_2.5",
-        "p": 0.746,
-        "fair_odds": -293,
-        "line": 2.5,
-        "side": "UNDER"
-      }
-    },
-    {
-      "matchup": "WSH @ NYG",
-      "game_date": "2026-11-12",
-      "player": "jj mccarthy",
-      "team": "NYG",
-      "opp_team": "WSH",
-      "stat_type": "pass_yds",
-      "opp_factor": 1.03,
-      "projection": 196.71,
-      "edge_class": "MODEL_UNDER",
-      "best_market": {
-        "market": "PASS_YDS_UNDER_299.5",
-        "p": 0.745,
-        "p_raw": 0.916,
-        "fair_odds": -293,
-        "line": 299.5,
-        "side": "UNDER"
-      }
-    },
-    {
       "matchup": "WSH @ NYG",
       "game_date": "2026-11-12",
       "player": "jayden daniels",
@@ -20512,25 +19141,6 @@
       }
     },
     {
-      "matchup": "SEA @ LV",
-      "game_date": "2026-11-15",
-      "player": "drew lock",
-      "team": "SEA",
-      "opp_team": "LV",
-      "stat_type": "pass_yds",
-      "opp_factor": 1.036,
-      "projection": 206.0,
-      "edge_class": "MODEL_UNDER",
-      "best_market": {
-        "market": "PASS_YDS_UNDER_299.5",
-        "p": 0.744,
-        "p_raw": 0.909,
-        "fair_odds": -290,
-        "line": 299.5,
-        "side": "UNDER"
-      }
-    },
-    {
       "matchup": "PIT @ CIN",
       "game_date": "2026-11-15",
       "player": "tee higgins",
@@ -20620,44 +19230,6 @@
         "p": 0.742,
         "p_raw": 0.651,
         "fair_odds": -288,
-        "line": 25.5,
-        "side": "UNDER"
-      }
-    },
-    {
-      "matchup": "LAC @ BAL",
-      "game_date": "2026-11-16",
-      "player": "jacoby brissett",
-      "team": "BAL",
-      "opp_team": "LAC",
-      "stat_type": "pass_yds",
-      "opp_factor": 0.976,
-      "projection": 216.28,
-      "edge_class": "MODEL_UNDER",
-      "best_market": {
-        "market": "PASS_YDS_UNDER_299.5",
-        "p": 0.742,
-        "p_raw": 0.899,
-        "fair_odds": -287,
-        "line": 299.5,
-        "side": "UNDER"
-      }
-    },
-    {
-      "matchup": "LAC @ BAL",
-      "game_date": "2026-11-16",
-      "player": "jacoby brissett",
-      "team": "BAL",
-      "opp_team": "LAC",
-      "stat_type": "pass_cmp",
-      "opp_factor": 0.976,
-      "projection": 23.72,
-      "edge_class": "MODEL_UNDER",
-      "best_market": {
-        "market": "PASS_CMP_UNDER_25.5",
-        "p": 0.741,
-        "p_raw": 0.647,
-        "fair_odds": -286,
         "line": 25.5,
         "side": "UNDER"
       }
@@ -20812,24 +19384,6 @@
         "fair_odds": -280,
         "line": 39.5,
         "side": "OVER"
-      }
-    },
-    {
-      "matchup": "MIN @ GB",
-      "game_date": "2026-11-15",
-      "player": "kirk cousins",
-      "team": "MIN",
-      "opp_team": "GB",
-      "stat_type": "pass_td",
-      "opp_factor": 0.97,
-      "projection": 0.98,
-      "edge_class": "MODEL_UNDER",
-      "best_market": {
-        "market": "PASS_TD_UNDER_1.5",
-        "p": 0.736,
-        "fair_odds": -280,
-        "line": 1.5,
-        "side": "UNDER"
       }
     },
     {
@@ -21177,25 +19731,6 @@
     {
       "matchup": "SEA @ LV",
       "game_date": "2026-11-15",
-      "player": "sam darnold",
-      "team": "SEA",
-      "opp_team": "LV",
-      "stat_type": "pass_yds",
-      "opp_factor": 1.036,
-      "projection": 225.88,
-      "edge_class": "MODEL_UNDER",
-      "best_market": {
-        "market": "PASS_YDS_UNDER_299.5",
-        "p": 0.729,
-        "p_raw": 0.84,
-        "fair_odds": -269,
-        "line": 299.5,
-        "side": "UNDER"
-      }
-    },
-    {
-      "matchup": "SEA @ LV",
-      "game_date": "2026-11-15",
       "player": "mike washington",
       "team": "LV",
       "opp_team": "SEA",
@@ -21272,6 +19807,25 @@
     {
       "matchup": "LAC @ BAL",
       "game_date": "2026-11-16",
+      "player": "derrick henry",
+      "team": "BAL",
+      "opp_team": "LAC",
+      "stat_type": "rush_yds",
+      "opp_factor": 0.988,
+      "projection": 78.96,
+      "edge_class": "MODEL_UNDER",
+      "best_market": {
+        "market": "RUSH_YDS_UNDER_89.5",
+        "p": 0.729,
+        "p_raw": 0.661,
+        "fair_odds": -269,
+        "line": 89.5,
+        "side": "UNDER"
+      }
+    },
+    {
+      "matchup": "LAC @ BAL",
+      "game_date": "2026-11-16",
       "player": "omarion hampton",
       "team": "LAC",
       "opp_team": "BAL",
@@ -21304,25 +19858,6 @@
         "p_raw": 0.676,
         "fair_odds": -269,
         "line": 39.5,
-        "side": "UNDER"
-      }
-    },
-    {
-      "matchup": "LAC @ BAL",
-      "game_date": "2026-11-16",
-      "player": "derrick henry",
-      "team": "BAL",
-      "opp_team": "LAC",
-      "stat_type": "rush_yds",
-      "opp_factor": 0.988,
-      "projection": 78.96,
-      "edge_class": "MODEL_UNDER",
-      "best_market": {
-        "market": "RUSH_YDS_UNDER_89.5",
-        "p": 0.729,
-        "p_raw": 0.661,
-        "fair_odds": -269,
-        "line": 89.5,
         "side": "UNDER"
       }
     },
@@ -21573,25 +20108,6 @@
       }
     },
     {
-      "matchup": "MIN @ GB",
-      "game_date": "2026-11-15",
-      "player": "kirk cousins",
-      "team": "MIN",
-      "opp_team": "GB",
-      "stat_type": "pass_yds",
-      "opp_factor": 0.97,
-      "projection": 238.29,
-      "edge_class": "MODEL_UNDER",
-      "best_market": {
-        "market": "PASS_YDS_UNDER_299.5",
-        "p": 0.721,
-        "p_raw": 0.804,
-        "fair_odds": -258,
-        "line": 299.5,
-        "side": "UNDER"
-      }
-    },
-    {
       "matchup": "LAR @ ARI",
       "game_date": "2026-11-15",
       "player": "matthew stafford",
@@ -21645,24 +20161,6 @@
         "p_raw": 0.946,
         "fair_odds": -256,
         "line": 39.5,
-        "side": "OVER"
-      }
-    },
-    {
-      "matchup": "SEA @ LV",
-      "game_date": "2026-11-15",
-      "player": "sam darnold",
-      "team": "SEA",
-      "opp_team": "LV",
-      "stat_type": "pass_int",
-      "opp_factor": 1.036,
-      "projection": 1.3,
-      "edge_class": "MODEL_OVER",
-      "best_market": {
-        "market": "PASS_INT_OVER_0.5",
-        "p": 0.719,
-        "fair_odds": -256,
-        "line": 0.5,
         "side": "OVER"
       }
     },
@@ -22065,24 +20563,6 @@
       }
     },
     {
-      "matchup": "WSH @ NYG",
-      "game_date": "2026-11-12",
-      "player": "jj mccarthy",
-      "team": "NYG",
-      "opp_team": "WSH",
-      "stat_type": "pass_int",
-      "opp_factor": 1.03,
-      "projection": 0.36,
-      "edge_class": "MODEL_UNDER",
-      "best_market": {
-        "market": "PASS_INT_UNDER_0.5",
-        "p": 0.706,
-        "fair_odds": -240,
-        "line": 0.5,
-        "side": "UNDER"
-      }
-    },
-    {
       "matchup": "KC @ ATL",
       "game_date": "2026-11-15",
       "player": "drake london",
@@ -22255,25 +20735,6 @@
     {
       "matchup": "SF @ DAL",
       "game_date": "2026-11-15",
-      "player": "dak prescott",
-      "team": "DAL",
-      "opp_team": "SF",
-      "stat_type": "pass_yds",
-      "opp_factor": 0.988,
-      "projection": 259.86,
-      "edge_class": "MODEL_UNDER",
-      "best_market": {
-        "market": "PASS_YDS_UNDER_299.5",
-        "p": 0.702,
-        "p_raw": 0.718,
-        "fair_odds": -236,
-        "line": 299.5,
-        "side": "UNDER"
-      }
-    },
-    {
-      "matchup": "SF @ DAL",
-      "game_date": "2026-11-15",
       "player": "brock purdy",
       "team": "SF",
       "opp_team": "DAL",
@@ -22286,6 +20747,25 @@
         "p": 0.702,
         "p_raw": 0.716,
         "fair_odds": -235,
+        "line": 299.5,
+        "side": "UNDER"
+      }
+    },
+    {
+      "matchup": "SF @ DAL",
+      "game_date": "2026-11-15",
+      "player": "dak prescott",
+      "team": "DAL",
+      "opp_team": "SF",
+      "stat_type": "pass_yds",
+      "opp_factor": 0.988,
+      "projection": 259.86,
+      "edge_class": "MODEL_UNDER",
+      "best_market": {
+        "market": "PASS_YDS_UNDER_299.5",
+        "p": 0.702,
+        "p_raw": 0.718,
+        "fair_odds": -236,
         "line": 299.5,
         "side": "UNDER"
       }
@@ -22480,25 +20960,6 @@
       }
     },
     {
-      "matchup": "KC @ ATL",
-      "game_date": "2026-11-15",
-      "player": "patrick mahomes",
-      "team": "KC",
-      "opp_team": "ATL",
-      "stat_type": "pass_yds",
-      "opp_factor": 1.03,
-      "projection": 263.44,
-      "edge_class": "MODEL_UNDER",
-      "best_market": {
-        "market": "PASS_YDS_UNDER_299.5",
-        "p": 0.696,
-        "p_raw": 0.69,
-        "fair_odds": -229,
-        "line": 299.5,
-        "side": "UNDER"
-      }
-    },
-    {
       "matchup": "NE @ DET",
       "game_date": "2026-11-15",
       "player": "jared goff",
@@ -22646,24 +21107,6 @@
         "p_raw": 0.723,
         "fair_odds": -225,
         "line": 2.5,
-        "side": "UNDER"
-      }
-    },
-    {
-      "matchup": "WSH @ NYG",
-      "game_date": "2026-11-12",
-      "player": "jameis winston",
-      "team": "NYG",
-      "opp_team": "WSH",
-      "stat_type": "pass_td",
-      "opp_factor": 1.03,
-      "projection": 1.14,
-      "edge_class": "MODEL_UNDER",
-      "best_market": {
-        "market": "PASS_TD_UNDER_1.5",
-        "p": 0.692,
-        "fair_odds": -225,
-        "line": 1.5,
         "side": "UNDER"
       }
     },
@@ -23292,24 +21735,6 @@
       }
     },
     {
-      "matchup": "WSH @ NYG",
-      "game_date": "2026-11-12",
-      "player": "jj mccarthy",
-      "team": "NYG",
-      "opp_team": "WSH",
-      "stat_type": "pass_td",
-      "opp_factor": 1.03,
-      "projection": 1.16,
-      "edge_class": "MODEL_UNDER",
-      "best_market": {
-        "market": "PASS_TD_UNDER_1.5",
-        "p": 0.673,
-        "fair_odds": -206,
-        "line": 1.5,
-        "side": "UNDER"
-      }
-    },
-    {
       "matchup": "PIT @ CIN",
       "game_date": "2026-11-15",
       "player": "joe burrow",
@@ -23856,24 +22281,6 @@
       }
     },
     {
-      "matchup": "MIN @ GB",
-      "game_date": "2026-11-15",
-      "player": "kyler murray",
-      "team": "MIN",
-      "opp_team": "GB",
-      "stat_type": "pass_int",
-      "opp_factor": 0.97,
-      "projection": 0.51,
-      "edge_class": "MODEL_UNDER",
-      "best_market": {
-        "market": "PASS_INT_UNDER_0.5",
-        "p": 0.603,
-        "fair_odds": -152,
-        "line": 0.5,
-        "side": "UNDER"
-      }
-    },
-    {
       "matchup": "JAX @ TEN",
       "game_date": "2026-11-15",
       "player": "trevor lawrence",
@@ -24046,6 +22453,25 @@
     {
       "matchup": "MIN @ GB",
       "game_date": "2026-11-15",
+      "player": "aaron jones",
+      "team": "MIN",
+      "opp_team": "GB",
+      "stat_type": "rec",
+      "opp_factor": 0.97,
+      "projection": 2.27,
+      "edge_class": "MODEL_UNDER",
+      "best_market": {
+        "market": "REC_UNDER_2.5",
+        "p": 0.6,
+        "p_raw": 0.615,
+        "fair_odds": -150,
+        "line": 2.5,
+        "side": "UNDER"
+      }
+    },
+    {
+      "matchup": "MIN @ GB",
+      "game_date": "2026-11-15",
       "player": "josh jacobs",
       "team": "GB",
       "opp_team": "MIN",
@@ -24076,25 +22502,6 @@
         "market": "REC_UNDER_2.5",
         "p": 0.6,
         "p_raw": 0.502,
-        "fair_odds": -150,
-        "line": 2.5,
-        "side": "UNDER"
-      }
-    },
-    {
-      "matchup": "MIN @ GB",
-      "game_date": "2026-11-15",
-      "player": "aaron jones",
-      "team": "MIN",
-      "opp_team": "GB",
-      "stat_type": "rec",
-      "opp_factor": 0.97,
-      "projection": 2.27,
-      "edge_class": "MODEL_UNDER",
-      "best_market": {
-        "market": "REC_UNDER_2.5",
-        "p": 0.6,
-        "p_raw": 0.615,
         "fair_odds": -150,
         "line": 2.5,
         "side": "UNDER"
@@ -24331,25 +22738,6 @@
     {
       "matchup": "SEA @ LV",
       "game_date": "2026-11-15",
-      "player": "jadarian price",
-      "team": "SEA",
-      "opp_team": "LV",
-      "stat_type": "rec",
-      "opp_factor": 1.036,
-      "projection": 1.95,
-      "edge_class": "MODEL_UNDER",
-      "best_market": {
-        "market": "REC_UNDER_2.5",
-        "p": 0.6,
-        "p_raw": 0.692,
-        "fair_odds": -150,
-        "line": 2.5,
-        "side": "UNDER"
-      }
-    },
-    {
-      "matchup": "SEA @ LV",
-      "game_date": "2026-11-15",
       "player": "michael mayer",
       "team": "LV",
       "opp_team": "SEA",
@@ -24361,6 +22749,25 @@
         "market": "REC_UNDER_2.5",
         "p": 0.6,
         "p_raw": 0.505,
+        "fair_odds": -150,
+        "line": 2.5,
+        "side": "UNDER"
+      }
+    },
+    {
+      "matchup": "SEA @ LV",
+      "game_date": "2026-11-15",
+      "player": "jadarian price",
+      "team": "SEA",
+      "opp_team": "LV",
+      "stat_type": "rec",
+      "opp_factor": 1.036,
+      "projection": 1.95,
+      "edge_class": "MODEL_UNDER",
+      "best_market": {
+        "market": "REC_UNDER_2.5",
+        "p": 0.6,
+        "p_raw": 0.692,
         "fair_odds": -150,
         "line": 2.5,
         "side": "UNDER"
@@ -24557,24 +22964,6 @@
       }
     },
     {
-      "matchup": "MIN @ GB",
-      "game_date": "2026-11-15",
-      "player": "kirk cousins",
-      "team": "MIN",
-      "opp_team": "GB",
-      "stat_type": "pass_int",
-      "opp_factor": 0.97,
-      "projection": 0.89,
-      "edge_class": "MODEL_OVER",
-      "best_market": {
-        "market": "PASS_INT_OVER_0.5",
-        "p": 0.596,
-        "fair_odds": -148,
-        "line": 0.5,
-        "side": "OVER"
-      }
-    },
-    {
       "matchup": "HOU @ CLE",
       "game_date": "2026-11-15",
       "player": "cj stroud",
@@ -24593,24 +22982,6 @@
       }
     },
     {
-      "matchup": "LAC @ BAL",
-      "game_date": "2026-11-16",
-      "player": "jacoby brissett",
-      "team": "BAL",
-      "opp_team": "LAC",
-      "stat_type": "pass_int",
-      "opp_factor": 0.976,
-      "projection": 0.88,
-      "edge_class": "MODEL_OVER",
-      "best_market": {
-        "market": "PASS_INT_OVER_0.5",
-        "p": 0.594,
-        "fair_odds": -146,
-        "line": 0.5,
-        "side": "OVER"
-      }
-    },
-    {
       "matchup": "WSH @ NYG",
       "game_date": "2026-11-12",
       "player": "cam skattebo",
@@ -24625,42 +22996,6 @@
         "fair_odds": -145,
         "line": 0.5,
         "side": "YES"
-      }
-    },
-    {
-      "matchup": "KC @ ATL",
-      "game_date": "2026-11-15",
-      "player": "patrick mahomes",
-      "team": "KC",
-      "opp_team": "ATL",
-      "stat_type": "pass_int",
-      "opp_factor": 1.03,
-      "projection": 0.52,
-      "edge_class": "MODEL_UNDER",
-      "best_market": {
-        "market": "PASS_INT_UNDER_0.5",
-        "p": 0.589,
-        "fair_odds": -143,
-        "line": 0.5,
-        "side": "UNDER"
-      }
-    },
-    {
-      "matchup": "KC @ ATL",
-      "game_date": "2026-11-15",
-      "player": "patrick mahomes",
-      "team": "KC",
-      "opp_team": "ATL",
-      "stat_type": "pass_td",
-      "opp_factor": 1.03,
-      "projection": 1.97,
-      "edge_class": "MODEL_OVER",
-      "best_market": {
-        "market": "PASS_TD_OVER_1.5",
-        "p": 0.586,
-        "fair_odds": -141,
-        "line": 1.5,
-        "side": "OVER"
       }
     },
     {

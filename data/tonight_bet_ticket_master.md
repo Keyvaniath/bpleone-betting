@@ -1,14 +1,14 @@
 # EdgeStat -- Tonight's Bet Ticket
-_Generated 2026-11-11T16:53:43 UTC_
+_Generated 2026-11-11T21:11:22 UTC_
 
-**Slate Quality:** STRONG_NIGHT
-**Total Stake:** 3.0% bankroll
+**Slate Quality:** MODEST_NIGHT
+**Total Stake:** 2.0% bankroll
 **Expected P&L (on $100):** $0.0
 
 ## SINGLES (Top 5 Curated)
 1. **C.T. Pan** (GOLF)
    - Play: C.T. Pan (PLAYER_STRONG)
-   - Stake: 1.5% bankroll
+   - Stake: 1.0% bankroll
 2. **Erik van Rooyen** (GOLF)
    - Play: Erik van Rooyen (PLAYER_STRONG)
-   - Stake: 1.5% bankroll
+   - Stake: 1.0% bankroll
