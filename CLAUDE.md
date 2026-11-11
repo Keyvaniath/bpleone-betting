@@ -41,6 +41,30 @@ bpleone-site/
 
 ## Current deployment state (LIVE)
 
+- **2026-11-05 to 11-11 — PRE-LAUNCH AUDIT, CROSS-SPORT PLAY OF THE DAY, NBA v2
+  (merged to main 11/11, 38f0bbcb1b; full detail in docs/ODDS-INTEGRITY.md).**
+  (1) PLAY OF THE DAY IS CROSS-SPORT: `python/play_of_day.py` ->
+  `data/play_of_day.json` (best DraftKings-priced desk pick, major-4 first,
+  tiered by the desk verdict: 1 validated / 2 forward test / 3 experimental
+  college). A NO EDGE desk (NBA, NHL today) never produces a play; a no-play
+  day lists each sport's reason, the next dated play and the day's DK board
+  ("prices, not picks"). `post` = copy-ready share text, DRAFT ONLY.
+  (2) DO NOT ADD A "LEAN" TIER: betting NBA/NHL model-vs-DK disagreements loses
+  under every rule this season (NBA -10.6% to -43%, NHL -3.8% to -21.4%).
+  Totals are NO EDGE on NFL/NBA/NHL too (tools/totals_study.py); spread prices
+  are not recorded, so no spread desk. (3) NBA desk v2 = Elo + availability +
+  rest (`python/nba_avail.py`, store data/nba_player_games.json); helps last
+  season, not this one; verdict still NO EDGE. (4) PAGES IS NOW JEKYLL with an
+  exclude list in `_config.yml` (no .nojekyll): *.md, python/, tools/, docs/,
+  cloudflare-worker/, legal/ are NOT served. A page that fetches a Markdown
+  file needs its basename under `include:`; files or folders starting with
+  "_" or "." are never served. (5) Worker write routes need ADMIN_TOKEN /
+  SYNC_TOKEN (set, deployed 11/5); HTTPS enforced. (6) **RULE: an apostrophe
+  inside a JS string on a page is `&#39;`.** `tools/check_inline_js.js` parses
+  every inline script; the Smoke Test now runs it + the integrity tests on
+  page/script pushes as well as python pushes. (7) Legal pages filled (entity
+  "Brandon Leone, doing business as bpleone"); counsel review still open.
+
 - **2026-11-03 (late) — CURATED = SPORTSBOOK PRICES ONLY (Brandon's calls).**
   Price audit of the curated record: game lines at book 156-114 +8.58u (ML) /
   116-125 -10.51u (totals); 60 curated MLB game lines graded at the MODEL'S

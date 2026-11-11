@@ -591,7 +591,7 @@ async function load() {
   if (!a) {
     document.getElementById('pick-line').textContent = 'No Alpha Pick today';
     const st = document.querySelector('#alpha-hero .stats'); if (st) st.style.display = 'none';
-    const pr = document.getElementById('propsRows'); if (pr) pr.innerHTML = '<div style="padding:14px;color:var(--muted,#888);">No prop projections on today's slate.</div>';
+    const pr = document.getElementById('propsRows'); if (pr) pr.innerHTML = '<div style="padding:14px;color:var(--muted,#888);">No prop projections on today&#39;s slate.</div>';
     const t5 = document.getElementById('top-5-rows'); if (t5 && /^—?$/.test(t5.textContent.trim())) t5.innerHTML = '<div style="padding:10px 14px;color:var(--muted,#888);">No candidates cleared the gate today.</div>';
     fetch('data/today_status.json?t=' + Date.now()).then(r => r.json()).then(t => {
       const why = (t.alpha || {}).reason; if (why) document.getElementById('market-line').textContent = why;

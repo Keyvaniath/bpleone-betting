@@ -193,6 +193,87 @@ def _why(c: Dict[str, Any]) -> str:
     return " · ".join(b for b in bits if b)
 
 
+# ---------------------------------------------------------------- share text ----
+SITE_URL = "betting.bpleone.com/play-of-day"
+POST_MAX = 280
+
+
+def _day_label(date_et: str) -> str:
+    try:
+        d = dt.date.fromisoformat(date_et)
+        return f"{d.strftime('%a')} {d.month}/{d.day}"
+    except Exception:
+        return str(date_et or "")
+
+
+def _seen_et(iso) -> str:
+    """'2026-11-05T16:59:46' (UTC, as espn_odds stamps it) -> '11:59 AM ET'."""
+    try:
+        d = dt.datetime.fromisoformat(str(iso).replace("Z", "+00:00"))
+        if d.tzinfo is None:
+            d = d.replace(tzinfo=dt.timezone.utc)
+        from zoneinfo import ZoneInfo
+        e = d.astimezone(ZoneInfo("America/New_York"))
+        return f"{e.hour % 12 or 12}:{e.minute:02d} {'AM' if e.hour < 12 else 'PM'} ET"
+    except Exception:
+        return ""
+
+
+_POST_TIER = {0: "MLB model pick.", 1: "Validated desk pick.",
+              2: "Forward test: this desk has not proven an edge.",
+              3: "Experimental: the closing line is sharper than this model."}
+
+
+def _post(payload: Dict[str, Any]) -> Dict[str, Any]:
+    """(2026-11-11) A copy-ready post for the day's card -- DRAFT ONLY. Nothing
+    here sends anything: a person copies it and presses post. A price appears
+    only for today's play (which is actionable by construction: a live,
+    pre-start DraftKings quote) and always with the time it was observed and
+    the desk's tier. The next play is named without a price -- its quote is
+    not today's. A no-play day says so and why, in one breath."""
+    day = _day_label(payload.get("date_et"))
+    play, nxt, by = payload.get("play"), payload.get("next_play"), payload.get("by_sport") or {}
+    tail = ["21+ · not betting advice", SITE_URL]
+    if play:
+        mk = "moneyline" if str(play.get("market", "")).upper().startswith("ML") else str(play.get("market", "")).replace("_", " ").lower()
+        lines = [f"EdgeStat Play of the Day · {day}",
+                 f"{play.get('sport')}: {play.get('team')} {mk} {_amer(play.get('book_american'))} at DraftKings ({play.get('matchup')})"]
+        p, dk, ev = play.get("model_prob"), play.get("dk_implied"), play.get("ev_pct")
+        if isinstance(p, (int, float)) and isinstance(dk, (int, float)):
+            lines.append(f"Desk {p * 100:.1f}% vs market {dk * 100:.1f}%" + (f" · EV {ev:+.1f}%" if isinstance(ev, (int, float)) else ""))
+        lines.append(_POST_TIER.get(play.get("tier"), ""))
+        seen = _seen_et(play.get("odds_observed_at"))
+        if seen:
+            lines.append(f"Price seen {seen}.")
+        optional = [2, 4]            # droppable (in this order) if the text runs long: the prob line, then the time
+        kind = "play"
+    else:
+        no_edge = [f"{sp} ({by[sp]['games_today']} game{'' if by[sp]['games_today'] == 1 else 's'})" for sp in MAJOR_4
+                   if (by.get(sp) or {}).get("verdict") == "NO EDGE" and (by.get(sp) or {}).get("games_today")]
+        lines = [f"No Play of the Day · {day}"]
+        if no_edge:
+            lines.append(" and ".join(no_edge) + " today: our models have not beaten DraftKings' prices there this season, so no picks.")
+        else:
+            lines.append("Nothing on today's board cleared the bar at the DraftKings price.")
+        if nxt and nxt.get("game_date"):
+            lines.append(f"Next on the board: {_day_label(nxt['game_date'])}, {nxt.get('sport')}.")
+        lines.append("We don't force a bet.")
+        optional = [2] if len(lines) == 4 else []
+        kind = "no_play"
+
+    def build(ls):
+        return chr(10).join([x for x in ls if x] + tail)
+
+    text = build(lines)
+    for i in optional:
+        if len(text) <= POST_MAX:
+            break
+        lines[i] = ""
+        text = build(lines)
+    return {"kind": kind, "text": text, "chars": len(text), "max_chars": POST_MAX, "fits": len(text) <= POST_MAX,
+            "note": "Draft only. Nothing posts automatically; a person copies this and presses send."}
+
+
 def run(now: Optional[dt.datetime] = None) -> Dict[str, Any]:
     now = now or dt.datetime.now(dt.timezone.utc)
     today_et = _today_et()
@@ -287,6 +368,7 @@ def run(now: Optional[dt.datetime] = None) -> Dict[str, Any]:
         "odds_observed_at": (_load("espn_odds.json") or {}).get("generated_at"),
         "by_sport": by_sport,
     }
+    payload["post"] = _post(payload)
     os.makedirs(DATA_DIR, exist_ok=True)
     with open(OUT, "w", encoding="utf-8") as f:
         json.dump(payload, f, indent=2)

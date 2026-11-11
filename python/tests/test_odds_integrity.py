@@ -700,3 +700,46 @@ def test_pages_config_serves_every_markdown_file_a_page_fetches():
                 fetched.add(os.path.basename(path))
     assert fetched, "expected brief.html / daily-summary.html to fetch Markdown"
     assert fetched <= included, f"fetched but not served by the Pages build: {sorted(fetched - included)}"
+
+
+# ---------------------------------------------------------------- Play of the Day share text (2026-11-11)
+def test_play_of_day_post_quotes_a_price_only_for_todays_play(tmp_path, monkeypatch):
+    """The copy-ready post is a draft a person sends. It may state a price only
+    for today's actionable play, with the tier and when the price was seen; a
+    no-play day (and the 'next' line) never carries a price."""
+    import re
+    import play_of_day as pod
+    today = "2026-11-08"
+    monkeypatch.setattr(pod, "DATA_DIR", str(tmp_path))
+    monkeypatch.setattr(pod, "OUT", str(tmp_path / "play_of_day.json"))
+    monkeypatch.setattr(pod, "_today_et", lambda: today)
+    price = re.compile(r"(?<![\w/.])[+-]\d{3,}\b")
+    out = pod.run(now=_pod_fixture(tmp_path, today))
+    post = out["post"]
+    assert post["kind"] == "play" and post["fits"] and post["chars"] == len(post["text"]) <= 280
+    assert "NYJ moneyline +440 at DraftKings" in post["text"] and "Sun 11/8" in post["text"]
+    assert "Forward test: this desk has not proven an edge." in post["text"]       # the tier always travels with the price
+    assert "Price seen 9:30 AM ET." in post["text"] and "not betting advice" in post["text"]
+    assert price.findall(post["text"]) == ["+440"]                                 # exactly the play's price, nothing else
+    # stale quote -> no play: says so, names the NO EDGE desk, and carries no price at all
+    out = pod.run(now=_pod_fixture(tmp_path, today, obs_minutes_ago=600))
+    post = out["post"]
+    assert out["play"] is None and post["kind"] == "no_play" and post["fits"]
+    assert post["text"].startswith("No Play of the Day") and "NBA (1 game)" in post["text"] and "We don't force a bet." in post["text"]
+    assert price.findall(post["text"]) == [] and "Next on the board" in post["text"]
+    assert "posts automatically" in post["note"]
+
+
+# ---------------------------------------------------------------- page scripts parse (2026-11-11)
+def test_every_inline_page_script_parses():
+    """An unescaped apostrophe inside a single-quoted JS string in alpha-pick.html
+    (2026-11-05) killed that page's whole script block and nothing caught it.
+    tools/check_inline_js.js parses (never runs) every inline script and js file."""
+    import shutil
+    import subprocess
+    node = shutil.which("node")
+    if not node:
+        pytest.skip("node is not installed")
+    root = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", ".."))
+    r = subprocess.run([node, os.path.join(root, "tools", "check_inline_js.js"), root], capture_output=True, text=True, timeout=120)
+    assert r.returncode == 0, r.stdout[-2000:]

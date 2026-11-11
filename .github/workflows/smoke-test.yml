@@ -15,6 +15,14 @@ on:
     paths:
       - 'python/**.py'
       - '.github/workflows/smoke-test.yml'
+      # (2026-11-11) pages and scripts too: an inline-script syntax error
+      # (an unescaped apostrophe in alpha-pick.html) reached main unseen
+      # because a page-only push never ran this workflow.
+      - '*.html'
+      - 'js/**.js'
+      - 'sw.js'
+      - '_config.yml'
+      - 'tools/check_inline_js.js'
   workflow_dispatch:
 
 permissions:
@@ -37,6 +45,14 @@ jobs:
         run: |
           pip install -r python/requirements.txt
           pip install pyflakes
+      # (2026-11-11) every inline <script> on every page and every js/*.js file
+      # must parse (parse only, nothing is executed).
+      - name: Page scripts parse
+        run: node tools/check_inline_js.js .
+      - name: Odds-integrity tests
+        run: |
+          pip install -q pytest
+          python -m pytest python/tests -q
       - name: Smoke test (compile + undefined-name scan + run core chain)
         working-directory: python
         run: python smoke_test.py

@@ -552,6 +552,28 @@ Promise.all([
   const tierPill = t => t === 1 ? '<span class="pill green">VALIDATED DESK PICK</span>'
     : t === 2 ? '<span class="pill" style="background:rgba(212,160,74,.18);color:#d4a04a;border:1px solid #d4a04a;">FORWARD TEST — DESK UNPROVEN</span>'
     : '<span class="pill" style="background:rgba(255,255,255,.06);color:var(--muted,#888);">EXPERIMENTAL — THE CLOSE IS SHARPER</span>';
+  // (2026-11-11) copy-ready post for today's card. Draft only: nothing posts
+  // by itself, a person copies it or opens a compose window and presses send.
+  const shareCard = () => {
+    const post = P.post; if (!post || !post.text) return null;
+    const sec = document.createElement("section"); sec.className = "card"; sec.style.cssText = "margin-top:22px;";
+    const enc = encodeURIComponent(post.text);
+    const btn = "display:inline-flex;align-items:center;font-weight:600;font-size:13px;padding:9px 16px;border-radius:999px;text-decoration:none;cursor:pointer;";
+    sec.innerHTML = '<div class="card-head"><span>Share today&#39;s card</span><span class="muted">' + post.chars + ' / ' + post.max_chars + ' characters</span></div>' +
+      '<pre id="podPostText" style="white-space:pre-wrap;font-family:JetBrains Mono,monospace;font-size:12.5px;line-height:1.6;margin:0;padding:12px 14px;background:rgba(255,255,255,.03);border-radius:8px;"></pre>' +
+      '<div style="display:flex;gap:10px;flex-wrap:wrap;padding:12px 0 4px;">' +
+      '<button id="podPostCopy" style="' + btn + 'background:rgba(255,255,255,.06);color:inherit;border:1px solid rgba(255,255,255,.14);">Copy text</button>' +
+      '<a href="https://bsky.app/intent/compose?text=' + enc + '" target="_blank" rel="noopener" style="' + btn + 'background:#0085ff;color:#fff;">Open in Bluesky</a>' +
+      '<a href="https://www.threads.net/intent/post?text=' + enc + '" target="_blank" rel="noopener" style="' + btn + 'background:#000;color:#fff;border:1px solid rgba(255,255,255,.25);">Open in Threads</a>' +
+      '</div><p class="muted" style="font-size:11px;margin:6px 0 0;">Draft text. Nothing is posted automatically; the buttons open a compose window and you press send.</p>';
+    sec.querySelector("#podPostText").textContent = post.text;
+    const b = sec.querySelector("#podPostCopy");
+    b.addEventListener("click", () => {
+      const done = () => { b.textContent = "Copied"; setTimeout(() => { b.textContent = "Copy text"; }, 1600); };
+      if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(post.text).then(done).catch(() => {});
+    });
+    return sec;
+  };
   const green = head.querySelector(".pill.green"); if (green) green.remove();
   const play = P.play;
   if (play) {
@@ -573,6 +595,7 @@ Promise.all([
     const note = document.createElement("p"); note.className = "muted"; note.style.cssText = "margin-top:12px;font-size:12px;line-height:1.6;";
     note.innerHTML = `<b>${play.tier_label || ""}.</b> ${play.desk_verdict_text || ""} Price: DraftKings via ESPN, observed ${(play.odds_observed_at || "").replace("T", " ")} UTC. Logged in the public ledger at this price and graded on the final score; a forward test is not a validated edge.`;
     head.appendChild(note);
+    { const sc = shareCard(); if (sc) head.insertAdjacentElement("afterend", sc); }
     return;
   }
   if (h1) h1.innerHTML = `No play today <span class="accent">—</span>`;
@@ -583,6 +606,7 @@ Promise.all([
   if (lede) lede.innerHTML = "The Play of the Day is the best DraftKings-priced play across every game-lines desk (NFL, NBA, NHL, MLB first; college after). Nothing qualified today:" +
     '<ul style="margin:8px 0 0 18px;line-height:1.6;font-size:13px;">' + (P.no_play_reasons || []).map(r => `<li>${r}</li>`).join("") + "</ul>" +
     (n ? `<p style="margin-top:12px;"><b style="color:#d4a04a;">Next play:</b> ${n.game_date} · ${n.why} · <a href="${n.page}" style="color:#7fb0e8;">${n.sport} desk →</a></p>` : "");
+  { const sc = shareCard(); if (sc) head.insertAdjacentElement("afterend", sc); }
   // (2026-11-11) today's major-sport board at DraftKings: prices only, no pick
   const sl = P.slate_today || [];
   if (sl.length) {
