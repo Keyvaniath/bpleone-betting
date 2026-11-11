@@ -1285,11 +1285,20 @@ fetch("data/today.json", { cache: "no-cache" })
           if (t) t.innerHTML = `${play.sport} · ${play.team || ""} <span class="accent">${mk(play.market)}</span> <span class="muted" style="font-size:13px;font-weight:400;">${play.matchup}</span>`;
           if (head) head.textContent = `${P.date_et} · ${play.tier_label || ""}`;
           if (sm) sm.textContent = play.why || "";
+          // (2026-11-11) the other sports' plays today, each with its tier
+          const others = (P.sport_plays || []).filter(x => !x.featured);
+          if (sm && others.length) {
+            const tag = x => x.tier === 4 ? "lean" : x.tier === 2 ? "forward test" : x.tier === 1 ? "validated" : "model";
+            const more = document.createElement("div"); more.className = "muted"; more.style.cssText = "margin-top:8px;font-size:12px;";
+            more.textContent = "Also today: " + others.map(x => `${x.sport} ${x.team || ""} ${mk(x.market)} ${fmtA(x.book_american)} (${tag(x)})`).join(" · ") + ". ";
+            const a = document.createElement("a"); a.href = "play-of-day.html"; a.textContent = "All plays →"; a.style.color = "#7fb0e8";
+            more.appendChild(a); sm.appendChild(more);
+          }
           const pg = document.querySelector(".play-card .play-grid");
           if (pg) {
             pg.style.display = "";
             pg.innerHTML = [["DK price", fmtA(play.book_american)], ["Desk prob", pct(play.model_prob)], ["DK implied", pct(play.dk_implied)],
-                            ["EV at DK", (play.ev_pct >= 0 ? "+" : "") + Number(play.ev_pct || 0).toFixed(1) + "%"], ["Verdict", play.desk_verdict || "—"], ["Tier", play.tier === 1 ? "validated" : play.tier === 2 ? "forward test" : "experimental"]]
+                            ["EV at DK", (play.ev_pct >= 0 ? "+" : "") + Number(play.ev_pct || 0).toFixed(1) + "%"], ["Verdict", play.desk_verdict || "—"], ["Tier", play.tier === 1 ? "validated" : play.tier === 2 ? "forward test" : play.tier === 4 ? "model lean" : "experimental"]]
               .map(([l, v]) => `<div class="play-stat"><div class="stat-label">${l}</div><div class="stat-value-big" style="font-size:16px;">${v}</div></div>`).join("");
           }
         } else if (sm && P) {

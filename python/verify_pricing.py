@@ -50,6 +50,9 @@ PICK_SURFACES: List[Tuple[str, str]] = [
     ("cfb_model.json", "edges"),
     ("picks_export.json", "picks"),
     ("player_pot.json", "top_5"),
+    # (2026-11-11) the per-sport plays (desk pick or labelled model lean): each
+    # needs a fresh pre-start DraftKings quote like any other published pick.
+    ("play_of_day.json", "sport_plays"),
 ]
 # (artifact, key) -> a single pick dict (or a no-pick marker).
 SINGLE_PICKS: List[Tuple[str, str]] = [

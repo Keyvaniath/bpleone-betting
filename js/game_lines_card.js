@@ -82,6 +82,17 @@
   const qt = (q) => q && q.observed_at
     ? `DK price observed ${esc(String(q.observed_at).replace("T", " "))} UTC · snapshot ${esc(q.snapshot_id || "—")}`
     : "DK price: observation time not recorded";
+  // (2026-11-11) the lean rule's walk-forward record: what the per-sport play
+  // is on a day the desk has no pick. Stated as what it is: not an edge.
+  const leanLine = (s) => {
+    const b = (s.lean || {}).backtest;
+    if (!b || !b.n) return "";
+    const u = Number(b.units || 0);
+    return `<div class="muted" style="margin-top:6px; font-family:'JetBrains Mono',monospace; font-size:11px;">
+        Model lean (shown when there is no desk pick; the favourite the model and DraftKings agree on): ${b.wins}-${b.losses}, ${u >= 0 ? "+" : "−"}${Math.abs(u).toFixed(2)}u at the DK close over ${b.n} game days ·
+        expected ${b.expected_roi_pct_at_no_vig}% per bet at the no-vig price — a lean is not an edge
+      </div>`;
+  };
   fetch("data/game_lines_desk.json?t=" + Date.now(), { cache: "no-cache" })
     .then((r) => r.json())
     .then((d) => {
@@ -103,10 +114,14 @@
               log loss DK ${bt.logloss_market ?? "—"} / model ${bt.logloss_elo ?? "—"} / blend ${bt.logloss_blend ?? "—"} (w=${bt.w_fitted ?? "—"}) ·
               gain 90% CI [${ci[0] ?? "—"}, ${ci[1] ?? "—"}] ·
               out-of-sample half: ${oos.bets || 0} bets, ${oos.roi_pct == null ? "—" : (oos.roi_pct >= 0 ? "+" : "") + oos.roi_pct + "%"}
-            </div>${ladder(s, bt)}${fwd(s)}</div>`;
+            </div>${ladder(s, bt)}${fwd(s)}${leanLine(s)}</div>`;
         const rows = (s.board || []).map((r) => {
           const pk = r.pick;
-          const pickTxt = pk ? `<strong style="color:#58c878;">${esc(pk.team)} ML ${amer(pk.book_american)}</strong> <span class="muted">EV ${(pk.ev * 100).toFixed(1)}%</span>` : `<span class="muted">no pick</span>`;
+          // (2026-11-11) no desk pick: show the lean, if the game has one, labelled as a lean
+          const ln = r.lean;
+          const pickTxt = pk ? `<strong style="color:#58c878;">${esc(pk.team)} ML ${amer(pk.book_american)}</strong> <span class="muted">EV ${(pk.ev * 100).toFixed(1)}%</span>`
+            : ln ? `<span style="color:#7fb0e8;">lean ${esc(ln.team)} ${amer(ln.book_american)}</span> <span class="muted">no edge</span>`
+            : `<span class="muted">no pick</span>`;
           return `<div style="display:grid; grid-template-columns: 90px 1.2fr 1fr 1fr 1fr 1.6fr; gap:10px; padding:7px 16px; border-bottom:1px solid rgba(255,255,255,0.04); font-family:'JetBrains Mono',monospace; font-size:11.5px;">
             <span class="muted">${esc(r.game_date || "")}</span><span><strong>${esc(r.matchup)}</strong></span>
             <span>DK ${amer(r.ml_home)} / ${amer(r.ml_away)}</span>

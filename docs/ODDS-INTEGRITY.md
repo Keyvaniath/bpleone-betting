@@ -636,3 +636,49 @@ which includes the pricing guard and the integrity tests).
       real icon. The checker runs in the Smoke Test and under pytest
       (`test_every_local_page_reference_is_served`).
 
+## 2026-11-11 (night): a play for each major sport -- desk pick, or a labelled MODEL LEAN
+
+Brandon, after a no-play Wednesday with 10 NBA and 6 NHL games: "there are no
+plays across all sports? even NBA or hockey tomorrow? you can pick your play
+from any sport not just NFL, it would be nice if you had a play of the day for
+each of the 4 sports when they play." This is his call, made with the lean
+study in front of him. It is implemented so that the standard is not lowered
+SILENTLY: a lean is a different, lower tier, named as such everywhere.
+
+WHAT A LEAN IS (`game_lines_desk.LEAN_RULE`, written down before its record
+was computed, not tuned). The 11/11 lean study showed that betting the model
+AGAINST DraftKings loses on NBA and NHL. So a lean is taken only where the
+model and the market AGREE: the side that is the favourite by both the desk
+model and DraftKings' no-vig price (each >= 55%), priced no shorter than -300;
+one per sport per day, the game with the highest min(model, DK) probability.
+A game the desk holds for an uncertain QB or a material day-to-day NBA player
+gets no lean either. An unconfirmed NHL goalie does not block a lean (the
+record below uses the projected-goalie model, which is what is knowable then).
+
+WHAT IT IS NOT. Not an edge. At DraftKings' own no-vig probability the expected
+value of a moneyline favourite is the book's margin, about -4% per bet. Every
+surface says so: tier 4 "model lean (no proven edge)", the reason line, the
+hero note, the desk card, the share text ("A lean is not a proven edge.").
+
+WALK-FORWARD RECORD THIS SEASON (one lean per game day, 1u at the DK close):
+  NFL 13-4, +1.80u (17 days)   NHL 30-11, +2.37u (41 days)   NBA 11-8, -3.06u (19 days)
+Small samples around an expected -4%; published next to every lean and
+refreshed each run (`sports.<sport>.lean.backtest`).
+
+WHERE IT SHOWS. `play_of_day.json` gains `sport_plays` (the best play for each
+major sport that plays today, any tier). The single featured `play` is the best
+of them by tier, so a lean is featured only when no desk pick (tiers 0-3)
+qualifies anywhere. play-of-day.html: "Today's play in each sport"; homepage
+card: "Also today"; desk cards: the lean on the board row and the rule's
+record. The next dated play is never a lean (a lean is made on the day).
+
+THE RECORD STAYS CLEAN. A lean is logged in the ledger under source
+`sport_lean` at the real DraftKings price and graded on the final (NBA
+moneylines had no grader: added, by ESPN event id). `sport_lean` matches no
+curated prefix, and a featured lean is NOT harvested as `pod` (tiers 1-3 only),
+so leans never enter the curated record or the Play of the Day record. The
+pricing guard checks `sport_plays` like every other pick surface: a lean needs
+a fresh, pre-start DraftKings quote or it is not shown.
+
+Tests: lean rule + record; per-sport plays and featuring order; ledger source;
+NBA moneyline grading. 62 pass.
