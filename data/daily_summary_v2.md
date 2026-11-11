@@ -1,21 +1,21 @@
-# EdgeStat Daily Summary — 2026-11-05
+# EdgeStat Daily Summary — 2026-11-11
 
-## 🏥 Model Health: 59.5/100 [OK]
+## 🏥 Model Health: 66.4/100 [OK]
 - Operational but room to improve - check yellow components
   - 🟢 Calibration Freshness: 100.0/100
-  - 🔴 Hit Rate Trend: 56.7/100
-  - 🔴 Brier Trend: 17.9/100
+  - 🟡 Hit Rate Trend: 70.4/100
+  - 🔴 Brier Trend: 34.1/100
   - 🟢 Pipeline Audit: 100.0/100
-  - 🟡 Data Health: 72.7/100
+  - 🟡 Data Health: 77.3/100
   - 🔴 Edge Count: 0/100
 
 ## 🌐 Slate Overview
-- **Regime today:** BALANCED (avg P(home)=0.55)
-- **Total games on board:** 60
-- **Strong home favorites:** 24 | **Strong road dogs:** 14
+- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.58)
+- **Total games on board:** 43
+- **Strong home favorites:** 20 | **Strong road dogs:** 9
 
 ## 🎯 Best Bets (sportsbook-priced only)
-- No best bet today: a best bet needs a real sportsbook price — 19 model-only projections excluded (LOL 5, MLS 5, NCAAF 4, NFL 3, EPL 1, NHL 1).
+- No best bet today: a best bet needs a real sportsbook price — 6 model-only projections excluded (LOL 4, NBA 2).
 
 ## 🔒 Locks of the Day -- Track Record
 - Sportsbook-priced: **3-0** (n=3; net +0.05u, ROI +62.0%) -- too few to judge
@@ -29,54 +29,57 @@
 - **[CS]** torzsi OVER 40.5 Kills (BO3) · model 61.0%
 
 ## ⚡ Pre-Game
-- No pre-game alerts: an alert needs a game-lines-desk probability whose verdict passed (not NO EDGE / UNPROVEN) and a DraftKings price. NBA: 2 desk verdict NO EDGE; NHL: 11 desk verdict NO EDGE; WNBA: 1 not pre-game; MLS: 15 no validated model probability (not from the game-lines desk); EPL: 1 no validated model probability (not from the game-lines desk); UCL: 9 not pre-game; NFL: 15 desk verdict UNPROVEN; NCAAF: 16 no validated model probability (not from the game-lines desk); NCAAB: 26 not pre-game; CWS: 1 not pre-game
+- No pre-game alerts: an alert needs a game-lines-desk probability whose verdict passed (not NO EDGE / UNPROVEN) and a DraftKings price. NBA: 10 desk verdict NO EDGE; NHL: 6 desk verdict NO EDGE; WNBA: 1 not pre-game; MLS: 15 not pre-game; EPL: 5 not pre-game; UCL: 9 not pre-game; NFL: 15 not pre-game; NCAAF: 20 no validated model probability (not from the game-lines desk); NCAAB: 4 not pre-game; CWS: 1 not pre-game
 
 ## 🔥/❄️ Heat / Cold Signals
-- Hot teams: **9** | Cold teams: **24** | Over-heavy: 0 | Under-heavy: 28
+- Hot teams: **14** | Cold teams: **20** | Over-heavy: 0 | Under-heavy: 30
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (87)
-- RESIDUAL_DIVERGENCE: **21**
-- STREAK_MISMATCH: **1**
-- STEAM_MOVE: **65**
-  - Orlando Magic (NBA): Orlando Magic UNDERPERFORMING expected margin by 6.1pts in recent games -- model bias may persist
-  - Golden State Warriors (NBA): Golden State Warriors OUTPERFORMING expected margin by 8.6pts in recent games -- model bias may persist
-  - Montreal Canadiens (NHL): Montreal Canadiens UNDERPERFORMING expected margin by 8.6pts in recent games -- model bias may persist
-  - Vegas Golden Knights (NHL): Vegas Golden Knights OUTPERFORMING expected margin by 7.9pts in recent games -- model bias may persist
-  - Chicago Blackhawks (NHL): Chicago Blackhawks OUTPERFORMING expected margin by 7.3pts in recent games -- model bias may persist
+## ⚠️ Anomaly Detector (84)
+- RESIDUAL_DIVERGENCE: **10**
+- STEAM_MOVE: **74**
+  - Washington Wizards (NBA): Washington Wizards UNDERPERFORMING expected margin by 7.2pts in recent games -- model bias may persist
+  - New York Knicks (NBA): New York Knicks OUTPERFORMING expected margin by 6.7pts in recent games -- model bias may persist
+  - Milwaukee Bucks (NBA): Milwaukee Bucks UNDERPERFORMING expected margin by 8.9pts in recent games -- model bias may persist
+  - New Orleans Pelicans (NBA): New Orleans Pelicans UNDERPERFORMING expected margin by 7.5pts in recent games -- model bias may persist
+  - Houston Rockets (NBA): Houston Rockets OUTPERFORMING expected margin by 6.8pts in recent games -- model bias may persist
 
 ## 💰 Today's Portfolio
 - No priced picks: a stake is sized only at an actionable DraftKings quote.
 
-## 🎯 Signal stacking (23 games with 2+ signals) — research, not picks
-  - Portland Trail Blazers @ Phoenix Suns : 4 signals (HEAT_COLD, HEAT_COLD, HEAT_COLD, ANOMALY)
-  - Vancouver Canucks @ Winnipeg Jets : 4 signals (HEAT_COLD, HEAT_COLD, HEAT_COLD, ANOMALY)
-  - New York City FC @ D.C. United : 4 signals (HEAT_COLD, HEAT_COLD, ANOMALY, ANOMALY)
-  - Orlando Magic @ Phoenix Suns : 3 signals (HEAT_COLD, HEAT_COLD, ANOMALY)
-  - Chicago Blackhawks @ Florida Panthers : 3 signals (HEAT_COLD, HEAT_COLD, ANOMALY)
+## 🎯 Signal stacking (14 games with 2+ signals) — research, not picks
+  - Milwaukee Bucks @ New York Knicks : 5 signals (HEAT_COLD, HEAT_COLD, HEAT_COLD, ANOMALY)
+  - Miami Heat @ Utah Jazz : 4 signals (HEAT_COLD, HEAT_COLD, HEAT_COLD, ANOMALY)
+  - Orlando Magic @ Sacramento Kings : 4 signals (HEAT_COLD, HEAT_COLD, HEAT_COLD, HEAT_COLD)
+  - Colorado Avalanche @ Toronto Maple Leafs : 4 signals (HEAT_COLD, HEAT_COLD, HEAT_COLD, ANOMALY)
+  - New Jersey Devils @ Winnipeg Jets : 4 signals (HEAT_COLD, HEAT_COLD, HEAT_COLD, ANOMALY)
 
-## 🏀 NBA Player Heat (2 HOT / 0 COLD)
-  - 🔥 **Giannis Antetokounmpo** (MIA): L5 28.2/15.2/7.4 vs season 28.0/11.5/5.6 [REB +3.7]
-  - 🔥 **Franz Wagner** (ORL): L5 20.4/6.2/8.6 vs season 20.4/5.7/5.8 [AST +2.8]
+## 🏀 NBA Player Heat (8 HOT / 7 COLD)
+  - 🔥 **Scottie Barnes** (TOR): L5 27.4/7.6/5.6 vs season 21.4/7.6/5.4 [PTS +6.0]
+  - 🔥 **Cormac Ryan** (MIL): L5 20.2/4.8/2.4 vs season 14.3/2.5/1.7 [PTS +5.9, REB +2.3]
+  - 🔥 **Devin Carter** (BOS): L5 14.6/5.8/5.0 vs season 8.9/3.3/2.7 [PTS +5.7, REB +2.5, AST +2.3]
+  - 🔥 **Luka Doncic** (LAL): L5 42.4/8.8/8.2 vs season 37.4/7.8/8.0 [PTS +5.0]
+  - 🔥 **Anthony Black** (ORL): L5 18.8/7.2/6.0 vs season 16.2/5.0/4.5 [REB +2.2]
+  - ❄️ **Shaedon Sharpe** (POR): L5 7.2 vs season 20.8 [PTS -13.6, REB -2.7, AST -2.0]
+  - ❄️ **DeMar DeRozan** (DEN): L5 7.2 vs season 13.4 [PTS -6.2]
+  - ❄️ **Kel'el Ware** (MIL): L5 3.2 vs season 9.3 [PTS -6.1, REB -3.1]
 
-## 🥊 UFC Fight Matchups (UFC Fight Night: Cortes Acosta vs. Walker) — model projection — unvalidated, no sportsbook price, not a recommendation
-  - model favourite **Keiichiro Nakamura** (8-1-0) vs Ollie Schmid
-  - model favourite **Nina Milošević** (9-1-0) vs Priscila Cachoeira
-  - model favourite **Mantas Kondratavičius** (9-1-0) vs Andre Petroski
-  - model favourite **Gabriel Lorenço** (8-1-0) vs Thomas Petersen
-  - model favourite **Austin Bashi** (14-2-0) vs Carlos Calderon
+## 🥊 UFC Fight Matchups (UFC 334: Gane vs. Hokit) — model projection — unvalidated, no sportsbook price, not a recommendation
+  - model favourite **Bia Mesquita** (8-0-0) vs Macy Chiasson
+  - model favourite **Donte Johnson** (9-0-0) vs Cesar Almeida
+  - model favourite **Bilal Hasan** (10-0-0) vs Luis Gurule
+  - model favourite **Jim Miller** (39-19-0) vs Terrance McKinney
+  - model favourite **Caio Borralho** (18-2-0) vs Yousri Belgaroui
 
-## 😴 Back-to-back flags (3) — schedule fact, not a pick
-- [NBA] Orlando Magic @ Phoenix Suns (2026-11-05): away team on a back-to-back
-- [NBA] Miami Heat @ Golden State Warriors (2026-11-05): home team on a back-to-back
-- [NHL] Chicago Blackhawks @ Tampa Bay Lightning (2026-11-05): home team on a back-to-back
+## 😴 Back-to-back flags (1) — schedule fact, not a pick
+- [NBA] LA Clippers @ Phoenix Suns (2026-11-10): away team on a back-to-back
 
-## 📈 Streaks (15) — record facts, not picks
-- [NBA] Phoenix Suns on L4 L10 1-4
-- [NBA] Golden State Warriors on W5 L10 5-0
-- [NHL] Chicago Blackhawks on L4 L10 1-4
-- [NHL] Pittsburgh Penguins on L3 L10 2-3
-- [NHL] Vancouver Canucks on L3 L10 1-4
+## 📈 Streaks (13) — record facts, not picks
+- [NBA] New York Knicks on W3 L10 4-1
+- [NBA] Milwaukee Bucks on L6 L10 0-5
+- [NBA] Boston Celtics on W3 L10 4-1
+- [NBA] Utah Jazz on L6 L10 0-5
+- [NBA] Sacramento Kings on L3 L10 1-4
 
 ## 📉 Walk-Forward Trajectory (n_windows=3d × 8 markets)
 - 📈 Improving: **1** · ➖ Flat: 4 · 📉 Degrading: **3**
@@ -86,13 +89,13 @@
   - ⚠️ batter_rbis (Brier Δ -0.0052)
 
 ## 🧠 Training Convergence
-- ELITE: **0** · HEALTHY: 0 · OK: 1 · DEGRADED: **1**
-  - ⚠️ **batter_hits**: DIVERGENT - consistent same-sign moves (structural issue) (cf=0.9911)
+- ELITE: **0** · HEALTHY: 0 · OK: 0 · DEGRADED: **2**
+  - ⚠️ **batter_hits**: DIVERGENT - consistent same-sign moves (structural issue) (cf=0.9775)
 
 ## 🤖 Self-Training Status
-- **NBA**: n=107 games · hit rate 58.9% · bias +5.8pp
-- **NHL**: n=97 games · hit rate 53.6% · bias -3.8pp
-- **WNBA**: n=4 games · hit rate 50.0% · bias -15.3pp
-- **MLS**: n=60 games · hit rate 43.3% · bias +0.8pp
-- **EPL**: n=30 games · hit rate 50.0% · bias +6.7pp
-- **MLB**: n=5 games · hit rate 80.0% · bias -25.5pp
+- **NBA**: n=104 games · hit rate 64.4% · bias +2.2pp
+- **NHL**: n=94 games · hit rate 52.1% · bias -2.2pp
+- **WNBA**: n=2 games · hit rate 50.0% · bias -69.7pp
+- **MLS**: n=60 games · hit rate 46.7% · bias -2.3pp
+- **EPL**: n=30 games · hit rate 40.0% · bias -2.2pp
+- **MLB**: n=1 games · hit rate 0.0% · bias +53.6pp

@@ -1,10 +1,10 @@
 **EdgeStat -- Tonight's Slate**
-_NO_ACTION_NIGHT_ | L:0 S:39 F:176
+_MODEST_NIGHT_ | L:0 S:40 F:135
 
 :dart: **Top Picks:**
-1. [GOLF] Brice Garnett -- Brice Garnett (PLAYER_STRONG)
-2. [GOLF] Ben Martin -- Ben Martin (PLAYER_STRONG)
+1. [GOLF] C.T. Pan -- C.T. Pan (PLAYER_STRONG)
+2. [GOLF] Erik van Rooyen -- Erik van Rooyen (PLAYER_STRONG)
 
-:coin: Bankroll Advisory: STAND DOWN. Slate has no aligned conviction. Skip betting tonight or watch only.
+:coin: Bankroll Advisory: Light slate. Limit to 1-3 strongest plays; use 25% Kelly or less.
 
 _EdgeStat: ML-driven sports betting analytics. Not financial advice._

@@ -1,16 +1,16 @@
 {
-  "generated_at": "2026-11-05T17:00:30",
+  "generated_at": "2026-11-11T16:54:20",
   "fixes": [
     {
       "fix": "NFL DFS lineups on calibrated xFP (optimizer's curse) + form rule v2",
       "question": "Do published lineups land near their projection, and score more?",
       "expected": "backtest: bias -64.6 -> ~+11 pts/slate, actual 106 -> ~131",
-      "status": "early",
+      "status": "graded",
       "new": {
-        "n_slates": 3,
-        "avg_projected": 120.47,
-        "avg_actual": 136.76,
-        "avg_bias": 16.29
+        "n_slates": 5,
+        "avg_projected": 121.9,
+        "avg_actual": 131.27,
+        "avg_bias": 9.36
       },
       "old": {
         "n_slates": 5,
@@ -18,7 +18,7 @@
         "avg_actual": 108.16,
         "avg_bias": -65.56
       },
-      "read": "calibrated: proj 120.47 -> actual 136.76 (bias 16.29) over 3 slate(s) vs raw-model bias -65.56 over 5"
+      "read": "calibrated: proj 121.9 -> actual 131.27 (bias 9.36) over 5 slate(s) vs raw-model bias -65.56 over 5"
     },
     {
       "fix": "NFL props priced on season-to-date form (v2) instead of last week's game (v1)",
@@ -53,14 +53,14 @@
       "expected": "next-10-game RMSE after 1 game: 6.45 -> 3.57 pts (K=5)",
       "status": "graded",
       "new": {
-        "n": 1168,
-        "wins": 750,
-        "losses": 418,
-        "net_units": -44.81,
-        "roi_pct": -3.84,
-        "hit_rate": 0.6421,
-        "brier": 0.2299,
-        "log_loss": 0.6525
+        "n": 1591,
+        "wins": 1037,
+        "losses": 554,
+        "net_units": -37.93,
+        "roi_pct": -2.38,
+        "hit_rate": 0.6518,
+        "brier": 0.2268,
+        "log_loss": 0.646
       },
       "old": {
         "n": 12,
@@ -72,7 +72,7 @@
         "brier": 0.2421,
         "log_loss": 0.6768
       },
-      "read": "new 750-418 Brier 0.2299 vs old 7-5 Brier 0.2421"
+      "read": "new 1037-554 Brier 0.2268 vs old 7-5 Brier 0.2421"
     },
     {
       "fix": "NHL props on live blended baselines + current teams (was 2024-25 tables)",
@@ -80,14 +80,14 @@
       "expected": "skater stat RMSE 2-3x lower early season (K=30)",
       "status": "graded",
       "new": {
-        "n": 279,
-        "wins": 179,
-        "losses": 100,
-        "net_units": -4.57,
-        "roi_pct": -1.64,
-        "hit_rate": 0.6416,
-        "brier": 0.2305,
-        "log_loss": 0.6535
+        "n": 509,
+        "wins": 343,
+        "losses": 166,
+        "net_units": 13.06,
+        "roi_pct": 2.57,
+        "hit_rate": 0.6739,
+        "brier": 0.2202,
+        "log_loss": 0.632
       },
       "old": {
         "n": 115,
@@ -99,7 +99,7 @@
         "brier": 0.2653,
         "log_loss": 0.7356
       },
-      "read": "new 179-100 Brier 0.2305 vs old 65-50 Brier 0.2653"
+      "read": "new 343-166 Brier 0.2202 vs old 65-50 Brier 0.2653"
     },
     {
       "fix": "Outage backfill + NFL/NHL/MLB grader repairs",
@@ -114,11 +114,9 @@
       "read": "267 picks recovered over 3 pass(es)"
     }
   ],
-  "n_graded": 4,
+  "n_graded": 5,
   "n_total": 5,
-  "still_waiting_on_games": [
-    "NFL DFS lineups on calibrated xFP (optimizer's curse) + form rule v2"
-  ],
+  "still_waiting_on_games": [],
   "bars": {
     "props": 200,
     "dfs_slates": 4

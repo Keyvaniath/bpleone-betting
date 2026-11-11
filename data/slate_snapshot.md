@@ -1,7 +1,7 @@
-# EdgeStat Slate — 2026-11-05
+# EdgeStat Slate — 2026-11-11
 
 _0 picks consolidated from POD + Alpha + Book Edges + Parlay-of-Day._
 
 ---
-_Generated 2026-11-05T16:59:52 UTC by EdgeStat._
+_Generated 2026-11-11T16:53:50 UTC by EdgeStat._
 _Stakes assume ¼-Kelly fractional sizing on a flat bankroll._
