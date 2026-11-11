@@ -757,3 +757,113 @@ def test_every_local_page_reference_is_served():
     r = subprocess.run([sys.executable, os.path.join(root, "tools", "check_site_refs.py")], capture_output=True, text=True, timeout=120)
     assert r.returncode == 0, r.stdout[-2000:]
 
+
+
+# ---------------------------------------------------------------- per-sport plays + model leans (2026-11-11)
+def test_lean_rule_only_takes_a_favourite_the_model_and_the_market_agree_on():
+    import game_lines_desk as gld
+    # model 66% home, DK -180/+150 (no-vig ~61.6% home): both favour home, inside -300 -> lean home
+    ln = gld.lean_side(0.66, -180, 150)
+    assert ln["side"] == "home" and ln["market"] == "ML_HOME" and ln["book_american"] == -180
+    assert abs(ln["score"] - min(0.66, ln["prob_dk"])) < 1e-4
+    assert ln["ev_at_dk_no_vig"] < 0                       # at the market's own probability a lean is -EV: the margin
+    # the model likes the underdog: that is a disagreement, never a lean (the lean study: those bets lose)
+    assert gld.lean_side(0.35, -180, 150) is None
+    # agreement, but too heavy a favourite (-450) or too close to a coin flip (52%) -> no lean
+    assert gld.lean_side(0.85, -450, 340) is None
+    assert gld.lean_side(0.53, -115, -105) is None
+    # no price -> no lean
+    assert gld.lean_side(0.66, None, 150) is None
+    # walk-forward record: one lean per day, graded at the price
+    rows = [{"date": "2026-11-01", "p_elo": 0.66, "ml_home": -180, "ml_away": 150, "y": 1.0},
+            {"date": "2026-11-01", "p_elo": 0.60, "ml_home": -150, "ml_away": 126, "y": 0.0},   # lower score: not the day's lean
+            {"date": "2026-11-02", "p_elo": 0.30, "ml_home": 170, "ml_away": -205, "y": 1.0},   # away favourite loses
+            {"date": "2026-11-03", "p_elo": 0.35, "ml_home": -180, "ml_away": 150, "y": 1.0}]   # disagreement: no lean
+    rec = gld.lean_backtest(rows)
+    assert (rec["n"], rec["wins"], rec["losses"], rec["game_days"]) == (2, 1, 1, 3)
+    assert abs(rec["units"] - (100 / 180 - 1)) < 0.01 and rec["expected_roi_pct_at_no_vig"] < 0
+
+
+def _lean_fixture(tmp_path, today, nfl_pick):
+    now = _pod_fixture(tmp_path, today, nfl_pick=nfl_pick)
+    gld = json.loads((tmp_path / "game_lines_desk.json").read_text())
+    nba = gld["sports"]["nba"]
+    nba["lean"] = {"rule_text": "the favourite both agree on",
+                   "backtest": {"n": 19, "wins": 11, "losses": 8, "units": -3.06, "roi_pct": -16.1,
+                                "expected_roi_pct_at_no_vig": -4.0, "first_date": "2026-10-20", "last_date": "2026-11-07"}}
+    row = nba["board"][0]
+    row.update({"ml_home": -200, "ml_away": 168, "p_home": 0.641, "p_home_elo": 0.68, "commence": "2026-11-09T00:30Z",
+                "lean": {"side": "home", "market": "ML_HOME", "team": "MIA", "score": 0.641, "prob_model": 0.68,
+                         "prob_dk": 0.641, "book_american": -200, "fair_american": -179, "ev_at_dk_no_vig": -0.0385}})
+    (tmp_path / "game_lines_desk.json").write_text(json.dumps(gld))
+    (tmp_path / "cfb_model.json").write_text(json.dumps({"board_fresh": True, "games": [], "edges": []}))
+    return now
+
+
+def test_each_major_sport_gets_a_play_and_a_lean_is_featured_only_as_a_last_resort(tmp_path, monkeypatch):
+    import re
+    import play_of_day as pod
+    import verify_pricing as vp
+    today = "2026-11-08"
+    monkeypatch.setattr(pod, "DATA_DIR", str(tmp_path))
+    monkeypatch.setattr(pod, "OUT", str(tmp_path / "play_of_day.json"))
+    monkeypatch.setattr(pod, "_today_et", lambda: today)
+    # an NFL desk pick and an NBA lean on the same day: both are sport plays, the desk pick is featured
+    now = _lean_fixture(tmp_path, today, nfl_pick=True)
+    out = pod.run(now=now)
+    sp = {x["sport"]: x for x in out["sport_plays"]}
+    assert set(sp) == {"NFL", "NBA"}
+    assert out["play"]["sport"] == "NFL" and out["play"]["tier"] == 2 and sp["NFL"]["featured"] and not sp["NBA"]["featured"]
+    lean = sp["NBA"]
+    assert lean["tier"] == 4 and lean["is_lean"] and lean["team"] == "MIA" and lean["book_american"] == -200
+    assert "not a proven edge" in lean["why"] and lean["ev_pct"] < 0 and lean["lean_record"]["n"] == 19
+    assert "model lean" in lean["tier_label"]
+    assert vp.check_row(lean, now) == []                         # a lean still needs a live pre-start DK quote
+    post = out["post"]
+    assert post["kind"] == "plays" and post["fits"]
+    assert "NFL: NYJ moneyline +440 (forward test)" in post["text"] and "NBA: MIA moneyline -200 (lean)" in post["text"]
+    assert "A lean is not a proven edge." in post["text"]
+    assert sorted(re.findall(r"(?<![\w/.])[+-]\d{3,}\b", post["text"])) == ["+440", "-200"]
+    # the next dated play is never a lean
+    assert out["next_play"]["tier"] != 4
+    # no desk pick anywhere: the lean is the featured play, labelled, and the post says what it is
+    now = _lean_fixture(tmp_path, today, nfl_pick=False)
+    out = pod.run(now=now)
+    assert out["play"]["tier"] == 4 and out["play"]["sport"] == "NBA" and out["no_play_reasons"] == []
+    assert "Model lean, not a proven edge" in out["post"]["text"] and "agree on the favourite" in out["post"]["text"]
+    # a stale quote kills the lean like any other play
+    now = _lean_fixture(tmp_path, today, nfl_pick=False)
+    out = pod.run(now=now + dt.timedelta(hours=9))
+    assert out["play"] is None and out["sport_plays"] == []
+
+
+def test_a_lean_is_logged_under_its_own_source_and_never_as_the_curated_pod(tmp_path, monkeypatch):
+    import all_picks_tracker as t
+    import play_of_day as pod
+    today = "2026-11-08"
+    monkeypatch.setattr(pod, "DATA_DIR", str(tmp_path))
+    monkeypatch.setattr(pod, "OUT", str(tmp_path / "play_of_day.json"))
+    monkeypatch.setattr(pod, "_today_et", lambda: today)
+    out = pod.run(now=_lean_fixture(tmp_path, today, nfl_pick=False))      # featured play = the NBA lean
+    assert out["play"]["tier"] == 4
+    out.pop("generated_at")          # the fixture's clock is days old; the ledger skips sources older than 48h
+    (tmp_path / "play_of_day.json").write_text(json.dumps(out))
+    monkeypatch.setattr(t, "DATA_DIR", str(tmp_path))
+    rows = t._collect_picks_from_sources()
+    leans = [r for r in rows if r.get("source") == "sport_lean"]
+    assert len(leans) == 1 and leans[0]["sport"] == "NBA" and leans[0]["market"] == "ML_HOME"
+    assert leans[0]["book_american"] == -200 and leans[0]["date"] == today and leans[0]["desk_verdict"] == "lean"
+    assert not [r for r in rows if r.get("source") == "pod"]         # a featured lean is not a "pod" pick
+
+
+def test_nba_moneyline_is_graded_on_the_final_by_event_id():
+    import all_picks_tracker as t
+    games = [{"id": "77", "date": "2026-11-08", "home_abbrev": "MIA", "away_abbrev": "BOS", "home_score": 111, "away_score": 104},
+             {"id": "78", "date": "2026-11-09", "home_abbrev": "BOS", "away_abbrev": "MIA", "home_score": 99, "away_score": 120}]
+    win = {"sport": "NBA", "market": "ML_HOME", "player_or_matchup": "BOS @ MIA", "date": "2026-11-08", "event_id": "77"}
+    assert t._grade_wnba_pick(win, {}, games) == "won" and "BOS 104 @ MIA 111" in win["outcome"]["verify"]
+    lose = {"sport": "NBA", "market": "ML_AWAY", "player_or_matchup": "BOS @ MIA", "date": "2026-11-08", "event_id": "77"}
+    assert t._grade_wnba_pick(lose, {}, games) == "lost"
+    # no event id: the date + teams path finds the same game; a game that has not been played is not graded
+    assert t._grade_wnba_pick({"sport": "NBA", "market": "ML_HOME", "player_or_matchup": "BOS @ MIA", "date": "2026-11-08"}, {}, games) == "won"
+    assert t._grade_wnba_pick({"sport": "NBA", "market": "ML_HOME", "player_or_matchup": "LAL @ DEN", "date": "2026-11-08", "event_id": "90"}, {}, games) is None

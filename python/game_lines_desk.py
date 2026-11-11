@@ -343,7 +343,7 @@ def _ll(p: float, y: float) -> float:
 
 
 def backtest(sport: str, finals: List[Dict[str, Any]], lines: Dict[str, Any],
-             params: Dict[str, float], adj=None) -> Dict[str, Any]:
+             params: Dict[str, float], adj=None, keep_rows: bool = False) -> Dict[str, Any]:
     """Walk-forward over this season's DK-priced games: before each game date,
     rate with every earlier final; compare log loss of Elo, DK no-vig, and the
     blend at each w; simulate the pick rule at the DK close."""
@@ -419,7 +419,8 @@ def backtest(sport: str, finals: List[Dict[str, Any]], lines: Dict[str, Any],
              for r in out]
     boots = sorted(sum(gains[rng.randrange(n)] for _ in range(n)) / n for _ in range(1000))
     ci = (round(boots[50], 4), round(boots[949], 4))
-    return {"n": n, "first_date": out[0]["date"], "last_date": out[-1]["date"],
+    return {**({"_rows": out} if keep_rows else {}),
+            "n": n, "first_date": out[0]["date"], "last_date": out[-1]["date"],
             "logloss_gain_vs_market": round(sum(gains) / n, 4), "logloss_gain_ci90": ci,
             "logloss_market": round(ll_mkt, 4), "logloss_elo": round(ll_elo, 4),
             "logloss_by_w": {str(w): round(v, 4) for w, v in by_w.items()},
@@ -427,6 +428,80 @@ def backtest(sport: str, finals: List[Dict[str, Any]], lines: Dict[str, Any],
             "sim_in_sample": sim(w_best, MIN_EDGE),
             "sim_out_of_sample": dict(oos, w_from_first_half=w_first, n_games=len(second)),
             "home_win_rate": round(sum(r["y"] for r in out) / n, 3)}
+
+
+# ------------------------------------------------------------------- lean ----
+# (2026-11-11) Brandon: "it would be nice if you had a play of the day for each
+# of the 4 sports when they play." A desk whose verdict is NO EDGE makes no EV
+# picks, and the lean study showed betting the model AGAINST DraftKings loses
+# (docs/ODDS-INTEGRITY.md). So the per-sport play on a day with no desk pick is
+# a LEAN, chosen where the model and the market AGREE, never where they fight:
+#   a side that is the favourite by BOTH the desk model and DraftKings' no-vig
+#   price (each >= 55%), priced no shorter than -300; one per sport per day, the
+#   one with the highest min(model, DK) probability.
+# It is not an edge: at the no-vig price its expected value is the book's margin
+# (about -4% on a DraftKings moneyline). It is labelled as a lean, logged under its own ledger source
+# (never curated), and its walk-forward record is published next to it. The
+# rule was written down before its record was computed and is not tuned.
+LEAN_RULE = {"min_prob": 0.55, "max_juice": -300}
+LEAN_RULE_TEXT = ("Model lean: the side that both the desk model and DraftKings' no-vig price make the favourite "
+                  "(each at least 55%), priced no shorter than -300; the one game per day where the lower of the "
+                  "two probabilities is highest. Not a proven edge: at DraftKings' own no-vig probability the "
+                  "expected value is the book's margin.")
+
+
+def lean_side(p_model_home: Optional[float], ml_home, ml_away) -> Optional[Dict[str, Any]]:
+    """The lean on one game under LEAN_RULE, or None."""
+    p_dk = _no_vig(ml_home, ml_away)
+    if p_dk is None or p_model_home is None:
+        return None
+    best = None
+    for side, pm, pk, px in (("home", p_model_home, p_dk, ml_home), ("away", 1 - p_model_home, 1 - p_dk, ml_away)):
+        dd = _dec(px)
+        try:
+            juice_ok = float(px) >= LEAN_RULE["max_juice"]
+        except (TypeError, ValueError):
+            juice_ok = False
+        if not dd or not juice_ok or pm < LEAN_RULE["min_prob"] or pk < LEAN_RULE["min_prob"]:
+            continue
+        score = min(pm, pk)
+        if best is None or score > best["score"]:
+            best = {"side": side, "market": f"ML_{side.upper()}", "score": round(score, 4),
+                    "prob_model": round(pm, 4), "prob_dk": round(pk, 4), "book_american": px,
+                    "fair_american": _american(pk), "ev_at_dk_no_vig": round(pk * dd - 1, 4)}
+    return best
+
+
+def lean_backtest(rows: List[Dict[str, Any]]) -> Dict[str, Any]:
+    """Walk-forward record of LEAN_RULE on this season's DK-priced games: one
+    lean per day, 1u at the DraftKings close."""
+    by_day: Dict[str, Dict[str, Any]] = {}
+    for r in rows or []:
+        ln = lean_side(r.get("p_elo"), r.get("ml_home"), r.get("ml_away"))
+        if not ln:
+            continue
+        cur = by_day.get(r["date"])
+        if cur is None or ln["score"] > cur["lean"]["score"]:
+            by_day[r["date"]] = {"row": r, "lean": ln}
+    w = l = 0
+    units = ev_sum = 0.0
+    for d in sorted(by_day):
+        r, ln = by_day[d]["row"], by_day[d]["lean"]
+        won = (r["y"] == 1.0) == (ln["side"] == "home")
+        dd = _dec(ln["book_american"])
+        w += won
+        l += (not won)
+        units += (dd - 1) if won else -1.0
+        ev_sum += ln["ev_at_dk_no_vig"]
+    n = w + l
+    days = len({r["date"] for r in rows or []})
+    return {"n": n, "wins": w, "losses": l, "units": round(units, 2),
+            "roi_pct": round(units / n * 100, 1) if n else None,
+            "expected_roi_pct_at_no_vig": round(ev_sum / n * 100, 1) if n else None,
+            "game_days": days, "days_with_a_lean": n,
+            "first_date": min(by_day) if by_day else None, "last_date": max(by_day) if by_day else None,
+            "note": ("1u per lean at the DraftKings close, one per game day. A favourite-only rule: the record "
+                     "is expected to sit near the book's margin over time, whatever a short run shows.")}
 
 
 def fit_params(sport: str, finals: List[Dict[str, Any]], season_start: str) -> Dict[str, float]:
@@ -566,7 +641,8 @@ def run_sport(sport: str) -> Dict[str, Any]:
     if sport == "nhl":
         gm = nhl_goalie_model(finals, params, season_start)
         bt_base = backtest(sport, finals, lines, params)
-        bt_proj = backtest(sport, finals, lines, params, adj=gm["adj"]["proj"])
+        bt_proj = backtest(sport, finals, lines, params, adj=gm["adj"]["proj"], keep_rows=True)
+        lean_rows = bt_proj.pop("_rows", [])     # leans are made before starters are confirmed: projected model
         # NHL picks are made only once BOTH starters are confirmed, so the model
         # being bet -- and judged -- is the known-starter one.
         bt = backtest(sport, finals, lines, params, adj=gm["adj"]["known"])
@@ -593,7 +669,8 @@ def run_sport(sport: str) -> Dict[str, Any]:
         # The gate below still decides whether it bets.
         am = nba_avail_model(finals, params, season_start)
         bt_base = backtest(sport, finals, lines, params)
-        bt = backtest(sport, finals, lines, params, adj=am["adj"])
+        bt = backtest(sport, finals, lines, params, adj=am["adj"], keep_rows=True)
+        lean_rows = bt.pop("_rows", [])
         keys = ("n", "logloss_market", "logloss_elo", "logloss_blend", "w_fitted", "logloss_gain_vs_market",
                 "logloss_gain_ci90", "sim_out_of_sample")
         extra["avail_model"] = {
@@ -616,7 +693,8 @@ def run_sport(sport: str) -> Dict[str, Any]:
     else:
         qm = nfl_qb_model(finals, params, season_start)
         bt_base = backtest(sport, finals, lines, params)
-        bt = backtest(sport, finals, lines, params, adj=qm["adj"])
+        bt = backtest(sport, finals, lines, params, adj=qm["adj"], keep_rows=True)
+        lean_rows = bt.pop("_rows", [])
         keys = ("n", "logloss_market", "logloss_elo", "logloss_blend", "w_fitted", "logloss_gain_vs_market",
                 "logloss_gain_ci90", "sim_out_of_sample")
         extra["qb_model"] = {
@@ -681,6 +759,7 @@ def run_sport(sport: str) -> Dict[str, Any]:
         except Exception:
             game_date = None
         goalies, may_pick, blocked = None, True, None
+        lean_ok = True
         qbs = None
         if sport == "nfl" and extra.get("qb_model") and g.get("event_id"):
             import nfl_qbs as nq
@@ -692,6 +771,7 @@ def run_sport(sport: str) -> Dict[str, Any]:
             unsure = [f"{t}: {qbs[sd]['note']}" for sd, t in (("away", a), ("home", h)) if not qbs[sd]["certain"]]
             if unsure:
                 may_pick, blocked = False, "QB uncertain -- " + "; ".join(unsure)
+                lean_ok = False
         avail = None
         if sport == "nba" and extra.get("avail_model") and g.get("event_id") and game_date:
             import nba_avail as na
@@ -707,6 +787,7 @@ def run_sport(sport: str) -> Dict[str, Any]:
                       for t, x in ((a, ap), (h, hp)) if not x["certain"]]
             if unsure:
                 may_pick, blocked = False, "availability uncertain -- " + "; ".join(unsure)
+                lean_ok = False
         if gm and game_date:
             st = gm["state"]
             pr = probs.get((game_date, a, h)) or {}
@@ -767,11 +848,17 @@ def run_sport(sport: str) -> Dict[str, Any]:
                             "prob": round(pp, 4), "book_american": px, "fair_american": _american(pp),
                             "ev": round(ev, 4)}
         row["pick"] = best
+        if best is None and lean_ok:
+            ln = lean_side(p_elo, m.get("ml_home"), m.get("ml_away"))
+            if ln:
+                row["lean"] = dict(ln, team=h if ln["side"] == "home" else a)
         board.append(row)
     return {"model_version": MODEL_VERSION.get(sport), "params": params, "w_used": w, "backtest": bt, "beats_market": beats_market, "proven": proven,
             "verdict": verdict, "ratings": {t: round(v, 1) for t, v in sorted(elo.r.items(), key=lambda x: -x[1])},
             "board": board, "n_picks": sum(1 for r in board if r["pick"]),
-            "forward_test": forward_test(sport, lines), **extra}
+            "forward_test": forward_test(sport, lines),
+            "lean": {"rule": LEAN_RULE, "rule_text": LEAN_RULE_TEXT, "backtest": lean_backtest(lean_rows)},
+            **extra}
 
 
 def run() -> Dict[str, Any]:

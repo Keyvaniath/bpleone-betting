@@ -49,8 +49,14 @@ bpleone-site/
   college). A NO EDGE desk (NBA, NHL today) never produces a play; a no-play
   day lists each sport's reason, the next dated play and the day's DK board
   ("prices, not picks"). `post` = copy-ready share text, DRAFT ONLY.
-  (2) DO NOT ADD A "LEAN" TIER: betting NBA/NHL model-vs-DK disagreements loses
-  under every rule this season (NBA -10.6% to -43%, NHL -3.8% to -21.4%).
+  (2) PER-SPORT PLAYS + MODEL LEANS (Brandon's call 11/11 night: "a play of the
+  day for each of the 4 sports when they play"): `sport_plays` in
+  play_of_day.json. A desk with no EV pick shows a tier-4 LEAN = the favourite
+  the model AND DraftKings agree on (game_lines_desk.LEAN_RULE), labelled "not
+  a proven edge" (expected about -4%), ledger source `sport_lean`, NEVER
+  curated and never harvested as `pod`. Never lean AGAINST the market: betting
+  NBA/NHL model-vs-DK disagreements loses under every rule this season (NBA
+  -10.6% to -43%, NHL -3.8% to -21.4%). Do not tune LEAN_RULE on its record.
   Totals are NO EDGE on NFL/NBA/NHL too (tools/totals_study.py); spread prices
   are not recorded, so no spread desk. (3) NBA desk v2 = Elo + availability +
   rest (`python/nba_avail.py`, store data/nba_player_games.json); helps last

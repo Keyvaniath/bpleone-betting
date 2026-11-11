@@ -539,7 +539,10 @@ def _collect_picks_from_sources() -> List[Dict[str, Any]]:
     # desk's own row as also_sources=pod (pod_pl_tracker mirrors it from there).
     pod2 = _load(os.path.join(DATA_DIR, "play_of_day.json"))
     pl = pod2.get("play")
-    if pl and (pl.get("tier") or 0) >= 1 and pl.get("game_date") and pl.get("book_american") is not None:
+    # (2026-11-11) tiers 1-3 only: a featured LEAN (tier 4) is not a Play of the
+    # Day pick for the record -- "pod" is a curated source and a lean is not an
+    # edge. Leans are logged below under their own source.
+    if pl and 1 <= (pl.get("tier") or 0) <= 3 and pl.get("game_date") and pl.get("book_american") is not None:
         out.append({
             "source": "pod",
             "sport": pl.get("sport"),
@@ -554,6 +557,30 @@ def _collect_picks_from_sources() -> List[Dict[str, Any]]:
             "desk_verdict": pl.get("desk_verdict"),
             "pod_tier": pl.get("tier"),
             "quote": pl.get("quote"),
+        })
+
+    # Per-sport model leans (2026-11-11, Brandon: "a play of the day for each of
+    # the 4 sports when they play"). On a day a desk has no EV pick, its play is
+    # a lean: the favourite the model and DraftKings agree on. NOT an edge and
+    # NOT curated ("sport_lean" matches no curated prefix); logged at the real DK
+    # price so the page can show an honest forward record next to the backtest.
+    for sp_play in (pod2.get("sport_plays") or []):
+        if sp_play.get("tier") != 4 or not sp_play.get("game_date") or sp_play.get("book_american") is None:
+            continue
+        out.append({
+            "source": "sport_lean",
+            "sport": sp_play.get("sport"),
+            "player_or_matchup": sp_play.get("matchup"),
+            "market": sp_play.get("market"),
+            "prob": sp_play.get("model_prob"),
+            "edge_pct": sp_play.get("ev_pct"),
+            "fair_american": sp_play.get("fair_american"),
+            "book_american": sp_play.get("book_american"),
+            "game_date": sp_play.get("game_date"),
+            "event_id": sp_play.get("event_id"),
+            "desk_verdict": "lean",
+            "pod_tier": 4,
+            "quote": sp_play.get("quote"),
         })
 
     # MLB pitcher Quality Start strong edges
@@ -2425,6 +2452,27 @@ def _grade_wnba_team_total(pick: Dict[str, Any], games: List[Dict[str, Any]]) ->
 def _grade_wnba_pick(pick: Dict[str, Any], by_name: Dict[str, Any],
                      games: List[Dict[str, Any]]) -> Optional[str]:
     # Basketball-generic: also used for NBA (sport == "NBA") with NBA gamelogs.
+    # Moneyline (2026-11-11, per-sport leans + any future NBA desk pick): the
+    # final score decides, overtime included. Matched by ESPN event id first;
+    # the date/teams path takes the nearest game and refuses a tie.
+    market = (pick.get("market") or "").upper()
+    if market in ("ML_HOME", "ML_AWAY"):
+        g = None
+        eid = str(pick.get("event_id") or "")
+        if eid:
+            g = next((x for x in games if str(x.get("id") or "") == eid), None)
+        if g is None:
+            g = _find_nhl_game((pick.get("player_or_matchup") or "").strip(), pick.get("date") or "", games)
+        if not g or g.get("home_score") is None or g.get("away_score") is None:
+            return None
+        hs, as_ = g["home_score"], g["away_score"]
+        if hs == as_:
+            return None     # not a final
+        won = (hs > as_) if market == "ML_HOME" else (as_ > hs)
+        pick["outcome"] = {"final_score": f"{g.get('away_abbrev')} {as_} @ {g.get('home_abbrev')} {hs}",
+                           "market": market,
+                           "verify": f"{g.get('away_abbrev')} {as_} @ {g.get('home_abbrev')} {hs}: {market}"}
+        return "won" if won else "lost"
     r = _grade_wnba_team_total(pick, games)
     return r if r is not None else _grade_wnba_prop(pick, by_name, games)
 

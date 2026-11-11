@@ -16,6 +16,17 @@ verdict, which decides its TIER:
                   graded like any other pick, never curated) -- the NFL today
   3  EXPERIMENTAL the college-football model-vs-book edge (the close is sharper;
                   tracked, not featured) -- Saturdays with no NFL play
+  4  MODEL LEAN   (2026-11-11, Brandon: "a play of the day for each of the 4
+                  sports when they play") the desk's lean on a day it has no EV
+                  pick: the favourite the model AND DraftKings agree on
+                  (game_lines_desk.LEAN_RULE). Not an edge -- expected value at
+                  the price is the book's margin -- and labelled that way with
+                  its walk-forward record. Ledger source "sport_lean", never
+                  curated, never counted in the Play of the Day record.
+
+`sport_plays` = the best play for each major sport that plays today (any tier).
+`play` = the single featured play: the best of them, lower tier first, so a
+lean is featured only when no desk pick qualifies anywhere.
 
 A desk whose verdict is NO EDGE (NBA, NHL today) makes no picks by rule, so it
 cannot produce a play; the page says so rather than inventing one. When nothing
@@ -41,7 +52,8 @@ MAJOR_4 = ("NFL", "NBA", "NHL", "MLB")
 SPORT_PAGE = {"NFL": "nfl.html", "NBA": "nba.html", "NHL": "nhl.html", "MLB": "mlb.html",
               "NCAAF": "ncaaf.html", "NCAAB": "ncaab.html"}
 TIER_LABEL = {0: "MLB Play of the Day", 1: "validated desk pick", 2: "forward-test play (desk unproven)",
-              3: "experimental (college model; the close is sharper)"}
+              3: "experimental (college model; the close is sharper)",
+              4: "model lean (no proven edge)"}
 
 
 def _load(name: str) -> Dict[str, Any]:
@@ -120,6 +132,44 @@ def _desk_candidates(gld: Dict[str, Any], now: dt.datetime) -> List[Dict[str, An
     return out
 
 
+def _lean_candidates(gld: Dict[str, Any], now: dt.datetime) -> List[Dict[str, Any]]:
+    """Tier 4: the desk's lean on a game it has no EV pick on (the desk writes
+    `lean` on the board row under game_lines_desk.LEAN_RULE). Same quote rules
+    as any other play: a live, pre-start DraftKings price or it is not shown."""
+    out = []
+    for sp, d in (gld.get("sports") or {}).items():
+        sport = sp.upper()
+        verdict = str(d.get("verdict") or "")
+        vkey = verdict.split(":")[0].strip().upper() or "UNKNOWN"
+        ld = d.get("lean") or {}
+        rec = ld.get("backtest") or {}
+        for r in (d.get("board") or []):
+            ln = r.get("lean")
+            if not ln or r.get("pick") or not r.get("game_date") or ln.get("book_american") is None:
+                continue
+            q = dict(r.get("quote") or {}, american=ln["book_american"]) if r.get("quote") else {}
+            ok, why = _q.actionable(q, now=now) if q else (False, "no_quote")
+            out.append({
+                "sport": sport, "page": SPORT_PAGE.get(sport, "index.html"),
+                "matchup": r.get("matchup"), "team": ln.get("team") or _side_team(r.get("matchup"), ln.get("side")),
+                "side": ln.get("side"), "market": ln.get("market"),
+                "model_prob": ln.get("prob_model"), "dk_implied": ln.get("prob_dk"),
+                "book_american": ln.get("book_american"), "fair_american": ln.get("fair_american"),
+                # EV at DraftKings' own no-vig probability: the book's margin, negative by construction
+                "ev_pct": round(float(ln.get("ev_at_dk_no_vig") or 0) * 100, 2),
+                "lean_score": ln.get("score"),
+                "event_id": r.get("event_id"), "game_date": r.get("game_date"),
+                "commence_time": r.get("commence") or q.get("scheduled_start"),
+                "odds_observed_at": q.get("observed_at"), "quote": q or None,
+                "desk_verdict": vkey, "desk_verdict_text": verdict, "desk_model": d.get("model_version"),
+                "tier": 4, "is_lean": True, "lean_rule": ld.get("rule_text"),
+                "lean_record": {k: rec.get(k) for k in ("n", "wins", "losses", "units", "roi_pct",
+                                                        "expected_roi_pct_at_no_vig", "first_date", "last_date")},
+                "actionable": bool(ok), "not_actionable_reason": None if ok else why, "qb_note": None,
+            })
+    return out
+
+
 def _cfb_candidates(now: dt.datetime) -> List[Dict[str, Any]]:
     d = _load("cfb_model.json")
     if not d.get("board_fresh"):
@@ -147,7 +197,9 @@ def _cfb_candidates(now: dt.datetime) -> List[Dict[str, Any]]:
 
 def _rank_key(c: Dict[str, Any]):
     major = 0 if c["sport"] in MAJOR_4 else 1
-    return (c["tier"], major, -(c.get("ev_pct") or 0))
+    # a lean has no positive EV to rank on: rank leans by how strongly model and market agree
+    third = -(c.get("lean_score") or 0) if c.get("tier") == 4 else -(c.get("ev_pct") or 0)
+    return (c["tier"], major, third)
 
 
 def _mlb_pod(today: Dict[str, Any], today_et: str) -> Optional[Dict[str, Any]]:
@@ -183,6 +235,12 @@ def _why(c: Dict[str, Any]) -> str:
     mk_h = "moneyline" if mk.upper().startswith("ML") or mk.lower().endswith(("_ml_home", "_ml_away")) else mk.replace("_", " ").lower()
     bits = [f"{c.get('sport') or ''} {c.get('team') or ''} {mk_h} ({c.get('matchup') or ''})".strip()]
     px = _amer(c.get("book_american"))
+    if c.get("tier") == 4:
+        if isinstance(p, (int, float)) and isinstance(dk, (int, float)):
+            bits.append(f"model {p * 100:.1f}% and DraftKings' no-vig {dk * 100:.1f}% both make them the favourite at {px}")
+        bits.append("model lean, not a proven edge" + (f": expected value at this price is about {ev:+.1f}% (the book's margin)"
+                                                        if isinstance(ev, (int, float)) else ""))
+        return " · ".join(b for b in bits if b)
     if isinstance(p, (int, float)) and isinstance(dk, (int, float)):
         bits.append(f"desk {p * 100:.1f}% vs DraftKings' no-vig {dk * 100:.1f}% at {px}")
     elif isinstance(p, (int, float)):
@@ -221,7 +279,9 @@ def _seen_et(iso) -> str:
 
 _POST_TIER = {0: "MLB model pick.", 1: "Validated desk pick.",
               2: "Forward test: this desk has not proven an edge.",
-              3: "Experimental: the closing line is sharper than this model."}
+              3: "Experimental: the closing line is sharper than this model.",
+              4: "Model lean, not a proven edge."}
+_POST_TAG = {0: "MLB model", 1: "validated", 2: "forward test", 3: "experimental", 4: "lean"}
 
 
 def _post(payload: Dict[str, Any]) -> Dict[str, Any]:
@@ -234,13 +294,33 @@ def _post(payload: Dict[str, Any]) -> Dict[str, Any]:
     day = _day_label(payload.get("date_et"))
     play, nxt, by = payload.get("play"), payload.get("next_play"), payload.get("by_sport") or {}
     tail = ["21+ · not betting advice", SITE_URL]
-    if play:
+    plays = [x for x in (payload.get("sport_plays") or []) if x.get("book_american") is not None]
+    if len(plays) >= 2:
+        # one line per sport, each with its tier; the prices are today's live DraftKings quotes
+        lines = [f"EdgeStat plays · {day}"]
+        for x in plays:
+            mk = "moneyline" if str(x.get("market", "")).upper().startswith("ML") else str(x.get("market", "")).replace("_", " ").lower()
+            lines.append(f"{x.get('sport')}: {x.get('team') or x.get('matchup')} {mk} {_amer(x.get('book_american'))} ({_POST_TAG.get(x.get('tier'), '')})")
+        seen = _seen_et(max((str(x.get("odds_observed_at") or "") for x in plays), default=""))
+        notes = []
+        if any(x.get("tier") == 4 for x in plays):
+            notes.append("A lean is not a proven edge.")
+        if any(x.get("tier") == 2 for x in plays):
+            notes.append("Forward test = desk unproven.")
+        lines.append((f"DraftKings prices seen {seen}. " if seen else "DraftKings prices. ") + " ".join(notes))
+        optional = []
+        kind = "plays"
+    elif play:
         mk = "moneyline" if str(play.get("market", "")).upper().startswith("ML") else str(play.get("market", "")).replace("_", " ").lower()
         lines = [f"EdgeStat Play of the Day · {day}",
                  f"{play.get('sport')}: {play.get('team')} {mk} {_amer(play.get('book_american'))} at DraftKings ({play.get('matchup')})"]
         p, dk, ev = play.get("model_prob"), play.get("dk_implied"), play.get("ev_pct")
-        if isinstance(p, (int, float)) and isinstance(dk, (int, float)):
+        if play.get("tier") == 4 and isinstance(p, (int, float)) and isinstance(dk, (int, float)):
+            lines.append(f"Model {p * 100:.1f}% and market {dk * 100:.1f}% agree on the favourite.")
+        elif isinstance(p, (int, float)) and isinstance(dk, (int, float)):
             lines.append(f"Desk {p * 100:.1f}% vs market {dk * 100:.1f}%" + (f" · EV {ev:+.1f}%" if isinstance(ev, (int, float)) else ""))
+        else:
+            lines.append("")
         lines.append(_POST_TIER.get(play.get("tier"), ""))
         seen = _seen_et(play.get("odds_observed_at"))
         if seen:
@@ -278,7 +358,7 @@ def run(now: Optional[dt.datetime] = None) -> Dict[str, Any]:
     now = now or dt.datetime.now(dt.timezone.utc)
     today_et = _today_et()
     gld = _load("game_lines_desk.json")
-    cands = _desk_candidates(gld, now) + _cfb_candidates(now)
+    cands = _desk_candidates(gld, now) + _cfb_candidates(now) + _lean_candidates(gld, now)
     mlb = _mlb_pod(_load("today.json"), today_et)
     if mlb:
         cands.insert(0, mlb)
@@ -289,7 +369,17 @@ def run(now: Optional[dt.datetime] = None) -> Dict[str, Any]:
     if play:
         play = dict(play, why=_why(play), tier_label=TIER_LABEL.get(play["tier"]), is_pick=True)
 
-    upcoming = [c for c in cands if c.get("game_date") and c["game_date"] > today_et]
+    # (2026-11-11) the best play for each major sport that plays today, any tier
+    sport_plays = []
+    for sp in MAJOR_4:
+        own = [c for c in todays if c["sport"] == sp]
+        if own:
+            c = own[0]
+            sport_plays.append(dict(c, why=_why(c), tier_label=TIER_LABEL.get(c["tier"]), is_pick=True,
+                                    featured=bool(play and c is todays[0])))
+
+    # the next dated play is a desk pick, never a lean (a lean is made on the day, at the day's price)
+    upcoming = [c for c in cands if c.get("game_date") and c["game_date"] > today_et and c.get("tier") != 4]
     upcoming.sort(key=lambda c: (c["game_date"],) + _rank_key(c))
     nxt = upcoming[0] if upcoming else None
     if nxt:
@@ -307,6 +397,8 @@ def run(now: Optional[dt.datetime] = None) -> Dict[str, Any]:
             "verdict_text": d.get("verdict"),
             "games_today": len(today_rows),
             "picks_today": sum(1 for r in today_rows if r.get("pick")),
+            "leans_today": sum(1 for r in today_rows if r.get("lean") and not r.get("pick")),
+            "lean_record": ((d.get("lean") or {}).get("backtest") or None),
             "blocked_today": [{"matchup": r.get("matchup"), "reason": r.get("pick_blocked")} for r in today_rows if r.get("pick_blocked")],
             "picks_upcoming": sum(1 for r in board if r.get("pick") and (r.get("game_date") or "") > today_et),
             "eligible": bool(d.get("proven")) or (str(d.get("verdict") or "").upper().startswith("UNPROVEN")),
@@ -328,7 +420,8 @@ def run(now: Optional[dt.datetime] = None) -> Dict[str, Any]:
             if not s:
                 continue
             if s["verdict"] == "NO EDGE":
-                reasons.append(f"{sport}: desk verdict NO EDGE -- the model adds nothing to DraftKings' price, so it makes no picks by rule ({s['games_today']} game(s) today)")
+                reasons.append(f"{sport}: desk verdict NO EDGE -- the model adds nothing to DraftKings' price, so it makes no picks by rule, "
+                               f"and no game fit the lean rule with a live price ({s['games_today']} game(s) today)")
             elif sport == "MLB" and not s["eligible"]:
                 reasons.append("MLB: off-season")
             elif s["games_today"] == 0:
@@ -356,10 +449,13 @@ def run(now: Optional[dt.datetime] = None) -> Dict[str, Any]:
     payload = {
         "generated_at": now.isoformat(timespec="seconds").replace("+00:00", ""),
         "date_et": today_et,
-        "rule": ("One play a day across every game-lines desk, best EV at the live DraftKings price, "
+        "rule": ("One featured play a day across every game-lines desk, best EV at the live DraftKings price, "
                  "major-4 sports (NFL/NBA/NHL/MLB) before college; the desk's verdict sets the tier and is "
-                 "always shown. A NO EDGE desk makes no picks, so it cannot produce a play."),
+                 "always shown. Each major sport that plays also gets its own play: the desk's pick, or -- when "
+                 "the desk has no pick -- a labelled model lean (the favourite the model and DraftKings agree "
+                 "on), which is not a proven edge and is tracked separately."),
         "play": play,
+        "sport_plays": sport_plays,
         "next_play": nxt,
         "n_candidates_today": len(todays),
         "candidates_today": [{k: c.get(k) for k in ("sport", "matchup", "team", "market", "book_american", "ev_pct", "tier", "desk_verdict")} for c in todays[:10]],
