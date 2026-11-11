@@ -29,3 +29,16 @@ exclude:
   - package-lock.json
   - node_modules/
   - vendor/
+
+# (2026-11-11) Three Markdown files ARE site content: brief.html and
+# daily-summary.html fetch them as text. `include` wins over `exclude` (Jekyll
+# 3.10 entry_filter, matched on the basename), and the optional-front-matter
+# plugin that GitHub Pages enables by default is switched off so a Markdown
+# file without front matter is copied verbatim, not rendered to .html.
+# python/tests/test_odds_integrity.py checks every .md a page fetches is here.
+include:
+  - auto_brief.md
+  - daily_summary.md
+  - daily_summary_v2.md
+optional_front_matter:
+  enabled: false

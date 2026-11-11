@@ -676,3 +676,27 @@ def test_nba_availability_is_walk_forward_and_sees_a_missing_star():
     # a player who is not on this season's roster is ignored
     assert na.project(st, "HOM", "2026-11-16", {"ZZ": {"status": "Out", "name": "Nobody"}})["missing_value"] == 0
     assert st.b2b("HOM", "2026-11-15") is True and st.b2b("HOM", "2026-11-17") is False
+
+
+# ---------------------------------------------------------------- Pages build serves what the pages fetch (2026-11-11)
+def test_pages_config_serves_every_markdown_file_a_page_fetches():
+    """_config.yml excludes *.md from the published site (CLAUDE.md, the launch
+    kit, TODOs). A page that fetches a Markdown file needs that file's basename
+    in `include`, and the optional-front-matter plugin must be off or GitHub
+    Pages renders it to .html and the .md URL 404s."""
+    import re
+    root = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", ".."))
+    cfg = open(os.path.join(root, "_config.yml"), encoding="utf-8").read()
+    m = re.search(r"^include:\n((?:\s+-\s+.*\n?)+)", cfg, re.M)
+    included = set(re.findall(r"-\s+\"?([^\"\n]+?)\"?\s*$", m.group(1), re.M)) if m else set()
+    assert re.search(r"^optional_front_matter:\n\s+enabled:\s*false", cfg, re.M), "Markdown would be rendered to .html"
+    fetched = set()
+    pages = [f for f in os.listdir(root) if f.endswith(".html")]
+    pages += [os.path.join("js", f) for f in os.listdir(os.path.join(root, "js")) if f.endswith(".js")]
+    for f in pages:
+        src = open(os.path.join(root, f), encoding="utf-8", errors="replace").read()
+        for path in re.findall(r"""(?:fetch\(\s*|href=|src=|path:\s*)["'`]([^"'`?#]+\.md)""", src):
+            if not path.startswith(("http:", "https:", "//")):
+                fetched.add(os.path.basename(path))
+    assert fetched, "expected brief.html / daily-summary.html to fetch Markdown"
+    assert fetched <= included, f"fetched but not served by the Pages build: {sorted(fetched - included)}"
