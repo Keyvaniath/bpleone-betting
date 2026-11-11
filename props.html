@@ -25,9 +25,9 @@
 <meta name="twitter:title" content="Player Props | EdgeStat">
 <meta name="twitter:description" content="Player Props · EdgeStat — quantitative sports-betting analytics: model edges, calibrated probabilities, and an honest settled track record across MLB, NBA, NHL, golf, tennis, soccer and more. Informational only, 21+.">
 <title>Player Props | EdgeStat</title>
-<link rel="stylesheet" href="css/style.css?v=20260908c">
+<link rel="stylesheet" href="css/style.css?v=20261105">
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
-<script src="js/nav.js?v=20260908c"></script>
+<script src="js/nav.js?v=20261105"></script>
 </head>
 <body class="page-props">
 <header class="topbar">
@@ -73,7 +73,7 @@
         const color = isArb ? "#58c878" : "#d4a04a";
         return `<div style="display:grid; grid-template-columns: 1.6fr 80px 80px 80px 110px 1fr; gap: 14px; padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.04); font-family:'JetBrains Mono',monospace; font-size: 11px; align-items: center;">
           <span><a href="player.html?id=${a.player_id || ''}" style="color: var(--text); text-decoration: underline; text-decoration-color: rgba(255,255,255,0.15);">${a.player}</a> ${a.play} ${a.line || ''} ${(a.market || '').replace(/_/g, ' ')}</span>
-          <span>DK ${a.dk_line}</span>
+          <span>line ${a.dk_line}</span>
           <span style="color: ${a.line_delta < 0 && a.play === 'OVER' || a.line_delta > 0 && a.play === 'UNDER' ? '#58c878' : 'var(--text-2,#aaa)'}; font-weight: 700;">PP ${a.pp_line}</span>
           <span class="muted">Δ ${a.line_delta > 0 ? '+' : ''}${a.line_delta}</span>
           <span style="padding: 2px 8px; border-radius: 3px; background: ${color}22; color: ${color}; font-size: 10px; font-weight: 700; text-align: center;">bet ${a.better_book}${isArb ? ' (TRUE ARB)' : ''}</span>
@@ -141,7 +141,7 @@
   </section>
 
   <section class="card" style="margin-bottom: 28px;">
-    <div class="card-head"><span>Tonight's Top Prop Edges (DraftKings)</span><span class="muted" id="propsRefreshed"></span></div>
+    <div class="card-head"><span>Tonight's Top Prop Edges <span class="muted" style="font-size:10px;">(book prices from the feed named on each row — Bovada when present)</span></span><span class="muted" id="propsRefreshed"></span></div>
     <div class="filterbar">
       <label>Market:</label>
       <select id="filterMarket"><option value="">All</option><option value="pitcher_strikeouts">Pitcher Ks</option><option value="batter_home_runs">Batter HR</option><option value="batter_hits">Batter Hits</option><option value="batter_total_bases">Batter Total Bases</option></select>
@@ -153,7 +153,7 @@
     <div class="table-wrap">
       <table class="data-table" id="propsTable">
         <thead>
-          <tr><th>Player</th><th>Matchup</th><th>Market</th><th>DK Line</th><th>Model Proj</th><th>DK O / U</th><th>Model %</th><th>Edge</th><th>Side</th></tr>
+          <tr><th>Player</th><th>Matchup</th><th>Market</th><th>Book Line</th><th>Model Proj</th><th>Book O / U</th><th>Model %</th><th>Edge</th><th>Side</th></tr>
         </thead>
         <tbody><tr><td colspan="9" class="muted" style="text-align:center; padding:24px;">Loading props...</td></tr></tbody>
       </table>
@@ -213,7 +213,7 @@
 <script src="js/data.js"></script>
 <script src="js/ml-models.js"></script>
 <script src="js/charts.js"></script>
-<script src="js/main.js"></script>
+<script src="js/main.js?v=20261105"></script>
 
 <script>
 // Real props loader — populates table, top-plays, and metric strip from data/props.json.
@@ -230,7 +230,7 @@ function renderTopPlays(rows) {
   const grid = document.getElementById("topPlaysGrid");
   const playable = rows.filter(r => r.play !== "SKIP");
   if (!playable.length) {
-    grid.innerHTML = `<p class="muted" style="grid-column:1/-1; text-align:center; padding:16px;">No playable edges right now. Model passed every prop.</p>`;
+    grid.innerHTML = `<p class="muted" style="grid-column:1/-1; text-align:center; padding:16px;">No props on the board: the free feeds carry no player-prop prices and MLB is in its off-season.</p>`;
     return;
   }
   grid.innerHTML = playable.slice(0, 6).map(r => `
@@ -239,7 +239,7 @@ function renderTopPlays(rows) {
       <h3 style="margin:6px 0 4px;">${r.player}</h3>
       <span class="muted">${r.matchup} -- ${MARKET_LABEL[r.market] || r.market}</span>
       <p style="font-size:13px; color: var(--text-2); margin: 8px 0 0;">
-        DK ${fmtPrice(r.dk_over)} / ${fmtPrice(r.dk_under)} -- model ${(r.play === "OVER" ? r.model_prob_over : r.model_prob_under * 100).toFixed?.(1) ?? (r.model_prob_over * 100).toFixed(1)}% --
+        ${(r.book || 'book').toUpperCase()} ${fmtPrice(r.dk_over)} / ${fmtPrice(r.dk_under)} -- model ${(r.play === "OVER" ? r.model_prob_over : r.model_prob_under * 100).toFixed?.(1) ?? (r.model_prob_over * 100).toFixed(1)}% --
         <strong style="color:var(--accent)">edge +${r.best_edge_pct?.toFixed?.(1) ?? r.best_edge_pct}%</strong>
       </p>
     </div>`).join("");

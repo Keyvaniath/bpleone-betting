@@ -25,9 +25,9 @@
 <meta name="twitter:title" content="Play of the Day | EdgeStat">
 <meta name="twitter:description" content="Play of the Day · EdgeStat — quantitative sports-betting analytics: model edges, calibrated probabilities, and an honest settled track record across MLB, NBA, NHL, golf, tennis, soccer and more. Informational only, 21+.">
 <title>Play of the Day | EdgeStat</title>
-<link rel="stylesheet" href="css/style.css?v=20260908c">
+<link rel="stylesheet" href="css/style.css?v=20261105">
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
-<script src="js/nav.js?v=20260908c"></script>
+<script src="js/nav.js?v=20261105"></script>
 </head>
 <body class="page-play">
 <header class="topbar">
@@ -180,7 +180,7 @@
 <script src="js/data.js"></script>
 <script src="js/ml-models.js"></script>
 <script src="js/charts.js"></script>
-<script src="js/main.js"></script>
+<script src="js/main.js?v=20261105"></script>
 <script>
 // Live data overlay: pulls today.json + matchups.json to overwrite the hero
 // + factor decomposition with the actual Play of Day for this slate.
@@ -530,6 +530,72 @@ fetch("data/clv_log.json", { cache: "no-cache" })
     });
   })
   .catch(() => {});
+</script>
+<script>
+// (2026-11-05) Cross-sport Play of the Day: data/play_of_day.json -- the best
+// DraftKings-priced play across every game-lines desk, major-4 sports first,
+// with the desk's verdict as the tier. The MLB flow above owns the page when
+// today.json has an MLB play; otherwise this renders.
+Promise.all([
+  fetch("data/play_of_day.json?t=" + Date.now(), { cache: "no-cache" }).then(r => r.json()).catch(() => null),
+  fetch("data/today.json", { cache: "no-cache" }).then(r => r.json()).catch(() => ({})),
+]).then(([P, T]) => {
+  if (!P) return;
+  if (T && T.play_of_day) return;
+  const head = document.querySelector(".play-hero"); if (!head) return;
+  const h1 = head.querySelector("h1"), lede = head.querySelector(".lede"), muted = head.querySelector(".muted");
+  const fmtA = a => a == null ? "—" : (a >= 0 ? "+" : "") + a;
+  const pct = p => p == null ? "—" : (p * 100).toFixed(1) + "%";
+  const mk = m => /^ML/i.test(String(m || "")) ? "moneyline" : String(m || "").replace(/_/g, " ").toLowerCase();
+  const when = iso => { if (!iso) return "—"; const d = new Date(iso); return isNaN(d) ? iso : d.toLocaleString("en-US", { timeZone: "America/New_York", weekday: "short", hour: "numeric", minute: "2-digit" }) + " ET"; };
+  const hideBelow = () => { let el = head.nextElementSibling; while (el) { if (el.tagName === "SECTION" || el.classList.contains("card") || el.classList.contains("grid-2") || el.classList.contains("grid-3")) el.style.display = "none"; el = el.nextElementSibling; } };
+  const tierPill = t => t === 1 ? '<span class="pill green">VALIDATED DESK PICK</span>'
+    : t === 2 ? '<span class="pill" style="background:rgba(212,160,74,.18);color:#d4a04a;border:1px solid #d4a04a;">FORWARD TEST — DESK UNPROVEN</span>'
+    : '<span class="pill" style="background:rgba(255,255,255,.06);color:var(--muted,#888);">EXPERIMENTAL — THE CLOSE IS SHARPER</span>';
+  const green = head.querySelector(".pill.green"); if (green) green.remove();
+  const play = P.play;
+  if (play) {
+    if (muted) muted.innerHTML = `${P.date_et} · ${play.sport} · <a href="${play.page}" style="color:#7fb0e8;">${play.sport} desk →</a>`;
+    const gold = head.querySelector(".pill.gold"); if (gold) gold.insertAdjacentHTML("afterend", " " + tierPill(play.tier));
+    if (h1) h1.innerHTML = `${play.team || ""} <span class="accent">${mk(play.market)}</span> <span class="muted" style="font-size:18px;font-weight:400;">${play.matchup}</span>`;
+    if (lede) lede.textContent = play.why || "";
+    const grid = head.querySelector(".play-grid");
+    if (grid) {
+      grid.style.display = "";
+      grid.innerHTML = [
+        ["DK price", fmtA(play.book_american), "#d4a04a"], ["DK implied", pct(play.dk_implied), ""],
+        ["Desk prob", pct(play.model_prob), ""], ["EV at DK", (play.ev_pct >= 0 ? "+" : "") + Number(play.ev_pct || 0).toFixed(1) + "%", play.ev_pct >= 0 ? "#58c878" : "#e35a5a"],
+        ["Desk verdict", play.desk_verdict || "—", ""], ["Start", when(play.commence_time), ""],
+      ].map(([l, v, c]) => `<div class="play-stat"><div class="stat-label">${l}</div><div class="stat-value-big" style="${c ? "color:" + c : ""}">${v}</div></div>`).join("");
+    }
+    head.querySelectorAll(".play-why, .bottom-line").forEach(e => e.style.display = "none");
+    hideBelow();
+    const note = document.createElement("p"); note.className = "muted"; note.style.cssText = "margin-top:12px;font-size:12px;line-height:1.6;";
+    note.innerHTML = `<b>${play.tier_label || ""}.</b> ${play.desk_verdict_text || ""} Price: DraftKings via ESPN, observed ${(play.odds_observed_at || "").replace("T", " ")} UTC. Logged in the public ledger at this price and graded on the final score; a forward test is not a validated edge.`;
+    head.appendChild(note);
+    return;
+  }
+  if (h1) h1.innerHTML = `No play today <span class="accent">—</span>`;
+  if (muted) muted.textContent = P.date_et || "";
+  head.querySelectorAll(".play-grid, .play-why, .bottom-line").forEach(e => e.style.display = "none");
+  hideBelow();
+  const n = P.next_play;
+  if (lede) lede.innerHTML = "The Play of the Day is the best DraftKings-priced play across every game-lines desk (NFL, NBA, NHL, MLB first; college after). Nothing qualified today:" +
+    '<ul style="margin:8px 0 0 18px;line-height:1.6;font-size:13px;">' + (P.no_play_reasons || []).map(r => `<li>${r}</li>`).join("") + "</ul>" +
+    (n ? `<p style="margin-top:12px;"><b style="color:#d4a04a;">Next play:</b> ${n.game_date} · ${n.why} · <a href="${n.page}" style="color:#7fb0e8;">${n.sport} desk →</a></p>` : "");
+  // (2026-11-11) today's major-sport board at DraftKings: prices only, no pick
+  const sl = P.slate_today || [];
+  if (sl.length) {
+    const sec = document.createElement("section"); sec.className = "card"; sec.style.cssText = "margin-top:22px;";
+    sec.innerHTML = `<div class="card-head"><span>Today's board at DraftKings — prices, not picks</span><span class="muted">${sl.length} games · observed ${(P.odds_observed_at || "").replace("T", " ")} UTC</span></div>` +
+      `<div class="tscroll"><div style="min-width:520px;">` +
+      `<div class="sb-row head" style="display:grid;grid-template-columns:60px 1.4fr 110px 90px 90px 110px;gap:10px;padding:8px 14px;font-size:10px;text-transform:uppercase;color:var(--muted,#888);"><span>Sport</span><span>Matchup</span><span>Start (ET)</span><span>DK away</span><span>DK home</span><span>Home (no-vig)</span></div>` +
+      sl.map(g => `<a href="${g.page || "#"}" class="sb-row" style="display:grid;grid-template-columns:60px 1.4fr 110px 90px 90px 110px;gap:10px;padding:8px 14px;border-top:1px solid rgba(255,255,255,.05);font-family:'JetBrains Mono',monospace;font-size:12px;color:inherit;text-decoration:none;">` +
+        `<span class="muted">${g.sport}</span><span><b>${g.matchup}</b></span><span class="muted">${when(g.commence_time).replace(/^\w+ /, "")}</span><span>${fmtA(g.ml_away)}</span><span>${fmtA(g.ml_home)}</span><span class="muted">${pct(g.dk_home_no_vig)}</span></a>`).join("") +
+      `</div></div><p class="muted" style="font-size:11px;padding:8px 14px 12px;margin:0;">DraftKings moneylines via ESPN. The desks behind these sports have not beaten these prices this season, so none of them is a pick; the full verdicts are on each sport's desk.</p>`;
+    head.insertAdjacentElement("afterend", sec);
+  }
+}).catch(() => {});
 </script>
 <script src="js/nav_badge.js"></script>
 </body>

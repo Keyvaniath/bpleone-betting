@@ -25,8 +25,8 @@
 <meta name="twitter:title" content="Tonight | EdgeStat">
 <meta name="twitter:description" content="Tonight · EdgeStat — quantitative sports-betting analytics: model edges, calibrated probabilities, and an honest settled track record across MLB, NBA, NHL, golf, tennis, soccer and more. Informational only, 21+.">
 <title>Tonight | EdgeStat</title>
-<link rel="stylesheet" href="css/style.css?v=20260908c">
-<script src="js/nav.js?v=20260908c"></script>
+<link rel="stylesheet" href="css/style.css?v=20261105">
+<script src="js/nav.js?v=20261105"></script>
 <style>
   .section { margin-bottom: 28px; }
   .row { padding: 8px 14px; border-bottom: 1px solid rgba(255,255,255,0.04); font-family: 'JetBrains Mono', monospace; font-size: 12px; }
@@ -71,7 +71,7 @@
 
   <!-- LOCKS -->
   <section class="card section">
-    <div class="card-head"><span>🔒 Today's 5 Locks</span><span class="muted"><a href="locks-of-day.html" style="color:var(--text-2,#aaa);">Full history →</a></span></div>
+    <div class="card-head"><span>🔒 Today's Locks</span><span class="muted"><a href="locks-of-day.html" style="color:var(--text-2,#aaa);">Full history →</a></span></div>
     <div id="locksBox"><p class="muted" style="padding:14px;">Loading…</p></div>
   </section>
 
@@ -217,7 +217,7 @@ Promise.all([
   const pb = document.getElementById('pitchBox');
   const deep = pitch && pitch.deep_game_candidates || [];
   const hook = pitch && pitch.early_hook_candidates || [];
-  pb.innerHTML = deep.slice(0,4).map(p => `<div class="row">
+  pb.innerHTML = (!deep.length && !hook.length) ? '<p class="muted" style="padding:14px;">No pitch-count tiers (no MLB slate today).</p>' : deep.slice(0,4).map(p => `<div class="row">
     <span class="pill pill-green">${p.depth_tier}</span>
     <strong>${p.pitcher}</strong> proj ${p.projected_ip_today} IP / ${p.projected_k_today.toFixed(1)} K
   </div>`).join('') + hook.slice(0,3).map(p => `<div class="row">

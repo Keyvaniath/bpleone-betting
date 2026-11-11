@@ -506,7 +506,13 @@ h3 { font-size: 17px; }
 @media (max-width: 720px) {
   h1 { font-size: 32px; }
   .topbar { flex-wrap: wrap; padding: 12px; gap: 12px; }
-  .mainnav { overflow-x: auto; gap: 14px; }
+  /* (2026-11-05) the desktop menu collapsed into a 64px column with a scrollbar on phones
+     (every page but the homepage showed stray scrollbar blocks in the header). Full-width,
+     one swipeable row. */
+  .mainnav { flex: 1 1 100%; flex-wrap: nowrap; overflow-x: auto; overflow-y: hidden; gap: 14px; white-space: nowrap; -webkit-overflow-scrolling: touch; }
+  .mainnav a, .mainnav .dd-wrap { flex: 0 0 auto; }
+  .mainnav { scrollbar-width: none; }
+  .mainnav::-webkit-scrollbar { display: none; height: 0; }   /* the amber thumb drew a bar under the menu */
   .container { padding: 16px; }
   .grid-3 { grid-template-columns: 1fr; }
   .grid-2 { grid-template-columns: 1fr; }
@@ -576,6 +582,7 @@ h3 { font-size: 17px; }
   font-size: 13px;
   line-height: 1.4;
 }
+.stale-banner[hidden] { display: none; }   /* (2026-11-05) display:flex was overriding the hidden attribute: an empty amber box */
 .stale-banner-dot {
   flex: 0 0 auto;
   width: 8px; height: 8px;

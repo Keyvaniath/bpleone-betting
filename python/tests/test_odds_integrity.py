@@ -377,6 +377,31 @@ def test_cfb_edges_need_a_fresh_board_and_carry_its_time(tmp_path, monkeypatch):
         assert all(e["odds_observed_at"] == ts for e in out["edges"])
 
 
+def test_alpha_site_tweet_email_share_one_snapshot(tmp_path, monkeypatch):
+    """A DK-priced pick day through the real composers: tweet text, tweet
+    payload and email subject all carry the DK price, never the model's fair."""
+    import alpha_tweet as at
+    import alpha_email as ae
+    import verify_pricing as vp
+    rec = {"todays": {"date": "2026-11-05", "player_or_matchup": "NYY @ BOS", "market": "ML_HOME",
+                      "sport": "MLB", "model_prob": 0.6, "model_prob_calibrated": 0.58,
+                      "fair_american": -150, "book_american": -125, "rule": "v2"},
+           "record": {"wins": 1, "losses": 0}, "history": []}
+    (tmp_path / "alpha_pick_record.json").write_text(json.dumps(rec))
+    for m in (at, ae):
+        monkeypatch.setattr(m, "DATA_DIR", str(tmp_path))
+    monkeypatch.setattr(at, "REC", str(tmp_path / "alpha_pick_record.json"))
+    monkeypatch.setattr(at, "OUT", str(tmp_path / "alpha_tweet.json"))
+    monkeypatch.setattr(ae, "OUT", str(tmp_path / "alpha_email.json"))
+    monkeypatch.setattr(ae, "EMAIL_DIR", str(tmp_path / "emails"))
+    tw = at.run()
+    em = ae.compose()
+    assert tw["picks"][0]["odds"] == "-125" and "-150" not in tw["tweet"]
+    assert "@ -125" in em["subject"]
+    assert vp.check_alpha_snapshot(rec, tw, em) == []
+    assert vp._snapshot_self_test() == []
+
+
 _NFL_FINALS = [
     {"id": "9001", "date": "2026-11-08", "away_abbrev": "DEN", "home_abbrev": "CAR",
      "away_score": 20, "home_score": 17},
@@ -506,3 +531,148 @@ def test_failed_mlb_pull_never_publishes_the_demo_slate(tmp_path):
                "is_demo": False, "generated_at": "t0"}, open(path, "w"))
     m = P._production_manifest(demo, path)
     assert m["games"] == [{"matchup": "MIL @ CHC"}] and m["kept_from"] == "t0"
+
+
+def test_board_prior_rejects_espn_placeholder_lines(tmp_path, monkeypatch):
+    """ESPN files -100000/+5000 'DraftKings' lines on lopsided college games;
+    de-vigged they read as a 98% market. They are no market at all."""
+    import board_prior as bp
+    snap = {"generated_at": "2026-11-05T17:00:00",
+            "games": [{"sport": "NCAAB", "event_id": "1", "matchup": "BELL @ IU", "status": "pre",
+                       "market": {"ml_home": -100000, "ml_away": 5000, "book": "draftkings"}},
+                      {"sport": "NCAAB", "event_id": "2", "matchup": "WAKE @ VAN", "status": "pre",
+                       "market": {"ml_home": -2800, "ml_away": 1300, "book": "draftkings"}},
+                      {"sport": "NCAAB", "event_id": "3", "matchup": "A @ B", "status": "pre",
+                       "market": {"ml_home": -150, "ml_away": 130, "book": "draftkings"}}]}
+    (tmp_path / "espn_odds.json").write_text(json.dumps(snap))
+    (tmp_path / "game_lines_desk.json").write_text("{}")
+    monkeypatch.setattr(bp, "DATA_DIR", str(tmp_path))
+    prior = bp.BoardPrior("ncaab")
+    f1, f2, f3 = prior.for_event("1"), prior.for_event("2"), prior.for_event("3")
+    assert f1["p_home_display"] is None and f1["dk_ml_home"] is None and f1.get("dk_placeholder")
+    assert f2["p_home_display"] is not None          # -2800 is within the cap: a thin but real market
+    assert 0.5 < f3["p_home_display"] < 0.6
+
+
+# ---------------------------------------------------------------- cross-sport Play of the Day (2026-11-05)
+def _pod_fixture(tmp_path, today, obs_minutes_ago=30, nfl_pick=True):
+    now = dt.datetime(2026, 11, 8, 15, 0, tzinfo=dt.timezone.utc)
+    obs = (now - dt.timedelta(minutes=obs_minutes_ago)).isoformat(timespec="seconds").replace("+00:00", "")
+    q = lambda eid, start: {"provenance": "book_snapshot", "book": "draftkings", "observed_at": obs,
+                            "event_id": eid, "scheduled_start": start}
+    nfl_rows = [
+        {"event_id": "1", "matchup": "NYJ @ KC", "commence": "2026-11-08T18:00Z", "p_home": 0.78, "ml_home": -500, "ml_away": 440,
+         "game_date": today, "quote": q("1", "2026-11-08T18:00Z"),
+         "pick": {"side": "away", "market": "ML_AWAY", "team": "NYJ", "prob": 0.22, "book_american": 440, "fair_american": 355, "ev": 0.17} if nfl_pick else None},
+        {"event_id": "2", "matchup": "DAL @ IND", "commence": "2026-11-09T18:00Z", "p_home": 0.37, "ml_home": 195, "ml_away": -238,
+         "game_date": "2026-11-09", "quote": q("2", "2026-11-09T18:00Z"),
+         "pick": {"side": "home", "market": "ML_HOME", "team": "IND", "prob": 0.37, "book_american": 195, "fair_american": 171, "ev": 0.05}},
+    ]
+    gld = {"sports": {"nfl": {"verdict": "UNPROVEN: the blend edges the close", "proven": False, "board": nfl_rows},
+                      "nba": {"verdict": "NO EDGE: the model adds nothing", "proven": False, "w_used": 0.0,
+                              "board": [{"event_id": "3", "matchup": "BOS @ MIA", "game_date": today, "pick": None,
+                                         "ml_home": -120, "ml_away": 100, "p_home": 0.52, "quote": q("3", "2026-11-09T00:30Z")}]}}}
+    cfb = {"board_fresh": True, "games": [], "edges": [
+        {"matchup": "FSU @ BC", "side": "HOME", "team": "BC", "market": "cfb_model_ml_home", "event_id": "9", "game_date": today,
+         "commence_time": "2026-11-08T20:00Z", "calibrated_prob": 0.40, "book_implied_devig": 0.33, "book_american": 200,
+         "fair_american": 150, "edge_pct": 30.0, "odds_observed_at": obs}]}
+    (tmp_path / "game_lines_desk.json").write_text(json.dumps(gld))
+    (tmp_path / "cfb_model.json").write_text(json.dumps(cfb))
+    (tmp_path / "today.json").write_text(json.dumps({"no_games": True, "games": []}))
+    return now
+
+
+def test_play_of_day_prefers_major4_today_and_labels_tier(tmp_path, monkeypatch):
+    import play_of_day as pod
+    import verify_pricing as vp
+    today = "2026-11-08"
+    now = _pod_fixture(tmp_path, today)
+    monkeypatch.setattr(pod, "DATA_DIR", str(tmp_path))
+    monkeypatch.setattr(pod, "OUT", str(tmp_path / "play_of_day.json"))
+    monkeypatch.setattr(pod, "_today_et", lambda: today)
+    out = pod.run(now=now)
+    play = out["play"]
+    # the NFL forward-test play beats a higher-EV college edge (major-4 first, tier first)
+    assert play["sport"] == "NFL" and play["team"] == "NYJ" and play["tier"] == 2
+    assert play["book_american"] == 440 and play["desk_verdict"] == "UNPROVEN" and play["is_pick"] is True
+    assert "forward-test" in play["tier_label"]
+    assert out["next_play"]["game_date"] == "2026-11-09" and out["next_play"]["team"] == "IND"
+    assert vp.check_row(play, now) == []                       # the guard accepts it as a priced pick
+    assert out["by_sport"]["NBA"]["verdict"] == "NO EDGE"
+
+
+def test_play_of_day_no_play_when_quote_stale_or_desk_no_edge(tmp_path, monkeypatch):
+    import play_of_day as pod
+    today = "2026-11-08"
+    now = _pod_fixture(tmp_path, today, obs_minutes_ago=600)   # 10h-old DK quote
+    monkeypatch.setattr(pod, "DATA_DIR", str(tmp_path))
+    monkeypatch.setattr(pod, "OUT", str(tmp_path / "play_of_day.json"))
+    monkeypatch.setattr(pod, "_today_et", lambda: today)
+    out = pod.run(now=now)
+    assert out["play"] is None
+    reasons = " | ".join(out["no_play_reasons"])
+    assert "NFL" in reasons and "NO EDGE" in reasons and "no picks by rule" in reasons
+    # with no major-4 pick, the college edge is the (labelled, tier-3) fallback; the NO EDGE NBA desk never is
+    now = _pod_fixture(tmp_path, today, nfl_pick=False)
+    out = pod.run(now=now)
+    assert out["play"]["sport"] == "NCAAF" and out["play"]["tier"] == 3 and "experimental" in out["play"]["tier_label"]
+    assert all(c["sport"] != "NBA" for c in out["candidates_today"])
+
+
+def test_ledger_harvests_the_cross_sport_pod_after_the_desk_row(tmp_path, monkeypatch):
+    import all_picks_tracker as t
+    today = "2026-11-08"
+    _pod_fixture(tmp_path, today)
+    (tmp_path / "play_of_day.json").write_text(json.dumps({"play": {
+        "sport": "NFL", "matchup": "NYJ @ KC", "market": "ML_AWAY", "model_prob": 0.22, "ev_pct": 17.0,
+        "fair_american": 355, "book_american": 440, "game_date": today, "event_id": "1", "desk_verdict": "UNPROVEN", "tier": 2,
+        "quote": {"provenance": "book_snapshot", "observed_at": "2026-11-08T14:30:00"}}}))
+    monkeypatch.setattr(t, "DATA_DIR", str(tmp_path))
+    rows = t._collect_picks_from_sources()
+    desk = [i for i, r in enumerate(rows) if r.get("source") == "nfl_game_ml" and r.get("player_or_matchup") == "NYJ @ KC"]
+    podr = [i for i, r in enumerate(rows) if r.get("source") == "pod" and r.get("player_or_matchup") == "NYJ @ KC"]
+    assert desk and podr and desk[0] < podr[0]          # desk row first: the add-guard folds the POD onto it
+    assert rows[podr[0]]["book_american"] == 440 and rows[podr[0]]["event_id"] == "1"
+
+
+# ---------------------------------------------------------------- NBA availability model (2026-11-11)
+def _nba_game(d, h, a, home_players, away_players, gid):
+    """players: {athlete_id: (minutes, game_score)}"""
+    p = [[1, k, m, int(gs * 10)] for k, (m, gs) in home_players.items()] + \
+        [[0, k, m, int(gs * 10)] for k, (m, gs) in away_players.items()]
+    return {"id": gid, "d": d, "h": h, "a": a, "p": p}
+
+
+def test_nba_game_score_matches_hollinger():
+    import nba_avail as na
+    names = ["MIN", "PTS", "FG", "3PT", "FT", "REB", "AST", "TO", "STL", "BLK", "OREB", "DREB", "PF", "+/-"]
+    vals = ["31", "22", "8-16", "4-7", "2-2", "8", "3", "0", "1", "0", "3", "5", "2", "-23"]
+    mins, gs = na.game_score(names, vals)
+    # 22 + .4*8 - .7*16 - .4*(2-2) + .7*3 + .3*5 + 1 + .7*3 + .7*0 - .4*2 - 0
+    assert mins == 31 and abs(gs - 19.9) < 1e-6
+
+
+def test_nba_availability_is_walk_forward_and_sees_a_missing_star():
+    import nba_avail as na
+    star = {"S": (36, 28.0)}
+    role = {f"H{i}": (24, 8.0) for i in range(7)}
+    away = {f"A{i}": (30, 10.0) for i in range(8)}
+    games = []
+    for i in range(12):                                   # the star plays 12 straight
+        games.append(_nba_game(f"2026-11-{i + 1:02d}", "HOM", "AWY", {**star, **role}, away, f"g{i}"))
+    games.append(_nba_game("2026-11-14", "HOM", "AWY", role, away, "g12"))      # star sits
+    feats, st = na.history_features(games)
+    # while he plays, nothing is missing; the game he sits shows value missing for the HOME side
+    assert abs(feats[("2026-11-10", "AWY", "HOM")]["avail"]) < 1e-9
+    f = feats[("2026-11-14", "AWY", "HOM")]
+    assert f["l_home"] > 12 and f["avail"] < -12          # away - home: negative = bad for home
+    # walk-forward: the first game has no history, so no roster and no value missing
+    assert feats[("2026-11-01", "AWY", "HOM")]["l_home"] == 0
+    # live projection from an injury report: Out counts fully, Day-To-Day at half and blocks
+    out = na.project(st, "HOM", "2026-11-16", {"S": {"status": "Out", "name": "Star"}})
+    dtd = na.project(st, "HOM", "2026-11-16", {"S": {"status": "Day-To-Day", "name": "Star"}})
+    assert out["missing_value"] > 12 and out["certain"] is True
+    assert abs(dtd["missing_value"] - out["missing_value"] / 2) < 0.02 and dtd["certain"] is False
+    # a player who is not on this season's roster is ignored
+    assert na.project(st, "HOM", "2026-11-16", {"ZZ": {"status": "Out", "name": "Nobody"}})["missing_value"] == 0
+    assert st.b2b("HOM", "2026-11-15") is True and st.b2b("HOM", "2026-11-17") is False

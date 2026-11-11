@@ -25,8 +25,8 @@
 <meta name="twitter:title" content="Arbitrage / Middles / Scalps | EdgeStat">
 <meta name="twitter:description" content="Arbitrage / Middles / Scalps · EdgeStat — quantitative sports-betting analytics: model edges, calibrated probabilities, and an honest settled track record across MLB, NBA, NHL, golf, tennis, soccer and more. Informational only, 21+.">
 <title>Arbitrage / Middles / Scalps | EdgeStat</title>
-<link rel="stylesheet" href="css/style.css?v=20260908c">
-<script src="js/nav.js?v=20260908c"></script>
+<link rel="stylesheet" href="css/style.css?v=20261105">
+<script src="js/nav.js?v=20261105"></script>
 </head>
 <body class="page-arb">
 <header class="topbar">
@@ -42,9 +42,9 @@
 
   <section class="page-head">
     <h1>Arbitrage, Middles & Scalps</h1>
-    <p>Cross-book line discrepancies are mathematical free money — when you can find them. The math is wired; once a multi-book feed is connected (Pinnacle / DK / FanDuel / MGM), opportunities flow in here.</p>
+    <p>Cross-book line discrepancies are the one locked-in trade in sports betting — when a feed can find them. The math is wired; once a multi-book feed is connected (Pinnacle / DK / FanDuel / MGM), opportunities flow in here.</p>
     <div style="margin-top: 12px; padding: 10px 14px; border-radius: 6px; background: rgba(212,160,74,0.08); border: 1px solid rgba(212,160,74,0.35); font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #d4a04a;">
-      <strong>* AWAITING MULTI-BOOK FEED *</strong> — EdgeStat currently polls Bovada + DK only via The Odds API. Real arb requires 3+ books with overlapping markets. Tables below render empty until the feed is wired. Compute logic (correlations.py / arbitrage.py) is already implemented.
+      <strong>* AWAITING MULTI-BOOK FEED *</strong> — EdgeStat's only live game-line feed is DraftKings via ESPN (one book). Real arb requires 3+ books with overlapping markets. Tables below render empty until the feed is wired. Compute logic (correlations.py / arbitrage.py) is already implemented.
     </div>
   </section>
 
@@ -53,19 +53,19 @@
     <div class="metric"><span class="metric-num" id="midCount">--</span><span class="metric-label">Middle Opportunities</span></div>
     <div class="metric"><span class="metric-num" id="lvCount">--</span><span class="metric-label">Reduced-Juice Markets</span></div>
     <div class="metric"><span class="metric-num" id="quotesScan">--</span><span class="metric-label">Quotes Scanned</span></div>
-    <div class="metric"><span class="metric-num">2</span><span class="metric-label">Books Polled</span></div>
-    <div class="metric"><span class="metric-num">3x daily</span><span class="metric-label">Refresh Rate</span></div>
+    <div class="metric"><span class="metric-num">1</span><span class="metric-label">Books Polled</span></div>
+    <div class="metric"><span class="metric-num">2-hourly</span><span class="metric-label">Refresh Rate</span></div>
   </section>
 
   <section class="card" style="margin-bottom: 28px;">
-    <div class="card-head"><span class="pill green">★ ARBITRAGE</span><span class="muted">guaranteed profit, both books must accept full size</span></div>
+    <div class="card-head"><span class="pill green">★ ARBITRAGE</span><span class="muted">locked profit only if both books accept full size</span></div>
     <div class="table-wrap">
       <table class="data-table" id="arbsTable">
         <thead><tr><th>Market</th><th>Side A</th><th>Side B</th><th>Implied Sum</th><th>Profit %</th><th>Stake Split</th></tr></thead>
         <tbody></tbody>
       </table>
     </div>
-    <p class="caption" style="margin-top:14px;">A true arb pays a small but guaranteed profit. The "Stake Split" tells you the optimal % to put on each side so payouts equalize. Real-world snag: books cap bet size and ban frequent arbers. Use these sparingly, mix in -EV plays to look like a normal bettor.</p>
+    <p class="caption" style="margin-top:14px;">A true arb locks a small profit if both sides are filled at the quoted prices. The "Stake Split" tells you the optimal % to put on each side so payouts equalize. Real-world snag: books cap bet size and ban frequent arbers. Use these sparingly, mix in -EV plays to look like a normal bettor.</p>
   </section>
 
   <section class="card" style="margin-bottom: 28px;">
@@ -98,7 +98,6 @@
       <li><strong>Books talk to each other.</strong> A line move on Pinnacle triggers immediate moves on others. Arb windows often last 30-90 seconds before they close.</li>
       <li><strong>Bonuses change the math.</strong> When books offer "bet $200, get $200" promos, the +EV math on arbs becomes massive temporarily. Hunt these.</li>
       <li><strong>Pinnacle is your friend.</strong> They have the sharpest book and accept arbers. Most arb sides should be there.</li>
-      <li><strong>Mix in action.</strong> If 100% of your bets are arbs, you'll be banned. Sprinkle in -EV parlays so you look square. Cost of doing business.</li>
     </ul>
   </section>
 
@@ -116,7 +115,7 @@
 
 <script src="js/data.js"></script>
 <script src="js/extras.js"></script>
-<script src="js/main.js"></script>
+<script src="js/main.js?v=20261105"></script>
 <script>
 // Arbitrage live overlay
 fetch("data/arbitrage.json", { cache: "no-cache" })

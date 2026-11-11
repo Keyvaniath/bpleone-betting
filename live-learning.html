@@ -20,7 +20,7 @@
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <title>Live Learning | EdgeStat</title>
-<link rel="stylesheet" href="css/style.css?v=20260908c">
+<link rel="stylesheet" href="css/style.css?v=20261105">
 <style>
   .wrap { max-width: 900px; margin: 0 auto; padding: 26px 22px 12px; }
   h1 { font-size: 27px; margin: 0 0 6px; }
@@ -48,7 +48,7 @@
   .up{color:#58c878;} .down{color:#e35a5a;}
   .meta { color:var(--muted,#8a93a6); font-size:11px; margin-top:14px; font-family:'JetBrains Mono',monospace; }
 </style>
-<script src="js/nav.js?v=20260908c"></script>
+<script src="js/nav.js?v=20261105"></script>
 </head>
 <body>
 <header class="topbar">
@@ -120,7 +120,7 @@
       document.getElementById('calBody').innerHTML =
         '<span class="big down">'+pct(rc.ece_before)+'</span><span class="muted" style="font-size:18px;">→</span><span class="big up">'+pct(rc.ece_after)+'</span>'+
         '<span class="bar barC"><span style="width:'+Math.max(6,100-pctReduce)+'%;"></span></span>'+
-        '<span class="muted" style="font-size:12px;flex:1 1 100%;">Calibration error cut <b class="up">'+pctReduce+'%</b> · retrained on <b>'+(rc.n_settled||0).toLocaleString()+'</b> settled outcomes across <b>'+(rc.n_families_transformed||0)+'</b> market families.</span>';
+        '<span class="muted" style="font-size:12px;flex:1 1 100%;">Calibration error cut <b class="up">'+pctReduce+'%</b> (in-sample) · retrained on <b>'+(rc.n_settled||0).toLocaleString()+'</b> settled outcomes across <b>'+(rc.n_families_transformed||0)+'</b> market families.</span>';
     } else { document.getElementById('calBody').innerHTML='<span class="muted">calibration map not available</span>'; }
 
     // --- 2. source trust ---

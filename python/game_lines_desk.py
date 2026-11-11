@@ -51,7 +51,7 @@ MIN_BACKTEST_N = 60      # below this, w stays 0 (not enough evidence to lean on
 # score each model version on its own picks. Picks logged before a version
 # existed carry none -> "v1".
 MODEL_VERSION = {"nfl": "v2-qb (2026-10-29)", "nhl": "v2-goalie-shots-rest (2026-10-28)",
-                 "nba": "v1-mov-elo (2026-11-03)"}
+                 "nba": "v2-availability-rest (2026-11-11)"}
 
 
 def _load(p: str) -> Dict[str, Any]:
@@ -260,6 +260,44 @@ def nhl_goalie_model(finals: List[Dict[str, Any]], params: Dict[str, float], sea
             "fit_n": len(rows["proj"]), "fit_logloss": {v: fit_ll(v) for v in rows},
             "adj": {v: make(v) for v in betas}, "z": z, "state": state, "n_grown": grown,
             "n_goalie_games": len(games)}
+
+
+# ------------------------------------------------- NBA availability ----
+def nba_avail_model(finals: List[Dict[str, Any]], params: Dict[str, float], season_start: str) -> Dict[str, Any]:
+    """The NBA model beyond Elo (2026-11-11): logistic regression on
+    [logit(walk-forward Elo), abnormal value missing (away - home), back-to-back
+    (away - home), 1], fitted on LAST season only with the players who actually
+    appeared. Live, absences come from ESPN's injury report (nba_avail.project)
+    and a game with a material Day-To-Day player is never picked."""
+    import nba_avail as na
+    import nhl_goalies as _fit   # shared offset-logistic fitter
+    grown = na.grow()
+    games = na.ordered_games()
+    feats, state = na.history_features(games)
+    state.names = na.load().get("names") or {}
+    pre = pregame_elo("nba", finals, params)
+    last_start = f"{int(season_start[:4]) - 1}-11-15"   # skip the first weeks: rosters / minutes still forming
+    rows = []
+    for g in finals:
+        k = (g["date"], g["away"], g["home"])
+        if not (last_start <= g["date"] < season_start) or k not in feats or k not in pre or g["home_score"] == g["away_score"]:
+            continue
+        rows.append((0.0, [_logit(pre[k]), feats[k]["avail"], feats[k]["rest"], 1.0],
+                     1.0 if g["home_score"] > g["away_score"] else 0.0))
+    betas = _fit.fit_logit_offset(rows)
+
+    def z(L, avail, rest):
+        return (betas[0] * L + betas[1] * avail + betas[2] * rest + betas[3]) if betas else L
+
+    def adj(k):
+        return (z(_logit(pre[k]), feats[k]["avail"], feats[k]["rest"]) - _logit(pre[k])) if betas and k in feats and k in pre else 0.0
+
+    fit_ll = None
+    if rows:
+        fit_ll = {"elo": round(sum(_ll(_sig(x[0]), y) for _, x, y in rows) / len(rows), 4),
+                  "model": round(sum(_ll(_sig(z(x[0], x[1], x[2])), y) for _, x, y in rows) / len(rows), 4)}
+    return {"betas": [round(b, 4) for b in betas], "fit_n": len(rows), "fit_logloss": fit_ll,
+            "adj": adj, "z": z, "state": state, "n_grown": grown, "n_player_games": len(games)}
 
 
 # ----------------------------------------------------------- NFL QBs ----
@@ -551,9 +589,30 @@ def run_sport(sport: str) -> Dict[str, Any]:
             "espn_starter_accuracy": ng_score(gm),
         }
     elif sport == "nba":
-        # v1: margin-of-victory Elo only -- no injury / rest inputs yet, and NBA
-        # prices move on star availability; the gate decides whether it bets.
-        bt = backtest(sport, finals, lines, params)
+        # v2 (2026-11-11): Elo + availability + rest (nba_avail). v1 was Elo only.
+        # The gate below still decides whether it bets.
+        am = nba_avail_model(finals, params, season_start)
+        bt_base = backtest(sport, finals, lines, params)
+        bt = backtest(sport, finals, lines, params, adj=am["adj"])
+        keys = ("n", "logloss_market", "logloss_elo", "logloss_blend", "w_fitted", "logloss_gain_vs_market",
+                "logloss_gain_ci90", "sim_out_of_sample")
+        extra["avail_model"] = {
+            "method": ("Logistic model on walk-forward Elo + abnormal value missing (Game Score per minute above "
+                       "replacement x expected minutes of roster players not playing, minus the team's own running "
+                       "average, away minus home) + back-to-back rest, fitted on last season only with the players "
+                       "who actually appeared. Live: ESPN's injury report (Out = out, Day-To-Day = half); a game "
+                       "with a material Day-To-Day player is not picked."),
+            "betas": am["betas"],
+            "beta_labels": ["logit(Elo)", "per Game Score point of abnormal value missing (away - home)",
+                            "per back-to-back advantage", "intercept"],
+            "fit_n_last_season": am["fit_n"], "fit_logloss_last_season": am["fit_logloss"],
+            "n_player_games_store": am["n_player_games"], "n_games_added_today": am["n_grown"],
+            "backtest_elo_only": {k: bt_base.get(k) for k in keys},
+            "constants_chosen_on": "2025-26 season only (split-half CV); this season looked at once, 2026-11-11",
+            "finding_2026_11_11": ("On last season the availability terms cut log loss 0.599 -> 0.585. On this "
+                                   "season's DK-priced games the model is NOT better than Elo alone and far from the "
+                                   "DraftKings close; the verdict stays NO EDGE."),
+        }
     else:
         qm = nfl_qb_model(finals, params, season_start)
         bt_base = backtest(sport, finals, lines, params)
@@ -633,6 +692,21 @@ def run_sport(sport: str) -> Dict[str, Any]:
             unsure = [f"{t}: {qbs[sd]['note']}" for sd, t in (("away", a), ("home", h)) if not qbs[sd]["certain"]]
             if unsure:
                 may_pick, blocked = False, "QB uncertain -- " + "; ".join(unsure)
+        avail = None
+        if sport == "nba" and extra.get("avail_model") and g.get("event_id") and game_date:
+            import nba_avail as na
+            st_a = am["state"]
+            inj = na.injuries(str(g["event_id"]))
+            # ESPN abbreviations are the store's team keys (GS, NY, UTAH, ...)
+            hp = na.project(st_a, str(g.get("home") or h).upper(), game_date, inj.get(str(g.get("home") or h).upper(), {}))
+            ap = na.project(st_a, str(g.get("away") or a).upper(), game_date, inj.get(str(g.get("away") or a).upper(), {}))
+            if am["betas"]:
+                p_elo = _sig(am["z"](_logit(p_elo), ap["abnormal"] - hp["abnormal"], float(ap["b2b"]) - float(hp["b2b"])))
+            avail = {"home": hp, "away": ap}
+            unsure = [f"{t}: {x['uncertain_value']} pts of Day-To-Day value ({', '.join(i['name'] for i in x['listed'] if 'day' in str(i['status']).lower())[:60]})"
+                      for t, x in ((a, ap), (h, hp)) if not x["certain"]]
+            if unsure:
+                may_pick, blocked = False, "availability uncertain -- " + "; ".join(unsure)
         if gm and game_date:
             st = gm["state"]
             pr = probs.get((game_date, a, h)) or {}
@@ -679,6 +753,8 @@ def run_sport(sport: str) -> Dict[str, Any]:
             row["goalies"] = goalies
         if qbs:
             row["qbs"] = {sd: {k: v for k, v in x.items() if k != "qb_id"} for sd, x in qbs.items()}
+        if avail:
+            row["avail"] = avail
         if blocked:
             row["pick_blocked"] = blocked
         best = None

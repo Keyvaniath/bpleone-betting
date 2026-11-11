@@ -35,7 +35,7 @@
       settled.forEach(p => {
         const tag = p.result === 'won' ? 'WON' : p.result === 'lost' ? 'LOST' : String(p.result || '').toUpperCase();
         const emoji = p.result === 'won' ? '\u{2705}' : p.result === 'lost' ? '\u{274C}' : '\u{1F9FE}';
-        lines.push(`${emoji} SETTLED - ${p.player_or_matchup} ${p.market} - ${tag}`);
+        lines.push(`${emoji} SETTLED - ${p.player_or_matchup} ${humanMarket(p.market, p.player_or_matchup)} - ${tag}`);
       });
       if (!lines.length) lines.push('\u{1F7E2} LIVE - no slate data yet');
       let i = 0;
@@ -51,12 +51,19 @@
   }
 
   // ---- Last refresh stamp ----
-  function setRefreshStamp() {
-    const el = document.getElementById('lastRefresh');
-    if (!el) return;
-    const now = new Date();
-    const fmt = now.toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' });
-    el.textContent = fmt;
+  // (2026-11-05) index.html fills this from today.json's generated_at; the
+  // page-load clock it used to show was not a data time.
+  function setRefreshStamp() {}
+  // raw ledger vocab (TEAM_PTS_UNDER_116.5, ML_AWAY) -> readable
+  function humanMarket(m, name) {
+    m = String(m || '');
+    const u = m.toUpperCase();
+    if ((u === 'ML_HOME' || u === 'ML_AWAY') && name && name.indexOf('@') > -1) {
+      const parts = name.split('@');
+      return ((u === 'ML_HOME' ? parts[1] : parts[0]) || '').trim() + ' moneyline';
+    }
+    if (/^[A-Z]{2,4}_ML$/.test(u)) return u.slice(0, -3) + ' moneyline';
+    return m.replace(/_/g, ' ').toLowerCase();
   }
 
   // ---- Slate table renderer ----

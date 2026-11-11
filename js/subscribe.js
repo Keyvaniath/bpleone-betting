@@ -66,7 +66,7 @@
       return;
     }
     if (done()) {
-      el.innerHTML = `<span style="color:${ACCENT};font-size:13px;">✓ You're on the list. The strongest signals will hit your inbox.</span>`;
+      el.innerHTML = `<span style="color:${ACCENT};font-size:13px;">✓ You're on the list. Updates are occasional and sent by hand.</span>`;
       return;
     }
 
@@ -92,7 +92,7 @@
       btn.disabled = true; btn.textContent = "…"; msg.textContent = "";
       submit(email).then(function () {
         markDone();
-        el.innerHTML = `<span style="color:${ACCENT};font-size:13px;">✓ You're in. Watch your inbox for the strongest plays.</span>`;
+        el.innerHTML = `<span style="color:${ACCENT};font-size:13px;">✓ You're in. Updates are occasional and sent by hand.</span>`;
       }).catch(function (err) {
         btn.disabled = false; btn.textContent = "Notify me";
         msg.style.color = "#ff8a8a";

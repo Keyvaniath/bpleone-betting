@@ -56,6 +56,7 @@ SPORTS: List[Tuple[str, str, str, List[str], Optional[str], Optional[str], List[
     # non-settling CFB feed shows up here instead of going unnoticed the way
     # historical_ncaaf.json did for a full season.
     ("NCAAF",    "College Football","ncaaf.html",   ["NCAAF", "CFB"],  "ncaaf_state.json",     None,                      ["cfb_model.json"]),
+    ("NCAAB",    "College Basketball","ncaab.html",  ["NCAAB"],         "ncaab_state.json",     None,                      []),
 ]
 
 
@@ -251,8 +252,8 @@ def run() -> Dict[str, Any]:
         fresh = state_fresh is None or state_fresh <= LIVE_STATE_MAX_H
         if n_games > 0 and fresh:
             status = "LIVE"
-        elif pending > 0 or (_games_upcoming(state_file) > 0 if state_file
-                             else (n_props > 0 and fresh)):   # (2026-11-04) schedule, not a props refresh
+        elif (_games_upcoming(state_file) > 0 if state_file
+              else (n_props > 0 and fresh)):   # (2026-11-05) schedule only: 2 stale MLB pendings had read IN-SEASON
             status = "IN-SEASON"
         else:
             status = "OFF-SEASON"

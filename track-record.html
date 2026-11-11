@@ -25,9 +25,9 @@
 <meta name="twitter:title" content="Track Record | EdgeStat">
 <meta name="twitter:description" content="Track Record · EdgeStat — quantitative sports-betting analytics: model edges, calibrated probabilities, and an honest settled track record across MLB, NBA, NHL, golf, tennis, soccer and more. Informational only, 21+.">
 <title>Track Record | EdgeStat</title>
-<link rel="stylesheet" href="css/style.css?v=20260908c">
+<link rel="stylesheet" href="css/style.css?v=20261105">
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
-<script src="js/nav.js?v=20260908c"></script>
+<script src="js/nav.js?v=20261105"></script>
 </head>
 <body class="page-track">
 <header class="topbar">
@@ -48,9 +48,11 @@
   </section>
 
   <!-- (2026-11-03) the strip is the Play of the Day line only, not the curated or all-picks record -->
-  <div class="muted" style="font-size:11px;text-transform:uppercase;letter-spacing:.5px;margin:0 0 6px;">Play of the Day (1u flat, DK pre-game)</div>
+  <!-- (2026-11-05) the same number the homepage leads with, first; POD is a sub-line -->
+  <div id="curatedLead" style="display:none;margin:0 0 14px;padding:12px 16px;border-radius:10px;border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.02);font-family:'JetBrains Mono',monospace;font-size:13px;line-height:1.6;"></div>
+  <div class="muted" style="font-size:11px;text-transform:uppercase;letter-spacing:.5px;margin:0 0 6px;">Play of the Day only (1u flat, DK pre-game) — a sub-line of the record above, not the headline</div>
   <section class="metric-strip">
-    <div class="metric"><span class="metric-num" id="trkNet">--</span><span class="metric-label">Net Units YTD</span></div>
+    <div class="metric"><span class="metric-num" id="trkNet">--</span><span class="metric-label">Net Units (since 6/28)</span></div>
     <div class="metric"><span class="metric-num" id="trkHit">--</span><span class="metric-label">Hit Rate</span></div>
     <div class="metric"><span class="metric-num" id="trkRoi">--</span><span class="metric-label">ROI</span></div>
     <div class="metric"><span class="metric-num" id="trkClv">--</span><span class="metric-label">Avg CLV</span></div>
@@ -625,7 +627,7 @@
 <script src="js/data.js"></script>
 <script src="js/ml-models.js"></script>
 <script src="js/charts.js"></script>
-<script src="js/main.js"></script>
+<script src="js/main.js?v=20261105"></script>
 <script>
 // Real settled records overlay -- POD ONLY (Brandon's accuracy benchmark)
 // Previously read track_record.json which contained 118k+ backfilled
@@ -691,7 +693,8 @@ fetch("data/pod_pl.json", { cache: "no-cache" })
 
     // Best / Worst 5 plays -- live from settled records
     if (graded.length > 0) {
-      const withPL = graded.map(p => ({ ...p, _pl: p.payout_units || 0, _price: p.market_price }));
+      // (2026-11-05) the price that PAID (DK pre-game, book_american), not the recorded one -- 60/66 rows differed (TBR "+940" paying +0.73u)
+      const withPL = graded.map(p => ({ ...p, _pl: p.payout_units || 0, _price: (p.book_american != null ? p.book_american : p.market_price) }));
       const bestRows = withPL.slice().sort((a, b) => b._pl - a._pl).slice(0, 5);
       const worstRows = withPL.slice().sort((a, b) => a._pl - b._pl).slice(0, 5);
       const renderRow = (p) => {
@@ -701,7 +704,7 @@ fetch("data/pod_pl.json", { cache: "no-cache" })
         return `<tr>
           <td>${p.date || ""}</td>
           <td class="matchup">${label}</td>
-          <td>${p._price >= 0 ? "+" : ""}${p._price}</td>
+          <td>${p._price == null ? "—" : (p._price >= 0 ? "+" : "") + p._price}</td>
           <td>1.0u</td>
           <td class="${cls}">${pl >= 0 ? "+" : ""}${pl.toFixed(2)}u</td>
         </tr>`;
@@ -762,7 +765,7 @@ fetch("data/pod_pl.json", { cache: "no-cache" })
                     border-bottom:1px solid rgba(255,255,255,0.04); font-family:'JetBrains Mono',monospace; font-size:12px;">
           <span>${p.date || ""}</span>
           <span><strong>${p.matchup || ""}</strong></span>
-          <span class="muted">${(p.label || "").replace(/_/g, " ")}${p.market_price != null ? " @ " + p.market_price : ""}</span>
+          <span class="muted">${(p.label || "").replace(/_/g, " ")}${(p.book_american != null ? p.book_american : p.market_price) != null ? " @ " + ((p.book_american != null ? p.book_american : p.market_price) >= 0 ? "+" : "") + (p.book_american != null ? p.book_american : p.market_price) + " DK" : ""}</span>
           <span style="color:${(pu||0) >= 0 ? "#58c878" : "#e35a5a"};">${pu != null ? (pu >= 0 ? "+" : "") + pu.toFixed(2) + "u" : "--"}</span>
           <span style="color:${won ? "#58c878" : (push ? "#d4a04a" : "#e35a5a")}; font-weight:600;">${won ? "WIN" : (push ? "PUSH" : "LOSS")}</span>
         </div>`;
@@ -775,5 +778,21 @@ fetch("data/pod_pl.json", { cache: "no-cache" })
   .catch(err => console.error("track-record load failed:", err));
 </script>
 <script src="js/nav_badge.js"></script>
+<script>
+// (2026-11-05) Curated record at sportsbook prices -- the homepage hero's number -- leads this page too.
+fetch("data/ledger_summary.json", { cache: "no-cache" }).then(r => r.json()).then(L => {
+  const c = (L.curated_sportsbook || L.curated || {});
+  const w = c.wins, l = c.losses, roi = c.roi_pct, net = c.net_units;
+  if (w == null || l == null) return;
+  const el = document.getElementById("curatedLead"); if (!el) return;
+  const col = v => v == null ? "inherit" : (v >= 0 ? "#58c878" : "#e35a5a");
+  el.innerHTML = '<span style="font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted,#888);">Curated board — sportsbook prices (DraftKings), every pick settled</span><br>' +
+    '<b style="font-size:22px;color:' + col(net) + ';">' + (net >= 0 ? "+" : "") + Number(net).toFixed(1) + 'u</b> &nbsp; ' +
+    '<b>' + w + '-' + l + (c.pushes ? '-' + c.pushes : '') + '</b> · <span style="color:' + col(roi) + ';">' + (roi >= 0 ? "+" : "") + Number(roi).toFixed(2) + '% ROI</span>' +
+    (c.hit_rate != null ? ' · ' + (c.hit_rate * 100).toFixed(1) + '% hit' : '') +
+    '<br><span class="muted" style="font-size:11px;">The held-out test below is negative; no edge is proven. PrizePicks props and model-priced rows are kept out of this line.</span>';
+  el.style.display = "block";
+}).catch(() => {});
+</script>
 </body>
 </html>

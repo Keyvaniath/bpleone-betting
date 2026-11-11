@@ -83,9 +83,16 @@ def _write(p: str, obj: Any) -> None:
     os.replace(tmp, p)
 
 
+OUT_STATUSES = {"IR", "O", "OUT", "D", "PUP", "NFI", "SUS", "IR-R"}
+OUT_P_PLAY = 0.02   # (2026-11-05) an IR/OUT player projected at the healthy rate topped the value board
+
+
 def play_key(status: Any, proj: float) -> str:
     s = str(status or "").upper()
-    tag = "q" if s == "Q" else "none"
+    # (2026-11-05, pre-launch audit) every status except Q used to map to "none"
+    # (healthy, ~0.96 to play): Davante Adams (IR) and Lamar Jackson (OUT) led
+    # the Val/$K column. Out-type statuses get their own key and a fixed ~0.
+    tag = "q" if s == "Q" else ("out" if s in OUT_STATUSES else "none")
     band = 0 if proj < 8 else (1 if proj < 14 else 2)
     return f"{tag}|{band}"
 
@@ -103,7 +110,8 @@ def expected(p: Dict[str, Any], cal: Dict[str, Any]) -> Tuple[float, float, floa
     proj = float(p.get("proj") or 0.0)
     implied = float(_nz((cal.get("ppk") or {}).get(p.get("pos")), 2.1)) * float(p.get("salary") or 0) / 1000.0
     w = float(cal.get("w") or 1.0)
-    pp = float((cal.get("p_play") or {}).get(play_key(p.get("status"), proj), PRIOR_PLAY))
+    pk = play_key(p.get("status"), proj)
+    pp = OUT_P_PLAY if pk.startswith("out|") else float((cal.get("p_play") or {}).get(pk, PRIOR_PLAY))
     return pp * (implied + w * (proj - implied)), pp, implied
 
 

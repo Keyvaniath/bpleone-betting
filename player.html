@@ -25,7 +25,7 @@
 <meta name="twitter:title" content="Player Deep-Dive | EdgeStat">
 <meta name="twitter:description" content="Player Deep-Dive · EdgeStat — quantitative sports-betting analytics: model edges, calibrated probabilities, and an honest settled track record across MLB, NBA, NHL, golf, tennis, soccer and more. Informational only, 21+.">
 <title>Player Deep-Dive | EdgeStat</title>
-<link rel="stylesheet" href="css/style.css?v=20260908c">
+<link rel="stylesheet" href="css/style.css?v=20261105">
 <style>
   .player-hero { padding: 22px 24px; margin-bottom: 18px; border-radius: 10px; background: var(--bg-2); border: 1px solid var(--line); }
   .player-hero h1 { font-size: 32px; margin: 0 0 4px; }
@@ -43,7 +43,7 @@
   .driver-list li.caveat { color: #d4a04a; }
   .empty { color: var(--muted, #888); font-style: italic; padding: 24px; text-align: center; }
 </style>
-<script src="js/nav.js?v=20260908c"></script>
+<script src="js/nav.js?v=20261105"></script>
 </head>
 <body class="page-player">
 <header class="topbar">
@@ -59,7 +59,7 @@
 
   <section class="page-head">
     <h1>Player Deep-Dive</h1>
-    <p>Every prop the model has surfaced for this player today + the per-prop rationale that drove each projection. Pass <code>?id=PLAYER_ID</code> in the URL or search below.</p>
+    <p>Every MLB prop projection the model has surfaced for a player today, with the per-prop rationale. Pass <code>?id=PLAYER_ID</code> in the URL or search below. These are model projections at the model's own odds — no sportsbook prices them. Empty in the MLB off-season.</p>
     <div style="margin-top: 12px;">
       <input id="playerSearch" placeholder="Search by player name..." style="width: 320px; padding: 8px 12px; background: var(--bg-2); border: 1px solid var(--line); color: var(--text); border-radius: 6px; font-family: inherit; font-size: 14px;">
       <span class="muted" id="searchHint" style="margin-left: 12px; font-size: 12px;"></span>
@@ -112,7 +112,7 @@ Promise.all([
       id: pid, name: v.name, team: v.team, props: byId[pid]?.props || [],
     }));
     const totalPlayers = new Set([...list.map(p => String(p.id)), ...Object.keys(window.BREAKDOWNS)]);
-    hint.textContent = `${totalPlayers.size} players in breakdown index`;
+    hint.textContent = totalPlayers.size ? `${totalPlayers.size} players in breakdown index` : `No player projections today (MLB off-season) — this page follows the MLB prop boards.`;
     // Wire input to also search breakdowns
     input.addEventListener("input", e => {
       const q = e.target.value.toLowerCase().trim();
@@ -131,7 +131,7 @@ Promise.all([
   } : null);
   if (!player) {
     document.getElementById("playerView").innerHTML =
-      `<p class="empty">No data for player_id ${idParam} today.</p>`;
+      `<p class="empty">No data for player_id ${idParam} today — the MLB prop boards are empty in the off-season.</p>`;
     return;
   }
   renderPlayer(player, rat.by_key || {});

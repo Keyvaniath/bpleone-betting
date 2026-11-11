@@ -25,9 +25,9 @@
 <meta name="twitter:title" content="MLB Analytics | EdgeStat">
 <meta name="twitter:description" content="MLB Analytics · EdgeStat — quantitative sports-betting analytics: model edges, calibrated probabilities, and an honest settled track record across MLB, NBA, NHL, golf, tennis, soccer and more. Informational only, 21+.">
 <title>MLB Analytics | EdgeStat</title>
-<link rel="stylesheet" href="css/style.css?v=20260908c">
+<link rel="stylesheet" href="css/style.css?v=20261105">
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
-<script src="js/nav.js?v=20260908c"></script>
+<script src="js/nav.js?v=20261105"></script>
 </head>
 <body class="page-mlb">
 <header class="topbar">
@@ -221,7 +221,7 @@ fetch('data/data_health.json?t=' + Date.now()).then(function(r){return r.json();
       if (!tbody) return;
       const games = t.games || [];
       if (!games.length) {
-        tbody.innerHTML = `<tr><td colspan="8" class="muted" style="padding:14px; text-align:center;">No games in today.json — pipeline may not have run yet.</td></tr>`;
+        tbody.innerHTML = `<tr><td colspan="8" class="muted" style="padding:14px; text-align:center;">No MLB games on the board — off-season. The slate returns on Opening Day.</td></tr>`;
         return;
       }
       const compass = (deg) => {
@@ -412,7 +412,7 @@ fetch('data/data_health.json?t=' + Date.now()).then(function(r){return r.json();
         }
       }
       if (!rows.length) {
-        tbody.innerHTML = `<tr><td colspan="10" class="muted" style="padding:14px; text-align:center;">No probable pitchers in today's matchups.json — pipeline may not have run yet.</td></tr>`;
+        tbody.innerHTML = `<tr><td colspan="10" class="muted" style="padding:14px; text-align:center;">No probable pitchers — MLB off-season.</td></tr>`;
         return;
       }
       const fmt = (v, decimals = 2) => (v === null || v === undefined) ? "—" : Number(v).toFixed(decimals);
@@ -481,8 +481,10 @@ fetch('data/data_health.json?t=' + Date.now()).then(function(r){return r.json();
           const stamp = (t.generated_at || "").slice(0, 10);
           if (meta) meta.textContent = `refreshed ${stamp}`;
           list.innerHTML = items.map(it => {
-            const today_extra = it.isToday
-              ? `<span class="positive">${n} games (live)</span>`
+            const today_extra = t.no_games
+              ? `<span class="muted">off-season — no games</span>`
+              : it.isToday
+              ? `<span class="positive">${n} games</span>`
               : `<span class="muted">schedule publishes ~24h prior</span>`;
             return `<li style="display:flex; justify-content:space-between; padding:9px 0; border-bottom:1px solid var(--line-soft);">
               <span${it.isToday ? ' class="positive"' : ''}>${it.label}${it.isToday ? ' · today' : ''}</span>
@@ -545,7 +547,6 @@ fetch('data/data_health.json?t=' + Date.now()).then(function(r){return r.json();
     <a href="brief.html">Brief</a>
     <a href="learning.html">Learning</a>
     <a href="training.html">Training</a>
-    <a href="config.html">Config</a>
     <a href="residuals.html">Residuals</a>
     <a href="audit.html">Audit</a>
     <a href="backtest-dashboard.html">Backtest</a>
@@ -559,7 +560,7 @@ fetch('data/data_health.json?t=' + Date.now()).then(function(r){return r.json();
 <script src="js/data.js"></script>
 <script src="js/ml-models.js"></script>
 <script src="js/charts.js"></script>
-<script src="js/main.js"></script>
+<script src="js/main.js?v=20261105"></script>
 <script>
 // Live slate loader: replaces mock metrics + table from today.json + matchups.json.
 // Team form overlay -- builds a Hot/Cold panel and inserts after slate

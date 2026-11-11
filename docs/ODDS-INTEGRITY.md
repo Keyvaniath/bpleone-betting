@@ -329,3 +329,227 @@ Smoke Test rebuilds these three from the commit's own code before the guard
 (so a merge is not judged on artifacts the previous code wrote).
 History files (locks_history, *_pot_history, rollups) are records, not
 current picks, and stay out of the guard.
+
+Merged to main 2026-11-05 (ac48825a59) on Brandon's go.
+
+## One Alpha snapshot: site, tweet, email (2026-11-05, branch integrity/alpha-snapshot)
+
+Mandate phase 8. alpha-pick.html, the tweet draft and the email are all
+composed from alpha_pick_record.json in the same run. verify_pricing.py now
+checks that on every run (part 3, with its own 6-case self-test): same
+date, same pick state (pick / no-pick / off-season / withdrawn), and on a
+pick day the DK price in the email subject, the tweet text and the tweet
+payload -- never the model's fair price shown as the odds; an unpriced pick
+shows no price anywhere.
+
+Found while building it: alpha_tweet.json `picks[].odds` carried
+`fair_american` (the model's own price) under the name "odds". The tweet
+TEXT was already on the DK price (11/03); the public JSON field was not.
+Now `odds` = the sportsbook price ("" when none) + `price_basis`.
+Replayed 52 recorded days (8/10 - 11/05) of alpha_pick_record through the
+current composers: 0 disagreements, 0 crashes. No recorded day carries a
+DK price on the pick (pre-11/03 locks are never edited), so the DK path is
+covered by an end-to-end test (fair -150 / DK -125).
+
+## Pre-launch audit (2026-11-05, branch launch/audit-1105)
+
+Brandon: "audit everything and find any issues -- make it perfect, this is the
+last ask before we send it out to people." Method: a headless crawl of all
+135 live pages (console errors, text leaks), a secrets scan of the public
+repo, a phone-width probe of 24 key pages, four read-only auditors over
+every page group against the standard above, each P0 re-verified by hand.
+
+Clean before the pass: no secrets in the repo, no encoding damage, all 8
+workflows green, 0 console errors on 135 pages, no NaN/undefined at phone
+width, OG card + sitemap present.
+
+Fixed on this branch (P0 first):
+- WORKER WRITE PATH: `POST /admin/save-overrides` accepted any JSON from
+  anyone; the heartbeat pulled it into `data/model_overrides.json`, which
+  `self_learn_weights` blends into the model. Now: the route needs
+  `X-EdgeStat-Admin: <ADMIN_TOKEN>` and is refused while the secret is
+  unset; the D1 write routes FAIL CLOSED without `SYNC_TOKEN` (they used to
+  open); the heartbeat sync step is removed and the script needs an explicit
+  `EDGESTAT_OVERRIDES_SYNC=1`. NEEDS: `wrangler secret put ADMIN_TOKEN`,
+  `wrangler secret put SYNC_TOKEN` (+ the EDGESTAT_SYNC_TOKEN GitHub secret
+  with the same value) and `wrangler deploy` -- Brandon's actions.
+- LEGAL PAGES every visitor accepts at the age gate were templates
+  ("[LEGAL ENTITY NAME]", "[STATE]", "[DATE]", "Template notice ... not
+  reviewed by an attorney"). Filled: Brandon Leone d/b/a bpleone, California
+  courts (the bracketed arbitration clause dropped), dated 2026-11-05, one
+  contact address. privacy.html now describes what happens: no analytics
+  script, no cookies, Formspree holds the subscribe address, GitHub /
+  Cloudflare / jsDelivr see IPs as hosts, no affiliate data. Counsel review
+  is still owed (GO-OFFICIAL checklist).
+- D1-FED PAGES OFFLINE: backtest-replayer.html and lifecycle.html read a
+  Worker copy of the ledger that stopped syncing 2026-09-08 and stores
+  payouts in a shape they could not read -> "+0.00u" for a 27-67 version,
+  PrizePicks-era lock records shown as a record. Both are a notice page
+  until the copy is rebuilt with price classes.
+- NFL DFS: `nfl_dfs_calibration.play_key` mapped every status but Q to
+  "healthy" (p_play 0.958) -- Davante Adams (IR), Lamar Jackson (OUT), Jalen
+  Hurts (IR) topped the Val/$K column. IR/OUT/O/D/PUP/NFI/SUS -> p_play 0.02;
+  the column shows the calibrated x_value.
+- ESPN PLACEHOLDER LINES (-100000/+5000 "DraftKings" on lopsided college
+  games) are dropped in espn_odds.py (|ml| > 3000) and guarded again in
+  board_prior.py, so they no longer become a 98% "market" probability, a
+  LOW_VIG flag, a line-move alert or a TRACK button.
+- OFF-SEASON DESKS: espn_generic stops uppercasing ESPN's stale season type
+  (WNBA "PLAYOFFS" three weeks after the Finals, CWS "SEASON" off a June 22
+  final): `active_season` = games today or within 14 days; otherwise
+  "no games scheduled -- last final <date>"; finals carry their date on the
+  board; the static "LIVE" chip is hidden unless a game is in progress
+  (nav.js, every page). live.html / live-momentum.html say the poller is
+  MLB-only and label the stored LAD@SDP example and the 484-game CLV table
+  as archived. mlb / player / f1 / wnba-players say off-season instead of
+  "pipeline may not have run yet".
+- NFL PROPS: 953/953 projections were "strong edges" with a "Fair" price
+  column; now "projections", "Book price: none", and passing rows are held
+  for teams whose starter the desk marks uncertain (BAL/CLE/MIN/NYG/PHI on
+  11/05 -- Huntley and Jackson both had BAL pass_int rows).
+- BOARD ROWS show the probability's source/verdict under the number on all
+  nine desks (was hover-title only): "UNPROVEN", "NO EDGE", "DK no-vig".
+  live-now.html uses `p_home_display` (NHL rows disagreed with nhl.html) and
+  the golf bestbet card is gone.
+- TRACK RECORD: Best/Worst/Live-settled showed the RECORDED price next to a
+  payout at the DK price (TBR "+940" paying +0.73u); now `book_american`.
+  The curated 289-243 / -0.86% line leads the page, same as the homepage;
+  POD is a sub-line.
+- ALPHA PAGE: the DK-priced 19-16 / -2.2% cell and sentence lead; the
+  blended 67-38 (+12%) is labelled a hit record; the 35-6 slip bar (67
+  voids) no longer leads; per-slot ROI% replaced by "model odds"; history
+  prices labelled DK vs model; "Post to X" removed (account suspended); the
+  daily-email operator card is owner-only (localStorage edgestat_owner=1);
+  the hero says why there is no pick.
+- HOMEPAGE: empty amber #staleBanner (CSS beat `hidden`); six "--" tiles
+  now honest counts (picks at a DK price, line-move alerts from the tape);
+  the three "--" play cards hide their tile grids on a no-play day; CLV
+  card says the source was retired; the 3-0 / +62% locks line says "too few
+  to mean anything"; the prove-it line excludes PrizePicks like the
+  track-record chart; operator loop card never shown; "Last refresh" is the
+  data time; ticker vocab humanized.
+- PHONE NAV: `.mainnav` collapsed to a 64px column with a scrollbar on every
+  page but the homepage; now a full-width swipeable row (style.css, cache
+  bumped to ?v=20261105 on 121 pages + sw.js; main.js versioned too).
+- SHELLS MADE HONEST: pricing ("Pro is not for sale yet", no Stripe claim,
+  no fake free-account CTA), support, sportsbooks ("no partner link", no
+  commission wording while there are no partners), subscribe copy
+  ("occasional updates, sent by hand"), nav labels, about.html roadmap
+  rewritten to the November state, alerts.html lede (a line move is a move),
+  arbitrage copy (no "look square" / "free money"), prizepicks-value header
+  (feed dark), config.html read-only (no GitHub-editor Apply), config /
+  model-control out of the public directory, operator text off line-shop /
+  pickem / status, nrfi tiles for prices that do not exist removed,
+  trends "Avg CLV (real)" tile removed, props/parlays "DK" labels replaced
+  by the row's book, STEAM_TOTAL 0.5 -> 1.0, sport_coverage no longer calls
+  MLB IN-SEASON on two stale pending picks and lists NCAAB, slate_player_pot
+  lists only players whose team plays today (was 463 NBA rows across 30
+  teams on a 2-game night), tonight.html pitch-count empty state,
+  methodology/clv/calibration-map use one CLV truth and label their
+  universes, widget.html carries the 21+ line, a branded 404.html.
+
+Verified after the pass: 49 integrity tests, pricing guard green on 16
+surfaces, JS syntax on every edited script, the pages above re-probed on
+localhost.
+
+Done on Brandon's "flip the https toggle and fix all of those" (same day):
+GitHub Pages Enforce HTTPS is ON (API, verified https_enforced true); the
+Worker has ADMIN_TOKEN and SYNC_TOKEN secrets, the EDGESTAT_SYNC_TOKEN
+GitHub secret matches, and the Worker is deployed (version 173fcae2):
+POST /admin/save-overrides and /db/log-picks answer 401 without the token,
+/db/health 200. The site no longer serves the repo's internals: .nojekyll
+removed and _config.yml excludes *.md, python/, tools/, docs/, the Worker
+source, legal/ and the deploy scripts (the repo itself stays public).
+
+Still Brandon's: counsel review of the legal pages (GO-OFFICIAL checklist),
+and whether to spend the Odds API's 500 monthly requests on NBA/NFL player
+props -- today props.json has 0 props and no prop on the site carries a
+sportsbook price.
+
+## Play of the Day, cross-sport (2026-11-05, branch launch/audit-1105)
+
+Brandon: "Play of the day can be from any sport -- we prefer it comes from
+one of the major 4: NBA or hockey in the fall, football on Saturday /
+Sunday." It had been MLB-only (today.json), so the page read "No MLB games
+on today's slate" for the whole off-season.
+
+`python/play_of_day.py` -> `data/play_of_day.json`, run right before every
+ledger step (daily x2, heartbeat, live-games). Pool = every game-lines desk
+pick (NFL/NBA/NHL from game_lines_desk.json, the college edge from
+cfb_model.json, the MLB POD from today.json) whose game is TODAY (ET) and
+whose DraftKings quote passes `quotes.actionable` (the desk stores the
+snapshot stamp without the side's price, so the module attaches
+book_american before the check). One play: best EV at the DK price, tier
+first, major-4 before college. The desk's verdict sets the tier and is
+printed on the play:
+
+  0 MLB Play of the Day · 1 validated desk pick (PROMISING) · 2 forward-test
+  play (UNPROVEN: logged at the DK price, graded, never curated) · 3
+  experimental (college; the close is sharper).
+
+A NO EDGE desk (NBA and NHL today, w = 0) makes no picks by rule and so
+cannot produce a play; the page lists each sport's reason instead of
+inventing one, and shows the next dated desk pick ("Next play: Sun NYJ
+moneyline +440, forward test"). The standard is unchanged: nothing without a
+live sportsbook price, nothing that hides its verdict.
+
+Ledger: all_picks_tracker harvests the play as source "pod" AFTER the desk's
+own row, so the add-guard folds it onto that row (also_sources=pod);
+pod_pl_tracker grades it from there, so the POD record on track-record now
+spans sports. verify_pricing checks `play_of_day.json:play` as a pick
+surface. Tests: 3 (major-4 preference over a higher-EV college edge, stale
+quote -> no play, NO EDGE never plays, college fallback labelled tier 3,
+ledger ordering).
+
+What this does NOT do: manufacture NBA/NHL plays. Those desks' own
+validation says the model adds nothing to DraftKings' price; the lever for a
+daily NBA play is the NBA model (injury/availability inputs), not the
+selector.
+
+## 2026-11-11: no play today, and why -- the lean study + NBA availability model
+
+Brandon: "find the play for the day -- remember we do all of the 4 major
+sports -- continue to build until it is complete." Wednesday 11/11: 10 NBA
+games, 6 NHL, 3 college, no NFL, MLB off. The NBA and NHL desks are NO EDGE,
+so the rule produces no play. Two things were measured before accepting that.
+
+1. LEAN STUDY (would a "desk lean" on a NO EDGE desk be an honest play?).
+   Walk-forward, this season, 1u at the DraftKings close:
+     NBA (n=159, market LL 0.5418, Elo 0.5929): model EV >= 4% 44-59 -21.3%;
+       prob 35-70% 18-33 -18.2%; + gap <= 10pp 12-18 -10.6%; gap 2-6pp 7-10
+       -30.3%. When the model sits 10pp+ above the market the side wins 41.5%
+       (market said 51.6%, model said 67.6%).
+     NHL (n=291, market 0.6435, model 0.6510): EV >= 4% 57-77 -10.3%; banded
+       55-67 -3.8%; gap 2-6pp 44-62 -21.4%.
+   Every rule loses on both sports: where the model and DraftKings disagree,
+   DraftKings is right. A featured "lean" would be a knowingly negative-EV
+   pick, so the Play of the Day does NOT get a NO-EDGE-desk tier. (Baselines,
+   for scale: every favourite NBA +3.4% / NHL +2.1%, every underdog -30% /
+   -16%; "follow a 2pp line move at the close" NHL 29-10 but NBA 36-26 at
+   -0.7% -- one of ten rules on two sports, not a signal.)
+
+2. NBA MODEL v2 -- AVAILABILITY + REST (`python/nba_avail.py`, seed
+   `tools/build_nba_avail_seed.py` -> `data/nba_player_games.json`: 1,471
+   finals since 2025-10-21, 644 players, minutes + Game Score per game, grown
+   each desk run). Walk-forward value missing = roster players not playing x
+   expected minutes x (Game Score per minute above replacement), minus the
+   team's own running average (Elo already absorbed what it has seen); plus
+   back-to-back. Logistic on [logit(Elo), avail, rest, 1]. The four constants
+   were chosen on LAST season only (54-point grid, split-half CV 0.5957).
+     last season (fit, n=1,125): Elo 0.5991 -> 0.5848
+     THIS season vs the DK close (n=159, looked at once): Elo 0.5929, v2
+       0.5958, DraftKings 0.5418 -> blend w = 0 -> NO EDGE, unchanged.
+   Honest reading: availability is real signal (last season), but three weeks
+   into a season the roster/minutes state is thin and the market is far ahead
+   of any Elo-based prior. v2 is the NBA desk's model of record (selected on
+   last season, not on this one); the gate decides, and it says no picks.
+   Live: ESPN's injury report per game (Out = out, Day-To-Day = half); a game
+   with >= 2.5 Game Score points of Day-To-Day value is blocked. The desk card
+   shows the ladder, the finding, and each game's listed absences and their
+   value vs the team's usual.
+
+Result for the day: NO PLAY (stated with each sport's reason), next dated
+plays Sat 11/14 (college, experimental) and Sun 11/15 (NFL forward tests).
+play-of-day.html now also shows today's major-sport board at DraftKings
+(prices, not picks). What would change the answer for NBA/NHL: a model that
+beats the DK close in the walk-forward test -- not a looser selector.

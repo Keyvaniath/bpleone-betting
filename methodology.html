@@ -10,9 +10,13 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="EdgeStat">
 <title>Methodology | EdgeStat — show your work</title>
+<meta property="og:title" content="Methodology | EdgeStat — show your work">
+<meta property="og:description" content="How EdgeStat models games, calibrates probabilities, curates families and grades every pick against DraftKings' posted prices.">
+<meta property="og:image" content="https://betting.bpleone.com/assets/og-card.png">
+<meta name="twitter:card" content="summary_large_image">
 <meta name="description" content="How EdgeStat prices games and props: hand-coded models, isotonic calibration, proven-negative curation, book-shading, and closing-line value — with the real numbers.">
-<link rel="stylesheet" href="css/style.css?v=20260908c">
-<script src="js/nav.js?v=20260908c"></script>
+<link rel="stylesheet" href="css/style.css?v=20261105">
+<script src="js/nav.js?v=20261105"></script>
 <style>
   .mono { font-family:'JetBrains Mono',monospace; }
   .up { color:#58c878; } .down { color:#e35a5a; } .muted2 { color:var(--muted,#8a93a6); }
@@ -107,15 +111,15 @@
     <span class="tag">Calibration · isotonic recalibration</span>
     <h3>A displayed 70% really hits ≈ 70%</h3>
     <p>Left alone, the raw model is <b>overconfident</b> — it says 80% when the real rate is closer to 68%. We learn a per-family <b>monotonic isotonic transform</b> (predicted probability → realized rate) from the settled ledger: prediction-bucketed, Bayesian-shrunk, pooled by adjacent-violators, with family-average and identity fallbacks for thin samples.</p>
-    <div class="eq">ECE&nbsp; raw <span class="res down" id="dEceRaw">10.9%</span> &nbsp;→&nbsp; calibrated <span class="res up" id="dEceCal">2.7%</span> &nbsp;&nbsp;·&nbsp;&nbsp; Brier <span id="dBrierRaw">—</span> → <span id="dBrierCal">—</span></div>
-    <p>It generalizes: in a one-off 70/30 held-out validation (fit on 70% of the ledger, tested on the unseen 30%, run 2026-06), ECE still collapsed 12.6% → 5.4%. A regression test fails the build if the transform ever stops improving ECE, stops being monotonic, or stops being identity-safe.</p>
+    <div class="eq">ECE&nbsp; raw <span class="res down" id="dEceRaw">—</span> &nbsp;→&nbsp; calibrated <span class="res up" id="dEceCal">—</span> &nbsp;&nbsp;·&nbsp;&nbsp; Brier <span id="dBrierRaw">—</span> → <span id="dBrierCal">—</span></div>
+    <p>An earlier one-off 70/30 held-out validation (June 2026) showed the transform generalizing; the live held-out curation test below is the number that matters today. A regression test fails the build if the transform ever stops improving ECE, stops being monotonic, or stops being identity-safe.</p>
   </div>
 
   <div class="deep">
     <span class="tag">Curation · proven-negative families</span>
     <h3>The model finds edges; curation throws out the bad ones</h3>
-    <p>A market family is <b>proven-negative</b> once it has lost money over a real sample (n ≥ 25, net ≤ −5u). Those families are <b>hard-excluded</b> from every board we surface. This is the single highest-impact lever in the whole system — and it's not modeling, it's discipline.</p>
-    <div class="eq">Raw firehose, all families &nbsp; <span class="res" id="mEqRaw">—</span> &nbsp;&nbsp;→&nbsp;&nbsp; losers dropped &nbsp; <span class="res" id="mEqCur">—</span> <span class="muted2" id="mEqDetail">(in-sample, model fair odds)</span></div>
+    <p>A market family is <b>proven-negative</b> once it has lost money over a real sample (n ≥ 25, net ≤ −5u). Those families are <b>hard-excluded</b> from every board we surface. In-sample this is the biggest single lever in the system; out of sample it does not hold (the held-out box below is negative) — so it is reported, not sold. It was once the single highest-impact lever in the whole system — and it's not modeling, it's discipline.</p>
+    <div class="eq">Raw firehose, all families &nbsp; <span class="res" id="mEqRaw">—</span> &nbsp;&nbsp;→&nbsp;&nbsp; losers dropped &nbsp; <span class="res" id="mEqCur">—</span> <span class="muted2" id="mEqDetail">(in-sample, model fair odds, curation test set — calibration-map replays the whole ledger, so its number differs)</span></div>
     <p>We publish <i>both</i> numbers — the raw firehose and the curated book — on the <a href="strategy-sim.html">Strategy Simulator</a>, where you can replay the ledger yourself with any filter. Both are replays at the recorded price, which for most rows is the model's own fair odds (price class C) — calibration evidence, not a betting ROI.<!-- (2026-11-03) --></p>
     <p id="mHeldoutWrap" style="display:none;margin-top:12px;padding:11px 14px;border:1px solid rgba(255,255,255,.12);border-radius:8px;background:rgba(255,255,255,.03);font-size:13px;line-height:1.6;">
       <b id="mHeldoutLead">Out-of-sample —</b> <span id="mHeldoutBody"></span><!-- (2026-11-03) lead decided by the held-out sign --> <a href="track-record.html" style="color:#58c878;">held-out validation →</a>
@@ -214,7 +218,7 @@ Promise.all([
     document.getElementById("dBrierCal").textContent = cr.brier_calibrated.toFixed(3);
   }
   // Cross-sport beat-the-close: MLB game leans + basketball model leans.
-  const a = clv || {}, b = (bb && bb.clv) || {};
+  const a = clv || {}, b = {};   // (2026-11-05) one CLV truth: the rows-only tracker that clv.html shows; nba_book_edges' rolling aggregate is not it
   const nT = (a.n_tracked || 0) + (b.n_tracked || 0);
   const nB = (a.n_beat_close || 0) + (b.n_beat_close || 0);
   if (nT) {

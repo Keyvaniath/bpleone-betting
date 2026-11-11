@@ -25,8 +25,8 @@
 <meta name="twitter:title" content="Live Momentum | EdgeStat">
 <meta name="twitter:description" content="Live Momentum · EdgeStat — quantitative sports-betting analytics: model edges, calibrated probabilities, and an honest settled track record across MLB, NBA, NHL, golf, tennis, soccer and more. Informational only, 21+.">
 <title>Live Momentum | EdgeStat</title>
-<link rel="stylesheet" href="css/style.css?v=20260908c">
-<script src="js/nav.js?v=20260908c"></script>
+<link rel="stylesheet" href="css/style.css?v=20261105">
+<script src="js/nav.js?v=20261105"></script>
 <style>
   .game-card { padding: 14px 18px; margin-bottom: 12px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.08); display: grid; grid-template-columns: 1.5fr 100px 80px 90px 130px 130px; gap: 14px; align-items: center; font-family: 'JetBrains Mono', monospace; font-size: 12px; }
   .game-card.BIG_SWING_HOME, .game-card.BIG_SWING_AWAY { border-left: 4px solid #d4a04a; background: rgba(212,160,74,0.04); }
@@ -65,11 +65,11 @@
   <section class="card" style="margin-bottom: 18px;">
     <div class="card-head"><span>📋 How this works</span></div>
     <div style="padding:14px 18px; font-size:13px; line-height:1.7; color: var(--text-2,#aaa);">
-      <p>Tracks P(home win) deltas between consecutive live polls. Alerts:</p>
+      <p>Tracks the in-game model's P(home win) deltas between consecutive live polls of <b>MLB games only</b>. These are observations about an unvalidated in-game model, not bets to make. Alerts:</p>
       <ul style="padding-left:22px;">
-        <li><strong style="color:#58c878">SUSTAINED</strong>: 3+ consecutive polls in same direction → back the team riding momentum.</li>
-        <li><strong style="color:#d4a04a">BIG_SWING</strong>: ≥10pp swing in one poll → book may be slow to update; live arb window.</li>
-        <li><strong style="color:#e35a5a">REVERSAL</strong>: Direction flipped after a swing → mean-revert opportunity.</li>
+        <li><strong style="color:#58c878">SUSTAINED</strong>: 3+ consecutive polls in the same direction.</li>
+        <li><strong style="color:#d4a04a">BIG_SWING</strong>: ≥10pp swing in one poll.</li>
+        <li><strong style="color:#e35a5a">REVERSAL</strong>: direction flipped after a swing.</li>
         <li><strong style="color:#aaa">SWING</strong>: ≥5pp move but not classified.</li>
       </ul>
     </div>
@@ -97,7 +97,11 @@ function render() {
       document.getElementById("m_alerts").textContent = alerts.length;
       const max_delta = games.reduce((m, g) => Math.max(m, Math.abs(g.delta_pp || 0)), 0);
       document.getElementById("m_biggest").textContent = max_delta ? max_delta.toFixed(1) + 'pp' : '--';
-      document.getElementById("status").textContent = `${games.length} games tracked · ${alerts.length} momentum alerts · ${(d.generated_at || '').slice(0,19).replace('T',' ')}`;
+      const genAt = (d.generated_at || '').slice(0,19).replace('T',' ');
+      const ageH = d.generated_at ? (Date.now() - new Date(d.generated_at.replace(' ', 'T') + (/[zZ]$/.test(d.generated_at) ? '' : 'Z')).getTime()) / 36e5 : null;
+      document.getElementById("status").textContent = games.length
+        ? `${games.length} games tracked · ${alerts.length} momentum alerts · ${genAt}`
+        : `No MLB game in progress — the live poller is idle (MLB off-season). Last poll ${genAt} UTC${ageH != null && ageH > 2 ? ' (' + Math.round(ageH) + 'h ago)' : ''}.`;
 
       let html = `<div class="game-card head"><span>Matchup</span><span>Score</span><span>P(H) now</span><span>Δ</span><span>Sustain / Dir</span><span>Alert</span></div>`;
       for (const g of games) {
@@ -112,7 +116,7 @@ function render() {
           <span>${at ? `<span class="alert-pill ${at}">${at.replace('_',' ')}</span>` : ''}</span>
         </div>`;
       }
-      if (!games.length) html += `<p class="muted" style="padding:14px;">No live games tracked.</p>`;
+      if (!games.length) html += `<p class="muted" style="padding:14px;">No live MLB games tracked. This tracker follows MLB only; it wakes up on Opening Day.</p>`;
       document.getElementById("container").innerHTML = html;
       document.getElementById("meta").textContent = `${alerts.length} alerts of ${games.length}`;
     })

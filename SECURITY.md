@@ -32,3 +32,15 @@ open a public issue for security reports. We aim to acknowledge within a few day
 - [ ] Keep the `/admin/*` Worker routes behind `MANUAL_TRIGGER_KEY` / auth (they are).
 - [ ] Rotate any key that is ever exposed; secrets are Worker-only by design.
 - [ ] Optional: Subresource Integrity (SRI) on CDN `<script>` tags (Chart.js).
+
+## 2026-11-05 pre-launch audit
+
+- `POST /admin/save-overrides` on the Worker took any JSON body and the
+  heartbeat pulled it into the model's weight blend. It now requires
+  `X-EdgeStat-Admin: <ADMIN_TOKEN>` and is refused while the secret is unset;
+  `/db/log-picks` and `/db/settle-picks` are refused while `SYNC_TOKEN` is
+  unset (they used to open). The KV -> model_overrides heartbeat step is
+  removed; `python/sync_overrides_from_kv.py` needs `EDGESTAT_OVERRIDES_SYNC=1`.
+- Done the same day: ADMIN_TOKEN + SYNC_TOKEN set on the Worker, EDGESTAT_SYNC_TOKEN
+  set in GitHub, Worker deployed (writes answer 401 without the token), GitHub Pages
+  Enforce HTTPS turned on, and the site stopped serving repo internals (_config.yml).

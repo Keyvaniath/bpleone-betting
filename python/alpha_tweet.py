@@ -280,9 +280,12 @@ def run() -> Dict[str, Any]:
         "char_count": len(tweet),
         "intent_url": _intent(tweet),
         "receipt": receipt,
+        # (2026-11-05) `odds` is the SPORTSBOOK price ("" when none) -- it used
+        # to carry fair_american, the model's own price, under the name "odds".
         "picks": [{"name": p.get("player_or_matchup"),
                    "market": _humanize_market(p.get("market")),
-                   "odds": _odds(p.get("fair_american")),
+                   "odds": _odds(p.get("book_american")),
+                   "price_basis": "sportsbook" if p.get("book_american") is not None else "model_fair",
                    "model_prob": p.get("model_prob")} for p in picks],
         "record": {"wins": record.get("wins"), "losses": record.get("losses"),
                    "hit_rate": record.get("hit_rate"), "roi_pct": record.get("roi_pct")},

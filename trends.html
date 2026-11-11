@@ -25,9 +25,9 @@
 <meta name="twitter:title" content="Trends | EdgeStat">
 <meta name="twitter:description" content="Trends · EdgeStat — quantitative sports-betting analytics: model edges, calibrated probabilities, and an honest settled track record across MLB, NBA, NHL, golf, tennis, soccer and more. Informational only, 21+.">
 <title>Trends | EdgeStat</title>
-<link rel="stylesheet" href="css/style.css?v=20260908c">
+<link rel="stylesheet" href="css/style.css?v=20261105">
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
-<script src="js/nav.js?v=20260908c"></script>
+<script src="js/nav.js?v=20261105"></script>
 </head>
 <body class="page-trends">
 <header class="topbar">
@@ -48,7 +48,6 @@
   </section>
 
   <section class="metric-strip">
-    <div class="metric"><span class="metric-num" id="trendsClv">--</span><span class="metric-label">Avg CLV (real)</span></div>
     <div class="metric"><span class="metric-num" id="trendsGames">--</span><span class="metric-label">MLB Games Today</span></div>
   </section>
 
@@ -59,15 +58,6 @@
     .then(t => {
       const el = document.getElementById("trendsGames");
       if (el) el.textContent = String((t.games || []).length);
-    }).catch(() => {});
-  fetch("data/clv_log.json", { cache: "no-cache" })
-    .then(r => r.json())
-    .then(c => {
-      const recs = (c.records || []).filter(r => r.clv_pct != null);
-      if (!recs.length) return;
-      const avg = recs.reduce((s, r) => s + Number(r.clv_pct), 0) / recs.length;
-      const el = document.getElementById("trendsClv");
-      if (el) el.textContent = (avg >= 0 ? "+" : "") + avg.toFixed(2) + "%";
     }).catch(() => {});
   </script>
 
@@ -145,7 +135,7 @@
 <script src="js/data.js"></script>
 <script src="js/ml-models.js"></script>
 <script src="js/charts.js"></script>
-<script src="js/main.js"></script>
+<script src="js/main.js?v=20261105"></script>
 <!-- (2026-11-03) synthetic-sample banner removed with the synthetic tables -->
 <script src="js/nav_badge.js"></script>
 </body>

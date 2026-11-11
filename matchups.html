@@ -25,7 +25,7 @@
 <meta name="twitter:title" content="Best Matchups Tonight | EdgeStat">
 <meta name="twitter:description" content="Best Matchups Tonight · EdgeStat — quantitative sports-betting analytics: model edges, calibrated probabilities, and an honest settled track record across MLB, NBA, NHL, golf, tennis, soccer and more. Informational only, 21+.">
 <title>Best Matchups Tonight | EdgeStat</title>
-<link rel="stylesheet" href="css/style.css?v=20260908c">
+<link rel="stylesheet" href="css/style.css?v=20261105">
 <style>
   .mu-row { display:grid; grid-template-columns: 50px 1.4fr 1.4fr 1fr 1fr 1fr 1fr;
             gap: 12px; padding:8px 14px; border-bottom:1px solid rgba(255,255,255,0.04);
@@ -40,7 +40,7 @@
                  background: rgba(255,255,255,0.02); margin-bottom: 14px; }
   .summary-bar .pill { padding:4px 10px; background: rgba(255,255,255,0.05); border-radius:4px; }
 </style>
-<script src="js/nav.js?v=20260908c"></script>
+<script src="js/nav.js?v=20261105"></script>
 </head>
 <body class="page-matchups">
 <header class="topbar">
@@ -55,8 +55,8 @@
 <main class="container">
 
   <section class="page-head">
-    <h1>Best Matchups Tonight</h1>
-    <p>For every batter in every confirmed lineup, we compute their expected xwOBA against the actual pitch arsenal of tonight's opposing starter. League average ~.320. Above .380 = leverage. Below .270 = fade.</p>
+    <h1>Batter vs Pitch-Arsenal Matchups</h1>
+    <p>For every batter in every confirmed lineup, we compute their expected xwOBA against the actual pitch arsenal of tonight's opposing starter. League average ~.320. A model xwOBA with no price attached — a read, not a recommendation. Above .380 = strong matchup. Below .270 = fade.</p>
     <p class="muted" style="font-size:12px; margin-top:6px;">Math: Σ over pitch types of (pitcher's usage % of pitch X) × (batter's career xwOBA vs pitch X). Source: Baseball Savant pitch-arsenal-stats leaderboards (free).</p>
   </section>
 
@@ -95,7 +95,7 @@ function renderMatchups() {
                           || (r.vs_pitcher || "").toLowerCase().includes(q));
   }
   if (!rows.length) {
-    list.innerHTML = `<p class="muted" style="padding:14px;">No matchups match the filter (lineups may not be posted yet).</p>`;
+    list.innerHTML = `<p class="muted" style="padding:14px;">No matchups: no MLB lineups today (off-season).</p>`;
     return;
   }
   list.innerHTML = rows.slice(0, 120).map((r, i) => {

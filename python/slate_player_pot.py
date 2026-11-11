@@ -77,7 +77,22 @@ def _slate_gate() -> Dict[str, Dict[str, Any]]:
     for sport in ("NBA", "WNBA", "NHL", "KBO"):
         st = _load(os.path.join(DATA_DIR, f"{sport.lower()}_state.json"))
         n = int(st.get("n_games_today") or 0)
-        gate[sport] = {"open": n > 0, "n_games_today": n, "next_game_date": st.get("next_game_date")}
+        # (2026-11-05, pre-launch audit) "today's slate" listed every player in the
+        # league (463 NBA rows across 30 teams on a 2-game night). Keep the teams
+        # that play TODAY (ET) so rows can be filtered to them.
+        teams_today = set()
+        for g in (st.get("games") or []):
+            if g.get("state") == "in" or _et_date(g.get("date")) == today:
+                for k in ("home_team", "away_team", "home_abbr", "away_abbr"):
+                    if g.get(k): teams_today.add(_norm_team(g.get(k)))
+        # the props files key players by abbreviation (LAL) while the board uses
+        # full names (Los Angeles Lakers): carry both spellings
+        rp = _load(os.path.join(DATA_DIR, f"real_player_props_{sport.lower()}.json"))
+        for pl in (rp.get("players") or []):
+            if _norm_team(pl.get("team")) in teams_today and pl.get("team_abbr"):
+                teams_today.add(_norm_team(pl.get("team_abbr")))
+        gate[sport] = {"open": n > 0, "n_games_today": n, "next_game_date": st.get("next_game_date"),
+                       "teams_today": sorted(teams_today)}
     lol = _load(os.path.join(DATA_DIR, "lol_state.json"))
     n = sum(1 for m in (lol.get("upcoming_matches") or []) + (lol.get("live_matches") or [])
             if _et_date(m.get("start_time")) == today)
@@ -96,10 +111,20 @@ _GATE: Dict[str, Dict[str, Any]] = {}
 _DROPPED: Dict[str, int] = {}
 
 
+def _norm_team(t) -> str:
+    if isinstance(t, dict):
+        t = t.get("abbr") or t.get("name") or ""
+    return str(t or "").strip().lower()
+
+
 def _add(picks, sport, player, team, market, prob, fair, source):
     if prob is None or not (MIN_PROB <= prob <= MAX_PROB): return
     if not (_GATE.get(sport) or {}).get("open"):          # (2026-11-03) no slate today -> no row
         _DROPPED[sport] = _DROPPED.get(sport, 0) + 1
+        return
+    tt = (_GATE.get(sport) or {}).get("teams_today")
+    if tt and _norm_team(team) not in tt:                 # (2026-11-05) not playing today -> no row
+        _DROPPED[sport + "_not_today"] = _DROPPED.get(sport + "_not_today", 0) + 1
         return
     # Some feeds emit team as a dict (e.g. {abbr, name}) -- normalize to a short
     # string so the artifact is clean and the debug print can't crash the
@@ -316,6 +341,7 @@ def run() -> Dict[str, Any]:
         "min_prob": MIN_PROB,
         "max_prob": MAX_PROB,
         "n_picks_total": len(picks),
+        "n_listed": min(len(picks), 500),   # (2026-11-05) all_picks is capped; say so
         "by_sport": by_sport,
         "top_50": picks[:50],
         "all_picks": picks[:500],   # cap to keep file small

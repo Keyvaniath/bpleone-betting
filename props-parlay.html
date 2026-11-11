@@ -25,8 +25,8 @@
 <meta name="twitter:title" content="Props-Only Parlays | EdgeStat">
 <meta name="twitter:description" content="Props-Only Parlays · EdgeStat — quantitative sports-betting analytics: model edges, calibrated probabilities, and an honest settled track record across MLB, NBA, NHL, golf, tennis, soccer and more. Informational only, 21+.">
 <title>Props-Only Parlays | EdgeStat</title>
-<link rel="stylesheet" href="css/style.css?v=20260908c">
-<script src="js/nav.js?v=20260908c"></script>
+<link rel="stylesheet" href="css/style.css?v=20261105">
+<script src="js/nav.js?v=20261105"></script>
 <style>
   .pcard { border:1px solid var(--border,#222a36); border-radius:11px; padding:14px 16px; margin-bottom:12px; }
   .pcard:hover { border-color:#3f86ff; }
@@ -84,12 +84,12 @@ let ALL = [], FILTER = "all";
 function draw() {
   const el = document.getElementById("parlays");
   const list = ALL.filter(p => FILTER === "all" || String(p.n_legs) === FILTER);
-  if (!list.length) { el.innerHTML = '<p class="muted">No qualifying prop parlays right now — they build as today\'s props price up.</p>'; return; }
+  if (!list.length) { el.innerHTML = '<p class="muted">No prop parlays: no sportsbook prices player props here, so this exhibit stays empty.</p>'; return; }
   el.innerHTML = list.map(p => `
     <div class="pcard">
       <div class="phead">
         <span><span class="legs">${p.n_legs}-leg prop parlay</span> <span class="pill ${p.same_game ? "same" : "cross"}">${p.same_game ? "same-game" : "cross-game"}</span></span>
-        <span><span class="meta">joint ${(100*p.joint_prob).toFixed(0)}% · fair ${ml(p.fair_american)} →</span> <span class="pay">${p.payout_multiple}×</span></span>
+        <span><span class="meta">joint ${(100*p.joint_prob).toFixed(0)}% · fair ${ml(p.fair_american)} →</span> <span class="pay">${p.payout_multiple}× <span class="muted" style="font-size:10px;font-weight:400;">model fair, not a book payout</span></span></span>
       </div>
       ${p.legs.map(l => `<div class="leg">
         <span class="who"><b>${esc(l.subject)}</b> <span class="m">${esc(l.sport)} · ${esc(l.market)}</span></span>
