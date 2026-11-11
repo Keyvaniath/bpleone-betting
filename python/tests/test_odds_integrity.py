@@ -633,3 +633,46 @@ def test_ledger_harvests_the_cross_sport_pod_after_the_desk_row(tmp_path, monkey
     podr = [i for i, r in enumerate(rows) if r.get("source") == "pod" and r.get("player_or_matchup") == "NYJ @ KC"]
     assert desk and podr and desk[0] < podr[0]          # desk row first: the add-guard folds the POD onto it
     assert rows[podr[0]]["book_american"] == 440 and rows[podr[0]]["event_id"] == "1"
+
+
+# ---------------------------------------------------------------- NBA availability model (2026-11-11)
+def _nba_game(d, h, a, home_players, away_players, gid):
+    """players: {athlete_id: (minutes, game_score)}"""
+    p = [[1, k, m, int(gs * 10)] for k, (m, gs) in home_players.items()] + \
+        [[0, k, m, int(gs * 10)] for k, (m, gs) in away_players.items()]
+    return {"id": gid, "d": d, "h": h, "a": a, "p": p}
+
+
+def test_nba_game_score_matches_hollinger():
+    import nba_avail as na
+    names = ["MIN", "PTS", "FG", "3PT", "FT", "REB", "AST", "TO", "STL", "BLK", "OREB", "DREB", "PF", "+/-"]
+    vals = ["31", "22", "8-16", "4-7", "2-2", "8", "3", "0", "1", "0", "3", "5", "2", "-23"]
+    mins, gs = na.game_score(names, vals)
+    # 22 + .4*8 - .7*16 - .4*(2-2) + .7*3 + .3*5 + 1 + .7*3 + .7*0 - .4*2 - 0
+    assert mins == 31 and abs(gs - 19.9) < 1e-6
+
+
+def test_nba_availability_is_walk_forward_and_sees_a_missing_star():
+    import nba_avail as na
+    star = {"S": (36, 28.0)}
+    role = {f"H{i}": (24, 8.0) for i in range(7)}
+    away = {f"A{i}": (30, 10.0) for i in range(8)}
+    games = []
+    for i in range(12):                                   # the star plays 12 straight
+        games.append(_nba_game(f"2026-11-{i + 1:02d}", "HOM", "AWY", {**star, **role}, away, f"g{i}"))
+    games.append(_nba_game("2026-11-14", "HOM", "AWY", role, away, "g12"))      # star sits
+    feats, st = na.history_features(games)
+    # while he plays, nothing is missing; the game he sits shows value missing for the HOME side
+    assert abs(feats[("2026-11-10", "AWY", "HOM")]["avail"]) < 1e-9
+    f = feats[("2026-11-14", "AWY", "HOM")]
+    assert f["l_home"] > 12 and f["avail"] < -12          # away - home: negative = bad for home
+    # walk-forward: the first game has no history, so no roster and no value missing
+    assert feats[("2026-11-01", "AWY", "HOM")]["l_home"] == 0
+    # live projection from an injury report: Out counts fully, Day-To-Day at half and blocks
+    out = na.project(st, "HOM", "2026-11-16", {"S": {"status": "Out", "name": "Star"}})
+    dtd = na.project(st, "HOM", "2026-11-16", {"S": {"status": "Day-To-Day", "name": "Star"}})
+    assert out["missing_value"] > 12 and out["certain"] is True
+    assert abs(dtd["missing_value"] - out["missing_value"] / 2) < 0.02 and dtd["certain"] is False
+    # a player who is not on this season's roster is ignored
+    assert na.project(st, "HOM", "2026-11-16", {"ZZ": {"status": "Out", "name": "Nobody"}})["missing_value"] == 0
+    assert st.b2b("HOM", "2026-11-15") is True and st.b2b("HOM", "2026-11-17") is False

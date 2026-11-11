@@ -505,3 +505,51 @@ What this does NOT do: manufacture NBA/NHL plays. Those desks' own
 validation says the model adds nothing to DraftKings' price; the lever for a
 daily NBA play is the NBA model (injury/availability inputs), not the
 selector.
+
+## 2026-11-11: no play today, and why -- the lean study + NBA availability model
+
+Brandon: "find the play for the day -- remember we do all of the 4 major
+sports -- continue to build until it is complete." Wednesday 11/11: 10 NBA
+games, 6 NHL, 3 college, no NFL, MLB off. The NBA and NHL desks are NO EDGE,
+so the rule produces no play. Two things were measured before accepting that.
+
+1. LEAN STUDY (would a "desk lean" on a NO EDGE desk be an honest play?).
+   Walk-forward, this season, 1u at the DraftKings close:
+     NBA (n=159, market LL 0.5418, Elo 0.5929): model EV >= 4% 44-59 -21.3%;
+       prob 35-70% 18-33 -18.2%; + gap <= 10pp 12-18 -10.6%; gap 2-6pp 7-10
+       -30.3%. When the model sits 10pp+ above the market the side wins 41.5%
+       (market said 51.6%, model said 67.6%).
+     NHL (n=291, market 0.6435, model 0.6510): EV >= 4% 57-77 -10.3%; banded
+       55-67 -3.8%; gap 2-6pp 44-62 -21.4%.
+   Every rule loses on both sports: where the model and DraftKings disagree,
+   DraftKings is right. A featured "lean" would be a knowingly negative-EV
+   pick, so the Play of the Day does NOT get a NO-EDGE-desk tier. (Baselines,
+   for scale: every favourite NBA +3.4% / NHL +2.1%, every underdog -30% /
+   -16%; "follow a 2pp line move at the close" NHL 29-10 but NBA 36-26 at
+   -0.7% -- one of ten rules on two sports, not a signal.)
+
+2. NBA MODEL v2 -- AVAILABILITY + REST (`python/nba_avail.py`, seed
+   `tools/build_nba_avail_seed.py` -> `data/nba_player_games.json`: 1,471
+   finals since 2025-10-21, 644 players, minutes + Game Score per game, grown
+   each desk run). Walk-forward value missing = roster players not playing x
+   expected minutes x (Game Score per minute above replacement), minus the
+   team's own running average (Elo already absorbed what it has seen); plus
+   back-to-back. Logistic on [logit(Elo), avail, rest, 1]. The four constants
+   were chosen on LAST season only (54-point grid, split-half CV 0.5957).
+     last season (fit, n=1,125): Elo 0.5991 -> 0.5848
+     THIS season vs the DK close (n=159, looked at once): Elo 0.5929, v2
+       0.5958, DraftKings 0.5418 -> blend w = 0 -> NO EDGE, unchanged.
+   Honest reading: availability is real signal (last season), but three weeks
+   into a season the roster/minutes state is thin and the market is far ahead
+   of any Elo-based prior. v2 is the NBA desk's model of record (selected on
+   last season, not on this one); the gate decides, and it says no picks.
+   Live: ESPN's injury report per game (Out = out, Day-To-Day = half); a game
+   with >= 2.5 Game Score points of Day-To-Day value is blocked. The desk card
+   shows the ladder, the finding, and each game's listed absences and their
+   value vs the team's usual.
+
+Result for the day: NO PLAY (stated with each sport's reason), next dated
+plays Sat 11/14 (college, experimental) and Sun 11/15 (NFL forward tests).
+play-of-day.html now also shows today's major-sport board at DraftKings
+(prices, not picks). What would change the answer for NBA/NHL: a model that
+beats the DK close in the walk-forward test -- not a looser selector.

@@ -249,6 +249,19 @@ def run(now: Optional[dt.datetime] = None) -> Dict[str, Any]:
             else:
                 reasons.append(f"{sport}: {s['picks_today']} pick(s) today but none with a live, pre-start DK quote")
 
+    # (2026-11-11) the major-4 board at DraftKings today -- prices only, no pick --
+    # so a no-play day still shows what is on and where the market stands.
+    slate = []
+    for sp in ("nfl", "nba", "nhl"):
+        d = (gld.get("sports") or {}).get(sp) or {}
+        for r in d.get("board") or []:
+            if r.get("game_date") != today_et:
+                continue
+            slate.append({"sport": sp.upper(), "matchup": r.get("matchup"), "commence_time": r.get("commence"),
+                          "ml_home": r.get("ml_home"), "ml_away": r.get("ml_away"), "dk_home_no_vig": r.get("p_home_dk"),
+                          "held": (r.get("pick_blocked") or None), "page": SPORT_PAGE.get(sp.upper())})
+    slate.sort(key=lambda x: (MAJOR_4.index(x["sport"]) if x["sport"] in MAJOR_4 else 9, str(x.get("commence_time") or "")))
+
     payload = {
         "generated_at": now.isoformat(timespec="seconds").replace("+00:00", ""),
         "date_et": today_et,
@@ -260,6 +273,8 @@ def run(now: Optional[dt.datetime] = None) -> Dict[str, Any]:
         "n_candidates_today": len(todays),
         "candidates_today": [{k: c.get(k) for k in ("sport", "matchup", "team", "market", "book_american", "ev_pct", "tier", "desk_verdict")} for c in todays[:10]],
         "no_play_reasons": reasons,
+        "slate_today": slate,
+        "odds_observed_at": (_load("espn_odds.json") or {}).get("generated_at"),
         "by_sport": by_sport,
     }
     os.makedirs(DATA_DIR, exist_ok=True)
