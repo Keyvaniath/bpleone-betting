@@ -4,7 +4,7 @@
 
 _Pipeline health: **WARNING** (7/15 artifacts ok; 8 empty, 0 stale)._ 
 
-_Generated at 2026-11-12T17:22:33 UTC. Game lines source: **DraftKings via ESPN (128 pre-game priced games, observed 2026-11-12T17:22:25 UTC)**._
+_Generated at 2026-11-12T21:35:28 UTC. Game lines source: **DraftKings via ESPN (127 pre-game priced games, observed 2026-11-12T21:35:18 UTC)**._
 
 ## Self-Learning Loop
 
@@ -17,7 +17,7 @@ Cumulative graded plays: 23567. Wins: 11512. Hit rate: 48.8%.
 
 ## Loop Activity (since last refresh)
 
-- Confidence delta: **-0.6**
+- Confidence delta: **+0.0**
 
 ## Model Recommendations (operator review)
 
