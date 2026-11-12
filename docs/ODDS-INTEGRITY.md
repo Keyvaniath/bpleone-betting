@@ -800,3 +800,10 @@ cold; seven defects, all fixed before anything shipped):
 Also re-run after the nav change: the 137-page runtime crawl, clean.
 Tests: 69 pass.
 
+FIRST LIVE RUN (11/12, after the merge): today's board bets reached the ledger
+(6 rows, all grade C; curated unchanged), but WSH @ NJ, locked as Alpha at
+-155, was tagged at the then-current -162: the Alpha tag was built from the
+current board row, not the locked entry. Fix: the `board_alpha` tag is built
+from `board.alpha.picks` (locked status only) and its locked price always
+wins on the kept row, which also corrects the 11/12 NJ row on the next run.
+

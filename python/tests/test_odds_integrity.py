@@ -1104,3 +1104,27 @@ def test_alpha_lock_fails_closed_and_a_non_draftkings_quote_is_never_a_bet(tmp_p
     (tmp_path / "game_lines_desk.json").write_text(json.dumps(gld))
     out = board.run(now=now)
     assert out["days"][0] == "2026-11-08" and out["counts"]["games_today"] == 0
+
+
+def test_alpha_tag_carries_the_locked_price_not_the_current_line(tmp_path, monkeypatch):
+    import all_picks_tracker as t
+    board, now = _board_fixture(tmp_path, monkeypatch)
+    out = board.run(now=now + dt.timedelta(hours=2))                       # locks MIA at -200
+    assert [(p["team"], p["book_american"]) for p in out["alpha"]["picks"]] == [("NYJ", 440), ("MIA", -200)]
+    # the line moves after the lock: the board row shows -215, the locked Alpha entry stays -200
+    gld = json.loads((tmp_path / "game_lines_desk.json").read_text())
+    gld["sports"]["nba"]["board"][0]["lean"]["book_american"] = -215
+    gld["sports"]["nba"]["board"][0]["ml_home"] = -215
+    (tmp_path / "game_lines_desk.json").write_text(json.dumps(gld))
+    out = board.run(now=now + dt.timedelta(hours=2, minutes=30))
+    out.pop("generated_at")
+    (tmp_path / "board.json").write_text(json.dumps(out))
+    monkeypatch.setattr(t, "DATA_DIR", str(tmp_path))
+    rows = t._collect_picks_from_sources()
+    pick = next(r for r in rows if r["source"] == "board_pick" and r["player_or_matchup"] == "BOS @ MIA")
+    alpha = next(r for r in rows if r["source"] == "board_alpha" and r["player_or_matchup"] == "BOS @ MIA")
+    assert pick["board_price"] == -215 and alpha["alpha_price"] == -200 and alpha["book_american"] == -200
+    # before the lock (provisional) nothing is tagged Alpha
+    (tmp_path / "board.json").write_text(json.dumps(dict(out, alpha=dict(out["alpha"], status="provisional"))))
+    assert not [r for r in t._collect_picks_from_sources() if r["source"] == "board_alpha"]
+

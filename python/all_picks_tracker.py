@@ -613,8 +613,13 @@ def _collect_picks_from_sources() -> List[Dict[str, Any]]:
     # "board_pick" / "board_alpha" match no curated prefix, and neither counts
     # as calibration evidence (prob_calibration.judged).
     board = _load(os.path.join(DATA_DIR, "board.json"))
+    # (2026-11-12, found on the first live run) the Alpha tag must carry the LOCKED entry --
+    # its locked price, grade and score -- not the current board row: WSH @ NJ was locked
+    # at -155 and the current line was -162 when the ledger first saw it.
+    _alpha = board.get("alpha") or {}
+    _alpha_rows = list(_alpha.get("picks") or []) if _alpha.get("status") == "locked" else []
     for tag, rows_b in (("board_pick", board.get("picks") or []),
-                        ("board_alpha", [p for p in (board.get("picks") or []) if p.get("is_alpha")])):
+                        ("board_alpha", _alpha_rows)):
         for bp in rows_b:
             if bp.get("grade") not in ("A", "B", "C") or not bp.get("game_date") or bp.get("book_american") is None:
                 continue
@@ -4322,6 +4327,10 @@ def run() -> Dict[str, Any]:
                 for k in ("board_price", "board_grade", "board_score", "alpha_price"):
                     if p.get(k) is not None and kept.get(k) is None:
                         kept[k] = p[k]
+                # the Alpha price is the LOCKED price, which never changes: it always wins
+                # (this also corrects a row stamped from a current line before the fix above)
+                if src == "board_alpha" and p.get("alpha_price") is not None and kept.get("alpha_price") != p["alpha_price"]:
+                    kept["alpha_price"] = p["alpha_price"]
             continue
         p["recorded_at"] = now_iso
         history.append(p)
