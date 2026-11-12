@@ -24,10 +24,17 @@ THE GRADE IS THE DESK'S EVIDENCE, NOT A FEELING. It is fixed by rule and was
 written down before any result was scored (docs/ODDS-INTEGRITY.md):
 
   A  85-100  a desk pick from a PROMISING desk (edge outside noise, validated
-             out of sample).            score = 85 + min(15, EV%)
+             out of sample).            score = 85 + min(15, 50 * EV/sigma)
   B  65-80   a desk pick from an UNPROVEN desk (forward test: the blend beats
              the DraftKings close but not yet outside noise).
-                                        score = 65 + min(15, EV%)
+                                        score = 65 + min(15, 50 * EV/sigma)
+             EV/sigma is RISK-ADJUSTED (2026-11-12, Brandon: "not risk adjusted
+             rewards?"): expected profit per unit bet divided by the standard
+             deviation of that bet's result, at the desk's probability and the
+             DraftKings price -- a per-bet Sharpe ratio. Raw EV (the first rule)
+             ranked a +440 longshot with 17% EV above a -440 favourite with 9%
+             EV; per unit of risk the favourite is three times better. 0.30 or
+             more fills the band. Changed before any board bet had settled.
   C  40-60   a model lean: the favourite the model AND DraftKings agree on
              (game_lines_desk.LEAN_RULE). Not an edge -- expected value is the
              book's margin.             score = 40 + 20 * (min(p) - .55) / .25
@@ -103,13 +110,40 @@ def _now_et(now: dt.datetime) -> dt.datetime:
         return now - dt.timedelta(hours=5)
 
 
-def score_pick(kind: str, tier: Optional[int], ev_pct: Optional[float], lean_score: Optional[float]) -> Dict[str, Any]:
-    """Grade and score for a bet. The whole rule; nothing else moves a score."""
-    ev = max(0.0, float(ev_pct or 0))
+def risk(p: Optional[float], american) -> Optional[Dict[str, Any]]:
+    """Per-unit numbers for one bet at probability p and an American price: the payout,
+    expected value, the standard deviation of the result, EV per unit of risk (a per-bet
+    Sharpe ratio) and the Kelly fraction. None if either input is missing."""
+    try:
+        p, a = float(p), float(american)
+    except (TypeError, ValueError):
+        return None
+    if not 0 < p < 1 or a == 0:
+        return None
+    d = 1 + a / 100 if a > 0 else 1 + 100 / abs(a)
+    ev = p * d - 1
+    sigma = d * (p * (1 - p)) ** 0.5
+    return {"win_prob": round(p, 4), "pays": round(d - 1, 4), "ev_pct": round(ev * 100, 2),
+            "sigma": round(sigma, 4), "risk_adj": round(ev / sigma, 4) if sigma else None,
+            "kelly": round(ev / (d - 1), 4), "favorite": a < 0}
+
+
+RISK_ADJ_FULL = 0.30          # EV/sigma that fills a band (a strong single bet)
+
+
+def score_pick(kind: str, tier: Optional[int], ev_pct: Optional[float], lean_score: Optional[float],
+               risk_adj: Optional[float] = None) -> Dict[str, Any]:
+    """Grade and score for a bet. The whole rule; nothing else moves a score.
+    Desk picks rank on risk-adjusted EV (EV/sigma); a missing risk number falls back to
+    raw EV so a score is never invented."""
+    if risk_adj is not None:
+        bonus = min(15.0, max(0.0, 15.0 * float(risk_adj) / RISK_ADJ_FULL))
+    else:
+        bonus = min(15.0, max(0.0, float(ev_pct or 0)))
     if kind == "desk" and tier == 1:
-        return {"grade": "A", "score": int(round(85 + min(15.0, ev)))}
+        return {"grade": "A", "score": int(round(85 + bonus))}
     if kind == "desk":
-        return {"grade": "B", "score": int(round(65 + min(15.0, ev)))}
+        return {"grade": "B", "score": int(round(65 + bonus))}
     frac = min(1.0, max(0.0, (float(lean_score or 0.55) - 0.55) / 0.25))
     return {"grade": "C", "score": int(round(40 + 20 * frac))}
 
@@ -196,12 +230,16 @@ def build_games(gld: Dict[str, Any], odds: Dict[str, Any], now: dt.datetime, tod
                                 + "). No grade until the price refreshes.")
             elif c and c.get("actionable"):
                 kind = "lean" if c.get("tier") == 4 else "desk"
-                gs = score_pick(kind, c.get("tier"), c.get("ev_pct"), c.get("lean_score"))
+                # risk numbers at the probability the grade rests on: the desk's for a desk pick;
+                # DraftKings' own no-vig for a lean (a lean claims no edge, so it is priced at the market)
+                rk = risk(c.get("model_prob") if kind == "desk" else c.get("dk_implied"), c.get("book_american"))
+                gs = score_pick(kind, c.get("tier"), c.get("ev_pct"), c.get("lean_score"),
+                                (rk or {}).get("risk_adj") if kind == "desk" else None)
                 g["pick"] = {
                     "kind": kind, "tier": c.get("tier"), "side": c.get("side"), "team": c.get("team"), "market": c.get("market"),
                     "book_american": c.get("book_american"), "fair_american": c.get("fair_american"),
                     "prob_model": c.get("model_prob"), "prob_dk": c.get("dk_implied"), "ev_pct": c.get("ev_pct"),
-                    "lean_record": c.get("lean_record"),
+                    "lean_record": c.get("lean_record"), "risk": rk,
                 }
                 g.update(grade=gs["grade"], score=gs["score"], reason=_reason(c))
             elif str(r.get("pick_blocked") or "").lower().startswith(("qb uncertain", "availability uncertain")):
@@ -235,6 +273,7 @@ def flat_picks(games: List[Dict[str, Any]], gld: Dict[str, Any]) -> List[Dict[st
             "book_american": pk["book_american"], "fair_american": pk.get("fair_american"),
             "model_prob": pk.get("prob_model"), "dk_implied": pk.get("prob_dk"), "ev_pct": pk.get("ev_pct"),
             "kind": pk["kind"], "tier": pk.get("tier"), "grade": g["grade"], "score": g["score"], "reason": g["reason"],
+            "risk": pk.get("risk"),
             "event_id": g["id"], "game_date": g["date"], "commence_time": g["start"], "page": g.get("page"),
             "odds_observed_at": q.get("observed_at"), "quote": q,
         })
@@ -257,7 +296,8 @@ def alpha_for_today(picks: List[Dict[str, Any]], today_et: str, now: dt.datetime
     et = _now_et(now)
     locked = days.get(today_et)
     keep = ("sport", "matchup", "team", "side", "market", "book_american", "model_prob", "dk_implied", "ev_pct", "kind",
-            "tier", "grade", "score", "reason", "event_id", "game_date", "commence_time", "odds_observed_at", "quote", "page")
+            "tier", "grade", "score", "reason", "event_id", "game_date", "commence_time", "odds_observed_at", "quote", "page",
+            "risk")
     if not log_ok:
         # FAIL CLOSED (review 2026-11-12): the lock file exists but cannot be read. Locking now
         # would re-price today's list and overwrite every earlier day. Show a provisional list,
@@ -367,7 +407,9 @@ def run(now: Optional[dt.datetime] = None) -> Dict[str, Any]:
         "odds_observed_at": odds.get("generated_at"),
         "book": "DraftKings (via ESPN's scoreboard feed)",
         "grades": GRADE_TEXT,
-        "grade_rule": ("A = validated desk pick (85 + up to 15 for EV). B = forward-test desk pick (65 + up to 15 for EV). "
+        "grade_rule": ("A = validated desk pick (85 + up to 15 for risk-adjusted EV). B = forward-test desk pick (65 + up to 15 "
+                       "for risk-adjusted EV: expected profit per unit of risk, so a longshot's bigger EV is weighed against "
+                       "its bigger swings). "
                        "C = model lean, the favourite model and DraftKings agree on (40 to 60, by how strongly they "
                        "agree); not an edge. D = no bet (model side shown for information). HOLD = waiting on a lineup "
                        "question. Only A, B and C are bets; only they are logged and graded."),
