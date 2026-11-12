@@ -301,6 +301,37 @@ def alpha_for_today(picks: List[Dict[str, Any]], today_et: str, now: dt.datetime
             "picks": alpha, "note": note}
 
 
+GRADE_WORD = {"A": "validated", "B": "forward test", "C": "lean"}
+POST_MAX = 280
+SITE_URL = "betting.bpleone.com/board"
+
+
+def alpha_post(alpha: Dict[str, Any], today_et: str, odds_observed_at: Optional[str]) -> Optional[Dict[str, Any]]:
+    """Copy-ready text for the day's Alpha picks. DRAFT ONLY: nothing posts by itself.
+    Only a LOCKED list is offered (a provisional list can still change), every pick
+    carries its grade, and a list with any grade C says plainly that a lean is not an edge."""
+    picks = alpha.get("picks") or []
+    if alpha.get("status") != "locked" or not picks:
+        return None
+    day = pod._day_label(today_et)
+    lines = [f"EdgeStat Alpha picks · {day}"]
+    for p in picks:
+        lines.append(f"{p['rank']}. {p['sport']} {p['team']} ML {pod._amer(p['book_american'])} ({GRADE_WORD.get(p['grade'], p['grade'])})")
+    seen = pod._seen_et(alpha.get("locked_at"))
+    note = []
+    if any(p["grade"] == "C" for p in picks):
+        note.append("A lean is not a proven edge.")
+    tail = [((f"DraftKings prices, locked {seen}. " if seen else "DraftKings prices. ") + " ".join(note)).strip(),
+            "21+ · not betting advice", SITE_URL]
+    text = "\n".join(lines + tail)
+    while len(text) > POST_MAX and len(lines) > 2:        # drop the lowest-ranked pick rather than any caveat
+        lines.pop()
+        text = "\n".join(lines + tail)
+    return {"text": text, "chars": len(text), "max_chars": POST_MAX, "fits": len(text) <= POST_MAX,
+            "n_picks": len(lines) - 1,
+            "note": "Draft only. Nothing posts automatically; a person copies this and presses send."}
+
+
 def run(now: Optional[dt.datetime] = None) -> Dict[str, Any]:
     now = now or dt.datetime.now(dt.timezone.utc)
     today_et = pod._today_et()
@@ -342,7 +373,7 @@ def run(now: Optional[dt.datetime] = None) -> Dict[str, Any]:
                        "question. Only A, B and C are bets; only they are logged and graded."),
         "sports": sports,
         "days": days,
-        "alpha": alpha,
+        "alpha": dict(alpha, post=alpha_post(alpha, today_et, odds.get("generated_at"))),
         "games": games,
         "picks": picks,
         # results written by the ledger's previous run: every board bet graded at the price it was logged at
