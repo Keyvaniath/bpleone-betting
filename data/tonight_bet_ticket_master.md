@@ -1,5 +1,5 @@
 # EdgeStat -- Tonight's Bet Ticket
-_Generated 2026-11-12T02:56:38 UTC_
+_Generated 2026-11-12T17:22:24 UTC_
 
 **Slate Quality:** MODEST_NIGHT
 **Total Stake:** 2.0% bankroll
