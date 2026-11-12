@@ -1,5 +1,5 @@
 **EdgeStat -- Tonight's Slate**
-_MODEST_NIGHT_ | L:0 S:40 F:135
+_MODEST_NIGHT_ | L:0 S:39 F:109
 
 :dart: **Top Picks:**
 1. [GOLF] C.T. Pan -- C.T. Pan (PLAYER_STRONG)
