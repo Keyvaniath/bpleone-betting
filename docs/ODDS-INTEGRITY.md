@@ -807,3 +807,15 @@ current board row, not the locked entry. Fix: the `board_alpha` tag is built
 from `board.alpha.picks` (locked status only) and its locked price always
 wins on the kept row, which also corrects the 11/12 NJ row on the next run.
 
+ALPHA LOCK TIMING (checked 11/12). The list locks on the first run at or after
+11:00 ET (16:00 UTC). GitHub's cron is lossy: the heartbeat is scheduled every
+2 hours but ran 3-4 times a day this week, at irregular times. Every day from
+11/8 to 11/12 had at least one run between 16:00 and 24:00 UTC, so every
+evening slate would have locked, but on some days the lock lands mid-afternoon,
+and a Sunday 1:00 PM ET NFL game can start before the first run after 11:00 ET.
+Such a game is not in that day's Alpha list (a started game is never a bet),
+and a day with no run before the last game starts has no Alpha record at all;
+the page then shows the list as provisional. A reliable 11:00 ET trigger needs
+the Worker cron (Brandon's call, see the 10-28 entry), not more GitHub crons.
+Copy-ready Alpha post: board.json alpha.post, offered only for a locked list.
+
