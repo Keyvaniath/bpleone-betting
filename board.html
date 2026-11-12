@@ -202,7 +202,7 @@
   let B = null, sport = "ALL", day = null;
 
   function toggle(g, side) {
-    if (started(g)) return;
+    if (started(g) || !g.live_quote) return;
     const k = slipKey(g, side);
     if (inSlip(k)) slip = slip.filter((s) => s.k !== k);
     else {
@@ -247,7 +247,7 @@
     const ms = !g.pick && g.model_side && g.model_side.side === side;
     const k = slipKey(g, side);
     const tag = ours ? `<span class="tagp">✓ our ${g.pick.kind === "lean" ? "lean" : "pick"}</span> · ` : (ms ? `<span class="tagp">model side, no bet</span> · ` : "");
-    return `<button class="side${ours ? " pick" : ""}${ms ? " ms" : ""}${inSlip(k) ? " in" : ""}" data-g="${esc(g.id)}" data-side="${side}" ${started(g) || px == null ? "disabled" : ""}
+    return `<button class="side${ours ? " pick" : ""}${ms ? " ms" : ""}${inSlip(k) ? " in" : ""}" data-g="${esc(g.id)}" data-side="${side}" ${started(g) || px == null || !g.live_quote ? "disabled" : ""}
               aria-pressed="${inSlip(k)}" title="${inSlip(k) ? "Remove from slip" : "Add to slip"}">
         <span class="ab">${esc(team)}</span>
         <span class="pr">${tag}model ${pct(pm)} · DK ${pct(pk)}<br>${side === "home" ? "home" : "away"}</span>
@@ -342,8 +342,17 @@
     B = d;
     day = (B.days || []).includes(B.date_et) ? B.date_et : ((B.days || [])[0] || B.date_et);
     if (!(B.days || []).length) B.days = [B.date_et];
-    // drop slip entries for games that are gone or have started
-    slip = slip.filter((s) => { const g = B.games.find((x) => x.id === s.id); return g && !started(g); });
+    // the slip mirrors the live board: drop entries whose game is gone, has started or has no
+    // live quote, and refresh the price / pick / grade of the rest from today's data
+    slip = slip.map((s) => {
+      const g = B.games.find((x) => x.id === s.id);
+      if (!g || started(g) || !g.live_quote) return null;
+      const side = String(s.k).split(":").pop();
+      const px = side === "home" ? g.odds.ml_home : g.odds.ml_away;
+      if (px == null) return null;
+      const ours = !!(g.pick && g.pick.side === side);
+      return Object.assign({}, s, { price: px, ours: ours, grade: ours ? g.grade : null, team: side === "home" ? g.home : g.away, matchup: g.matchup, date: g.date });
+    }).filter(Boolean);
     saveSlip();
     const c = B.counts || {};
     $("bdMeta").textContent = `${c.games_today || 0} games today · ${c.bets_today || 0} graded bets · DraftKings prices seen ${obs(B.odds_observed_at)}`;

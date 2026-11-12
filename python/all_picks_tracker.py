@@ -637,6 +637,9 @@ def _collect_picks_from_sources() -> List[Dict[str, Any]]:
                 "pod_tier": bp.get("tier"),
                 "board_grade": bp.get("grade"),
                 "board_score": bp.get("score"),
+                # the price THE BOARD showed (review 2026-11-12): when this tag folds onto a row
+                # logged earlier at another price, the board's record still uses its own price
+                ("alpha_price" if tag == "board_alpha" else "board_price"): bp.get("book_american"),
                 "quote": bp.get("quote"),
             })
 
@@ -3289,11 +3292,26 @@ def _board_block(history: List[Dict[str, Any]]) -> Dict[str, Any]:
 
     rows = [p for p in history if not p.get("voided") and (tags(p) & {"board_pick", "board_alpha"})]
 
-    def line(ps: List[Dict[str, Any]]) -> Dict[str, Any]:
+    def price(p: Dict[str, Any], alpha: bool = False):
+        """The price the board showed: the locked Alpha price for the Alpha line, else the
+        board's game-day price; the row's own logged price only when neither was stamped."""
+        if alpha and p.get("alpha_price") is not None:
+            return p["alpha_price"]
+        return p.get("board_price") if p.get("board_price") is not None else p.get("book_american")
+
+    def pay(p: Dict[str, Any], alpha: bool = False) -> float:
+        if p.get("result") == "lost":
+            return -1.0
+        if p.get("result") != "won":
+            return 0.0
+        d = _american_to_decimal(price(p, alpha))
+        return round(d - 1, 4) if d else float(p.get("payout_units") or 0)
+
+    def line(ps: List[Dict[str, Any]], alpha: bool = False) -> Dict[str, Any]:
         done = [p for p in ps if p.get("settled") and p.get("result") in ("won", "lost", "push")]
         w = sum(1 for p in done if p["result"] == "won")
         l = sum(1 for p in done if p["result"] == "lost")
-        net = round(sum((p.get("payout_units") or 0) for p in done), 3)
+        net = round(sum(pay(p, alpha) for p in done), 3)
         return {"n_settled": len(done), "wins": w, "losses": l, "net_units": net,
                 "roi_pct": round(net / (w + l) * 100, 2) if (w + l) else None,
                 "n_pending": sum(1 for p in ps if not p.get("settled"))}
@@ -3313,22 +3331,23 @@ def _board_block(history: List[Dict[str, Any]]) -> Dict[str, Any]:
         days.setdefault(d, []).append(p)
     return {
         "all_bets": line(rows),
-        "alpha": line(alpha),
+        "alpha": line(alpha, alpha=True),
         "by_grade": {g: line([p for p in rows if grade(p) == g]) for g in ("A", "B", "C")},
         "by_sport": {sp: line([p for p in rows if str(p.get("sport") or "").upper() == sp])
                      for sp in sorted({str(p.get("sport") or "").upper() for p in rows})},
-        "by_day": {d: dict(line(ps), alpha=line([p for p in ps if "board_alpha" in tags(p)]))
+        "by_day": {d: dict(line(ps), alpha=line([p for p in ps if "board_alpha" in tags(p)], alpha=True))
                    for d, ps in sorted(days.items(), reverse=True)[:14]},
         "first_date": min((str(p.get("date"))[:10] for p in rows), default=None),
         "recent": [{"date": str(p.get("date") or "")[:10], "sport": p.get("sport"), "grade": grade(p),
                     "is_alpha": "board_alpha" in tags(p), "matchup": p.get("player_or_matchup"), "team": team(p),
-                    "market": p.get("market"), "book_american": p.get("book_american"),
+                    "market": p.get("market"), "book_american": price(p, "board_alpha" in tags(p)),
                     "result": p.get("result") if p.get("settled") else "pending",
-                    "payout_units": p.get("payout_units") if p.get("settled") else None,
+                    "payout_units": pay(p, "board_alpha" in tags(p)) if p.get("settled") else None,
                     "final": (p.get("outcome") or {}).get("final_score")} for p in recent],
-        "definition": ("Every bet on The Board (grades A, B, C), logged at the DraftKings price shown and graded on the "
-                       "final score. Alpha = the day's locked top-scored picks. Grade C bets are model leans: not an "
-                       "edge, expected to run near the book's margin. None of this is part of the curated record."),
+        "definition": ("Every bet on The Board (grades A, B, C), graded on the final score at the DraftKings price "
+                       "the board showed on game day (the locked price for an Alpha pick). Alpha = the day's locked "
+                       "top-scored picks. Grade C bets are model leans: not an edge, expected to run near the book's "
+                       "margin. None of this is part of the curated record."),
     }
 
 
@@ -4295,6 +4314,14 @@ def run() -> Dict[str, Any]:
                 also = kept.setdefault("also_sources", [])
                 if src not in also:
                     also.append(src)
+            # (2026-11-12 review) a board tag carries what the board SHOWED: its price, grade and
+            # score. The kept row may have been logged hours or days earlier at another price (a
+            # desk pick logged Tuesday at +440, shown Sunday at +380), so stamp the board's own
+            # numbers once -- first sight on game day wins -- for the board's record to use.
+            if kept is not None and src in ("board_pick", "board_alpha"):
+                for k in ("board_price", "board_grade", "board_score", "alpha_price"):
+                    if p.get(k) is not None and kept.get(k) is None:
+                        kept[k] = p[k]
             continue
         p["recorded_at"] = now_iso
         history.append(p)
@@ -4489,6 +4516,11 @@ def run() -> Dict[str, Any]:
         # leave the curated headline (graded at real book prices only) and keep
         # their own labelled line (`prizepicks` below).
         if _is_pp(p):
+            return False
+        # (2026-11-12 review) a row logged as a lean / board bet stays out of the curated book
+        # even if a curated board (pod) later offers the same wager: it was logged at the
+        # lean's price, as a lean. Conservative on purpose.
+        if p.get("source") in ("sport_lean", "board_pick", "board_alpha"):
             return False
         if _is_curated(p.get("source")):
             return True

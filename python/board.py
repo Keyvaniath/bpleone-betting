@@ -17,7 +17,8 @@ One artifact, data/board.json, for board.html:
             pricing guard and the ledger.
   alpha[]   the day's Alpha picks: the 3 to 5 highest-scored bets. Provisional
             until 11:00 ET, then LOCKED (data/board_alpha_log.json, append
-            only): a locked list never reshuffles as lines move.
+            only): a locked pick is never removed or re-priced; if the list
+            has fewer than five it can still grow with bets that appear later.
 
 THE GRADE IS THE DESK'S EVIDENCE, NOT A FEELING. It is fixed by rule and was
 written down before any result was scored (docs/ODDS-INTEGRITY.md):
@@ -79,6 +80,19 @@ def _load(name: str) -> Dict[str, Any]:
             return d if isinstance(d, dict) else {}
     except Exception:
         return {}
+
+
+def _load_alpha_log():
+    """(log, readable). A missing file is an empty log; a file that exists but does not
+    parse is NOT -- the caller must not lock or write over it."""
+    if not os.path.exists(ALPHA_LOG):
+        return {}, True
+    try:
+        with open(ALPHA_LOG, encoding="utf-8") as f:
+            d = json.load(f)
+        return (d, True) if isinstance(d, dict) else ({}, False)
+    except Exception:
+        return {}, False
 
 
 def _now_et(now: dt.datetime) -> dt.datetime:
@@ -162,6 +176,7 @@ def build_games(gld: Dict[str, Any], odds: Dict[str, Any], now: dt.datetime, tod
             q = r.get("quote") or {}
             # is the game still a live pre-start quote? (any real price will do for the check)
             ok_game, why_game = _q.actionable(dict(q, american=r.get("ml_home")), now=now) if q else (False, "no_quote")
+            ok_game, why_game = pod._dk_only(q, ok_game, why_game)       # the board says DraftKings: nothing else is graded
             g = {
                 "id": eid, "sport": sport, "date": gd, "start": r.get("commence"),
                 "away": names["away"], "home": names["home"], "matchup": r.get("matchup"), "page": pod.SPORT_PAGE.get(sport),
@@ -235,14 +250,21 @@ def alpha_for_today(picks: List[Dict[str, Any]], today_et: str, now: dt.datetime
     """Top 3-5 scored bets of the day. Provisional before 11:00 ET; from the first
     run at or after 11:00 ET the list is locked in board_alpha_log.json -- a locked
     pick is never removed or re-priced, and the list only grows (to five) with
-    games that had no line when it locked."""
-    log = _load("board_alpha_log.json") or {}
+    bets that appear later in the day (a line posted late, a hold lifted)."""
+    log, log_ok = _load_alpha_log()
     days = log.setdefault("days", {})
     todays = sorted([p for p in picks if p["game_date"] == today_et], key=_rank)
     et = _now_et(now)
     locked = days.get(today_et)
     keep = ("sport", "matchup", "team", "side", "market", "book_american", "model_prob", "dk_implied", "ev_pct", "kind",
             "tier", "grade", "score", "reason", "event_id", "game_date", "commence_time", "odds_observed_at", "quote", "page")
+    if not log_ok:
+        # FAIL CLOSED (review 2026-11-12): the lock file exists but cannot be read. Locking now
+        # would re-price today's list and overwrite every earlier day. Show a provisional list,
+        # write nothing, and let the next run (or a human) see the file as it is.
+        alpha = [dict({k: p.get(k) for k in keep}, rank=i + 1, locked=False) for i, p in enumerate(todays[:ALPHA_MAX])]
+        return {"status": "provisional", "lock_hour_et": ALPHA_LOCK_HOUR_ET, "locked_at": None, "picks": alpha,
+                "note": "The Alpha lock file could not be read, so today's list is shown unlocked and nothing was written."}
     if locked is None and et.date().isoformat() == today_et and et.hour >= ALPHA_LOCK_HOUR_ET and todays:
         locked = {"locked_at": now.isoformat(timespec="seconds").replace("+00:00", ""), "picks": []}
         days[today_et] = locked
@@ -262,8 +284,10 @@ def alpha_for_today(picks: List[Dict[str, Any]], today_et: str, now: dt.datetime
             del days[k]
         log["note"] = ("Append-only lock of each day's Alpha picks (the top-scored bets on The Board). A locked pick "
                        "is never removed or re-priced.")
-        with open(ALPHA_LOG, "w", encoding="utf-8") as f:
+        tmp = ALPHA_LOG + ".tmp"
+        with open(tmp, "w", encoding="utf-8") as f:
             json.dump(log, f, indent=1)
+        os.replace(tmp, ALPHA_LOG)                                   # atomic: never a half-written lock
         alpha = [dict(p, rank=i + 1, locked=True) for i, p in enumerate(locked["picks"])]
         status = "locked"
     else:
@@ -303,7 +327,9 @@ def run(now: Optional[dt.datetime] = None) -> Dict[str, Any]:
                        ("no games today" if not gs else "on")),
             "page": pod.SPORT_PAGE.get(sp),
         }
-    days = sorted({g["date"] for g in games})
+    # today is always a day on the board, even after its last game has started: the locked
+    # Alpha list and the day's results still belong to it
+    days = sorted({g["date"] for g in games} | {today_et})
     payload = {
         "generated_at": now.isoformat(timespec="seconds").replace("+00:00", ""),
         "date_et": today_et,

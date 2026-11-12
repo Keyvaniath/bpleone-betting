@@ -770,3 +770,33 @@ clone is now `C:\Dev\bpleone-betting` (the localhost preview entry
 page + sw.js (shell cache `edgestat-shell-20261112`).
 
 Tests: 67 pass (board grading, alpha lock, ledger logging + firewall, results).
+
+INDEPENDENT REVIEW OF THE BOARD (same day, a second agent reading the diff
+cold; seven defects, all fixed before anything shipped):
+ 1. PRICE: a board/alpha tag folds onto whichever row logged the wager first,
+    and that row keeps its own (earlier) price -- PHX was logged at -244 by the
+    02:43 ET run and locked as Alpha at -229. The fold now stamps what the
+    board SHOWED on the kept row (board_price, board_grade, board_score,
+    alpha_price; first sight on game day wins) and `_board_block` computes
+    units from those: the locked price for the Alpha line, the board's game-day
+    price otherwise. Verified on the real ledger.
+ 2. CURATED LEAK: a row logged as a lean could turn curated if the desk later
+    made the same side a featured pick (also_sources=pod). `_is_curated_pick`
+    now returns False for a row whose source is sport_lean / board_pick /
+    board_alpha.
+ 3. ALPHA LOCK FAILED OPEN: an unreadable lock file read as empty, so the next
+    run would re-lock at new prices and overwrite every earlier day. Now: a
+    file that exists but does not parse -> provisional list, nothing written;
+    writes are atomic (temp file + os.replace).
+ 4. SLIP: stored prices and "EdgeStat pick" labels were never refreshed. On
+    load each entry is re-derived from the live board or dropped; a game with
+    no live quote cannot be added.
+ 5. BOOK: nothing checked the quote's provider. `play_of_day._dk_only` makes a
+    non-DraftKings quote not actionable for plays, leans and board bets.
+ 6. GRADE: results derived a folded row's grade from the desk verdict; the
+    stamped board_grade is used first.
+ 7. EVENING: once every game today had started, today vanished from the day
+    chips and the locked Alpha strip with it. Today is always a board day.
+Also re-run after the nav change: the 137-page runtime crawl, clean.
+Tests: 69 pass.
+
