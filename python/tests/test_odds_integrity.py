@@ -887,3 +887,220 @@ def test_lean_forward_record_counts_only_live_settled_leans():
     assert b["first_date"] == "2026-11-11" and [r["team"] for r in b["recent"]] == ["PIT", "EDM", "HOU"]
     assert b["recent"][0]["result"] == "pending" and b["recent"][2]["final"] == "GS 101 @ HOU 112"
     assert "never part of the curated record" in b["definition"]
+
+
+def test_sport_plays_history_separates_desk_picks_from_leans(tmp_path, monkeypatch):
+    import all_picks_tracker as t
+    import play_of_day as pod
+    h = [{"source": "nfl_game_ml", "also_sources": ["pod", "sport_play"], "sport": "NFL", "player_or_matchup": "HOU @ CLE",
+          "market": "ML_HOME", "book_american": 190, "date": "2026-11-15", "settled": True, "result": "won", "payout_units": 1.9},
+         {"source": "nfl_game_ml", "sport": "NFL", "player_or_matchup": "SF @ DAL", "market": "ML_AWAY", "book_american": -205,
+          "date": "2026-11-15", "settled": True, "result": "lost", "payout_units": -1.0},                      # a desk pick, not the sport play
+         {"source": "sport_lean", "sport": "NBA", "player_or_matchup": "GS @ HOU", "market": "ML_HOME", "book_american": -264,
+          "date": "2026-11-11", "settled": True, "result": "lost", "payout_units": -1.0},
+         {"source": "sport_lean", "sport": "NHL", "player_or_matchup": "PHI @ EDM", "market": "ML_HOME", "book_american": -192,
+          "date": "2026-11-12", "settled": False}]
+    b = t._sport_plays_block(h)
+    assert (b["desk_picks"]["wins"], b["desk_picks"]["losses"], b["desk_picks"]["net_units"]) == (1, 0, 1.9)
+    assert (b["leans"]["wins"], b["leans"]["losses"], b["leans"]["n_pending"]) == (0, 1, 1)
+    assert [(r["sport"], r["kind"], r["team"], r["result"]) for r in b["recent"]] == [
+        ("NFL", "desk pick", "CLE", "won"), ("NHL", "lean", "EDM", "pending"), ("NBA", "lean", "HOU", "lost")]
+    assert "never summed" in b["definition"]
+    # the collector tags a desk-pick sport play as "sport_play" (after the desk row) and never as a lean
+    today = "2026-11-08"
+    monkeypatch.setattr(pod, "DATA_DIR", str(tmp_path))
+    monkeypatch.setattr(pod, "OUT", str(tmp_path / "play_of_day.json"))
+    monkeypatch.setattr(pod, "_today_et", lambda: today)
+    out = pod.run(now=_lean_fixture(tmp_path, today, nfl_pick=True))
+    out.pop("generated_at")
+    (tmp_path / "play_of_day.json").write_text(json.dumps(out))
+    monkeypatch.setattr(t, "DATA_DIR", str(tmp_path))
+    rows = t._collect_picks_from_sources()
+    src = [(r["source"], r["sport"]) for r in rows if r.get("source") in ("sport_play", "sport_lean")]
+    assert src == [("sport_play", "NFL"), ("sport_lean", "NBA")]
+    desk_i = next(i for i, r in enumerate(rows) if r.get("source") == "nfl_game_ml" and r.get("player_or_matchup") == "NYJ @ KC")
+    play_i = next(i for i, r in enumerate(rows) if r.get("source") == "sport_play")
+    assert desk_i < play_i and not t_is_curated_source("sport_play") and not t_is_curated_source("sport_lean")
+
+
+def t_is_curated_source(src):
+    """Mirror of the ledger's curated-prefix rule, read from its source so the test fails if a prefix ever swallows these."""
+    import re
+    path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "all_picks_tracker.py")
+    text = open(path, encoding="utf-8").read()
+    m = re.search(r"_CURATED_PREFIXES = \(([^)]*)\)", text)
+    prefixes = re.findall(r'"([^"]+)"', m.group(1))
+    return any(src == p or src.startswith(p) for p in prefixes)
+
+
+# ---------------------------------------------------------------- The Board (2026-11-12)
+def _board_fixture(tmp_path, monkeypatch, today="2026-11-08", nfl_pick=True):
+    import board
+    import play_of_day as pod
+    now = _lean_fixture(tmp_path, today, nfl_pick=nfl_pick)
+    gld = json.loads((tmp_path / "game_lines_desk.json").read_text())
+    obs = gld["sports"]["nba"]["board"][0]["quote"]["observed_at"]
+    q = lambda eid: {"provenance": "book_snapshot", "book": "draftkings", "observed_at": obs,
+                     "event_id": eid, "scheduled_start": "2026-11-09T01:00Z"}
+    gld["sports"]["nba"]["board"] += [
+        # model likes the home side, DraftKings the away side: a disagreement -> D 25, no bet
+        {"event_id": "21", "matchup": "LAL @ DEN", "game_date": today, "commence": "2026-11-09T01:00Z", "pick": None,
+         "p_home_elo": 0.60, "p_home_dk": 0.45, "p_home": 0.45, "ml_home": 120, "ml_away": -142, "quote": q("21")},
+        # both lean home, but under 55%: outside the lean rule -> D 35, no bet
+        {"event_id": "22", "matchup": "NY @ CHI", "game_date": today, "commence": "2026-11-09T01:00Z", "pick": None,
+         "p_home_elo": 0.53, "p_home_dk": 0.52, "p_home": 0.52, "ml_home": -112, "ml_away": -108, "quote": q("22")},
+        # a day-to-day star: on hold, no side at all
+        {"event_id": "23", "matchup": "PHX @ GS", "game_date": today, "commence": "2026-11-09T01:00Z", "pick": None,
+         "p_home_elo": 0.70, "p_home_dk": 0.66, "p_home": 0.66, "ml_home": -200, "ml_away": 168, "quote": q("23"),
+         "pick_blocked": "availability uncertain -- GS: 5.1 pts of Day-To-Day value (Star)"},
+    ]
+    (tmp_path / "game_lines_desk.json").write_text(json.dumps(gld))
+    (tmp_path / "espn_odds.json").write_text(json.dumps({"generated_at": obs, "games": [
+        {"sport": "NBA", "event_id": "3", "market": {"total": 221.5, "over_price": -108, "under_price": -112, "spread": -4.5}}]}))
+    for mod in (board, pod):
+        monkeypatch.setattr(mod, "DATA_DIR", str(tmp_path))
+    monkeypatch.setattr(board, "OUT", str(tmp_path / "board.json"))
+    monkeypatch.setattr(board, "ALPHA_LOG", str(tmp_path / "board_alpha_log.json"))
+    monkeypatch.setattr(pod, "OUT", str(tmp_path / "play_of_day.json"))
+    monkeypatch.setattr(pod, "_today_et", lambda: today)
+    return board, now
+
+
+def test_board_grades_every_game_by_rule_and_only_abc_are_bets(tmp_path, monkeypatch):
+    import verify_pricing as vp
+    board, now = _board_fixture(tmp_path, monkeypatch)
+    # the whole scoring rule
+    assert board.score_pick("desk", 1, 6.0, None) == {"grade": "A", "score": 91}
+    assert board.score_pick("desk", 2, 40.0, None) == {"grade": "B", "score": 80}       # EV bonus capped at 15
+    assert board.score_pick("desk", 2, 5.0, None) == {"grade": "B", "score": 70}
+    assert board.score_pick("lean", 4, -3.9, 0.55) == {"grade": "C", "score": 40}
+    assert board.score_pick("lean", 4, -3.9, 0.80) == {"grade": "C", "score": 60}
+    out = board.run(now=now)
+    g = {x["matchup"]: x for x in out["games"]}
+    assert g["NYJ @ KC"]["grade"] == "B" and g["NYJ @ KC"]["score"] == 80 and g["NYJ @ KC"]["pick"]["team"] == "NYJ"
+    assert g["BOS @ MIA"]["grade"] == "C" and g["BOS @ MIA"]["pick"]["kind"] == "lean" and 40 <= g["BOS @ MIA"]["score"] <= 60
+    assert g["BOS @ MIA"]["odds"]["total"] == 221.5 and g["BOS @ MIA"]["odds"]["over_price"] == -108   # the real over/under prices
+    d1, d2, hold = g["LAL @ DEN"], g["NY @ CHI"], g["PHX @ GS"]
+    assert (d1["grade"], d1["score"], d1["pick"]) == ("D", 25, None) and d1["model_side"]["team"] == "DEN" and "lost this season" in d1["reason"]
+    assert (d2["grade"], d2["score"], d2["pick"]) == ("D", 35, None) and d2["model_side"]["agrees_with_market"] is True
+    assert (hold["grade"], hold["score"], hold["pick"], hold["model_side"]) == ("HOLD", None, None, None) and hold["hold"]
+    # only A/B/C are bets: the flat list the guard checks and the ledger logs
+    assert sorted((p["matchup"], p["grade"]) for p in out["picks"]) == [("BOS @ MIA", "C"), ("DAL @ IND", "B"), ("NYJ @ KC", "B")]
+    assert all(vp.check_row(p, now) == [] for p in out["picks"])
+    assert out["sports"]["NBA"]["games_today"] == 4 and out["sports"]["NBA"]["bets_today"] == 1
+    assert out["sports"]["MLB"]["status"] == "off-season" and out["days"] == ["2026-11-08", "2026-11-09"]
+    # a stale board has no bets at all (no live quote, no pick), and says nothing about alpha
+    out = board.run(now=now + dt.timedelta(hours=9))
+    assert out["picks"] == [] and out["alpha"]["picks"] == []
+    assert all(x["grade"] is None and x["pick"] is None and x["model_side"] is None and "No live DraftKings quote" in x["reason"]
+               for x in out["games"])                                    # an old price backs neither a bet nor a "no bet"
+
+
+def test_alpha_is_the_top_scored_bets_and_locks_at_eleven(tmp_path, monkeypatch):
+    board, now = _board_fixture(tmp_path, monkeypatch)                 # 10:00 ET
+    out = board.run(now=now)
+    a = out["alpha"]
+    assert a["status"] == "provisional" and [(p["team"], p["grade"]) for p in a["picks"]] == [("NYJ", "B"), ("MIA", "C")]
+    assert a["note"] and "not padded" in a["note"]                       # two bets: the list is not filled out to three
+    assert not (tmp_path / "board_alpha_log.json").exists() and not any(p["is_alpha"] for p in out["picks"])
+    out = board.run(now=now + dt.timedelta(hours=2))                     # 12:00 ET -> locks
+    a = out["alpha"]
+    assert a["status"] == "locked" and [p["team"] for p in a["picks"]] == ["NYJ", "MIA"] and all(p["locked"] for p in a["picks"])
+    assert sorted(p["team"] for p in out["picks"] if p["is_alpha"]) == ["MIA", "NYJ"]
+    assert [x["alpha_rank"] for x in out["games"] if x["matchup"] == "NYJ @ KC"] == [1]
+    log = json.loads((tmp_path / "board_alpha_log.json").read_text())
+    assert [p["book_american"] for p in log["days"]["2026-11-08"]["picks"]] == [440, -200]
+    # the price moves and the desk pick disappears: the locked list does not change or re-price
+    gld = json.loads((tmp_path / "game_lines_desk.json").read_text())
+    gld["sports"]["nfl"]["board"][0]["pick"] = None
+    gld["sports"]["nba"]["board"][0]["lean"]["book_american"] = -230
+    (tmp_path / "game_lines_desk.json").write_text(json.dumps(gld))
+    out = board.run(now=now + dt.timedelta(hours=2, minutes=20))
+    assert [(p["team"], p["book_american"]) for p in out["alpha"]["picks"]] == [("NYJ", 440), ("MIA", -200)]
+
+
+def test_board_bets_are_logged_on_game_day_only_never_curated_and_never_calibration_evidence(tmp_path, monkeypatch):
+    import all_picks_tracker as t
+    import prob_calibration as pc
+    board, now = _board_fixture(tmp_path, monkeypatch)
+    out = board.run(now=now + dt.timedelta(hours=2))
+    out.pop("generated_at")
+    (tmp_path / "board.json").write_text(json.dumps(out))
+    monkeypatch.setattr(t, "DATA_DIR", str(tmp_path))
+    rows = t._collect_picks_from_sources()
+    tagged = sorted((r["source"], r["player_or_matchup"]) for r in rows if r.get("source") in ("board_pick", "board_alpha"))
+    # today's two bets, each also an alpha pick; tomorrow's DAL @ IND card is a preview and is not logged today
+    assert tagged == [("board_alpha", "BOS @ MIA"), ("board_alpha", "NYJ @ KC"), ("board_pick", "BOS @ MIA"), ("board_pick", "NYJ @ KC")]
+    desk_i = next(i for i, r in enumerate(rows) if r.get("source") == "nfl_game_ml" and r.get("player_or_matchup") == "NYJ @ KC")
+    assert all(i > desk_i for i, r in enumerate(rows) if r.get("source") in ("board_pick", "board_alpha"))   # folds onto the desk row
+    for src in ("board_pick", "board_alpha"):
+        assert not t_is_curated_source(src)
+        assert pc.judged({"source": src, "sport": "NBA", "market": "ML_HOME"}) is False       # a lean is not evidence about the model
+    assert pc.judged({"source": "sport_lean", "sport": "NHL", "market": "ML_HOME"}) is False
+    assert pc.judged({"source": "nhl_game_ml", "sport": "NHL", "market": "ML_HOME"}) is True  # a desk pick still is
+    # results: grade from what the row is; alpha counted on its own; voided rows out
+    h = [{"source": "nfl_game_ml", "also_sources": ["board_pick", "board_alpha"], "desk_verdict": "unproven", "sport": "NFL",
+          "player_or_matchup": "NYJ @ KC", "market": "ML_AWAY", "book_american": 440, "date": "2026-11-08", "settled": True,
+          "result": "lost", "payout_units": -1.0},
+         {"source": "sport_lean", "also_sources": ["board_pick"], "sport": "NBA", "player_or_matchup": "BOS @ MIA", "market": "ML_HOME",
+          "book_american": -200, "date": "2026-11-08", "settled": True, "result": "won", "payout_units": 0.5,
+          "outcome": {"final_score": "BOS 99 @ MIA 110"}},
+         {"source": "board_pick", "sport": "NHL", "player_or_matchup": "WSH @ NJ", "market": "ML_HOME", "book_american": -155,
+          "date": "2026-11-09", "settled": False},
+         {"source": "board_pick", "sport": "NHL", "player_or_matchup": "A @ B", "market": "ML_HOME", "book_american": -150,
+          "date": "2026-11-09", "settled": True, "voided": True, "result": "won", "payout_units": 0.67},
+         {"source": "nfl_game_ml", "sport": "NFL", "player_or_matchup": "X @ Y", "market": "ML_HOME", "date": "2026-11-08",
+          "settled": True, "result": "won", "payout_units": 1.0}]                                # a desk pick the board never showed
+    b = t._board_block(h)
+    assert (b["all_bets"]["wins"], b["all_bets"]["losses"], b["all_bets"]["n_pending"]) == (1, 1, 1)
+    assert (b["alpha"]["wins"], b["alpha"]["losses"]) == (0, 1)
+    assert b["by_grade"]["B"]["losses"] == 1 and b["by_grade"]["C"]["wins"] == 1 and b["by_grade"]["A"]["n_settled"] == 0
+    assert [(r["team"], r["grade"], r["is_alpha"], r["result"]) for r in b["recent"]] == [
+        ("NJ", "C", False, "pending"), ("NYJ", "B", True, "lost"), ("MIA", "C", False, "won")]
+    assert b["by_day"]["2026-11-08"]["wins"] == 1 and "not" in b["definition"]
+
+
+# ---------------------------------------------------------------- independent review fixes (2026-11-12)
+def test_board_record_uses_the_price_the_board_showed_not_an_earlier_logged_price():
+    import all_picks_tracker as t
+    # a desk pick logged days earlier at +440; the board showed +380 on game day and locked it as Alpha at +360
+    h = [{"source": "nfl_game_ml", "also_sources": ["board_pick", "board_alpha"], "desk_verdict": "unproven", "sport": "NFL",
+          "player_or_matchup": "NYJ @ KC", "market": "ML_AWAY", "book_american": 440, "board_price": 380, "alpha_price": 360,
+          "board_grade": "C", "date": "2026-11-08", "settled": True, "result": "won", "payout_units": 4.4},
+         {"source": "board_pick", "sport": "NBA", "player_or_matchup": "BOS @ MIA", "market": "ML_HOME", "book_american": -200,
+          "board_price": -200, "board_grade": "C", "date": "2026-11-08", "settled": True, "result": "lost", "payout_units": -1.0}]
+    b = t._board_block(h)
+    assert b["all_bets"]["net_units"] == 2.8          # +3.80 (the board's price) - 1.00, not +4.40 - 1.00
+    assert b["alpha"]["net_units"] == 3.6             # the locked Alpha price
+    assert b["by_grade"]["C"]["wins"] == 1 and b["by_grade"]["B"]["n_settled"] == 0      # the stamped grade, not the desk's
+    nyj = next(r for r in b["recent"] if r["team"] == "NYJ")
+    assert nyj["book_american"] == 360 and nyj["payout_units"] == 3.6 and nyj["grade"] == "C"
+    # the ledger source carries the two guards the review asked for
+    src = open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "all_picks_tracker.py"), encoding="utf-8").read()
+    assert 'if p.get("source") in ("sport_lean", "board_pick", "board_alpha"):\n            return False' in src       # never curated
+    assert 'for k in ("board_price", "board_grade", "board_score", "alpha_price"):' in src                              # stamped on fold
+
+
+def test_alpha_lock_fails_closed_and_a_non_draftkings_quote_is_never_a_bet(tmp_path, monkeypatch):
+    board, now = _board_fixture(tmp_path, monkeypatch)
+    lock = tmp_path / "board_alpha_log.json"
+    lock.write_text('{"days": {"2026-11-01": {"picks": [')          # truncated write / bad merge
+    out = board.run(now=now + dt.timedelta(hours=2))                 # 12:00 ET: would normally lock
+    assert out["alpha"]["status"] == "provisional" and "could not be read" in out["alpha"]["note"]
+    assert lock.read_text() == '{"days": {"2026-11-01": {"picks": ['  # untouched: earlier days are not erased
+    assert not any(p["is_alpha"] for p in out["picks"])              # nothing is tagged Alpha off an unlocked list
+    lock.unlink()
+    # another provider's price is a real price, but the board says DraftKings: no grade, no bet
+    gld = json.loads((tmp_path / "game_lines_desk.json").read_text())
+    gld["sports"]["nba"]["board"][0]["quote"]["book"] = "espn bet"
+    (tmp_path / "game_lines_desk.json").write_text(json.dumps(gld))
+    out = board.run(now=now)
+    g = next(x for x in out["games"] if x["matchup"] == "BOS @ MIA")
+    assert g["pick"] is None and g["grade"] is None and g["live_quote"] is False and g["quote_issue"] == "not_draftkings"
+    assert all(p["matchup"] != "BOS @ MIA" for p in out["picks"])
+    # today stays on the board after its last game starts (the locked list and results still belong to it)
+    for sp in gld["sports"].values():
+        sp["board"] = [r for r in sp["board"] if r.get("game_date") != "2026-11-08"]
+    (tmp_path / "game_lines_desk.json").write_text(json.dumps(gld))
+    out = board.run(now=now)
+    assert out["days"][0] == "2026-11-08" and out["counts"]["games_today"] == 0

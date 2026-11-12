@@ -27,7 +27,7 @@
 <title>Play of the Day | EdgeStat</title>
 <link rel="stylesheet" href="css/style.css?v=20261105">
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
-<script src="js/nav.js?v=20261105"></script>
+<script src="js/nav.js?v=20261112"></script>
 </head>
 <body class="page-play">
 <header class="topbar">
@@ -584,6 +584,17 @@ Promise.all([
   };
   // the leans actually logged, graded: the forward record and the latest results
   const leanFwd = () => {
+    // (later 11/11) prefer the full per-sport history: desk picks and leans, counted separately
+    const H = P.plays_history;
+    if (H && (H.recent || []).length) {
+      const ln = (x, name) => (x && (x.n_settled || x.n_pending)) ? `${name} ${x.wins}-${x.losses}, ${Number(x.net_units) >= 0 ? "+" : "−"}${Math.abs(Number(x.net_units || 0)).toFixed(2)}u${x.n_pending ? " (" + x.n_pending + " pending)" : ""}` : "";
+      const resH = r => r.result === "won" ? '<span style="color:#58c878;">won</span>' : r.result === "lost" ? '<span style="color:#e35a5a;">lost</span>' : r.result;
+      return `<div style="padding:10px 14px;border-top:1px solid rgba(255,255,255,.05);font-size:12px;line-height:1.7;">
+        <b>Plays logged so far</b> <span class="muted">(since ${H.first_date}, graded at the DraftKings price logged; desk picks and leans are counted separately)</span>: ${[ln(H.desk_picks, "desk picks"), ln(H.leans, "leans")].filter(Boolean).join(" · ")}
+        <div class="muted" style="font-family:JetBrains Mono,monospace;font-size:11px;">` +
+        H.recent.slice(0, 12).map(r => `${r.date} ${r.sport} ${r.team || r.matchup} ${fmtA(r.book_american)} (${r.kind}) · ${resH(r)}${r.final ? " (" + r.final + ")" : ""}`).join("<br>") +
+        `</div></div>`;
+    }
     const f = P.lean_forward; if (!f || !(f.n_settled || f.n_pending)) return "";
     const u = Number(f.net_units || 0);
     const res = r => r.result === "won" ? '<span style="color:#58c878;">won</span>' : r.result === "lost" ? '<span style="color:#e35a5a;">lost</span>' : r.result;
@@ -608,6 +619,7 @@ Promise.all([
         <div class="muted" style="font-size:12px;line-height:1.6;margin-top:6px;">${c.why || ""}${c.tier === 4 ? " " + leanRec(c) : ""}</div>
       </div>`).join("") +
       leanFwd() +
+      `<p style="font-size:12px;padding:8px 14px 0;margin:0;"><a href="board.html" style="color:#7fb0e8;">Every game today, with odds and a grade, is on The Board →</a></p>` +
       `<p class="muted" style="font-size:11px;padding:8px 14px 12px;margin:0;">One play per major sport on the days it plays. A desk pick needs an edge at the DraftKings price. When a desk has none, its play is a <b>model lean</b>: the favourite its model and DraftKings both favour (each at least 55%, no shorter than −300). A lean is not an edge, is tracked on its own and never enters the curated record.</p>`;
     return sec;
   };

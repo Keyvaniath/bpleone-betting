@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/icons/icon-32.png">
+<link rel="apple-touch-icon" href="assets/icons/icon-180.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="EdgeStat">
+<meta name="description" content="The Board · EdgeStat: every NFL, NBA and NHL game with DraftKings odds, our side, a grade and a score, plus the day's Alpha picks. Informational analytics, not betting advice. 21+.">
+<link rel="canonical" href="https://betting.bpleone.com/board.html">
+<meta name="theme-color" content="#0d1017">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="EdgeStat">
+<meta property="og:title" content="The Board | EdgeStat">
+<meta property="og:description" content="Every game, the DraftKings price, our side and a grade. The day's Alpha picks are the highest-scored bets.">
+<meta property="og:url" content="https://betting.bpleone.com/board.html">
+<meta property="og:image" content="https://betting.bpleone.com/assets/og-card.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://betting.bpleone.com/assets/og-card.png">
+<title>The Board | EdgeStat</title>
+<link rel="stylesheet" href="css/style.css?v=20261105">
+<script src="js/nav.js?v=20261112"></script>
+<style>
+  .bd-wrap { max-width: 1180px; margin: 0 auto; }
+  .bd-head h1 { font-size: 28px; margin: 6px 0 4px; letter-spacing: -0.01em; }
+  .bd-head .sub { color: var(--text-2); font-size: 14px; line-height: 1.5; max-width: 760px; margin: 0; }
+  .bd-meta { color: var(--text-3); font-size: 12px; margin-top: 8px; font-family: 'JetBrains Mono', monospace; }
+  .bd-pills { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+  .bd-pill { background: var(--bg-2); border: 1px solid var(--line); border-radius: 999px; padding: 6px 12px; font-size: 12px; color: var(--text-2); }
+  .bd-pill b { color: var(--text); font-family: 'JetBrains Mono', monospace; }
+  .bd-chips { display: flex; gap: 8px; overflow-x: auto; padding: 4px 0 6px; margin-top: 14px; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
+  .bd-chips::-webkit-scrollbar { display: none; }
+  .chip { flex: 0 0 auto; border: 1px solid var(--line); background: var(--bg-1); color: var(--text-2); border-radius: 999px; padding: 9px 16px;
+          font-size: 13px; font-weight: 600; cursor: pointer; min-height: 40px; display: inline-flex; align-items: center; gap: 7px; white-space: nowrap; }
+  .chip .n { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--text-3); }
+  .chip.on { background: var(--accent); border-color: var(--accent); color: #06210f; }
+  .chip.on .n { color: #0b3a1c; }
+  .chip[disabled] { opacity: .45; cursor: default; }
+  .bd-h2 { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; margin: 22px 0 10px; }
+  .bd-h2 h2 { font-size: 17px; margin: 0; }
+  .bd-h2 .muted { font-size: 12px; }
+  .alpha-strip { display: flex; gap: 12px; overflow-x: auto; padding-bottom: 8px; scroll-snap-type: x proximity; scrollbar-width: thin; scrollbar-color: var(--line) transparent; }
+  .alpha-strip::-webkit-scrollbar { height: 6px; } .alpha-strip::-webkit-scrollbar-thumb { background: var(--line); border-radius: 3px; } .alpha-strip::-webkit-scrollbar-track { background: transparent; }
+  .ac { flex: 0 0 230px; scroll-snap-align: start; background: linear-gradient(160deg, rgba(251,191,36,.10), var(--bg-1) 55%); border: 1px solid rgba(251,191,36,.45);
+        border-radius: 16px; padding: 14px; position: relative; }
+  .ac .rk { position: absolute; top: 10px; right: 12px; font-family: 'JetBrains Mono', monospace; color: var(--gold); font-weight: 700; font-size: 13px; }
+  .ac .tm { font-size: 26px; font-weight: 800; letter-spacing: -0.02em; margin: 8px 0 0; }
+  .ac .mk { color: var(--text-2); font-size: 13px; }
+  .ac .px { font-family: 'JetBrains Mono', monospace; font-size: 20px; font-weight: 700; color: var(--gold); }
+  .ac .gm { color: var(--text-3); font-size: 12px; margin-top: 6px; }
+  .ac .row { display: flex; align-items: center; justify-content: space-between; margin-top: 10px; gap: 8px; }
+  .bd-tools { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin: 6px 0 12px; }
+  .bd-tools label { font-size: 13px; color: var(--text-2); display: inline-flex; align-items: center; gap: 6px; cursor: pointer; min-height: 36px; }
+  .bd-tools select { background: var(--bg-2); color: var(--text); border: 1px solid var(--line); border-radius: 8px; padding: 7px 10px; font-size: 13px; }
+  .bd-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(290px, 1fr)); gap: 12px; }
+  .gc { background: var(--bg-1); border: 1px solid var(--line); border-radius: 16px; padding: 12px; display: flex; flex-direction: column; gap: 8px; }
+  .gc.bet { border-color: rgba(74,222,128,.38); }
+  .gc.alpha { border-color: rgba(251,191,36,.6); }
+  .gc.started { opacity: .55; }
+  .gc header { display: flex; align-items: center; gap: 8px; }
+  .sp { font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 700; padding: 3px 7px; border-radius: 6px; background: var(--bg-3); color: var(--text-2); }
+  .sp.NFL { color: #7fb0e8; } .sp.NBA { color: #f59e0b; } .sp.NHL { color: #22d3ee; } .sp.MLB { color: #f87171; }
+  .gc .tm { color: var(--text-3); font-size: 12px; }
+  .gr { margin-left: auto; font-family: 'JetBrains Mono', monospace; font-size: 12px; font-weight: 700; padding: 4px 9px; border-radius: 999px; border: 1px solid var(--line); color: var(--text-2); white-space: nowrap; }
+  .gr.A { color: #06210f; background: var(--accent); border-color: var(--accent); }
+  .gr.B { color: var(--accent); border-color: var(--accent); }
+  .gr.C { color: var(--blue); border-color: var(--blue); }
+  .gr.D, .gr.HOLD { color: var(--text-3); }
+  .side { width: 100%; display: flex; align-items: center; gap: 10px; background: var(--bg-2); border: 1px solid var(--line); border-radius: 12px; padding: 10px 12px;
+          color: var(--text); cursor: pointer; text-align: left; min-height: 52px; font: inherit; }
+  .side:hover { border-color: var(--text-3); }
+  .side .ab { font-weight: 800; font-size: 17px; min-width: 52px; }
+  .side .pr { color: var(--text-3); font-size: 11px; line-height: 1.35; flex: 1; }
+  .side .px { font-family: 'JetBrains Mono', monospace; font-weight: 700; font-size: 16px; }
+  .side.pick { border-color: var(--accent); background: rgba(74,222,128,.09); }
+  .side.pick .tagp { color: var(--accent); font-weight: 700; }
+  .side.ms .tagp { color: var(--text-3); }
+  .side.in { box-shadow: inset 0 0 0 2px var(--gold); }
+  .side[disabled] { cursor: default; opacity: .7; }
+  .gc .tot { color: var(--text-3); font-size: 11.5px; font-family: 'JetBrains Mono', monospace; }
+  .gc .why { color: var(--text-2); font-size: 12px; line-height: 1.5; margin: 0; }
+  .gc .foot { display: flex; justify-content: space-between; align-items: center; font-size: 11px; color: var(--text-3); }
+  .gc .foot a { color: #7fb0e8; }
+  .add { border: 1px solid var(--gold); color: var(--gold); background: transparent; border-radius: 999px; padding: 7px 14px; font-size: 12px; font-weight: 700; cursor: pointer; min-height: 36px; }
+  .add.in { background: var(--gold); color: #2a1c00; }
+  .empty { color: var(--text-3); padding: 18px; text-align: center; border: 1px dashed var(--line); border-radius: 14px; font-size: 13px; }
+  .res-row { display: flex; gap: 10px; padding: 7px 0; border-top: 1px solid var(--line-soft); font-family: 'JetBrains Mono', monospace; font-size: 12px; flex-wrap: wrap; }
+  .res-row .w { color: var(--accent); } .res-row .l { color: var(--red); }
+  .slip-btn { position: fixed; right: 16px; bottom: 16px; z-index: 950; background: var(--gold); color: #2a1c00; border: 0; border-radius: 999px; padding: 13px 18px;
+              font-weight: 800; font-size: 14px; cursor: pointer; box-shadow: var(--shadow); }
+  body.has-tabbar .slip-btn { bottom: 76px; }
+  .slip { position: fixed; right: 16px; bottom: 70px; z-index: 960; width: min(380px, calc(100vw - 32px)); max-height: 70vh; overflow: auto; background: var(--bg-1);
+          border: 1px solid var(--line); border-radius: 16px; box-shadow: var(--shadow); padding: 14px; display: none; }
+  body.has-tabbar .slip { bottom: 132px; }
+  .slip.open { display: block; }
+  .slip h3 { margin: 0 0 8px; font-size: 15px; display: flex; justify-content: space-between; align-items: center; }
+  .slip .it { display: flex; align-items: center; gap: 8px; padding: 8px 0; border-top: 1px solid var(--line-soft); font-size: 13px; }
+  .slip .it .x { margin-left: auto; background: none; border: 0; color: var(--text-3); cursor: pointer; font-size: 16px; padding: 6px; }
+  .slip .acts { display: flex; gap: 8px; margin-top: 10px; }
+  .slip .acts button { flex: 1; border-radius: 10px; padding: 10px; font-weight: 700; cursor: pointer; border: 1px solid var(--line); background: var(--bg-2); color: var(--text); }
+  .stale { background: rgba(248,113,113,.10); border: 1px solid rgba(248,113,113,.4); color: #fca5a5; border-radius: 12px; padding: 10px 12px; font-size: 13px; margin-top: 12px; }
+  @media (max-width: 720px) { .bd-head h1 { font-size: 23px; } .ac { flex-basis: 200px; } .bd-grid { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body class="page-board">
+<header class="topbar">
+  <div class="brand">
+    <a href="index.html" class="logo"><span class="logo-mark">⟁</span><span class="logo-text">Edge<span class="accent">Stat</span></span></a>
+    <span class="tagline">by bpleone</span>
+  </div>
+  <nav class="mainnav"><!-- nav.js injects here --></nav>
+  <div class="topbar-actions"></div>
+</header>
+
+<main class="container">
+<div class="bd-wrap">
+
+  <section class="bd-head">
+    <h1>The Board</h1>
+    <p class="sub">Every game, the DraftKings price, our side and a grade. Tap a team to add it to your slip. The <b style="color:var(--gold)">Alpha picks</b> are the day&#39;s highest-scored bets.</p>
+    <div class="bd-meta" id="bdMeta">Loading the board…</div>
+    <div class="bd-pills" id="bdPills"></div>
+    <div class="stale" id="bdStale" hidden></div>
+  </section>
+
+  <div class="bd-chips" id="sportChips" role="tablist" aria-label="Sport"></div>
+  <div class="bd-chips" id="dayChips" role="tablist" aria-label="Day" style="margin-top:4px;"></div>
+
+  <section id="alphaSec">
+    <div class="bd-h2"><h2>★ Alpha picks</h2><span class="muted" id="alphaMeta"></span></div>
+    <div class="alpha-strip" id="alphaStrip"></div>
+  </section>
+
+  <div class="bd-h2"><h2 id="gamesTitle">Games</h2><span class="muted" id="gamesMeta"></span></div>
+  <div class="bd-tools">
+    <label><input type="checkbox" id="betsOnly"> Bets only</label>
+    <label>Sort <select id="sortSel"><option value="time">Start time</option><option value="score">Top graded</option></select></label>
+  </div>
+  <div class="bd-grid" id="games"></div>
+
+  <section class="card" style="margin-top:26px;">
+    <div class="card-head"><span>🧾 Graded so far</span><span class="muted" id="resMeta"></span></div>
+    <div id="results" style="padding:4px 2px 2px;"><p class="muted" style="font-size:13px;">Loading results…</p></div>
+  </section>
+
+  <section class="card" style="margin-top:18px;">
+    <div class="card-head"><span>How a grade is set</span><span class="muted">fixed by rule, written before any result</span></div>
+    <div style="font-size:13px;line-height:1.7;color:var(--text-2);">
+      <p style="margin:6px 0;"><span class="gr A">A · 85-100</span> A validated desk pick: the edge over DraftKings is outside noise and held up out of sample.</p>
+      <p style="margin:6px 0;"><span class="gr B">B · 65-80</span> A forward-test desk pick: the model beats the DraftKings close this season, not yet outside noise.</p>
+      <p style="margin:6px 0;"><span class="gr C">C · 40-60</span> A model lean: the favourite our model and DraftKings both favour. It is <b>not an edge</b>; over time a lean is expected to lose about the book&#39;s margin.</p>
+      <p style="margin:6px 0;"><span class="gr D">D</span> No bet. The model&#39;s side is shown for information only. When the model disagrees with DraftKings, betting the model has lost this season.</p>
+      <p style="margin:6px 0;"><span class="gr HOLD">HOLD</span> No side while the desk waits on a quarterback or a day-to-day player.</p>
+      <p style="margin:6px 0;"><b style="color:var(--gold);">★ Alpha picks</b> are the three to five highest-scored bets of the day, whatever their grade, locked at 11:00 AM ET so the list does not reshuffle. On a day with no A or B bet they are grade C leans, and the card says so. They are separate from the MLB <a href="alpha-pick.html" style="color:#7fb0e8;">Alpha Pick</a> record, which has its own edge gate.</p>
+      <p class="muted" style="margin:10px 0 0;font-size:12px;">Only A, B and C are bets. They are logged at the DraftKings price shown and graded on the final score, outside the curated record. Prices are DraftKings moneylines read from ESPN&#39;s scoreboard feed, each with the time it was observed. Your slip is a list on this device; EdgeStat takes no wagers. 21+ · informational analytics, not betting advice · 1-800-GAMBLER. <a href="methodology.html" style="color:#7fb0e8;">Methodology</a> · <a href="track-record.html" style="color:#7fb0e8;">Track record</a></p>
+    </div>
+  </section>
+
+</div>
+</main>
+
+<button class="slip-btn" id="slipBtn" aria-controls="slip" aria-expanded="false">Slip · <span id="slipN">0</span></button>
+<aside class="slip" id="slip" aria-label="Your slip">
+  <h3><span>Your slip</span><button class="x" id="slipClose" aria-label="Close" style="background:none;border:0;color:var(--text-3);font-size:18px;cursor:pointer;">×</button></h3>
+  <div id="slipList"></div>
+  <div class="acts"><button id="slipCopy">Copy</button><button id="slipClear">Clear</button></div>
+  <p class="muted" style="font-size:11px;margin:10px 0 0;">A list of singles on this device, at the DraftKings prices shown. EdgeStat takes no wagers and does not suggest parlays.</p>
+</aside>
+
+<footer class="site-footer">
+  <div class="foot-bot"><span>© 2026 bpleone.com — EdgeStat</span><span>21+ · not betting advice</span></div>
+</footer>
+
+<script>
+(function () {
+  const $ = (id) => document.getElementById(id);
+  const esc = (s) => String(s == null ? "" : s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+  const amer = (a) => a == null ? "—" : (a >= 0 ? "+" + a : String(a));
+  const pct = (p) => p == null ? "—" : Math.round(p * 100) + "%";
+  const ET = { timeZone: "America/New_York" };
+  const tm = (iso) => { const d = new Date(iso); return isNaN(d) ? "" : d.toLocaleTimeString("en-US", Object.assign({ hour: "numeric", minute: "2-digit" }, ET)) + " ET"; };
+  const dayLabel = (ymd, today) => {
+    if (ymd === today) return "Today";
+    const d = new Date(ymd + "T12:00:00Z");
+    return d.toLocaleDateString("en-US", { weekday: "short", month: "numeric", day: "numeric", timeZone: "UTC" });
+  };
+  const obs = (s) => { if (!s) return "—"; const d = new Date(String(s).replace(" ", "T") + (/[zZ]|[+-]\d\d:?\d\d$/.test(s) ? "" : "Z")); return isNaN(d) ? s : d.toLocaleString("en-US", Object.assign({ month: "numeric", day: "numeric", hour: "numeric", minute: "2-digit" }, ET)) + " ET"; };
+  const units = (u) => (u >= 0 ? "+" : "−") + Math.abs(Number(u || 0)).toFixed(2) + "u";
+  const started = (g) => { const d = new Date(g.start); return !isNaN(d) && d.getTime() <= Date.now(); };
+
+  // ---- slip: a per-device list, never a wager
+  const KEY = "edgestat_slip_v1";
+  let slip = [];
+  try { slip = JSON.parse(localStorage.getItem(KEY) || "[]") || []; } catch (e) { slip = []; }
+  const saveSlip = () => { try { localStorage.setItem(KEY, JSON.stringify(slip)); } catch (e) {} };
+  const slipKey = (g, side) => g.id + ":" + side;
+  const inSlip = (k) => slip.some((s) => s.k === k);
+
+  let B = null, sport = "ALL", day = null;
+
+  function toggle(g, side) {
+    if (started(g) || !g.live_quote) return;
+    const k = slipKey(g, side);
+    if (inSlip(k)) slip = slip.filter((s) => s.k !== k);
+    else {
+      slip = slip.filter((s) => s.id !== g.id);            // one side per game
+      const ours = g.pick && g.pick.side === side;
+      slip.push({ k: k, id: g.id, sport: g.sport, team: side === "home" ? g.home : g.away, matchup: g.matchup, date: g.date,
+                  price: side === "home" ? g.odds.ml_home : g.odds.ml_away, ours: !!ours, grade: ours ? g.grade : null });
+    }
+    saveSlip(); render();
+  }
+
+  function renderSlip() {
+    $("slipN").textContent = slip.length;
+    $("slipList").innerHTML = slip.length ? slip.map((s) =>
+      `<div class="it"><span class="sp ${esc(s.sport)}">${esc(s.sport)}</span><span><b>${esc(s.team)}</b> ML <span style="font-family:JetBrains Mono,monospace;color:var(--gold);">${amer(s.price)}</span><br><span class="muted" style="font-size:11px;">${esc(s.matchup)} · ${s.ours ? "EdgeStat pick, grade " + esc(s.grade) : "your pick"}</span></span><button class="x" data-k="${esc(s.k)}" aria-label="Remove">×</button></div>`).join("")
+      : `<p class="muted" style="font-size:13px;margin:6px 0;">Tap a team on any game to add it.</p>`;
+    $("slipList").querySelectorAll(".x").forEach((b) => b.addEventListener("click", () => { slip = slip.filter((s) => s.k !== b.dataset.k); saveSlip(); render(); }));
+  }
+
+  function chips() {
+    const today = B.date_et;
+    const counts = {};
+    B.games.filter((g) => g.date === day).forEach((g) => { counts[g.sport] = (counts[g.sport] || 0) + 1; });
+    const total = Object.values(counts).reduce((a, b) => a + b, 0);
+    const list = [["ALL", "All", total, false]].concat(Object.keys(B.sports).map((s) => [s, s, counts[s] || 0, B.sports[s].status === "off-season"]));
+    $("sportChips").innerHTML = list.map(([k, label, n, off]) =>
+      `<button class="chip${sport === k ? " on" : ""}" data-s="${k}" ${off ? "disabled title=\"Off-season\"" : ""} role="tab" aria-selected="${sport === k}">${label} <span class="n">${off ? "off-season" : n}</span></button>`).join("");
+    $("sportChips").querySelectorAll(".chip:not([disabled])").forEach((c) => c.addEventListener("click", () => { sport = c.dataset.s; render(); }));
+    $("dayChips").innerHTML = (B.days || []).map((d) => {
+      const n = B.games.filter((g) => g.date === d).length;
+      return `<button class="chip${day === d ? " on" : ""}" data-d="${d}" role="tab" aria-selected="${day === d}">${dayLabel(d, today)} <span class="n">${n}</span></button>`;
+    }).join("");
+    $("dayChips").querySelectorAll(".chip").forEach((c) => c.addEventListener("click", () => { day = c.dataset.d; render(); }));
+  }
+
+  function sideBtn(g, side) {
+    const team = side === "home" ? g.home : g.away;
+    const px = side === "home" ? g.odds.ml_home : g.odds.ml_away;
+    const pm = side === "home" ? g.model.p_home : g.model.p_away;
+    const pk = side === "home" ? g.market.p_home_no_vig : g.market.p_away_no_vig;
+    const ours = g.pick && g.pick.side === side;
+    const ms = !g.pick && g.model_side && g.model_side.side === side;
+    const k = slipKey(g, side);
+    const tag = ours ? `<span class="tagp">✓ our ${g.pick.kind === "lean" ? "lean" : "pick"}</span> · ` : (ms ? `<span class="tagp">model side, no bet</span> · ` : "");
+    return `<button class="side${ours ? " pick" : ""}${ms ? " ms" : ""}${inSlip(k) ? " in" : ""}" data-g="${esc(g.id)}" data-side="${side}" ${started(g) || px == null || !g.live_quote ? "disabled" : ""}
+              aria-pressed="${inSlip(k)}" title="${inSlip(k) ? "Remove from slip" : "Add to slip"}">
+        <span class="ab">${esc(team)}</span>
+        <span class="pr">${tag}model ${pct(pm)} · DK ${pct(pk)}<br>${side === "home" ? "home" : "away"}</span>
+        <span class="px">${amer(px)}</span></button>`;
+  }
+
+  function gameCard(g) {
+    const o = g.odds;
+    const gradeTxt = g.grade ? (g.grade === "HOLD" ? "HOLD" : g.grade + (g.score != null ? " · " + g.score : "")) : "—";
+    const tot = o.total != null ? `Total ${o.total} · O ${amer(o.over_price)} / U ${amer(o.under_price)}` : "Total not posted";
+    const spr = o.spread_home != null ? ` · ${esc(g.home)} ${o.spread_home > 0 ? "+" : ""}${o.spread_home}` : "";
+    return `<article class="gc${g.pick ? " bet" : ""}${g.alpha_rank ? " alpha" : ""}${started(g) ? " started" : ""}">
+      <header><span class="sp ${esc(g.sport)}">${esc(g.sport)}</span><span class="tm">${started(g) ? "started" : tm(g.start)}</span>
+        ${g.alpha_rank ? `<span class="sp" style="color:var(--gold);">★ ALPHA #${g.alpha_rank}</span>` : ""}<span class="gr ${esc(g.grade || "")}">${gradeTxt}</span></header>
+      ${sideBtn(g, "away")}${sideBtn(g, "home")}
+      <div class="tot">${tot}${spr}</div>
+      <p class="why">${esc(g.reason || "")}</p>
+      <div class="foot"><span>DK seen ${obs(o.observed_at)}</span><a href="${esc(g.page || "#")}">${esc(g.sport)} desk →</a></div>
+    </article>`;
+  }
+
+  function render() {
+    if (!B) return;
+    chips();
+    const today = B.date_et;
+    // ---- alpha (today only)
+    const A = (B.alpha && B.alpha.picks) || [];
+    const showAlpha = day === today;
+    $("alphaSec").style.display = showAlpha ? "" : "none";
+    if (showAlpha) {
+      const Af = A.filter((a) => sport === "ALL" || a.sport === sport);
+      $("alphaMeta").textContent = B.alpha.status === "locked" ? "locked " + obs(B.alpha.locked_at) + " · top-scored bets of the day"
+        : "provisional until " + B.alpha.lock_hour_et + ":00 AM ET · top-scored bets of the day";
+      $("alphaStrip").innerHTML = Af.length ? Af.map((a) => {
+        const g = B.games.find((x) => x.id === String(a.event_id) && x.sport === a.sport);
+        const k = g ? slipKey(g, a.side) : "";
+        const gone = g ? started(g) : true;
+        return `<div class="ac"><span class="rk">#${a.rank}</span><span class="sp ${esc(a.sport)}">${esc(a.sport)}</span>
+          <div class="tm">${esc(a.team)}</div><div class="mk">moneyline · <span class="px">${amer(a.book_american)}</span></div>
+          <div class="gm">${esc(a.matchup)} · ${gone ? "started" : tm(a.commence_time)}</div>
+          <div class="row"><span class="gr ${esc(a.grade)}">${esc(a.grade)} · ${a.score}</span>
+            ${g && !gone ? `<button class="add${inSlip(k) ? " in" : ""}" data-g="${esc(g.id)}" data-side="${esc(a.side)}">${inSlip(k) ? "In slip" : "Add"}</button>` : ""}</div></div>`;
+      }).join("") : `<div class="empty" style="flex:1;">${A.length ? "No Alpha pick in this sport today." : "No graded bet on today&#39;s board yet. An Alpha pick needs a live DraftKings price; the list is never padded."}</div>`;
+      if (B.alpha.note && Af.length) $("alphaMeta").textContent += " · " + B.alpha.note;
+    }
+    // ---- games
+    let gs = B.games.filter((g) => g.date === day && (sport === "ALL" || g.sport === sport));
+    if ($("betsOnly").checked) gs = gs.filter((g) => g.pick);
+    if ($("sortSel").value === "score") gs = gs.slice().sort((a, b) => (b.score || 0) - (a.score || 0) || String(a.start).localeCompare(String(b.start)));
+    $("gamesTitle").textContent = (sport === "ALL" ? "All games" : sport + " games") + " · " + dayLabel(day, today);
+    $("gamesMeta").textContent = gs.length + " game" + (gs.length === 1 ? "" : "s") + " · " + gs.filter((g) => g.pick).length + " bet" + (gs.filter((g) => g.pick).length === 1 ? "" : "s");
+    $("games").innerHTML = gs.length ? gs.map(gameCard).join("")
+      : `<div class="empty" style="grid-column:1/-1;">${sport !== "ALL" && B.sports[sport] && B.sports[sport].status !== "on" ? esc(sport) + ": " + esc(B.sports[sport].status) + "." : "No games match this view."}</div>`;
+    document.querySelectorAll(".side[data-g], .add[data-g]").forEach((b) => b.addEventListener("click", () => {
+      const g = B.games.find((x) => x.id === b.dataset.g); if (g) toggle(g, b.dataset.side);
+    }));
+    renderSlip();
+  }
+
+  function results() {
+    const R = B.results;
+    const line = (x, name) => (x && (x.n_settled || x.n_pending)) ? `<span class="bd-pill">${name} <b>${x.wins}-${x.losses}</b> <b style="color:${x.net_units > 0 ? "var(--accent)" : x.net_units < 0 ? "var(--red)" : "inherit"};">${units(x.net_units)}</b>${x.n_pending ? " · " + x.n_pending + " pending" : ""}</span>` : "";
+    if (!R || !(R.recent || []).length) {
+      $("results").innerHTML = `<p class="muted" style="font-size:13px;">No board bet has been graded yet. Every A, B and C bet is logged at the DraftKings price shown and graded on the final score; results appear here the morning after.</p>`;
+      $("bdPills").innerHTML = "";
+      return;
+    }
+    const pills = [line(R.alpha, "Alpha"), line(R.all_bets, "All bets"), line((R.by_grade || {}).A, "A"), line((R.by_grade || {}).B, "B"), line((R.by_grade || {}).C, "C")].filter(Boolean).join("");
+    $("bdPills").innerHTML = pills;
+    $("resMeta").textContent = "since " + (R.first_date || "—") + " · graded at the price logged · not the curated record";
+    let last = "";
+    $("results").innerHTML = `<div class="bd-pills" style="margin:4px 0 10px;">${pills}</div>` + R.recent.slice(0, 40).map((r) => {
+      const head = r.date !== last ? `<div class="muted" style="font-size:11px;margin-top:10px;text-transform:uppercase;letter-spacing:.06em;">${esc(r.date)}</div>` : "";
+      last = r.date;
+      const res = r.result === "won" ? `<span class="w">won ${units(r.payout_units)}</span>` : r.result === "lost" ? `<span class="l">lost ${units(r.payout_units)}</span>` : `<span class="muted">${esc(r.result)}</span>`;
+      return head + `<div class="res-row"><span class="sp ${esc(r.sport)}">${esc(r.sport)}</span><span><b>${esc(r.team || r.matchup)}</b> ML ${amer(r.book_american)}</span><span class="gr ${esc(r.grade)}" style="margin-left:0;padding:1px 7px;">${esc(r.grade)}</span>${r.is_alpha ? `<span style="color:var(--gold);">★ alpha</span>` : ""}<span style="margin-left:auto;">${res}${r.final ? ` <span class="muted">(${esc(r.final)})</span>` : ""}</span></div>`;
+    }).join("");
+  }
+
+  $("betsOnly").addEventListener("change", render);
+  $("sortSel").addEventListener("change", render);
+  $("slipBtn").addEventListener("click", () => { const o = $("slip").classList.toggle("open"); $("slipBtn").setAttribute("aria-expanded", o); });
+  $("slipClose").addEventListener("click", () => { $("slip").classList.remove("open"); $("slipBtn").setAttribute("aria-expanded", "false"); });
+  $("slipClear").addEventListener("click", () => { slip = []; saveSlip(); render(); });
+  $("slipCopy").addEventListener("click", () => {
+    const txt = slip.map((s) => `${s.sport} ${s.team} ML ${amer(s.price)} (${s.matchup})`).join("\n") + (slip.length ? "\nDraftKings prices via betting.bpleone.com/board" : "");
+    const done = () => { $("slipCopy").textContent = "Copied"; setTimeout(() => { $("slipCopy").textContent = "Copy"; }, 1500); };
+    if (txt && navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(txt).then(done).catch(() => {});
+  });
+
+  fetch("data/board.json?t=" + Date.now(), { cache: "no-cache" }).then((r) => r.json()).then((d) => {
+    B = d;
+    day = (B.days || []).includes(B.date_et) ? B.date_et : ((B.days || [])[0] || B.date_et);
+    if (!(B.days || []).length) B.days = [B.date_et];
+    // the slip mirrors the live board: drop entries whose game is gone, has started or has no
+    // live quote, and refresh the price / pick / grade of the rest from today's data
+    slip = slip.map((s) => {
+      const g = B.games.find((x) => x.id === s.id);
+      if (!g || started(g) || !g.live_quote) return null;
+      const side = String(s.k).split(":").pop();
+      const px = side === "home" ? g.odds.ml_home : g.odds.ml_away;
+      if (px == null) return null;
+      const ours = !!(g.pick && g.pick.side === side);
+      return Object.assign({}, s, { price: px, ours: ours, grade: ours ? g.grade : null, team: side === "home" ? g.home : g.away, matchup: g.matchup, date: g.date });
+    }).filter(Boolean);
+    saveSlip();
+    const c = B.counts || {};
+    $("bdMeta").textContent = `${c.games_today || 0} games today · ${c.bets_today || 0} graded bets · DraftKings prices seen ${obs(B.odds_observed_at)}`;
+    const gen = new Date(String(B.generated_at) + "Z"), ageH = (Date.now() - gen.getTime()) / 36e5;
+    if (!isNaN(gen) && ageH > 3) { $("bdStale").hidden = false; $("bdStale").textContent = `This board was last built ${Math.round(ageH)} hours ago. Prices move; check the current DraftKings line before you act on anything here.`; }
+    results();
+    render();
+  }).catch(() => {
+    $("bdMeta").textContent = "The board is not available right now.";
+    $("games").innerHTML = `<div class="empty" style="grid-column:1/-1;">The board data could not be loaded. Try again in a few minutes.</div>`;
+    $("alphaSec").style.display = "none";
+    $("results").innerHTML = "";
+  });
+})();
+</script>
+<script src="js/nav_badge.js"></script>
+</body>
+</html>

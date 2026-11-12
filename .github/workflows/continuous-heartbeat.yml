@@ -110,6 +110,7 @@ jobs:
         working-directory: python
         run: |
           python play_of_day.py || echo "play_of_day.py" >> "$RUNNER_TEMP/failed_steps.txt"
+          python board.py || echo "board.py" >> "$RUNNER_TEMP/failed_steps.txt"
           python all_picks_tracker.py || echo "all_picks_tracker.py" >> "$RUNNER_TEMP/failed_steps.txt"
       - name: Golf leaderboard + live tracker (was daily-only; a tournament round moves hourly)
         working-directory: python

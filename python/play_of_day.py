@@ -91,6 +91,15 @@ def _side_team(matchup: str, side: str) -> str:
     return parts[1] if side == "home" else parts[0]
 
 
+def _dk_only(q: Dict[str, Any], ok: bool, why: Optional[str]):
+    """(2026-11-12 review) Every play, lean and board bet is described as a DraftKings
+    price. ESPN's feed can name another provider for a game; such a quote is real but is
+    not what the page says it is, so it is not actionable here."""
+    if ok and str((q or {}).get("book") or "draftkings").lower() != "draftkings":
+        return False, "not_draftkings"
+    return ok, why
+
+
 def _desk_candidates(gld: Dict[str, Any], now: dt.datetime) -> List[Dict[str, Any]]:
     out = []
     for sp, d in (gld.get("sports") or {}).items():
@@ -106,6 +115,7 @@ def _desk_candidates(gld: Dict[str, Any], now: dt.datetime) -> List[Dict[str, An
             # the desk stores the snapshot stamp without the side's price; attach it so the quote is a full one
             q = dict(r.get("quote") or {}, american=price) if r.get("quote") else {}
             ok, why = _q.actionable(q, now=now) if q else (False, "no_quote")
+            ok, why = _dk_only(q, ok, why)
             implied = _q.no_vig_two_way(r.get("ml_home"), r.get("ml_away"))
             p_side = (r.get("p_home") if side == "home" else (1 - r["p_home"] if r.get("p_home") is not None else None))
             if pk.get("prob") is not None:
@@ -149,6 +159,7 @@ def _lean_candidates(gld: Dict[str, Any], now: dt.datetime) -> List[Dict[str, An
                 continue
             q = dict(r.get("quote") or {}, american=ln["book_american"]) if r.get("quote") else {}
             ok, why = _q.actionable(q, now=now) if q else (False, "no_quote")
+            ok, why = _dk_only(q, ok, why)
             out.append({
                 "sport": sport, "page": SPORT_PAGE.get(sport, "index.html"),
                 "matchup": r.get("matchup"), "team": ln.get("team") or _side_team(r.get("matchup"), ln.get("side")),
@@ -464,6 +475,8 @@ def run(now: Optional[dt.datetime] = None) -> Dict[str, Any]:
         "odds_observed_at": (_load("espn_odds.json") or {}).get("generated_at"),
         # the forward record of every lean actually logged (written by the ledger's previous run)
         "lean_forward": (_load("ledger_summary.json") or {}).get("sport_leans"),
+        # every per-sport play logged so far, lean or desk pick, with results
+        "plays_history": (_load("ledger_summary.json") or {}).get("sport_plays"),
         "by_sport": by_sport,
     }
     payload["post"] = _post(payload)

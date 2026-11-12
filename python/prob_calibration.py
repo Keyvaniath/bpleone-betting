@@ -71,6 +71,14 @@ def model_rule(p: Dict[str, Any]) -> Optional[str]:
 def judged(p: Dict[str, Any]) -> bool:
     """May this settled pick count as evidence about its family? (Retired-model
     NFL props: no.)"""
+    # (2026-11-12) A lean / board bet is the favourite the model and the market
+    # AGREE on: it is not a claim that the model beats the price, and its
+    # expected value is the book's margin. The moneyline families (ml_home /
+    # ml_away) are shared across sports -- MLB's Alpha gate reads them -- so a
+    # season of -4% leans must never condemn the family. Desk picks keep their
+    # own source (nfl_game_ml ...) and still count.
+    if p.get("source") in ("sport_lean", "board_pick", "board_alpha"):
+        return False
     return model_rule(p) != "form_v1"
 
 

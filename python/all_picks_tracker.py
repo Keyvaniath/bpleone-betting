@@ -564,6 +564,29 @@ def _collect_picks_from_sources() -> List[Dict[str, Any]]:
     # a lean: the favourite the model and DraftKings agree on. NOT an edge and
     # NOT curated ("sport_lean" matches no curated prefix); logged at the real DK
     # price so the page can show an honest forward record next to the backtest.
+    # (2026-11-11, later) a sport play that IS a desk pick (tiers 1-3) is tagged
+    # "sport_play": listed after the desk rows, so the add-guard folds it onto the
+    # desk's own row as also_sources=sport_play -- attribution only, one row, and
+    # "sport_play" matches no curated prefix. That is what lets the page show each
+    # day's play per sport with its result, whatever its tier.
+    for sp_play in (pod2.get("sport_plays") or []):
+        if sp_play.get("tier") not in (1, 2, 3) or not sp_play.get("game_date") or sp_play.get("book_american") is None:
+            continue
+        out.append({
+            "source": "sport_play",
+            "sport": sp_play.get("sport"),
+            "player_or_matchup": sp_play.get("matchup"),
+            "market": sp_play.get("market"),
+            "prob": sp_play.get("model_prob"),
+            "edge_pct": sp_play.get("ev_pct"),
+            "fair_american": sp_play.get("fair_american"),
+            "book_american": sp_play.get("book_american"),
+            "game_date": sp_play.get("game_date"),
+            "event_id": sp_play.get("event_id"),
+            "desk_verdict": sp_play.get("desk_verdict"),
+            "pod_tier": sp_play.get("tier"),
+            "quote": sp_play.get("quote"),
+        })
     for sp_play in (pod2.get("sport_plays") or []):
         if sp_play.get("tier") != 4 or not sp_play.get("game_date") or sp_play.get("book_american") is None:
             continue
@@ -582,6 +605,43 @@ def _collect_picks_from_sources() -> List[Dict[str, Any]]:
             "pod_tier": 4,
             "quote": sp_play.get("quote"),
         })
+
+    # The Board (2026-11-12): every graded bet (A/B/C) on board.json, then the
+    # day's locked Alpha picks. Listed AFTER the desk rows and the leans above,
+    # so a bet that is already a desk pick or the sport's lean folds onto that
+    # row (also_sources) and only the remaining leans become rows of their own.
+    # "board_pick" / "board_alpha" match no curated prefix, and neither counts
+    # as calibration evidence (prob_calibration.judged).
+    board = _load(os.path.join(DATA_DIR, "board.json"))
+    for tag, rows_b in (("board_pick", board.get("picks") or []),
+                        ("board_alpha", [p for p in (board.get("picks") or []) if p.get("is_alpha")])):
+        for bp in rows_b:
+            if bp.get("grade") not in ("A", "B", "C") or not bp.get("game_date") or bp.get("book_american") is None:
+                continue
+            # a board bet is logged on its game day, at that day's price: the cards for
+            # later days are a preview (a lean three days out can vanish with one injury report)
+            if bp.get("game_date") != board.get("date_et"):
+                continue
+            out.append({
+                "source": tag,
+                "sport": bp.get("sport"),
+                "player_or_matchup": bp.get("matchup"),
+                "market": bp.get("market"),
+                "prob": bp.get("model_prob"),
+                "edge_pct": bp.get("ev_pct"),
+                "fair_american": bp.get("fair_american"),
+                "book_american": bp.get("book_american"),
+                "game_date": bp.get("game_date"),
+                "event_id": bp.get("event_id"),
+                "desk_verdict": "lean" if bp.get("kind") == "lean" else bp.get("grade"),
+                "pod_tier": bp.get("tier"),
+                "board_grade": bp.get("grade"),
+                "board_score": bp.get("score"),
+                # the price THE BOARD showed (review 2026-11-12): when this tag folds onto a row
+                # logged earlier at another price, the board's record still uses its own price
+                ("alpha_price" if tag == "board_alpha" else "board_price"): bp.get("book_american"),
+                "quote": bp.get("quote"),
+            })
 
     # MLB pitcher Quality Start strong edges
     qs = _load(os.path.join(DATA_DIR, "mlb_pitcher_quality_start_props.json"))
@@ -3213,6 +3273,131 @@ def _grade_nhl_pick(pick: Dict[str, Any], by_name: Dict[str, Any],
     return None
 
 
+def _board_block(history: List[Dict[str, Any]]) -> Dict[str, Any]:
+    """Results of The Board: every graded bet (A/B/C) logged from board.json, at
+    the DraftKings price it was logged at. A row is a board bet if its source is
+    board_pick / board_alpha or the add-guard stamped one of them in
+    also_sources. Grade comes from what the row IS, not from a stored label
+    (labels are lost when a bet folds onto an existing row): a lean is a C; a
+    desk pick is an A under a proven desk and a B otherwise."""
+    def tags(p: Dict[str, Any]) -> set:
+        return {p.get("source")} | set(p.get("also_sources") or ())
+
+    def grade(p: Dict[str, Any]) -> str:
+        if p.get("board_grade") in ("A", "B", "C"):
+            return p["board_grade"]
+        if p.get("source") in ("sport_lean", "board_pick", "board_alpha"):
+            return "C"
+        return "A" if str(p.get("desk_verdict") or "").lower() == "proven" else "B"
+
+    rows = [p for p in history if not p.get("voided") and (tags(p) & {"board_pick", "board_alpha"})]
+
+    def price(p: Dict[str, Any], alpha: bool = False):
+        """The price the board showed: the locked Alpha price for the Alpha line, else the
+        board's game-day price; the row's own logged price only when neither was stamped."""
+        if alpha and p.get("alpha_price") is not None:
+            return p["alpha_price"]
+        return p.get("board_price") if p.get("board_price") is not None else p.get("book_american")
+
+    def pay(p: Dict[str, Any], alpha: bool = False) -> float:
+        if p.get("result") == "lost":
+            return -1.0
+        if p.get("result") != "won":
+            return 0.0
+        d = _american_to_decimal(price(p, alpha))
+        return round(d - 1, 4) if d else float(p.get("payout_units") or 0)
+
+    def line(ps: List[Dict[str, Any]], alpha: bool = False) -> Dict[str, Any]:
+        done = [p for p in ps if p.get("settled") and p.get("result") in ("won", "lost", "push")]
+        w = sum(1 for p in done if p["result"] == "won")
+        l = sum(1 for p in done if p["result"] == "lost")
+        net = round(sum(pay(p, alpha) for p in done), 3)
+        return {"n_settled": len(done), "wins": w, "losses": l, "net_units": net,
+                "roi_pct": round(net / (w + l) * 100, 2) if (w + l) else None,
+                "n_pending": sum(1 for p in ps if not p.get("settled"))}
+
+    def team(p: Dict[str, Any]) -> str:
+        parts = [x.strip() for x in str(p.get("player_or_matchup") or "").split("@", 1)]
+        if len(parts) != 2:
+            return ""
+        return parts[1] if str(p.get("market") or "").upper().endswith("HOME") else parts[0]
+
+    alpha = [p for p in rows if "board_alpha" in tags(p)]
+    recent = sorted(rows, key=lambda p: (str(p.get("date") or ""), "board_alpha" in tags(p), str(p.get("sport") or "")),
+                    reverse=True)[:60]
+    days: Dict[str, Dict[str, Any]] = {}
+    for p in rows:
+        d = str(p.get("date") or "")[:10]
+        days.setdefault(d, []).append(p)
+    return {
+        "all_bets": line(rows),
+        "alpha": line(alpha, alpha=True),
+        "by_grade": {g: line([p for p in rows if grade(p) == g]) for g in ("A", "B", "C")},
+        "by_sport": {sp: line([p for p in rows if str(p.get("sport") or "").upper() == sp])
+                     for sp in sorted({str(p.get("sport") or "").upper() for p in rows})},
+        "by_day": {d: dict(line(ps), alpha=line([p for p in ps if "board_alpha" in tags(p)], alpha=True))
+                   for d, ps in sorted(days.items(), reverse=True)[:14]},
+        "first_date": min((str(p.get("date"))[:10] for p in rows), default=None),
+        "recent": [{"date": str(p.get("date") or "")[:10], "sport": p.get("sport"), "grade": grade(p),
+                    "is_alpha": "board_alpha" in tags(p), "matchup": p.get("player_or_matchup"), "team": team(p),
+                    "market": p.get("market"), "book_american": price(p, "board_alpha" in tags(p)),
+                    "result": p.get("result") if p.get("settled") else "pending",
+                    "payout_units": pay(p, "board_alpha" in tags(p)) if p.get("settled") else None,
+                    "final": (p.get("outcome") or {}).get("final_score")} for p in recent],
+        "definition": ("Every bet on The Board (grades A, B, C), graded on the final score at the DraftKings price "
+                       "the board showed on game day (the locked price for an Alpha pick). Alpha = the day's locked "
+                       "top-scored picks. Grade C bets are model leans: not an edge, expected to run near the book's "
+                       "margin. None of this is part of the curated record."),
+    }
+
+
+def _sport_plays_block(history: List[Dict[str, Any]]) -> Dict[str, Any]:
+    """Every per-sport play that was logged, lean or desk pick, with its result.
+    A desk pick is the desk's own ledger row carrying also_sources=sport_play
+    (or a standalone sport_play row); a lean is a sport_lean row."""
+    def kind(p: Dict[str, Any]) -> Optional[str]:
+        if p.get("source") == "sport_lean":
+            return "lean"
+        if p.get("source") == "sport_play" or "sport_play" in (p.get("also_sources") or ()):
+            return "desk pick"
+        return None
+
+    rows = [(kind(p), p) for p in history if not p.get("voided")]
+    rows = [(k, p) for k, p in rows if k]
+
+    def line(ps: List[Dict[str, Any]]) -> Dict[str, Any]:
+        done = [p for p in ps if p.get("settled") and p.get("result") in ("won", "lost", "push")]
+        w = sum(1 for p in done if p["result"] == "won")
+        l = sum(1 for p in done if p["result"] == "lost")
+        net = round(sum((p.get("payout_units") or 0) for p in done), 3)
+        return {"n_settled": len(done), "wins": w, "losses": l, "net_units": net,
+                "roi_pct": round(net / (w + l) * 100, 2) if (w + l) else None,
+                "n_pending": sum(1 for p in ps if not p.get("settled"))}
+
+    def team(p: Dict[str, Any]) -> str:
+        parts = [x.strip() for x in str(p.get("player_or_matchup") or "").split("@", 1)]
+        if len(parts) != 2:
+            return ""
+        return parts[1] if str(p.get("market") or "").upper().endswith("HOME") else parts[0]
+
+    recent = sorted(rows, key=lambda kp: (str(kp[1].get("date") or ""), str(kp[1].get("sport") or "")), reverse=True)[:16]
+    return {
+        "leans": line([p for k, p in rows if k == "lean"]),
+        "desk_picks": line([p for k, p in rows if k == "desk pick"]),
+        "first_date": min((str(p.get("date"))[:10] for _, p in rows), default=None),
+        "recent": [{"date": str(p.get("date") or "")[:10], "sport": p.get("sport"), "kind": k,
+                    "matchup": p.get("player_or_matchup"), "team": team(p), "market": p.get("market"),
+                    "book_american": p.get("book_american"),
+                    "result": p.get("result") if p.get("settled") else "pending",
+                    "payout_units": p.get("payout_units") if p.get("settled") else None,
+                    "final": (p.get("outcome") or {}).get("final_score")} for k, p in recent],
+        "definition": ("The play shown for each major sport on each day, graded at the DraftKings price it was "
+                       "logged at. 'desk pick' = a pick with an edge under the desk's rule; 'lean' = the favourite "
+                       "the model and DraftKings both favour on a day the desk has no pick (not an edge). The two "
+                       "are counted separately and are never summed."),
+    }
+
+
 def _sport_leans_block(history: List[Dict[str, Any]]) -> Dict[str, Any]:
     """Forward record of the per-sport model leans (source "sport_lean")."""
     rows = [p for p in history if p.get("source") == "sport_lean" and not p.get("voided")]
@@ -4129,6 +4314,14 @@ def run() -> Dict[str, Any]:
                 also = kept.setdefault("also_sources", [])
                 if src not in also:
                     also.append(src)
+            # (2026-11-12 review) a board tag carries what the board SHOWED: its price, grade and
+            # score. The kept row may have been logged hours or days earlier at another price (a
+            # desk pick logged Tuesday at +440, shown Sunday at +380), so stamp the board's own
+            # numbers once -- first sight on game day wins -- for the board's record to use.
+            if kept is not None and src in ("board_pick", "board_alpha"):
+                for k in ("board_price", "board_grade", "board_score", "alpha_price"):
+                    if p.get(k) is not None and kept.get(k) is None:
+                        kept[k] = p[k]
             continue
         p["recorded_at"] = now_iso
         history.append(p)
@@ -4324,6 +4517,11 @@ def run() -> Dict[str, Any]:
         # their own labelled line (`prizepicks` below).
         if _is_pp(p):
             return False
+        # (2026-11-12 review) a row logged as a lean / board bet stays out of the curated book
+        # even if a curated board (pod) later offers the same wager: it was logged at the
+        # lean's price, as a lean. Conservative on purpose.
+        if p.get("source") in ("sport_lean", "board_pick", "board_alpha"):
+            return False
         if _is_curated(p.get("source")):
             return True
         return any(_is_curated(s) for s in (p.get("also_sources") or ()))
@@ -4392,6 +4590,8 @@ def run() -> Dict[str, Any]:
     # public line: the forward record of every lean actually logged, at the
     # DraftKings price it was logged at, with the most recent results.
     sport_leans = _sport_leans_block(history)
+    sport_plays = _sport_plays_block(history)
+    board_block = _board_block(history)
 
     # RECENT FORM (trailing 30 days by pick date): the all-time number alone
     # invites "did we get worse?" confusion whenever its average drifts a point
@@ -4621,6 +4821,8 @@ def run() -> Dict[str, Any]:
         "curated": curated,
         "prizepicks": prizepicks,
         "sport_leans": sport_leans,
+        "sport_plays": sport_plays,
+        "board": board_block,
         "by_price_class": by_price_class,
         "headline_basis": "all-time: working ledger + data/ledger_archive.json",
         "working_ledger_only": _working_only,

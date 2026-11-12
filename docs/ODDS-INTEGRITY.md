@@ -693,3 +693,110 @@ track-record.html shows it as its own line next to the PrizePicks line:
 "separate, not an edge, not curated". The walk-forward backtest and the
 forward record are two different numbers and are labelled as such.
 
+PLAYS HISTORY, ALL TIERS (same night). A sport play that is a desk pick
+(tiers 1-3) is now tagged in the ledger as `sport_play`: listed after the desk
+rows, so the add-guard folds it onto the desk's own row as
+also_sources=sport_play (one row, attribution only; matches no curated prefix,
+which a test reads from the ledger source). ledger_summary.json gains
+`sport_plays`: desk picks and leans counted SEPARATELY (never summed) plus the
+16 most recent plays with results. play-of-day.html shows "Plays logged so
+far" from it (falls back to the leans-only block on older data).
+
+## 2026-11-12: The Board -- every game, graded; Alpha = the day's top-scored bets
+
+Brandon: "we want to have odds and bets for each sport and game and grade it
+and then have our alpha picks which is our 3-5 highest graded scored picks
+from each day in addition to being able to sort by sport -- copy the UI of
+something similar to an underdog or prizepicks with how easy it is."
+
+`python/board.py` -> `data/board.json` -> `board.html` (top nav, phone tab bar,
+homepage "Start here", directory). Runs right after play_of_day.py in the
+daily pipeline (both passes), the heartbeat and live-games.
+
+WHAT IS ON IT. Every pre-game NFL / NBA / NHL game on the DraftKings board for
+today and the next 7 days (MLB joins in season): both moneylines, the total
+with its real over/under prices, the spread number (no spread PRICE is
+recorded, so it is never a bet), the model and no-vig probabilities, our side,
+a grade, a score and one plain reason. Every price carries the time it was
+observed and its snapshot id. The page marks a game "started" from the clock.
+
+THE GRADE (fixed by rule; `board.score_pick`; not tuned on results):
+  A 85-100  desk pick, PROMISING desk      85 + min(15, EV%)
+  B 65-80   desk pick, UNPROVEN desk       65 + min(15, EV%)
+  C 40-60   model lean (LEAN_RULE)         40 + 20 * (min(p_model, p_dk) - .55) / .25
+  D 35 / 25 NO BET. Model side shown for information: model and market agree
+            but outside the lean rule (35), or they disagree (25). The 11/11
+            lean study is why a disagreement is not a bet.
+  HOLD      no side: QB or day-to-day player unsettled.
+Only A, B, C are bets. D and HOLD are never logged.
+
+ALPHA PICKS (his definition): the 3 to 5 highest-scored bets of the day, any
+grade. Provisional before 11:00 ET; from the first run at or after 11:00 ET
+the list is LOCKED in `data/board_alpha_log.json` (append-only): a locked pick
+is never removed or re-priced; the list only grows to five with games that had
+no line at lock. Never padded: fewer than three bets shows fewer than three.
+On a day with no A/B bet the Alpha picks are grade C leans and say so. They
+are a SEPARATE list from the MLB Alpha Pick (alpha_pick_record.json, locked
+days, its own +2% edge gate); both pages say so.
+
+RECORD. A board bet is logged on its GAME DAY only (later days are a preview)
+at that day's DraftKings price: ledger sources `board_pick` and `board_alpha`,
+listed after the desk rows and the leans so they fold onto the existing row
+(also_sources) and only the remaining leans become rows. Neither is a curated
+prefix (test reads the prefix list from the ledger source). ledger_summary
+`board`: all bets, alpha, by grade (grade derived from what the row IS: lean =
+C, proven desk = A, else B), by sport, by day, 60 most recent with finals.
+board.html "Graded so far" reads it (one run behind, like the leans).
+
+CALIBRATION FIREWALL. The moneyline families (ml_home / ml_away) are shared
+across sports and MLB's Alpha gate reads their evidence. A lean is not a claim
+that the model beats the price, so `prob_calibration.judged()` is False for
+sources sport_lean / board_pick / board_alpha: a season of -4% leans cannot
+condemn the family. Desk picks keep their own source and still count. (Known,
+pre-existing: NFL desk picks share those family keys with MLB moneylines.)
+
+GUARD. `board.json:picks` is a pricing-guard surface: a bet needs a fresh,
+pre-start DraftKings quote. A stale board has no bets and no Alpha picks.
+
+THE SLIP is a per-device list (localStorage), one side per game, singles only,
+copyable. No wagering, no parlay pricing.
+
+FIRST NIGHT OF LEANS (11/11): NBA HOU -264 won 115-108, NHL EDM -192 won 3-2
+(+0.90u). Two bets; it says nothing about the rule.
+
+HOUSEKEEPING. The old session folder was cleaned up by the app; the working
+clone is now `C:\Dev\bpleone-betting` (the localhost preview entry
+"edgestat-betting" points there). nav.js changed -> `?v=20261112` on every
+page + sw.js (shell cache `edgestat-shell-20261112`).
+
+Tests: 67 pass (board grading, alpha lock, ledger logging + firewall, results).
+
+INDEPENDENT REVIEW OF THE BOARD (same day, a second agent reading the diff
+cold; seven defects, all fixed before anything shipped):
+ 1. PRICE: a board/alpha tag folds onto whichever row logged the wager first,
+    and that row keeps its own (earlier) price -- PHX was logged at -244 by the
+    02:43 ET run and locked as Alpha at -229. The fold now stamps what the
+    board SHOWED on the kept row (board_price, board_grade, board_score,
+    alpha_price; first sight on game day wins) and `_board_block` computes
+    units from those: the locked price for the Alpha line, the board's game-day
+    price otherwise. Verified on the real ledger.
+ 2. CURATED LEAK: a row logged as a lean could turn curated if the desk later
+    made the same side a featured pick (also_sources=pod). `_is_curated_pick`
+    now returns False for a row whose source is sport_lean / board_pick /
+    board_alpha.
+ 3. ALPHA LOCK FAILED OPEN: an unreadable lock file read as empty, so the next
+    run would re-lock at new prices and overwrite every earlier day. Now: a
+    file that exists but does not parse -> provisional list, nothing written;
+    writes are atomic (temp file + os.replace).
+ 4. SLIP: stored prices and "EdgeStat pick" labels were never refreshed. On
+    load each entry is re-derived from the live board or dropped; a game with
+    no live quote cannot be added.
+ 5. BOOK: nothing checked the quote's provider. `play_of_day._dk_only` makes a
+    non-DraftKings quote not actionable for plays, leans and board bets.
+ 6. GRADE: results derived a folded row's grade from the desk verdict; the
+    stamped board_grade is used first.
+ 7. EVENING: once every game today had started, today vanished from the day
+    chips and the locked Alpha strip with it. Today is always a board day.
+Also re-run after the nav change: the 137-page runtime crawl, clean.
+Tests: 69 pass.
+

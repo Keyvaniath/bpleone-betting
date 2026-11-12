@@ -41,6 +41,19 @@ bpleone-site/
 
 ## Current deployment state (LIVE)
 
+- **2026-11-12 — THE BOARD (board.html, python/board.py -> data/board.json).** Every pre-game
+  NFL/NBA/NHL game with DraftKings moneylines + total prices, our side, a GRADE and a SCORE:
+  A = proven-desk pick, B = forward-test desk pick, C = model lean (favourite the model AND
+  DraftKings agree on; not an edge), D = NO BET (model side for information), HOLD = lineup
+  question. Only A/B/C are bets. ALPHA PICKS = the day's 3-5 top-scored bets, locked at 11:00
+  ET in data/board_alpha_log.json (append-only, never padded, never re-priced); SEPARATE from
+  the MLB Alpha Pick record. Ledger sources `board_pick` / `board_alpha` (game day only, fold
+  onto desk/lean rows, never curated); results in ledger_summary.board. **FIREWALL:
+  prob_calibration.judged() is False for sport_lean / board_pick / board_alpha** -- the ml_home
+  / ml_away families are shared with MLB's Alpha gate; leans must never be family evidence.
+  Do not tune board.score_pick or LEAN_RULE on results. Working clone: C:/Dev/bpleone-betting.
+  Full detail: docs/ODDS-INTEGRITY.md.
+
 - **2026-11-05 to 11-11 — PRE-LAUNCH AUDIT, CROSS-SPORT PLAY OF THE DAY, NBA v2
   (merged to main 11/11, 38f0bbcb1b; full detail in docs/ODDS-INTEGRITY.md).**
   (1) PLAY OF THE DAY IS CROSS-SPORT: `python/play_of_day.py` ->
