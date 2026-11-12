@@ -143,7 +143,8 @@
   <div class="bd-h2"><h2 id="gamesTitle">Games</h2><span class="muted" id="gamesMeta"></span></div>
   <div class="bd-tools">
     <label><input type="checkbox" id="betsOnly"> Bets only</label>
-    <label>Sort <select id="sortSel"><option value="time">Start time</option><option value="score">Top graded</option></select></label>
+    <label>Sort <select id="sortSel"><option value="time">Start time</option><option value="score">Top graded</option><option value="risk">Risk-adjusted EV</option></select></label>
+    <label>Show <select id="favSel"><option value="all">All sides</option><option value="fav">Favorites</option><option value="dog">Underdogs</option></select></label>
   </div>
   <div class="bd-grid" id="games"></div>
 
@@ -157,7 +158,8 @@
     <div style="font-size:13px;line-height:1.7;color:var(--text-2);">
       <p style="margin:6px 0;"><span class="gr A">A · 85-100</span> A validated desk pick: the edge over DraftKings is outside noise and held up out of sample.</p>
       <p style="margin:6px 0;"><span class="gr B">B · 65-80</span> A forward-test desk pick: the model beats the DraftKings close this season, not yet outside noise.</p>
-      <p style="margin:6px 0;"><span class="gr C">C · 40-60</span> A model lean: the favourite our model and DraftKings both favour. It is <b>not an edge</b>; over time a lean is expected to lose about the book&#39;s margin.</p>
+      <p style="margin:6px 0;">Within A and B, the score is <b>risk-adjusted</b>: expected profit per unit of risk (EV divided by the standard deviation of the bet&#39;s result). A +440 underdog with a 17% edge swings far more than a −440 favorite with a 9% edge, and per unit of risk the favorite is the better bet, so it scores higher. Desk picks can be underdogs; leans cannot.</p>
+      <p style="margin:6px 0;"><span class="gr C">C · 40-60</span> A model lean: the favourite our model and DraftKings both favour. It is <b>not an edge</b>; over time a lean is expected to lose about the book&#39;s margin. A lean is always a favorite by design: an underdog lean would mean betting against both our model and the market, and this season every way of betting our model against DraftKings has lost. At DraftKings&#39; own probability a lean&#39;s risk-adjusted value is negative, so it is scored on how strongly model and market agree, not on reward.</p>
       <p style="margin:6px 0;"><span class="gr D">D</span> No bet. The model&#39;s side is shown for information only. When the model disagrees with DraftKings, betting the model has lost this season.</p>
       <p style="margin:6px 0;"><span class="gr HOLD">HOLD</span> No side while the desk waits on a quarterback or a day-to-day player.</p>
       <p style="margin:6px 0;"><b style="color:var(--gold);">★ Alpha picks</b> are the three to five highest-scored bets of the day, whatever their grade, locked at 11:00 AM ET so the list does not reshuffle. On a day with no A or B bet they are grade C leans, and the card says so. They are separate from the MLB <a href="alpha-pick.html" style="color:#7fb0e8;">Alpha Pick</a> record, which has its own edge gate.</p>
@@ -260,6 +262,17 @@
         <span class="px">${amer(px)}</span></button>`;
   }
 
+  // (2026-11-12) the numbers behind a bet, per 1 unit: win probability, payout, expected
+  // value and EV per unit of risk. A lean is priced at DraftKings' own probability.
+  function riskLine(g) {
+    const r = g.pick && g.pick.risk; if (!r) return "";
+    const sg = (v, d) => (v >= 0 ? "+" : "−") + Math.abs(v).toFixed(d);
+    const basis = g.pick.kind === "lean" ? "at DraftKings&#39; probability" : "at the desk&#39;s probability";
+    return `<div class="tot" title="Per 1 unit staked, ${basis}. Risk-adjusted = expected profit divided by the standard deviation of the result.">
+      ${r.favorite ? "favorite" : "<b style=\"color:var(--gold)\">underdog</b>"} · win ${Math.round(r.win_prob * 100)}% · pays ${sg(r.pays, 2)}u ·
+      EV <span style="color:${r.ev_pct > 0 ? "var(--accent)" : "var(--red)"};">${sg(r.ev_pct, 1)}%</span> · risk-adj ${sg(r.risk_adj, 2)}</div>`;
+  }
+
   function gameCard(g) {
     const o = g.odds;
     const gradeTxt = g.grade ? (g.grade === "HOLD" ? "HOLD" : g.grade + (g.score != null ? " · " + g.score : "")) : "—";
@@ -270,6 +283,7 @@
         ${g.alpha_rank ? `<span class="sp" style="color:var(--gold);">★ ALPHA #${g.alpha_rank}</span>` : ""}<span class="gr ${esc(g.grade || "")}">${gradeTxt}</span></header>
       ${sideBtn(g, "away")}${sideBtn(g, "home")}
       <div class="tot">${tot}${spr}</div>
+      ${riskLine(g)}
       <p class="why">${esc(g.reason || "")}</p>
       <div class="foot"><span>DK seen ${obs(o.observed_at)}</span><a href="${esc(g.page || "#")}">${esc(g.sport)} desk →</a></div>
     </article>`;
@@ -310,6 +324,15 @@
     let gs = B.games.filter((g) => g.date === day && (sport === "ALL" || g.sport === sport));
     if ($("betsOnly").checked) gs = gs.filter((g) => g.pick);
     if ($("sortSel").value === "score") gs = gs.slice().sort((a, b) => (b.score || 0) - (a.score || 0) || String(a.start).localeCompare(String(b.start)));
+    const ra = (g) => (g.pick && g.pick.risk && g.pick.risk.risk_adj != null) ? g.pick.risk.risk_adj : -9;
+    if ($("sortSel").value === "risk") gs = gs.slice().sort((a, b) => ra(b) - ra(a) || String(a.start).localeCompare(String(b.start)));
+    const fv = $("favSel").value;
+    if (fv !== "all") gs = gs.filter((g) => {
+      const side = g.pick ? g.pick.side : (g.model_side ? g.model_side.side : null);
+      if (!side) return false;
+      const px = side === "home" ? g.odds.ml_home : g.odds.ml_away;
+      return px != null && (fv === "fav" ? px < 0 : px > 0);
+    });
     $("gamesTitle").textContent = (sport === "ALL" ? "All games" : sport + " games") + " · " + dayLabel(day, today);
     $("gamesMeta").textContent = gs.length + " game" + (gs.length === 1 ? "" : "s") + " · " + gs.filter((g) => g.pick).length + " bet" + (gs.filter((g) => g.pick).length === 1 ? "" : "s");
     $("games").innerHTML = gs.length ? gs.map(gameCard).join("")
@@ -345,6 +368,7 @@
     const done = () => { $("shareCopy").textContent = "Copied"; setTimeout(() => { $("shareCopy").textContent = "Copy today\u2019s Alpha post"; }, 1500); };
     if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(post.text).then(done).catch(() => {});
   });
+  $("favSel").addEventListener("change", render);
   $("betsOnly").addEventListener("change", render);
   $("sortSel").addEventListener("change", render);
   $("slipBtn").addEventListener("click", () => { const o = $("slip").classList.toggle("open"); $("slipBtn").setAttribute("aria-expanded", o); });

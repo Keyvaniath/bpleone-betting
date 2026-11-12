@@ -970,14 +970,23 @@ def test_board_grades_every_game_by_rule_and_only_abc_are_bets(tmp_path, monkeyp
     import verify_pricing as vp
     board, now = _board_fixture(tmp_path, monkeypatch)
     # the whole scoring rule
-    assert board.score_pick("desk", 1, 6.0, None) == {"grade": "A", "score": 91}
-    assert board.score_pick("desk", 2, 40.0, None) == {"grade": "B", "score": 80}       # EV bonus capped at 15
-    assert board.score_pick("desk", 2, 5.0, None) == {"grade": "B", "score": 70}
+    # risk-adjusted (EV per unit of risk) for desk picks; raw EV only as the fallback
+    assert board.score_pick("desk", 1, 6.0, None, 0.30) == {"grade": "A", "score": 100}
+    assert board.score_pick("desk", 2, 40.0, None, 0.06) == {"grade": "B", "score": 68}   # big EV, big swings
+    assert board.score_pick("desk", 2, 5.0, None, 0.90) == {"grade": "B", "score": 80}    # capped at the band
+    assert board.score_pick("desk", 2, 5.0, None) == {"grade": "B", "score": 70}          # no risk number: raw EV
+    dog, fav = board.risk(0.217, 440), board.risk(0.889, -440)
+    assert dog["ev_pct"] > fav["ev_pct"] and fav["risk_adj"] > 2.5 * dog["risk_adj"]       # the longshot has more EV, less per unit of risk
+    assert fav["favorite"] and not dog["favorite"] and abs(dog["pays"] - 4.4) < 1e-9
+    assert board.risk(None, -110) is None and board.risk(0.5, None) is None and board.risk(1.2, -110) is None
     assert board.score_pick("lean", 4, -3.9, 0.55) == {"grade": "C", "score": 40}
     assert board.score_pick("lean", 4, -3.9, 0.80) == {"grade": "C", "score": 60}
     out = board.run(now=now)
     g = {x["matchup"]: x for x in out["games"]}
-    assert g["NYJ @ KC"]["grade"] == "B" and g["NYJ @ KC"]["score"] == 80 and g["NYJ @ KC"]["pick"]["team"] == "NYJ"
+    nyj = g["NYJ @ KC"]
+    assert nyj["grade"] == "B" and nyj["pick"]["team"] == "NYJ" and nyj["pick"]["risk"]["favorite"] is False
+    assert nyj["score"] == int(round(65 + min(15, 15 * nyj["pick"]["risk"]["risk_adj"] / 0.30)))    # risk-adjusted, not raw EV
+    assert g["BOS @ MIA"]["pick"]["risk"]["ev_pct"] < 0 and g["BOS @ MIA"]["pick"]["risk"]["favorite"]  # a lean: at the market's price
     assert g["BOS @ MIA"]["grade"] == "C" and g["BOS @ MIA"]["pick"]["kind"] == "lean" and 40 <= g["BOS @ MIA"]["score"] <= 60
     assert g["BOS @ MIA"]["odds"]["total"] == 221.5 and g["BOS @ MIA"]["odds"]["over_price"] == -108   # the real over/under prices
     d1, d2, hold = g["LAL @ DEN"], g["NY @ CHI"], g["PHX @ GS"]

@@ -819,3 +819,29 @@ the page then shows the list as provisional. A reliable 11:00 ET trigger needs
 the Worker cron (Brandon's call, see the 10-28 entry), not more GitHub crons.
 Copy-ready Alpha post: board.json alpha.post, offered only for a locked list.
 
+## 2026-11-12 (evening): risk-adjusted scores; why every lean is a favorite
+
+Brandon: "does it only pick favorites also? Not risk adjusted rewards?"
+Measured on the board at the time: all 11 bets (6 today, 5 for Sunday) were
+favorites. Two reasons, one by design and one a flaw.
+
+BY DESIGN: a lean is the favorite the model and DraftKings agree on. An
+underdog lean would mean betting against both, and the 11/11 study showed every
+way of betting the model against DraftKings lost (every underdog this season:
+NBA -30%, NHL -16%). At DraftKings' own probability a lean's expected value is
+the book's margin (about -4%) and its risk-adjusted value is negative (about
+-0.05), so a lean is scored on how strongly model and market agree, not on
+reward. Desk picks (A/B) CAN be underdogs (NYJ +440 and CLE +190 earlier this
+week); none qualified at this snapshot.
+
+THE FLAW: A/B scores ranked on raw EV, which rewards longshots: NYJ +440 at
+17% EV would have outscored BUF -440 at 9% EV, though per unit of risk BUF is
+about three times better (EV/sigma 0.24 vs 0.08). Now A/B add
+min(15, 15 * (EV/sigma) / 0.30): EV per unit of standard deviation of the
+bet's result, at the desk's probability and the DraftKings price (a per-bet
+Sharpe ratio). Today's effect: BUF -440 74 -> 77, SF -205 71 -> 69. Changed
+before any board bet settled; the locked 11/12 Alpha list is not touched.
+Every bet carries `risk` {win_prob, pays, ev_pct, sigma, risk_adj, kelly,
+favorite}; cards show "favorite/underdog · win · pays · EV · risk-adj"; the
+page sorts by risk-adjusted EV and filters favorites / underdogs.
+
