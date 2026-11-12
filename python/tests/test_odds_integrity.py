@@ -1128,3 +1128,20 @@ def test_alpha_tag_carries_the_locked_price_not_the_current_line(tmp_path, monke
     (tmp_path / "board.json").write_text(json.dumps(dict(out, alpha=dict(out["alpha"], status="provisional"))))
     assert not [r for r in t._collect_picks_from_sources() if r["source"] == "board_alpha"]
 
+
+def test_alpha_post_is_offered_only_for_a_locked_list_and_names_each_grade(tmp_path, monkeypatch):
+    import re
+    board, now = _board_fixture(tmp_path, monkeypatch)
+    out = board.run(now=now)                                            # 10:00 ET: provisional
+    assert out["alpha"]["status"] == "provisional" and out["alpha"]["post"] is None
+    out = board.run(now=now + dt.timedelta(hours=2))                    # locked
+    post = out["alpha"]["post"]
+    assert post["fits"] and post["chars"] == len(post["text"]) <= 280 and post["n_picks"] == 2
+    assert "1. NFL NYJ ML +440 (forward test)" in post["text"] and "2. NBA MIA ML -200 (lean)" in post["text"]
+    assert "A lean is not a proven edge." in post["text"] and "not betting advice" in post["text"]
+    assert sorted(re.findall(r"(?<![\w/.])[+-]\d{3,}\b", post["text"])) == ["+440", "-200"]
+    # five long picks: the lowest-ranked is dropped before any caveat is
+    a = dict(out["alpha"], picks=[dict(out["alpha"]["picks"][0], rank=i + 1, team="T" * 30) for i in range(5)])
+    p = board.alpha_post(a, "2026-11-08", None)
+    assert p["fits"] and p["n_picks"] < 5 and "not betting advice" in p["text"]
+
