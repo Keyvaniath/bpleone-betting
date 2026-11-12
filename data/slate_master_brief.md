@@ -1,13 +1,13 @@
 # EdgeStat — Tonight's Master Brief
-_Generated 2026-11-11T21:11:23 UTC_
+_Generated 2026-11-12T17:22:24 UTC_
 
 ## Slate Quality
-- **Tier:** MODEST_NIGHT
-- **Score:** 25
-- **Advisory:** Light slate. Limit to 1-3 strongest plays; use 25% Kelly or less.
+- **Tier:** NO_ACTION_NIGHT
+- **Score:** -33
+- **Advisory:** STAND DOWN. Slate has no aligned conviction. Skip betting tonight or watch only.
 - **Total LOCKs:** 0
-- **Total STRONG:** 40
-- **Total FADES:** 135
+- **Total STRONG:** 39
+- **Total FADES:** 189
 
 ## Top 5 Curated Picks
 1. **GOLF / C.T. Pan** (GOLF_PLAYER, score=143.79)
@@ -30,13 +30,13 @@ _Generated 2026-11-11T21:11:23 UTC_
 - **Expected P&L on $100:** $0.0
 
 ## Top Fades
-- **NBA** / POR (TEAM_FADE)
-  - Fade angle: team total UNDER
-- **NBA** / UTA (TEAM_FADE)
-  - Fade angle: team total UNDER
-- **NBA** / BKN (TEAM_FADE)
-  - Fade angle: team total UNDER
+- **NBA** / kyrie irving (PLAYER_FADE)
+  - Fade angle: PTS UNDER + PRA UNDER (multi-prop)
 - **NBA** / TOR (TEAM_FADE)
   - Fade angle: team total UNDER
-- **NBA** / GSW (TEAM_FADE)
+- **NBA** / WAS (TEAM_FADE)
+  - Fade angle: team total UNDER
+- **NBA** / MIN (TEAM_FADE)
+  - Fade angle: team total UNDER
+- **NBA** / DAL (TEAM_FADE)
   - Fade angle: team total UNDER
