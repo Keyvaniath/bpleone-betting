@@ -174,7 +174,12 @@ def build_games(gld: Dict[str, Any], odds: Dict[str, Any], now: dt.datetime, tod
                 "pick": None, "model_side": None, "hold": None, "grade": None, "score": None, "reason": None,
             }
             c = cands.get((sport, eid))
-            if c and c.get("actionable"):
+            if not ok_game:
+                # no live pre-start quote: say so and grade nothing (a stale price cannot back a bet
+                # OR a "no bet" verdict -- the D text below describes today's price, not an old one)
+                g.update(reason="No live DraftKings quote for this game right now (" + str(why_game).replace("_", " ")
+                                + "). No grade until the price refreshes.")
+            elif c and c.get("actionable"):
                 kind = "lean" if c.get("tier") == 4 else "desk"
                 gs = score_pick(kind, c.get("tier"), c.get("ev_pct"), c.get("lean_score"))
                 g["pick"] = {

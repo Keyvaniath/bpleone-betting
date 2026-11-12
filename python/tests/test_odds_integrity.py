@@ -992,6 +992,8 @@ def test_board_grades_every_game_by_rule_and_only_abc_are_bets(tmp_path, monkeyp
     # a stale board has no bets at all (no live quote, no pick), and says nothing about alpha
     out = board.run(now=now + dt.timedelta(hours=9))
     assert out["picks"] == [] and out["alpha"]["picks"] == []
+    assert all(x["grade"] is None and x["pick"] is None and x["model_side"] is None and "No live DraftKings quote" in x["reason"]
+               for x in out["games"])                                    # an old price backs neither a bet nor a "no bet"
 
 
 def test_alpha_is_the_top_scored_bets_and_locks_at_eleven(tmp_path, monkeypatch):

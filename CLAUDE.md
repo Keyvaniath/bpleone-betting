@@ -51,7 +51,7 @@ bpleone-site/
   onto desk/lean rows, never curated); results in ledger_summary.board. **FIREWALL:
   prob_calibration.judged() is False for sport_lean / board_pick / board_alpha** -- the ml_home
   / ml_away families are shared with MLB's Alpha gate; leans must never be family evidence.
-  Do not tune board.score_pick or LEAN_RULE on results. Working clone: C:\Devpleone-betting.
+  Do not tune board.score_pick or LEAN_RULE on results. Working clone: C:/Dev/bpleone-betting.
   Full detail: docs/ODDS-INTEGRITY.md.
 
 - **2026-11-05 to 11-11 — PRE-LAUNCH AUDIT, CROSS-SPORT PLAY OF THE DAY, NBA v2
