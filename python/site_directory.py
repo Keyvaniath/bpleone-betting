@@ -94,6 +94,7 @@ GROUPS: List[Dict[str, Any]] = [
     {"group": "Start Here", "pages": [
         {"href": "picks.html",        "label": "🎯 Today's Picks (all boards)"},
         {"href": "alpha-pick.html",   "label": "★ Alpha Pick of the Day"},
+        {"href": "board.html",        "label": "▦ The Board (every game, graded)"},
         {"href": "play-of-day.html",  "label": "★ Play of the Day"},
         {"href": "track-record.html", "label": "⟁ Track Record (the proof)"},
         {"href": "methodology.html",  "label": "📐 How it works"},

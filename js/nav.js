@@ -45,6 +45,7 @@
   // professional IA. { section } entries render as non-clickable group headers.
   const TOP = [
     { href: "index.html",       label: "Dashboard" },
+    { href: "board.html",       label: "▦ The Board" },
     { href: "picks.html",       label: "🎯 Today's Picks" },
     { href: "play-of-day.html", label: "★ Play of Day" },
     { href: "tonight.html",     label: "🌙 Tonight" },
@@ -338,7 +339,7 @@ if ('serviceWorker' in navigator && location.protocol === 'https:') {
 (function () {
   var TABS = [
     { href: 'index.html',        label: 'Home',   icon: '⌂' },
-    { href: 'picks.html',        label: 'Picks',  icon: '🎯' },
+    { href: 'board.html',        label: 'Board',  icon: '▦' },
     { href: 'alpha-pick.html',   label: 'Alpha',  icon: '★' },
     { href: 'track-record.html', label: 'Record', icon: '🧾' },
     { href: '#sports',           label: 'Sports', icon: '🏟' }

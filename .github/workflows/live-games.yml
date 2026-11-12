@@ -89,6 +89,7 @@ jobs:
         working-directory: python
         run: |
           python play_of_day.py || echo "play_of_day.py" >> "$RUNNER_TEMP/failed_steps.txt"
+          python board.py || echo "board.py" >> "$RUNNER_TEMP/failed_steps.txt"
           python all_picks_tracker.py || echo "all_picks_tracker.py" >> "$RUNNER_TEMP/failed_steps.txt"
       # Self-learn shrinkage weights (per-source feedback loop)
       - name: Self-learn shrinkage weights

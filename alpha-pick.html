@@ -26,7 +26,7 @@
 <meta name="twitter:description" content="Alpha Pick of the Day · EdgeStat — quantitative sports-betting analytics: model edges, calibrated probabilities, and an honest settled track record across MLB, NBA, NHL, golf, tennis, soccer and more. Informational only, 21+.">
 <title>Alpha Pick of the Day | EdgeStat</title>
 <link rel="stylesheet" href="css/style.css?v=20261105">
-<script src="js/nav.js?v=20261105"></script>
+<script src="js/nav.js?v=20261112"></script>
 <style>
   body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; }
   .container { max-width: 1100px; margin: 0 auto; padding: 24px; }
@@ -272,7 +272,9 @@ fetch('data/alpha_pick_record.json?t=' + Date.now()).then(function (r) { return 
         '<span style="color:var(--text-2,#9fb0c8);">Alpha is MLB-only and sits out the baseball off-season &mdash; ' +
         'no other sport&rsquo;s picks clear the same edge gate, and we won&rsquo;t loosen the rule to fill the calendar. ' +
         (rv.n_settled ? 'Rule v2 finished ' + rv.wins + '-' + rv.losses + ', ' + (rv.net_units >= 0 ? '+' : '') + rv.net_units + 'u. ' : '') +
-        'Back on Opening Day.</span>';
+        'Back on Opening Day.</span> ' +
+        '<span style="color:var(--text-2,#9fb0c8);">For every NFL, NBA and NHL game today, see <a href="board.html" style="color:#7fb0e8;">The Board</a>: ' +
+        'its daily Alpha picks are the top-scored bets on that board, graded A to C and tracked on their own. They are a separate list from this record and are not held to this page&rsquo;s edge gate.</span>';
       tEl.style.display = 'block';
     } else if (td.withdrawn) {
       var wd = td.withdrawn || {};
