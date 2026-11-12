@@ -206,10 +206,30 @@ def _cfb_candidates(now: dt.datetime) -> List[Dict[str, Any]]:
     return out
 
 
+def risk_adj(p, american) -> Optional[float]:
+    """EV per unit of risk for one bet: (p * d - 1) / (d * sqrt(p * (1 - p))), d = decimal
+    odds. A per-bet Sharpe ratio. None when an input is missing or out of range."""
+    try:
+        p, a = float(p), float(american)
+    except (TypeError, ValueError):
+        return None
+    if not 0 < p < 1 or a == 0:
+        return None
+    d = 1 + a / 100 if a > 0 else 1 + 100 / abs(a)
+    return (p * d - 1) / (d * (p * (1 - p)) ** 0.5)
+
+
 def _rank_key(c: Dict[str, Any]):
     major = 0 if c["sport"] in MAJOR_4 else 1
-    # a lean has no positive EV to rank on: rank leans by how strongly model and market agree
-    third = -(c.get("lean_score") or 0) if c.get("tier") == 4 else -(c.get("ev_pct") or 0)
+    # a lean has no positive EV to rank on: rank leans by how strongly model and market agree.
+    # (2026-11-12) picks with an edge rank on RISK-ADJUSTED EV, as on The Board: raw EV put a
+    # +440 longshot (17% EV) ahead of a -440 favourite (9% EV) that is ~3x better per unit of
+    # risk. Raw EV only when the risk number cannot be computed.
+    if c.get("tier") == 4:
+        third = -(c.get("lean_score") or 0)
+    else:
+        ra = risk_adj(c.get("model_prob"), c.get("book_american"))
+        third = -(ra if ra is not None else (c.get("ev_pct") or 0) / 100.0)
     return (c["tier"], major, third)
 
 

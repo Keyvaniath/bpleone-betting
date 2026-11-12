@@ -292,6 +292,7 @@
   function render() {
     if (!B) return;
     chips();
+    results();
     const today = B.date_et;
     // ---- alpha (today only)
     const A = (B.alpha && B.alpha.picks) || [];
@@ -353,9 +354,13 @@
     }
     const pills = [line(R.alpha, "Alpha"), line(R.all_bets, "All bets"), line((R.by_grade || {}).A, "A"), line((R.by_grade || {}).B, "B"), line((R.by_grade || {}).C, "C")].filter(Boolean).join("");
     $("bdPills").innerHTML = pills;
-    $("resMeta").textContent = "since " + (R.first_date || "—") + " · graded at the price logged · not the curated record";
+    $("resMeta").textContent = "since " + (R.first_date || "—") + " · graded at the price the board showed · not the curated record";
+    // (2026-11-12) the results follow the sport chip: that sport's record and its bets only
+    const bs = sport !== "ALL" ? (R.by_sport || {})[sport] : null;
+    const head = sport === "ALL" ? pills : (line(bs, sport + " bets") || `<span class="bd-pill">${esc(sport)}: no graded bet yet</span>`);
+    const rows = (R.recent || []).filter((r) => sport === "ALL" || r.sport === sport);
     let last = "";
-    $("results").innerHTML = `<div class="bd-pills" style="margin:4px 0 10px;">${pills}</div>` + R.recent.slice(0, 40).map((r) => {
+    $("results").innerHTML = `<div class="bd-pills" style="margin:4px 0 10px;">${head}</div>` + (rows.length ? "" : `<p class="muted" style="font-size:13px;">No ${esc(sport)} bet on the board yet.</p>`) + rows.slice(0, 40).map((r) => {
       const head = r.date !== last ? `<div class="muted" style="font-size:11px;margin-top:10px;text-transform:uppercase;letter-spacing:.06em;">${esc(r.date)}</div>` : "";
       last = r.date;
       const res = r.result === "won" ? `<span class="w">won ${units(r.payout_units)}</span>` : r.result === "lost" ? `<span class="l">lost ${units(r.payout_units)}</span>` : `<span class="muted">${esc(r.result)}</span>`;
