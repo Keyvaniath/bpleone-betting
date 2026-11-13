@@ -1408,3 +1408,46 @@ def test_odds_only_sport_shows_prices_and_no_side(tmp_path, monkeypatch):
     assert g["odds"]["ml_home"] == -270 and "no model" in g["reason"].lower()
     assert out["sports"]["NCAAB"]["verdict"] == "NO MODEL" and all(p["sport"] != "NCAAB" for p in out["picks"])
 
+
+
+def test_ncaab_desk_is_research_only_on_the_board_and_in_the_desk(tmp_path, monkeypatch):
+    import game_lines_desk as gld
+    assert "ncaab" in gld.RESEARCH_ONLY
+    src = open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "game_lines_desk.py"), encoding="utf-8").read()
+    assert "if sport in RESEARCH_ONLY:\n        w = 0.0" in src                                   # never a pick
+    assert "if best is None and lean_ok and sport not in RESEARCH_ONLY:" in src                 # never a lean
+    board, now = _board_fixture(tmp_path, monkeypatch)
+    obs = (now - dt.timedelta(minutes=30)).isoformat(timespec="seconds").replace("+00:00", "")
+    (tmp_path / "espn_odds.json").write_text(json.dumps({"generated_at": obs, "games": [
+        {"sport": "NCAAB", "status": "pre", "event_id": "88", "matchup": "UIC @ SMC", "away": "UIC", "home": "SMC",
+         "commence_time": "2026-11-09T01:00Z", "market": {"ml_home": -270, "ml_away": 220, "book": "draftkings"}}]}))
+    d = json.loads((tmp_path / "game_lines_desk.json").read_text())
+    d["sports"]["ncaab"] = {"verdict": "RESEARCH ONLY: info", "board": [{"event_id": "88", "p_home_elo": 0.70, "pick": None}]}
+    (tmp_path / "game_lines_desk.json").write_text(json.dumps(d))
+    out = board.run(now=now)
+    g = next(x for x in out["games"] if x["sport"] == "NCAAB")
+    assert g["model_side"]["team"] == "SMC" and g["grade"] == "D" and g["pick"] is None and not g["odds_only"]
+    assert "Research-only college model" in g["reason"] and out["sports"]["NCAAB"]["verdict"] == "RESEARCH ONLY"
+    assert all(p["sport"] != "NCAAB" for p in out["picks"])
+
+
+def test_a_new_line_history_does_not_fake_opens(tmp_path, monkeypatch):
+    import game_lines_desk as gld
+    monkeypatch.setattr(gld, "DATA_DIR", str(tmp_path))
+    monkeypatch.setattr(gld, "MOVE_LOG", str(tmp_path / "move_signals.json"))
+    (tmp_path / "espn_odds.json").write_text(json.dumps({"generated_at": "2026-11-13T19:00:00", "games": [
+        {"sport": "NCAAB", "status": "pre", "event_id": "5", "matchup": "A @ B", "commence_time": "2026-11-14T00:00Z",
+         "market": {"ml_home": -150, "ml_away": 130}}]}))
+    lines = gld.grow_lines("ncaab")
+    assert lines["5"]["open_late"] is True                     # first run of a new history: not a true open
+    rows = [{"event_id": "5", "matchup": "A @ B", "commence": "2026-11-14T00:00Z", "p_home_elo": 0.70, "p_home_dk": 0.58,
+             "ml_home": -150, "ml_away": 130, "quote": {"observed_at": "2026-11-13T19:00:00"}}]
+    gld.move_signals("ncaab", rows, lines, now=dt.datetime(2026, 11, 13, 19, 5, tzinfo=dt.timezone.utc))
+    assert "side" not in json.loads((tmp_path / "move_signals.json").read_text())["signals"]["ncaab:5"]
+    # a game added on a LATER run of the same history is a true open
+    (tmp_path / "espn_odds.json").write_text(json.dumps({"generated_at": "2026-11-13T21:00:00", "games": [
+        {"sport": "NCAAB", "status": "pre", "event_id": "6", "matchup": "C @ D", "commence_time": "2026-11-15T00:00Z",
+         "market": {"ml_home": -150, "ml_away": 130}}]}))
+    lines = gld.grow_lines("ncaab")
+    assert "open_late" not in lines["6"]
+

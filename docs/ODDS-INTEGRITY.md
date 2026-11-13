@@ -1009,3 +1009,18 @@ DraftKings moneyline under its own chip -- prices, spread, total, hold, fair pri
 side (we have no NCAAB model). Never a bet. The page header counts college separately
 ("11 games today (+37 college)") so it matches the "All" chip.
 
+## 2026-11-13: college basketball desk v1 -- RESEARCH ONLY
+
+data/game_finals_ncaab.json: 6,988 ESPN Division I finals since 2025-11-03
+(tools/build_game_finals_seed.py ncaab; groups=50 + limit=400, since the bare college
+scoreboard is a curated subset), grown each desk run from the last 3 days
+(_grow_finals_espn). Margin Elo with the NBA multiplier, carry 0.5, K/HFA fitted on
+last season (K 37.5, HFA 120; prior log loss 0.565). dk_lines_ncaab.json starts today,
+so the backtest has 0 DraftKings-priced games. game_lines_desk.RESEARCH_ONLY = {"ncaab"}:
+w forced to 0 and no leans whatever the backtest says; verdict "RESEARCH ONLY". The
+board shows its side on every NCAAB card it rates, grade D, for information only; never
+a pick, never logged, never Alpha. Promotion to a real desk is Brandon's call once a few
+hundred DK-priced games exist. Also: a NEW line history's first snapshot is marked
+open_late (every listed game is met mid-life), so it never seeds a fake line-move
+signal; only games first seen on later runs are true opens.
+

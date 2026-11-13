@@ -24,7 +24,11 @@ SPORTS = {
     "nfl": ("football/nfl", dt.date(2025, 9, 4)),
     "nhl": ("hockey/nhl", dt.date(2025, 10, 7)),
     "nba": ("basketball/nba", dt.date(2025, 10, 21)),
+    # (2026-11-13) college basketball: the bare scoreboard returns a curated subset for college
+    # sports; groups=50 (Division I) + limit=400 returns every D-I game of the day
+    "ncaab": ("basketball/mens-college-basketball", dt.date(2025, 11, 3)),
 }
+QUERY = {"ncaab": "&groups=50&limit=400"}
 
 
 def _get(url):
@@ -73,7 +77,7 @@ def build(sport):
     day, end = start, dt.date.today() - dt.timedelta(days=1)
     n_calls = 0
     while day <= end:
-        sb = _get(f"{BASE}/{path}/scoreboard?dates={day:%Y%m%d}&limit=100")
+        sb = _get(f"{BASE}/{path}/scoreboard?dates={day:%Y%m%d}" + QUERY.get(sport, "&limit=100"))
         n_calls += 1
         for ev in (sb or {}).get("events") or []:
             g = _final(ev, day.isoformat())
