@@ -41,6 +41,23 @@ bpleone-site/
 
 ## Current deployment state (LIVE)
 
+- **2026-11-13 — THE BOARD, SHARP PASS (all on main; detail in docs/ODDS-INTEGRITY.md).**
+  Leans capped at -200 (product call: no -283 chalk as the featured play; 5 lean rules
+  backtested, none beats the market, none chosen for its record). A/B scores = risk-adjusted
+  EV (EV/sigma); POD ranks edges the same way. Desk picks (A/B) are logged the FIRST time the
+  board shows them (bet when the edge appears); leans game-day only. Cards show opening
+  price, line move, DK hold, BOTH SIDES OF THE SPREAD WITH PRICES (espn_odds now keeps
+  spread_{home,away}_{line,price}; dk_lines history stores them from 11/13), and the desk's
+  open picks vs the current line. CLV on every board bet + Alpha (locked price) -- **a close
+  is only a close after the start**: desk forward_test headline CLV is PLAYED games only
+  (11/13: NFL -0.02 pts on 18 played; open picks +4.2 vs today's line). Alpha recap post
+  never drops a pick. alpha-lock-trigger.yml dispatches one heartbeat ~11:00-12:30 ET only if
+  the live board is not locked and no heartbeat runs. data_health watches board.json /
+  game_lines_desk.json / play_of_day.json (8h). Spread cover test: NFL signal not outside
+  noise, NBA worse than a coin flip -> no spread desk yet (rerun with spread prices).
+  Homepage + desk pages: last night's finals no longer shown or counted as today's (UTC
+  kick-off dating). Board grading verified vs finals 11/12: Alpha 4-1 +1.12u (all leans).
+
 - **2026-11-12 — THE BOARD (board.html, python/board.py -> data/board.json).** Every pre-game
   NFL/NBA/NHL game with DraftKings moneylines + total prices, our side, a GRADE and a SCORE:
   A = proven-desk pick, B = forward-test desk pick, C = model lean (favourite the model AND
