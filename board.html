@@ -291,7 +291,12 @@
   function gameCard(g) {
     const o = g.odds;
     const gradeTxt = g.grade ? (g.grade === "HOLD" ? "HOLD" : g.grade + (g.score != null ? " · " + g.score : "")) : "—";
-    const tot = o.total != null ? `Total ${o.total} · O ${amer(o.over_price)} / U ${amer(o.under_price)}` : "Total not posted";
+    // (2026-11-13) two-way no-vig fair prices + hold for the total and the spread
+    const imp = (a) => a == null ? null : (a > 0 ? 100 / (a + 100) : -a / (-a + 100));
+    const fair2 = (a, b) => { const x = imp(a), y = imp(b); if (x == null || y == null) return null;
+      return { a: fairA(x / (x + y)), b: fairA(y / (x + y)), hold: ((x + y - 1) * 100).toFixed(1) }; };
+    const tf = fair2(o.over_price, o.under_price);
+    const tot = o.total != null ? `Total ${o.total} · O ${amer(o.over_price)} / U ${amer(o.under_price)}${tf ? ` <span class="muted">(fair ${tf.a} / ${tf.b}, hold ${tf.hold}%)</span>` : ""}` : "Total not posted";
     // (2026-11-13) market read: where the moneyline opened, how far it has moved, and DraftKings' hold
     const mv = o.move;
     const moveTxt = (mv && mv.open_ml_home != null && (mv.open_ml_home !== o.ml_home || mv.open_ml_away !== o.ml_away))
@@ -301,7 +306,8 @@
     const mkt = [moveTxt, o.hold_pct != null ? `DK hold ${o.hold_pct.toFixed(1)}%` : ""].filter(Boolean).join(" · ");
     const sl = (v) => v == null ? "" : (v > 0 ? "+" : "") + v;
     const spr = (o.spread_home_line != null && o.spread_home_price != null && o.spread_away_price != null)
-      ? `<br>Spread ${esc(g.away)} ${sl(o.spread_away_line)} (${amer(o.spread_away_price)}) / ${esc(g.home)} ${sl(o.spread_home_line)} (${amer(o.spread_home_price)})`
+      ? `<br>Spread ${esc(g.away)} ${sl(o.spread_away_line)} (${amer(o.spread_away_price)}) / ${esc(g.home)} ${sl(o.spread_home_line)} (${amer(o.spread_home_price)})` +
+        ((sf) => sf ? ` <span class="muted">(fair ${sf.a} / ${sf.b}, hold ${sf.hold}%)</span>` : "")(fair2(o.spread_away_price, o.spread_home_price))
       : (o.spread_home != null ? ` · ${esc(g.home)} ${o.spread_home > 0 ? "+" : ""}${o.spread_home}` : "");
     return `<article class="gc${g.pick ? " bet" : ""}${g.alpha_rank ? " alpha" : ""}${started(g) ? " started" : ""}">
       <header><span class="sp ${esc(g.sport)}">${esc(g.sport)}</span><span class="tm">${started(g) ? "started" : tm(g.start)}</span>
