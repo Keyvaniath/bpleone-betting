@@ -1194,3 +1194,12 @@ def test_board_results_carry_closing_line_value_only_after_the_start(tmp_path, m
     r = {x["matchup"]: x for x in b["recent"]}
     assert r["BOS @ MIA"]["close_price"] == -250 and r["A @ B"]["clv_pts"] is None
 
+
+def test_board_hold_and_line_move():
+    import board
+    assert board.hold_pct(-110, -110) == 4.76 and board.hold_pct(None, -110) is None
+    assert abs(board.hold_pct(-200, 170) - (200 / 300 + 100 / 270 - 1) * 100) < 0.01
+    mv = board.line_move({"ml_home": -150, "ml_away": 130, "at": "2026-11-13T07:00:00"}, -200, 170)
+    assert mv["open_ml_home"] == -150 and mv["move_home_pts"] > 5          # money came in on the home side
+    assert board.line_move({}, -200, 170) is None and board.line_move({"ml_home": None, "ml_away": 130}, -200, 170) is None
+

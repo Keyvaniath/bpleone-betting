@@ -188,8 +188,39 @@ def _reason(c: Dict[str, Any]) -> str:
             + (" The desk has not yet proven this edge." if c.get("tier") == 2 else ""))
 
 
+def hold_pct(ml_a, ml_b) -> Optional[float]:
+    """The bookmaker's margin in a two-way price: sum of implied probabilities minus 1."""
+    try:
+        ps = [(100 / (a + 100)) if a > 0 else (-a / (-a + 100)) for a in (float(ml_a), float(ml_b))]
+    except (TypeError, ValueError, ZeroDivisionError):
+        return None
+    return round((sum(ps) - 1) * 100, 2)
+
+
+def line_move(open_snap: Dict[str, Any], now_home, now_away) -> Optional[Dict[str, Any]]:
+    """Where the moneyline opened (first snapshot we hold) and how far the no-vig home
+    probability has moved since, in points. + = toward home."""
+    if not open_snap:
+        return None
+    oh, oa = open_snap.get("ml_home"), open_snap.get("ml_away")
+    try:
+        def nv(h, a):
+            ph = (100 / (h + 100)) if h > 0 else (-h / (-h + 100))
+            pa = (100 / (a + 100)) if a > 0 else (-a / (-a + 100))
+            return ph / (ph + pa)
+        move = round((nv(float(now_home), float(now_away)) - nv(float(oh), float(oa))) * 100, 1)
+    except (TypeError, ValueError, ZeroDivisionError):
+        return None
+    return {"open_ml_home": oh, "open_ml_away": oa, "open_at": open_snap.get("at"), "move_home_pts": move}
+
+
 def build_games(gld: Dict[str, Any], odds: Dict[str, Any], now: dt.datetime, today_et: str) -> List[Dict[str, Any]]:
     by_eid = {str(g.get("event_id")): g for g in (odds.get("games") or []) if g.get("event_id")}
+    # (2026-11-13) opening prices: the first DraftKings snapshot the desk recorded for each game
+    opens = {}
+    for _sp in SPORTS:
+        for _eid, _ev in ((_load(f"dk_lines_{_sp.lower()}.json").get("events") or {}).items()):
+            opens[(_sp, str(_eid))] = _ev.get("open") or {}
     cands: Dict[Any, Dict[str, Any]] = {}
     for c in pod._desk_candidates(gld, now) + pod._lean_candidates(gld, now):
         cands[(c["sport"], str(c.get("event_id")))] = c
@@ -217,7 +248,9 @@ def build_games(gld: Dict[str, Any], odds: Dict[str, Any], now: dt.datetime, tod
                 "away": names["away"], "home": names["home"], "matchup": r.get("matchup"), "page": pod.SPORT_PAGE.get(sport),
                 "odds": {"book": "DraftKings", "ml_away": r.get("ml_away"), "ml_home": r.get("ml_home"),
                          "total": m.get("total"), "over_price": m.get("over_price"), "under_price": m.get("under_price"),
-                         "spread_home": m.get("spread"), "observed_at": q.get("observed_at"), "snapshot_id": q.get("snapshot_id")},
+                         "spread_home": m.get("spread"), "observed_at": q.get("observed_at"), "snapshot_id": q.get("snapshot_id"),
+                         "hold_pct": hold_pct(r.get("ml_home"), r.get("ml_away")),
+                         "move": line_move(opens.get((sport, eid)), r.get("ml_home"), r.get("ml_away"))},
                 "model": {"p_home": pm, "p_away": (round(1 - pm, 4) if pm is not None else None)},
                 "market": {"p_home_no_vig": pk, "p_away_no_vig": (round(1 - pk, 4) if pk is not None else None)},
                 "desk_verdict": verdict, "live_quote": bool(ok_game), "quote_issue": None if ok_game else why_game,
