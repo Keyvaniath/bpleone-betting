@@ -2,18 +2,18 @@
 
 ## Slate
 - **0 games** scheduled
-- **No best bet today:** a best bet needs a real sportsbook price — 13 model-only projections excluded (LOL 4, GOLF 4, NBA 3, NFL 2)
+- **No best bet today:** a best bet needs a real sportsbook price — 17 model-only projections excluded (LOL 4, GOLF 4, NBA 3, NFL 2, NCAAB 2, NHL 2)
 
 ## Golf -- Austin Championship pres. by Compliance Solutions
 - **Leader:** Brian Harman (-11) at #1
 - **Field:** 120 players  |  Status: In Progress
-- **Model projection:** Erik van Rooyen WIN (model 13.0%) — model projection — unvalidated, no sportsbook price, not a recommendation
+- **Model projection:** Erik van Rooyen WIN (model 15.5%) — model projection — unvalidated, no sportsbook price, not a recommendation
 
 ## NBA -- REGULAR
 - 11/13 07:00 PM ET: New York Knicks @ Indiana Pacers (6-5 vs 4-8)  | DK -337/+271 | desk P(home) 25.9% (NO EDGE) | Scheduled
 - 11/13 07:00 PM ET: Milwaukee Bucks @ Orlando Magic (1-11 vs 4-7)  | DK +312/-395 | desk P(home) 76.7% (NO EDGE) | Scheduled
 - 11/13 08:00 PM ET: Cleveland Cavaliers @ Miami Heat (6-6 vs 5-6)  | DK +114/-135 | desk P(home) 55.1% (NO EDGE) | Scheduled
-- 11/13 08:00 PM ET: Atlanta Hawks @ Chicago Bulls (7-5 vs 1-9)  | DK -290/+236 | desk P(home) 28.6% (NO EDGE) | Scheduled
+- 11/13 08:00 PM ET: Atlanta Hawks @ Chicago Bulls (7-5 vs 1-9)  | DK -277/+227 | desk P(home) 29.4% (NO EDGE) | Scheduled
 - 11/13 08:00 PM ET: Memphis Grizzlies @ New Orleans Pelicans (7-4 vs 4-8)  | DK -162/+136 | desk P(home) 40.7% (NO EDGE) | Scheduled
 
 ## NHL -- REGULAR

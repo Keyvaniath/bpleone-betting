@@ -1,21 +1,21 @@
 # EdgeStat Daily Summary — 2026-11-13
 
-## 🏥 Model Health: 65.5/100 [OK]
+## 🏥 Model Health: 69.2/100 [OK]
 - Operational but room to improve - check yellow components
   - 🟢 Calibration Freshness: 100.0/100
-  - 🟡 Hit Rate Trend: 70.3/100
-  - 🔴 Brier Trend: 29.8/100
+  - 🟡 Hit Rate Trend: 70.4/100
+  - 🔴 Brier Trend: 30.3/100
   - 🟢 Pipeline Audit: 100.0/100
-  - 🟡 Data Health: 77.3/100
+  - 🟢 Data Health: 95.5/100
   - 🔴 Edge Count: 0/100
 
 ## 🌐 Slate Overview
-- **Regime today:** BALANCED (avg P(home)=0.54)
-- **Total games on board:** 46
-- **Strong home favorites:** 20 | **Strong road dogs:** 13
+- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.575)
+- **Total games on board:** 59
+- **Strong home favorites:** 28 | **Strong road dogs:** 14
 
 ## 🎯 Best Bets (sportsbook-priced only)
-- No best bet today: a best bet needs a real sportsbook price — 13 model-only projections excluded (LOL 4, GOLF 4, NBA 3, NFL 2).
+- No best bet today: a best bet needs a real sportsbook price — 17 model-only projections excluded (LOL 4, GOLF 4, NBA 3, NFL 2, NCAAB 2, NHL 2).
 
 ## 🔒 Locks of the Day -- Track Record
 - Sportsbook-priced: **3-0** (n=3; net +0.05u, ROI +62.0%) -- too few to judge
@@ -29,16 +29,16 @@
 - **[CS]** torzsi OVER 40.5 Kills (BO3) · model 61.0%
 
 ## ⚡ Pre-Game
-- No pre-game alerts: an alert needs a game-lines-desk probability whose verdict passed (not NO EDGE / UNPROVEN) and a DraftKings price. NBA: 9 desk verdict NO EDGE; NHL: 2 desk verdict NO EDGE; WNBA: 1 not pre-game; MLS: 2 no validated model probability (not from the game-lines desk); EPL: 5 not pre-game; UCL: 9 not pre-game; NFL: 13 desk verdict UNPROVEN; NCAAF: 20 no validated model probability (not from the game-lines desk); NCAAB: 1 not pre-game; CWS: 1 not pre-game
+- No pre-game alerts: an alert needs a game-lines-desk probability whose verdict passed (not NO EDGE / UNPROVEN) and a DraftKings price. NBA: 9 desk verdict NO EDGE; NHL: 2 desk verdict NO EDGE; WNBA: 1 not pre-game; MLS: 2 no validated model probability (not from the game-lines desk); EPL: 5 not pre-game; UCL: 9 not pre-game; NFL: 13 desk verdict UNPROVEN; NCAAF: 20 no validated model probability (not from the game-lines desk); NCAAB: 13 no validated model probability (not from the game-lines desk); CWS: 1 not pre-game
 
 ## 🔥/❄️ Heat / Cold Signals
 - Hot teams: **12** | Cold teams: **21** | Over-heavy: 0 | Under-heavy: 31
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (106)
+## ⚠️ Anomaly Detector (103)
 - RESIDUAL_DIVERGENCE: **5**
 - STREAK_MISMATCH: **1**
-- STEAM_MOVE: **100**
+- STEAM_MOVE: **97**
   - New York Knicks (NBA): New York Knicks OUTPERFORMING expected margin by 6.2pts in recent games -- model bias may persist
   - Miami Heat (NBA): Miami Heat UNDERPERFORMING expected margin by 7.2pts in recent games -- model bias may persist
   - New Orleans Pelicans (NBA): New Orleans Pelicans UNDERPERFORMING expected margin by 16.4pts in recent games -- model bias may persist
@@ -48,12 +48,12 @@
 ## 💰 Today's Portfolio
 - No priced picks: a stake is sized only at an actionable DraftKings quote.
 
-## 🎯 Signal stacking (18 games with 2+ signals) — research, not picks
+## 🎯 Signal stacking (10 games with 2+ signals) — research, not picks
   - Nashville Predators @ Vegas Golden Knights : 4 signals (HEAT_COLD, HEAT_COLD, HEAT_COLD, ANOMALY)
   - Portland Trail Blazers @ Sacramento Kings : 3 signals (HEAT_COLD, HEAT_COLD, HEAT_COLD)
-  - Minnesota Wild @ Toronto Maple Leafs : 3 signals (HEAT_COLD, HEAT_COLD, HEAT_COLD)
-  - St. Louis Blues @ Utah Mammoth : 3 signals (HEAT_COLD, HEAT_COLD, HEAT_COLD)
-  - Detroit Pistons @ Washington Wizards : 2 signals (HEAT_COLD, HEAT_COLD)
+  - New York Knicks @ Indiana Pacers : 2 signals (HEAT_COLD, ANOMALY)
+  - Cleveland Cavaliers @ Miami Heat : 2 signals (HEAT_COLD, ANOMALY)
+  - Atlanta Hawks @ Chicago Bulls : 2 signals (HEAT_COLD, HEAT_COLD)
 
 ## 🏀 NBA Player Heat (7 HOT / 13 COLD)
   - 🔥 **Victor Wembanyama** (SA): L5 36.6/13.0/2.2 vs season 28.7/11.6/2.9 [PTS +7.9]
@@ -76,10 +76,10 @@
   - 🔥 T1 **Brian Harman** (USA): -11 total -- finished T1, Sunday -0.5 vs tourney avg
   - 🔥 T2 **Kristoffer Ventura** (Norway): -11 total -- finished T2
   - 🔥 T3 **Erik van Rooyen** (South Africa): -11 total -- finished T3
-  - 🔥 T4 **Jordan Smith** (England): -10 total -- finished T4
-  - 🔥 T5 **Kevin Yu** (Chinese Taipei): -10 total -- finished T5
+  - 🔥 T5 **Jordan Smith** (England): -10 total -- finished T5
+  - 🔥 T6 **Kevin Yu** (Chinese Taipei): -10 total -- finished T6
   - ❄️ **Jimmy Stanger** (USA): Sunday +6.0 vs tourney avg
-  - ❄️ **Trace Crowe** (USA): Sunday +5.0 vs tourney avg
+  - ❄️ **Trace Crowe** (USA): Sunday +4.5 vs tourney avg
   - ❄️ **Max Greyserman** (USA): Sunday +3.5 vs tourney avg
 
 ## 📈 Streaks (9) — record facts, not picks
