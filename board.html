@@ -126,6 +126,7 @@
     <div class="stale" id="bdStale" hidden></div>
   </section>
 
+  <div class="bd-pills" id="mktNotes" style="margin-top:10px;" hidden></div>
   <div class="bd-chips" id="sportChips" role="tablist" aria-label="Sport"></div>
   <div class="bd-chips" id="dayChips" role="tablist" aria-label="Day" style="margin-top:4px;"></div>
 
@@ -314,9 +315,25 @@
     </article>`;
   }
 
+  // (2026-11-13) market notes for the selected day: steam, holds, lineup flags (major sports)
+  function notes() {
+    const gs = B.games.filter((g) => g.date === day && !g.college && (sport === "ALL" || g.sport === sport));
+    const steam = gs.filter((g) => g.odds && g.odds.move && Math.abs(g.odds.move.move_home_pts || 0) >= 5)
+      .sort((a, b) => Math.abs(b.odds.move.move_home_pts) - Math.abs(a.odds.move.move_home_pts));
+    const holds = gs.filter((g) => g.grade === "HOLD");
+    const flags = gs.filter((g) => g.lineup && ["away", "home"].some((s) => g.lineup[s] && g.lineup[s].flag));
+    const items = [];
+    if (steam.length) items.push(`<span class="bd-pill">Steam: ${steam.slice(0, 4).map((g) => `<b>${esc(g.odds.move.move_home_pts > 0 ? g.home : g.away)}</b> ${Math.abs(g.odds.move.move_home_pts).toFixed(1)} pts`).join(" · ")}${steam.length > 4 ? ` +${steam.length - 4}` : ""}</span>`);
+    if (holds.length) items.push(`<span class="bd-pill">On hold: <b>${holds.length}</b> (${holds.slice(0, 3).map((g) => esc(g.matchup)).join(", ")}${holds.length > 3 ? "…" : ""})</span>`);
+    if (flags.length) items.push(`<span class="bd-pill">Lineup flags: <b>${flags.length}</b> game${flags.length === 1 ? "" : "s"}</span>`);
+    $("mktNotes").innerHTML = items.join("");
+    $("mktNotes").hidden = !items.length;
+  }
+
   function render() {
     if (!B) return;
     chips();
+    notes();
     results();
     const today = B.date_et;
     // ---- alpha (today only)
