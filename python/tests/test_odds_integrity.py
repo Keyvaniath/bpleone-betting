@@ -1352,3 +1352,29 @@ def test_board_lineup_flags_backup_goalies_non_regular_qbs_and_big_absences():
     assert a["home"]["text"] == "Injury list: Star" and a["home"]["flag"] and a["away"]["text"] == "no rotation player listed"
     assert board.lineup({}) is None
 
+
+def test_move_signals_are_recorded_once_at_first_sight_and_scored_after_the_start(tmp_path, monkeypatch):
+    import game_lines_desk as gld
+    monkeypatch.setattr(gld, "DATA_DIR", str(tmp_path))
+    monkeypatch.setattr(gld, "MOVE_LOG", str(tmp_path / "move_signals.json"))
+    now = dt.datetime(2026, 11, 13, 15, 0, tzinfo=dt.timezone.utc)
+    rows = [{"event_id": "1", "matchup": "A @ B", "commence": "2026-11-13T18:00Z", "p_home_elo": 0.62, "p_home_dk": 0.55,
+             "ml_home": -130, "ml_away": 110, "quote": {"observed_at": "2026-11-13T14:55:00"}},
+            {"event_id": "2", "matchup": "C @ D", "commence": "2026-11-13T18:00Z", "p_home_elo": 0.51, "p_home_dk": 0.50,
+             "ml_home": -110, "ml_away": -110, "quote": {"observed_at": "2026-11-13T14:55:00"}}]
+    lines = {"1": {"commence": "2026-11-13T18:00Z", "open": {"at": "2026-11-13T14:55:00"}, "close": {"ml_home": -160, "ml_away": 135}},
+             "2": {"commence": "2026-11-13T18:00Z", "open": {"at": "2026-11-13T14:55:00"}, "close": {"ml_home": -110, "ml_away": -110}}}
+    # a game first met mid-life (its line history opened earlier) is seen but gets no signal
+    late = [dict(rows[0], event_id="3")]
+    lines["3"] = {"commence": "2026-11-13T18:00Z", "open": {"at": "2026-11-10T09:00:00"}, "close": {"ml_home": -160, "ml_away": 135}}
+    gld.move_signals("nba", late, lines, now=now)
+    assert "side" not in json.loads((tmp_path / "move_signals.json").read_text())["signals"]["nba:3"]
+    m = gld.move_signals("nba", rows, lines, now=now)
+    assert m["n_seen"] == 3 and m["n_signals_open"] == 1 and m["n_scored"] == 0          # not started yet: not scored
+    # a later run sees a moved line: the recorded signal keeps its first-sight price
+    rows[0].update(ml_home=-160, p_home_dk=0.60)
+    m = gld.move_signals("nba", rows, lines, now=now + dt.timedelta(hours=5))
+    log = json.loads((tmp_path / "move_signals.json").read_text())
+    assert log["signals"]["nba:1"]["price"] == -130 and "side" not in log["signals"]["nba:2"]
+    assert m["n_scored"] == 1 and m["avg_clv_pts"] > 0 and m["beat_close_pct"] == 100.0
+
