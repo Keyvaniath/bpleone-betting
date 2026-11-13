@@ -1378,3 +1378,20 @@ def test_move_signals_are_recorded_once_at_first_sight_and_scored_after_the_star
     assert log["signals"]["nba:1"]["price"] == -130 and "side" not in log["signals"]["nba:2"]
     assert m["n_scored"] == 1 and m["avg_clv_pts"] > 0 and m["beat_close_pct"] == 100.0
 
+
+def test_college_games_are_on_the_board_for_information_never_as_bets(tmp_path, monkeypatch):
+    board, now = _board_fixture(tmp_path, monkeypatch)
+    obs = (now - dt.timedelta(minutes=30)).isoformat(timespec="seconds").replace("+00:00", "")
+    (tmp_path / "espn_odds.json").write_text(json.dumps({"generated_at": obs, "games": [
+        {"sport": "NCAAF", "status": "pre", "event_id": "77", "matchup": "FSU @ PITT", "commence_time": "2026-11-08T23:00Z",
+         "market": {"ml_home": -170, "ml_away": 142, "total": 52.5, "book": "draftkings"}}]}))
+    (tmp_path / "cfb_model.json").write_text(json.dumps({"board_fresh": True, "games": [
+        {"matchup": "FSU @ PITT", "home": "PITT", "away": "FSU", "status": "pre", "commence_time": "2026-11-08T23:00Z",
+         "rated": True, "model_p_home": 0.6231, "model_spread_home": -3.5, "home_rank": 65, "away_rank": 75}], "edges": []}))
+    out = board.run(now=now)
+    cg = [g for g in out["games"] if g["sport"] == "NCAAF"]
+    assert len(cg) == 1 and cg[0]["college"] and cg[0]["grade"] == "D" and cg[0]["pick"] is None
+    assert cg[0]["model_side"]["team"] == "PITT" and "no college game is a bet" in cg[0]["reason"]
+    assert all(p["sport"] != "NCAAF" for p in out["picks"]) and out["sports"]["NCAAF"]["info_only"]
+    assert all(a["sport"] != "NCAAF" for a in out["alpha"]["picks"])
+
