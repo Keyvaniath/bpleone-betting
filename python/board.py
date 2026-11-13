@@ -702,7 +702,31 @@ def run(now: Optional[dt.datetime] = None) -> Dict[str, Any]:
     return payload
 
 
+def refresh_results() -> Optional[Dict[str, Any]]:
+    """(2026-11-13) Re-read the ledger summary into an existing board.json, touching nothing else.
+    Every workflow runs board.py BEFORE all_picks_tracker.py (the tracker harvests the board's
+    bets), so the results block was always one run stale: a morning's grading reached the board
+    only on the next run. The workflows call this right after the tracker."""
+    board = _load("board.json")
+    if not board or not board.get("date_et"):
+        return None
+    summ = (_load("ledger_summary.json") or {}).get("board")
+    board["results"] = summ
+    board["recap"] = recap_post(summ, board["date_et"])
+    tmp = OUT + ".tmp"
+    with open(tmp, "w", encoding="utf-8") as f:
+        json.dump(board, f, indent=1)
+    os.replace(tmp, OUT)
+    return board
+
+
 if __name__ == "__main__":
+    import sys as _sys
+    if "--results-only" in _sys.argv:
+        b = refresh_results()
+        r = ((b or {}).get("results") or {}).get("all_bets") or {}
+        print(f"[board] results refreshed: {r.get('wins')}-{r.get('losses')}, {r.get('n_pending')} pending" if b else "[board] no board.json to refresh")
+        _sys.exit(0)
     p = run()
     c = p["counts"]
     print(f"[board] {p['date_et']}: {c['games_today']} games today ({c['games']} listed), {c['bets_today']} bets today; "

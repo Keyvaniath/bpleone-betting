@@ -604,6 +604,8 @@ jobs:
           python play_of_day.py || echo "play_of_day.py" >> "$RUNNER_TEMP/failed_steps.txt"
           python board.py || echo "board.py" >> "$RUNNER_TEMP/failed_steps.txt"
           python all_picks_tracker.py || echo "all_picks_tracker.py" >> "$RUNNER_TEMP/failed_steps.txt"
+          # (2026-11-13) the board's results block, from the ledger summary just written
+          python board.py --results-only || echo "board.py --results-only" >> "$RUNNER_TEMP/failed_steps.txt"
       - name: Recent-picks digest (lightweight ledger for client pages, ~150KB vs 7.4MB)
         working-directory: python
         run: python recent_picks.py || echo "recent_picks.py" >> "$RUNNER_TEMP/failed_steps.txt"
@@ -1437,6 +1439,8 @@ jobs:
           python play_of_day.py || echo "play_of_day.py (late pass)" >> "$RUNNER_TEMP/failed_steps.txt"
           python board.py || echo "board.py (late pass)" >> "$RUNNER_TEMP/failed_steps.txt"
           python all_picks_tracker.py || echo "all_picks_tracker.py (late pass)" >> "$RUNNER_TEMP/failed_steps.txt"
+          # (2026-11-13) the board's results block, from the ledger summary just written
+          python board.py --results-only || echo "board.py --results-only (late pass)" >> "$RUNNER_TEMP/failed_steps.txt"
           python recent_picks.py || echo "recent_picks.py (late pass)" >> "$RUNNER_TEMP/failed_steps.txt"
           python today_status.py || echo "today_status.py" >> "$RUNNER_TEMP/failed_steps.txt"
       - name: Site directory + live-status map (nav badges + Everything page)
