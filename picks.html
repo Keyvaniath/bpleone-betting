@@ -110,11 +110,37 @@
     <div id="rows"><div class="empty">Loading today's picks…</div></div>
   </div>
 
+  <!-- (2026-11-13) The Board's graded bets, kept apart from the curated boards above: desk picks
+       (A/B) and model leans (C) at the DraftKings price, never part of the curated record -->
+  <section id="boardBets" hidden style="margin:22px 0 6px;">
+    <h3 style="font-size:15px;margin:0 0 4px;">The Board&#39;s bets <span class="muted" style="font-size:12px;font-weight:400;">separate from the curated boards · not in the curated record</span></h3>
+    <p class="muted" style="font-size:12px;margin:0 0 8px;">Grade A/B = a desk pick at an edge over the DraftKings price (forward test); grade C = a model lean, the favourite our model and DraftKings both favour, which is not an edge. Graded on the final score at the price shown.</p>
+    <div id="boardBetRows"></div>
+  </section>
+
   <p class="disclaimer">
     Informational / educational only — not betting advice. Model probabilities are estimates; past
     performance does not guarantee future results. 21+. If gambling is a problem, call 1-800-GAMBLER.
   </p>
 </main>
+<script>
+fetch("data/board.json?t=" + Date.now(), { cache: "no-cache" }).then((r) => r.json()).then((B) => {
+  const esc = (v) => String(v == null ? "" : v).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c]);
+  const am = (a) => a == null ? "—" : (a >= 0 ? "+" + a : "" + a);
+  const now = Date.now();
+  const ps = (B.picks || []).filter((p) => new Date(p.commence_time).getTime() > now)
+    .sort((a, b) => (a.game_date > b.game_date ? 1 : a.game_date < b.game_date ? -1 : (b.score || 0) - (a.score || 0)));
+  if (!ps.length) return;
+  const dl = (d) => { const x = new Date(d + "T12:00:00Z"); return d === B.date_et ? "Today" : x.toLocaleDateString("en-US", { weekday: "short", month: "numeric", day: "numeric", timeZone: "UTC" }); };
+  document.getElementById("boardBetRows").innerHTML = ps.map((p) => `<div style="display:flex;flex-wrap:wrap;gap:8px;align-items:baseline;padding:8px 10px;border-top:1px solid rgba(255,255,255,.06);font-size:13px;">
+      <span style="font-family:JetBrains Mono,monospace;font-size:11px;color:#9fb0c8;min-width:84px;">${esc(p.sport)} · ${esc(dl(p.game_date))}</span>
+      <b>${esc(p.team)}</b> moneyline <span style="font-family:JetBrains Mono,monospace;color:#fbbf24;">${am(p.book_american)}</span>
+      <span class="muted">${esc(p.matchup)}</span>
+      <span style="margin-left:auto;font-family:JetBrains Mono,monospace;font-size:12px;color:${p.grade === "C" ? "#60a5fa" : "#4ade80"};">grade ${esc(p.grade)} · ${p.score != null ? p.score : "—"}</span>
+    </div>`).join("") + `<p class="muted" style="font-size:11px;margin:8px 10px 0;">Every game, fair prices, line moves and lineups: <a href="board.html" style="color:#7fb0e8;">The Board →</a></p>`;
+  document.getElementById("boardBets").hidden = false;
+}).catch(() => {});
+</script>
 
 <script>
 const CAT_COLOR = {
