@@ -43,7 +43,14 @@ PARAMS = {
     # NBA (2026-11-03): 538's NBA Elo -- K 20, HFA ~100 Elo, carry-over 1/4,
     # MOV multiplier ((MOV+3)^0.8) / (7.5 + 0.006 * winner's Elo edge).
     "nba": {"k": 20.0, "hfa": 100.0, "carry": 0.25},
+    # NCAAB (2026-11-13): margin Elo with the NBA multiplier; college rosters churn, so a
+    # heavier pull to the mean between seasons. K / HFA re-fitted on last season (fit_params).
+    "ncaab": {"k": 25.0, "hfa": 80.0, "carry": 0.5},
 }
+# (2026-11-13) Research-only desks: a model side and a backtest for the board's information,
+# but NO picks and NO leans until Brandon promotes the sport -- the college basketball desk
+# has no DraftKings price history yet to be judged against (it starts accruing 11/13).
+RESEARCH_ONLY = {"ncaab"}
 MIN_EDGE = 0.04          # 4% expected value at the DK price
 W_GRID = [i / 20 for i in range(21)]
 MIN_BACKTEST_N = 60      # below this, w stays 0 (not enough evidence to lean on)
@@ -51,7 +58,7 @@ MIN_BACKTEST_N = 60      # below this, w stays 0 (not enough evidence to lean on
 # score each model version on its own picks. Picks logged before a version
 # existed carry none -> "v1".
 MODEL_VERSION = {"nfl": "v2-qb (2026-10-29)", "nhl": "v2-goalie-shots-rest (2026-10-28)",
-                 "nba": "v2-availability-rest (2026-11-11)"}
+                 "nba": "v2-availability-rest (2026-11-11)", "ncaab": "v1-elo (2026-11-13, research only)"}
 
 
 def _load(p: str) -> Dict[str, Any]:
@@ -118,8 +125,38 @@ def _norm_team(sport: str, t: Optional[str]) -> str:
     return _ABBR_ALIAS.get(sport, {}).get(t, t)
 
 
+def _grow_finals_espn(sport: str, days: int = 3) -> int:
+    """(2026-11-13) Sports with no rolling *_historical.json feed (college basketball): merge the
+    last few days' ESPN finals into the seed file. Network fail-soft (a failed call adds nothing)."""
+    if sport != "ncaab":
+        return 0
+    import sys as _sys
+    _sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "tools"))
+    try:
+        import build_game_finals_seed as seedmod
+    except Exception:
+        return 0
+    p = os.path.join(DATA_DIR, f"game_finals_{sport}.json")
+    doc = _load(p)
+    have = {g["id"]: g for g in (doc.get("games") or []) if g.get("id")}
+    n0 = len(have)
+    path, _ = seedmod.SPORTS[sport]
+    for i in range(1, days + 1):
+        day = dt.date.today() - dt.timedelta(days=i)
+        sb = seedmod._get(f"{seedmod.BASE}/{path}/scoreboard?dates={day:%Y%m%d}" + seedmod.QUERY.get(sport, "&limit=100"))
+        for ev in (sb or {}).get("events") or []:
+            g = seedmod._final(ev, day.isoformat())
+            if g:
+                have[g["id"]] = g
+    if len(have) > n0:
+        games = sorted(have.values(), key=lambda g: (g["date"], g["id"]))
+        _dump(p, dict(doc, generated_at=dt.datetime.now().isoformat(timespec="seconds"), n_games=len(games), games=games))
+    return len(have) - n0
+
+
 def load_finals(sport: str) -> List[Dict[str, Any]]:
     """Seed finals + the rolling daily finals file, deduped by (date, away, home)."""
+    _grow_finals_espn(sport)
     seed = _load(os.path.join(DATA_DIR, f"game_finals_{sport}.json")).get("games") or []
     by: Dict[Tuple[str, str, str], Dict[str, Any]] = {}
     for g in seed:
@@ -179,7 +216,7 @@ class Elo:
         diff_w = (self._rating(h) - self._rating(a) + (0 if g.get("neutral") else self.hfa)) * (1 if res == 1 else -1)
         if self.sport == "nfl":
             mult = math.log(mov + 1) * (2.2 / (diff_w * 0.001 + 2.2)) if mov else 1.0
-        elif self.sport == "nba":
+        elif self.sport in ("nba", "ncaab"):
             mult = ((mov + 3) ** 0.8) / (7.5 + 0.006 * diff_w) if mov else 1.0
         else:
             mult = (0.6686 * math.log(mov) + 0.8048) if mov >= 1 else 1.0
@@ -544,6 +581,9 @@ def grow_lines(sport: str) -> Dict[str, Any]:
     p = os.path.join(DATA_DIR, f"dk_lines_{sport}.json")
     doc = _load(p) or {"sport": sport.upper(), "events": {}}
     ev = doc.setdefault("events", {})
+    # (2026-11-13) the first run of a NEW history meets every listed game mid-life: its first
+    # snapshot is not the market's open, so those games are marked open_late (no move signal)
+    new_history = not ev
     odds = _load(os.path.join(DATA_DIR, "espn_odds.json"))
     ga = str(odds.get("generated_at"))[:19]
     n = 0
@@ -556,7 +596,7 @@ def grow_lines(sport: str) -> Dict[str, Any]:
         snap["at"] = ga
         row = ev.setdefault(str(g["event_id"]), {"matchup": g.get("matchup"), "home": g.get("home"),
                                                   "away": g.get("away"), "commence": g.get("commence_time"),
-                                                  "open": snap})
+                                                  "open": snap, **({"open_late": True} if new_history else {})})
         row["close"] = snap
         row["commence"] = g.get("commence_time") or row.get("commence")
         n += 1
@@ -598,7 +638,7 @@ def move_signals(sport: str, board_rows: List[Dict[str, Any]], lines: Dict[str, 
         # line history. A game first met mid-life (e.g. already on the board when this log began)
         # is counted as seen, with no side.
         open_at = str(((lines.get(eid) or {}).get("open") or {}).get("at") or "")[:19]
-        at_open = bool(open_at) and open_at == str(rec["seen_at"])[:19]
+        at_open = bool(open_at) and open_at == str(rec["seen_at"])[:19] and not (lines.get(eid) or {}).get("open_late")
         rec["at_open"] = at_open
         if abs(gap) >= MOVE_GAP and at_open:
             side = "home" if gap > 0 else "away"
@@ -728,7 +768,8 @@ def run_sport(sport: str) -> Dict[str, Any]:
     today = dt.date.today()
     season_start = {"nfl": f"{_season_key('nfl', today.isoformat())}-08-01",
                     "nhl": f"{_season_key('nhl', today.isoformat())}-09-01",
-                    "nba": f"{_season_key('nba', today.isoformat())}-09-01"}[sport]
+                    "nba": f"{_season_key('nba', today.isoformat())}-09-01",
+                    "ncaab": f"{_season_key('ncaab', today.isoformat())}-09-01"}[sport]
     params = fit_params(sport, finals, season_start)
     gm, extra = None, {}
     if sport == "nhl":
@@ -783,6 +824,14 @@ def run_sport(sport: str) -> Dict[str, Any]:
                                    "season's DK-priced games the model is NOT better than Elo alone and far from the "
                                    "DraftKings close; the verdict stays NO EDGE."),
         }
+    elif sport == "ncaab":
+        # v1: margin Elo only (no roster / injury data for 360 teams yet). Research only.
+        bt = backtest(sport, finals, lines, params, keep_rows=True)
+        lean_rows = bt.pop("_rows", [])
+        extra["research_only"] = ("College basketball desk, research only (2026-11-13): margin Elo fitted on last "
+                                  "season, shown on the board as a model side for information. No picks and no leans "
+                                  "until it has a DraftKings price history to be judged against and Brandon promotes it.")
+        qm = gm = None
     else:
         qm = nfl_qb_model(finals, params, season_start)
         bt_base = backtest(sport, finals, lines, params)
@@ -805,6 +854,8 @@ def run_sport(sport: str) -> Dict[str, Any]:
     beats_market = bool(bt.get("n", 0) >= MIN_BACKTEST_N and bt.get("logloss_blend", 9) < bt.get("logloss_market", 0))
     # a weight that doesn't beat the market at 4 decimals is noise: lean on nothing
     w = bt.get("w_fitted", 0.0) if beats_market else 0.0
+    if sport in RESEARCH_ONLY:
+        w = 0.0                                  # research only: never a pick, whatever the backtest says
     ci_lo = (bt.get("logloss_gain_ci90") or (0, 0))[0]
     proven = beats_market and ci_lo > 0 and (oos.get("bets") or 0) >= 50 and (oos.get("roi_pct") or -1) > 0
     if not beats_market:
@@ -817,6 +868,10 @@ def run_sport(sport: str) -> Dict[str, Any]:
     else:
         verdict = ("PROMISING: the gain over the DK close is outside noise and the out-of-sample half is "
                    "profitable over 50+ bets -- curated only on Brandon's call")
+    if sport in RESEARCH_ONLY:
+        verdict = ("RESEARCH ONLY: a model side for information; no picks or leans until this desk has a "
+                   f"DraftKings price history to be judged against ({bt.get('n', 0)} DK-priced games so far) and "
+                   "Brandon promotes it")
     elo = replay(sport, finals, params)
     board = []
     odds = _load(os.path.join(DATA_DIR, "espn_odds.json"))
@@ -941,7 +996,7 @@ def run_sport(sport: str) -> Dict[str, Any]:
                             "prob": round(pp, 4), "book_american": px, "fair_american": _american(pp),
                             "ev": round(ev, 4)}
         row["pick"] = best
-        if best is None and lean_ok:
+        if best is None and lean_ok and sport not in RESEARCH_ONLY:
             ln = lean_side(p_elo, m.get("ml_home"), m.get("ml_away"))
             if ln:
                 row["lean"] = dict(ln, team=h if ln["side"] == "home" else a)
@@ -961,7 +1016,7 @@ def run() -> Dict[str, Any]:
                       "no-vig price by a walk-forward-fitted weight; picks only at >= "
                       f"{int(MIN_EDGE * 100)}% EV at the DK price."),
            "sports": {}}
-    for s in ("nfl", "nhl", "nba"):
+    for s in ("nfl", "nhl", "nba", "ncaab"):
         try:
             out["sports"][s] = run_sport(s)
         except Exception as e:   # a desk failure must not take the other down

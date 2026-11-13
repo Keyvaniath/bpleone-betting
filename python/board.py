@@ -420,10 +420,12 @@ def build_college(odds: Dict[str, Any], now: dt.datetime, today_et: str) -> List
     return out
 
 
-def build_odds_only(sport: str, odds: Dict[str, Any], now: dt.datetime, today_et: str) -> List[Dict[str, Any]]:
-    """(2026-11-13) A sport with DraftKings odds but no model of ours (college basketball):
-    the prices only, under its own chip. No side, no grade, never a bet."""
+def build_odds_only(sport: str, odds: Dict[str, Any], now: dt.datetime, today_et: str,
+                    gld: Optional[Dict[str, Any]] = None) -> List[Dict[str, Any]]:
+    """(2026-11-13) A college sport with DraftKings odds: the prices under its own chip, plus the
+    research-only desk's model side when it has one (college basketball v1 Elo). Never a bet."""
     last_day = (dt.date.fromisoformat(today_et) + dt.timedelta(days=DAYS_AHEAD)).isoformat()
+    desk = {str(r.get("event_id")): r for r in ((((gld or {}).get("sports") or {}).get(sport.lower()) or {}).get("board") or [])}
     out = []
     for o in odds.get("games") or []:
         m = o.get("market") or {}
@@ -437,6 +439,7 @@ def build_odds_only(sport: str, odds: Dict[str, Any], now: dt.datetime, today_et
         ok, why = _q.actionable(q, now=now)
         ok, why = pod._dk_only(q, ok, why)
         pk = gld_no_vig(m.get("ml_home"), m.get("ml_away"))
+        pm = (desk.get(str(o.get("event_id"))) or {}).get("p_home_elo")
         out.append({
             "id": str(o.get("event_id") or o.get("matchup")), "sport": sport, "date": gd, "start": o.get("commence_time"),
             "away": o.get("away"), "home": o.get("home"), "matchup": o.get("matchup"), "page": pod.SPORT_PAGE.get(sport),
@@ -445,12 +448,23 @@ def build_odds_only(sport: str, odds: Dict[str, Any], now: dt.datetime, today_et
                      "observed_at": odds.get("generated_at"), "snapshot_id": None, "hold_pct": hold_pct(m.get("ml_home"), m.get("ml_away")),
                      "spread_home_line": m.get("spread_home_line"), "spread_home_price": m.get("spread_home_price"),
                      "spread_away_line": m.get("spread_away_line"), "spread_away_price": m.get("spread_away_price"), "move": None},
-            "model": {"p_home": None, "p_away": None},
+            "model": {"p_home": pm, "p_away": (round(1 - pm, 4) if pm is not None else None)},
             "market": {"p_home_no_vig": pk, "p_away_no_vig": (round(1 - pk, 4) if pk is not None else None)},
-            "desk_verdict": "NO MODEL", "live_quote": bool(ok), "quote_issue": None if ok else why,
+            "desk_verdict": "RESEARCH ONLY" if pm is not None else "NO MODEL", "live_quote": bool(ok), "quote_issue": None if ok else why,
             "desk_logged": [], "lineup": None, "pick": None, "model_side": None, "hold": None, "grade": None, "score": None,
-            "college": True, "odds_only": True,
-            "reason": "DraftKings odds only: we have no model for this sport yet, so there is no side and no bet."})
+            "college": True, "odds_only": pm is None,
+            "reason": ("DraftKings odds only: we have no model for this game, so there is no side and no bet." if pm is None else
+                       f"Research-only college model: {max(pm, 1 - pm) * 100:.0f}% {o.get('home') if pm >= 0.5 else o.get('away')}"
+                       f" vs DraftKings {max(pk or 0, 1 - (pk or 0)) * 100:.0f}% {o.get('home') if (pk or 0) >= 0.5 else o.get('away')}. "
+                       "For information only: this desk has no record against DraftKings yet, so no college game is a bet.")})
+        if pm is not None and pk is not None and ok:
+            side = "home" if pm >= 0.5 else "away"
+            out[-1]["model_side"] = {"side": side, "team": o.get(side), "market": f"ML_{side.upper()}",
+                                     "book_american": m.get("ml_home") if side == "home" else m.get("ml_away"),
+                                     "prob_model": round(pm if side == "home" else 1 - pm, 4),
+                                     "prob_dk": round(pk if side == "home" else 1 - pk, 4),
+                                     "agrees_with_market": (pk >= 0.5) == (pm >= 0.5)}
+            out[-1]["grade"] = "D"
     out.sort(key=lambda g: (g["date"], str(g.get("start") or ""), g["matchup"] or ""))
     return out
 
@@ -628,7 +642,7 @@ def run(now: Optional[dt.datetime] = None) -> Dict[str, Any]:
     picks = flat_picks(games, gld)                     # bets come from the major-sport desks only
     games = games + build_college(odds, now, today_et)
     for _sp in ODDS_ONLY:
-        games = games + build_odds_only(_sp, odds, now, today_et)
+        games = games + build_odds_only(_sp, odds, now, today_et, gld)
     alpha = alpha_for_today(picks, today_et, now)
     alpha_ids = {(p["sport"], str(p["event_id"])) for p in alpha["picks"]}
     for g in games:
@@ -650,7 +664,9 @@ def run(now: Optional[dt.datetime] = None) -> Dict[str, Any]:
         }
     for sp in COLLEGE:
         gs = [g for g in games if g["sport"] == sp and g["date"] == today_et]
-        sports[sp] = {"games_today": len(gs), "bets_today": 0, "verdict": "NO MODEL" if sp in ODDS_ONLY else "EXPERIMENTAL",
+        sports[sp] = {"games_today": len(gs), "bets_today": 0,
+                      "verdict": ("RESEARCH ONLY" if any(g.get("model", {}).get("p_home") is not None for g in gs) else "NO MODEL")
+                      if sp in ODDS_ONLY else "EXPERIMENTAL",
                       "status": "on" if gs else "no games today", "page": pod.SPORT_PAGE.get(sp), "info_only": True}
     # today is always a day on the board, even after its last game has started: the locked
     # Alpha list and the day's results still belong to it
