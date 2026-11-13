@@ -95,6 +95,16 @@
         expected ${b.expected_roi_pct_at_no_vig}% per bet at the no-vig price — a lean is not an edge
       </div>`;
   };
+  // (2026-11-13) line-move signals: a forward test of whether the model points at the side
+  // the market moves toward. Not picks.
+  const msl = (s) => {
+    const m = s.move_signals;
+    if (!m || !m.n_seen) return "";
+    const sg = (v) => v == null ? "—" : (v > 0 ? "+" : v < 0 ? "−" : "") + Math.abs(v);
+    return `<div class="muted" style="margin-top:6px; font-family:'JetBrains Mono',monospace; font-size:11px;">
+        Line-move signals (forward test, not picks; model ≥ ${Math.round(m.gap * 100)} pts off DraftKings when a game first appears): ${m.n_scored} scored${m.n_scored ? `, CLV ${sg(m.avg_clv_pts)} pts, beat the close ${m.beat_close_pct}%, EV at the close ${sg(m.avg_clv_ev_pct)}%` : ""} · ${m.n_signals_open} open · ${m.n_seen} games seen since ${String(m.since || "").slice(0, 10)}
+      </div>`;
+  };
   fetch("data/game_lines_desk.json?t=" + Date.now(), { cache: "no-cache" })
     .then((r) => r.json())
     .then((d) => {
@@ -116,7 +126,7 @@
               log loss DK ${bt.logloss_market ?? "—"} / model ${bt.logloss_elo ?? "—"} / blend ${bt.logloss_blend ?? "—"} (w=${bt.w_fitted ?? "—"}) ·
               gain 90% CI [${ci[0] ?? "—"}, ${ci[1] ?? "—"}] ·
               out-of-sample half: ${oos.bets || 0} bets, ${oos.roi_pct == null ? "—" : (oos.roi_pct >= 0 ? "+" : "") + oos.roi_pct + "%"}
-            </div>${ladder(s, bt)}${fwd(s)}${leanLine(s)}</div>`;
+            </div>${ladder(s, bt)}${fwd(s)}${leanLine(s)}${msl(s)}</div>`;
         const rows = (s.board || []).map((r) => {
           const pk = r.pick;
           // (2026-11-11) no desk pick: show the lean, if the game has one, labelled as a lean

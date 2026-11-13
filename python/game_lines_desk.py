@@ -566,6 +566,80 @@ def grow_lines(sport: str) -> Dict[str, Any]:
     return ev
 
 
+# ------------------------------------------------------------ move signals ----
+# (2026-11-13) Does the model point at the side the market will MOVE toward? The backtest
+# (tools/move_study.py) says yes on all three sports, but NBA and NFL there use hindsight
+# (who actually played / started), and lines move on exactly that news; NHL (projected
+# goalies) is clean at +0.67 pts CLV yet still -2.9% EV at the close. Only a forward test
+# settles it. A SIGNAL is recorded the first time the desk sees a game whose live model
+# differs from DraftKings' no-vig price by >= MOVE_GAP: side, model probability, price. It
+# is scored after the start against the last pre-start snapshot. Signals are NOT picks: they
+# are never shown as bets, never enter the ledger, and the gate is CLV, not W-L.
+MOVE_GAP = 0.04
+MOVE_LOG = os.path.join(DATA_DIR, "move_signals.json")
+
+
+def move_signals(sport: str, board_rows: List[Dict[str, Any]], lines: Dict[str, Any],
+                 now: Optional[dt.datetime] = None) -> Dict[str, Any]:
+    """Record first-sight signals for this sport's board rows, score the started ones,
+    return the sport's summary. Append-only per event: a recorded signal never changes."""
+    now = now or dt.datetime.now(dt.timezone.utc)
+    log = _load(MOVE_LOG) or {}
+    sigs = log.setdefault("signals", {})
+    for r in board_rows:
+        eid = str(r.get("event_id") or "")
+        if not eid or f"{sport}:{eid}" in sigs or r.get("p_home_elo") is None or r.get("p_home_dk") is None:
+            continue
+        gap = r["p_home_elo"] - r["p_home_dk"]
+        rec = {"sport": sport.upper(), "event_id": eid, "matchup": r.get("matchup"), "commence": r.get("commence"),
+               "seen_at": (r.get("quote") or {}).get("observed_at") or now.isoformat(timespec="seconds"),
+               "p_model_home": r["p_home_elo"], "p_dk_home": r["p_home_dk"], "gap": round(gap, 4)}
+        # a signal needs the OPENING price: only when this snapshot is the game's first one in the
+        # line history. A game first met mid-life (e.g. already on the board when this log began)
+        # is counted as seen, with no side.
+        open_at = str(((lines.get(eid) or {}).get("open") or {}).get("at") or "")[:19]
+        at_open = bool(open_at) and open_at == str(rec["seen_at"])[:19]
+        rec["at_open"] = at_open
+        if abs(gap) >= MOVE_GAP and at_open:
+            side = "home" if gap > 0 else "away"
+            rec.update(side=side, price=r.get("ml_home") if side == "home" else r.get("ml_away"))
+        sigs[f"{sport}:{eid}"] = rec          # every first sight is kept (gap < MOVE_GAP has no side): the denominator
+    # score this sport's started signals with a side
+    scored = []
+    for k, s in sigs.items():
+        if s.get("sport") != sport.upper() or not s.get("side") or s.get("price") is None:
+            continue
+        ev = lines.get(s["event_id"]) or {}
+        c = ev.get("close") or {}
+        try:
+            started = dt.datetime.fromisoformat(str(ev.get("commence") or s.get("commence")).replace("Z", "+00:00")) <= now
+        except Exception:
+            started = False
+        px_c = c.get("ml_home") if s["side"] == "home" else c.get("ml_away")
+        fair = _no_vig(c.get("ml_home"), c.get("ml_away"))
+        d_o, d_c = _dec(s["price"]), _dec(px_c)
+        if not (started and d_o and d_c and fair is not None):
+            continue
+        pf = fair if s["side"] == "home" else 1 - fair
+        s["clv_pts"] = round((1 / d_c - 1 / d_o) * 100, 2)
+        s["clv_ev"] = round(pf * d_o - 1, 4)
+        s["close_price"] = px_c
+        scored.append(s)
+    log["note"] = ("Line-move signals (forward test, not picks): the side the desk model favoured by >= "
+                   f"{int(MOVE_GAP * 100)} points over DraftKings' no-vig price when a game first appeared, "
+                   "scored against the last pre-start price.")
+    log["generated_at"] = now.isoformat(timespec="seconds")
+    _dump(MOVE_LOG, log)
+    n = len(scored)
+    open_n = sum(1 for s in sigs.values() if s.get("sport") == sport.upper() and s.get("side") and "clv_pts" not in s)
+    return {"gap": MOVE_GAP, "n_seen": sum(1 for s in sigs.values() if s.get("sport") == sport.upper()),
+            "n_signals_open": open_n, "n_scored": n,
+            "avg_clv_pts": round(sum(s["clv_pts"] for s in scored) / n, 2) if n else None,
+            "beat_close_pct": round(sum(1 for s in scored if s["clv_pts"] > 0) / n * 100, 1) if n else None,
+            "avg_clv_ev_pct": round(sum(s["clv_ev"] for s in scored) / n * 100, 2) if n else None,
+            "since": min((s.get("seen_at") or "" for s in sigs.values() if s.get("sport") == sport.upper()), default=None)}
+
+
 def forward_test(sport: str, lines: Dict[str, Any]) -> Dict[str, Any]:
     """Score the desk's LOGGED picks (ledger source <sport>_game_ml) two ways:
     W-L/units at the logged DK price, and closing-line value -- the logged
@@ -876,6 +950,7 @@ def run_sport(sport: str) -> Dict[str, Any]:
             "verdict": verdict, "ratings": {t: round(v, 1) for t, v in sorted(elo.r.items(), key=lambda x: -x[1])},
             "board": board, "n_picks": sum(1 for r in board if r["pick"]),
             "forward_test": forward_test(sport, lines),
+            "move_signals": move_signals(sport, board, lines),
             "lean": {"rule": LEAN_RULE, "rule_text": LEAN_RULE_TEXT, "backtest": lean_backtest(lean_rows)},
             **extra}
 

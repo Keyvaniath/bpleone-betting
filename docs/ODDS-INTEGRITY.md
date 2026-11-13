@@ -966,3 +966,23 @@ defects; four smaller ones, all fixed the same day:
     same pairing can meet twice inside the 7-day window).
 Also re-run: the 137-page runtime crawl, clean.
 
+## 2026-11-13: does the model predict LINE MOVES? (tools/move_study.py) -> forward test
+
+A model can lose to the close and still be worth betting EARLY if it points at the
+side the market will move toward. Walk-forward, this season, first vs last pre-start
+DraftKings snapshot; rule: model side at the OPEN price when |model - open no-vig|
+>= 4 pts (T fixed before looking):
+  NFL 101 bets: CLV +0.66 pts, 90% CI [+0.10, +1.23]; EV at the no-vig close -2.33%
+  NBA 125 bets: CLV +1.80 pts, CI [+1.26, +2.36]; line moved our way 71%; EV -0.23%
+  NHL 119 bets: CLV +0.67 pts, CI [+0.41, +0.94]; EV at the close -2.93%
+All pass the CLV gate, but: (1) the NBA backtest knows who actually PLAYED and the
+NFL backtest who actually STARTED at QB -- lines move on exactly that news, so those
+two are contaminated by hindsight; NHL (projected goalies) is the clean one. (2) Even
+the clean +0.67 pts does not cover the ~4.5% hold: EV at the close is still -2.9%.
+Verdict: not a strategy; a forward test. game_lines_desk.move_signals records, the
+first time the desk sees a game AT ITS OPENING SNAPSHOT, the model's side and price
+when |gap| >= 4 pts (data/move_signals.json, append-only, one record per game; games
+first met mid-life are counted as seen with no side), and scores it after the start
+against the last pre-start price. Shown on each desk card as "line-move signals
+(forward test, not picks)". Never picks, never in the ledger. Revisit at ~100 scored.
+
