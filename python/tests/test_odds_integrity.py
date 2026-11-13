@@ -1213,3 +1213,33 @@ def test_board_hold_and_line_move():
     assert mv["open_ml_home"] == -150 and mv["move_home_pts"] > 5          # money came in on the home side
     assert board.line_move({}, -200, 170) is None and board.line_move({"ml_home": None, "ml_away": 130}, -200, 170) is None
 
+
+def test_recap_post_is_the_last_fully_graded_alpha_day_losses_included():
+    import board
+    R = {"first_date": "2026-11-12",
+         "alpha": {"n_settled": 5, "wins": 4, "losses": 1, "net_units": 1.119},
+         "by_day": {"2026-11-12": {"alpha": {"wins": 4, "losses": 1, "net_units": 1.119}},
+                    "2026-11-13": {"alpha": {"wins": 0, "losses": 0, "net_units": 0}}},
+         "recent": [{"date": "2026-11-13", "sport": "NBA", "team": "OKC", "book_american": -283, "grade": "C", "is_alpha": True, "result": "pending"},
+                    {"date": "2026-11-12", "sport": "NBA", "team": "PHX", "book_american": -229, "grade": "C", "is_alpha": True, "result": "won", "final": "CHA 96 @ PHX 101"},
+                    {"date": "2026-11-12", "sport": "NHL", "team": "BUF", "book_american": -155, "grade": "C", "is_alpha": True, "result": "lost", "final": "BUF 2 @ CHI 3"},
+                    {"date": "2026-11-12", "sport": "NHL", "team": "DAL", "book_american": -175, "grade": "C", "is_alpha": False, "result": "lost"}]}
+    p = board.recap_post(R, "2026-11-14")            # 11/13 is not fully graded: the recap is 11/12
+    assert p["day"] == "2026-11-12" and p["fits"]
+    assert "4-1, +1.12u" in p["text"] and "L NHL BUF ML -155 (BUF 2 @ CHI 3)" in p["text"]      # the loss is in it
+    assert "DAL" not in p["text"]                                                             # not an Alpha pick
+    assert "All were leans, not proven edges." in p["text"] and "not betting advice" in p["text"]
+    assert board.recap_post(None, "2026-11-14") is None and board.recap_post({"recent": []}, "2026-11-14") is None
+
+
+
+
+def test_recap_never_drops_a_pick_to_fit():
+    import board
+    picks = [{"date": "2026-11-12", "sport": "NHL", "team": f"TEAM{i}", "book_american": -155, "grade": "C", "is_alpha": True,
+              "result": "lost" if i == 4 else "won", "final": "LONGAWAYNAME 100 @ LONGHOMENAME 101"} for i in range(5)]
+    R = {"first_date": "2026-11-12", "alpha": {"n_settled": 5, "wins": 4, "losses": 1, "net_units": 1.1},
+         "by_day": {"2026-11-12": {"alpha": {"wins": 4, "losses": 1, "net_units": 1.1}}}, "recent": picks}
+    p = board.recap_post(R, "2026-11-13")
+    assert p["fits"]
+    assert all(f"TEAM{i}" in p["text"] for i in range(5)) and "L TEAM4 -155" in p["text"]       # the loss is never cut
