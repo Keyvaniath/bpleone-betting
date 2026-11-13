@@ -75,6 +75,14 @@ bpleone-site/
   the heartbeat now runs nfl/nba/nhl_pipeline (~1s each) and data_health flags desk-page
   prices >3h old; sw.js page loads revalidate; homepage scratch banner no longer reloads the
   page every 60s. **Rule: anything fed only by live-games is stale -- feed it from the heartbeat.**
+  Evening adds: NIGHT-BEFORE OPENERS -- espn_odds fetches tomorrow's NBA/NHL into a SEPARATE
+  key `games_next_day` (never merge it into `games`: ~20 consumers treat `games` as today's slate
+  and join by matchup); only game_lines_desk._odds_games and board.by_eid read it. Line moves now
+  measure from DraftKings' OWN opener (ESPN `open` blocks: ml/spread/total, same source), first-seen
+  price on hover; move signals + CLV still use our own snapshots (the first price we could bet).
+  Cards carry a line chart (board.price_series from data/odds_history.json, key
+  sport|matchup|UTC-date). Phones get compact cards (details.more). Slip shows to-win, added-at vs
+  now, and a past-playable warning. POD shows playable-to / break-even.
 
 - **2026-11-12 — THE BOARD (board.html, python/board.py -> data/board.json).** Every pre-game
   NFL/NBA/NHL game with DraftKings moneylines + total prices, our side, a GRADE and a SCORE:
