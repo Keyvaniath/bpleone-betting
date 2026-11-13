@@ -873,3 +873,18 @@ sport has no play (11/13: no NBA favourite qualified; the only lean is NHL VGK
 -225, locked at 12:51 ET under the old cap). Leans logged before 11/13 stay in
 the ledger as logged.
 
+## 2026-11-13: closing line value on every board bet
+
+"Think like a sharp": W-L over a few dozen bets is mostly luck; beating the
+closing number converges much faster. `_board_block` now scores every board
+bet (and the Alpha line at its locked price) against DraftKings' last
+pre-start snapshot in dk_lines_<sport>.json: clv_pts = implied probability of
+the close minus implied probability of our price (+ = we got the better
+number), and clv_ev = our price's EV at the no-vig close. Counted only after
+the start. Caveat: the heartbeat is lossy, so the "close" can be an hour or
+more before the start, and often equals the price we logged.
+First read (11/12 board, 6 bets): average -0.3 pts, EV at the close -4.5%,
+which is what a lean taken at the market price should show. For contrast the
+NFL desk's 31 forward-test picks average +1.76 pts (beat the close 52%), EV at
+the no-vig close about 0.0%.
+

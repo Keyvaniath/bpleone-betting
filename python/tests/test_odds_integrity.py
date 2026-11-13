@@ -1170,3 +1170,27 @@ def test_play_of_day_ranks_edges_by_risk_adjusted_ev_not_raw_ev():
     assert sorted([b, a], key=pod._rank_key)[0] is a
     assert pod.risk_adj(0.5, None) is None and abs(pod.risk_adj(0.889, -440) - 0.2362) < 1e-3
 
+
+def test_board_results_carry_closing_line_value_only_after_the_start(tmp_path, monkeypatch):
+    import all_picks_tracker as t
+    started = (dt.datetime.now(dt.timezone.utc) - dt.timedelta(hours=3)).strftime("%Y-%m-%dT%H:%MZ")
+    later = (dt.datetime.now(dt.timezone.utc) + dt.timedelta(hours=5)).strftime("%Y-%m-%dT%H:%MZ")
+    (tmp_path / "dk_lines_nba.json").write_text(json.dumps({"events": {
+        "1": {"commence": started, "close": {"ml_home": -250, "ml_away": 205}},     # we took -200: beat the close
+        "2": {"commence": later, "close": {"ml_home": -150, "ml_away": 130}}}}))    # not started: no CLV yet
+    for sp in ("nfl", "nhl"):
+        (tmp_path / f"dk_lines_{sp}.json").write_text(json.dumps({"events": {}}))
+    monkeypatch.setattr(t, "DATA_DIR", str(tmp_path))
+    h = [{"source": "board_pick", "also_sources": ["board_alpha"], "sport": "NBA", "player_or_matchup": "BOS @ MIA",
+          "market": "ML_HOME", "event_id": "1", "book_american": -200, "board_price": -200, "alpha_price": -190,
+          "date": "2026-11-13", "settled": True, "result": "won", "payout_units": 0.5},
+         {"source": "board_pick", "sport": "NBA", "player_or_matchup": "A @ B", "market": "ML_AWAY", "event_id": "2",
+          "book_american": 130, "board_price": 130, "date": "2026-11-13", "settled": False}]
+    b = t._board_block(h)
+    assert b["all_bets"]["n_clv"] == 1 and b["all_bets"]["beat_close_pct"] == 100.0
+    assert abs(b["all_bets"]["avg_clv_pts"] - round((250 / 350 - 200 / 300) * 100, 2)) < 1e-9       # +4.76 pts
+    assert b["alpha"]["avg_clv_pts"] > b["all_bets"]["avg_clv_pts"]                                  # the locked -190 is better still
+    assert b["all_bets"]["avg_clv_ev_pct"] > 0
+    r = {x["matchup"]: x for x in b["recent"]}
+    assert r["BOS @ MIA"]["close_price"] == -250 and r["A @ B"]["clv_pts"] is None
+

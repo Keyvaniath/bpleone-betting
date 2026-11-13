@@ -3312,14 +3312,47 @@ def _board_block(history: List[Dict[str, Any]]) -> Dict[str, Any]:
         d = _american_to_decimal(price(p, alpha))
         return round(d - 1, 4) if d else float(p.get("payout_units") or 0)
 
+    # CLOSING LINE VALUE (2026-11-13, "think like a sharp"): W-L over a few dozen bets is
+    # mostly luck; whether we got a better number than the market's final pre-game price
+    # converges far faster. Close = the last DraftKings snapshot taken before the start
+    # (dk_lines_<sport>.json; the heartbeat is lossy, so it can be an hour or more early).
+    # Counted only once the game has started, so a "close" is never a mid-day line.
+    _now = dt.datetime.now(dt.timezone.utc)
+    _lines: Dict[str, Dict[str, Any]] = {}
+    for _sp in ("nfl", "nba", "nhl"):
+        _lines[_sp.upper()] = (_load(os.path.join(DATA_DIR, f"dk_lines_{_sp}.json")).get("events") or {})
+
+    def clv(p: Dict[str, Any], alpha: bool = False) -> Optional[Dict[str, Any]]:
+        ev = (_lines.get(str(p.get("sport") or "").upper()) or {}).get(str(p.get("event_id") or "")) or {}
+        c = ev.get("close") or {}
+        try:
+            started = dt.datetime.fromisoformat(str(ev.get("commence")).replace("Z", "+00:00")) <= _now
+        except Exception:
+            started = False
+        side = "home" if str(p.get("market") or "").upper().endswith("HOME") else "away"
+        cp = c.get("ml_home") if side == "home" else c.get("ml_away")
+        d_ours, d_close = _american_to_decimal(price(p, alpha)), _american_to_decimal(cp)
+        hp, ap = _american_to_decimal(c.get("ml_home")), _american_to_decimal(c.get("ml_away"))
+        if not (started and d_ours and d_close and hp and ap):
+            return None
+        fair_home = (1 / hp) / (1 / hp + 1 / ap)
+        pf = fair_home if side == "home" else 1 - fair_home
+        return {"close_price": cp, "clv_pts": round((1 / d_close - 1 / d_ours) * 100, 2),     # + = we beat the close
+                "clv_ev": round(pf * d_ours - 1, 4)}                                             # EV of our price at the no-vig close
+
     def line(ps: List[Dict[str, Any]], alpha: bool = False) -> Dict[str, Any]:
         done = [p for p in ps if p.get("settled") and p.get("result") in ("won", "lost", "push")]
         w = sum(1 for p in done if p["result"] == "won")
         l = sum(1 for p in done if p["result"] == "lost")
         net = round(sum(pay(p, alpha) for p in done), 3)
+        cl = [x for x in (clv(p, alpha) for p in ps) if x]
         return {"n_settled": len(done), "wins": w, "losses": l, "net_units": net,
                 "roi_pct": round(net / (w + l) * 100, 2) if (w + l) else None,
-                "n_pending": sum(1 for p in ps if not p.get("settled"))}
+                "n_pending": sum(1 for p in ps if not p.get("settled")),
+                "n_clv": len(cl),
+                "avg_clv_pts": round(sum(x["clv_pts"] for x in cl) / len(cl), 2) if cl else None,
+                "beat_close_pct": round(sum(1 for x in cl if x["clv_pts"] > 0) / len(cl) * 100, 1) if cl else None,
+                "avg_clv_ev_pct": round(sum(x["clv_ev"] for x in cl) / len(cl) * 100, 2) if cl else None}
 
     def team(p: Dict[str, Any]) -> str:
         parts = [x.strip() for x in str(p.get("player_or_matchup") or "").split("@", 1)]
@@ -3348,6 +3381,8 @@ def _board_block(history: List[Dict[str, Any]]) -> Dict[str, Any]:
                     "market": p.get("market"), "book_american": price(p, "board_alpha" in tags(p)),
                     "result": p.get("result") if p.get("settled") else "pending",
                     "payout_units": pay(p, "board_alpha" in tags(p)) if p.get("settled") else None,
+                    "close_price": (clv(p, "board_alpha" in tags(p)) or {}).get("close_price"),
+                    "clv_pts": (clv(p, "board_alpha" in tags(p)) or {}).get("clv_pts"),
                     "final": (p.get("outcome") or {}).get("final_score")} for p in recent],
         "definition": ("Every bet on The Board (grades A, B, C), graded on the final score at the DraftKings price "
                        "the board showed on game day (the locked price for an Alpha pick). Alpha = the day's locked "
