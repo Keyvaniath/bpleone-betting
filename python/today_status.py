@@ -32,6 +32,10 @@ def _verdict_word(v: str) -> str:
     return (v or "").split(":")[0].strip() or "n/a"
 
 
+# (2026-11-13) what a held-back game is waiting on, per sport (NBA said "starting goalie")
+HOLD_WHY = {"NFL": "QB", "NHL": "starting goalie", "NBA": "day-to-day player"}
+
+
 def run() -> Dict[str, Any]:
     odds = _load("espn_odds.json")
     desk = (_load("game_lines_desk.json").get("sports") or {})
@@ -61,13 +65,16 @@ def run() -> Dict[str, Any]:
         elif picks:
             row["status"] = (f"{len(priced)} games priced at DraftKings · {len(picks)} pick(s) at the DK price"
                              + (" (forward test -- not in the curated record)" if not d.get("proven") else "")
-                             + (f" · {len(blocked)} held back ({'QB' if sp == 'NFL' else 'starting goalie'} not settled)" if blocked else ""))
+                             + (f" · {len(blocked)} held back ({HOLD_WHY.get(sp, 'lineup')} not settled)" if blocked else ""))
         else:
             vw = _verdict_word(d.get("verdict"))
             why = ("the model doesn't beat DraftKings' price on this season's games" if vw == "NO EDGE"
                    else "nothing cleared the 4% value bar at the DK price")
+            leans = sum(1 for r in board if r.get("lean") and not r.get("pick"))
             row["status"] = (f"{len(priced)} games priced at DraftKings · no picks -- {why}"
-                             + (f" · {len(blocked)} held back ({'QB' if sp == 'NFL' else 'starting goalie'} not settled)" if blocked else ""))
+                             + (f" · {len(blocked)} held back ({HOLD_WHY.get(sp, 'lineup')} not settled)" if blocked else "")
+                             + (f" · {leans} model lean(s) on The Board (not an edge)" if leans else ""))
+            row["leans"] = leans
         rows.append(row)
 
     fun = top.get("funnel") or {}
