@@ -99,6 +99,7 @@ jobs:
       # ESPN is logged at the current price (GH cron drops many live-games
       # fires; this is a second chance). ~2s.
       - name: DraftKings odds + NFL/NHL game-lines desk + desk pages (pre-ledger)
+        timeout-minutes: 4
         working-directory: python
         run: |
           python espn_odds.py > /dev/null || echo "espn_odds.py" >> "$RUNNER_TEMP/failed_steps.txt"

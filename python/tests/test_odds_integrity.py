@@ -1527,3 +1527,23 @@ def test_health_flags_old_prices_on_the_desk_pages(tmp_path, monkeypatch):
     (tmp_path / "nhl_state.json").write_text(json.dumps({"games": [g]}))
     assert dh._check_desk_prices(now)["status"] == "green"
 
+
+
+def test_espn_outage_keeps_the_previous_desk_slate(tmp_path, monkeypatch):
+    import nhl_pipeline, nba_pipeline
+    for mod, name in ((nhl_pipeline, "nhl_state.json"), (nba_pipeline, "nba_state.json")):
+        out = tmp_path / name
+        out.write_text(json.dumps({"generated_at": "2026-11-13T20:05:47", "games": [{"id": "1"}]}))
+        monkeypatch.setattr(mod, "OUT_PATH", str(out))
+        monkeypatch.setattr(mod, "_scoreboard_with_today", lambda: None)
+        r = mod.run()
+        assert r["games"] == [{"id": "1"}]
+        assert json.loads(out.read_text())["games"] == [{"id": "1"}]   # file untouched
+
+
+def test_board_playable_to_uses_the_desk_hurdle():
+    import board
+    import game_lines_desk as gld
+    assert board._desk_min_edge() == gld.MIN_EDGE
+    src = open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "..", "board.html"), encoding="utf-8").read()
+    assert "(1 + me) / k.prob_model" in src

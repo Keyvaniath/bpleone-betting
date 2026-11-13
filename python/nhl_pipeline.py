@@ -256,6 +256,17 @@ def run() -> Dict[str, Any]:
     _DESK_PRIOR.update(_load_desk_prior())
     cal_shift = _self_training_shift("nhl")
     if not sb:
+        # (2026-11-13 review) the heartbeat now runs this every few minutes: an ESPN hiccup must
+        # not blank the desk page. Keep the previous slate untouched (its prices keep their own
+        # observed_at, so data_health flags them once they pass 3 hours).
+        try:
+            with open(OUT_PATH) as f:
+                prev = json.load(f)
+            if prev.get("games"):
+                print("[nhl] ESPN scoreboard unreachable -- kept the previous slate")
+                return prev
+        except Exception:
+            pass
         out = {
             "generated_at": dt.datetime.now().isoformat(timespec="seconds"),
             "active_season": False,

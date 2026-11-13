@@ -159,7 +159,7 @@
     <div class="card-head"><span>🧾 Graded so far</span><span class="muted" id="resMeta"></span></div>
     <div id="results" style="padding:4px 2px 2px;"><p class="muted" style="font-size:13px;">Loading results…</p></div>
     <p style="margin:8px 2px 2px;font-size:12px;"><button id="csvDl" class="muted" style="background:none;border:1px solid var(--line-soft);border-radius:6px;padding:4px 10px;cursor:pointer;color:inherit;">Download these bets (CSV)</button>
-      <span class="muted">every board bet shown here, with price, close, CLV and result</span></p>
+      <span class="muted">the most recent 60 board bets, with price, close, CLV and result (the full record is the ledger file data/all_picks_ledger.json)</span></p>
   </section>
 
   <section class="card" style="margin-top:18px;">
@@ -174,7 +174,7 @@
       <p style="margin:6px 0;"><b>College football</b> has its own chip and is shown for information only: DraftKings&#39; odds and our college model&#39;s side and spread. That model&#39;s own benchmark says the closing line is sharper than it, so no college game is graded as a bet.</p>
       <p style="margin:6px 0;"><span class="gr HOLD">HOLD</span> No side while the desk waits on a quarterback or a day-to-day player.</p>
       <p style="margin:6px 0;"><b style="color:var(--gold);">★ Alpha picks</b> are the three to five highest-scored bets of the day, whatever their grade, locked at 11:00 AM ET so the list does not reshuffle. On a day with no A or B bet they are grade C leans, and the card says so. They are separate from the MLB <a href="alpha-pick.html" style="color:#7fb0e8;">Alpha Pick</a> record, which has its own edge gate.</p>
-      <p style="margin:6px 0;"><b>Playable to.</b> A desk pick carries the worst price it is still a bet at: the desk&#39;s own fair price, where its expected value is zero. If the line moves past it, pass. A lean shows its break-even instead, DraftKings&#39; no-vig price, which no book posts: that is why a lean is not an edge.</p>
+      <p style="margin:6px 0;"><b>Playable to.</b> A desk pick carries the worst price it is still a bet at: the price where its expected value at the desk&#39;s probability falls to the desk&#39;s 4% hurdle. If the line moves past it, pass. A lean shows its break-even instead, DraftKings&#39; no-vig price, which no book posts: that is why a lean is not an edge.</p>
       <p style="margin:6px 0;"><b>Fair price.</b> Next to each side is its fair price: DraftKings&#39; two prices with the hold taken out. The gap between the posted price and the fair price is what the book charges you on that side.</p>
       <p style="margin:6px 0;"><b>Line moves and hold.</b> Each card shows where the moneyline opened (the first DraftKings price we recorded), how many points of win probability it has moved since, and DraftKings&#39; hold, the margin built into the two prices. A big move toward a side usually means informed money; a high hold means a worse price for either side.</p>
       <p style="margin:6px 0;"><b>Closing line value (CLV)</b> is how sharps judge a bet before the result is known: did we get a better price than DraftKings&#39; last price before the game started? "+2.0 pts" means our price implied a 2-point lower win probability than the close, so we got the better number. Over a few dozen bets, CLV says far more than the win-loss record. A lean taken at the market price should average about zero.</p>
@@ -219,7 +219,11 @@
   const cdTxt = (ms) => { if (!(ms > 0)) return ""; const m = Math.round(ms / 60000); return m < 60 ? `in ${m}m` : `in ${Math.floor(m / 60)}h ${String(m % 60).padStart(2, "0")}m`; };
   const cdSpan = (iso) => { const t = new Date(iso).getTime(); if (isNaN(t) || t - Date.now() > 6 * 3600e3 || t <= Date.now()) return "";
     return ` <span class="cd" data-t="${t}" style="color:var(--gold);">${cdTxt(t - Date.now())}</span>`; };
-  setInterval(() => document.querySelectorAll(".cd").forEach((e) => { const ms = +e.dataset.t - Date.now(); e.textContent = ms > 0 ? cdTxt(ms) : "starting"; }), 30000);
+  setInterval(() => {
+    document.querySelectorAll(".cd").forEach((e) => { const ms = +e.dataset.t - Date.now(); e.textContent = ms > 0 ? cdTxt(ms) : "starting"; });
+    const am = document.getElementById("alphaMeta");
+    if (am && am.dataset.lock && typeof render === "function") render();   // re-states "locks in Xm"
+  }, 30000);
 
   // ---- slip: a per-device list, never a wager
   const KEY = "edgestat_slip_v1";
@@ -308,8 +312,12 @@
   // (expected value 0 at the desk's probability); a lean has no playable price at DraftKings' odds
   function playTo(g) {
     const k = g.pick || {};
-    if (k.kind === "desk" && k.prob_model > 0 && k.prob_model < 1)
-      return ` · <b title="The worst price at which this bet still has positive expected value at the desk&#39;s probability. Past it, pass.">playable to ${fairA(k.prob_model)}</b>`;
+    const me = (B && B.desk_min_edge != null) ? B.desk_min_edge : 0.04;
+    if (k.kind === "desk" && k.prob_model > 0 && k.prob_model < 1) {
+      // the desk bets only at >= min_edge EV: the limit decimal price is (1 + min_edge) / p
+      const d = (1 + me) / k.prob_model, a = d >= 2 ? Math.round((d - 1) * 100) : Math.round(-100 / (d - 1));
+      return ` · <b title="The worst price the desk still bets at: ${Math.round(me * 100)}% expected value at the desk&#39;s probability (its zero-EV price is ${fairA(k.prob_model)}). Past it, pass.">playable to ${a === -100 ? "+100" : (a > 0 ? "+" : "") + a}</b>`;
+    }
     if (k.kind === "lean" && k.fair_american != null)
       return ` · <span class="muted" title="A lean claims no edge: it would only break even at DraftKings&#39; no-vig fair price, which no book posts.">break-even ${amer(k.fair_american)}</span>`;
     return "";
@@ -393,8 +401,11 @@
             // minutes to the lock on the Eastern clock (the list is re-scored until then)
             const hm = new Date().toLocaleTimeString("en-US", Object.assign({ hour: "2-digit", minute: "2-digit", hour12: false }, ET)).split(":").map(Number);
             const left = (B.alpha.lock_hour_et * 60) - ((hm[0] % 24) * 60 + hm[1]);
-            return left > 0 ? " (" + cdTxt(left * 60000).replace("in ", "locks in ") + ")" : "";
+            return left > 0 ? " (locks " + cdTxt(left * 60000) + ")" : "";
           })() + " · top-scored bets of the day";
+      // (review) the meta line is plain text: tick it with the card countdowns
+      if (B.alpha.status !== "locked") $("alphaMeta").dataset.lock = String(B.alpha.lock_hour_et);
+      else delete $("alphaMeta").dataset.lock;
       $("alphaStrip").innerHTML = Af.length ? Af.map((a) => {
         const g = B.games.find((x) => x.id === String(a.event_id) && x.sport === a.sport);
         const k = g ? slipKey(g, a.side) : "";
@@ -458,6 +469,8 @@
     if (r.result !== "pending") return null;
     const g = (B.games || []).find((x) => x.sport === r.sport && x.matchup === r.matchup && x.date === r.date);
     if (!g || started(g) || !g.live_quote) return null;
+    const seen = Date.parse(String(g.odds.observed_at || "").replace(" ", "T") + (/[zZ]|[+-]\d\d:?\d\d$/.test(String(g.odds.observed_at || "")) ? "" : "Z"));
+    if (isNaN(seen) || Date.now() - seen > 30 * 60e3) return null;   // an old snapshot is not "now"
     const now = String(r.market || "").toUpperCase().endsWith("HOME") ? g.odds.ml_home : g.odds.ml_away;
     const dn = decA(now), dl = decA(r.book_american);
     if (!dn || !dl) return null;
@@ -494,7 +507,7 @@
         return `<tr style="border-top:1px solid var(--line-soft);"><td style="padding:5px 8px;">${esc(d)}</td><td style="padding:5px 8px;">${x.wins}-${x.losses}${x.n_pending ? ` <span class="muted">(${x.n_pending} open)</span>` : ""}</td><td style="padding:5px 8px;">${c(x.net_units)}</td><td style="padding:5px 8px;">${a.n_settled ? a.wins + "-" + a.losses : "—"}</td><td style="padding:5px 8px;">${a.n_settled ? c(a.net_units) : "—"}</td></tr>`; }).join("") +
       `</table></div>` : "";
     const opn = rows.map(runClv).filter(Boolean);
-    const runTxt = opn.length ? `<p class="muted" style="font-size:12px;margin:0 0 10px;" title="Closing line value so far: each open bet's logged price against DraftKings' current line. The final number is scored at the close.">Open bets vs DraftKings now: <b style="color:${opn.reduce((t, x) => t + x.pts, 0) > 0 ? "var(--accent)" : "var(--red)"};">${(opn.reduce((t, x) => t + x.pts, 0) / opn.length >= 0 ? "+" : "−")}${Math.abs(opn.reduce((t, x) => t + x.pts, 0) / opn.length).toFixed(1)} pts</b> on average across ${opn.length}, ${opn.filter((x) => x.pts > 0.05).length} moved our way, ${opn.filter((x) => x.pts < -0.05).length} against.</p>` : "";
+    const runTxt = opn.length ? `<p class="muted" style="font-size:12px;margin:0 0 10px;" title="Closing line value so far: each open bet's logged price against DraftKings' current line. The final number is scored at the close.">Open bets vs DraftKings now: <b style="color:${((m) => m > 0.05 ? "var(--accent)" : m < -0.05 ? "var(--red)" : "inherit")(opn.reduce((t, x) => t + x.pts, 0) / opn.length)};">${(opn.reduce((t, x) => t + x.pts, 0) / opn.length >= 0 ? "+" : "−")}${Math.abs(opn.reduce((t, x) => t + x.pts, 0) / opn.length).toFixed(1)} pts</b> on average across ${opn.length}, ${opn.filter((x) => x.pts > 0.05).length} moved our way, ${opn.filter((x) => x.pts < -0.05).length} against.</p>` : "";
     $("results").innerHTML = `<div class="bd-pills" style="margin:4px 0 10px;">${head}</div>` + dayTbl + runTxt + (rows.length ? "" : `<p class="muted" style="font-size:13px;">No ${esc(sport)} bet on the board yet.</p>`) + rows.slice(0, 40).map((r) => {
       const head = r.date !== last ? `<div class="muted" style="font-size:11px;margin-top:10px;text-transform:uppercase;letter-spacing:.06em;">${esc(r.date)}</div>` : "";
       last = r.date;
@@ -509,7 +522,7 @@
   // (2026-11-13) the graded list as a CSV, built in the browser from the same results block
   $("csvDl").addEventListener("click", () => {
     const R = B && B.results; if (!R || !(R.recent || []).length) return;
-    const q = (v) => { const t = v == null ? "" : String(v); return /[",\n]/.test(t) ? '"' + t.replace(/"/g, '""') + '"' : t; };
+    const q = (v) => { const t = v == null ? "" : String(v); return /[",\r\n]/.test(t) ? '"' + t.replace(/"/g, '""') + '"' : t; };
     const cols = ["date", "sport", "matchup", "team", "market", "grade", "is_alpha", "book_american", "close_price", "clv_pts", "result", "payout_units", "final"];
     const rows = R.recent.filter((r) => sport === "ALL" || r.sport === sport);
     const csv = [cols.join(",")].concat(rows.map((r) => cols.map((c) => q(r[c])).join(","))).join("\n");
@@ -517,6 +530,7 @@
     a.href = URL.createObjectURL(new Blob([csv], { type: "text/csv" }));
     a.download = "edgestat-board-bets-" + (sport === "ALL" ? "all" : sport.toLowerCase()) + "-" + (B.date_et || "") + ".csv";
     document.body.appendChild(a); a.click(); a.remove();
+    setTimeout(() => URL.revokeObjectURL(a.href), 10000);
   });
 
   $("recapCopy").addEventListener("click", () => {
