@@ -1091,3 +1091,15 @@ are graded at their locked prices, and each card says that at today's rules it i
 4. Also shipped: running CLV on open bets (logged price vs DraftKings now, pre-start), start
    and Alpha-lock countdowns, a CSV of the graded bets, and the by-price split on the track
    record.
+
+## 2026-11-13 (evening) -- fourth review; a correction
+
+An independent review of the afternoon's diff found one medium and five low defects, all fixed
+(main 944da0a3). **Correction:** "playable to" was first shipped as the desk's zero-EV price
+(BUF -766). The desk only bets at 4% EV or better (game_lines_desk.MIN_EDGE), so a card
+saying "playable" between -569 and -766 described a bet the desk itself would refuse. It is
+now (1 + MIN_EDGE) / p (BUF -569, ATL +108, SF -212), carried in board.json as desk_min_edge.
+Also: an ESPN outage no longer blanks the NBA/NHL desk pages (they keep the previous slate,
+flagged by data_health after 3h); running CLV is hidden when the snapshot is > 30 min old; the
+Alpha lock countdown ticks; the CSV is labelled as the last 60 bets; sw.js lets the browser
+follow redirects on a page load.
