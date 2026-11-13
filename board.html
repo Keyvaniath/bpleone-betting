@@ -213,6 +213,11 @@
   const obs = (s) => { if (!s) return "—"; const d = new Date(String(s).replace(" ", "T") + (/[zZ]|[+-]\d\d:?\d\d$/.test(s) ? "" : "Z")); return isNaN(d) ? s : d.toLocaleString("en-US", Object.assign({ month: "numeric", day: "numeric", hour: "numeric", minute: "2-digit" }, ET)) + " ET"; };
   const units = (u) => (u >= 0 ? "+" : "−") + Math.abs(Number(u || 0)).toFixed(2) + "u";
   const started = (g) => { const d = new Date(g.start); return !isNaN(d) && d.getTime() <= Date.now(); };
+  // (2026-11-13) countdowns: "in 1h 05m" on games starting within 6 hours, updated every 30s in place
+  const cdTxt = (ms) => { if (!(ms > 0)) return ""; const m = Math.round(ms / 60000); return m < 60 ? `in ${m}m` : `in ${Math.floor(m / 60)}h ${String(m % 60).padStart(2, "0")}m`; };
+  const cdSpan = (iso) => { const t = new Date(iso).getTime(); if (isNaN(t) || t - Date.now() > 6 * 3600e3 || t <= Date.now()) return "";
+    return ` <span class="cd" data-t="${t}" style="color:var(--gold);">${cdTxt(t - Date.now())}</span>`; };
+  setInterval(() => document.querySelectorAll(".cd").forEach((e) => { const ms = +e.dataset.t - Date.now(); e.textContent = ms > 0 ? cdTxt(ms) : "starting"; }), 30000);
 
   // ---- slip: a per-device list, never a wager
   const KEY = "edgestat_slip_v1";
@@ -337,7 +342,7 @@
         ((sf) => sf ? ` <span class="muted">(fair ${sf.a} / ${sf.b}, hold ${sf.hold}%)</span>` : "")(fair2(o.spread_away_price, o.spread_home_price))
       : (o.spread_home != null ? ` · ${esc(g.home)} ${o.spread_home > 0 ? "+" : ""}${o.spread_home}` : "");
     return `<article class="gc${g.pick ? " bet" : ""}${g.alpha_rank ? " alpha" : ""}${started(g) ? " started" : ""}">
-      <header><span class="sp ${esc(g.sport)}">${esc(g.sport)}</span><span class="tm">${started(g) ? "started" : tm(g.start)}</span>
+      <header><span class="sp ${esc(g.sport)}">${esc(g.sport)}</span><span class="tm">${started(g) ? "started" : tm(g.start) + cdSpan(g.start)}</span>
         ${g.alpha_rank ? `<span class="sp" style="color:var(--gold);">★ ALPHA #${g.alpha_rank}</span>` : ""}${sinceLast(g)}<span class="gr ${esc(g.grade || "")}">${gradeTxt}</span></header>
       ${sideBtn(g, "away")}${sideBtn(g, "home")}
       <div class="tot">${tot}${spr}</div>
@@ -382,7 +387,12 @@
     if (showAlpha) {
       const Af = A.filter((a) => sport === "ALL" || a.sport === sport);
       $("alphaMeta").textContent = B.alpha.status === "locked" ? "locked " + obs(B.alpha.locked_at) + " · top-scored bets of the day"
-        : "provisional until " + B.alpha.lock_hour_et + ":00 AM ET · top-scored bets of the day";
+        : "provisional until " + B.alpha.lock_hour_et + ":00 AM ET" + (() => {
+            // minutes to the lock on the Eastern clock (the list is re-scored until then)
+            const hm = new Date().toLocaleTimeString("en-US", Object.assign({ hour: "2-digit", minute: "2-digit", hour12: false }, ET)).split(":").map(Number);
+            const left = (B.alpha.lock_hour_et * 60) - ((hm[0] % 24) * 60 + hm[1]);
+            return left > 0 ? " (" + cdTxt(left * 60000).replace("in ", "locks in ") + ")" : "";
+          })() + " · top-scored bets of the day";
       $("alphaStrip").innerHTML = Af.length ? Af.map((a) => {
         const g = B.games.find((x) => x.id === String(a.event_id) && x.sport === a.sport);
         const k = g ? slipKey(g, a.side) : "";
