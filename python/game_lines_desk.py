@@ -107,6 +107,16 @@ def _sig(x: float) -> float:
     return 1 / (1 + math.exp(-x))
 
 
+def _et_day(ct: dt.datetime) -> str:
+    """(2026-11-13 review) The Eastern calendar date of a UTC start, by the real zone. A fixed
+    -4h is right only in summer: from November a 11 PM ET start landed on the next day."""
+    try:
+        from zoneinfo import ZoneInfo
+        return ct.astimezone(ZoneInfo("America/New_York")).date().isoformat()
+    except Exception:
+        return (ct - dt.timedelta(hours=5 if ct.month in (11, 12, 1, 2) else 4)).date().isoformat()
+
+
 def _season_key(sport: str, date: str) -> int:
     """NFL season starts in September; NHL in October. Anything before the
     season-start month belongs to the previous season."""
@@ -393,7 +403,7 @@ def backtest(sport: str, finals: List[Dict[str, Any]], lines: Dict[str, Any],
             ct = dt.datetime.fromisoformat(str(ev.get("commence")).replace("Z", "+00:00"))
         except Exception:
             continue
-        d = (ct - dt.timedelta(hours=4)).date().isoformat()
+        d = _et_day(ct)
         k = (d, _norm_team(sport, ev.get("away")), _norm_team(sport, ev.get("home")))
         g = fin.get(k)
         if p_mkt is None or not g or g["home_score"] == g["away_score"]:
@@ -616,6 +626,7 @@ def grow_lines(sport: str) -> Dict[str, Any]:
 # is scored after the start against the last pre-start snapshot. Signals are NOT picks: they
 # are never shown as bets, never enter the ledger, and the gate is CLV, not W-L.
 MOVE_GAP = 0.04
+MOVE_LATE_H = 6.0        # the first desk run must come within 6h of the open snapshot
 MOVE_LOG = os.path.join(DATA_DIR, "move_signals.json")
 
 
@@ -630,19 +641,29 @@ def move_signals(sport: str, board_rows: List[Dict[str, Any]], lines: Dict[str, 
         eid = str(r.get("event_id") or "")
         if not eid or f"{sport}:{eid}" in sigs or r.get("p_home_elo") is None or r.get("p_home_dk") is None:
             continue
-        gap = r["p_home_elo"] - r["p_home_dk"]
-        rec = {"sport": sport.upper(), "event_id": eid, "matchup": r.get("matchup"), "commence": r.get("commence"),
-               "seen_at": (r.get("quote") or {}).get("observed_at") or now.isoformat(timespec="seconds"),
-               "p_model_home": r["p_home_elo"], "p_dk_home": r["p_home_dk"], "gap": round(gap, 4)}
-        # a signal needs the OPENING price: only when this snapshot is the game's first one in the
-        # line history. A game first met mid-life (e.g. already on the board when this log began)
+        # (2026-11-13 review) The signal is priced at the game's OPEN snapshot from the line history
+        # (whoever took it: a desk run or close-capture), against the model on the first desk run
+        # after it. Requiring the desk run itself to take the open lost every game whose open was
+        # taken by close-capture or by a run that failed after grow_lines. A game whose history
+        # began mid-life (open_late) or whose first desk run comes > MOVE_LATE_H after the open
         # is counted as seen, with no side.
-        open_at = str(((lines.get(eid) or {}).get("open") or {}).get("at") or "")[:19]
-        at_open = bool(open_at) and open_at == str(rec["seen_at"])[:19] and not (lines.get(eid) or {}).get("open_late")
-        rec["at_open"] = at_open
+        ev_l = lines.get(eid) or {}
+        op = ev_l.get("open") or {}
+        p_open = _no_vig(op.get("ml_home"), op.get("ml_away"))
+        seen_at = (r.get("quote") or {}).get("observed_at") or now.isoformat(timespec="seconds")
+        try:
+            hrs = (dt.datetime.fromisoformat(str(seen_at)[:19]) - dt.datetime.fromisoformat(str(op.get("at"))[:19])).total_seconds() / 3600
+        except Exception:
+            hrs = None
+        at_open = (p_open is not None and hrs is not None and 0 <= hrs <= MOVE_LATE_H and not ev_l.get("open_late"))
+        gap = r["p_home_elo"] - (p_open if p_open is not None else r["p_home_dk"])
+        rec = {"sport": sport.upper(), "event_id": eid, "matchup": r.get("matchup"), "commence": r.get("commence"),
+               "seen_at": seen_at, "open_at": op.get("at"), "hours_after_open": round(hrs, 2) if hrs is not None else None,
+               "p_model_home": r["p_home_elo"], "p_open_home": p_open, "p_dk_home_now": r["p_home_dk"],
+               "gap": round(gap, 4), "at_open": at_open}
         if abs(gap) >= MOVE_GAP and at_open:
             side = "home" if gap > 0 else "away"
-            rec.update(side=side, price=r.get("ml_home") if side == "home" else r.get("ml_away"))
+            rec.update(side=side, price=op.get("ml_home") if side == "home" else op.get("ml_away"))
         sigs[f"{sport}:{eid}"] = rec          # every first sight is kept (gap < MOVE_GAP has no side): the denominator
     # score this sport's started signals with a side
     scored = []
@@ -903,7 +924,7 @@ def run_sport(sport: str) -> Dict[str, Any]:
             continue
         try:
             ct = dt.datetime.fromisoformat(str(g.get("commence_time")).replace("Z", "+00:00"))
-            game_date = (ct - dt.timedelta(hours=4)).date().isoformat()
+            game_date = _et_day(ct)
         except Exception:
             game_date = None
         goalies, may_pick, blocked = None, True, None

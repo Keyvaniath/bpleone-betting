@@ -1362,11 +1362,14 @@ def test_move_signals_are_recorded_once_at_first_sight_and_scored_after_the_star
              "ml_home": -130, "ml_away": 110, "quote": {"observed_at": "2026-11-13T14:55:00"}},
             {"event_id": "2", "matchup": "C @ D", "commence": "2026-11-13T18:00Z", "p_home_elo": 0.51, "p_home_dk": 0.50,
              "ml_home": -110, "ml_away": -110, "quote": {"observed_at": "2026-11-13T14:55:00"}}]
-    lines = {"1": {"commence": "2026-11-13T18:00Z", "open": {"at": "2026-11-13T14:55:00"}, "close": {"ml_home": -160, "ml_away": 135}},
-             "2": {"commence": "2026-11-13T18:00Z", "open": {"at": "2026-11-13T14:55:00"}, "close": {"ml_home": -110, "ml_away": -110}}}
+    lines = {"1": {"commence": "2026-11-13T18:00Z", "open": {"at": "2026-11-13T14:55:00", "ml_home": -130, "ml_away": 110},
+                   "close": {"ml_home": -160, "ml_away": 135}},
+             "2": {"commence": "2026-11-13T18:00Z", "open": {"at": "2026-11-13T14:55:00", "ml_home": -110, "ml_away": -110},
+                   "close": {"ml_home": -110, "ml_away": -110}}}
     # a game first met mid-life (its line history opened earlier) is seen but gets no signal
     late = [dict(rows[0], event_id="3")]
-    lines["3"] = {"commence": "2026-11-13T18:00Z", "open": {"at": "2026-11-10T09:00:00"}, "close": {"ml_home": -160, "ml_away": 135}}
+    lines["3"] = {"commence": "2026-11-13T18:00Z", "open": {"at": "2026-11-10T09:00:00", "ml_home": -130, "ml_away": 110},
+                  "close": {"ml_home": -160, "ml_away": 135}}
     gld.move_signals("nba", late, lines, now=now)
     assert "side" not in json.loads((tmp_path / "move_signals.json").read_text())["signals"]["nba:3"]
     m = gld.move_signals("nba", rows, lines, now=now)
@@ -1458,3 +1461,31 @@ def test_today_status_names_the_right_hold_reason_per_sport():
     assert ts.HOLD_WHY["NBA"] == "day-to-day player" and ts.HOLD_WHY["NHL"] == "starting goalie" and ts.HOLD_WHY["NFL"] == "QB"
     src = open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "today_status.py"), encoding="utf-8").read()
     assert "'QB' if sp == 'NFL' else 'starting goalie'" not in src          # NBA holds are never "goalie"
+
+
+def test_review3_signals_use_the_open_price_research_desk_is_no_prior_and_et_dates(tmp_path, monkeypatch):
+    import game_lines_desk as gld
+    import board_prior
+    import pregame_alerts
+    monkeypatch.setattr(gld, "DATA_DIR", str(tmp_path))
+    monkeypatch.setattr(gld, "MOVE_LOG", str(tmp_path / "move_signals.json"))
+    # the open was taken by close-capture at 21:25; the first desk run comes at 23:00 at a moved price
+    lines = {"9": {"commence": "2026-11-20T01:00Z", "open": {"at": "2026-11-13T21:25:00", "ml_home": -110, "ml_away": -110},
+                   "close": {"at": "2026-11-13T23:00:00", "ml_home": -150, "ml_away": 130}}}
+    rows = [{"event_id": "9", "matchup": "A @ B", "commence": "2026-11-20T01:00Z", "p_home_elo": 0.60, "p_home_dk": 0.58,
+             "ml_home": -150, "ml_away": 130, "quote": {"observed_at": "2026-11-13T23:00:00"}}]
+    gld.move_signals("nfl", rows, lines, now=dt.datetime(2026, 11, 13, 23, 5, tzinfo=dt.timezone.utc))
+    s = json.loads((tmp_path / "move_signals.json").read_text())["signals"]["nfl:9"]
+    assert s["at_open"] and s["side"] == "home" and s["price"] == -110 and abs(s["gap"] - 0.10) < 1e-6   # priced at the OPEN
+    # a first desk run more than 6h after the open is too late to call it an opening signal
+    lines["10"] = dict(lines["9"], open={"at": "2026-11-13T08:00:00", "ml_home": -110, "ml_away": -110})
+    gld.move_signals("nfl", [dict(rows[0], event_id="10")], lines, now=dt.datetime(2026, 11, 13, 23, 5, tzinfo=dt.timezone.utc))
+    assert "side" not in json.loads((tmp_path / "move_signals.json").read_text())["signals"]["nfl:10"]
+    # research-only desks are never a prior, never an alert
+    assert "RESEARCH ONLY" in pregame_alerts._BLOCKED_VERDICTS
+    bp_src = open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "board_prior.py"), encoding="utf-8").read()
+    assert 'startswith("RESEARCH")' in bp_src
+    # Eastern dates by zone: 11:30 PM EST on 11/14 is 04:30Z on 11/15
+    assert gld._et_day(dt.datetime(2026, 11, 15, 4, 30, tzinfo=dt.timezone.utc)) == "2026-11-14"
+    assert gld._et_day(dt.datetime(2026, 7, 15, 3, 30, tzinfo=dt.timezone.utc)) == "2026-07-14"
+

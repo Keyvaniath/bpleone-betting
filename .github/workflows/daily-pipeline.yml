@@ -1493,6 +1493,9 @@ jobs:
                 # GIT_EDITOR=true so the rebase-continue commit message edit
                 # doesn't try to open an interactive editor.
                 git checkout --ours . 2>/dev/null || true
+                # (2026-11-13) the line histories this run priced its desk from win (in a rebase --theirs
+                # is the commit being replayed): close-capture pushes often and must not swap them out
+                git checkout --theirs -- data/dk_lines_*.json 2>/dev/null || true
                 git add -A
                 # GUARD: a partial 'checkout --ours' can leave conflict markers in some
                 # files; 'git add -A' would stage them and 'rebase --continue' would COMMIT

@@ -44,6 +44,32 @@ jobs:
         run: |
           git config user.name  "edgestat-bot"
           git config user.email "actions@github.com"
+          # commit only when a PRICE changed or a game was added: grow_lines restamps every
+          # close.at, and pushing 36 timestamp-only commits a day races the other workflows
+          CHANGED=$(python - <<'PY'
+          import json, subprocess, glob, os
+          def sig(doc):
+              out = {}
+              for eid, ev in (doc.get("events") or {}).items():
+                  c = {k: v for k, v in (ev.get("close") or {}).items() if k != "at"}
+                  out[eid] = json.dumps(c, sort_keys=True)
+              return out
+          changed = 0
+          for f in glob.glob("data/dk_lines_*.json"):
+              try:
+                  old = json.loads(subprocess.run(["git", "show", "HEAD:" + f.replace(os.sep, "/")], capture_output=True, text=True).stdout or "{}")
+              except Exception:
+                  old = {}
+              new = json.load(open(f, encoding="utf-8"))
+              changed += sig(old) != sig(new)
+          print(changed)
+          PY
+          )
+          echo "line files with a changed price or a new game: $CHANGED"
+          if [ "${CHANGED:-0}" = "0" ]; then
+            echo "No price changed -- nothing to commit."
+            exit 0
+          fi
           git add data/dk_lines_*.json
           if git diff --cached --quiet; then
             echo "No line changes."
