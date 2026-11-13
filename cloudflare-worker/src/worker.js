@@ -704,6 +704,57 @@ async function monthlySnapshot(env) {
   }
 }
 
+// ---------- GitHub Actions dispatcher (2026-11-13) ----------
+// GitHub's scheduler fires this repo's crons about three times a day whatever the schedule says
+// (measured 11/10-11/13: heartbeat "every 2 hours" fired at ~01:10, ~09:40 and ~17:50 UTC;
+// live-games "every 15 min" ~3x/day; close-capture and alpha-lock-trigger never). The board's
+// DraftKings prices could be 8 hours old, the close was taken an hour or more early, and the
+// 11:00 ET Alpha lock landed whenever a run happened. This Worker's own cron is reliable, so it
+// dispatches the two time-critical workflows itself.
+// FAIL CLOSED: does nothing until Brandon sets the GH_DISPATCH_TOKEN secret (a fine-grained
+// GitHub token scoped to this one repository with "Actions: Read and write" only).
+// Cadence keeps commits under GitHub Pages' ~10 builds/hour: heartbeat every 15 min from
+// 9 AM to 1 AM ET (14:00-05:59 UTC), hourly overnight; close-capture every 20 min, 12 PM to
+// midnight ET (16:00-04:59 UTC). The last dispatch time per workflow is kept in KV.
+const GH_REPO = "Keyvaniath/bpleone-betting";
+
+function _ghJobs(now) {
+  const h = new Date(now).getUTCHours();
+  const day = h >= 14 || h <= 5;
+  return [
+    { wf: "continuous-heartbeat.yml", everyMs: (day ? 15 : 60) * 60e3, on: true },
+    { wf: "close-capture.yml", everyMs: 20 * 60e3, on: h >= 16 || h <= 4 },
+  ];
+}
+
+async function dispatchGitHub(env, now = Date.now()) {
+  if (!env.GH_DISPATCH_TOKEN || !env.EDGESTAT_KV) return { skipped: "no GH_DISPATCH_TOKEN" };
+  const out = {};
+  for (const j of _ghJobs(now)) {
+    if (!j.on) continue;
+    const key = "gh_dispatch_last:" + j.wf;
+    const last = Number((await env.EDGESTAT_KV.get(key)) || 0);
+    if (now - last < j.everyMs - 60e3) continue;              // a minute of slack for cron jitter
+    try {
+      const r = await fetch(`https://api.github.com/repos/${GH_REPO}/actions/workflows/${j.wf}/dispatches`, {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${env.GH_DISPATCH_TOKEN}`,
+          Accept: "application/vnd.github+json",
+          "X-GitHub-Api-Version": "2022-11-28",
+          "User-Agent": "edgestat-worker",
+        },
+        body: JSON.stringify({ ref: "main" }),
+      });
+      out[j.wf] = r.status;
+      if (r.status === 204) await env.EDGESTAT_KV.put(key, String(now), { expirationTtl: 86400 });
+    } catch (e) {
+      out[j.wf] = "error";
+    }
+  }
+  return out;
+}
+
 // ---------- Cloudflare Worker entry ----------
 export default {
   async fetch(request, env) {
@@ -718,5 +769,7 @@ export default {
     }
     // All other cron triggers (every-minute, every-5-min) run the live poll
     ctx.waitUntil(poll(env));
+    // and keep the GitHub workflows on time (no-op without GH_DISPATCH_TOKEN)
+    ctx.waitUntil(dispatchGitHub(env));
   },
 };
