@@ -1039,8 +1039,18 @@ def test_board_bets_are_logged_on_game_day_only_never_curated_and_never_calibrat
     monkeypatch.setattr(t, "DATA_DIR", str(tmp_path))
     rows = t._collect_picks_from_sources()
     tagged = sorted((r["source"], r["player_or_matchup"]) for r in rows if r.get("source") in ("board_pick", "board_alpha"))
-    # today's two bets, each also an alpha pick; tomorrow's DAL @ IND card is a preview and is not logged today
-    assert tagged == [("board_alpha", "BOS @ MIA"), ("board_alpha", "NYJ @ KC"), ("board_pick", "BOS @ MIA"), ("board_pick", "NYJ @ KC")]
+    # today's two bets, each also an alpha pick; tomorrow's DAL @ IND desk pick (grade B, an edge at today's
+    # price) is taken now, when the edge appears -- only leans wait for their game day
+    assert tagged == [("board_alpha", "BOS @ MIA"), ("board_alpha", "NYJ @ KC"), ("board_pick", "BOS @ MIA"),
+                      ("board_pick", "DAL @ IND"), ("board_pick", "NYJ @ KC")]
+    future = next(r for r in rows if r.get("source") == "board_pick" and r["player_or_matchup"] == "DAL @ IND")
+    assert future["board_grade"] == "B" and future["date"] == "2026-11-09" and future["board_price"] == 195
+    # a lean for a later day is NOT taken early
+    b2 = json.loads((tmp_path / "board.json").read_text())
+    b2["picks"].append(dict(next(p for p in b2["picks"] if p["matchup"] == "BOS @ MIA"), matchup="X @ Y", game_date="2026-11-09",
+                            event_id="99", is_alpha=False))
+    (tmp_path / "board.json").write_text(json.dumps(b2))
+    assert not [r for r in t._collect_picks_from_sources() if r.get("player_or_matchup") == "X @ Y"]
     desk_i = next(i for i, r in enumerate(rows) if r.get("source") == "nfl_game_ml" and r.get("player_or_matchup") == "NYJ @ KC")
     assert all(i > desk_i for i, r in enumerate(rows) if r.get("source") in ("board_pick", "board_alpha"))   # folds onto the desk row
     for src in ("board_pick", "board_alpha"):
