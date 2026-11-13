@@ -603,9 +603,12 @@
     if (txt && navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(txt).then(done).catch(() => {});
   });
 
-  fetch("data/board.json?t=" + Date.now(), { cache: "no-cache" }).then((r) => r.json()).then((d) => {
+  // (2026-11-13) the board refreshes itself: every 3 minutes it re-reads board.json and, when a
+  // newer build exists, re-renders in place (slip, sport / day choice and open sections kept)
+  function apply(d, first) {
     B = d;
-    day = (B.days || []).includes(B.date_et) ? B.date_et : ((B.days || [])[0] || B.date_et);
+    if (first || !(B.days || []).includes(day))
+      day = (B.days || []).includes(B.date_et) ? B.date_et : ((B.days || [])[0] || B.date_et);
     if (!(B.days || []).length) B.days = [B.date_et];
     // the slip mirrors the live board: drop entries whose game is gone, has started or has no
     // live quote, and refresh the price / pick / grade of the rest from today's data
@@ -621,11 +624,10 @@
     }).filter(Boolean);
     saveSlip();
     const c = B.counts || {};
-    $("bdMeta").textContent = `${c.games_today || 0} games today${c.college_today ? ` (+${c.college_today} college)` : ""} · ${c.bets_today || 0} graded bets · DraftKings prices seen ${obs(B.odds_observed_at)}`;
-    const gen = new Date(String(B.generated_at) + "Z"), ageH = (Date.now() - gen.getTime()) / 36e5;
-    if (!isNaN(gen) && ageH > 3) { $("bdStale").hidden = false; $("bdStale").textContent = `This board was last built ${Math.round(ageH)} hours ago. Prices move; check the current DraftKings line before you act on anything here.`; }
+    metaLine();
     results();
     render();
+    if (!first) return;
     // remember what this visit showed (kept for 7 days of games, on this device only)
     try {
       const keep = {}; const cut = Date.now() - 7 * 864e5;
@@ -633,6 +635,28 @@
       B.games.forEach((g) => { if (g.odds && g.odds.ml_home != null) keep[g.id] = { h: g.odds.ml_home, a: g.odds.ml_away, t: Date.now() }; });
       localStorage.setItem(SEENKEY, JSON.stringify(keep));
     } catch (e) {}
+  }
+  // header: counts, the price time and its AGE; a warning once the prices are 90+ minutes old
+  function metaLine() {
+    if (!B) return;
+    const c = B.counts || {};
+    const seen = Date.parse(String(B.odds_observed_at || "").replace(" ", "T") + (/[zZ]|[+-]\d\d:?\d\d$/.test(String(B.odds_observed_at || "")) ? "" : "Z"));
+    const mins = isNaN(seen) ? null : Math.max(0, Math.round((Date.now() - seen) / 60000));
+    const ago = mins == null ? "" : mins < 60 ? ` (${mins} min ago)` : ` (${Math.floor(mins / 60)}h ${String(mins % 60).padStart(2, "0")}m ago)`;
+    $("bdMeta").textContent = `${c.games_today || 0} games today${c.college_today ? ` (+${c.college_today} college)` : ""} · ${c.bets_today || 0} graded bets · DraftKings prices seen ${obs(B.odds_observed_at)}${ago}`;
+    const st = $("bdStale");
+    if (mins != null && mins >= 90) {
+      st.hidden = false;
+      st.textContent = `These DraftKings prices are ${mins < 120 ? mins + " minutes" : Math.round(mins / 60) + " hours"} old. Lines move; check the current DraftKings price before you act on anything here.`;
+    } else st.hidden = true;
+  }
+  const loadBoard = () => fetch("data/board.json?t=" + Date.now(), { cache: "no-cache" }).then((r) => r.json());
+  loadBoard().then((d) => {
+    apply(d, true);
+    setInterval(() => {
+      metaLine();
+      loadBoard().then((n) => { if (n && n.generated_at && B && n.generated_at !== B.generated_at) apply(n, false); }).catch(() => {});
+    }, 180000);
   }).catch(() => {
     $("bdMeta").textContent = "The board is not available right now.";
     $("games").innerHTML = `<div class="empty" style="grid-column:1/-1;">The board data could not be loaded. Try again in a few minutes.</div>`;
