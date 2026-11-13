@@ -1395,3 +1395,16 @@ def test_college_games_are_on_the_board_for_information_never_as_bets(tmp_path, 
     assert all(p["sport"] != "NCAAF" for p in out["picks"]) and out["sports"]["NCAAF"]["info_only"]
     assert all(a["sport"] != "NCAAF" for a in out["alpha"]["picks"])
 
+
+def test_odds_only_sport_shows_prices_and_no_side(tmp_path, monkeypatch):
+    board, now = _board_fixture(tmp_path, monkeypatch)
+    obs = (now - dt.timedelta(minutes=30)).isoformat(timespec="seconds").replace("+00:00", "")
+    (tmp_path / "espn_odds.json").write_text(json.dumps({"generated_at": obs, "games": [
+        {"sport": "NCAAB", "status": "pre", "event_id": "88", "matchup": "UIC @ SMC", "away": "UIC", "home": "SMC",
+         "commence_time": "2026-11-09T01:00Z", "market": {"ml_home": -270, "ml_away": 220, "total": 150.5, "book": "draftkings"}}]}))
+    out = board.run(now=now)
+    g = next(x for x in out["games"] if x["sport"] == "NCAAB")
+    assert g["odds_only"] and g["pick"] is None and g["model_side"] is None and g["grade"] is None
+    assert g["odds"]["ml_home"] == -270 and "no model" in g["reason"].lower()
+    assert out["sports"]["NCAAB"]["verdict"] == "NO MODEL" and all(p["sport"] != "NCAAB" for p in out["picks"])
+
