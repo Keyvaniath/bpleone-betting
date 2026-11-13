@@ -922,3 +922,15 @@ numbers) and a backtest on the history now accumulating. Also shipped today:
 a copy-ready recap of the last fully graded Alpha day that never drops a pick
 to fit (dropping one could hide a loss).
 
+SPREAD COVER TEST (same day; tools/cover_study.py). Before any spread desk:
+does the desk model predict covers against DraftKings' closing spread NUMBER
+better than a coin flip? (Prices were not recorded before today, so this tests
+information, not returns.) Model margin = sigma * Phi^-1(p_model), sigma 13.5
+NFL / 12 NBA; pushes dropped. Pre-registered: build only if the log-loss gain
+over ln 2 has a 90% CI clear of zero.
+  NFL n=131: model 0.6855 vs 0.6931 (blend w=0.65: 0.6819); gain +0.0076,
+             CI [-0.028, +0.039]; leans >= 4 pts off 50% covered 58-44 (56.9%)
+  NBA n=174: model 0.7516, worse than a coin flip; CI entirely below zero
+Verdict: NO spread desk. NFL looks like its moneyline (signal, not yet outside
+noise); rerun once a few weeks of spread PRICES exist. NBA: do not build.
+
