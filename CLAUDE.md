@@ -65,7 +65,7 @@ bpleone-site/
   (2) PER-SPORT PLAYS + MODEL LEANS (Brandon's call 11/11 night: "a play of the
   day for each of the 4 sports when they play"): `sport_plays` in
   play_of_day.json. A desk with no EV pick shows a tier-4 LEAN = the favourite
-  the model AND DraftKings agree on (game_lines_desk.LEAN_RULE), labelled "not
+  the model AND DraftKings agree on (game_lines_desk.LEAN_RULE: both >= 55%, price no shorter than -200 since 11/13), labelled "not
   a proven edge" (expected about -4%), ledger source `sport_lean`, NEVER
   curated and never harvested as `pod`. Never lean AGAINST the market: betting
   NBA/NHL model-vs-DK disagreements loses under every rule this season (NBA
