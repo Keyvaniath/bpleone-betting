@@ -167,7 +167,7 @@ def _no_bet(row: Dict[str, Any]) -> Optional[Dict[str, Any]]:
     price = row.get("ml_home") if side == "home" else row.get("ml_away")
     if side == mkt_side:
         why = (f"Model ({p_side * 100:.0f}%) and DraftKings ({k_side * 100:.0f}%) both lean {names[side]}, but outside the "
-               "lean rule: under 55% on one of them, or priced past -300. No bet.")
+               "lean rule: under 55% on one of them, or priced shorter than -200. No bet.")
         score = 35
     else:
         why = (f"The model makes {names[side]} the favourite ({p_side * 100:.0f}%); DraftKings makes {names[mkt_side]} the "

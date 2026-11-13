@@ -849,3 +849,27 @@ same risk-adjusted EV (`play_of_day.risk_adj`, one definition shared with
 board.risk), raw EV only when it cannot be computed; leans still rank on
 agreement. The board's "Graded so far" now follows the sport chip.
 
+## 2026-11-13: lean price cap -300 -> -200 (product call, not a results call)
+
+Brandon: "it just seems like the model is taking the largest favorites as
+their play of the game". True by construction: the lean takes the game where
+model and DraftKings agree most strongly, which is the heaviest favorite
+allowed (11/13 featured OKC -283, pays 0.35u). Five selection rules were
+backtested walk-forward on this season (one lean per sport per day, 1u at the
+DK close; all only take a side both model and market favour):
+                                           NFL      NBA      NHL    median price
+  strongest agreement, >= -300 (old)     +1.80u   -2.28u   +3.47u   ~ -220
+  strongest agreement, -110..-200 (new)  +5.19u   -1.40u   +0.70u   ~ -180
+  closest to even money, >= -300         +5.00u   -5.03u   -0.09u   ~ -165
+  model most above market, >= -300       +1.41u   -4.05u   -3.40u   ~ -180
+  model most above market, -110..-200    +2.42u   -1.20u   -5.11u   ~ -165
+Every rule is expected to return about -4% at DraftKings' no-vig price; the
+spread between them is noise on 17-45 game days per sport, and no rule was
+chosen for its record. The cap moved to -200 on product grounds: a featured
+play should pay at least half a unit, and the expected value is the same.
+Consequence: fewer leans (NHL 34 lean days of 45, not 43), and some days a
+sport has no play (11/13: no NBA favourite qualified; the only lean is NHL VGK
+-162). Locked Alpha lists are never re-priced (11/13 keeps OKC -283 and NYR
+-225, locked at 12:51 ET under the old cap). Leans logged before 11/13 stay in
+the ledger as logged.
+

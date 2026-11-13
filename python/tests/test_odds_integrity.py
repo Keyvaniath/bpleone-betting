@@ -769,15 +769,16 @@ def test_lean_rule_only_takes_a_favourite_the_model_and_the_market_agree_on():
     assert ln["ev_at_dk_no_vig"] < 0                       # at the market's own probability a lean is -EV: the margin
     # the model likes the underdog: that is a disagreement, never a lean (the lean study: those bets lose)
     assert gld.lean_side(0.35, -180, 150) is None
-    # agreement, but too heavy a favourite (-450) or too close to a coin flip (52%) -> no lean
+    # agreement, but too heavy a favourite (-450, or -250 since the 11/13 cap at -200) or too close to a coin flip (52%) -> no lean
     assert gld.lean_side(0.85, -450, 340) is None
+    assert gld.lean_side(0.74, -250, 205) is None and gld.lean_side(0.70, -200, 168)["book_american"] == -200
     assert gld.lean_side(0.53, -115, -105) is None
     # no price -> no lean
     assert gld.lean_side(0.66, None, 150) is None
     # walk-forward record: one lean per day, graded at the price
     rows = [{"date": "2026-11-01", "p_elo": 0.66, "ml_home": -180, "ml_away": 150, "y": 1.0},
             {"date": "2026-11-01", "p_elo": 0.60, "ml_home": -150, "ml_away": 126, "y": 0.0},   # lower score: not the day's lean
-            {"date": "2026-11-02", "p_elo": 0.30, "ml_home": 170, "ml_away": -205, "y": 1.0},   # away favourite loses
+            {"date": "2026-11-02", "p_elo": 0.30, "ml_home": 160, "ml_away": -190, "y": 1.0},   # away favourite loses
             {"date": "2026-11-03", "p_elo": 0.35, "ml_home": -180, "ml_away": 150, "y": 1.0}]   # disagreement: no lean
     rec = gld.lean_backtest(rows)
     assert (rec["n"], rec["wins"], rec["losses"], rec["game_days"]) == (2, 1, 1, 3)

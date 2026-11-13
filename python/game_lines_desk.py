@@ -437,15 +437,21 @@ def backtest(sport: str, finals: List[Dict[str, Any]], lines: Dict[str, Any],
 # (docs/ODDS-INTEGRITY.md). So the per-sport play on a day with no desk pick is
 # a LEAN, chosen where the model and the market AGREE, never where they fight:
 #   a side that is the favourite by BOTH the desk model and DraftKings' no-vig
-#   price (each >= 55%), priced no shorter than -300; one per sport per day, the
+#   price (each >= 55%), priced no shorter than -200; one per sport per day, the
 #   one with the highest min(model, DK) probability.
+# (2026-11-13) The cap moved from -300 to -200 on PRODUCT grounds, not results:
+# Brandon: "it just seems like the model is taking the largest favorites as the
+# play". At -300 the featured play was routinely a -250 to -300 favourite that
+# pays ~0.35u; at -200 it pays >= 0.50u. Expected value is unchanged (the book's
+# margin either way). Five selection rules were backtested first and none beats
+# the market; no rule was chosen for its record (docs/ODDS-INTEGRITY.md).
 # It is not an edge: at the no-vig price its expected value is the book's margin
 # (about -4% on a DraftKings moneyline). It is labelled as a lean, logged under its own ledger source
 # (never curated), and its walk-forward record is published next to it. The
 # rule was written down before its record was computed and is not tuned.
-LEAN_RULE = {"min_prob": 0.55, "max_juice": -300}
+LEAN_RULE = {"min_prob": 0.55, "max_juice": -200}
 LEAN_RULE_TEXT = ("Model lean: the side that both the desk model and DraftKings' no-vig price make the favourite "
-                  "(each at least 55%), priced no shorter than -300; the one game per day where the lower of the "
+                  "(each at least 55%), priced no shorter than -200; the one game per day where the lower of the "
                   "two probabilities is highest. Not a proven edge: at DraftKings' own no-vig probability the "
                   "expected value is the book's margin.")
 
