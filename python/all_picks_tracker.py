@@ -648,6 +648,10 @@ def _collect_picks_from_sources() -> List[Dict[str, Any]]:
                 # the price THE BOARD showed (review 2026-11-12): when this tag folds onto a row
                 # logged earlier at another price, the board's record still uses its own price
                 ("alpha_price" if tag == "board_alpha" else "board_price"): bp.get("book_american"),
+                # (2026-11-13 review) the LOCKED Alpha entry's grade and score: a desk pick taken on
+                # Tuesday as a B can be locked as Sunday's Alpha as a C lean; the Alpha record must
+                # say what the Alpha list published
+                **({"alpha_grade": bp.get("grade"), "alpha_score": bp.get("score")} if tag == "board_alpha" else {}),
                 "quote": bp.get("quote"),
             })
 
@@ -3291,7 +3295,9 @@ def _board_block(history: List[Dict[str, Any]]) -> Dict[str, Any]:
     def tags(p: Dict[str, Any]) -> set:
         return {p.get("source")} | set(p.get("also_sources") or ())
 
-    def grade(p: Dict[str, Any]) -> str:
+    def grade(p: Dict[str, Any], alpha: bool = False) -> str:
+        if alpha and p.get("alpha_grade") in ("A", "B", "C"):
+            return p["alpha_grade"]                      # what the locked Alpha list published
         if p.get("board_grade") in ("A", "B", "C"):
             return p["board_grade"]
         if p.get("source") in ("sport_lean", "board_pick", "board_alpha"):
@@ -3379,7 +3385,7 @@ def _board_block(history: List[Dict[str, Any]]) -> Dict[str, Any]:
         "by_day": {d: dict(line(ps), alpha=line([p for p in ps if "board_alpha" in tags(p)], alpha=True))
                    for d, ps in sorted(days.items(), reverse=True)[:14]},
         "first_date": min((str(p.get("date"))[:10] for p in rows), default=None),
-        "recent": [{"date": str(p.get("date") or "")[:10], "sport": p.get("sport"), "grade": grade(p),
+        "recent": [{"date": str(p.get("date") or "")[:10], "sport": p.get("sport"), "grade": grade(p, "board_alpha" in tags(p)),
                     "is_alpha": "board_alpha" in tags(p), "matchup": p.get("player_or_matchup"), "team": team(p),
                     "market": p.get("market"), "book_american": price(p, "board_alpha" in tags(p)),
                     "result": p.get("result") if p.get("settled") else "pending",
@@ -3388,7 +3394,8 @@ def _board_block(history: List[Dict[str, Any]]) -> Dict[str, Any]:
                     "clv_pts": (clv(p, "board_alpha" in tags(p)) or {}).get("clv_pts"),
                     "final": (p.get("outcome") or {}).get("final_score")} for p in recent],
         "definition": ("Every bet on The Board (grades A, B, C), graded on the final score at the DraftKings price "
-                       "the board showed on game day (the locked price for an Alpha pick). Alpha = the day's locked "
+                       "the board showed when it first listed the bet: a desk pick (A, B) when its edge first "
+                       "appeared, a lean (C) on game day; an Alpha pick at its locked price. Alpha = the day's locked "
                        "top-scored picks. Grade C bets are model leans: not an edge, expected to run near the book's "
                        "margin. None of this is part of the curated record."),
     }
@@ -4358,17 +4365,20 @@ def run() -> Dict[str, Any]:
                 if src not in also:
                     also.append(src)
             # (2026-11-12 review) a board tag carries what the board SHOWED: its price, grade and
-            # score. The kept row may have been logged hours or days earlier at another price (a
-            # desk pick logged Tuesday at +440, shown Sunday at +380), so stamp the board's own
-            # numbers once -- first sight on game day wins -- for the board's record to use.
+            # score. The kept row may have been logged hours or days earlier at another price, so
+            # stamp the board's own numbers once -- the board's FIRST sight wins (game day for a
+            # lean; any day for a desk pick, which is taken when the edge appears). The Alpha
+            # price / grade / score come from the locked list and always win.
             if kept is not None and src in ("board_pick", "board_alpha"):
                 for k in ("board_price", "board_grade", "board_score", "alpha_price"):
                     if p.get(k) is not None and kept.get(k) is None:
                         kept[k] = p[k]
                 # the Alpha price is the LOCKED price, which never changes: it always wins
                 # (this also corrects a row stamped from a current line before the fix above)
-                if src == "board_alpha" and p.get("alpha_price") is not None and kept.get("alpha_price") != p["alpha_price"]:
-                    kept["alpha_price"] = p["alpha_price"]
+                if src == "board_alpha":
+                    for k in ("alpha_price", "alpha_grade", "alpha_score"):
+                        if p.get(k) is not None and kept.get(k) != p[k]:
+                            kept[k] = p[k]
             continue
         p["recorded_at"] = now_iso
         history.append(p)
