@@ -1004,4 +1004,8 @@ cfb_model's own benchmark has DraftKings' close sharper than the model, so no co
 game is a bet, none is logged, none can be an Alpha pick (bets come from the major-sport
 desks only). It has its own chip and is kept out of "All", so ~55 Saturday games never
 bury the major sports. board.json grows to ~16 KB gzipped.
+College basketball (same day): board.build_odds_only adds every pre-game NCAAB game with a
+DraftKings moneyline under its own chip -- prices, spread, total, hold, fair prices, and NO
+side (we have no NCAAB model). Never a bet. The page header counts college separately
+("11 games today (+37 college)") so it matches the "All" chip.
 
