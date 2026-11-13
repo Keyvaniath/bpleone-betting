@@ -1054,3 +1054,22 @@ five defects, all fixed the same day:
  5. Eastern dates were a fixed UTC-4h (summer offset); from November an 11 PM ET start
     was dated the next day. game_lines_desk uses zoneinfo (_et_day).
 
+
+## 2026-11-13 (afternoon) -- three board tools
+
+1. **Moved since your last visit.** The board remembers, on the viewer's device only
+   (localStorage, 7 days), the moneylines it last showed for each game, and flags a game
+   whose price has changed since. Nothing is sent anywhere.
+2. **Playable to.** Every desk pick carries the worst price it is still a bet at: the
+   desk's own fair price (expected value zero at the desk's probability). A lean shows its
+   break-even instead, DraftKings' no-vig price, which no book posts; that is the plain
+   statement of why a lean is not an edge.
+3. **Results by price taken.** The board's record split into -200 or shorter, -199 to
+   -101, and even or underdog, at the price the board showed (all_picks_tracker
+   `_price_bucket`, `by_price`). First read, 11/12 graded: -200 or shorter 2-0 +0.89u,
+   -199 to -101 2-2 -0.80u, no underdog graded yet. Six bets is noise; the split is there
+   so the favourites question is answered by the record as it grows, not by opinion.
+
+Note on the 11/13 Alpha: OKC -283 and NYR -225 were locked at 12:51 PM ET under the old
+-300 lean cap; the -200 cap landed at 1:35 PM ET. Locked days are never edited, so both
+are graded at their locked prices, and each card says that at today's rules it is not a bet.
