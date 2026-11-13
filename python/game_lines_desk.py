@@ -107,6 +107,20 @@ def _sig(x: float) -> float:
     return 1 / (1 + math.exp(-x))
 
 
+def _odds_games(odds: Dict[str, Any]) -> List[Dict[str, Any]]:
+    """(2026-11-13) Today's ESPN games plus the night-before slate (espn_odds.games_next_day),
+    deduped by event id. The desk is the only reader of games_next_day besides the board, so
+    tomorrow's NBA / NHL lines enter the line history at their true open."""
+    out, seen = [], set()
+    for g in list(odds.get("games") or []) + list(odds.get("games_next_day") or []):
+        k = str(g.get("event_id") or "")
+        if k and k in seen:
+            continue
+        seen.add(k)
+        out.append(g)
+    return out
+
+
 def _et_day(ct: dt.datetime) -> str:
     """(2026-11-13 review) The Eastern calendar date of a UTC start, by the real zone. A fixed
     -4h is right only in summer: from November a 11 PM ET start landed on the next day."""
@@ -597,7 +611,7 @@ def grow_lines(sport: str) -> Dict[str, Any]:
     odds = _load(os.path.join(DATA_DIR, "espn_odds.json"))
     ga = str(odds.get("generated_at"))[:19]
     n = 0
-    for g in odds.get("games") or []:
+    for g in _odds_games(odds):
         m = g.get("market") or {}
         if g.get("sport") != sport.upper() or g.get("status") != "pre" or not g.get("event_id") or m.get("ml_home") is None:
             continue
@@ -900,7 +914,7 @@ def run_sport(sport: str) -> Dict[str, Any]:
     if gm:
         import nhl_goalies as ng
         dates = []
-        for g in odds.get("games") or []:
+        for g in _odds_games(odds):
             if g.get("sport") == "NHL" and g.get("status") == "pre":
                 dates.append(ng._et_date(g.get("commence_time")))
         probs = ng.espn_probables(dates)
@@ -913,7 +927,7 @@ def run_sport(sport: str) -> Dict[str, Any]:
         if ex.get("n"):
             ng.EXPECTED_P = round((ex["correct"] + 0.9 * 10) / (ex["n"] + 10), 3)
         extra["goalie_model"]["expected_p_used"] = ng.EXPECTED_P
-    for g in odds.get("games") or []:
+    for g in _odds_games(odds):
         m = g.get("market") or {}
         if g.get("sport") != sport.upper() or g.get("status") != "pre" or m.get("ml_home") is None:
             continue

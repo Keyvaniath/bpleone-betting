@@ -261,7 +261,9 @@ def line_move(open_snap: Dict[str, Any], now_home, now_away) -> Optional[Dict[st
 
 
 def build_games(gld: Dict[str, Any], odds: Dict[str, Any], now: dt.datetime, today_et: str) -> List[Dict[str, Any]]:
-    by_eid = {str(g.get("event_id")): g for g in (odds.get("games") or []) if g.get("event_id")}
+    # keyed by event id, so the night-before slate (espn_odds.games_next_day) is safe to include
+    by_eid = {str(g.get("event_id")): g for g in (list(odds.get("games") or []) + list(odds.get("games_next_day") or []))
+              if g.get("event_id")}
     # (2026-11-13) the desk's OPEN logged picks on each game and how they stand against the
     # current DraftKings line (game_lines_desk.forward_test): CLV as it builds, before the close.
     logged: Dict[Any, List[Dict[str, Any]]] = {}

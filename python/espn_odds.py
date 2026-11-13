@@ -128,6 +128,23 @@ def _next_week_query(board: Dict[str, Any]) -> Optional[str]:
     return f"week={int(wk) + 1}&seasontype={int(st)}"
 
 
+# THE NIGHT-BEFORE OPENERS (2026-11-13): DraftKings posts the next day's NHL (and NBA) lines
+# the evening before -- at 3 PM ET on 11/13 all 14 of 11/14's NHL games were priced on ESPN's
+# dated board -- and the opener is the softest number of a line's life. These leagues also
+# fetch TOMORROW's ET date, written to a SEPARATE key (games_next_day) so the 20 consumers that
+# read `games` as today's slate (matchup-keyed joins, pricing, today_status) never see them.
+# Only the game-lines desk (line history + desk rows) and the board opt in.
+NEXT_DAY_SPORTS = {"nba", "nhl"}
+
+
+def _tomorrow_et() -> str:
+    try:
+        from zoneinfo import ZoneInfo
+        return (dt.datetime.now(ZoneInfo("America/New_York")) + dt.timedelta(days=1)).strftime("%Y%m%d")
+    except Exception:
+        return (dt.datetime.utcnow() - dt.timedelta(hours=4) + dt.timedelta(days=1)).strftime("%Y%m%d")
+
+
 def _today_et() -> str:
     try:
         from zoneinfo import ZoneInfo
@@ -136,14 +153,16 @@ def _today_et() -> str:
         return (dt.datetime.utcnow() - dt.timedelta(hours=4)).strftime("%Y%m%d")
 
 
-def fetch_sport(sport: str) -> List[Dict[str, Any]]:
+def fetch_sport(sport: str, only_date: Optional[str] = None) -> List[Dict[str, Any]]:
     path = SPORT_PATHS.get(sport)
     if not path:
         return []
     q = SPORT_QUERY.get(sport, "")
     base = f"https://site.api.espn.com/apis/site/v2/sports/{path}/scoreboard"
     urls = [base + q]
-    if sport in DATED_SPORTS:
+    if only_date:                                   # one dated board only (the night-before slate)
+        urls = [base + (q + "&" if q else "?") + f"dates={only_date}"]
+    elif sport in DATED_SPORTS:
         urls.append(base + (q + "&" if q else "?") + f"dates={_today_et()}")
     events: List[Dict[str, Any]] = []
     first: Dict[str, Any] = {}
@@ -154,7 +173,7 @@ def fetch_sport(sport: str) -> List[Dict[str, Any]]:
             events.extend(d.get("events") or [])
         except Exception as e:
             print(f"[espn-odds] {sport} fetch failed ({u.rsplit('/', 1)[-1]}): {e!r}")
-    if sport in WEEKLY_SPORTS and first:
+    if sport in WEEKLY_SPORTS and first and not only_date:
         nq = _next_week_query(first)
         tries = [nq] if nq else []
         if (first.get("season") or {}).get("type") == 2:
@@ -312,6 +331,16 @@ def run(sports: Optional[List[str]] = None) -> Dict[str, Any]:
     # by_matchup is MLB-only so book_vs_model_team (MLB game lines) joins cleanly;
     # other sports live in the full games list + the history trail.
     by_matchup = {g["matchup"]: g["market"] for g in priced if g["sport"] == "MLB"}
+    # tomorrow's slate for the night-before leagues: pre-game, priced, and not already listed today
+    have = {str(g.get("event_id")) for g in games}
+    next_day: List[Dict[str, Any]] = []
+    tmr = _tomorrow_et()
+    for s in sports:
+        if s in NEXT_DAY_SPORTS:
+            for g in fetch_sport(s, only_date=tmr):
+                if (str(g.get("event_id")) not in have and g.get("status") == "pre"
+                        and g["market"]["ml_home"] is not None and g["market"]["ml_away"] is not None):
+                    next_day.append(g)
     result = {
         "generated_at": now,
         "source": "espn-scoreboard (free, no key)",
@@ -322,6 +351,9 @@ def run(sports: Optional[List[str]] = None) -> Dict[str, Any]:
         "by_sport": {s.upper(): sum(1 for g in priced if g["sport"] == s.upper()) for s in sports},
         "by_matchup": by_matchup,
         "games": games,
+        # NOT today's slate: read only by game_lines_desk + board (see NEXT_DAY_SPORTS)
+        "next_day_date": f"{tmr[:4]}-{tmr[4:6]}-{tmr[6:]}",
+        "games_next_day": next_day,
     }
     os.makedirs(DATA_DIR, exist_ok=True)
     with open(OUT, "w", encoding="utf-8") as f:
