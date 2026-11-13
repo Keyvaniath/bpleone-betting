@@ -908,3 +908,17 @@ work itself. GitHub can skip any of these fires; four chances make an
 11:00-12:30 lock likely, not certain. The Worker cron is still the reliable
 fix (Brandon's call).
 
+## 2026-11-13: spread prices captured (step one toward a spread desk)
+
+Football is bet mostly against the spread, and the site had only the spread
+NUMBER, never its price, so no spread could be priced or backtested (11/11:
+"spread prices are not recorded"). ESPN carries DraftKings' point-spread odds
+(pointSpread.home/away.close.{line,odds}); espn_odds now keeps
+spread_{home,away}_{line,price}, the desk's dk_lines history stores them in
+every snapshot, and board cards show both sides with prices. First fetch:
+every pre-game NFL (26), NBA (9) and NHL (2) game priced. No spread is graded
+or picked yet: a spread desk needs a cover model (margin distribution, key
+numbers) and a backtest on the history now accumulating. Also shipped today:
+a copy-ready recap of the last fully graded Alpha day that never drops a pick
+to fit (dropping one could hide a loss).
+

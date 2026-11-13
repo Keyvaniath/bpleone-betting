@@ -204,6 +204,22 @@ def fetch_sport(sport: str) -> List[Dict[str, Any]]:
             ml_home = ml_away = None
         over_px = _am(_deep(tot, "over", "close", "odds") or _deep(tot, "over", "open", "odds"))
         under_px = _am(_deep(tot, "under", "close", "odds") or _deep(tot, "under", "open", "odds"))
+        # (2026-11-13) spread PRICES: ESPN carries DraftKings' point-spread odds under
+        # pointSpread.{home,away}.close; until now only the spread number was kept, so no
+        # spread could ever be priced or backtested. Lines are signed for that side.
+        ps = o.get("pointSpread") or {}
+
+        def _line(v):
+            try:
+                return float(str(v).strip())
+            except (TypeError, ValueError):
+                return None
+        sp_home_px = _am(_deep(ps, "home", "close", "odds") or _deep(ps, "home", "open", "odds"))
+        sp_away_px = _am(_deep(ps, "away", "close", "odds") or _deep(ps, "away", "open", "odds"))
+        sp_home_line = _line(_deep(ps, "home", "close", "line") or _deep(ps, "home", "open", "line"))
+        sp_away_line = _line(_deep(ps, "away", "close", "line") or _deep(ps, "away", "open", "line"))
+        if any(x is not None and abs(int(x)) > PLACEHOLDER_ABS_ML for x in (sp_home_px, sp_away_px)):
+            sp_home_px = sp_away_px = None
         status = _deep(comp, "status", "type", "state")  # pre / in / post
         out.append({
             "sport": sport.upper(),
@@ -228,6 +244,10 @@ def fetch_sport(sport: str) -> List[Dict[str, Any]]:
                 "over_price": over_px,
                 "under_price": under_px,
                 "spread": o.get("spread"),
+                "spread_home_line": sp_home_line,
+                "spread_home_price": sp_home_px,
+                "spread_away_line": sp_away_line,
+                "spread_away_price": sp_away_px,
                 "book": (_deep(o, "provider", "name") or "espn").lower().replace(" ", ""),
             },
         })

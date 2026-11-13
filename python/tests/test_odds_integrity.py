@@ -1243,3 +1243,24 @@ def test_recap_never_drops_a_pick_to_fit():
     p = board.recap_post(R, "2026-11-13")
     assert p["fits"]
     assert all(f"TEAM{i}" in p["text"] for i in range(5)) and "L TEAM4 -155" in p["text"]       # the loss is never cut
+
+
+def test_espn_odds_keeps_spread_prices():
+    import espn_odds as eo
+    ev = {"id": "401873053", "date": "2026-11-15T18:00Z", "competitions": [{
+        "competitors": [{"homeAway": "home", "team": {"abbreviation": "DET"}}, {"homeAway": "away", "team": {"abbreviation": "NE"}}],
+        "status": {"type": {"state": "pre"}},
+        "odds": [{"provider": {"name": "Draft Kings"}, "spread": -3.0, "overUnder": 49.5,
+                  "moneyline": {"home": {"close": {"odds": "-155"}}, "away": {"close": {"odds": "+130"}}},
+                  "total": {"over": {"close": {"odds": "-112"}}, "under": {"close": {"odds": "-108"}}},
+                  "pointSpread": {"home": {"close": {"line": "-3", "odds": "-102"}}, "away": {"close": {"line": "+3", "odds": "-118"}}}}]}]}
+    orig = eo._get
+    eo._get = lambda u: {"events": [ev]}
+    try:
+        rows = eo.fetch_sport("nfl")
+    finally:
+        eo._get = orig
+    m = rows[0]["market"]
+    assert (m["spread_home_line"], m["spread_home_price"], m["spread_away_line"], m["spread_away_price"]) == (-3.0, -102, 3.0, -118)
+    assert m["ml_home"] == -155 and m["spread"] == -3.0
+
