@@ -645,7 +645,12 @@ Promise.all([
       grid.innerHTML = [
         ["DK price", fmtA(play.book_american), "#d4a04a"], ["DK implied", pct(play.dk_implied), ""],
         ["Desk prob", pct(play.model_prob), ""], ["EV at DK", (play.ev_pct >= 0 ? "+" : "") + Number(play.ev_pct || 0).toFixed(1) + "%", play.ev_pct >= 0 ? "#58c878" : "#e35a5a"],
-        ["Desk verdict", play.desk_verdict || "—", ""], ["Start", when(play.commence_time), ""],
+        // (2026-11-13) the limit price, as on the board: a desk pick is a bet down to its 4% EV price;
+        // a lean only breaks even at DraftKings' no-vig price, which no book posts
+        (play.tier === 4
+          ? ["Break-even", play.fair_american != null ? fmtA(play.fair_american) : "—", ""]
+          : ["Playable to", (play.model_prob > 0 && play.model_prob < 1) ? ((d) => { const a = d >= 2 ? Math.round((d - 1) * 100) : Math.round(-100 / (d - 1)); return a === -100 ? "+100" : fmtA(a); })(1.04 / play.model_prob) : "—", ""]),
+        ["Start", when(play.commence_time), ""],
       ].map(([l, v, c]) => `<div class="play-stat"><div class="stat-label">${l}</div><div class="stat-value-big" style="${c ? "color:" + c : ""}">${v}</div></div>`).join("");
     }
     head.querySelectorAll(".play-why, .bottom-line").forEach(e => e.style.display = "none");
