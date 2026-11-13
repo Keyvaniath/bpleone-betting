@@ -222,6 +222,15 @@
   const inSlip = (k) => slip.some((s) => s.k === k);
 
   let B = null, sport = "ALL", day = null;
+  // (2026-11-13) "moved since your last visit": the moneylines this device last saw, per game
+  const SEENKEY = "edgestat_board_seen_v1";
+  let SEEN = {};
+  try { SEEN = JSON.parse(localStorage.getItem(SEENKEY) || "{}") || {}; } catch (e) { SEEN = {}; }
+  const sinceLast = (g) => {
+    const p = SEEN[g.id]; if (!p || g.odds.ml_home == null || p.h == null) return "";
+    if (p.h === g.odds.ml_home && p.a === g.odds.ml_away) return "";
+    return `<span class="sp" style="color:var(--gold);" title="Your last visit on this device: ${esc(g.away)} ${amer(p.a)} / ${esc(g.home)} ${amer(p.h)}">MOVED since your last visit</span>`;
+  };
 
   function toggle(g, side) {
     if (started(g) || !g.live_quote) return;
@@ -318,7 +327,7 @@
       : (o.spread_home != null ? ` · ${esc(g.home)} ${o.spread_home > 0 ? "+" : ""}${o.spread_home}` : "");
     return `<article class="gc${g.pick ? " bet" : ""}${g.alpha_rank ? " alpha" : ""}${started(g) ? " started" : ""}">
       <header><span class="sp ${esc(g.sport)}">${esc(g.sport)}</span><span class="tm">${started(g) ? "started" : tm(g.start)}</span>
-        ${g.alpha_rank ? `<span class="sp" style="color:var(--gold);">★ ALPHA #${g.alpha_rank}</span>` : ""}<span class="gr ${esc(g.grade || "")}">${gradeTxt}</span></header>
+        ${g.alpha_rank ? `<span class="sp" style="color:var(--gold);">★ ALPHA #${g.alpha_rank}</span>` : ""}${sinceLast(g)}<span class="gr ${esc(g.grade || "")}">${gradeTxt}</span></header>
       ${sideBtn(g, "away")}${sideBtn(g, "home")}
       <div class="tot">${tot}${spr}</div>
       ${mkt ? `<div class="tot" title="Opening price = the first DraftKings snapshot we recorded. Hold = the bookmaker's margin in the two prices.">${mkt}</div>` : ""}
@@ -499,6 +508,13 @@
     if (!isNaN(gen) && ageH > 3) { $("bdStale").hidden = false; $("bdStale").textContent = `This board was last built ${Math.round(ageH)} hours ago. Prices move; check the current DraftKings line before you act on anything here.`; }
     results();
     render();
+    // remember what this visit showed (kept for 7 days of games, on this device only)
+    try {
+      const keep = {}; const cut = Date.now() - 7 * 864e5;
+      Object.entries(SEEN).forEach(([k, v]) => { if (v && v.t > cut) keep[k] = v; });
+      B.games.forEach((g) => { if (g.odds && g.odds.ml_home != null) keep[g.id] = { h: g.odds.ml_home, a: g.odds.ml_away, t: Date.now() }; });
+      localStorage.setItem(SEENKEY, JSON.stringify(keep));
+    } catch (e) {}
   }).catch(() => {
     $("bdMeta").textContent = "The board is not available right now.";
     $("games").innerHTML = `<div class="empty" style="grid-column:1/-1;">The board data could not be loaded. Try again in a few minutes.</div>`;
