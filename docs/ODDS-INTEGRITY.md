@@ -1127,3 +1127,21 @@ fell 16 points from its open. espn_odds now keeps ESPN's moneyline, spread and t
 (ml_*_open, spread_home_open, total_open), and the board measures every move from them, all three
 from the same source, with our first-seen price on hover. Move signals and CLV still use our own
 snapshots, because those are the first prices we could actually have bet. main f639f966.
+
+## 2026-11-13 (night) -- fifth review; GitHub's scheduler
+
+**Review 5** (the evening diff) found 2 medium and 1 minor defect, all fixed (main 221b3be1):
+today_status counted the night-before desk rows as today's (NHL "15 held back" with 2 games that
+night); the night-before rows missed back-to-backs because b2b read only finished games (it now
+also counts a game scheduled the day before; the six move signals recorded at 20:17 UTC were not
+affected: none of that night's NHL teams played on 11/14); tomorrow's games now keep their odds
+snapshots for the line chart.
+
+**GitHub's scheduler fires this repo's crons about three times a day.** Measured 11/10-11/13:
+continuous-heartbeat ("every 2 hours") at ~01:10, ~09:40, ~17:50 UTC; live-games ("every 15
+min") ~3x/day; health-alert ("every 3 hours") ~every 9h; close-capture and alpha-lock-trigger
+never. Without a manual dispatch, board prices could be ~8 hours old, the close was taken early,
+and the Alpha lock landed at whichever run came after 11:00 ET. A dispatcher is staged in the
+`edgestat-live` Worker (its own cron is reliable): heartbeat every 15 min 9 AM-1 AM ET, hourly
+overnight; close-capture every 20 min noon-midnight ET. It does nothing until Brandon adds the
+GH_DISPATCH_TOKEN secret and deploys the Worker (TODO_BRANDON.md section 0).
