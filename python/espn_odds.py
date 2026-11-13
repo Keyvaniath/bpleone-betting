@@ -214,10 +214,17 @@ def fetch_sport(sport: str) -> List[Dict[str, Any]]:
                 return float(str(v).strip())
             except (TypeError, ValueError):
                 return None
-        sp_home_px = _am(_deep(ps, "home", "close", "odds") or _deep(ps, "home", "open", "odds"))
-        sp_away_px = _am(_deep(ps, "away", "close", "odds") or _deep(ps, "away", "open", "odds"))
-        sp_home_line = _line(_deep(ps, "home", "close", "line") or _deep(ps, "home", "open", "line"))
-        sp_away_line = _line(_deep(ps, "away", "close", "line") or _deep(ps, "away", "open", "line"))
+        def _pair(side):
+            # (2026-11-13 review) line AND price from the same snapshot: the close when it has
+            # both, else the open. Never a close line with an open price, and a 0 (pick'em)
+            # line is a line, not a missing value.
+            for when in ("close", "open"):
+                ln, px = _line(_deep(ps, side, when, "line")), _am(_deep(ps, side, when, "odds"))
+                if ln is not None and px is not None:
+                    return ln, px
+            return None, None
+        sp_home_line, sp_home_px = _pair("home")
+        sp_away_line, sp_away_px = _pair("away")
         if any(x is not None and abs(int(x)) > PLACEHOLDER_ABS_ML for x in (sp_home_px, sp_away_px)):
             sp_home_px = sp_away_px = None
         status = _deep(comp, "status", "type", "state")  # pre / in / post

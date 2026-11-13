@@ -223,7 +223,9 @@ def build_games(gld: Dict[str, Any], odds: Dict[str, Any], now: dt.datetime, tod
         for _p in ((_d.get("forward_test") or {}).get("picks") or []):
             if _p.get("close_final") or _p.get("clv_pts") is None:
                 continue
-            logged.setdefault((_sp.upper(), _p.get("matchup")), []).append(
+            # keyed by event id (2026-11-13 review): the same pairing can meet twice inside the
+            # 7-day window; the matchup is only a fallback for rows logged without an id
+            logged.setdefault((_sp.upper(), _p.get("event_id") or _p.get("matchup")), []).append(
                 {"market": _p.get("market"), "logged_price": _p.get("logged_price"), "now_price": _p.get("close_price"),
                  "clv_pts": _p.get("clv_pts")})
     # (2026-11-13) opening prices: the first DraftKings snapshot the desk recorded for each game
@@ -267,7 +269,7 @@ def build_games(gld: Dict[str, Any], odds: Dict[str, Any], now: dt.datetime, tod
                 "market": {"p_home_no_vig": pk, "p_away_no_vig": (round(1 - pk, 4) if pk is not None else None)},
                 "desk_verdict": verdict, "live_quote": bool(ok_game), "quote_issue": None if ok_game else why_game,
                 "desk_logged": [dict(x, team=names["home"] if str(x["market"]).upper().endswith("HOME") else names["away"])
-                                for x in logged.get((sport, r.get("matchup")), [])],
+                                for x in (logged.get((sport, eid)) or logged.get((sport, r.get("matchup"))) or [])],
                 "pick": None, "model_side": None, "hold": None, "grade": None, "score": None, "reason": None,
             }
             c = cands.get((sport, eid))

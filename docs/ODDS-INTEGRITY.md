@@ -951,3 +951,18 @@ CLV on started games only and reports open picks separately; the desk card says
 played games only. Rule for any future CLV number: a close is only a close
 after the start.
 
+SECOND INDEPENDENT REVIEW (11/13, everything after 3e210a6c): no severe
+defects; four smaller ones, all fixed the same day:
+ 1. A desk pick taken early as a B and later locked as a C-lean Alpha pick
+    showed as "B" in the Alpha results and recap (which then dropped the
+    "all were leans" caveat). The locked entry's grade and score now travel
+    as alpha_grade / alpha_score and always win, like alpha_price.
+ 2. A spread line and its price could come from different snapshots (close
+    line + open price), and a 0 (pick'em) line was dropped. Both now come from
+    one snapshot; 0 is kept. Matters for the spread backtest history.
+ 3. The published board `definition` still said "game-day price"; it now says
+    first listing (desk picks when the edge appears, leans on game day).
+ 4. Desk picks were matched to board cards by matchup; now by event id (the
+    same pairing can meet twice inside the 7-day window).
+Also re-run: the 137-page runtime crawl, clean.
+

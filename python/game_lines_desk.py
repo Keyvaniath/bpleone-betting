@@ -612,6 +612,7 @@ def forward_test(sport: str, lines: Dict[str, Any]) -> Dict[str, Any]:
             l_ += not won
             units += (dd - 1) if won else -1.0
         out.append({"date": p.get("date"), "matchup": p.get("player_or_matchup"), "market": p.get("market"),
+                    "event_id": str(p.get("event_id") or "") or None,
                     "logged_price": p.get("book_american"),
                     "close_price": c.get("ml_home") if side == "home" else c.get("ml_away"),
                     "close_final": started, "clv_ev": clv, "clv_pts": pts, "result": res})

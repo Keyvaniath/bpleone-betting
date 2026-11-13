@@ -1292,3 +1292,43 @@ def test_desk_clv_headline_counts_played_games_only(tmp_path, monkeypatch):
     f = gld.forward_test("nfl", lines)
     assert f["n_clv"] == 1 and f["avg_clv_pts"] == 0.0                                 # the open pick does not inflate it
     assert f["open"]["n"] == 1 and f["open"]["avg_pts_vs_current"] > 10 and f["open"]["ahead"] == 1
+
+
+def test_review_1113_alpha_grade_spread_pairing_and_event_keyed_desk_picks(tmp_path, monkeypatch):
+    import all_picks_tracker as t
+    import espn_odds as eo
+    import board
+    # 1. a B desk pick locked as a C-lean Alpha pick: the Alpha record says C, the board-bet record keeps B
+    for sp in ("nfl", "nba", "nhl"):
+        (tmp_path / f"dk_lines_{sp}.json").write_text(json.dumps({"events": {}}))
+    monkeypatch.setattr(t, "DATA_DIR", str(tmp_path))
+    h = [{"source": "nfl_game_ml", "also_sources": ["board_pick", "board_alpha"], "desk_verdict": "unproven", "sport": "NFL",
+          "player_or_matchup": "NE @ DET", "market": "ML_HOME", "book_american": 110, "board_price": 110, "board_grade": "B",
+          "alpha_price": -155, "alpha_grade": "C", "alpha_score": 43, "date": "2026-11-15", "settled": True, "result": "won", "payout_units": 1.1}]
+    b = t._board_block(h)
+    assert b["recent"][0]["grade"] == "C" and b["recent"][0]["book_american"] == -155 and b["by_grade"]["B"]["wins"] == 1
+    assert "when its edge first appeared" in b["definition"]
+    # 2. spread line + price from one snapshot; a 0 line survives
+    ev = {"id": "9", "date": "2026-11-15T18:00Z", "competitions": [{
+        "competitors": [{"homeAway": "home", "team": {"abbreviation": "DET"}}, {"homeAway": "away", "team": {"abbreviation": "NE"}}],
+        "status": {"type": {"state": "pre"}},
+        "odds": [{"provider": {"name": "Draft Kings"}, "moneyline": {"home": {"close": {"odds": "-155"}}, "away": {"close": {"odds": "+130"}}},
+                  "pointSpread": {"home": {"close": {"line": "-3"}, "open": {"line": "-2.5", "odds": "-110"}},
+                                  "away": {"close": {"line": "0", "odds": "-105"}}}}]}]}
+    orig = eo._get
+    eo._get = lambda u: {"events": [ev]}
+    try:
+        m = eo.fetch_sport("nfl")[0]["market"]
+    finally:
+        eo._get = orig
+    assert (m["spread_home_line"], m["spread_home_price"]) == (-2.5, -110)          # not "-3 (-110)"
+    assert (m["spread_away_line"], m["spread_away_price"]) == (0.0, -105)            # pick'em kept
+    # 4. two games with the same pairing: each card shows only its own desk pick
+    bd, now = _board_fixture(tmp_path, monkeypatch)
+    gld = json.loads((tmp_path / "game_lines_desk.json").read_text())
+    gld["sports"]["nfl"]["forward_test"] = {"picks": [
+        {"matchup": "DAL @ IND", "event_id": "elsewhere", "market": "ML_HOME", "logged_price": 220, "close_price": 195, "close_final": False, "clv_pts": 3.3}]}
+    (tmp_path / "game_lines_desk.json").write_text(json.dumps(gld))
+    out = bd.run(now=now)
+    assert next(x for x in out["games"] if x["matchup"] == "DAL @ IND")["desk_logged"] == []
+
