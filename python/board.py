@@ -352,7 +352,8 @@ def build_games(gld: Dict[str, Any], odds: Dict[str, Any], now: dt.datetime, tod
     return games
 
 
-COLLEGE = ("NCAAF",)
+COLLEGE = ("NCAAF", "NCAAB")
+ODDS_ONLY = ("NCAAB",)          # no model yet: DraftKings odds only, clearly labelled
 
 
 def build_college(odds: Dict[str, Any], now: dt.datetime, today_et: str) -> List[Dict[str, Any]]:
@@ -415,6 +416,41 @@ def build_college(odds: Dict[str, Any], now: dt.datetime, today_et: str) -> List
                              f"{c.get('home')} {-(c.get('model_spread_home') or 0):+.1f}. For information only: the closing "
                              "line has been sharper than this model, so no college game is a bet."))
         out.append(g)
+    out.sort(key=lambda g: (g["date"], str(g.get("start") or ""), g["matchup"] or ""))
+    return out
+
+
+def build_odds_only(sport: str, odds: Dict[str, Any], now: dt.datetime, today_et: str) -> List[Dict[str, Any]]:
+    """(2026-11-13) A sport with DraftKings odds but no model of ours (college basketball):
+    the prices only, under its own chip. No side, no grade, never a bet."""
+    last_day = (dt.date.fromisoformat(today_et) + dt.timedelta(days=DAYS_AHEAD)).isoformat()
+    out = []
+    for o in odds.get("games") or []:
+        m = o.get("market") or {}
+        if o.get("sport") != sport or o.get("status") != "pre" or m.get("ml_home") is None or m.get("ml_away") is None:
+            continue
+        gd = pod._et_date(o.get("commence_time"))
+        if not gd or gd < today_et or gd > last_day:
+            continue
+        q = {"provenance": "book_snapshot", "book": str(m.get("book") or "draftkings").lower(), "american": m.get("ml_home"),
+             "observed_at": odds.get("generated_at"), "scheduled_start": o.get("commence_time"), "event_id": o.get("event_id")}
+        ok, why = _q.actionable(q, now=now)
+        ok, why = pod._dk_only(q, ok, why)
+        pk = gld_no_vig(m.get("ml_home"), m.get("ml_away"))
+        out.append({
+            "id": str(o.get("event_id") or o.get("matchup")), "sport": sport, "date": gd, "start": o.get("commence_time"),
+            "away": o.get("away"), "home": o.get("home"), "matchup": o.get("matchup"), "page": pod.SPORT_PAGE.get(sport),
+            "odds": {"book": "DraftKings", "ml_away": m.get("ml_away"), "ml_home": m.get("ml_home"), "total": m.get("total"),
+                     "over_price": m.get("over_price"), "under_price": m.get("under_price"), "spread_home": m.get("spread"),
+                     "observed_at": odds.get("generated_at"), "snapshot_id": None, "hold_pct": hold_pct(m.get("ml_home"), m.get("ml_away")),
+                     "spread_home_line": m.get("spread_home_line"), "spread_home_price": m.get("spread_home_price"),
+                     "spread_away_line": m.get("spread_away_line"), "spread_away_price": m.get("spread_away_price"), "move": None},
+            "model": {"p_home": None, "p_away": None},
+            "market": {"p_home_no_vig": pk, "p_away_no_vig": (round(1 - pk, 4) if pk is not None else None)},
+            "desk_verdict": "NO MODEL", "live_quote": bool(ok), "quote_issue": None if ok else why,
+            "desk_logged": [], "lineup": None, "pick": None, "model_side": None, "hold": None, "grade": None, "score": None,
+            "college": True, "odds_only": True,
+            "reason": "DraftKings odds only: we have no model for this sport yet, so there is no side and no bet."})
     out.sort(key=lambda g: (g["date"], str(g.get("start") or ""), g["matchup"] or ""))
     return out
 
@@ -591,6 +627,8 @@ def run(now: Optional[dt.datetime] = None) -> Dict[str, Any]:
     games = build_games(gld, odds, now, today_et)
     picks = flat_picks(games, gld)                     # bets come from the major-sport desks only
     games = games + build_college(odds, now, today_et)
+    for _sp in ODDS_ONLY:
+        games = games + build_odds_only(_sp, odds, now, today_et)
     alpha = alpha_for_today(picks, today_et, now)
     alpha_ids = {(p["sport"], str(p["event_id"])) for p in alpha["picks"]}
     for g in games:
@@ -612,7 +650,7 @@ def run(now: Optional[dt.datetime] = None) -> Dict[str, Any]:
         }
     for sp in COLLEGE:
         gs = [g for g in games if g["sport"] == sp and g["date"] == today_et]
-        sports[sp] = {"games_today": len(gs), "bets_today": 0, "verdict": "EXPERIMENTAL",
+        sports[sp] = {"games_today": len(gs), "bets_today": 0, "verdict": "NO MODEL" if sp in ODDS_ONLY else "EXPERIMENTAL",
                       "status": "on" if gs else "no games today", "page": pod.SPORT_PAGE.get(sp), "info_only": True}
     # today is always a day on the board, even after its last game has started: the locked
     # Alpha list and the day's results still belong to it
@@ -637,7 +675,8 @@ def run(now: Optional[dt.datetime] = None) -> Dict[str, Any]:
         # results written by the ledger's previous run: every board bet graded at the price it was logged at
         "results": (_load("ledger_summary.json") or {}).get("board"),
         "recap": recap_post((_load("ledger_summary.json") or {}).get("board"), today_et),
-        "counts": {"games": len(games), "games_today": sum(1 for g in games if g["date"] == today_et),
+        "counts": {"games": len(games), "games_today": sum(1 for g in games if g["date"] == today_et and not g.get("college")),
+                   "college_today": sum(1 for g in games if g["date"] == today_et and g.get("college")),
                    "bets": len(picks), "bets_today": sum(1 for p in picks if p["game_date"] == today_et)},
     }
     os.makedirs(DATA_DIR, exist_ok=True)
