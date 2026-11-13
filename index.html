@@ -102,6 +102,7 @@ fetch("data/board.json?t=" + Date.now(), { cache: "no-cache" }).then(function (r
       '<div style="font-size:22px;font-weight:800;margin-top:6px;">' + esc(a.team) + '</div>' +
       '<div style="font-size:12px;color:var(--text-2,#9fb0c8);">moneyline <span style="font-family:JetBrains Mono,monospace;color:#fbbf24;font-weight:700;font-size:15px;">' + amer(a.book_american) + '</span></div>' +
       '<div style="font-size:11px;color:var(--text-3,#6a7a93);margin-top:4px;">' + esc(a.matchup) + ' · ' + tm(a.commence_time) + '</div>' +
+      (a.added_at && B.alpha.locked_at && a.added_at !== B.alpha.locked_at ? '<div style="font-size:11px;color:var(--text-3,#6a7a93);">added ' + tm(String(a.added_at) + 'Z') + ', after the lock</div>' : '') +
       '<div style="margin-top:8px;font-family:JetBrains Mono,monospace;font-size:11px;color:' + (col[a.grade] || "#9fb0c8") + ';">grade ' + esc(a.grade) + ' · ' + a.score + '</div></a>';
   }).join("");
   document.getElementById("homeAlphaMeta").textContent = (B.alpha.status === "locked" ? "· locked for the day" : "· provisional until 11:00 AM ET") + " · DraftKings prices";

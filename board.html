@@ -453,7 +453,8 @@
     $("alphaSec").style.display = showAlpha ? "" : "none";
     if (showAlpha) {
       const Af = A.filter((a) => sport === "ALL" || a.sport === sport);
-      $("alphaMeta").textContent = B.alpha.status === "locked" ? "locked " + obs(B.alpha.locked_at) + " · top-scored bets of the day"
+      const nLate = (B.alpha.picks || []).filter((p) => p.added_at && B.alpha.locked_at && p.added_at !== B.alpha.locked_at).length;
+      $("alphaMeta").textContent = B.alpha.status === "locked" ? "locked " + obs(B.alpha.locked_at) + (nLate ? ` · ${nLate} added later in the day` : "") + " · top-scored bets of the day"
         : "provisional until " + B.alpha.lock_hour_et + ":00 AM ET" + (() => {
             // minutes to the lock on the Eastern clock (the list is re-scored until then)
             const hm = new Date().toLocaleTimeString("en-US", Object.assign({ hour: "2-digit", minute: "2-digit", hour12: false }, ET)).split(":").map(Number);
@@ -470,6 +471,8 @@
         return `<div class="ac"><span class="rk">#${a.rank}</span><span class="sp ${esc(a.sport)}">${esc(a.sport)}</span>
           <div class="tm">${esc(a.team)}</div><div class="mk">moneyline · <span class="px">${amer(a.book_american)}</span></div>
           <div class="gm">${esc(a.matchup)} · ${gone ? "started" : tm(a.commence_time)}</div>
+          ${a.added_at && B.alpha.locked_at && a.added_at !== B.alpha.locked_at
+            ? `<div class="gm" title="The list locks at 11:00 AM ET and only grows: a bet that first qualifies later in the day joins it at that time&#39;s price. Nothing is removed or re-priced.">added ${esc(obs(a.added_at).replace(/^\d+\/\d+, /, ""))}, after the lock</div>` : ""}
           ${(() => { const lu = g && g.lineup; if (!lu) return "";
               // the pick's own side first: an unconfirmed / backup goalie, an uncertain QB, a big absence
               const mine = lu[a.side], other = lu[a.side === "home" ? "away" : "home"];
