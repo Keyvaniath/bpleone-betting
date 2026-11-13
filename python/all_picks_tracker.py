@@ -3346,8 +3346,14 @@ def _board_block(history: List[Dict[str, Any]]) -> Dict[str, Any]:
             return None
         fair_home = (1 / hp) / (1 / hp + 1 / ap)
         pf = fair_home if side == "home" else 1 - fair_home
+        try:      # how long before the start our "close" snapshot was taken (the heartbeat is lossy)
+            mins = (dt.datetime.fromisoformat(str(ev.get("commence")).replace("Z", "+00:00"))
+                    - dt.datetime.fromisoformat(str(c.get("at"))).replace(tzinfo=dt.timezone.utc)).total_seconds() / 60
+        except Exception:
+            mins = None
         return {"close_price": cp, "clv_pts": round((1 / d_close - 1 / d_ours) * 100, 2),     # + = we beat the close
-                "clv_ev": round(pf * d_ours - 1, 4)}                                             # EV of our price at the no-vig close
+                "clv_ev": round(pf * d_ours - 1, 4),                                             # EV of our price at the no-vig close
+                "close_min_before": round(mins) if mins is not None else None}
 
     def line(ps: List[Dict[str, Any]], alpha: bool = False) -> Dict[str, Any]:
         done = [p for p in ps if p.get("settled") and p.get("result") in ("won", "lost", "push")]
@@ -3361,7 +3367,9 @@ def _board_block(history: List[Dict[str, Any]]) -> Dict[str, Any]:
                 "n_clv": len(cl),
                 "avg_clv_pts": round(sum(x["clv_pts"] for x in cl) / len(cl), 2) if cl else None,
                 "beat_close_pct": round(sum(1 for x in cl if x["clv_pts"] > 0) / len(cl) * 100, 1) if cl else None,
-                "avg_clv_ev_pct": round(sum(x["clv_ev"] for x in cl) / len(cl) * 100, 2) if cl else None}
+                "avg_clv_ev_pct": round(sum(x["clv_ev"] for x in cl) / len(cl) * 100, 2) if cl else None,
+                "median_close_min_before": (sorted(x["close_min_before"] for x in cl if x.get("close_min_before") is not None)
+                                            or [None])[len([x for x in cl if x.get("close_min_before") is not None]) // 2]}
 
     def team(p: Dict[str, Any]) -> str:
         parts = [x.strip() for x in str(p.get("player_or_matchup") or "").split("@", 1)]
