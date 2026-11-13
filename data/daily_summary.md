@@ -4,16 +4,16 @@
 
 _Pipeline health: **WARNING** (7/15 artifacts ok; 8 empty, 0 stale)._ 
 
-_Generated at 2026-11-13T12:54:31 UTC. Game lines source: **DraftKings via ESPN (139 pre-game priced games, observed 2026-11-13T12:54:22 UTC)**._
+_Generated at 2026-11-13T20:17:16 UTC. Game lines source: **DraftKings via ESPN (138 pre-game priced games, observed 2026-11-13T20:17:06 UTC)**._
 
 ## Self-Learning Loop
 
 | Market | n settled | Hit rate | Model implied | Bias | Correction |
 |---|---|---|---|---|---|
-| batter total bases | 40 | 45.0% | 39.1% | 0.872 | 1.128 |
 | batter hits | 175 | 56.6% | 57.9% | 1.023 | 0.978 |
+| batter total bases | 40 | 45.0% | 39.1% | 0.872 | 1.128 |
 
-Cumulative graded plays: 23706. Wins: 11604. Hit rate: 48.9%.
+Cumulative graded plays: 23707. Wins: 11605. Hit rate: 49.0%.
 
 ## Loop Activity (since last refresh)
 

@@ -1,5 +1,5 @@
 # EdgeStat — Tonight's Master Brief
-_Generated 2026-11-13T12:54:22 UTC_
+_Generated 2026-11-13T20:17:06 UTC_
 
 ## Slate Quality
 - **Tier:** NO_ACTION_NIGHT
@@ -34,9 +34,9 @@ _Generated 2026-11-13T12:54:22 UTC_
   - Fade angle: PTS UNDER + PRA UNDER (multi-prop)
 - **NBA** / LAC (TEAM_FADE)
   - Fade angle: team total UNDER
-- **NBA** / UTA (TEAM_FADE)
-  - Fade angle: team total UNDER
-- **NBA** / ORL (TEAM_FADE)
-  - Fade angle: team total UNDER
 - **NBA** / MIL (TEAM_FADE)
+  - Fade angle: team total UNDER
+- **NBA** / MIA (TEAM_FADE)
+  - Fade angle: team total UNDER
+- **NBA** / UTA (TEAM_FADE)
   - Fade angle: team total UNDER

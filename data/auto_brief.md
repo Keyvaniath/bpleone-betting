@@ -2,26 +2,23 @@
 
 ## Slate
 - **0 games** scheduled
-- **No best bet today:** a best bet needs a real sportsbook price — 14 model-only projections excluded (LOL 4, GOLF 4, NBA 3, NFL 3)
+- **No best bet today:** a best bet needs a real sportsbook price — 13 model-only projections excluded (LOL 4, GOLF 4, NBA 3, NFL 2)
 
 ## Golf -- Austin Championship pres. by Compliance Solutions
-- **Leader:** Trace Crowe (-10) at #1
+- **Leader:** Brian Harman (-11) at #1
 - **Field:** 120 players  |  Status: In Progress
 - **Model projection:** Erik van Rooyen WIN (model 13.0%) — model projection — unvalidated, no sportsbook price, not a recommendation
 
 ## NBA -- REGULAR
-- 11/12 07:00 PM ET: Toronto Raptors @ Philadelphia 76ers (5-7 vs 10-3) 112-123 | no DK price | no validated model probability | Final
-- 11/12 07:00 PM ET: Detroit Pistons @ Washington Wizards (8-3 vs 4-9) 144-140 | no DK price | no validated model probability | Final
-- 11/12 08:00 PM ET: Dallas Mavericks @ Minnesota Timberwolves (7-5 vs 9-3) 94-133 | no DK price | no validated model probability | Final
-- 11/12 09:00 PM ET: Charlotte Hornets @ Phoenix Suns (4-8 vs 5-6) 96-101 | no DK price | no validated model probability | Final
-- 11/13 07:00 PM ET: New York Knicks @ Indiana Pacers (6-5 vs 4-8)  | DK -269/+220 | desk P(home) 30.0% (NO EDGE) | Scheduled
+- 11/13 07:00 PM ET: New York Knicks @ Indiana Pacers (6-5 vs 4-8)  | DK -337/+271 | desk P(home) 25.9% (NO EDGE) | Scheduled
+- 11/13 07:00 PM ET: Milwaukee Bucks @ Orlando Magic (1-11 vs 4-7)  | DK +312/-395 | desk P(home) 76.7% (NO EDGE) | Scheduled
+- 11/13 08:00 PM ET: Cleveland Cavaliers @ Miami Heat (6-6 vs 5-6)  | DK +114/-135 | desk P(home) 55.1% (NO EDGE) | Scheduled
+- 11/13 08:00 PM ET: Atlanta Hawks @ Chicago Bulls (7-5 vs 1-9)  | DK -290/+236 | desk P(home) 28.6% (NO EDGE) | Scheduled
+- 11/13 08:00 PM ET: Memphis Grizzlies @ New Orleans Pelicans (7-4 vs 4-8)  | DK -162/+136 | desk P(home) 40.7% (NO EDGE) | Scheduled
 
 ## NHL -- REGULAR
-- 11/12 12:00 PM ET: Carolina Hurricanes @ Seattle Kraken (0-0-0 vs 0-0-0) 4-1 | no DK price | no validated model probability | Final
-- 11/12 07:00 PM ET: Montreal Canadiens @ Boston Bruins (0-0-0 vs 0-0-0) 5-2 | no DK price | no validated model probability | Final
-- 11/12 07:00 PM ET: Minnesota Wild @ Toronto Maple Leafs (0-0-0 vs 0-0-0) 5-2 | no DK price | no validated model probability | Final
-- 11/12 07:00 PM ET: Colorado Avalanche @ Ottawa Senators (0-0-0 vs 0-0-0) 3-4 | no DK price | no validated model probability | Final
-- 11/12 07:00 PM ET: Washington Capitals @ New Jersey Devils (0-0-0 vs 0-0-0) 2-5 | no DK price | no validated model probability | Final
+- 11/13 09:00 PM ET: New York Rangers @ Vancouver Canucks (11-8-1 vs 3-16-1)  | DK -225/+185 | desk P(home) 33.6% (NO EDGE) | Scheduled
+- 11/13 10:00 PM ET: Nashville Predators @ Vegas Golden Knights (10-4-5 vs 13-5-2)  | DK +136/-162 | desk P(home) 59.3% (NO EDGE) | Scheduled
 
 ## LoL Esports -- 0 live, 1 upcoming — model projection — unvalidated, no sportsbook price, not a recommendation
 - [Worlds] 11/14 02:00 PM ET: Gen.G Esports vs BILIBILI GAMING BO5 | model P(A) 59.5%
