@@ -1145,3 +1145,8 @@ and the Alpha lock landed at whichever run came after 11:00 ET. A dispatcher is 
 `edgestat-live` Worker (its own cron is reliable): heartbeat every 15 min 9 AM-1 AM ET, hourly
 overnight; close-capture every 20 min noon-midnight ET. It does nothing until Brandon adds the
 GH_DISPATCH_TOKEN secret and deploys the Worker (TODO_BRANDON.md section 0).
+
+**Timing study (tools/timing_study.py, 11/13).** Do favourites shorten between the first
+DraftKings price we record and the close? NFL -0.37 pts (90% CI [-0.84, +0.08], n=163), NBA
+-0.32 ([-0.80, +0.13], n=234), NHL +0.07 ([-0.07, +0.22], n=293). No timing effect in any
+sport, so leans stay logged on game day. Recorded as a negative result.
