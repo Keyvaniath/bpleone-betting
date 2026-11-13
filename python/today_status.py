@@ -48,7 +48,10 @@ def run() -> Dict[str, Any]:
         games = [g for g in (odds.get("games") or []) if g.get("sport") == sp and g.get("status") == "pre"]
         priced = [g for g in games if (g.get("market") or {}).get("ml_home") is not None]
         d = desk.get(sp.lower()) or {}
-        board = d.get("board") or []
+        # (2026-11-13 review) only the games on today's slate: the desk's board also carries the
+        # night-before NBA/NHL games (espn_odds.games_next_day), which are not today's
+        ids = {str(g.get("event_id")) for g in games}
+        board = [r for r in (d.get("board") or []) if str(r.get("event_id")) in ids]
         picks = [r for r in board if r.get("pick")]
         blocked = [r for r in board if r.get("pick_blocked")]
         row = {"sport": sp, "games_on_board": len(games), "games_priced": len(priced),

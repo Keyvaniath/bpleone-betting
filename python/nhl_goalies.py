@@ -224,6 +224,15 @@ class GoalieState:
         return (self.sv.get(gid, 0.0) - self.lg() * sa) / (sa + PRIOR_SHOTS)
 
     def b2b(self, team: str, date: str) -> bool:
+        # (2026-11-13 review) also a back-to-back when the team has a game SCHEDULED the day
+        # before (the desk sets `scheduled` from the odds slate): the night-before rows are priced
+        # while that game is unplayed, so last_date alone missed it
+        try:
+            prev = (dt.date.fromisoformat(date) - dt.timedelta(days=1)).isoformat()
+            if prev in (getattr(self, "scheduled", None) or {}).get(team, ()):
+                return True
+        except Exception:
+            pass
         last = self.last_date.get(team)
         if not last:
             return False

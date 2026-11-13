@@ -233,6 +233,13 @@ class AvailState:
         return l_today - self.l_ewma.get((team, season), l_today)
 
     def b2b(self, team: str, date: str) -> bool:
+        # (2026-11-13 review) a game SCHEDULED the day before counts too (see nhl_goalies.b2b)
+        try:
+            prev = (dt.date.fromisoformat(date) - dt.timedelta(days=1)).isoformat()
+            if prev in (getattr(self, "scheduled", None) or {}).get(team, ()):
+                return True
+        except Exception:
+            pass
         ld = self.last_date.get(team)
         if not ld:
             return False
