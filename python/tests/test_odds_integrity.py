@@ -1580,3 +1580,19 @@ def test_price_series_runs_from_the_opener_to_now():
     assert s[0][0] is None and s[-1][0] == "now" and len(s) == 4
     assert s[0][1] > s[1][1] > s[2][1] > s[3][1]               # home drifting out all day
     assert board.price_series([], (None, None), -110, -110) == []   # one point is not a chart
+
+
+def test_b2b_counts_a_scheduled_game_the_day_before():
+    import types
+    import nhl_goalies, nba_avail
+    for cls in (nhl_goalies.GoalieState, nba_avail.AvailState):
+        fake = types.SimpleNamespace(last_date={"VGK": "2026-11-10"}, scheduled={"VGK": {"2026-11-13"}})
+        assert cls.b2b(fake, "VGK", "2026-11-14") is True          # plays tonight, not final yet
+        assert cls.b2b(fake, "VGK", "2026-11-13") is False
+        bare = types.SimpleNamespace(last_date={"VGK": "2026-11-13"})
+        assert cls.b2b(bare, "VGK", "2026-11-14") is True           # the finished-game path still works
+
+
+def test_today_status_counts_only_todays_desk_rows():
+    src = open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "today_status.py"), encoding="utf-8").read()
+    assert 'if str(r.get("event_id")) in ids' in src

@@ -927,6 +927,25 @@ def run_sport(sport: str) -> Dict[str, Any]:
         if ex.get("n"):
             ng.EXPECTED_P = round((ex["correct"] + 0.9 * 10) / (ex["n"] + 10), 3)
         extra["goalie_model"]["expected_p_used"] = ng.EXPECTED_P
+    # (2026-11-13 review) the slate's scheduled games per team and ET date, so a team that plays
+    # tonight is on a back-to-back in tomorrow's night-before row (the game is not final yet).
+    # Keys as each model's state uses them: NHL = _norm_team, NBA = ESPN abbreviation upper-case.
+    sched_n: Dict[str, set] = {}
+    sched_a: Dict[str, set] = {}
+    for g in _odds_games(odds):
+        if g.get("sport") != sport.upper():
+            continue
+        try:
+            gd = _et_day(dt.datetime.fromisoformat(str(g.get("commence_time")).replace("Z", "+00:00")))
+        except Exception:
+            continue
+        for side in ("home", "away"):
+            sched_n.setdefault(_norm_team(sport, g.get(side)), set()).add(gd)
+            sched_a.setdefault(str(g.get(side) or "").upper(), set()).add(gd)
+    if gm:
+        gm["state"].scheduled = sched_n
+    if sport == "nba" and extra.get("avail_model") and am:
+        am["state"].scheduled = sched_a
     for g in _odds_games(odds):
         m = g.get("market") or {}
         if g.get("sport") != sport.upper() or g.get("status") != "pre" or m.get("ml_home") is None:

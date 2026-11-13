@@ -353,6 +353,11 @@ def run(sports: Optional[List[str]] = None) -> Dict[str, Any]:
                 if (str(g.get("event_id")) not in have and g.get("status") == "pre"
                         and g["market"]["ml_home"] is not None and g["market"]["ml_away"] is not None):
                     next_day.append(g)
+    if next_day:
+        # (2026-11-13 review) the night-before slate's snapshots too, so tomorrow's line chart
+        # keeps the evening's moves. Keyed by the UTC start date like every other game; the
+        # history's readers take only upcoming/today's games (line_movement) or MLB (clv_tracker).
+        n_tracked = _update_history(next_day, now)
     result = {
         "generated_at": now,
         "source": "espn-scoreboard (free, no key)",
