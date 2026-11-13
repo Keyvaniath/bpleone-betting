@@ -597,12 +597,13 @@ def forward_test(sport: str, lines: Dict[str, Any]) -> Dict[str, Any]:
             pf = fair_h if side == "home" else 1 - fair_h
             clv = round(pf * dd - 1, 4)                     # EV of our price at the no-vig close (vig included)
             pts = round((1 / dc - 1 / dd) * 100, 2)          # implied-prob points we beat the close by
-            clvs.append((clv, pts))
+            clvs.append((clv, pts, started))
             beat += pts > 0
-            bm = by_model.setdefault(p.get("desk_model") or "v1", {"n": 0, "sum_pts": 0.0, "beat": 0})
-            bm["n"] += 1
-            bm["sum_pts"] += pts
-            bm["beat"] += pts > 0
+            if started:                                      # versions are compared on played games only
+                bm = by_model.setdefault(p.get("desk_model") or "v1", {"n": 0, "sum_pts": 0.0, "beat": 0})
+                bm["n"] += 1
+                bm["sum_pts"] += pts
+                bm["beat"] += pts > 0
         res = p.get("result")
         # the ledger writes 'won' / 'lost' (2026-11-02: read as 0-0 after Week 9 settled 5-4)
         if p.get("settled") and res in ("won", "lost", "win", "loss") and dd:
@@ -614,12 +615,22 @@ def forward_test(sport: str, lines: Dict[str, Any]) -> Dict[str, Any]:
                     "logged_price": p.get("book_american"),
                     "close_price": c.get("ml_home") if side == "home" else c.get("ml_away"),
                     "close_final": started, "clv_ev": clv, "clv_pts": pts, "result": res})
-    n = len(clvs)
+    # (2026-11-13 correction) The headline CLV is over STARTED games only. It used to average
+    # open picks too, whose "close" is merely today's line: on 11/13 that read +1.76 pts over
+    # 31 picks while the 18 played games averaged -0.02 pts (EV at the close -2.5%) -- the
+    # whole gain was open picks the market had moved toward. Open picks are reported apart.
+    done = [c for c in clvs if c[2]]
+    live = [c for c in clvs if not c[2]]
+    n = len(done)
     return {"n_logged": len(rows), "settled_w": w, "settled_l": l_, "units": round(units, 2),
-            "avg_clv_ev": round(sum(c[0] for c in clvs) / n, 4) if n else None,
-            "avg_clv_pts": round(sum(c[1] for c in clvs) / n, 2) if n else None,
-            "beat_close_pct": round(beat / n * 100, 1) if n else None,
-            "flat_close_pct": round(sum(1 for c in clvs if c[1] == 0) / n * 100, 1) if n else None, "n_clv": n,
+            "avg_clv_ev": round(sum(c[0] for c in done) / n, 4) if n else None,
+            "avg_clv_pts": round(sum(c[1] for c in done) / n, 2) if n else None,
+            "beat_close_pct": round(sum(1 for c in done if c[1] > 0) / n * 100, 1) if n else None,
+            "flat_close_pct": round(sum(1 for c in done if c[1] == 0) / n * 100, 1) if n else None, "n_clv": n,
+            "open": {"n": len(live),
+                     "avg_pts_vs_current": round(sum(c[1] for c in live) / len(live), 2) if live else None,
+                     "ahead": sum(1 for c in live if c[1] > 0), "behind": sum(1 for c in live if c[1] < 0),
+                     "note": "open picks against TODAY's line, not a close: the market can still move back"},
             "n_close_final": sum(1 for r in out if r["close_final"] and r["clv_ev"] is not None),
             "by_model": {k: {"n": v["n"], "avg_clv_pts": round(v["sum_pts"] / v["n"], 2),
                              "beat_close_pct": round(v["beat"] / v["n"] * 100, 1)} for k, v in by_model.items()},

@@ -46,19 +46,21 @@
     const f = s.forward_test;
     if (!f || !f.n_logged) return "";
     const sg = (v) => v == null ? "—" : (v > 0 ? "+" : "") + v;
-    const fin = f.n_close_final === f.n_clv ? "" : ` (${f.n_clv - f.n_close_final} not kicked off yet: close = latest line)`;
+    // (2026-11-13) the CLV figures are over games already played; open picks are a separate line
+    const op = f.open || {};
+    const fin = op.n ? `<br>Open picks (not played yet) vs today&#39;s line: ${op.n}, avg ${sg(op.avg_pts_vs_current)} pts (${op.ahead} ahead, ${op.behind} behind) — the market can still move back` : "";
     const bm = Object.entries(f.by_model || {}).map(([k, v]) => `${esc(k)}: ${v.n} picks, ${sg(v.avg_clv_pts)} pts`).join(" · ");
     // (2026-11-03) avg_clv_ev = EV of the logged picks at the NO-VIG DK close --
     // the plain answer to "were these good bets?". Shown first and in words;
     // the implied-prob points line stays below it as the detail.
     const ev = f.avg_clv_ev;
     const evLine = ev == null ? "" : `<div style="margin-top:6px; font-size:12px; font-weight:700; color:${ev > 0 ? "#58c878" : "#e35a5a"};">
-        Logged picks vs the no-vig DraftKings close: average EV ${ev > 0 ? "+" : ev < 0 ? "−" : ""}${Math.abs(ev * 100).toFixed(2)}% per bet over ${f.n_clv} picks —
+        Played games, logged price vs the no-vig DraftKings close: average EV ${ev > 0 ? "+" : ev < 0 ? "−" : ""}${Math.abs(ev * 100).toFixed(2)}% per bet over ${f.n_clv} picks —
         ${ev > 0 ? "the close says these were +EV bets." : "the close says these were −EV bets (worse than a fair price), whatever the W-L shows."}
       </div>`;
     return `${evLine}<div class="muted" style="margin-top:6px; font-family:'JetBrains Mono',monospace; font-size:11px;">
         ${bm && Object.keys(f.by_model).length > 1 ? "By model version — " + bm + "<br>" : ""}Forward test: ${f.n_logged} picks logged · settled ${f.settled_w}-${f.settled_l} (${sg(f.units)}u, small sample) ·
-        vs the DK close: avg ${sg(f.avg_clv_pts)} implied-prob pts, beat ${f.beat_close_pct ?? "—"}%, flat ${f.flat_close_pct ?? "—"}%${fin}
+        played games vs the DK close (${f.n_clv}): avg ${sg(f.avg_clv_pts)} implied-prob pts, beat ${f.beat_close_pct ?? "—"}%, flat ${f.flat_close_pct ?? "—"}%${fin}
       </div>`;
   };
   // NFL (2026-10-29): projected starting QB + his edge over the team's usual

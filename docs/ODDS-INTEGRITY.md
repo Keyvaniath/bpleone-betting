@@ -934,3 +934,20 @@ over ln 2 has a 90% CI clear of zero.
 Verdict: NO spread desk. NFL looks like its moneyline (signal, not yet outside
 noise); rerun once a few weeks of spread PRICES exist. NBA: do not build.
 
+## 2026-11-13 CORRECTION: the NFL desk's CLV was overstated
+
+Earlier today this file (and the report to Brandon) said the NFL desk's 31
+forward-test picks "average +1.76 pts (beat the close 52%)" and called it the
+first sharp-style sign of signal. Wrong basis: forward_test averaged OPEN picks
+too, and an open pick's "close" is just today's line. Split properly:
+  played games (18):  avg -0.02 pts vs the DK close, 90% CI [-1.46, +1.30],
+                      8 beat / 2 flat / 8 behind, EV at the no-vig close -2.5%
+  open picks (13):    avg +4.24 pts vs the CURRENT line, 8 ahead / 2 behind
+So on games that have been played the desk has NOT beaten the close; the
+positive number is open picks the market has moved toward since (QB news
+included), which can still move back. forward_test now computes the headline
+CLV on started games only and reports open picks separately; the desk card says
+"played games" and lists open picks on their own line; by-version CLV uses
+played games only. Rule for any future CLV number: a close is only a close
+after the start.
+

@@ -1277,3 +1277,18 @@ def test_board_shows_the_desks_open_picks_against_the_current_line(tmp_path, mon
     assert g["DAL @ IND"]["desk_logged"] == [{"market": "ML_HOME", "logged_price": 220, "now_price": 195, "clv_pts": 3.32, "team": "IND"}]
     assert g["NYJ @ KC"]["desk_logged"] == []          # a closed (final) pick is graded elsewhere, not shown as open
 
+
+
+def test_desk_clv_headline_counts_played_games_only(tmp_path, monkeypatch):
+    import game_lines_desk as gld
+    past = (dt.datetime.now(dt.timezone.utc) - dt.timedelta(days=2)).strftime("%Y-%m-%dT%H:%MZ")
+    future = (dt.datetime.now(dt.timezone.utc) + dt.timedelta(days=2)).strftime("%Y-%m-%dT%H:%MZ")
+    (tmp_path / "all_picks_ledger.json").write_text(json.dumps({"picks": [
+        {"source": "nfl_game_ml", "event_id": "1", "market": "ML_HOME", "book_american": -150, "settled": True, "result": "lost"},
+        {"source": "nfl_game_ml", "event_id": "2", "market": "ML_HOME", "book_american": 110, "settled": False}]}))
+    monkeypatch.setattr(gld, "DATA_DIR", str(tmp_path))
+    lines = {"1": {"commence": past, "close": {"ml_home": -150, "ml_away": 130}},        # played: flat to the close
+             "2": {"commence": future, "close": {"ml_home": -155, "ml_away": 130}}}     # open: market moved our way
+    f = gld.forward_test("nfl", lines)
+    assert f["n_clv"] == 1 and f["avg_clv_pts"] == 0.0                                 # the open pick does not inflate it
+    assert f["open"]["n"] == 1 and f["open"]["avg_pts_vs_current"] > 10 and f["open"]["ahead"] == 1
