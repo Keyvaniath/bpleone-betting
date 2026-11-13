@@ -216,6 +216,16 @@ def line_move(open_snap: Dict[str, Any], now_home, now_away) -> Optional[Dict[st
 
 def build_games(gld: Dict[str, Any], odds: Dict[str, Any], now: dt.datetime, today_et: str) -> List[Dict[str, Any]]:
     by_eid = {str(g.get("event_id")): g for g in (odds.get("games") or []) if g.get("event_id")}
+    # (2026-11-13) the desk's OPEN logged picks on each game and how they stand against the
+    # current DraftKings line (game_lines_desk.forward_test): CLV as it builds, before the close.
+    logged: Dict[Any, List[Dict[str, Any]]] = {}
+    for _sp, _d in (gld.get("sports") or {}).items():
+        for _p in ((_d.get("forward_test") or {}).get("picks") or []):
+            if _p.get("close_final") or _p.get("clv_pts") is None:
+                continue
+            logged.setdefault((_sp.upper(), _p.get("matchup")), []).append(
+                {"market": _p.get("market"), "logged_price": _p.get("logged_price"), "now_price": _p.get("close_price"),
+                 "clv_pts": _p.get("clv_pts")})
     # (2026-11-13) opening prices: the first DraftKings snapshot the desk recorded for each game
     opens = {}
     for _sp in SPORTS:
@@ -256,6 +266,8 @@ def build_games(gld: Dict[str, Any], odds: Dict[str, Any], now: dt.datetime, tod
                 "model": {"p_home": pm, "p_away": (round(1 - pm, 4) if pm is not None else None)},
                 "market": {"p_home_no_vig": pk, "p_away_no_vig": (round(1 - pk, 4) if pk is not None else None)},
                 "desk_verdict": verdict, "live_quote": bool(ok_game), "quote_issue": None if ok_game else why_game,
+                "desk_logged": [dict(x, team=names["home"] if str(x["market"]).upper().endswith("HOME") else names["away"])
+                                for x in logged.get((sport, r.get("matchup")), [])],
                 "pick": None, "model_side": None, "hold": None, "grade": None, "score": None, "reason": None,
             }
             c = cands.get((sport, eid))
