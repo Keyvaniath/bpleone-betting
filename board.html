@@ -167,6 +167,7 @@
       <p style="margin:6px 0;"><span class="gr D">D</span> No bet. The model&#39;s side is shown for information only. When the model disagrees with DraftKings, betting the model has lost this season.</p>
       <p style="margin:6px 0;"><span class="gr HOLD">HOLD</span> No side while the desk waits on a quarterback or a day-to-day player.</p>
       <p style="margin:6px 0;"><b style="color:var(--gold);">★ Alpha picks</b> are the three to five highest-scored bets of the day, whatever their grade, locked at 11:00 AM ET so the list does not reshuffle. On a day with no A or B bet they are grade C leans, and the card says so. They are separate from the MLB <a href="alpha-pick.html" style="color:#7fb0e8;">Alpha Pick</a> record, which has its own edge gate.</p>
+      <p style="margin:6px 0;"><b>Fair price.</b> Next to each side is its fair price: DraftKings&#39; two prices with the hold taken out. The gap between the posted price and the fair price is what the book charges you on that side.</p>
       <p style="margin:6px 0;"><b>Line moves and hold.</b> Each card shows where the moneyline opened (the first DraftKings price we recorded), how many points of win probability it has moved since, and DraftKings&#39; hold, the margin built into the two prices. A big move toward a side usually means informed money; a high hold means a worse price for either side.</p>
       <p style="margin:6px 0;"><b>Closing line value (CLV)</b> is how sharps judge a bet before the result is known: did we get a better price than DraftKings&#39; last price before the game started? "+2.0 pts" means our price implied a 2-point lower win probability than the close, so we got the better number. Over a few dozen bets, CLV says far more than the win-loss record. A lean taken at the market price should average about zero.</p>
       <p class="muted" style="margin:10px 0 0;font-size:12px;">Only A, B and C are bets. They are logged at the DraftKings price shown and graded on the final score, outside the curated record. Prices are DraftKings moneylines read from ESPN&#39;s scoreboard feed, each with the time it was observed. Your slip is a list on this device; EdgeStat takes no wagers. 21+ · informational analytics, not betting advice · 1-800-GAMBLER. <a href="methodology.html" style="color:#7fb0e8;">Methodology</a> · <a href="track-record.html" style="color:#7fb0e8;">Track record</a></p>
@@ -194,6 +195,8 @@
   const esc = (s) => String(s == null ? "" : s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
   const amer = (a) => a == null ? "—" : (a >= 0 ? "+" + a : String(a));
   const pct = (p) => p == null ? "—" : Math.round(p * 100) + "%";
+  // (2026-11-13) the no-vig "fair" price for a probability: DraftKings' price with the margin taken out
+  const fairA = (p) => { if (p == null || p <= 0 || p >= 1) return "—"; const a = p >= 0.5 ? -100 * p / (1 - p) : 100 * (1 - p) / p; return (a > 0 ? "+" : "") + Math.round(a); };
   const ET = { timeZone: "America/New_York" };
   const tm = (iso) => { const d = new Date(iso); return isNaN(d) ? "" : d.toLocaleTimeString("en-US", Object.assign({ hour: "numeric", minute: "2-digit" }, ET)) + " ET"; };
   const dayLabel = (ymd, today) => {
@@ -264,7 +267,7 @@
     return `<button class="side${ours ? " pick" : ""}${ms ? " ms" : ""}${inSlip(k) ? " in" : ""}" data-g="${esc(g.id)}" data-side="${side}" ${started(g) || px == null || !g.live_quote ? "disabled" : ""}
               aria-pressed="${inSlip(k)}" title="${inSlip(k) ? "Remove from slip" : "Add to slip"}">
         <span class="ab">${esc(team)}</span>
-        <span class="pr">${tag}model ${pct(pm)} · DK ${pct(pk)}<br>${side === "home" ? "home" : "away"}</span>
+        <span class="pr">${tag}model ${pct(pm)} · DK ${pct(pk)}<br>${side === "home" ? "home" : "away"}${pk != null ? ` · fair ${fairA(pk)}` : ""}</span>
         <span class="px">${amer(px)}</span></button>`;
   }
 
