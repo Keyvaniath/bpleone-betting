@@ -439,6 +439,19 @@
     renderSlip();
   }
 
+  // (2026-11-13) running CLV: an open bet's logged price against DraftKings' current line, before
+  // the start. Positive = the market has moved toward our side since we logged it.
+  const decA = (a) => a == null ? null : (a > 0 ? 1 + a / 100 : 1 + 100 / -a);
+  function runClv(r) {
+    if (r.result !== "pending") return null;
+    const g = (B.games || []).find((x) => x.sport === r.sport && x.matchup === r.matchup && x.date === r.date);
+    if (!g || started(g) || !g.live_quote) return null;
+    const now = String(r.market || "").toUpperCase().endsWith("HOME") ? g.odds.ml_home : g.odds.ml_away;
+    const dn = decA(now), dl = decA(r.book_american);
+    if (!dn || !dl) return null;
+    return { now: now, pts: (1 / dn - 1 / dl) * 100 };
+  }
+
   function results() {
     const R = B.results;
     const clvTxt = (x) => (x && x.n_clv) ? ` · CLV <b style="color:${x.avg_clv_pts > 0 ? "var(--accent)" : x.avg_clv_pts < 0 ? "var(--red)" : "inherit"};">${x.avg_clv_pts > 0 ? "+" : x.avg_clv_pts < 0 ? "−" : ""}${Math.abs(x.avg_clv_pts).toFixed(1)} pts</b>, beat close ${Math.round(x.beat_close_pct)}%` : "";
@@ -468,12 +481,16 @@
       days.map(([d, x]) => { const a = x.alpha || {}; const c = (u) => `<span style="color:${u > 0 ? "var(--accent)" : u < 0 ? "var(--red)" : "inherit"};">${units(u)}</span>`;
         return `<tr style="border-top:1px solid var(--line-soft);"><td style="padding:5px 8px;">${esc(d)}</td><td style="padding:5px 8px;">${x.wins}-${x.losses}${x.n_pending ? ` <span class="muted">(${x.n_pending} open)</span>` : ""}</td><td style="padding:5px 8px;">${c(x.net_units)}</td><td style="padding:5px 8px;">${a.n_settled ? a.wins + "-" + a.losses : "—"}</td><td style="padding:5px 8px;">${a.n_settled ? c(a.net_units) : "—"}</td></tr>`; }).join("") +
       `</table></div>` : "";
-    $("results").innerHTML = `<div class="bd-pills" style="margin:4px 0 10px;">${head}</div>` + dayTbl + (rows.length ? "" : `<p class="muted" style="font-size:13px;">No ${esc(sport)} bet on the board yet.</p>`) + rows.slice(0, 40).map((r) => {
+    const opn = rows.map(runClv).filter(Boolean);
+    const runTxt = opn.length ? `<p class="muted" style="font-size:12px;margin:0 0 10px;" title="Closing line value so far: each open bet's logged price against DraftKings' current line. The final number is scored at the close.">Open bets vs DraftKings now: <b style="color:${opn.reduce((t, x) => t + x.pts, 0) > 0 ? "var(--accent)" : "var(--red)"};">${(opn.reduce((t, x) => t + x.pts, 0) / opn.length >= 0 ? "+" : "−")}${Math.abs(opn.reduce((t, x) => t + x.pts, 0) / opn.length).toFixed(1)} pts</b> on average across ${opn.length}, ${opn.filter((x) => x.pts > 0.05).length} moved our way, ${opn.filter((x) => x.pts < -0.05).length} against.</p>` : "";
+    $("results").innerHTML = `<div class="bd-pills" style="margin:4px 0 10px;">${head}</div>` + dayTbl + runTxt + (rows.length ? "" : `<p class="muted" style="font-size:13px;">No ${esc(sport)} bet on the board yet.</p>`) + rows.slice(0, 40).map((r) => {
       const head = r.date !== last ? `<div class="muted" style="font-size:11px;margin-top:10px;text-transform:uppercase;letter-spacing:.06em;">${esc(r.date)}</div>` : "";
       last = r.date;
       const res = r.result === "won" ? `<span class="w">won ${units(r.payout_units)}</span>` : r.result === "lost" ? `<span class="l">lost ${units(r.payout_units)}</span>` : `<span class="muted">${esc(r.result)}</span>`;
+      const rc = runClv(r);
+      const run = rc ? ` <span title="DraftKings now, before the start: has the market moved toward our side since we logged it?" style="color:${rc.pts > 0.05 ? "var(--accent)" : rc.pts < -0.05 ? "var(--red)" : "var(--muted)"};">now ${amer(rc.now)} (${rc.pts > 0.05 ? "+" : rc.pts < -0.05 ? "−" : ""}${Math.abs(rc.pts).toFixed(1)} pts)</span>` : "";
       const cl = r.clv_pts != null ? ` <span class="muted" title="DraftKings' last price before the start">close ${amer(r.close_price)} (${r.clv_pts > 0 ? "+" : r.clv_pts < 0 ? "−" : ""}${Math.abs(r.clv_pts).toFixed(1)} pts)</span>` : "";
-      return head + `<div class="res-row"><span class="sp ${esc(r.sport)}">${esc(r.sport)}</span><span><b>${esc(r.team || r.matchup)}</b> ML ${amer(r.book_american)}${cl}</span><span class="gr ${esc(r.grade)}" style="margin-left:0;padding:1px 7px;">${esc(r.grade)}</span>${r.is_alpha ? `<span style="color:var(--gold);">★ alpha</span>` : ""}<span style="margin-left:auto;">${res}${r.final ? ` <span class="muted">(${esc(r.final)})</span>` : ""}</span></div>`;
+      return head + `<div class="res-row"><span class="sp ${esc(r.sport)}">${esc(r.sport)}</span><span><b>${esc(r.team || r.matchup)}</b> ML ${amer(r.book_american)}${cl}${run}</span><span class="gr ${esc(r.grade)}" style="margin-left:0;padding:1px 7px;">${esc(r.grade)}</span>${r.is_alpha ? `<span style="color:var(--gold);">★ alpha</span>` : ""}<span style="margin-left:auto;">${res}${r.final ? ` <span class="muted">(${esc(r.final)})</span>` : ""}</span></div>`;
     }).join("");
   }
 
