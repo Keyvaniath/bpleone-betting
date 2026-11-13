@@ -1073,3 +1073,21 @@ five defects, all fixed the same day:
 Note on the 11/13 Alpha: OKC -283 and NYR -225 were locked at 12:51 PM ET under the old
 -300 lean cap; the -200 cap landed at 1:35 PM ET. Locked days are never edited, so both
 are graded at their locked prices, and each card says that at today's rules it is not a bet.
+
+## 2026-11-13 (late afternoon) -- stale prices on the desk pages; results lag
+
+1. **Desk pages up to 7 hours stale.** nhl.html showed VGK -185 (12:41 UTC snapshot) while
+   the board showed -162. data/<sport>_state.json is refreshed by live-games, meant to run
+   every 15 minutes; GitHub fired it about three times a day (09:52, 02:28, 21:59 UTC...).
+   The heartbeat now runs nfl/nba/nhl_pipeline right after the game-lines desk (~1s each,
+   ESPN's free scoreboard only). Verified on CI: all three state files at 20:05:47 UTC with
+   the board's prices.
+2. **Board results one run stale.** board.py ran before all_picks_tracker.py, so board.json
+   carried the previous run's ledger summary. `board.py --results-only` now runs right after
+   the tracker in every workflow (verified on CI and on betting.bpleone.com).
+3. **Deploys behind the HTTP cache.** The service worker's network-first fetch still honoured
+   Pages' max-age=600, so a new page could take 10 minutes to show. Page loads now revalidate
+   (`cache: 'no-cache'`, a 304 when unchanged).
+4. Also shipped: running CLV on open bets (logged price vs DraftKings now, pre-start), start
+   and Alpha-lock countdowns, a CSV of the graded bets, and the by-price split on the track
+   record.
