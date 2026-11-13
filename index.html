@@ -1313,7 +1313,7 @@ fetch("data/today.json", { cache: "no-cache" })
       const hn = document.getElementById("heroChartNote"); if (hn && d.no_games) hn.textContent = "no MLB slate (off-season) — chart empty";
       const sm = document.getElementById("podSummary");
       if (sm) sm.textContent = d.no_games
-        ? "The Play of the Day is drawn from the MLB slate, and there are no MLB games on the board (off-season). See \"Today, by sport\" above for NFL / NBA / NHL."
+        ? "No MLB games today (off-season). The Play of the Day is drawn from every desk (NFL, NBA, NHL, college); see The Board and the Play of the Day page."
         : "Nothing on today's slate qualified.";
       const hm = document.querySelector(".play-card .card-head .muted");
       if (hm) hm.textContent = (d.generated_at || "").slice(0, 10);
