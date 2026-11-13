@@ -1,18 +1,18 @@
-# EdgeStat Daily Summary — 2026-11-12
+# EdgeStat Daily Summary — 2026-11-13
 
-## 🏥 Model Health: 70.7/100 [HEALTHY]
+## 🏥 Model Health: 71.4/100 [HEALTHY]
 - Solid health - some minor issues to monitor
-  - 🟢 Calibration Freshness: 100.0/100
-  - 🟡 Hit Rate Trend: 75.0/100
-  - 🔴 Brier Trend: 37.7/100
+  - 🟢 Calibration Freshness: 99.9/100
+  - 🟡 Hit Rate Trend: 74.6/100
+  - 🔴 Brier Trend: 37.1/100
   - 🟢 Pipeline Audit: 100.0/100
-  - 🟢 Data Health: 90.9/100
+  - 🟢 Data Health: 95.5/100
   - 🔴 Edge Count: 0/100
 
 ## 🌐 Slate Overview
-- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.552)
+- **Regime today:** BALANCED (avg P(home)=0.535)
 - **Total games on board:** 49
-- **Strong home favorites:** 23 | **Strong road dogs:** 11
+- **Strong home favorites:** 22 | **Strong road dogs:** 14
 
 ## 🎯 Best Bets (sportsbook-priced only)
 - No best bet today: a best bet needs a real sportsbook price — 17 model-only projections excluded (LOL 4, NHL 4, GOLF 4, NFL 3, NBA 2).
@@ -29,20 +29,20 @@
 - **[CS]** torzsi OVER 40.5 Kills (BO3) · model 61.0%
 
 ## ⚡ Pre-Game
-- No pre-game alerts: an alert needs a game-lines-desk probability whose verdict passed (not NO EDGE / UNPROVEN) and a DraftKings price. NBA: 4 desk verdict NO EDGE; NHL: 10 desk verdict NO EDGE; WNBA: 1 not pre-game; MLS: 15 not pre-game; EPL: 5 not pre-game; UCL: 9 not pre-game; NFL: 14 desk verdict UNPROVEN; NCAAF: 20 no validated model probability (not from the game-lines desk); NCAAB: 1 no validated model probability (not from the game-lines desk); CWS: 1 not pre-game
+- No pre-game alerts: an alert needs a game-lines-desk probability whose verdict passed (not NO EDGE / UNPROVEN) and a DraftKings price. NBA: 4 not pre-game; NHL: 10 not pre-game; WNBA: 1 not pre-game; MLS: 15 not pre-game; EPL: 5 not pre-game; UCL: 9 not pre-game; NFL: 13 desk verdict UNPROVEN; NCAAF: 20 no validated model probability (not from the game-lines desk); NCAAB: 1 started or no start time; CWS: 1 not pre-game
 
 ## 🔥/❄️ Heat / Cold Signals
-- Hot teams: **12** | Cold teams: **20** | Over-heavy: 0 | Under-heavy: 30
+- Hot teams: **13** | Cold teams: **21** | Over-heavy: 0 | Under-heavy: 29
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (94)
-- RESIDUAL_DIVERGENCE: **10**
-- STEAM_MOVE: **84**
+## ⚠️ Anomaly Detector (80)
+- RESIDUAL_DIVERGENCE: **9**
+- STEAM_MOVE: **71**
   - Philadelphia 76ers (NBA): Philadelphia 76ers UNDERPERFORMING expected margin by 11.8pts in recent games -- model bias may persist
   - Washington Wizards (NBA): Washington Wizards UNDERPERFORMING expected margin by 9.8pts in recent games -- model bias may persist
   - Detroit Pistons (NBA): Detroit Pistons OUTPERFORMING expected margin by 6.2pts in recent games -- model bias may persist
   - Phoenix Suns (NBA): Phoenix Suns OUTPERFORMING expected margin by 6.5pts in recent games -- model bias may persist
-  - Carolina Hurricanes (NHL): Carolina Hurricanes UNDERPERFORMING expected margin by 7.7pts in recent games -- model bias may persist
+  - Montreal Canadiens (NHL): Montreal Canadiens UNDERPERFORMING expected margin by 8.2pts in recent games -- model bias may persist
 
 ## 💰 Today's Portfolio
 - No priced picks: a stake is sized only at an actionable DraftKings quote.
@@ -73,9 +73,9 @@
 ## ⛳ Golf Player Heat (from Austin Championship pres. by Compliance Solutions)
   - 🔥 T1 **Trace Crowe** (USA): -10 total -- finished T1
   - 🔥 T2 **Erik van Rooyen** (South Africa): -8 total -- finished T2
-  - 🔥 T3 **Blades Brown** (USA): -7 total -- finished T3
-  - 🔥 T4 **Rafael Campos** (Puerto Rico): -6 total -- finished T4
-  - 🔥 T5 **Kevin Yu** (Chinese Taipei): -6 total -- finished T5
+  - 🔥 T3 **Max Greyserman** (USA): -8 total -- finished T3
+  - 🔥 T4 **Blades Brown** (USA): -7 total -- finished T4
+  - 🔥 T5 **Rafael Campos** (Puerto Rico): -6 total -- finished T5
 
 ## 😴 Back-to-back flags (5) — schedule fact, not a pick
 - [NBA] Toronto Raptors @ Philadelphia 76ers (2026-11-12): home team on a back-to-back
@@ -99,11 +99,11 @@
   - ⚠️ batter_rbis (Brier Δ -0.0052)
 
 ## 🧠 Training Convergence
-- ELITE: **1** · HEALTHY: 0 · OK: 0 · DEGRADED: **1**
+- ELITE: **0** · HEALTHY: 1 · OK: 0 · DEGRADED: **1**
 
 ## 🤖 Self-Training Status
-- **NBA**: n=102 games · hit rate 62.7% · bias -0.2pp
-- **NHL**: n=96 games · hit rate 53.1% · bias +1.2pp
-- **WNBA**: n=2 games · hit rate 50.0% · bias -69.7pp
+- **NBA**: n=99 games · hit rate 61.6% · bias -0.6pp
+- **NHL**: n=86 games · hit rate 61.6% · bias -0.5pp
+- **WNBA**: n=1 games · hit rate 100.0% · bias -45.7pp
 - **MLS**: n=59 games · hit rate 44.1% · bias -1.0pp
 - **EPL**: n=30 games · hit rate 40.0% · bias -2.2pp

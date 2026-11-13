@@ -1,27 +1,27 @@
 # EdgeStat — Tonight's Master Brief
-_Generated 2026-11-12T21:35:18 UTC_
+_Generated 2026-11-13T02:35:09 UTC_
 
 ## Slate Quality
 - **Tier:** NO_ACTION_NIGHT
-- **Score:** -186
+- **Score:** -55
 - **Advisory:** STAND DOWN. Slate has no aligned conviction. Skip betting tonight or watch only.
 - **Total LOCKs:** 0
-- **Total STRONG:** 7
-- **Total FADES:** 214
+- **Total STRONG:** 12
+- **Total FADES:** 103
 
 ## Top 5 Curated Picks
-1. **GOLF / Blades Brown** (GOLF_PLAYER, score=170.21)
-   - Play: Blades Brown (PLAYER_STRONG)
+1. **GOLF / Trace Crowe** (GOLF_PLAYER, score=195.57)
+   - Play: Trace Crowe (PLAYER_STRONG)
    - Rationale: Cross-sport top pick (GOLF_PLAYER)
-2. **GOLF / Erik van Rooyen** (GOLF_PLAYER, score=169.21)
+2. **GOLF / Erik van Rooyen** (GOLF_PLAYER, score=148.64)
    - Play: Erik van Rooyen (PLAYER_STRONG)
    - Rationale: Cross-sport top pick (GOLF_PLAYER)
 
 ## Top Events Board
 - **GOLF** / ? (TOURNAMENT_STRONG)
-  - Blades Brown top 10 finish
+  - Trace Crowe top 10 finish
   - Erik van Rooyen top 10 finish
-  - Kevin Yu top 10 finish
+  - Blades Brown top 10 finish
 
 ## Slate ROI Projection
 - **Picks:** 0
@@ -30,11 +30,11 @@ _Generated 2026-11-12T21:35:18 UTC_
 - **Expected P&L on $100:** $0.0
 
 ## Top Fades
-- **NBA** / kyrie irving (PLAYER_FADE)
-  - Fade angle: PTS UNDER + PRA UNDER (multi-prop)
 - **NBA** / TOR (TEAM_FADE)
   - Fade angle: team total UNDER
-- **NBA** / DAL (TEAM_FADE)
+- **NBA** / PHI (TEAM_FADE)
+  - Fade angle: team total UNDER
+- **NBA** / MIN (TEAM_FADE)
   - Fade angle: team total UNDER
 - **NBA** / WAS (TEAM_FADE)
   - Fade angle: team total UNDER
