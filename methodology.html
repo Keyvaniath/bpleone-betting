@@ -126,6 +126,22 @@
     </p>
   </div>
 
+  <div class="deep" id="board">
+    <span class="tag">The Board · every game, graded</span>
+    <h3>How a game gets its grade, and what the board's Alpha picks are</h3>
+    <p><a href="board.html">The Board</a> lists every NFL, NBA and NHL game on the DraftKings board (MLB in season) with both moneylines, the total and both sides of the spread with their prices, the opening price and how far the line has moved, DraftKings&#39; hold, and the no-vig fair price of each side. Every price carries the time it was observed. The grade is fixed by rule and was written down before any result was scored:</p>
+    <p style="margin:6px 0 6px 12px;">
+      <b>A (85–100)</b> a desk pick from a desk whose edge over the DraftKings close is outside noise and held up out of sample. None qualifies today.<br>
+      <b>B (65–80)</b> a forward-test desk pick: the model beats the DraftKings close this season, not yet outside noise (the NFL desk).<br>
+      <b>C (40–60)</b> a <b>model lean</b>: the favourite our model and DraftKings both favour, each at least 55%, priced no shorter than −200. Not an edge: at DraftKings&#39; own probability its expected value is the book&#39;s margin, about −4%.<br>
+      <b>D</b> no bet, the model&#39;s side shown for information. When the model disagrees with DraftKings, betting the model has lost this season.<br>
+      <b>HOLD</b> no side while a quarterback, a day-to-day player or a starting goalie is unsettled.
+    </p>
+    <p>Within A and B the score is <b>risk-adjusted</b>: expected profit divided by the standard deviation of the bet&#39;s result, so a longshot&#39;s larger raw edge is weighed against its larger swings. <b>Alpha picks</b> are the day&#39;s three to five highest-scored bets, locked at 11:00 AM ET in a public append-only file and never re-priced; they are a separate list from the MLB Alpha Pick below. Desk picks are logged the first time the board shows them (a sharp bets when the edge appears); leans on game day. Every A, B and C bet is graded on the final score at the DraftKings price the board showed, outside the curated record.</p>
+    <p><b>Closing line value</b> is scored on every bet once its game starts: did we get a better price than DraftKings&#39; last pre-start snapshot (typically 30–70 minutes before the start)? Over a few dozen bets it says more than the win-loss record. Two forward tests run beside the board and are never shown as picks: the desks&#39; open picks against the current line, and <b>line-move signals</b> (the model&#39;s side at a game&#39;s opening price when it differs from DraftKings by 4+ points, scored against the close). College football and basketball appear for information only; the college basketball desk is research-only until it has a record against DraftKings.</p>
+    <p class="muted2" style="font-size:12px;">The full change log, every study and every correction (including the ones that went against us) is kept in the repository&#39;s odds-integrity notes; the board&#39;s explainer and the <a href="track-record.html">track record</a> carry the live numbers.</p>
+  </div>
+
   <div class="deep" id="alpha-v2">
     <span class="tag">Alpha Pick · selection rule v2</span>
     <h3>How the daily flagship pick is chosen — the exact chain</h3>
