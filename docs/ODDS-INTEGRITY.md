@@ -899,3 +899,12 @@ day only. Now a desk pick (grade A/B) is logged the first time the board shows
 it, at that price, any day; a lean (grade C) still waits for its game day
 (it carries no edge and depends on that day's injury news).
 
+ALPHA LOCK TRIGGER (same day). `.github/workflows/alpha-lock-trigger.yml`
+asks for one heartbeat at 11:07 ET (summer cron) and 11:09 / 11:47 / 12:29 ET
+(winter crons) -- only when the live board.json is not yet locked for today
+and no heartbeat is already running (the heartbeat cancels in-progress runs,
+so a blind dispatch could kill the run that was about to lock). It does no
+work itself. GitHub can skip any of these fires; four chances make an
+11:00-12:30 lock likely, not certain. The Worker cron is still the reliable
+fix (Brandon's call).
+

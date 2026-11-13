@@ -1,0 +1,61 @@
+name: Alpha Lock Trigger
+
+# (2026-11-13) The Board's daily Alpha list locks on the first heartbeat at or
+# after 11:00 ET (board.ALPHA_LOCK_HOUR_ET). GitHub drops or delays many
+# scheduled runs, so on some days the lock landed mid-afternoon and an early
+# game (a 1:00 PM ET Sunday kickoff) could start before it. This workflow does
+# no work of its own: a few times around 11:00 ET it asks for one heartbeat,
+# but only if today's list is not locked yet, so it never cancels a running
+# heartbeat for nothing (the heartbeat's concurrency group cancels in-progress
+# runs). Several fire times because GitHub may skip any one of them.
+# Cron is UTC: 11:00 ET = 16:00 UTC in winter (EST), 15:00 UTC in summer (EDT).
+
+on:
+  schedule:
+    - cron: '7 15 * * *'    # 11:07 ET in summer
+    - cron: '9 16 * * *'    # 11:09 ET in winter
+    - cron: '47 16 * * *'   # 11:47 ET in winter
+    - cron: '29 17 * * *'   # 12:29 ET in winter
+  workflow_dispatch:
+
+permissions:
+  actions: write
+  contents: read
+
+concurrency:
+  group: alpha-lock-trigger
+  cancel-in-progress: false
+
+jobs:
+  trigger:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Ask for a heartbeat if today's Alpha list is not locked yet
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_REPO: ${{ github.repository }}
+        run: |
+          set -u
+          TODAY_ET=$(TZ=America/New_York date +%F)
+          HOUR_ET=$(TZ=America/New_York date +%H)
+          if [ "$HOUR_ET" -lt 11 ]; then
+            echo "Before 11:00 ET ($HOUR_ET) -- nothing to lock yet."
+            exit 0
+          fi
+          # what is live right now: the deployed board.json
+          STATE=$(curl -fsS -m 20 "https://betting.bpleone.com/data/board.json?cb=$(date +%s)" \
+            | python3 -c "import sys,json; d=json.load(sys.stdin); a=d.get('alpha') or {}; print(d.get('date_et',''), a.get('status',''))" \
+            || echo "unknown unknown")
+          echo "Today ET: $TODAY_ET | live board: $STATE"
+          case "$STATE" in
+            "$TODAY_ET locked") echo "Already locked today -- no heartbeat needed."; exit 0;;
+          esac
+          # a heartbeat already running will lock it; do not cancel it with a new one
+          RUNNING=$(gh run list --workflow=continuous-heartbeat.yml --limit 5 --json status \
+            --jq '[.[] | select(.status=="in_progress" or .status=="queued")] | length' || echo 0)
+          if [ "${RUNNING:-0}" -gt 0 ]; then
+            echo "A heartbeat is already running ($RUNNING) -- leaving it to lock the list."
+            exit 0
+          fi
+          echo "Not locked yet -- requesting one heartbeat."
+          gh workflow run continuous-heartbeat.yml
