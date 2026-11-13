@@ -242,6 +242,35 @@ def hold_pct(ml_a, ml_b) -> Optional[float]:
     return round((sum(ps) - 1) * 100, 2)
 
 
+def _nv_home(h, a) -> Optional[float]:
+    try:
+        h, a = float(h), float(a)
+        ph = (100 / (h + 100)) if h > 0 else (-h / (-h + 100))
+        pa = (100 / (a + 100)) if a > 0 else (-a / (-a + 100))
+        return round(ph / (ph + pa), 4)
+    except (TypeError, ValueError, ZeroDivisionError):
+        return None
+
+
+def price_series(hist: List[Dict[str, Any]], dk_open=None, now_home=None, now_away=None) -> List[List[Any]]:
+    """(2026-11-13) The home side's no-vig probability through the day, for the card's line chart:
+    DraftKings' opener (no timestamp) first, then every snapshot whose price changed
+    (espn_odds odds_history.json), then the current price. [[iso_ts_or_None, p_home], ...]"""
+    out: List[List[Any]] = []
+    if dk_open and dk_open[0] is not None and dk_open[1] is not None:
+        p = _nv_home(*dk_open)
+        if p is not None:
+            out.append([None, p])
+    for s in hist or []:
+        p = _nv_home(s.get("ml_home"), s.get("ml_away"))
+        if p is not None:
+            out.append([s.get("ts"), p])
+    p = _nv_home(now_home, now_away)
+    if p is not None and (not out or out[-1][1] != p):
+        out.append(["now", p])
+    return out if len(out) >= 2 else []
+
+
 def line_move(open_snap: Dict[str, Any], now_home, now_away, dk_open=None,
               dk_open_lines: Optional[Dict[str, Any]] = None) -> Optional[Dict[str, Any]]:
     """Where the moneyline opened and how far the no-vig home probability has moved since, in
@@ -291,6 +320,8 @@ def build_games(gld: Dict[str, Any], odds: Dict[str, Any], now: dt.datetime, tod
     for _sp in SPORTS:
         for _eid, _ev in ((_load(f"dk_lines_{_sp.lower()}.json").get("events") or {}).items()):
             opens[(_sp, str(_eid))] = _ev.get("open") or {}
+    # the snapshot history per game (sport|matchup|UTC date of the start), for the line chart
+    hist = (_load("odds_history.json").get("history") or {})
     cands: Dict[Any, Dict[str, Any]] = {}
     for c in pod._desk_candidates(gld, now) + pod._lean_candidates(gld, now):
         cands[(c["sport"], str(c.get("event_id")))] = c
@@ -323,7 +354,9 @@ def build_games(gld: Dict[str, Any], odds: Dict[str, Any], now: dt.datetime, tod
                          "spread_home_line": m.get("spread_home_line"), "spread_home_price": m.get("spread_home_price"),
                          "spread_away_line": m.get("spread_away_line"), "spread_away_price": m.get("spread_away_price"),
                          "move": line_move(opens.get((sport, eid)), r.get("ml_home"), r.get("ml_away"),
-                                           (m.get("ml_home_open"), m.get("ml_away_open")), m)},
+                                           (m.get("ml_home_open"), m.get("ml_away_open")), m),
+                         "series": price_series(hist.get(f"{sport}|{r.get('matchup')}|{str(r.get('commence') or '')[:10]}"),
+                                                (m.get("ml_home_open"), m.get("ml_away_open")), r.get("ml_home"), r.get("ml_away"))},
                 "model": {"p_home": pm, "p_away": (round(1 - pm, 4) if pm is not None else None)},
                 "market": {"p_home_no_vig": pk, "p_away_no_vig": (round(1 - pk, 4) if pk is not None else None)},
                 "desk_verdict": verdict, "live_quote": bool(ok_game), "quote_issue": None if ok_game else why_game,

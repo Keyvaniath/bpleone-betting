@@ -1570,3 +1570,13 @@ def test_line_move_uses_draftkings_opener_with_matching_lines():
     assert mv["move_home_pts"] < -15                                        # the real move toward the road side
     fb = board.line_move(first, 271, -337, (None, None), {})
     assert fb["open_source"] == "first_seen" and fb["open_ml_home"] == 220 and fb["open_spread_home"] == 7.5
+
+
+def test_price_series_runs_from_the_opener_to_now():
+    import board
+    hist = [{"ts": "2026-11-13T09:41:52", "ml_home": 220, "ml_away": -269},
+            {"ts": "2026-11-13T17:51:28", "ml_home": 271, "ml_away": -337}]
+    s = board.price_series(hist, (110, -130), 300, -380)
+    assert s[0][0] is None and s[-1][0] == "now" and len(s) == 4
+    assert s[0][1] > s[1][1] > s[2][1] > s[3][1]               # home drifting out all day
+    assert board.price_series([], (None, None), -110, -110) == []   # one point is not a chart

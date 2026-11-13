@@ -346,7 +346,16 @@
       ? `${esc(g.home)} spread opened ${sl(Number(mv.open_spread_home))}` : "";
     const keyN = (g.sport === "NFL" && o.spread_home_line != null && [2.5, 3, 3.5, 6.5, 7, 7.5].includes(Math.abs(o.spread_home_line)))
       ? `<b style="color:var(--gold);">key number ${Math.abs(o.spread_home_line) <= 3.5 ? 3 : 7}</b>` : "";
-    const mkt = [moveTxt, totMove, sprMove, keyN, o.hold_pct != null ? `DK hold ${o.hold_pct.toFixed(1)}%` : ""].filter(Boolean).join(" · ");
+    // (2026-11-13) line chart: the home side's no-vig probability from DraftKings' opener to now
+    const spark = ((sr) => {
+      if (!sr || sr.length < 2) return "";
+      const ps = sr.map((x) => x[1]), lo = Math.min(...ps), hi = Math.max(...ps), span = Math.max(hi - lo, 0.02);
+      const W = 84, H = 20, pts = ps.map((p, i) => `${(i / (ps.length - 1) * (W - 4) + 2).toFixed(1)},${(H - 2 - (p - lo) / span * (H - 4)).toFixed(1)}`).join(" ");
+      const up = ps[ps.length - 1] > ps[0];
+      const ttl = `${esc(g.home)} win probability (no-vig): ` + sr.map((x) => (x[0] === null ? "DK open" : x[0] === "now" ? "now" : obs(x[0])) + " " + Math.round(x[1] * 100) + "%").join(" → ");
+      return `<svg width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" role="img" aria-label="${ttl}" style="vertical-align:middle;margin-right:6px;"><title>${ttl}</title><polyline fill="none" stroke="${up ? "var(--accent)" : "var(--red)"}" stroke-width="1.6" points="${pts}"/></svg>`;
+    })(o.series);
+    const mkt = spark + [moveTxt, totMove, sprMove, keyN, o.hold_pct != null ? `DK hold ${o.hold_pct.toFixed(1)}%` : ""].filter(Boolean).join(" · ");
     const spr = (o.spread_home_line != null && o.spread_home_price != null && o.spread_away_price != null)
       ? `<br>Spread ${esc(g.away)} ${sl(o.spread_away_line)} (${amer(o.spread_away_price)}) / ${esc(g.home)} ${sl(o.spread_home_line)} (${amer(o.spread_home_price)})` +
         ((sf) => sf ? ` <span class="muted">(fair ${sf.a} / ${sf.b}, hold ${sf.hold}%)</span>` : "")(fair2(o.spread_away_price, o.spread_home_price))
