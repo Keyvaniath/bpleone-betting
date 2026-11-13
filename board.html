@@ -147,7 +147,7 @@
   <div class="bd-h2"><h2 id="gamesTitle">Games</h2><span class="muted" id="gamesMeta"></span></div>
   <div class="bd-tools">
     <label><input type="checkbox" id="betsOnly"> Bets only</label>
-    <label>Sort <select id="sortSel"><option value="time">Start time</option><option value="score">Top graded</option><option value="risk">Risk-adjusted EV</option></select></label>
+    <label>Sort <select id="sortSel"><option value="time">Start time</option><option value="score">Top graded</option><option value="risk">Risk-adjusted EV</option><option value="move">Biggest line move</option></select></label>
     <label>Show <select id="favSel"><option value="all">All sides</option><option value="fav">Favorites</option><option value="dog">Underdogs</option></select></label>
   </div>
   <div class="bd-grid" id="games"></div>
@@ -347,6 +347,8 @@
     if ($("sortSel").value === "score") gs = gs.slice().sort((a, b) => (b.score || 0) - (a.score || 0) || String(a.start).localeCompare(String(b.start)));
     const ra = (g) => (g.pick && g.pick.risk && g.pick.risk.risk_adj != null) ? g.pick.risk.risk_adj : -9;
     if ($("sortSel").value === "risk") gs = gs.slice().sort((a, b) => ra(b) - ra(a) || String(a.start).localeCompare(String(b.start)));
+    const mvAbs = (g) => (g.odds && g.odds.move && g.odds.move.move_home_pts != null) ? Math.abs(g.odds.move.move_home_pts) : -1;
+    if ($("sortSel").value === "move") gs = gs.slice().sort((a, b) => mvAbs(b) - mvAbs(a) || String(a.start).localeCompare(String(b.start)));
     const fv = $("favSel").value;
     if (fv !== "all") gs = gs.filter((g) => {
       const side = g.pick ? g.pick.side : (g.model_side ? g.model_side.side : null);
