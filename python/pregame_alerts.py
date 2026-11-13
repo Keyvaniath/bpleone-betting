@@ -39,7 +39,7 @@ def _team_form(sport: str, team: str) -> Dict[str, Any]:
     return ((tf.get("teams") or {}).get(team) or {})
 
 
-_BLOCKED_VERDICTS = ("NO EDGE", "NO_EDGE", "UNPROVEN", "")
+_BLOCKED_VERDICTS = ("NO EDGE", "NO_EDGE", "UNPROVEN", "RESEARCH ONLY", "")
 
 
 def _parse(ts):

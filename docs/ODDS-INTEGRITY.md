@@ -1036,3 +1036,21 @@ odds and extends the four line histories every 20 minutes from 12:05 PM to 11:45
 overwrite a newer run). More fire times give GitHub's lossy scheduler more chances to land
 a snapshot just before each start.
 
+THIRD INDEPENDENT REVIEW (11/13, everything after 1fa1eee6): bets/ledger/curated clean;
+five defects, all fixed the same day:
+ 1. The research-only NCAAB desk leaked into pre-game alerts through board_prior (its
+    "RESEARCH ONLY" verdict was not blocked; the "model %" shown was DraftKings' no-vig).
+    board_prior ignores a RESEARCH desk; pregame_alerts blocks the verdict.
+ 2+4. A move signal required the desk run itself to take the game's opening snapshot, so
+    any game whose open was taken by close-capture, or by a run that failed after
+    grow_lines, was lost for good (biasing which games count). Now the signal is priced
+    at the OPEN snapshot from the line history, against the model on the first desk run
+    after it, within 6 h (MOVE_LATE_H); later than that, or open_late, = seen, no side.
+ 3. Close-capture pushed on every fire (grow_lines restamps close.at) and the other
+    workflows' rebase resolver (`checkout --ours`) then kept close-capture's line history
+    over the one their own desk was priced from. Close-capture now commits only when a
+    price changed or a game was added; the heartbeat / live-games / daily-pipeline
+    resolvers keep their own data/dk_lines_*.json (`checkout --theirs` in a rebase).
+ 5. Eastern dates were a fixed UTC-4h (summer offset); from November an 11 PM ET start
+    was dated the next day. game_lines_desk uses zoneinfo (_et_day).
+

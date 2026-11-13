@@ -56,6 +56,9 @@ class BoardPrior:
             self.dk[str(g["event_id"])] = m
         desk = ((_load("game_lines_desk.json").get("sports") or {}).get(self.sport) or {})
         self.verdict = desk.get("verdict")
+        # (2026-11-13 review) a RESEARCH ONLY desk (college basketball) is not a prior for anything
+        if str(self.verdict or "").upper().startswith("RESEARCH"):
+            desk = {}
         self.desk = {str(r["event_id"]): r for r in (desk.get("board") or [])
                      if r.get("event_id") and r.get("p_home") is not None}
 
