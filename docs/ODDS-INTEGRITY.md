@@ -1024,3 +1024,10 @@ hundred DK-priced games exist. Also: a NEW line history's first snapshot is mark
 open_late (every listed game is met mid-life), so it never seeds a fake line-move
 signal; only games first seen on later runs are true opens.
 
+CLOSE QUALITY (11/13). Our "close" is the last DraftKings snapshot before the start, and
+the runs that take it are lossy. Last 21 days, minutes from that snapshot to the start:
+NFL median 69 (44% within 60 min, 98% within 3 h), NBA 32 (65% / 94%), NHL 50 (53% / 93%).
+The board's six graded bets (11/12) had a median of 180 min -- that night's runs landed
+early. Each CLV row now carries close_min_before; the board states the typical gap next
+to its CLV figures. A tighter close needs a reliable pre-start trigger (the Worker cron).
+
