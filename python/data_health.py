@@ -386,6 +386,40 @@ def _check_desks():
             "n_stale": len(stale), "ages_h": ages}
 
 
+DESK_PRICE_MAX_H = 3.0
+
+
+def _check_desk_prices(now_utc: "dt.datetime" = None):
+    """(2026-11-13) The AGE OF THE PRICES on the NFL/NBA/NHL desk pages, not of the file.
+    The desk state files were regenerated often enough to look fresh to the checks above,
+    yet nhl.html showed a DraftKings price 7 hours old (VGK -185 vs the board's -162):
+    live-games, their only intraday producer, fired ~3 times a day. Flags any game starting
+    in the next 12 hours whose shown DraftKings price is older than DESK_PRICE_MAX_H."""
+    now = now_utc or dt.datetime.now(dt.timezone.utc).replace(tzinfo=None)
+    stale, worst = [], {}
+    for sport in ("nfl", "nba", "nhl"):
+        d = _load(f"{sport}_state.json") or {}
+        for g in d.get("games") or []:
+            if g.get("state") not in (None, "pre") or g.get("dk_ml_home") is None or not g.get("odds_observed_at"):
+                continue
+            try:
+                start = dt.datetime.fromisoformat(str(g.get("date")).replace("Z", "").split("+")[0])
+                seen = dt.datetime.fromisoformat(str(g.get("odds_observed_at")).replace("Z", "").split("+")[0])
+            except Exception:
+                continue
+            hrs_to_start = (start - now).total_seconds() / 3600
+            if not (0 < hrs_to_start <= 12):
+                continue
+            age = (now - seen).total_seconds() / 3600
+            worst[sport] = round(max(worst.get(sport, 0.0), age), 1)
+            if age > DESK_PRICE_MAX_H:
+                stale.append(f"{sport}.html {g.get('matchup')}: DraftKings price {age:.1f}h old")
+    status = "yellow" if stale else "green"
+    findings = (stale[:8] + ["Desk pages show old prices: the heartbeat's nfl/nba/nhl_pipeline step may be failing."]
+                if stale else [f"desk-page prices fresh (oldest, hours: {worst or 'no game in 12h'})"])
+    return {"feed": "desk_prices", "status": status, "findings": findings, "n_stale": len(stale), "worst_age_h": worst}
+
+
 def run() -> Dict[str, Any]:
     checks = [
         _check_freshness(),
@@ -399,6 +433,7 @@ def run() -> Dict[str, Any]:
         _check_props(),
         _check_golf(),
         _check_desks(),
+        _check_desk_prices(),
     ]
     n_green = sum(1 for c in checks if c.get("status") == "green")
     n_yellow = sum(1 for c in checks if c.get("status") == "yellow")
