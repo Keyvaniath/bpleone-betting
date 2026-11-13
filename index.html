@@ -190,6 +190,28 @@ fetch('data/data_health.json?t=' + Date.now()).then(function(r){return r.json();
       </div>
     </div>
   </section>
+  <script>
+  // (2026-11-13) MLB off-season: the hero's MLB confidence chart is empty, so the card shows the
+  // day's biggest line moves since DraftKings opened each game (The Board's data) instead.
+  Promise.all([fetch("data/today.json?t=" + Date.now()).then((r) => r.json()).catch(() => ({})),
+               fetch("data/board.json?t=" + Date.now(), { cache: "no-cache" }).then((r) => r.json())]).then(([t, B]) => {
+    if (!t || !t.no_games) return;
+    const esc = (v) => String(v == null ? "" : v).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c]);
+    const am = (a) => a == null ? "—" : (a >= 0 ? "+" + a : "" + a);
+    const gs = (B.games || []).filter((g) => g.date === B.date_et && !g.college && g.odds && g.odds.move && g.odds.move.move_home_pts != null)
+      .sort((a, b) => Math.abs(b.odds.move.move_home_pts) - Math.abs(a.odds.move.move_home_pts)).slice(0, 5);
+    if (!gs.length) return;
+    const top = Math.max(5, Math.abs(gs[0].odds.move.move_home_pts));
+    const card = document.querySelector(".hero-card");
+    card.innerHTML = `<div class="hero-card-head"><span class="dot live"></span><span>LINE MOVES TODAY — since DraftKings opened</span></div>` +
+      `<div style="padding:8px 2px;">` + gs.map((g) => { const m = g.odds.move, to = m.move_home_pts > 0 ? g.home : g.away, w = Math.round(Math.abs(m.move_home_pts) / top * 100);
+        return `<a href="board.html" style="display:block;text-decoration:none;color:inherit;margin:9px 0;">
+          <div style="display:flex;justify-content:space-between;font-size:12px;"><span><b>${esc(g.sport)}</b> ${esc(g.matchup)}</span><span style="font-family:JetBrains Mono,monospace;">${esc(to)} <b>${Math.abs(m.move_home_pts).toFixed(1)}</b> pts</span></div>
+          <div style="height:6px;border-radius:3px;background:rgba(255,255,255,.06);margin-top:4px;"><div style="height:6px;border-radius:3px;width:${w}%;background:#4ade80;"></div></div>
+          <div style="font-size:10.5px;color:var(--text-3,#6a7a93);margin-top:3px;">opened ${esc(g.away)} ${am(m.open_ml_away)} / ${esc(g.home)} ${am(m.open_ml_home)} · now ${am(g.odds.ml_away)} / ${am(g.odds.ml_home)}</div></a>`; }).join("") +
+      `</div><div class="hero-card-foot"><span class="muted">DraftKings prices seen ${esc(String(B.odds_observed_at || "").slice(11, 16))} UTC</span><span class="muted">a move is not a read on who bet</span></div>`;
+  }).catch(() => {});
+  </script>
 
   <!-- TODAY, per sport (2026-11-03): what is on the board, what is priced, what
        was picked and why nothing was -- counts from data/today_status.json,
