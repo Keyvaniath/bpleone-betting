@@ -985,4 +985,11 @@ when |gap| >= 4 pts (data/move_signals.json, append-only, one record per game; g
 first met mid-life are counted as seen with no side), and scores it after the start
 against the last pre-start price. Shown on each desk card as "line-move signals
 (forward test, not picks)". Never picks, never in the ledger. Revisit at ~100 scored.
+Hindsight check on the desk verdicts themselves (same day): the NFL desk backtest
+prices each game with the ACTUAL starting QB (nfl_qb_model adj = known-starter edge),
+and the NBA one with the players who actually appeared. For the desk VERDICT that is
+mostly fair, because it is judged against DraftKings' CLOSE, which also knows the
+starter / who sits. It is NOT fair for any claim about betting before that news (the
+open, early-week desk picks): that is what the forward tests (desk picks' CLV on
+played games, line-move signals) are for.
 
