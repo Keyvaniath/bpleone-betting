@@ -62,6 +62,14 @@
     <p class="muted" id="status">Loading all signals…</p>
   </section>
 
+  <!-- (2026-11-13) TONIGHT'S SLATE from The Board: every major-sport game still to start, with the
+       DraftKings price, our grade, the move since DraftKings' opener and lineup flags -->
+  <section class="card section" id="slateSec" style="border-left: 4px solid #4ade80;">
+    <div class="card-head"><span>🏟 Tonight's slate</span><span class="muted" id="slateMeta"></span></div>
+    <div id="slateBox"><p class="muted" style="padding:14px;">Loading…</p></div>
+  </section>
+  <p class="muted" id="offNote" style="font-size:12px;margin:0 0 14px;" hidden></p>
+
   <!-- WHALE PICKS -->
   <section class="card section" style="border-left: 4px solid #d4a04a;">
     <!-- (2026-11-03) model-only confluence: no "size up", no edge -->
@@ -121,6 +129,42 @@
 <script>
 function fmtAmer(a) { if (a == null) return '—'; return a >= 0 ? '+'+a : ''+a; }
 
+// (2026-11-13) Tonight's slate + line moves from The Board (refreshed every heartbeat)
+fetch("data/board.json?t=" + Date.now(), { cache: "no-cache" }).then(r => r.json()).then(B => {
+  const esc = (v) => String(v == null ? "" : v).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c]);
+  const am = (a) => a == null ? "—" : (a >= 0 ? "+" + a : "" + a);
+  const tm = (iso) => { const d = new Date(iso); return isNaN(d) ? "" : d.toLocaleTimeString("en-US", { hour: "numeric", minute: "2-digit", timeZone: "America/New_York" }) + " ET"; };
+  const now = Date.now();
+  const gs = (B.games || []).filter((g) => g.date === B.date_et && !g.college && new Date(g.start).getTime() > now)
+    .sort((a, b) => new Date(a.start) - new Date(b.start));
+  const alpha = {}; ((B.alpha || {}).picks || []).forEach((p) => { alpha[p.sport + ":" + p.event_id] = p.rank; });
+  document.getElementById("slateMeta").textContent = gs.length ? `${gs.length} game${gs.length === 1 ? "" : "s"} to start · DraftKings prices seen ${String(B.odds_observed_at || "").slice(11, 16)} UTC` : "";
+  const sb2 = document.getElementById("slateBox");
+  sb2.innerHTML = gs.length ? gs.map((g) => {
+    const o = g.odds || {}, mv = o.move || {};
+    const big = mv.move_home_pts != null && Math.abs(mv.move_home_pts) >= 3;
+    const flag = g.lineup && ["away", "home"].map((sd) => g.lineup[sd] && g.lineup[sd].flag ? esc(g.lineup[sd].text) : "").filter(Boolean).join(" · ");
+    const ar = alpha[g.sport + ":" + g.id];
+    return `<div class="row"><span class="pill pill-${g.pick ? "gold" : "green"}">${esc(g.sport)}</span>
+      <strong>${esc(g.away)} ${am(o.ml_away)} @ ${esc(g.home)} ${am(o.ml_home)}</strong> · <span class="muted">${tm(g.start)}</span>
+      · grade <strong>${esc(g.grade || "—")}</strong>${ar ? ` · <span style="color:#fbbf24;">★ Alpha #${ar}</span>` : ""}
+      ${big ? ` · moved <strong>${esc(mv.move_home_pts > 0 ? g.home : g.away)} ${Math.abs(mv.move_home_pts).toFixed(1)} pts</strong> since DK opened ${esc(g.away)} ${am(mv.open_ml_away)} / ${esc(g.home)} ${am(mv.open_ml_home)}` : ""}
+      ${flag ? `<br><span style="font-size:11px;color:#fbbf24;">⚠ ${flag}</span>` : ""}</div>`;
+  }).join("") + `<p class="muted" style="font-size:11px;padding:6px 14px;">Grades, prices and every game: <a href="board.html">The Board →</a>. A grade C is a model lean, not an edge.</p>`
+    : `<p class="muted" style="padding:14px;">No major-sport game left to start today. <a href="board.html">The Board</a> has the next slate.</p>`;
+  // line moves (from DraftKings' own opener where ESPN carries it)
+  const sbx = document.getElementById("sharpBox");
+  if (!sbx.innerHTML.trim() || /Loading/.test(sbx.innerHTML)) {
+    const mv = gs.filter((g) => g.odds && g.odds.move && Math.abs(g.odds.move.move_home_pts || 0) >= 3)
+      .sort((a, b) => Math.abs(b.odds.move.move_home_pts) - Math.abs(a.odds.move.move_home_pts)).slice(0, 6);
+    sbx.innerHTML = mv.length ? mv.map((g) => { const m = g.odds.move;
+      return `<div class="row"><span class="pill pill-green">${Math.abs(m.move_home_pts).toFixed(1)} pts</span>
+        <strong>${esc(g.matchup)}</strong> toward <strong>${esc(m.move_home_pts > 0 ? g.home : g.away)}</strong>:
+        <span class="muted">opened ${esc(g.away)} ${am(m.open_ml_away)} / ${esc(g.home)} ${am(m.open_ml_home)}, now ${am(g.odds.ml_away)} / ${am(g.odds.ml_home)}</span></div>`; }).join("")
+      : '<p class="muted" style="padding:14px;">No game has moved 3+ points since DraftKings opened it.</p>';
+  }
+}).catch(() => { document.getElementById("slateSec").hidden = true; });
+
 Promise.all([
   fetch("data/locks_history.json?t=" + Date.now()).then(r => r.json()).catch(() => null),
   fetch("data/sharp_action_radar.json?t=" + Date.now()).then(r => r.json()).catch(() => null),
@@ -146,7 +190,7 @@ Promise.all([
       <span class="muted">score ${w.confluence_score.toFixed(1)}</span><br>
       <span style="font-size:11px; color:var(--text-2,#aaa); font-style:italic;">${w.reasons.join(' · ')}</span>
     </div>`).join('');
-  } else wb.innerHTML = '<p class="muted" style="padding:14px;">No whale-tier picks yet.</p>';
+  } else { wb.innerHTML = ''; wb.closest('section').hidden = true; }
 
   // LOCKS
   const lb = document.getElementById('locksBox');
@@ -159,7 +203,7 @@ Promise.all([
         <span class="muted">${L.book_american != null ? 'DK ' + fmtAmer(L.book_american) : 'no book price'}</span><br>
         <span style="font-size:11px; color:var(--text-2,#aaa); font-style:italic;">💡 ${L.rationale || ''}</span>
       </div>`).join('');
-  } else lb.innerHTML = '<p class="muted" style="padding:14px;">No locks yet today.</p>';
+  } else { lb.innerHTML = ''; lb.closest('section').hidden = true; }
 
   // SHARP ACTION
   const sb = document.getElementById('sharpBox');
@@ -173,7 +217,7 @@ Promise.all([
       <span class="pill pill-red">MOVED AWAY</span>
       <strong>${s.matchup}</strong>: ${s.opening_implied_pct}% → <span class="neg">${s.latest_implied_pct}% (${s.shift_pp}pp)</span>
     </div>`).join('');
-  } else sb.innerHTML = '<p class="muted" style="padding:14px;">No material line moves yet.</p>';
+  } else if (/Loading/.test(sb.innerHTML)) sb.innerHTML = '';   // The Board's moves fill it (below)
 
   // CONSENSUS
   const cb = document.getElementById('consensusBox');
@@ -187,7 +231,7 @@ Promise.all([
       <span class="pill pill-${c.tier === 'ELITE' ? 'gold' : 'green'}">${c.tier} HR</span>
       <strong>${c.batter}</strong> <span class="muted">(${c.n_agreeing}/3 modules)</span>
     </div>`).join('');
-  } else cb.innerHTML = '<p class="muted" style="padding:14px;">No STRONG/ELITE consensus yet.</p>';
+  } else { cb.innerHTML = ''; cb.closest('section').hidden = true; }
 
   // UNDERS
   const ub = document.getElementById('undersBox');
@@ -198,7 +242,7 @@ Promise.all([
       <strong>${u.matchup}</strong> model ${u.model_fair_total} vs market ${u.market_total}<br>
       <span style="font-size:11px; color:var(--text-2,#aaa);">${u.signals.slice(0,2).join(' · ')}</span>
     </div>`).join('');
-  } else ub.innerHTML = '<p class="muted" style="padding:14px;">No strong under signals.</p>';
+  } else { ub.innerHTML = ''; ub.closest('section').hidden = true; }
 
   // LINEUP
   const lpb = document.getElementById('lineupBox');
@@ -211,7 +255,7 @@ Promise.all([
       <span class="pill pill-green">ELITE LINEUP</span>
       <strong>${e.team}</strong> ${e.score.toFixed(3)} vs ${e.vs_starter || '?'} (ERA ${(e.vs_era || 0).toFixed(2)})
     </div>`).join('');
-  } else lpb.innerHTML = '<p class="muted" style="padding:14px;">No notable lineup signals.</p>';
+  } else { lpb.innerHTML = ''; lpb.closest('section').hidden = true; }
 
   // PITCH COUNT
   const pb = document.getElementById('pitchBox');
@@ -225,7 +269,12 @@ Promise.all([
     <strong>${p.pitcher}</strong> proj ${p.projected_ip_today} IP (opp OBP ${p.opp_obp.toFixed(3)})
   </div>`).join('');
 
+  if (!deep.length && !hook.length) pb.closest('section').hidden = true;
   // PARLAYS: not rendered here (2026-11-03) -- research exhibit page only, off by default
+  // (2026-11-13) a row of hidden cards takes no space; say once why the MLB cards are gone
+  document.querySelectorAll('.grid-2').forEach((gr) => { if ([...gr.querySelectorAll('section')].every((x) => x.hidden || x.querySelector('#parlayBox'))) gr.hidden = true; });
+  const mlbGone = ['undersBox', 'lineupBox', 'pitchBox'].every((id) => document.getElementById(id).closest('section').hidden);
+  if (mlbGone) { const n = document.getElementById('offNote'); n.hidden = false; n.textContent = 'The MLB cards (strong unders, lineup mismatches, pitch counts, batter consensus) return with the MLB season. Every NFL, NBA and NHL game is on The Board.'; }
 });
 </script>
 </body>
