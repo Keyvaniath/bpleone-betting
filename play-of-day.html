@@ -539,7 +539,16 @@ fetch("data/clv_log.json", { cache: "no-cache" })
 Promise.all([
   fetch("data/play_of_day.json?t=" + Date.now(), { cache: "no-cache" }).then(r => r.json()).catch(() => null),
   fetch("data/today.json", { cache: "no-cache" }).then(r => r.json()).catch(() => ({})),
-]).then(([P, T]) => {
+  fetch("data/board.json?t=" + Date.now(), { cache: "no-cache" }).then(r => r.json()).catch(() => null),
+]).then(([P, T, BD]) => {
+  // (2026-11-13) lineup context from The Board (goalies / QBs / injury list) for a play's game
+  const lineupOf = (c) => {
+    const g = BD && (BD.games || []).find(x => x.id === String(c.event_id) && x.sport === c.sport);
+    const lu = g && g.lineup; if (!lu) return "";
+    const e = (v) => String(v == null ? "" : v).replace(/[&<>"]/g, (ch) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[ch]));
+    return `<div class="muted" style="font-size:12px;line-height:1.6;margin-top:4px;">` + ["away", "home"].filter(s => lu[s]).map(s =>
+      `${e(s === "away" ? g.away : g.home)}: ${lu[s].flag ? `<b style="color:#d4a04a;">${e(lu[s].text)}</b>` : e(lu[s].text)}`).join(" · ") + `</div>`;
+  };
   if (!P) return;
   if (T && T.play_of_day) return;
   const head = document.querySelector(".play-hero"); if (!head) return;
@@ -616,7 +625,7 @@ Promise.all([
           ${tierPill(c.tier)}${c.featured ? ' <span class="pill gold">FEATURED</span>' : ""}
           <a href="${c.page || "#"}" style="color:#7fb0e8;font-size:12px;margin-left:auto;">${c.sport} desk →</a>
         </div>
-        <div class="muted" style="font-size:12px;line-height:1.6;margin-top:6px;">${c.why || ""}${c.tier === 4 ? " " + leanRec(c) : ""}</div>
+        <div class="muted" style="font-size:12px;line-height:1.6;margin-top:6px;">${c.why || ""}${c.tier === 4 ? " " + leanRec(c) : ""}</div>${lineupOf(c)}
       </div>`).join("") +
       leanFwd() +
       `<p style="font-size:12px;padding:8px 14px 0;margin:0;"><a href="board.html" style="color:#7fb0e8;">Every game today, with odds and a grade, is on The Board →</a></p>` +
