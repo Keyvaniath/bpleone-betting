@@ -623,9 +623,12 @@ def _collect_picks_from_sources() -> List[Dict[str, Any]]:
         for bp in rows_b:
             if bp.get("grade") not in ("A", "B", "C") or not bp.get("game_date") or bp.get("book_american") is None:
                 continue
-            # a board bet is logged on its game day, at that day's price: the cards for
-            # later days are a preview (a lean three days out can vanish with one injury report)
-            if bp.get("game_date") != board.get("date_et"):
+            # WHEN a board bet is taken (2026-11-13, "think like a sharp"): a desk pick (A/B) is
+            # an edge at the posted price, and a sharp bets when the edge appears -- the NFL desk
+            # took DET +110 on Tuesday that closed -155. So desk picks are logged the first time
+            # the board shows them, any day, at that price. A lean (C) is not an edge and depends
+            # on the day's injury news, so it is logged on its game day only.
+            if bp.get("game_date") != board.get("date_et") and not (tag == "board_pick" and bp.get("grade") in ("A", "B")):
                 continue
             out.append({
                 "source": tag,

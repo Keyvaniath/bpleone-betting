@@ -888,3 +888,14 @@ which is what a lean taken at the market price should show. For contrast the
 NFL desk's 31 forward-test picks average +1.76 pts (beat the close 52%), EV at
 the no-vig close about 0.0%.
 
+## 2026-11-13: line moves + hold on the board; desk picks taken when the edge appears
+
+Every board card shows the opening DraftKings moneyline (first snapshot the
+desk recorded), the no-vig move since, and DraftKings' hold. The first read
+showed the NFL desk's early-week picks being confirmed by the market (NE @ DET:
+the desk took DET +110, now -155; MIA @ IND: IND -135, now -205) -- and that
+the board's record could never show it, because board bets were logged on game
+day only. Now a desk pick (grade A/B) is logged the first time the board shows
+it, at that price, any day; a lean (grade C) still waits for its game day
+(it carries no edge and depends on that day's injury news).
+
