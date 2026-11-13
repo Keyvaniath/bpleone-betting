@@ -1030,4 +1030,9 @@ NFL median 69 (44% within 60 min, 98% within 3 h), NBA 32 (65% / 94%), NHL 50 (5
 The board's six graded bets (11/12) had a median of 180 min -- that night's runs landed
 early. Each CLV row now carries close_min_before; the board states the typical gap next
 to its CLV figures. A tighter close needs a reliable pre-start trigger (the Worker cron).
+Close capture (same day): `.github/workflows/close-capture.yml` fetches ESPN's DraftKings
+odds and extends the four line histories every 20 minutes from 12:05 PM to 11:45 PM ET
+(no models, no picks, no ledger; on a commit conflict it skips that snapshot rather than
+overwrite a newer run). More fire times give GitHub's lossy scheduler more chances to land
+a snapshot just before each start.
 

@@ -1,0 +1,66 @@
+name: Close Capture (pre-start DraftKings snapshots)
+
+# (2026-11-13) Closing line value is only as good as the "close": the last DraftKings
+# snapshot taken before a game starts. Those snapshots come from the heartbeat /
+# live-games runs, which GitHub skips often -- over the last three weeks the last
+# snapshot landed a median 32-69 minutes before the start, and up to 3 hours early on
+# bad nights. This job does one cheap thing in the evening game windows: fetch ESPN's
+# DraftKings odds and extend each sport's line history (game_lines_desk.grow_lines),
+# so the close is taken as late as possible. No models, no picks, no ledger.
+# More fire times = more chances, because GitHub can drop any single scheduled run.
+
+on:
+  schedule:
+    - cron: '5,25,45 17-23 * * *'   # 12:05 PM - 6:45 PM ET (EST): afternoon NFL / college / early tips
+    - cron: '5,25,45 0-4 * * *'     # 7:05 PM - 11:45 PM ET: the evening NBA / NHL / NFL night slate
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: close-capture
+  cancel-in-progress: true
+
+jobs:
+  capture:
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Snapshot DraftKings odds into the line histories
+        working-directory: python
+        run: |
+          python espn_odds.py > /dev/null
+          python -c "import game_lines_desk as g; [print(s, len(g.grow_lines(s))) for s in ('nfl', 'nba', 'nhl', 'ncaab')]"
+      - name: Commit the line histories if they changed
+        env:
+          GIT_EDITOR: "true"
+          GIT_SEQUENCE_EDITOR: "true"
+        run: |
+          git config user.name  "edgestat-bot"
+          git config user.email "actions@github.com"
+          git add data/dk_lines_*.json
+          if git diff --cached --quiet; then
+            echo "No line changes."
+            exit 0
+          fi
+          git commit -m "close capture: $(date -u +%FT%TZ)"
+          for i in 1 2 3; do
+            git fetch origin main
+            if git rebase --autostash origin/main; then
+              git push && { echo "pushed"; exit 0; }
+            else
+              # a heartbeat / live run touched the same history: keep main's file this time
+              # (it was written seconds ago) and try again on the next fire
+              git rebase --abort
+              echo "conflict with a newer run -- skipping this snapshot"
+              exit 0
+            fi
+            sleep 5
+          done
+          echo "push failed after 3 retries"
