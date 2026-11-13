@@ -7,6 +7,33 @@ impact. You have Cloudflare + GitHub open, so it's grouped by console._
 
 ---
 
+## 🔴 0. (2026-11-13) Make the board update on time: turn on the Worker dispatcher
+**Why:** GitHub fires this repo's scheduled workflows about **three times a day** no matter
+what the schedule says (heartbeat "every 2 hours" fired ~01:10, ~09:40, ~17:50 UTC on 11/10-11/13;
+close-capture and alpha-lock-trigger never fired). So the board's DraftKings prices can be up to
+8 hours old, the closing line is taken early, and the 11:00 ET Alpha lock lands whenever a run
+happens. The `edgestat-live` Worker's cron is reliable; its code (staged on main, not deployed)
+now dispatches the heartbeat every 15 min (9 AM-1 AM ET, hourly overnight) and close-capture
+every 20 min (noon-midnight ET). It does nothing until the token below exists.
+
+1. GitHub → your avatar → **Settings → Developer settings → Fine-grained tokens → Generate new token**.
+   Repository access: **Only select repositories → bpleone-betting**. Permissions → Repository →
+   **Actions: Read and write** (nothing else). Expiry: your choice.
+2. Store it in the Worker (it prompts for the value; never paste it in chat):
+```powershell
+npx wrangler secret put GH_DISPATCH_TOKEN --config C:/Dev/bpleone-betting/cloudflare-worker/wrangler.toml
+```
+3. Deploy the Worker code:
+```powershell
+npx wrangler deploy --config C:/Dev/bpleone-betting/cloudflare-worker/wrangler.toml
+```
+4. Check: within 15 minutes the repo's Actions tab shows a "Continuous Heartbeat" run with the
+   event **workflow_dispatch**, without anyone clicking.
+
+To turn it off: `npx wrangler secret delete GH_DISPATCH_TOKEN --config C:/Dev/bpleone-betting/cloudflare-worker/wrangler.toml`.
+
+---
+
 ## 🔴 1. GitHub — fix HTTPS on betting.bpleone.com  (highest impact)
 The site currently only loads over **http://** — `https://betting.bpleone.com`
 throws a cert error. GitHub Pages is stuck on its default cert and never issued
