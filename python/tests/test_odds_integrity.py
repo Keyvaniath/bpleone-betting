@@ -1512,3 +1512,18 @@ def test_board_results_only_refresh_touches_nothing_else(tmp_path, monkeypatch):
     b = board.refresh_results()
     out = json.loads((tmp_path / "board.json").read_text())
     assert out["games"] == [{"id": "1"}] and out["results"]["all_bets"]["wins"] == 4 and b is not None
+
+
+def test_health_flags_old_prices_on_the_desk_pages(tmp_path, monkeypatch):
+    import data_health as dh
+    monkeypatch.setattr(dh, "DATA_DIR", str(tmp_path))
+    now = dt.datetime(2026, 11, 13, 20, 0)
+    g = {"matchup": "NSH @ VGK", "state": "pre", "date": "2026-11-14T03:00Z", "dk_ml_home": -185,
+         "odds_observed_at": "2026-11-13T12:41:43"}
+    (tmp_path / "nhl_state.json").write_text(json.dumps({"games": [g]}))
+    r = dh._check_desk_prices(now)
+    assert r["status"] == "yellow" and r["n_stale"] == 1
+    g["odds_observed_at"] = "2026-11-13T19:50:00"
+    (tmp_path / "nhl_state.json").write_text(json.dumps({"games": [g]}))
+    assert dh._check_desk_prices(now)["status"] == "green"
+
