@@ -147,6 +147,8 @@
 
   <div class="bd-h2"><h2 id="gamesTitle">Games</h2><span class="muted" id="gamesMeta"></span></div>
   <div class="bd-tools">
+    <input id="teamQ" type="search" placeholder="Search team (e.g. DET, LAL)" aria-label="Search team"
+           style="background:var(--bg-2);color:var(--text);border:1px solid var(--line);border-radius:8px;padding:7px 10px;font-size:13px;min-width:180px;flex:1 1 180px;max-width:280px;">
     <label><input type="checkbox" id="betsOnly"> Bets only</label>
     <label>Sort <select id="sortSel"><option value="time">Start time</option><option value="score">Top graded</option><option value="risk">Risk-adjusted EV</option><option value="move">Biggest line move</option></select></label>
     <label>Show <select id="favSel"><option value="all">All sides</option><option value="fav">Favorites</option><option value="dog">Underdogs</option></select></label>
@@ -311,6 +313,10 @@
       ${(g.desk_logged || []).map(x => `<div class="tot" title="A pick the desk logged earlier at its then-current price, against today's DraftKings line. Positive = the market has moved our way.">Desk took <b>${esc(x.team)} ${amer(x.logged_price)}</b> · now ${amer(x.now_price)} · <b style="color:${x.clv_pts > 0 ? "var(--accent)" : x.clv_pts < 0 ? "var(--red)" : "inherit"};">${x.clv_pts > 0 ? "+" : x.clv_pts < 0 ? "−" : ""}${Math.abs(x.clv_pts).toFixed(1)} pts</b> vs the current line</div>`).join("")}
       ${riskLine(g)}
       <p class="why">${esc(g.reason || "")}</p>
+      ${(() => { if (!g.alpha_rank || g.pick) return "";
+          // a locked Alpha pick that today's rules (or today's price) no longer make a bet: say both
+          const ap = ((B.alpha || {}).picks || []).find((p) => p.sport === g.sport && String(p.event_id) === g.id);
+          return ap ? `<p class="why" style="color:var(--gold);">Locked as today&#39;s Alpha #${ap.rank} at ${amer(ap.book_american)} (grade ${esc(ap.grade)}) and graded at that price. At the current price and rules it is not a bet.</p>` : ""; })()}
       <div class="foot"><span>DK seen ${obs(o.observed_at)}</span><a href="${esc(g.page || "#")}">${esc(g.sport)} desk →</a></div>
     </article>`;
   }
@@ -375,6 +381,9 @@
     // ---- games
     let gs = B.games.filter((g) => g.date === day && (sport === "ALL" ? !g.college : g.sport === sport));
     if ($("betsOnly").checked) gs = gs.filter((g) => g.pick);
+    // (2026-11-13) team search across the selected day and sport (abbreviation or matchup text)
+    const q = ($("teamQ").value || "").trim().toLowerCase();
+    if (q) gs = gs.filter((g) => [g.away, g.home, g.matchup].some((x) => String(x || "").toLowerCase().includes(q)));
     if ($("sortSel").value === "score") gs = gs.slice().sort((a, b) => (b.score || 0) - (a.score || 0) || String(a.start).localeCompare(String(b.start)));
     const ra = (g) => (g.pick && g.pick.risk && g.pick.risk.risk_adj != null) ? g.pick.risk.risk_adj : -9;
     if ($("sortSel").value === "risk") gs = gs.slice().sort((a, b) => ra(b) - ra(a) || String(a.start).localeCompare(String(b.start)));
@@ -443,6 +452,7 @@
     if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(post.text).then(done).catch(() => {});
   });
   $("favSel").addEventListener("change", render);
+  $("teamQ").addEventListener("input", render);
   $("betsOnly").addEventListener("change", render);
   $("sortSel").addEventListener("change", render);
   $("slipBtn").addEventListener("click", () => { const o = $("slip").classList.toggle("open"); $("slipBtn").setAttribute("aria-expanded", o); });
