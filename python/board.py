@@ -250,6 +250,8 @@ def build_games(gld: Dict[str, Any], odds: Dict[str, Any], now: dt.datetime, tod
                          "total": m.get("total"), "over_price": m.get("over_price"), "under_price": m.get("under_price"),
                          "spread_home": m.get("spread"), "observed_at": q.get("observed_at"), "snapshot_id": q.get("snapshot_id"),
                          "hold_pct": hold_pct(r.get("ml_home"), r.get("ml_away")),
+                         "spread_home_line": m.get("spread_home_line"), "spread_home_price": m.get("spread_home_price"),
+                         "spread_away_line": m.get("spread_away_line"), "spread_away_price": m.get("spread_away_price"),
                          "move": line_move(opens.get((sport, eid)), r.get("ml_home"), r.get("ml_away"))},
                 "model": {"p_home": pm, "p_away": (round(1 - pm, 4) if pm is not None else None)},
                 "market": {"p_home_no_vig": pk, "p_away_no_vig": (round(1 - pk, 4) if pk is not None else None)},

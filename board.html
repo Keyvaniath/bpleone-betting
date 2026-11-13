@@ -290,7 +290,10 @@
         (Math.abs(mv.move_home_pts) >= 0.5 ? ` · moved <b style="color:var(--gold);">${mv.move_home_pts > 0 ? esc(g.home) : esc(g.away)} ${Math.abs(mv.move_home_pts).toFixed(1)} pts</b>` : " · barely moved")
       : (mv ? "Line unchanged since open" : "");
     const mkt = [moveTxt, o.hold_pct != null ? `DK hold ${o.hold_pct.toFixed(1)}%` : ""].filter(Boolean).join(" · ");
-    const spr = o.spread_home != null ? ` · ${esc(g.home)} ${o.spread_home > 0 ? "+" : ""}${o.spread_home}` : "";
+    const sl = (v) => v == null ? "" : (v > 0 ? "+" : "") + v;
+    const spr = (o.spread_home_line != null && o.spread_home_price != null && o.spread_away_price != null)
+      ? `<br>Spread ${esc(g.away)} ${sl(o.spread_away_line)} (${amer(o.spread_away_price)}) / ${esc(g.home)} ${sl(o.spread_home_line)} (${amer(o.spread_home_price)})`
+      : (o.spread_home != null ? ` · ${esc(g.home)} ${o.spread_home > 0 ? "+" : ""}${o.spread_home}` : "");
     return `<article class="gc${g.pick ? " bet" : ""}${g.alpha_rank ? " alpha" : ""}${started(g) ? " started" : ""}">
       <header><span class="sp ${esc(g.sport)}">${esc(g.sport)}</span><span class="tm">${started(g) ? "started" : tm(g.start)}</span>
         ${g.alpha_rank ? `<span class="sp" style="color:var(--gold);">★ ALPHA #${g.alpha_rank}</span>` : ""}<span class="gr ${esc(g.grade || "")}">${gradeTxt}</span></header>

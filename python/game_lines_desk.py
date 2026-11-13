@@ -551,7 +551,8 @@ def grow_lines(sport: str) -> Dict[str, Any]:
         m = g.get("market") or {}
         if g.get("sport") != sport.upper() or g.get("status") != "pre" or not g.get("event_id") or m.get("ml_home") is None:
             continue
-        snap = {k: m.get(k) for k in ("ml_home", "ml_away", "total", "over_price", "under_price", "spread")}
+        snap = {k: m.get(k) for k in ("ml_home", "ml_away", "total", "over_price", "under_price", "spread",
+                                      "spread_home_line", "spread_home_price", "spread_away_line", "spread_away_price")}
         snap["at"] = ga
         row = ev.setdefault(str(g["event_id"]), {"matchup": g.get("matchup"), "home": g.get("home"),
                                                   "away": g.get("away"), "commence": g.get("commence_time"),
