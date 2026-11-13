@@ -406,6 +406,45 @@ def alpha_post(alpha: Dict[str, Any], today_et: str, odds_observed_at: Optional[
             "note": "Draft only. Nothing posts automatically; a person copies this and presses send."}
 
 
+def recap_post(results: Optional[Dict[str, Any]], today_et: str) -> Optional[Dict[str, Any]]:
+    """Copy-ready recap of the most recent fully graded day's Alpha picks (DRAFT ONLY).
+    Every pick with its result, the day's Alpha line and the running Alpha record,
+    losses included. None until a day is fully graded."""
+    if not results:
+        return None
+    rows = [r for r in (results.get("recent") or []) if r.get("is_alpha") and r.get("date") and r["date"] < today_et]
+    days = sorted({r["date"] for r in rows}, reverse=True)
+    day = next((d for d in days if all(r["result"] in ("won", "lost", "push") for r in rows if r["date"] == d)), None)
+    if not day:
+        return None
+    picks = [r for r in rows if r["date"] == day]
+    dl = ((results.get("by_day") or {}).get(day) or {}).get("alpha") or {}
+    tot = results.get("alpha") or {}
+    u = lambda x: ("+" if (x or 0) >= 0 else "-") + f"{abs(x or 0):.2f}u"
+    mark = {"won": "W", "lost": "L", "push": "P"}
+    lines = [f"EdgeStat Alpha results · {pod._day_label(day)}: {dl.get('wins', 0)}-{dl.get('losses', 0)}, {u(dl.get('net_units'))}"]
+    for r in picks:
+        lines.append(f"{mark.get(r['result'], '?')} {r['sport']} {r['team']} ML {pod._amer(r['book_american'])}"
+                     + (f" ({r['final']})" if r.get("final") else ""))
+    if tot.get("n_settled"):
+        lines.append(f"Alpha since {results.get('first_date')}: {tot['wins']}-{tot['losses']}, {u(tot.get('net_units'))}, graded at the locked DraftKings price.")
+    if all(r.get("grade") == "C" for r in picks):
+        lines.append("All were leans, not proven edges.")
+    tail = ["21+ · not betting advice", SITE_URL]
+    text = "\n".join(lines + tail)
+    if len(text) > POST_MAX:
+        # never drop a pick (dropping one could hide a loss): shorten every pick to "W MIN -223"
+        # on one line, and only then drop the running-record line
+        short = " · ".join(f"{mark.get(r['result'], '?')} {r['team']} {pod._amer(r['book_american'])}" for r in picks)
+        lines = [lines[0], short] + lines[1 + len(picks):]
+        text = "\n".join(lines + tail)
+        if len(text) > POST_MAX:
+            lines = [x for x in lines if not x.startswith("Alpha since")]
+            text = "\n".join(lines + tail)
+    return {"day": day, "text": text, "chars": len(text), "max_chars": POST_MAX, "fits": len(text) <= POST_MAX,
+            "note": "Draft only. Nothing posts automatically; a person copies this and presses send."}
+
+
 def run(now: Optional[dt.datetime] = None) -> Dict[str, Any]:
     now = now or dt.datetime.now(dt.timezone.utc)
     today_et = pod._today_et()
@@ -454,6 +493,7 @@ def run(now: Optional[dt.datetime] = None) -> Dict[str, Any]:
         "picks": picks,
         # results written by the ledger's previous run: every board bet graded at the price it was logged at
         "results": (_load("ledger_summary.json") or {}).get("board"),
+        "recap": recap_post((_load("ledger_summary.json") or {}).get("board"), today_et),
         "counts": {"games": len(games), "games_today": sum(1 for g in games if g["date"] == today_et),
                    "bets": len(picks), "bets_today": sum(1 for p in picks if p["game_date"] == today_et)},
     }

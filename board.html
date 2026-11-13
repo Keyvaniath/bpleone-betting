@@ -138,6 +138,10 @@
       <a class="add" id="shareThreads" target="_blank" rel="noopener" style="text-decoration:none;display:inline-flex;align-items:center;">Threads</a>
       <span class="muted" style="font-size:11px;margin-left:6px;">Draft text; nothing posts by itself.</span>
     </div>
+    <div id="recapShare" hidden style="margin-top:8px;">
+      <button class="add" id="recapCopy" type="button">Copy yesterday&#39;s results</button>
+      <span class="muted" id="recapMeta" style="font-size:11px;margin-left:6px;"></span>
+    </div>
   </section>
 
   <div class="bd-h2"><h2 id="gamesTitle">Games</h2><span class="muted" id="gamesMeta"></span></div>
@@ -323,6 +327,9 @@
             ${g && !gone ? `<button class="add${inSlip(k) ? " in" : ""}" data-g="${esc(g.id)}" data-side="${esc(a.side)}">${inSlip(k) ? "In slip" : "Add"}</button>` : ""}</div></div>`;
       }).join("") : `<div class="empty" style="flex:1;">${A.length ? "No Alpha pick in this sport today." : "No graded bet on today&#39;s board yet. An Alpha pick needs a live DraftKings price; the list is never padded."}</div>`;
       if (B.alpha.note && Af.length) $("alphaMeta").textContent += " · " + B.alpha.note;
+      const rc = B.recap;
+      $("recapShare").hidden = !(rc && rc.text && sport === "ALL");
+      if (rc) $("recapMeta").textContent = "Alpha picks of " + rc.day + ", graded, losses included.";
       const post = B.alpha.post;
       $("alphaShare").hidden = !(post && post.text && sport === "ALL");
       if (post && post.text) {
@@ -380,6 +387,11 @@
     }).join("");
   }
 
+  $("recapCopy").addEventListener("click", () => {
+    const rc = B && B.recap; if (!rc) return;
+    const done = () => { $("recapCopy").textContent = "Copied"; setTimeout(() => { $("recapCopy").textContent = "Copy yesterday\u2019s results"; }, 1500); };
+    if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(rc.text).then(done).catch(() => {});
+  });
   $("shareCopy").addEventListener("click", () => {
     const post = B && B.alpha && B.alpha.post; if (!post) return;
     const done = () => { $("shareCopy").textContent = "Copied"; setTimeout(() => { $("shareCopy").textContent = "Copy today\u2019s Alpha post"; }, 1500); };
