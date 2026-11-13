@@ -1116,3 +1116,14 @@ the Play of the Day and the Alpha are unchanged (today only). Verified on CI (ma
 13 of 11/14's NHL games entered dk_lines_nhl at a 20:17 UTC open, and the first six line-move
 signals priced at a true open were recorded (DET +185, NJ -120, BUF +120, SJ +170, NYI -115,
 CGY +150). The signals are a forward test, never picks.
+
+## 2026-11-13 (evening) -- line moves from DraftKings' own opener
+
+Our first DraftKings snapshot of a game can come hours after the book opens it, so "moved since
+open" understated real moves. On 11/13: NY @ IND opened IND +110 / +2.5 / total 233.5 (ESPN's
+`open` fields); our first snapshot was +220 / +7.5 / 220.5; the line then stood at +271 / +8.5 /
+219.5 -- a 19.8-point move toward New York, which the board had shown as about 5. GS @ SA's total
+fell 16 points from its open. espn_odds now keeps ESPN's moneyline, spread and total open fields
+(ml_*_open, spread_home_open, total_open), and the board measures every move from them, all three
+from the same source, with our first-seen price on hover. Move signals and CLV still use our own
+snapshots, because those are the first prices we could actually have bet. main f639f966.
