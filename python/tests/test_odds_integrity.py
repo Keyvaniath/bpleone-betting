@@ -1154,3 +1154,18 @@ def test_alpha_post_is_offered_only_for_a_locked_list_and_names_each_grade(tmp_p
     p = board.alpha_post(a, "2026-11-08", None)
     assert p["fits"] and p["n_picks"] < 5 and "not betting advice" in p["text"]
 
+
+def test_play_of_day_ranks_edges_by_risk_adjusted_ev_not_raw_ev():
+    import play_of_day as pod
+    dog = {"sport": "NFL", "tier": 2, "model_prob": 0.217, "book_american": 440, "ev_pct": 17.2}
+    fav = {"sport": "NFL", "tier": 2, "model_prob": 0.889, "book_american": -440, "ev_pct": 9.2}
+    assert sorted([dog, fav], key=pod._rank_key)[0] is fav               # ~3x better per unit of risk
+    # tier still comes first, and a lean is never ranked on reward
+    lean = {"sport": "NBA", "tier": 4, "model_prob": 0.7, "book_american": -240, "ev_pct": -3.9, "lean_score": 0.69}
+    assert sorted([lean, dog], key=pod._rank_key)[0] is dog
+    # no probability: falls back to raw EV, never crashes
+    a = {"sport": "NFL", "tier": 2, "model_prob": None, "book_american": 150, "ev_pct": 6.0}
+    b = {"sport": "NFL", "tier": 2, "model_prob": None, "book_american": 150, "ev_pct": 4.0}
+    assert sorted([b, a], key=pod._rank_key)[0] is a
+    assert pod.risk_adj(0.5, None) is None and abs(pod.risk_adj(0.889, -440) - 0.2362) < 1e-3
+

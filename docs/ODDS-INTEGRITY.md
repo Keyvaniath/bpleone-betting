@@ -844,4 +844,8 @@ before any board bet settled; the locked 11/12 Alpha list is not touched.
 Every bet carries `risk` {win_prob, pays, ev_pct, sigma, risk_adj, kelly,
 favorite}; cards show "favorite/underdog · win · pays · EV · risk-adj"; the
 page sorts by risk-adjusted EV and filters favorites / underdogs.
+Same evening: the Play of the Day ranks picks with an edge (tiers 1-3) on the
+same risk-adjusted EV (`play_of_day.risk_adj`, one definition shared with
+board.risk), raw EV only when it cannot be computed; leans still rank on
+agreement. The board's "Graded so far" now follows the sport chip.
 

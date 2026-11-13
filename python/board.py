@@ -123,8 +123,9 @@ def risk(p: Optional[float], american) -> Optional[Dict[str, Any]]:
     d = 1 + a / 100 if a > 0 else 1 + 100 / abs(a)
     ev = p * d - 1
     sigma = d * (p * (1 - p)) ** 0.5
+    ra = pod.risk_adj(p, a)                        # one definition, shared with the Play of the Day
     return {"win_prob": round(p, 4), "pays": round(d - 1, 4), "ev_pct": round(ev * 100, 2),
-            "sigma": round(sigma, 4), "risk_adj": round(ev / sigma, 4) if sigma else None,
+            "sigma": round(sigma, 4), "risk_adj": round(ra, 4) if ra is not None else None,
             "kelly": round(ev / (d - 1), 4), "favorite": a < 0}
 
 
