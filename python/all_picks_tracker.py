@@ -3285,6 +3285,19 @@ def _grade_nhl_pick(pick: Dict[str, Any], by_name: Dict[str, Any],
     return None
 
 
+def _price_bucket(american) -> Optional[str]:
+    """heavy_fav: -200 or shorter; fav: -199 to -101; dog: -100 (even) or longer."""
+    try:
+        a = float(american)
+    except (TypeError, ValueError):
+        return None
+    if a <= -200:
+        return "heavy_fav"
+    if a < -100:
+        return "fav"
+    return "dog"
+
+
 def _board_block(history: List[Dict[str, Any]]) -> Dict[str, Any]:
     """Results of The Board: every graded bet (A/B/C) logged from board.json, at
     the DraftKings price it was logged at. A row is a board bet if its source is
@@ -3388,6 +3401,8 @@ def _board_block(history: List[Dict[str, Any]]) -> Dict[str, Any]:
         "all_bets": line(rows),
         "alpha": line(alpha, alpha=True),
         "by_grade": {g: line([p for p in rows if grade(p) == g]) for g in ("A", "B", "C")},
+        # (2026-11-13) by the price we took: is the record carried by heavy chalk?
+        "by_price": {k: line([p for p in rows if _price_bucket(price(p)) == k]) for k in ("heavy_fav", "fav", "dog")},
         "by_sport": {sp: line([p for p in rows if str(p.get("sport") or "").upper() == sp])
                      for sp in sorted({str(p.get("sport") or "").upper() for p in rows})},
         "by_day": {d: dict(line(ps), alpha=line([p for p in ps if "board_alpha" in tags(p)], alpha=True))
