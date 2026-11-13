@@ -388,7 +388,14 @@
     const head = sport === "ALL" ? pills : (line(bs, sport + " bets") || `<span class="bd-pill">${esc(sport)}: no graded bet yet</span>`);
     const rows = (R.recent || []).filter((r) => sport === "ALL" || r.sport === sport);
     let last = "";
-    $("results").innerHTML = `<div class="bd-pills" style="margin:4px 0 10px;">${head}</div>` + (rows.length ? "" : `<p class="muted" style="font-size:13px;">No ${esc(sport)} bet on the board yet.</p>`) + rows.slice(0, 40).map((r) => {
+    // (2026-11-13) day by day: every bet and the Alpha list, graded days only (all sports)
+    const days = Object.entries(R.by_day || {}).filter(([d, x]) => x && x.n_settled).slice(0, 10);
+    const dayTbl = (sport === "ALL" && days.length) ? `<div style="overflow-x:auto;margin:0 0 12px;"><table style="width:100%;border-collapse:collapse;font-family:JetBrains Mono,monospace;font-size:12px;">
+      <tr class="muted" style="text-align:left;"><th style="padding:4px 8px;">Day</th><th style="padding:4px 8px;">All bets</th><th style="padding:4px 8px;">Units</th><th style="padding:4px 8px;">Alpha</th><th style="padding:4px 8px;">Alpha units</th></tr>` +
+      days.map(([d, x]) => { const a = x.alpha || {}; const c = (u) => `<span style="color:${u > 0 ? "var(--accent)" : u < 0 ? "var(--red)" : "inherit"};">${units(u)}</span>`;
+        return `<tr style="border-top:1px solid var(--line-soft);"><td style="padding:5px 8px;">${esc(d)}</td><td style="padding:5px 8px;">${x.wins}-${x.losses}${x.n_pending ? ` <span class="muted">(${x.n_pending} open)</span>` : ""}</td><td style="padding:5px 8px;">${c(x.net_units)}</td><td style="padding:5px 8px;">${a.n_settled ? a.wins + "-" + a.losses : "—"}</td><td style="padding:5px 8px;">${a.n_settled ? c(a.net_units) : "—"}</td></tr>`; }).join("") +
+      `</table></div>` : "";
+    $("results").innerHTML = `<div class="bd-pills" style="margin:4px 0 10px;">${head}</div>` + dayTbl + (rows.length ? "" : `<p class="muted" style="font-size:13px;">No ${esc(sport)} bet on the board yet.</p>`) + rows.slice(0, 40).map((r) => {
       const head = r.date !== last ? `<div class="muted" style="font-size:11px;margin-top:10px;text-transform:uppercase;letter-spacing:.06em;">${esc(r.date)}</div>` : "";
       last = r.date;
       const res = r.result === "won" ? `<span class="w">won ${units(r.payout_units)}</span>` : r.result === "lost" ? `<span class="l">lost ${units(r.payout_units)}</span>` : `<span class="muted">${esc(r.result)}</span>`;
