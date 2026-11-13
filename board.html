@@ -427,7 +427,17 @@
     if (steam.length) items.push(`<span class="bd-pill">Steam: ${steam.slice(0, 4).map((g) => `<b>${esc(g.odds.move.move_home_pts > 0 ? g.home : g.away)}</b> ${Math.abs(g.odds.move.move_home_pts).toFixed(1)} pts`).join(" · ")}${steam.length > 4 ? ` +${steam.length - 4}` : ""}</span>`);
     if (holds.length) items.push(`<span class="bd-pill">On hold: <b>${holds.length}</b> (${holds.slice(0, 3).map((g) => esc(g.matchup)).join(", ")}${holds.length > 3 ? "…" : ""})</span>`);
     if (flags.length) items.push(`<span class="bd-pill">Lineup flags: <b>${flags.length}</b> game${flags.length === 1 ? "" : "s"}</span>`);
+    // (2026-11-13) on today's view: tomorrow's openers are up (the softest number of a line's life)
+    if (day === B.date_et) {
+      const nd = (B.days || []).find((d) => d > B.date_et);
+      const tm = nd ? B.games.filter((g) => g.date === nd && !g.college && (g.sport === "NBA" || g.sport === "NHL") && (sport === "ALL" || g.sport === sport)) : [];
+      if (tm.length) {
+        const by = {}; tm.forEach((g) => { by[g.sport] = (by[g.sport] || 0) + 1; });
+        items.push(`<button class="bd-pill" data-goto="${esc(nd)}" style="cursor:pointer;border:1px solid var(--line-soft);background:none;color:inherit;" title="DraftKings posts the next day&#39;s lines the evening before; an opener is the softest number of a line&#39;s life.">Tomorrow&#39;s openers are up: ${Object.entries(by).map(([k, n]) => `<b>${n}</b> ${esc(k)}`).join(", ")} →</button>`);
+      }
+    }
     $("mktNotes").innerHTML = items.join("");
+    $("mktNotes").querySelectorAll("[data-goto]").forEach((b) => b.addEventListener("click", () => { day = b.dataset.goto; render(); }));
     $("mktNotes").hidden = !items.length;
   }
 
