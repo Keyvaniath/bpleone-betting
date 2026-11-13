@@ -1103,3 +1103,16 @@ Also: an ESPN outage no longer blanks the NBA/NHL desk pages (they keep the prev
 flagged by data_health after 3h); running CLV is hidden when the snapshot is > 30 min old; the
 Alpha lock countdown ticks; the CSV is labelled as the last 60 bets; sw.js lets the browser
 follow redirects on a page load.
+
+## 2026-11-13 (evening) -- night-before openers
+
+DraftKings posts the next day's NHL slate the evening before (all 14 of 11/14's games were on
+ESPN's dated board by 3 PM ET on 11/13), and the opener is the softest number of a line's
+life. espn_odds now fetches tomorrow's ET date for NBA and NHL into a separate key,
+`games_next_day`; the ~20 consumers that read `games` as today's slate never see it. Only
+game_lines_desk (`_odds_games`: line history, goalie probables, desk rows) and the board's
+event-id lookup read it. Leans for tomorrow show on the board and are logged only on game day;
+the Play of the Day and the Alpha are unchanged (today only). Verified on CI (main 21bfc58e):
+13 of 11/14's NHL games entered dk_lines_nhl at a 20:17 UTC open, and the first six line-move
+signals priced at a true open were recorded (DET +185, NJ -120, BUF +120, SJ +170, NYI -115,
+CGY +150). The signals are a forward test, never picks.
