@@ -1264,3 +1264,16 @@ def test_espn_odds_keeps_spread_prices():
     assert (m["spread_home_line"], m["spread_home_price"], m["spread_away_line"], m["spread_away_price"]) == (-3.0, -102, 3.0, -118)
     assert m["ml_home"] == -155 and m["spread"] == -3.0
 
+
+def test_board_shows_the_desks_open_picks_against_the_current_line(tmp_path, monkeypatch):
+    board, now = _board_fixture(tmp_path, monkeypatch)
+    gld = json.loads((tmp_path / "game_lines_desk.json").read_text())
+    gld["sports"]["nfl"]["forward_test"] = {"picks": [
+        {"matchup": "DAL @ IND", "market": "ML_HOME", "logged_price": 220, "close_price": 195, "close_final": False, "clv_pts": 3.32},
+        {"matchup": "NYJ @ KC", "market": "ML_AWAY", "logged_price": 440, "close_price": 440, "close_final": True, "clv_pts": 0.0}]}
+    (tmp_path / "game_lines_desk.json").write_text(json.dumps(gld))
+    out = board.run(now=now)
+    g = {x["matchup"]: x for x in out["games"]}
+    assert g["DAL @ IND"]["desk_logged"] == [{"market": "ML_HOME", "logged_price": 220, "now_price": 195, "clv_pts": 3.32, "team": "IND"}]
+    assert g["NYJ @ KC"]["desk_logged"] == []          # a closed (final) pick is graded elsewhere, not shown as open
+

@@ -300,6 +300,7 @@
       ${sideBtn(g, "away")}${sideBtn(g, "home")}
       <div class="tot">${tot}${spr}</div>
       ${mkt ? `<div class="tot" title="Opening price = the first DraftKings snapshot we recorded. Hold = the bookmaker's margin in the two prices.">${mkt}</div>` : ""}
+      ${(g.desk_logged || []).map(x => `<div class="tot" title="A pick the desk logged earlier at its then-current price, against today's DraftKings line. Positive = the market has moved our way.">Desk took <b>${esc(x.team)} ${amer(x.logged_price)}</b> · now ${amer(x.now_price)} · <b style="color:${x.clv_pts > 0 ? "var(--accent)" : x.clv_pts < 0 ? "var(--red)" : "inherit"};">${x.clv_pts > 0 ? "+" : x.clv_pts < 0 ? "−" : ""}${Math.abs(x.clv_pts).toFixed(1)} pts</b> vs the current line</div>`).join("")}
       ${riskLine(g)}
       <p class="why">${esc(g.reason || "")}</p>
       <div class="foot"><span>DK seen ${obs(o.observed_at)}</span><a href="${esc(g.page || "#")}">${esc(g.sport)} desk →</a></div>
