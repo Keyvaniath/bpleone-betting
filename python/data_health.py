@@ -353,6 +353,10 @@ DESK_FRESHNESS = [
     ("player_stats_nba.json", 30), ("player_stats_nhl.json", 30), ("player_stats_wnba.json", 30),
     ("alpha_email.json", 30), ("recent_picks.json", 30),
     ("fix_scorecard.json", 30),
+    # The Board + the game-lines desk + the Play of the Day (2026-11-13). Rebuilt on every
+    # heartbeat / daily / live run; a board older than 8h shows stale prices to every visitor
+    # (the page itself warns after 3h). Off-season days still rebuild them, so age = a dead producer.
+    ("board.json", 8), ("game_lines_desk.json", 8), ("play_of_day.json", 8),
 ]
 
 
