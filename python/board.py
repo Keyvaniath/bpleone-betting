@@ -256,7 +256,8 @@ def line_move(open_snap: Dict[str, Any], now_home, now_away) -> Optional[Dict[st
         move = round((nv(float(now_home), float(now_away)) - nv(float(oh), float(oa))) * 100, 1)
     except (TypeError, ValueError, ZeroDivisionError):
         return None
-    return {"open_ml_home": oh, "open_ml_away": oa, "open_at": open_snap.get("at"), "move_home_pts": move}
+    return {"open_ml_home": oh, "open_ml_away": oa, "open_at": open_snap.get("at"), "move_home_pts": move,
+            "open_total": open_snap.get("total"), "open_spread_home": open_snap.get("spread")}
 
 
 def build_games(gld: Dict[str, Any], odds: Dict[str, Any], now: dt.datetime, today_et: str) -> List[Dict[str, Any]]:

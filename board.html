@@ -303,8 +303,15 @@
       ? `Opened ${esc(g.away)} ${amer(mv.open_ml_away)} / ${esc(g.home)} ${amer(mv.open_ml_home)}` +
         (Math.abs(mv.move_home_pts) >= 0.5 ? ` · moved <b style="color:var(--gold);">${mv.move_home_pts > 0 ? esc(g.home) : esc(g.away)} ${Math.abs(mv.move_home_pts).toFixed(1)} pts</b>` : " · barely moved")
       : (mv ? "Line unchanged since open" : "");
-    const mkt = [moveTxt, o.hold_pct != null ? `DK hold ${o.hold_pct.toFixed(1)}%` : ""].filter(Boolean).join(" · ");
     const sl = (v) => v == null ? "" : (v > 0 ? "+" : "") + v;
+    // (2026-11-13) total and spread moves since the open, and NFL key numbers (3 and 7 decide the most games)
+    const totMove = (mv && mv.open_total != null && o.total != null && Number(mv.open_total) !== Number(o.total))
+      ? `total opened ${mv.open_total}, now ${o.total}` : "";
+    const sprMove = (mv && mv.open_spread_home != null && o.spread_home != null && Number(mv.open_spread_home) !== Number(o.spread_home))
+      ? `${esc(g.home)} spread opened ${sl(Number(mv.open_spread_home))}` : "";
+    const keyN = (g.sport === "NFL" && o.spread_home_line != null && [2.5, 3, 3.5, 6.5, 7, 7.5].includes(Math.abs(o.spread_home_line)))
+      ? `<b style="color:var(--gold);">key number ${Math.abs(o.spread_home_line) <= 3.5 ? 3 : 7}</b>` : "";
+    const mkt = [moveTxt, totMove, sprMove, keyN, o.hold_pct != null ? `DK hold ${o.hold_pct.toFixed(1)}%` : ""].filter(Boolean).join(" · ");
     const spr = (o.spread_home_line != null && o.spread_home_price != null && o.spread_away_price != null)
       ? `<br>Spread ${esc(g.away)} ${sl(o.spread_away_line)} (${amer(o.spread_away_price)}) / ${esc(g.home)} ${sl(o.spread_home_line)} (${amer(o.spread_home_price)})` +
         ((sf) => sf ? ` <span class="muted">(fair ${sf.a} / ${sf.b}, hold ${sf.hold}%)</span>` : "")(fair2(o.spread_away_price, o.spread_home_price))
