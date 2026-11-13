@@ -1332,3 +1332,23 @@ def test_review_1113_alpha_grade_spread_pairing_and_event_keyed_desk_picks(tmp_p
     out = bd.run(now=now)
     assert next(x for x in out["games"] if x["matchup"] == "DAL @ IND")["desk_logged"] == []
 
+
+def test_board_lineup_flags_backup_goalies_non_regular_qbs_and_big_absences():
+    import board
+    g = board.lineup({"goalies": {"away": {"projected": "D. Garand", "status": "confirmed", "primary": "I. Shesterkin", "back_to_back": False},
+                                  "home": {"projected": "T. Demko", "status": "expected", "primary": "T. Demko", "back_to_back": True}}})
+    assert g["kind"] == "goalies" and g["away"]["flag"] and "BACKUP" in g["away"]["text"] and "(confirmed)" in g["away"]["text"]
+    assert not g["home"]["flag"] and "B2B" in g["home"]["text"]
+    # the store spells a name with an accent, ESPN without: the same goalie is not a backup
+    g = board.lineup({"goalies": {"home": {"projected": "L. Merilainen", "status": "expected", "primary": "L. Meril\u00e4inen"}}})
+    assert g["home"]["flag"] is False
+    q = board.lineup({"qbs": {"home": {"qb": "J.J. McCarthy", "regular": "Jameis Winston", "status": "active", "certain": False},
+                              "away": {"qb": "Jayden Daniels", "regular": "Jayden Daniels", "status": "active", "certain": True}}})
+    assert q["home"]["flag"] and "not the regular (Jameis Winston)" in q["home"]["text"] and "uncertain" in q["home"]["text"]
+    assert not q["away"]["flag"]
+    a = board.lineup({"avail": {"home": {"abnormal": 4.2, "listed": [{"name": "Star", "status": "Out", "value": 7.3},
+                                                                     {"name": "Bench", "status": "Out", "value": 0.4}]},
+                                "away": {"abnormal": 0, "listed": []}}})
+    assert a["home"]["text"] == "Injury list: Star" and a["home"]["flag"] and a["away"]["text"] == "no rotation player listed"
+    assert board.lineup({}) is None
+

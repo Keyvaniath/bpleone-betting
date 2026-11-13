@@ -188,6 +188,51 @@ def _reason(c: Dict[str, Any]) -> str:
             + (" The desk has not yet proven this edge." if c.get("tier") == 2 else ""))
 
 
+def lineup(r: Dict[str, Any]) -> Optional[Dict[str, Any]]:
+    """(2026-11-13) Who is playing, from the desk's own lineup work: the NHL starting goalie
+    (confirmed / expected / projected, and whether it is the backup), the NFL starting QB
+    (and whether he is the regular), the NBA rotation players on the injury report.
+    Display text per side; None when the desk has nothing."""
+    out = {}
+    g, q, a = r.get("goalies"), r.get("qbs"), r.get("avail")
+    if g:
+        for side in ("away", "home"):
+            x = g.get(side) or {}
+            if not x.get("projected"):
+                continue
+            st = {"confirmed": "confirmed", "expected": "expected"}.get(x.get("status"), "projected")
+            # "primary" = the goalie with most of the team's recent starts (not a reputation);
+            # names are accent-folded: the store has "Meriläinen", ESPN "Merilainen"
+            def _fold(v):
+                import unicodedata
+                return "".join(c for c in unicodedata.normalize("NFKD", str(v or "")) if not unicodedata.combining(c)).lower()
+            backup = bool(x.get("primary")) and \
+                _fold(x.get("projected")).split(".")[-1].strip() not in _fold(x.get("primary"))
+            out[side] = {"text": f"G {x['projected']} ({st})" + (" · BACKUP" if backup else "") + (" · B2B" if x.get("back_to_back") else ""),
+                         "flag": bool(backup)}
+        out["kind"] = "goalies"
+    elif q:
+        for side in ("away", "home"):
+            x = q.get(side) or {}
+            if not x.get("qb"):
+                continue
+            notreg = x.get("regular") and x.get("qb") != x.get("regular")
+            stt = "" if (x.get("status") or "active") == "active" else f" ({x['status']})"
+            out[side] = {"text": f"QB {x['qb']}{stt}" + (f" · not the regular ({x['regular']})" if notreg else "")
+                                 + ("" if x.get("certain", True) else " · uncertain"),
+                         "flag": bool(notreg or not x.get("certain", True))}
+        out["kind"] = "qbs"
+    elif a:
+        for side in ("away", "home"):
+            x = a.get(side) or {}
+            ls = [i for i in (x.get("listed") or []) if abs(float(i.get("value") or 0)) >= 1][:3]
+            out[side] = {"text": ("Injury list: " + ", ".join(
+                f"{i['name']}{' (DTD)' if 'day' in str(i.get('status')).lower() else ''}" for i in ls)) if ls else "no rotation player listed",
+                         "flag": bool(ls) and float(x.get("abnormal") or 0) >= 3}
+        out["kind"] = "injuries"
+    return out if any(k in out for k in ("away", "home")) else None
+
+
 def hold_pct(ml_a, ml_b) -> Optional[float]:
     """The bookmaker's margin in a two-way price: sum of implied probabilities minus 1."""
     try:
@@ -271,6 +316,7 @@ def build_games(gld: Dict[str, Any], odds: Dict[str, Any], now: dt.datetime, tod
                 "desk_logged": [dict(x, team=names["home"] if str(x["market"]).upper().endswith("HOME") else names["away"])
                                 for x in (logged.get((sport, eid)) or logged.get((sport, r.get("matchup"))) or [])],
                 "pick": None, "model_side": None, "hold": None, "grade": None, "score": None, "reason": None,
+                "lineup": lineup(r),
             }
             c = cands.get((sport, eid))
             if not ok_game:
