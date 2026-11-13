@@ -690,6 +690,9 @@ def run(now: Optional[dt.datetime] = None) -> Dict[str, Any]:
         "games": games,
         "picks": picks,
         # results written by the ledger's previous run: every board bet graded at the price it was logged at
+        # the desk's bet hurdle (game_lines_desk.MIN_EDGE): a desk pick is a bet only at >= this EV,
+        # so its "playable to" price is (1 + min_edge) / p, not the zero-EV price
+        "desk_min_edge": _desk_min_edge(),
         "results": (_load("ledger_summary.json") or {}).get("board"),
         "recap": recap_post((_load("ledger_summary.json") or {}).get("board"), today_et),
         "counts": {"games": len(games), "games_today": sum(1 for g in games if g["date"] == today_et and not g.get("college")),
@@ -700,6 +703,14 @@ def run(now: Optional[dt.datetime] = None) -> Dict[str, Any]:
     with open(OUT, "w", encoding="utf-8") as f:
         json.dump(payload, f, indent=1)
     return payload
+
+
+def _desk_min_edge() -> float:
+    try:
+        import game_lines_desk as _gld
+        return float(_gld.MIN_EDGE)
+    except Exception:
+        return 0.04
 
 
 def refresh_results() -> Optional[Dict[str, Any]]:
