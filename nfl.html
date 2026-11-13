@@ -106,10 +106,14 @@ fetch("data/nfl_state.json?t=" + Date.now(), { cache: "no-cache" })
     const setText = (id, v) => { const e = document.getElementById(id); if (e) e.textContent = v; };
     setText("sb_title", `National Football League — ${(d.season_status || 'Season').toUpperCase()}`);
     setText("sb_status", d.note || (d.n_games_today === 0 ? "No games today." : `${d.n_games_today} game(s).`));
-    const games = d.games || [];
+    // (2026-11-13) the feed keeps earlier days' finals on top, dated by UTC kick-off (a 7 PM ET game
+    // is "tomorrow" in UTC); they were listed and counted as today's. Drop finals from before today (ET).
+    const _etDay = (iso) => { const t = new Date(iso); return isNaN(t) ? "" : t.toLocaleDateString("en-CA", { timeZone: "America/New_York" }); };
+    const _todayEt = new Date().toLocaleDateString("en-CA", { timeZone: "America/New_York" });
+    const games = (d.games || []).filter(g => !(g.state === 'post' && _etDay(g.date) && _etDay(g.date) < _todayEt));
     setText("m_games", d.n_games_today || 0);
     setText("m_live", games.filter(g => g.state === 'in').length);
-    setText("m_final", games.filter(g => g.state === 'post').length);
+    setText("m_final", games.filter(g => g.state === 'post' && (!g.date || new Date(g.date).toLocaleDateString("en-CA", { timeZone: "America/New_York" }) === new Date().toLocaleDateString("en-CA", { timeZone: "America/New_York" }))).length);   // (2026-11-13) today's finals (ET), not last night's
     setText("m_season", (d.season_status || '—').toUpperCase());
     if ((d.season_status || '').toLowerCase() === 'preseason') {
       const pb = document.getElementById('presBanner');
