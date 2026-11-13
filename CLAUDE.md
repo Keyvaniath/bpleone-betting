@@ -67,6 +67,14 @@ bpleone-site/
   snapshots DK every 20 min 12-midnight ET and commits only on a price change; the other
   workflows keep their own dk_lines on a rebase conflict. Eastern dates via zoneinfo.
   Three independent reviews today (16 defects fixed). Methodology page has a #board section.
+  Afternoon adds: "playable to" (desk's fair price) on desk picks / break-even on leans; record
+  by price taken (by_price); running CLV on open bets; start + Alpha-lock countdowns; "moved
+  since your last visit" (per device); results CSV. FIXES: board results were one run stale
+  (board.py now also runs `--results-only` AFTER all_picks_tracker in every workflow); desk
+  pages (<sport>_state.json) were up to 7h stale because GitHub fires live-games ~3x/day --
+  the heartbeat now runs nfl/nba/nhl_pipeline (~1s each) and data_health flags desk-page
+  prices >3h old; sw.js page loads revalidate; homepage scratch banner no longer reloads the
+  page every 60s. **Rule: anything fed only by live-games is stale -- feed it from the heartbeat.**
 
 - **2026-11-12 — THE BOARD (board.html, python/board.py -> data/board.json).** Every pre-game
   NFL/NBA/NHL game with DraftKings moneylines + total prices, our side, a GRADE and a SCORE:
