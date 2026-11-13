@@ -163,6 +163,7 @@
       <p style="margin:6px 0;"><span class="gr D">D</span> No bet. The model&#39;s side is shown for information only. When the model disagrees with DraftKings, betting the model has lost this season.</p>
       <p style="margin:6px 0;"><span class="gr HOLD">HOLD</span> No side while the desk waits on a quarterback or a day-to-day player.</p>
       <p style="margin:6px 0;"><b style="color:var(--gold);">★ Alpha picks</b> are the three to five highest-scored bets of the day, whatever their grade, locked at 11:00 AM ET so the list does not reshuffle. On a day with no A or B bet they are grade C leans, and the card says so. They are separate from the MLB <a href="alpha-pick.html" style="color:#7fb0e8;">Alpha Pick</a> record, which has its own edge gate.</p>
+      <p style="margin:6px 0;"><b>Closing line value (CLV)</b> is how sharps judge a bet before the result is known: did we get a better price than DraftKings&#39; last price before the game started? "+2.0 pts" means our price implied a 2-point lower win probability than the close, so we got the better number. Over a few dozen bets, CLV says far more than the win-loss record. A lean taken at the market price should average about zero.</p>
       <p class="muted" style="margin:10px 0 0;font-size:12px;">Only A, B and C are bets. They are logged at the DraftKings price shown and graded on the final score, outside the curated record. Prices are DraftKings moneylines read from ESPN&#39;s scoreboard feed, each with the time it was observed. Your slip is a list on this device; EdgeStat takes no wagers. 21+ · informational analytics, not betting advice · 1-800-GAMBLER. <a href="methodology.html" style="color:#7fb0e8;">Methodology</a> · <a href="track-record.html" style="color:#7fb0e8;">Track record</a></p>
     </div>
   </section>
@@ -346,7 +347,8 @@
 
   function results() {
     const R = B.results;
-    const line = (x, name) => (x && (x.n_settled || x.n_pending)) ? `<span class="bd-pill">${name} <b>${x.wins}-${x.losses}</b> <b style="color:${x.net_units > 0 ? "var(--accent)" : x.net_units < 0 ? "var(--red)" : "inherit"};">${units(x.net_units)}</b>${x.n_pending ? " · " + x.n_pending + " pending" : ""}</span>` : "";
+    const clvTxt = (x) => (x && x.n_clv) ? ` · CLV <b style="color:${x.avg_clv_pts > 0 ? "var(--accent)" : x.avg_clv_pts < 0 ? "var(--red)" : "inherit"};">${x.avg_clv_pts > 0 ? "+" : x.avg_clv_pts < 0 ? "−" : ""}${Math.abs(x.avg_clv_pts).toFixed(1)} pts</b>, beat close ${Math.round(x.beat_close_pct)}%` : "";
+    const line = (x, name) => (x && (x.n_settled || x.n_pending)) ? `<span class="bd-pill">${name} <b>${x.wins}-${x.losses}</b> <b style="color:${x.net_units > 0 ? "var(--accent)" : x.net_units < 0 ? "var(--red)" : "inherit"};">${units(x.net_units)}</b>${x.n_pending ? " · " + x.n_pending + " pending" : ""}${clvTxt(x)}</span>` : "";
     if (!R || !(R.recent || []).length) {
       $("results").innerHTML = `<p class="muted" style="font-size:13px;">No board bet has been graded yet. Every A, B and C bet is logged at the DraftKings price shown and graded on the final score; results appear here the morning after.</p>`;
       $("bdPills").innerHTML = "";
@@ -364,7 +366,8 @@
       const head = r.date !== last ? `<div class="muted" style="font-size:11px;margin-top:10px;text-transform:uppercase;letter-spacing:.06em;">${esc(r.date)}</div>` : "";
       last = r.date;
       const res = r.result === "won" ? `<span class="w">won ${units(r.payout_units)}</span>` : r.result === "lost" ? `<span class="l">lost ${units(r.payout_units)}</span>` : `<span class="muted">${esc(r.result)}</span>`;
-      return head + `<div class="res-row"><span class="sp ${esc(r.sport)}">${esc(r.sport)}</span><span><b>${esc(r.team || r.matchup)}</b> ML ${amer(r.book_american)}</span><span class="gr ${esc(r.grade)}" style="margin-left:0;padding:1px 7px;">${esc(r.grade)}</span>${r.is_alpha ? `<span style="color:var(--gold);">★ alpha</span>` : ""}<span style="margin-left:auto;">${res}${r.final ? ` <span class="muted">(${esc(r.final)})</span>` : ""}</span></div>`;
+      const cl = r.clv_pts != null ? ` <span class="muted" title="DraftKings' last price before the start">close ${amer(r.close_price)} (${r.clv_pts > 0 ? "+" : r.clv_pts < 0 ? "−" : ""}${Math.abs(r.clv_pts).toFixed(1)} pts)</span>` : "";
+      return head + `<div class="res-row"><span class="sp ${esc(r.sport)}">${esc(r.sport)}</span><span><b>${esc(r.team || r.matchup)}</b> ML ${amer(r.book_american)}${cl}</span><span class="gr ${esc(r.grade)}" style="margin-left:0;padding:1px 7px;">${esc(r.grade)}</span>${r.is_alpha ? `<span style="color:var(--gold);">★ alpha</span>` : ""}<span style="margin-left:auto;">${res}${r.final ? ` <span class="muted">(${esc(r.final)})</span>` : ""}</span></div>`;
     }).join("");
   }
 
