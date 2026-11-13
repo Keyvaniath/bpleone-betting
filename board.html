@@ -351,6 +351,12 @@
         return `<div class="ac"><span class="rk">#${a.rank}</span><span class="sp ${esc(a.sport)}">${esc(a.sport)}</span>
           <div class="tm">${esc(a.team)}</div><div class="mk">moneyline · <span class="px">${amer(a.book_american)}</span></div>
           <div class="gm">${esc(a.matchup)} · ${gone ? "started" : tm(a.commence_time)}</div>
+          ${(() => { const lu = g && g.lineup; if (!lu) return "";
+              // the pick's own side first: an unconfirmed / backup goalie, an uncertain QB, a big absence
+              const mine = lu[a.side], other = lu[a.side === "home" ? "away" : "home"];
+              const pending = g.sport === "NHL" && mine && /\((expected|projected)\)/.test(mine.text);
+              const warn = (mine && mine.flag) ? esc(mine.text) : pending ? "goalie not confirmed yet" : (other && other.flag) ? "opponent: " + esc(other.text) : "";
+              return warn ? `<div class="gm" style="color:var(--gold);">⚠ ${warn}</div>` : ""; })()}
           <div class="row"><span class="gr ${esc(a.grade)}">${esc(a.grade)} · ${a.score}</span>
             ${g && !gone ? `<button class="add${inSlip(k) ? " in" : ""}" data-g="${esc(g.id)}" data-side="${esc(a.side)}">${inSlip(k) ? "In slip" : "Add"}</button>` : ""}</div></div>`;
       }).join("") : `<div class="empty" style="flex:1;">${A.length ? "No Alpha pick in this sport today." : "No graded bet on today&#39;s board yet. An Alpha pick needs a live DraftKings price; the list is never padded."}</div>`;
