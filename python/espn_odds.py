@@ -221,6 +221,13 @@ def fetch_sport(sport: str, only_date: Optional[str] = None) -> List[Dict[str, A
         placeholder_ml = any(abs(int(x)) > PLACEHOLDER_ABS_ML for x in (ml_home, ml_away) if x is not None)
         if placeholder_ml:
             ml_home = ml_away = None
+        # (2026-11-13) DraftKings' OWN opening moneyline (ESPN's moneyline.*.open), kept apart from
+        # the current price: our first snapshot can come hours after the opener (NY @ IND opened
+        # +110, first seen by us at +220). Informational only -- no bet is ever priced at it.
+        ml_home_open = _am(_deep(ml, "home", "open", "odds"))
+        ml_away_open = _am(_deep(ml, "away", "open", "odds"))
+        if placeholder_ml or any(abs(int(x)) > PLACEHOLDER_ABS_ML for x in (ml_home_open, ml_away_open) if x is not None):
+            ml_home_open = ml_away_open = None
         over_px = _am(_deep(tot, "over", "close", "odds") or _deep(tot, "over", "open", "odds"))
         under_px = _am(_deep(tot, "under", "close", "odds") or _deep(tot, "under", "open", "odds"))
         # (2026-11-13) spread PRICES: ESPN carries DraftKings' point-spread odds under
@@ -266,6 +273,11 @@ def fetch_sport(sport: str, only_date: Optional[str] = None) -> List[Dict[str, A
                 "ml_home": ml_home,
                 "ml_away": ml_away,
                 "placeholder_ml": placeholder_ml,
+                "ml_home_open": ml_home_open,
+                "ml_away_open": ml_away_open,
+                # DraftKings' opening spread (home line) and total, same source as the opening ML
+                "spread_home_open": _line(_deep(ps, "home", "open", "line")),
+                "total_open": _line(str(_deep(tot, "over", "open", "line") or "").lstrip("oOuU") or None),
                 "total": o.get("overUnder"),
                 "over_price": over_px,
                 "under_price": under_px,

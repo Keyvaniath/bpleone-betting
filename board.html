@@ -335,7 +335,7 @@
     // (2026-11-13) market read: where the moneyline opened, how far it has moved, and DraftKings' hold
     const mv = o.move;
     const moveTxt = (mv && mv.open_ml_home != null && (mv.open_ml_home !== o.ml_home || mv.open_ml_away !== o.ml_away))
-      ? `Opened ${esc(g.away)} ${amer(mv.open_ml_away)} / ${esc(g.home)} ${amer(mv.open_ml_home)}` +
+      ? `<span title="${mv.open_source === "draftkings" ? "DraftKings&#39; own opening price (ESPN). First seen by us: " + esc(g.away) + " " + amer(mv.first_seen_ml_away) + " / " + esc(g.home) + " " + amer(mv.first_seen_ml_home) : "The first DraftKings price we recorded"}">${mv.open_source === "draftkings" ? "DK opened" : "Opened"}</span> ${esc(g.away)} ${amer(mv.open_ml_away)} / ${esc(g.home)} ${amer(mv.open_ml_home)}` +
         (Math.abs(mv.move_home_pts) >= 0.5 ? ` · moved <b style="color:var(--gold);">${mv.move_home_pts > 0 ? esc(g.home) : esc(g.away)} ${Math.abs(mv.move_home_pts).toFixed(1)} pts</b>` : " · barely moved")
       : (mv ? "Line unchanged since open" : "");
     const sl = (v) => v == null ? "" : (v > 0 ? "+" : "") + v;
