@@ -9,13 +9,13 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="EdgeStat">
-<meta name="description" content="Hedge Calculator · EdgeStat — quantitative sports-betting analytics: model edges, calibrated probabilities, and an honest settled track record across MLB, NBA, NHL, golf, tennis, soccer and more. Informational only, 21+.">
+<meta name="description" content="Hedge Calculator · EdgeStat — lock profit, size a middle, or hedge a parlay's last leg. Takes multipliers (1.7x), decimal or American odds, and shows what the hedge costs in expected value. Informational only, 21+.">
 <link rel="canonical" href="https://betting.bpleone.com/hedge.html">
 <meta name="theme-color" content="#0d1017">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="EdgeStat">
 <meta property="og:title" content="Hedge Calculator | EdgeStat">
-<meta property="og:description" content="Hedge Calculator · EdgeStat — quantitative sports-betting analytics: model edges, calibrated probabilities, and an honest settled track record across MLB, NBA, NHL, golf, tennis, soccer and more. Informational only, 21+.">
+<meta property="og:description" content="Hedge Calculator · EdgeStat — lock profit, size a middle, or hedge a parlay's last leg. Takes multipliers (1.7x), decimal or American odds, and shows what the hedge costs in expected value. Informational only, 21+.">
 <meta property="og:url" content="https://betting.bpleone.com/hedge.html">
 <meta property="og:image" content="https://betting.bpleone.com/assets/og-card.png">
 <meta property="og:image:width" content="1200">
@@ -23,20 +23,68 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://betting.bpleone.com/assets/og-card.png">
 <meta name="twitter:title" content="Hedge Calculator | EdgeStat">
-<meta name="twitter:description" content="Hedge Calculator · EdgeStat — quantitative sports-betting analytics: model edges, calibrated probabilities, and an honest settled track record across MLB, NBA, NHL, golf, tennis, soccer and more. Informational only, 21+.">
+<meta name="twitter:description" content="Hedge Calculator · EdgeStat — lock profit, size a middle, or hedge a parlay's last leg. Takes multipliers (1.7x), decimal or American odds, and shows what the hedge costs in expected value. Informational only, 21+.">
 <title>Hedge Calculator | EdgeStat</title>
 <link rel="stylesheet" href="css/style.css?v=20261105">
 <style>
-  .calc-grid { display:grid; grid-template-columns: 1fr 1fr; gap: 24px; padding: 18px; }
-  .calc-input { display:block; margin-bottom: 12px; }
-  .calc-input label { font-size: 12px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--muted, #888); display: block; margin-bottom: 4px; }
-  .calc-input input { width: 100%; padding: 10px 12px; border: 1px solid rgba(255,255,255,0.12); background: rgba(255,255,255,0.04); color: var(--text-1, #eee); border-radius: 4px; font-family: 'JetBrains Mono', monospace; font-size: 14px; box-sizing: border-box; }
-  .result-card { padding: 14px; background: rgba(212,160,74,0.06); border-left: 3px solid #d4a04a; border-radius: 4px; font-family: 'JetBrains Mono', monospace; }
-  .result-row { display:flex; justify-content:space-between; padding: 6px 0; border-bottom: 1px dashed rgba(255,255,255,0.06); font-size: 12px; }
-  .result-row strong { color: #d4a04a; }
-  .calc-mode { display:flex; gap:8px; margin-bottom:18px; flex-wrap:wrap; }
-  .mode-pill { padding: 6px 14px; border-radius: 14px; background: rgba(255,255,255,0.06); cursor:pointer; font-size:11px; text-transform:uppercase; }
-  .mode-pill.active { background: #d4a04a; color: #0a0a0a; font-weight:700; }
+  /* Hedge calculator. Inputs on the left, answer on the right; stacks to one column on phones. Site tokens from css/style.css. */
+  .hc { --hc-accent: var(--gold, #fbbf24); --hc-good: var(--accent, #4ade80); --hc-bad: var(--red, #f87171); --hc-mono: 'JetBrains Mono', ui-monospace, monospace;
+        display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 20px; align-items: start; max-width: 1180px; }
+  .hc-col { display: grid; gap: 16px; min-width: 0; }
+  .hc .card { display: grid; gap: 12px; padding: 18px; }
+  .hc .card-head { margin: 0; text-transform: uppercase; letter-spacing: .06em; font-size: 12px; }
+  .hc-tabs { display: grid; grid-template-columns: 1fr 1fr; gap: 4px; padding: 4px; background: var(--bg-2); border: 1px solid var(--line); border-radius: 12px; }
+  .hc-tabs button { font-family: inherit; font-weight: 600; font-size: 14px; color: var(--text-2); background: transparent; border: 0; border-radius: 9px; padding: 10px; cursor: pointer; }
+  .hc-tabs button[aria-selected="true"] { background: var(--bg-3); color: var(--text); box-shadow: inset 0 0 0 1px var(--line); }
+  .hc-chips { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; font-size: 12px; color: var(--text-3); }
+  .hc-chip { font-family: inherit; font-weight: 600; font-size: 12px; color: var(--text); background: var(--bg-2); border: 1px solid var(--line); border-radius: 999px; padding: 6px 12px; cursor: pointer; }
+  .hc-chip:hover { border-color: var(--hc-accent); color: var(--hc-accent); }
+  .hc-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .hc-row.hc-three { grid-template-columns: 1fr 1fr 1fr; }
+  .hc label { display: grid; gap: 5px; font-size: 11px; font-weight: 600; letter-spacing: .04em; text-transform: uppercase; color: var(--text-3); }
+  .hc input, .hc select { width: 100%; box-sizing: border-box; font: 600 15px var(--hc-mono); color: var(--text); background: var(--bg-1); border: 1px solid var(--line); border-radius: 8px; padding: 10px 12px; }
+  .hc input::placeholder { color: var(--text-3); font-weight: 400; }
+  .hc input:focus-visible, .hc select:focus-visible, .hc button:focus-visible { outline: 2px solid var(--hc-accent); outline-offset: 2px; }
+  .hc-meta { font-size: 12px; color: var(--text-2); font-family: var(--hc-mono); }
+  .hc-meta b { color: var(--text); }
+  .hc-err { color: var(--hc-bad); font-family: inherit; }
+  .hc-window { border-radius: 8px; padding: 10px 12px; font-size: 13px; font-weight: 600; background: var(--bg-1); border-left: 3px solid var(--text-3); }
+  .hc-window.hc-mid { border-left-color: var(--hc-accent); }
+  .hc-window.hc-gap { border-left-color: var(--hc-bad); }
+  .hc-answer { background: var(--hc-accent); color: #14100a; border-radius: var(--radius, 14px); padding: 18px; display: grid; gap: 4px; }
+  .hc-answer .hc-k { font-size: 11px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; opacity: .7; }
+  .hc-answer .hc-big { font-family: var(--hc-mono); font-weight: 800; font-size: 40px; line-height: 1.05; }
+  .hc-answer .hc-line { font-weight: 600; font-size: 14px; }
+  .hc-opt { border-top: 1px solid var(--line-soft); padding-top: 12px; display: grid; gap: 8px; }
+  .hc-opt:first-child { border-top: 0; padding-top: 0; }
+  .hc-opt-head { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; }
+  .hc-t { font-weight: 700; font-size: 14px; }
+  .hc-t small { display: block; font-weight: 500; color: var(--text-3); font-size: 12px; }
+  .hc-amt { font-family: var(--hc-mono); font-weight: 800; font-size: 22px; white-space: nowrap; color: var(--hc-accent); }
+  .hc-outs { display: grid; gap: 4px; }
+  .hc-out { display: flex; justify-content: space-between; gap: 10px; font-size: 13px; padding: 7px 10px; border-radius: 6px; background: var(--bg-1); }
+  .hc-out.hc-middle { box-shadow: inset 3px 0 0 var(--hc-accent); }
+  .hc-v { font-family: var(--hc-mono); font-weight: 700; white-space: nowrap; }
+  .hc-pos { color: var(--hc-good); } .hc-neg { color: var(--hc-bad); } .hc-zero { color: var(--text-3); }
+  .hc input[type="range"] { padding: 0; height: 30px; background: transparent; border: 0; accent-color: var(--hc-accent); }
+  .hc-custom { display: grid; grid-template-columns: 1fr 120px; gap: 10px; align-items: center; }
+  .hc-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+  .hc-stat { background: var(--bg-1); border-radius: 8px; padding: 10px; display: grid; gap: 2px; }
+  .hc-stat .hc-k { font-size: 11px; color: var(--text-3); font-weight: 600; }
+  .hc-stat .hc-v { font-size: 18px; }
+  .hc-pill { justify-self: start; font-weight: 700; font-size: 13px; padding: 6px 12px; border-radius: 999px; }
+  .hc-pill.hc-good { background: rgba(74,222,128,.12); color: var(--hc-good); }
+  .hc-pill.hc-bad { background: rgba(248,113,113,.12); color: var(--hc-bad); }
+  .hc-pill.hc-even { background: var(--bg-3); color: var(--text); }
+  .hc-verdict { display: grid; gap: 8px; }
+  .hc-verdict p { margin: 0; font-size: 13px; color: var(--text-2); line-height: 1.55; }
+  .hc-verdict p b { color: var(--text); }
+  .hc details { font-size: 13px; color: var(--text-2); }
+  .hc summary { cursor: pointer; font-weight: 600; color: var(--text); }
+  .hc details ul { padding-left: 18px; margin: 8px 0 0; display: grid; gap: 4px; line-height: 1.55; }
+  .hc [hidden] { display: none !important; }
+  @media (max-width: 860px) { .hc { grid-template-columns: minmax(0, 1fr); } }
+  @media (max-width: 420px) { .hc-row.hc-three, .hc-stats { grid-template-columns: 1fr 1fr; } .hc-answer .hc-big { font-size: 34px; } }
 </style>
 <script src="js/nav.js?v=20261112"></script>
 </head>
@@ -51,145 +99,317 @@
 <main class="container">
   <section class="page-head">
     <h1>Hedge Calculator</h1>
-    <p class="muted">Compute optimal hedge stake to lock in guaranteed profit, equal payout across sides, or partial reduction of risk.</p>
+    <p class="muted">Lock in profit, size a middle, or hedge a parlay's last leg. Enter odds as a multiplier (1.7x), decimal, or American (+328, &minus;110).</p>
   </section>
 
-  <section class="card" style="margin-bottom: 24px;">
-    <div class="card-head"><span>⚖️ Mode</span></div>
-    <div class="calc-mode" style="padding: 12px 18px;">
-      <span class="mode-pill active" data-mode="lock">LOCK PROFIT</span>
-      <span class="mode-pill" data-mode="equal">EQUAL PAYOUT</span>
-      <span class="mode-pill" data-mode="break_even">BREAK EVEN</span>
-      <span class="mode-pill" data-mode="partial">PARTIAL HEDGE</span>
-    </div>
-
-    <div class="calc-grid">
-      <div>
-        <div class="card-head" style="background: none; padding: 0 0 12px 0;"><span>Original Bet</span></div>
-        <div class="calc-input">
-          <label>Stake ($)</label>
-          <input type="number" id="origStake" value="100" step="10" />
-        </div>
-        <div class="calc-input">
-          <label>Odds (American)</label>
-          <input type="number" id="origOdds" value="250" />
-        </div>
+  <div class="hc">
+    <div class="hc-col">
+      <div class="hc-tabs" role="tablist">
+        <button id="tab-hedge" role="tab" aria-selected="true">Hedge / Parlay leg</button>
+        <button id="tab-middle" role="tab" aria-selected="false">Middle</button>
       </div>
-      <div>
-        <div class="card-head" style="background: none; padding: 0 0 12px 0;"><span>Hedge Bet (Other Side)</span></div>
-        <div class="calc-input">
-          <label>Hedge Odds (American)</label>
-          <input type="number" id="hedgeOdds" value="-200" />
-        </div>
-        <div class="calc-input" id="partialInput" style="display:none;">
-          <label>Partial Reduction (%)</label>
-          <input type="number" id="partialPct" value="50" min="0" max="100" />
-        </div>
+
+      <div class="hc-chips">
+        <span>Examples:</span>
+        <button class="hc-chip" data-ex="0">ND &minus;7.5 vs Miami +7.5</button>
+        <button class="hc-chip" data-ex="1">ND &minus;7.5 / Miami +13.5 middle</button>
+        <button class="hc-chip" data-ex="2">Parlay, Bears last leg</button>
       </div>
+
+      <section class="card">
+        <div class="card-head"><span>Your ticket</span></div>
+        <div class="hc-row">
+          <label for="stake">Stake ($)<input id="stake" inputmode="decimal" placeholder="50"></label>
+          <label for="pays">Pays ($, total return)<input id="pays" inputmode="decimal" placeholder="192"></label>
+        </div>
+        <div class="hc-meta" id="ticket-meta"></div>
+      </section>
+
+      <section class="card" id="lines-card" hidden>
+        <div class="card-head"><span>Lines</span></div>
+        <label for="mkt">Market
+          <select id="mkt"><option value="spread">Spread</option><option value="total">Total (over/under)</option></select>
+        </label>
+        <div id="spread-fields" class="hc-row">
+          <label for="yourName">Your pick<input id="yourName" placeholder="Notre Dame"></label>
+          <label for="yourLine">Your line<input id="yourLine" inputmode="decimal" placeholder="-7.5"></label>
+          <label for="hedgeName">Hedge pick<input id="hedgeName" placeholder="Miami"></label>
+          <label for="hedgeLine">Hedge line<input id="hedgeLine" inputmode="decimal" placeholder="+13.5"></label>
+        </div>
+        <div id="total-fields" class="hc-row hc-three" hidden>
+          <label for="yourSide">Your side<select id="yourSide"><option value="over">Over</option><option value="under">Under</option></select></label>
+          <label for="yourTotal">Your line<input id="yourTotal" inputmode="decimal" placeholder="45.5"></label>
+          <label for="hedgeTotal">Hedge line<input id="hedgeTotal" inputmode="decimal" placeholder="49.5"></label>
+        </div>
+        <div class="hc-window" id="window"></div>
+      </section>
+
+      <section class="card">
+        <div class="card-head"><span>Hedge bet</span></div>
+        <label for="odds">Hedge odds (1.7x, 2.09, +328 or &minus;110)<input id="odds" autocomplete="off" placeholder="1.7x"></label>
+        <div class="hc-meta" id="odds-meta"></div>
+      </section>
+
+      <section class="card">
+        <div class="card-head"><span>Is it worth hedging?</span></div>
+        <div class="hc-row">
+          <label for="winPct">Chance your bet wins (%)<input id="winPct" inputmode="decimal" placeholder="50"></label>
+          <label for="liveOdds">Or: your side's live odds<input id="liveOdds" autocomplete="off" placeholder="2.59x or -150"></label>
+        </div>
+        <div class="hc-row" id="mid-pct-row" hidden>
+          <label for="midPct">Chance the middle hits (%)<input id="midPct" inputmode="decimal" placeholder="15"></label>
+          <div class="hc-meta" style="align-self:end">NFL/CFB spreads land on any one number about 2&ndash;4% of the time, more on 3, 7 and 10.</div>
+        </div>
+        <label for="cashout">Cash-out offer ($, optional)<input id="cashout" inputmode="decimal" placeholder="21.23"></label>
+      </section>
     </div>
 
-    <div style="padding: 14px 18px;">
-      <button onclick="calculateHedge()" style="padding: 10px 24px; background: #d4a04a; color: #0a0a0a; border:none; border-radius: 4px; cursor: pointer; font-weight:700; text-transform:uppercase; letter-spacing:0.08em;">Calculate</button>
-    </div>
-  </section>
+    <div class="hc-col">
+      <div class="hc-answer" id="answer"></div>
 
-  <section class="card" id="resultCard">
-    <div class="card-head"><span>📊 Result</span></div>
-    <div style="padding: 18px;" id="resultBox">
-      <p class="muted">Enter your bet details and click Calculate.</p>
-    </div>
-  </section>
+      <section class="card">
+        <div class="card-head"><span>Hedge sizes</span></div>
+        <div id="options"></div>
+        <div class="hc-opt">
+          <div class="hc-opt-head"><div class="hc-t">Custom amount<small>Drag or type a size to see every outcome</small></div></div>
+          <div class="hc-custom">
+            <input type="range" id="slider" min="0" max="200" step="0.01" aria-label="Custom hedge amount">
+            <input id="customAmt" inputmode="decimal" aria-label="Custom hedge amount in dollars">
+          </div>
+          <div class="hc-outs" id="custom-outs"></div>
+        </div>
+      </section>
 
-  <section class="card" style="margin-top: 24px;">
-    <div class="card-head"><span>📋 Hedge Modes Explained</span></div>
-    <div style="padding: 14px 18px; font-size: 13px; line-height: 1.7; color: var(--text-2,#aaa);">
-      <ul style="padding-left: 20px;">
-        <li><strong>LOCK PROFIT:</strong> Hedge a portion so both outcomes return identical net profit. Best when you have a live winning ticket.</li>
-        <li><strong>EQUAL PAYOUT:</strong> Stake the hedge so both outcomes return identical total payout (profit + stake).</li>
-        <li><strong>BREAK EVEN:</strong> Hedge enough that the worse outcome returns your original stake. Risk-free reduction.</li>
-        <li><strong>PARTIAL HEDGE:</strong> Apply X% of the full lock-profit hedge. Keep some upside while reducing variance.</li>
-      </ul>
+      <section class="card">
+        <div class="card-head"><span>Expected value</span></div>
+        <div class="hc-stats" id="stats"></div>
+        <div class="hc-verdict" id="verdict"></div>
+      </section>
+
+      <details>
+        <summary>How the math works</summary>
+        <ul>
+          <li><b>Odds</b>: a multiplier like 1.7x is total return per $1 (decimal odds). +328 = 4.28x, &minus;110 = 1.91x.</li>
+          <li><b>Full hedge</b> = ticket payout &divide; hedge odds. Both sides return the same amount.</li>
+          <li><b>Break-even hedge</b> = stake &divide; (hedge odds &minus; 1). You lose nothing if your bet misses.</li>
+          <li><b>Expected value</b> = chance your bet wins &times; payout &minus; stake + hedge &times; (chance hedge wins &times; hedge odds &minus; 1). The last part is the price of the hedge.</li>
+          <li><b>Live odds on your side</b> strip the vig from both prices to estimate a fair win chance.</li>
+          <li>Pushes on whole-number lines are left out of expected value.</li>
+        </ul>
+      </details>
     </div>
-  </section>
+  </div>
 </main>
 
 <script src="js/nav_badge.js"></script>
 <script>
-function decimalFromAmerican(amer) {
-  amer = parseFloat(amer);
-  if (amer >= 100) return 1 + amer / 100;
-  if (amer <= -100) return 1 + 100 / Math.abs(amer);
-  return 1;
-}
+(function () {
+  var $ = function (id) { return document.getElementById(id); };
+  var FIELDS = ["stake","pays","odds","mkt","yourName","yourLine","hedgeName","hedgeLine","yourSide","yourTotal","hedgeTotal","winPct","liveOdds","midPct","cashout"];
+  var KEY = "edgestat-hedgecalc-v2";
+  var mode = "hedge";
+  var customTouched = false;
 
-let currentMode = "lock";
-document.querySelectorAll(".mode-pill").forEach(p => {
-  p.addEventListener("click", e => {
-    document.querySelectorAll(".mode-pill").forEach(x => x.classList.remove("active"));
-    p.classList.add("active");
-    currentMode = p.dataset.mode;
-    document.getElementById("partialInput").style.display = currentMode === "partial" ? "block" : "none";
-    calculateHedge();
+  var EXAMPLES = [
+    { mode: "hedge", stake: "50", pays: "192", odds: "1.7x", winPct: "50" },
+    { mode: "middle", stake: "50", pays: "192", odds: "2.09x", mkt: "spread", yourName: "Notre Dame", yourLine: "-7.5", hedgeName: "Miami", hedgeLine: "+13.5", winPct: "50", midPct: "15" },
+    { mode: "hedge", stake: "27.99", pays: "67.47", odds: "+328", winPct: "78", cashout: "21.23" }
+  ];
+
+  function num(v) { if (v == null) return NaN; v = String(v).replace(/[$,\s]/g, "").replace(/−/g, "-"); return v === "" ? NaN : parseFloat(v); }
+  function parseOdds(s) {
+    if (s == null) return null;
+    s = String(s).trim().toLowerCase().replace(/−/g, "-").replace(/\s/g, "");
+    if (!s) return null;
+    var american = /^[+-]/.test(s);
+    var n = parseFloat(s.replace(/x$/, ""));
+    if (!isFinite(n)) return null;
+    if (american || Math.abs(n) >= 100) {
+      if (Math.abs(n) < 100) return null;
+      return n > 0 ? 1 + n / 100 : 1 + 100 / Math.abs(n);
+    }
+    return n > 1 ? n : null;
+  }
+  function toAmerican(d) { return d >= 2 ? "+" + Math.round((d - 1) * 100) : "−" + Math.round(100 / (d - 1)); }
+  function money(v) { return "$" + Math.abs(v).toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ","); }
+  function pl(v) { var r = Math.round(v * 100) / 100; if (r === 0) return "$0.00"; return (r > 0 ? "+" : "−") + money(r); }
+  function cls(v) { var r = Math.round(v * 100) / 100; return r > 0 ? "hc-pos" : r < 0 ? "hc-neg" : "hc-zero"; }
+  function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); }
+
+  function save() {
+    try { var st = { mode: mode }; FIELDS.forEach(function (f) { st[f] = $(f).value; }); localStorage.setItem(KEY, JSON.stringify(st)); } catch (e) {}
+  }
+  function load(st) {
+    FIELDS.forEach(function (f) { var el = $(f); if (st[f] != null) el.value = st[f]; else if (el.tagName === "INPUT") el.value = ""; });
+    setMode(st.mode || "hedge", true);
+  }
+  function setMode(m, quiet) {
+    mode = m;
+    $("tab-hedge").setAttribute("aria-selected", m === "hedge");
+    $("tab-middle").setAttribute("aria-selected", m === "middle");
+    $("lines-card").hidden = m !== "middle";
+    $("mid-pct-row").hidden = m !== "middle";
+    customTouched = false;
+    if (!quiet) render();
+  }
+
+  function middleWindow() {
+    var spread = $("mkt").value === "spread";
+    $("spread-fields").hidden = !spread;
+    $("total-fields").hidden = spread;
+    var lo, hi, name = esc($("yourName").value.trim() || "Your pick");
+    if (spread) {
+      var a = num($("yourLine").value), b = num($("hedgeLine").value);
+      if (!isFinite(a) || !isFinite(b)) return { err: "Enter both spread lines, each from that team's side (e.g. −7.5 and +13.5)." };
+      lo = -a; hi = b;
+    } else {
+      var y = num($("yourTotal").value), h = num($("hedgeTotal").value);
+      if (!isFinite(y) || !isFinite(h)) return { err: "Enter both total lines." };
+      if ($("yourSide").value === "over") { lo = y; hi = h; } else { lo = h; hi = y; }
+    }
+    var pushes = [];
+    if (Number.isInteger(lo)) pushes.push(lo);
+    if (Number.isInteger(hi) && hi !== lo) pushes.push(hi);
+    function describe(f, l) {
+      var r = f === l ? String(f) : f + "–" + l;
+      if (!spread) return "the total lands on " + r;
+      if (f > 0) return name + " wins by " + r;
+      if (l < 0) return name + " loses by " + (f === l ? -f : (-l) + "–" + (-f));
+      return name + "'s margin is " + f + " to " + l;
+    }
+    var first, last;
+    if (hi > lo) {
+      first = Math.floor(lo) + 1; last = Math.ceil(hi) - 1;
+      if (last >= first) return { kind: "mid", text: "Middle if " + describe(first, last) + " (" + (last - first + 1) + " number" + (last === first ? "" : "s") + ").", pushes: pushes };
+      return { kind: "none", text: "No whole number fits between the lines, so this works like a straight hedge.", pushes: pushes };
+    }
+    if (hi < lo) {
+      first = Number.isInteger(hi) ? hi + 1 : Math.ceil(hi);
+      last = Number.isInteger(lo) ? lo - 1 : Math.floor(lo);
+      var t = last >= first ? "Gap: both bets lose if " + describe(first, last) + "." : "The lines leave a spot where both bets can push or lose.";
+      return { kind: "gap", text: t + " Check that each line is from its own side's view.", pushes: pushes };
+    }
+    return { kind: "none", text: "Same number on both sides" + (Number.isInteger(lo) ? " (a push on " + lo + " refunds both)" : "") + ", so this is a straight hedge.", pushes: [] };
+  }
+
+  function outcomes(S, P, d, H, win) {
+    var yours = P - S - H, hedge = H * d - H - S;
+    if (mode === "middle" && win && win.kind === "mid") return [
+      { label: "Only your bet wins", v: yours },
+      { label: "Middle: both win", v: P - S + H * (d - 1), middle: true },
+      { label: "Only hedge wins", v: hedge } ];
+    if (mode === "middle" && win && win.kind === "gap") return [
+      { label: "Only your bet wins", v: yours },
+      { label: "Gap: both lose", v: -S - H },
+      { label: "Only hedge wins", v: hedge } ];
+    return [ { label: "Your bet wins", v: yours }, { label: "Hedge wins", v: hedge } ];
+  }
+  function outsHTML(list) {
+    return list.map(function (o) {
+      return '<div class="hc-out' + (o.middle ? " hc-middle" : "") + '"><span>' + o.label + '</span><span class="hc-v ' + cls(o.v) + '">' + pl(o.v) + "</span></div>";
+    }).join("");
+  }
+
+  function render() {
+    var S = num($("stake").value), P = num($("pays").value), d = parseOdds($("odds").value), ok = true;
+
+    if (isFinite(S) && isFinite(P) && S > 0 && P > 0) {
+      var td = P / S;
+      $("ticket-meta").innerHTML = "<b>" + td.toFixed(2) + "x</b> (" + (td > 1 ? toAmerican(td) : "n/a") + ") · risking " + money(S) + " to win " + money(P - S);
+    } else { $("ticket-meta").innerHTML = '<span class="hc-err">Enter what you staked and what the slip pays back in total.</span>'; ok = false; }
+
+    if (d) $("odds-meta").innerHTML = "<b>" + d.toFixed(2) + "x</b> · " + toAmerican(d) + " · " + (100 / d).toFixed(1) + "% implied";
+    else { $("odds-meta").innerHTML = $("odds").value.trim() ? '<span class="hc-err">Use a multiplier above 1 (1.7x) or American odds (+328, −110).</span>' : "Enter the hedge price."; ok = false; }
+
+    var win = null;
+    if (mode === "middle") {
+      win = middleWindow();
+      var w = $("window");
+      if (win.err) { w.className = "hc-window"; w.textContent = win.err; }
+      else {
+        w.className = "hc-window" + (win.kind === "mid" ? " hc-mid" : win.kind === "gap" ? " hc-gap" : "");
+        w.innerHTML = win.text + (win.pushes.length && win.kind !== "none" ? " Whole-number line: a push is possible on " + win.pushes.join(" or ") + "." : "");
+      }
+    }
+
+    var ans = $("answer");
+    if (!ok) {
+      ans.innerHTML = '<div class="hc-k">Hedge</div><div class="hc-line">Fill in your ticket and the hedge odds to see the numbers.</div>';
+      ["options","custom-outs","stats","verdict"].forEach(function (id) { $(id).innerHTML = ""; });
+      save(); return;
+    }
+
+    var full = P / d, be = S / (d - 1), lock = P - S - full;
+    var isMid = mode === "middle" && win && win.kind === "mid";
+
+    if (isMid) {
+      ans.innerHTML = '<div class="hc-k">Bet on the hedge</div><div class="hc-big">' + money(full) + '</div><div class="hc-line">Floor of ' + pl(lock) + " either way, " + pl(P - S + full * (d - 1)) + " if the middle hits.</div>";
+    } else {
+      ans.innerHTML = '<div class="hc-k">Full hedge: bet</div><div class="hc-big">' + money(full) + '</div><div class="hc-line">Locks ' + pl(lock) + " no matter who wins." + (lock < 0 ? " The hedge price is too short to lock a profit." : "") + "</div>";
+    }
+
+    $("options").innerHTML =
+      '<div class="hc-opt"><div class="hc-opt-head"><div class="hc-t">' + (isMid ? "Max floor" : "Full hedge") + "<small>" + (isMid ? "Same profit on both non-middle outcomes" : "Same profit either way") + '</small></div><div class="hc-amt">' + money(full) + '</div></div><div class="hc-outs">' + outsHTML(outcomes(S, P, d, full, win)) + "</div></div>" +
+      '<div class="hc-opt"><div class="hc-opt-head"><div class="hc-t">Break-even hedge<small>Lose nothing if your bet misses, keep more upside</small></div><div class="hc-amt">' + money(be) + '</div></div><div class="hc-outs">' + outsHTML(outcomes(S, P, d, be, win)) + "</div></div>";
+
+    var maxH = Math.ceil(Math.max(full, be) * 1.5), sl = $("slider");
+    sl.max = maxH;
+    if (!customTouched) $("customAmt").value = full.toFixed(2);
+    var H = num($("customAmt").value); if (!isFinite(H) || H < 0) H = 0;
+    sl.value = Math.min(H, maxH);
+    $("custom-outs").innerHTML = outsHTML(outcomes(S, P, d, H, win));
+
+    var p = num($("winPct").value) / 100, liveD = parseOdds($("liveOdds").value), vigNote = "";
+    if (liveD && mode === "hedge") {
+      var io = 1 / liveD, ih = 1 / d;
+      p = io / (io + ih);
+      vigNote = "No-vig chance from both live prices: <b>" + (p * 100).toFixed(1) + "%</b>. The book's cut on this market is " + ((io + ih - 1) * 100).toFixed(1) + "%.";
+    } else if (liveD && mode === "middle") {
+      vigNote = "Live odds only strip the vig when both prices are on the same line, so use the % box for middles.";
+    }
+    var pm = isMid ? num($("midPct").value) / 100 : 0;
+    if (!isFinite(p) || p <= 0 || p >= 1 || (isMid && (!isFinite(pm) || pm < 0 || pm > p))) {
+      $("stats").innerHTML = "";
+      $("verdict").innerHTML = "<p>Enter a win chance" + (isMid ? " and a middle chance (no bigger than the win chance)" : "") + " to compare holding against hedging." + (vigNote ? " " + vigNote : "") + "</p>";
+      save(); return;
+    }
+    var q = 1 - p + pm, evHold = p * P - S;
+    function ev(h) { return evHold + h * (q * d - 1); }
+    var evFull = ev(full), evBe = ev(be), cost = evHold - evFull;
+    $("stats").innerHTML =
+      '<div class="hc-stat"><span class="hc-k">Hold, no hedge</span><span class="hc-v ' + cls(evHold) + '">' + pl(evHold) + "</span></div>" +
+      '<div class="hc-stat"><span class="hc-k">' + (isMid ? "Max floor" : "Full hedge") + '</span><span class="hc-v ' + cls(evFull) + '">' + pl(evFull) + "</span></div>" +
+      '<div class="hc-stat"><span class="hc-k">Break-even</span><span class="hc-v ' + cls(evBe) + '">' + pl(evBe) + "</span></div>";
+
+    var pill, msg;
+    if (Math.abs(cost) < 0.5) { pill = '<span class="hc-pill hc-even">Hedging is about free</span>'; msg = "The hedge price is close to fair. Hedge if you want certainty, ride it if you don't."; }
+    else if (cost > 0) { pill = '<span class="hc-pill hc-bad">Hedging costs ' + money(cost) + " in EV</span>"; msg = "You give up " + money(cost) + " of expected value" + (evHold > 0 ? " (" + Math.round(cost / evHold * 100) + "% of your edge)" : "") + " to remove the risk. Worth it only if losing " + money(S) + " would hurt."; }
+    else { pill = '<span class="hc-pill hc-good">Hedging adds ' + money(-cost) + " in EV</span>"; msg = "The hedge is priced in your favor" + (isMid ? ", mostly because of the middle" : "") + ". Take it."; }
+    var parts = [pill, "<p>" + msg + "</p>"];
+    if (vigNote) parts.push("<p>" + vigNote + "</p>");
+    var C = num($("cashout").value);
+    if (isFinite(C) && C >= 0) {
+      var cp = C - S, best = Math.max(lock, evHold);
+      parts.push("<p>Cash out nets <b>" + pl(cp) + "</b>. The full hedge locks <b>" + pl(lock) + "</b> and holding is worth <b>" + pl(evHold) + "</b> on average. " + (cp >= best - 0.005 ? "The cash-out is the best of the three." : "Skip the cash-out; it is " + money(best - cp) + " worse than the better option.") + "</p>");
+    }
+    $("verdict").innerHTML = parts.join("");
+    save();
+  }
+
+  FIELDS.forEach(function (f) { $(f).addEventListener("input", render); $(f).addEventListener("change", render); });
+  $("customAmt").addEventListener("input", function () { customTouched = true; render(); });
+  $("slider").addEventListener("input", function () { customTouched = true; $("customAmt").value = parseFloat(this.value).toFixed(2); render(); });
+  $("tab-hedge").addEventListener("click", function () { setMode("hedge"); });
+  $("tab-middle").addEventListener("click", function () { setMode("middle"); });
+  Array.prototype.forEach.call(document.querySelectorAll(".hc-chip"), function (b) {
+    b.addEventListener("click", function () { load(EXAMPLES[+b.dataset.ex]); render(); });
   });
-});
 
-function calculateHedge() {
-  const origStake = parseFloat(document.getElementById("origStake").value) || 0;
-  const origOdds = parseFloat(document.getElementById("origOdds").value);
-  const hedgeOdds = parseFloat(document.getElementById("hedgeOdds").value);
-  const partialPct = parseFloat(document.getElementById("partialPct").value) || 50;
-
-  // (2026-11-03) American odds must satisfy |odds| >= 100; anything else is not a
-  // price (decimalFromAmerican silently returned 1.0 and printed nonsense stakes).
-  const bad = [["Original bet odds", origOdds], ["Hedge odds", hedgeOdds]]
-    .filter(([, v]) => !isFinite(v) || Math.abs(v) < 100);
-  if (bad.length || origStake <= 0) {
-    const msgs = bad.map(([n, v]) => `${n} ${isFinite(v) ? v : "(blank)"} is not valid American odds — use +100 or higher, or -100 or lower.`);
-    if (origStake <= 0) msgs.push("Original stake must be greater than 0.");
-    document.getElementById("resultBox").innerHTML =
-      `<p style="color:#e35a5a; font-weight:600;">${msgs.join("<br>")}</p>`;
-    return;
-  }
-
-  const origDec = decimalFromAmerican(origOdds);
-  const hedgeDec = decimalFromAmerican(hedgeOdds);
-  const origPayout = origStake * origDec;
-
-  let hedgeStake = 0;
-  if (currentMode === "lock" || currentMode === "equal") {
-    hedgeStake = origPayout / hedgeDec;
-  } else if (currentMode === "break_even") {
-    hedgeStake = hedgeDec > 1 ? origStake / (hedgeDec - 1) : 0;
-  } else if (currentMode === "partial") {
-    const fullHedge = origPayout / hedgeDec;
-    hedgeStake = fullHedge * (partialPct / 100);
-  }
-
-  const hedgePayout = hedgeStake * hedgeDec;
-  const totalRisked = origStake + hedgeStake;
-  const profitIfOrigWins = origPayout - totalRisked;
-  const profitIfHedgeWins = hedgePayout - totalRisked;
-  const minProfit = Math.min(profitIfOrigWins, profitIfHedgeWins);
-  const maxProfit = Math.max(profitIfOrigWins, profitIfHedgeWins);
-
-  document.getElementById("resultBox").innerHTML = `
-    <div class="result-card">
-      <div class="result-row"><span>Hedge stake:</span><strong>$${hedgeStake.toFixed(2)}</strong></div>
-      <div class="result-row"><span>Total capital at risk:</span><strong>$${totalRisked.toFixed(2)}</strong></div>
-      <div class="result-row"><span>If original wins:</span><strong style="color:${profitIfOrigWins >= 0 ? '#58c878' : '#e35a5a'}">$${profitIfOrigWins.toFixed(2)} profit</strong></div>
-      <div class="result-row"><span>If hedge wins:</span><strong style="color:${profitIfHedgeWins >= 0 ? '#58c878' : '#e35a5a'}">$${profitIfHedgeWins.toFixed(2)} profit</strong></div>
-      <div class="result-row"><span>Guaranteed minimum:</span><strong style="color:${minProfit >= 0 ? '#58c878' : '#e35a5a'}; font-size:16px;">$${minProfit.toFixed(2)}</strong></div>
-      <div class="result-row"><span>Maximum upside:</span><strong>$${maxProfit.toFixed(2)}</strong></div>
-    </div>
-    <p class="muted" style="margin-top:12px; font-size:11px;">
-      ${currentMode === "lock" ? "Both outcomes return identical net profit." :
-        currentMode === "equal" ? "Both outcomes return identical total payout (gross)." :
-        currentMode === "break_even" ? "Worse outcome returns at least your original stake." :
-        `Applied ${partialPct}% of the full lock-profit hedge.`}
-    </p>
-  `;
-}
-calculateHedge();
+  var saved = null;
+  try { saved = JSON.parse(localStorage.getItem(KEY) || "null"); } catch (e) {}
+  load(saved && saved.stake !== undefined ? saved : EXAMPLES[0]);
+  render();
+})();
 </script>
 </body>
 </html>
