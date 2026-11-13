@@ -158,6 +158,8 @@
   <section class="card" style="margin-top:26px;">
     <div class="card-head"><span>🧾 Graded so far</span><span class="muted" id="resMeta"></span></div>
     <div id="results" style="padding:4px 2px 2px;"><p class="muted" style="font-size:13px;">Loading results…</p></div>
+    <p style="margin:8px 2px 2px;font-size:12px;"><button id="csvDl" class="muted" style="background:none;border:1px solid var(--line-soft);border-radius:6px;padding:4px 10px;cursor:pointer;color:inherit;">Download these bets (CSV)</button>
+      <span class="muted">every board bet shown here, with price, close, CLV and result</span></p>
   </section>
 
   <section class="card" style="margin-top:18px;">
@@ -503,6 +505,19 @@
       return head + `<div class="res-row"><span class="sp ${esc(r.sport)}">${esc(r.sport)}</span><span><b>${esc(r.team || r.matchup)}</b> ML ${amer(r.book_american)}${cl}${run}</span><span class="gr ${esc(r.grade)}" style="margin-left:0;padding:1px 7px;">${esc(r.grade)}</span>${r.is_alpha ? `<span style="color:var(--gold);">★ alpha</span>` : ""}<span style="margin-left:auto;">${res}${r.final ? ` <span class="muted">(${esc(r.final)})</span>` : ""}</span></div>`;
     }).join("");
   }
+
+  // (2026-11-13) the graded list as a CSV, built in the browser from the same results block
+  $("csvDl").addEventListener("click", () => {
+    const R = B && B.results; if (!R || !(R.recent || []).length) return;
+    const q = (v) => { const t = v == null ? "" : String(v); return /[",\n]/.test(t) ? '"' + t.replace(/"/g, '""') + '"' : t; };
+    const cols = ["date", "sport", "matchup", "team", "market", "grade", "is_alpha", "book_american", "close_price", "clv_pts", "result", "payout_units", "final"];
+    const rows = R.recent.filter((r) => sport === "ALL" || r.sport === sport);
+    const csv = [cols.join(",")].concat(rows.map((r) => cols.map((c) => q(r[c])).join(","))).join("\n");
+    const a = document.createElement("a");
+    a.href = URL.createObjectURL(new Blob([csv], { type: "text/csv" }));
+    a.download = "edgestat-board-bets-" + (sport === "ALL" ? "all" : sport.toLowerCase()) + "-" + (B.date_et || "") + ".csv";
+    document.body.appendChild(a); a.click(); a.remove();
+  });
 
   $("recapCopy").addEventListener("click", () => {
     const rc = B && B.recap; if (!rc) return;
