@@ -80,7 +80,7 @@ fetch("data/ncaab_state.json?t=" + Date.now(), { cache: "no-cache" })
     const games = d.games || [];
     setText("m_games", d.n_games_today || 0);
     setText("m_live", games.filter(g => g.state === 'in').length);
-    setText("m_final", games.filter(g => g.state === 'post').length);
+    setText("m_final", games.filter(g => g.state === 'post' && (!g.date || new Date(g.date).toLocaleDateString("en-CA", { timeZone: "America/New_York" }) === new Date().toLocaleDateString("en-CA", { timeZone: "America/New_York" }))).length);   // (2026-11-13) today's finals (ET), not last night's
     setText("m_season", (d.active_season === false ? 'none scheduled' : (d.season_status || '—')).toUpperCase());
     // (2026-11-05) the header "LIVE" chip only when a game is actually in progress
     (function () { const t = document.querySelector('.topbar .ticker'); if (t) t.style.display = (d.games || []).some(g => g.state === 'in') ? '' : 'none'; })();

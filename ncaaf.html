@@ -105,7 +105,7 @@ fetch("data/ncaaf_state.json?t=" + Date.now(), { cache: "no-cache" })
     const games = d.games || [];
     setText("m_games", d.n_games_today || 0);
     setText("m_live", games.filter(g => g.state === 'in').length);
-    setText("m_final", games.filter(g => g.state === 'post').length);
+    setText("m_final", games.filter(g => g.state === 'post' && (!g.date || new Date(g.date).toLocaleDateString("en-CA", { timeZone: "America/New_York" }) === new Date().toLocaleDateString("en-CA", { timeZone: "America/New_York" }))).length);   // (2026-11-13) today's finals (ET), not last night's
     setText("m_season", (d.season_status || '—').toUpperCase());
     if (!games.length) { document.getElementById("sb_list").innerHTML = '<p class="muted" style="padding:14px;">No games scheduled.</p>'; return; }
     document.getElementById("sb_list").innerHTML = games.map(g => {

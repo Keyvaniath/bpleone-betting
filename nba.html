@@ -148,7 +148,11 @@ fetch("data/nba_state.json?t=" + Date.now(), { cache: "no-cache" })
     setText("nbaTitle", `NBA Desk — ${d.season_status === 'playoffs' ? 'NBA Playoffs' : d.season_status === 'regular' ? 'Regular Season' : (d.season_status || 'NBA').toUpperCase()}`);
     setText("nbaStatus", d.note || (d.n_games_today === 0 ? "No games today." : `${d.n_games_today} game(s) on the board.`));
 
-    const games = d.games || [];
+    // (2026-11-13) the feed keeps earlier days' finals on top, dated by UTC kick-off (a 7 PM ET game
+    // is "tomorrow" in UTC); they were listed and counted as today's. Drop finals from before today (ET).
+    const _etDay = (iso) => { const t = new Date(iso); return isNaN(t) ? "" : t.toLocaleDateString("en-CA", { timeZone: "America/New_York" }); };
+    const _todayEt = new Date().toLocaleDateString("en-CA", { timeZone: "America/New_York" });
+    const games = (d.games || []).filter(g => !(g.state === 'post' && _etDay(g.date) && _etDay(g.date) < _todayEt));
     const live = games.filter(g => g.state === 'in').length;
     const final = games.filter(g => g.state === 'post').length;
     setText("m_games", d.n_games_today || 0);
