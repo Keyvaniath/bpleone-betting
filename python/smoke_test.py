@@ -34,6 +34,10 @@ if HERE not in sys.path:
 
 # Run-order matters: each feeds the next, mirroring the pipeline.
 CRITICAL_RUN = [
+    # (2026-11-13) the product's front page data, offline from committed inputs: a commit
+    # that breaks either fails CI before it can freeze the board or the Play of the Day
+    "play_of_day",            # cross-sport play + per-sport plays (desk picks / leans)
+    "board",                  # The Board: every game graded + the day's Alpha list
     "all_picks_tracker",      # settle + grade + by_canonical rollup
     "self_learn_weights",     # learned weights (incl. weights_by_canonical)
     "todays_top_plays",       # the displayed board (applies canonical weights)
