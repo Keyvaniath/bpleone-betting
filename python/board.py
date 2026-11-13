@@ -242,6 +242,27 @@ def hold_pct(ml_a, ml_b) -> Optional[float]:
     return round((sum(ps) - 1) * 100, 2)
 
 
+def _signal_view(s: Optional[Dict[str, Any]], now_home, now_away, names: Dict[str, str]) -> Optional[Dict[str, Any]]:
+    """A recorded line-move signal with a side, for the card: the side, the price it was recorded
+    at, the model-vs-DraftKings gap at the open, and the current price of that side with the move
+    in no-vig points (+ = toward the signal's side). None when the game had no signal."""
+    if not s or not s.get("side") or s.get("price") is None:
+        return None
+    side = s["side"]
+    now = now_home if side == "home" else now_away
+    out = {"side": side, "team": names.get(side), "price": s.get("price"), "gap_pts": round(abs(float(s.get("gap") or 0)) * 100, 1),
+           "seen_at": s.get("seen_at"), "now_price": now, "clv_pts": None}
+    try:
+        d0 = (1 + float(s["price"]) / 100) if float(s["price"]) > 0 else (1 + 100 / -float(s["price"]))
+        d1 = (1 + float(now) / 100) if float(now) > 0 else (1 + 100 / -float(now))
+        out["clv_pts"] = round((1 / d1 - 1 / d0) * 100, 1)
+    except (TypeError, ValueError, ZeroDivisionError):
+        pass
+    if s.get("result"):
+        out["result"] = s.get("result")
+    return out
+
+
 def _nv_home(h, a) -> Optional[float]:
     try:
         h, a = float(h), float(a)
@@ -322,6 +343,9 @@ def build_games(gld: Dict[str, Any], odds: Dict[str, Any], now: dt.datetime, tod
             opens[(_sp, str(_eid))] = _ev.get("open") or {}
     # the snapshot history per game (sport|matchup|UTC date of the start), for the line chart
     hist = (_load("odds_history.json").get("history") or {})
+    # (2026-11-13) line-move signals (game_lines_desk.move_signals): a FORWARD TEST, never a pick.
+    # Shown on the card with the price it was recorded at and how that side's price has moved since.
+    sigs = (_load("move_signals.json").get("signals") or {})
     cands: Dict[Any, Dict[str, Any]] = {}
     for c in pod._desk_candidates(gld, now) + pod._lean_candidates(gld, now):
         cands[(c["sport"], str(c.get("event_id")))] = c
@@ -364,6 +388,7 @@ def build_games(gld: Dict[str, Any], odds: Dict[str, Any], now: dt.datetime, tod
                                 for x in (logged.get((sport, eid)) or logged.get((sport, r.get("matchup"))) or [])],
                 "pick": None, "model_side": None, "hold": None, "grade": None, "score": None, "reason": None,
                 "lineup": lineup(r),
+                "signal": _signal_view(sigs.get(f"{sport.lower()}:{eid}"), r.get("ml_home"), r.get("ml_away"), names),
             }
             c = cands.get((sport, eid))
             if not ok_game:

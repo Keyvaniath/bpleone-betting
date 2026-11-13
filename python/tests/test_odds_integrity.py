@@ -1596,3 +1596,13 @@ def test_b2b_counts_a_scheduled_game_the_day_before():
 def test_today_status_counts_only_todays_desk_rows():
     src = open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "today_status.py"), encoding="utf-8").read()
     assert 'if str(r.get("event_id")) in ids' in src
+
+
+def test_signal_view_is_labelled_data_not_a_pick():
+    import board
+    s = {"side": "away", "price": 150, "gap": -0.066, "seen_at": "2026-11-13T20:17:17"}
+    v = board._signal_view(s, -170, 145, {"home": "LA", "away": "CGY"})
+    assert v["team"] == "CGY" and v["now_price"] == 145 and v["clv_pts"] > 0 and v["gap_pts"] == 6.6
+    assert board._signal_view({"side": None}, -110, -110, {}) is None
+    src = open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "..", "board.html"), encoding="utf-8").read()
+    assert "Open signal (forward test, not a pick)" in src
