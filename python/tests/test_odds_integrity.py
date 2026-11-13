@@ -1547,3 +1547,15 @@ def test_board_playable_to_uses_the_desk_hurdle():
     assert board._desk_min_edge() == gld.MIN_EDGE
     src = open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "..", "board.html"), encoding="utf-8").read()
     assert "(1 + me) / k.prob_model" in src
+
+
+def test_night_before_slate_is_separate_and_deduped():
+    import game_lines_desk as gld
+    import espn_odds
+    odds = {"games": [{"event_id": "1", "sport": "NHL"}],
+            "games_next_day": [{"event_id": "1", "sport": "NHL"}, {"event_id": "2", "sport": "NHL"}]}
+    assert [g["event_id"] for g in gld._odds_games(odds)] == ["1", "2"]
+    assert espn_odds.NEXT_DAY_SPORTS == {"nba", "nhl"}
+    # today's consumers read only `games`: the separate key must never be merged into it
+    src = open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "espn_odds.py"), encoding="utf-8").read()
+    assert '"games_next_day": next_day' in src and "games.extend(next_day)" not in src
