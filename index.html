@@ -1263,6 +1263,15 @@ const renderSport = (data, cardId, titleId, metaId, bodyId, anchor, emoji) => {
   // games[] may be the NEXT slate when the league is idle -- label it as such
   // instead of calling September games "today".
   const nToday = (data && data.n_games_today != null) ? data.n_games_today : games.length;
+  // (2026-11-13) the feed keeps last night's finals at the top, dated by UTC kick-off
+  // (a 7 PM ET game is "tomorrow" in UTC), so the first three rows were yesterday's
+  // results under a "today" title. List today's games by their Eastern date; when the
+  // league has none today, the next slate (the title already says so).
+  const etDay = (iso) => { const d = new Date(iso); return isNaN(d) ? "" : d.toLocaleDateString("en-CA", { timeZone: "America/New_York" }); };
+  const todayEt = new Date().toLocaleDateString("en-CA", { timeZone: "America/New_York" });
+  const todays = games.filter(g => etDay(g.date) === todayEt);
+  if (todays.length) games = todays;
+  else games = games.filter(g => g.state !== 'post' && etDay(g.date) >= todayEt);
   document.getElementById(titleId).textContent = nToday > 0
     ? `${emoji} ${nToday} game${nToday===1?'':'s'} today`
     : (data.next_game_date ? `${emoji} No games today — next slate ${data.next_game_date}`
@@ -1858,7 +1867,7 @@ fetch("data/pod_pl.json?t=" + Date.now(), { cache: "no-cache" })
         <div style="font-size:10px; color:#d4a04a; text-transform:uppercase; font-weight:700;">Today's POD (Pending)</div>
         <div style="margin-top:6px;"><strong style="font-size:16px;">${t.matchup}</strong> · <strong style="color:#d4a04a;">${t.label}</strong> @ ${t.market_price > 0 ? '+' : ''}${t.market_price}</div>
         <div style="margin-top:4px; font-size:11px; color:var(--text-2,#aaa);">Model: ${(t.model_prob*100).toFixed(1)}% · Recorded ${(t.recorded_at||'').slice(0,16).replace('T',' ')}</div>
-      </div>` : '<p class="muted">No POD recorded yet today.</p>';
+      </div>` : '<p class="muted">No POD recorded yet today. When the day&#39;s Play of the Day is a model lean it is not added to this record (a lean is not an edge); leans are graded on <a href="board.html" style="color:#7fb0e8;">The Board</a>.</p>';
     box.innerHTML = `
       ${todayRow}
       <div style="display:grid; grid-template-columns: repeat(5, 1fr); gap:10px;">

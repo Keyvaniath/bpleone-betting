@@ -189,7 +189,7 @@ function renderRows(){
     const why = nExc ? ` — ${nExc} model-only projections excluded (${Object.entries(exc).map(([s, n]) => s + ' ' + n).join(', ')})` : '';
     el.innerHTML = (DATA.picks || []).length
       ? `<div class="empty">No priced picks in this view — clear the filters above.</div>`
-      : `<div class="empty">No pick today: a pick needs a real sportsbook price${why}.</div>`;
+      : `<div class="empty">No pick today: a pick needs a real sportsbook price${why}.<br><span style="font-size:12px;">These are the curated boards only. Every game today, with DraftKings odds, our side and a grade, is on <a href="board.html" style="color:#7fb0e8;">The Board</a>.</span></div>`;
     document.getElementById("meta").textContent = `0 of ${(DATA.picks||[]).length} picks`;
     return;
   }
