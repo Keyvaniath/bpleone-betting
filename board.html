@@ -172,6 +172,7 @@
       <p style="margin:6px 0;"><b>College football</b> has its own chip and is shown for information only: DraftKings&#39; odds and our college model&#39;s side and spread. That model&#39;s own benchmark says the closing line is sharper than it, so no college game is graded as a bet.</p>
       <p style="margin:6px 0;"><span class="gr HOLD">HOLD</span> No side while the desk waits on a quarterback or a day-to-day player.</p>
       <p style="margin:6px 0;"><b style="color:var(--gold);">★ Alpha picks</b> are the three to five highest-scored bets of the day, whatever their grade, locked at 11:00 AM ET so the list does not reshuffle. On a day with no A or B bet they are grade C leans, and the card says so. They are separate from the MLB <a href="alpha-pick.html" style="color:#7fb0e8;">Alpha Pick</a> record, which has its own edge gate.</p>
+      <p style="margin:6px 0;"><b>Playable to.</b> A desk pick carries the worst price it is still a bet at: the desk&#39;s own fair price, where its expected value is zero. If the line moves past it, pass. A lean shows its break-even instead, DraftKings&#39; no-vig price, which no book posts: that is why a lean is not an edge.</p>
       <p style="margin:6px 0;"><b>Fair price.</b> Next to each side is its fair price: DraftKings&#39; two prices with the hold taken out. The gap between the posted price and the fair price is what the book charges you on that side.</p>
       <p style="margin:6px 0;"><b>Line moves and hold.</b> Each card shows where the moneyline opened (the first DraftKings price we recorded), how many points of win probability it has moved since, and DraftKings&#39; hold, the margin built into the two prices. A big move toward a side usually means informed money; a high hold means a worse price for either side.</p>
       <p style="margin:6px 0;"><b>Closing line value (CLV)</b> is how sharps judge a bet before the result is known: did we get a better price than DraftKings&#39; last price before the game started? "+2.0 pts" means our price implied a 2-point lower win probability than the close, so we got the better number. Over a few dozen bets, CLV says far more than the win-loss record. A lean taken at the market price should average about zero.</p>
@@ -294,7 +295,17 @@
     const basis = g.pick.kind === "lean" ? "at DraftKings&#39; probability" : "at the desk&#39;s probability";
     return `<div class="tot" title="Per 1 unit staked, ${basis}. Risk-adjusted = expected profit divided by the standard deviation of the result.">
       ${r.favorite ? "favorite" : "<b style=\"color:var(--gold)\">underdog</b>"} · win ${Math.round(r.win_prob * 100)}% · pays ${sg(r.pays, 2)}u ·
-      EV <span style="color:${r.ev_pct > 0 ? "var(--accent)" : "var(--red)"};">${sg(r.ev_pct, 1)}%</span> · risk-adj ${sg(r.risk_adj, 2)}</div>`;
+      EV <span style="color:${r.ev_pct > 0 ? "var(--accent)" : "var(--red)"};">${sg(r.ev_pct, 1)}%</span> · risk-adj ${sg(r.risk_adj, 2)}${playTo(g)}</div>`;
+  }
+  // (2026-11-13) the sharp's limit price: a desk pick is playable down to the desk's own fair price
+  // (expected value 0 at the desk's probability); a lean has no playable price at DraftKings' odds
+  function playTo(g) {
+    const k = g.pick || {};
+    if (k.kind === "desk" && k.prob_model > 0 && k.prob_model < 1)
+      return ` · <b title="The worst price at which this bet still has positive expected value at the desk&#39;s probability. Past it, pass.">playable to ${fairA(k.prob_model)}</b>`;
+    if (k.kind === "lean" && k.fair_american != null)
+      return ` · <span class="muted" title="A lean claims no edge: it would only break even at DraftKings&#39; no-vig fair price, which no book posts.">break-even ${amer(k.fair_american)}</span>`;
+    return "";
   }
 
   function gameCard(g) {
