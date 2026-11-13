@@ -103,6 +103,11 @@
   .slip .acts button { flex: 1; border-radius: 10px; padding: 10px; font-weight: 700; cursor: pointer; border: 1px solid var(--line); background: var(--bg-2); color: var(--text); }
   .stale { background: rgba(248,113,113,.10); border: 1px solid rgba(248,113,113,.4); color: #fca5a5; border-radius: 12px; padding: 10px 12px; font-size: 13px; margin-top: 12px; }
   @media (max-width: 720px) { .bd-head h1 { font-size: 23px; } .ac { flex-basis: 200px; } .bd-grid { grid-template-columns: 1fr; } }
+  details.more { margin: 4px 0 2px; }
+  details.more > summary { cursor: pointer; font-size: 12px; color: var(--muted); padding: 2px 0; list-style: none; }
+  details.more > summary::-webkit-details-marker { display: none; }
+  details.more > summary::before { content: "\25B8  "; }
+  details.more[open] > summary::before { content: "\25BE  "; }
 </style>
 </head>
 <body class="page-board">
@@ -214,6 +219,13 @@
   };
   const obs = (s) => { if (!s) return "—"; const d = new Date(String(s).replace(" ", "T") + (/[zZ]|[+-]\d\d:?\d\d$/.test(s) ? "" : "Z")); return isNaN(d) ? s : d.toLocaleString("en-US", Object.assign({ month: "numeric", day: "numeric", hour: "numeric", minute: "2-digit" }, ET)) + " ET"; };
   const units = (u) => (u >= 0 ? "+" : "−") + Math.abs(Number(u || 0)).toFixed(2) + "u";
+  const WIDE = !(window.matchMedia && window.matchMedia("(max-width: 640px)").matches);
+  // a re-render (filters, the 30s Alpha-lock tick) keeps each card's section as the viewer left it
+  const OPENED = new Set(), SHUT = new Set();
+  document.addEventListener("toggle", (e) => {
+    const d = e.target; if (!d || !d.matches || !d.matches("details.more") || !d.dataset.g) return;
+    if (d.open) { OPENED.add(d.dataset.g); SHUT.delete(d.dataset.g); } else { SHUT.add(d.dataset.g); OPENED.delete(d.dataset.g); }
+  }, true);
   const started = (g) => { const d = new Date(g.start); return !isNaN(d) && d.getTime() <= Date.now(); };
   // (2026-11-13) countdowns: "in 1h 05m" on games starting within 6 hours, updated every 30s in place
   const cdTxt = (ms) => { if (!(ms > 0)) return ""; const m = Math.round(ms / 60000); return m < 60 ? `in ${m}m` : `in ${Math.floor(m / 60)}h ${String(m % 60).padStart(2, "0")}m`; };
@@ -364,9 +376,19 @@
       <header><span class="sp ${esc(g.sport)}">${esc(g.sport)}</span><span class="tm">${started(g) ? "started" : tm(g.start) + cdSpan(g.start)}</span>
         ${g.alpha_rank ? `<span class="sp" style="color:var(--gold);">★ ALPHA #${g.alpha_rank}</span>` : ""}${sinceLast(g)}<span class="gr ${esc(g.grade || "")}">${gradeTxt}</span></header>
       ${sideBtn(g, "away")}${sideBtn(g, "home")}
+      ${(() => {
+          // (2026-11-13) phones get a compact card: total / spread / market / lineups fold behind one
+          // tap (open on wider screens). A lineup flag or a 5+ point move is named in the summary.
+          const flag = g.lineup && ["away", "home"].some((s) => g.lineup[s] && g.lineup[s].flag);
+          const mvp = o.move && o.move.move_home_pts != null && Math.abs(o.move.move_home_pts) >= 5;
+          const sum = ["Lines, market" + (g.lineup ? " &amp; lineups" : ""),
+            mvp ? `<b style="color:var(--gold);">moved ${Math.abs(o.move.move_home_pts).toFixed(1)} pts</b>` : "",
+            flag ? `<b style="color:var(--gold);">lineup flag</b>` : ""].filter(Boolean).join(" · ");
+          return `<details class="more" data-g="${esc(g.id)}"${(WIDE ? !SHUT.has(g.id) : OPENED.has(g.id)) ? " open" : ""}><summary>${sum}</summary>
       <div class="tot">${tot}${spr}</div>
-      ${mkt ? `<div class="tot" title="Opening price = the first DraftKings snapshot we recorded. Hold = the bookmaker's margin in the two prices.">${mkt}</div>` : ""}
-      ${g.lineup ? `<div class="tot" title="From the desk's lineup feed: NHL starting goalies (ESPN confirmed / expected, else the model's projection), NFL starting QBs, NBA rotation players on the injury report.">${["away", "home"].filter(s => g.lineup[s]).map(s => `${esc(s === "away" ? g.away : g.home)}: ${g.lineup[s].flag ? `<b style="color:var(--gold);">${esc(g.lineup[s].text)}</b>` : esc(g.lineup[s].text)}`).join("<br>")}</div>` : ""}
+      ${mkt ? `<div class="tot" title="Opened = DraftKings' own opening price where ESPN carries it, else the first DraftKings snapshot we recorded. Hold = the bookmaker's margin in the two prices.">${mkt}</div>` : ""}
+      ${g.lineup ? `<div class="tot" title="From the desk's lineup feed: NHL starting goalies (ESPN confirmed / expected, else the model's projection), NFL starting QBs, NBA rotation players on the injury report.">${["away", "home"].filter(s => g.lineup[s]).map(s => `${esc(s === "away" ? g.away : g.home)}: ${g.lineup[s].flag ? `<b style="color:var(--gold);">${esc(g.lineup[s].text)}</b>` : esc(g.lineup[s].text)}`).join("<br>")}</div>` : ""}</details>`;
+        })()}
       ${(g.desk_logged || []).map(x => `<div class="tot" title="A pick the desk logged earlier at its then-current price, against today's DraftKings line. Positive = the market has moved our way.">Desk took <b>${esc(x.team)} ${amer(x.logged_price)}</b> · now ${amer(x.now_price)} · <b style="color:${x.clv_pts > 0 ? "var(--accent)" : x.clv_pts < 0 ? "var(--red)" : "inherit"};">${x.clv_pts > 0 ? "+" : x.clv_pts < 0 ? "−" : ""}${Math.abs(x.clv_pts).toFixed(1)} pts</b> vs the current line</div>`).join("")}
       ${riskLine(g)}
       <p class="why">${esc(g.reason || "")}</p>
