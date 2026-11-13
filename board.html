@@ -202,7 +202,7 @@
   const amer = (a) => a == null ? "—" : (a >= 0 ? "+" + a : String(a));
   const pct = (p) => p == null ? "—" : Math.round(p * 100) + "%";
   // (2026-11-13) the no-vig "fair" price for a probability: DraftKings' price with the margin taken out
-  const fairA = (p) => { if (p == null || p <= 0 || p >= 1) return "—"; const a = p >= 0.5 ? -100 * p / (1 - p) : 100 * (1 - p) / p; return (a > 0 ? "+" : "") + Math.round(a); };
+  const fairA = (p) => { if (p == null || p <= 0 || p >= 1) return "—"; const a = p >= 0.5 ? -100 * p / (1 - p) : 100 * (1 - p) / p; const r = Math.round(a); return r === -100 ? "+100" : (r > 0 ? "+" : "") + r; };
   const ET = { timeZone: "America/New_York" };
   const tm = (iso) => { const d = new Date(iso); return isNaN(d) ? "" : d.toLocaleTimeString("en-US", Object.assign({ hour: "numeric", minute: "2-digit" }, ET)) + " ET"; };
   const dayLabel = (ymd, today) => {
@@ -228,7 +228,7 @@
   let SEEN = {};
   try { SEEN = JSON.parse(localStorage.getItem(SEENKEY) || "{}") || {}; } catch (e) { SEEN = {}; }
   const sinceLast = (g) => {
-    const p = SEEN[g.id]; if (!p || g.odds.ml_home == null || p.h == null) return "";
+    const p = SEEN[g.id]; if (!p || started(g) || g.odds.ml_home == null || p.h == null) return "";
     if (p.h === g.odds.ml_home && p.a === g.odds.ml_away) return "";
     return `<span class="sp" style="color:var(--gold);" title="Your last visit on this device: ${esc(g.away)} ${amer(p.a)} / ${esc(g.home)} ${amer(p.h)}">MOVED since your last visit</span>`;
   };
