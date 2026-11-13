@@ -98,11 +98,18 @@ jobs:
       # before the ledger, so an NHL pick whose starters were just Confirmed on
       # ESPN is logged at the current price (GH cron drops many live-games
       # fires; this is a second chance). ~2s.
-      - name: DraftKings odds + NFL/NHL game-lines desk (pre-ledger)
+      - name: DraftKings odds + NFL/NHL game-lines desk + desk pages (pre-ledger)
         working-directory: python
         run: |
           python espn_odds.py > /dev/null || echo "espn_odds.py" >> "$RUNNER_TEMP/failed_steps.txt"
           python game_lines_desk.py || echo "game_lines_desk.py" >> "$RUNNER_TEMP/failed_steps.txt"
+          # (2026-11-13) the NFL/NBA/NHL desk pages (data/<sport>_state.json) re-priced from the odds
+          # just fetched: live-games is meant to do this every 15 min, but GitHub fired it ~3 times a
+          # day, so the desk pages showed DraftKings prices up to 7 hours old (VGK -185 on nhl.html
+          # while the board showed -162). ~1s each, no extra fetching beyond ESPN's scoreboard.
+          python nfl_pipeline.py > /dev/null || echo "nfl_pipeline.py" >> "$RUNNER_TEMP/failed_steps.txt"
+          python nba_pipeline.py > /dev/null || echo "nba_pipeline.py" >> "$RUNNER_TEMP/failed_steps.txt"
+          python nhl_pipeline.py > /dev/null || echo "nhl_pipeline.py" >> "$RUNNER_TEMP/failed_steps.txt"
           python today_status.py || echo "today_status.py" >> "$RUNNER_TEMP/failed_steps.txt"
 
       # Self-learning -- update every 5 min, all day
