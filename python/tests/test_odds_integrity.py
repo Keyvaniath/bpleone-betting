@@ -1451,3 +1451,10 @@ def test_a_new_line_history_does_not_fake_opens(tmp_path, monkeypatch):
     lines = gld.grow_lines("ncaab")
     assert "open_late" not in lines["6"]
 
+
+
+def test_today_status_names_the_right_hold_reason_per_sport():
+    import today_status as ts
+    assert ts.HOLD_WHY["NBA"] == "day-to-day player" and ts.HOLD_WHY["NHL"] == "starting goalie" and ts.HOLD_WHY["NFL"] == "QB"
+    src = open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "today_status.py"), encoding="utf-8").read()
+    assert "'QB' if sp == 'NFL' else 'starting goalie'" not in src          # NBA holds are never "goalie"
