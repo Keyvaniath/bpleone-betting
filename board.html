@@ -264,15 +264,31 @@
       slip = slip.filter((s) => s.id !== g.id);            // one side per game
       const ours = g.pick && g.pick.side === side;
       slip.push({ k: k, id: g.id, sport: g.sport, team: side === "home" ? g.home : g.away, matchup: g.matchup, date: g.date,
-                  price: side === "home" ? g.odds.ml_home : g.odds.ml_away, ours: !!ours, grade: ours ? g.grade : null });
+                  price: side === "home" ? g.odds.ml_home : g.odds.ml_away, ours: !!ours, grade: ours ? g.grade : null,
+                  added_price: side === "home" ? g.odds.ml_home : g.odds.ml_away });
     }
     saveSlip(); render();
   }
 
   function renderSlip() {
     $("slipN").textContent = slip.length;
-    $("slipList").innerHTML = slip.length ? slip.map((s) =>
-      `<div class="it"><span class="sp ${esc(s.sport)}">${esc(s.sport)}</span><span><b>${esc(s.team)}</b> ML <span style="font-family:JetBrains Mono,monospace;color:var(--gold);">${amer(s.price)}</span><br><span class="muted" style="font-size:11px;">${esc(s.matchup)} · ${s.ours ? "EdgeStat pick, grade " + esc(s.grade) : "your pick"}</span></span><button class="x" data-k="${esc(s.k)}" aria-label="Remove">×</button></div>`).join("")
+    // (2026-11-13) each single: to-win per unit, the price it was added at vs now, and for an
+    // EdgeStat desk pick whether the price has moved past the desk's playable limit
+    const win = (a) => a == null ? null : (a > 0 ? a / 100 : 100 / -a);
+    const me = (B && B.desk_min_edge != null) ? B.desk_min_edge : 0.04;
+    const line = (s) => {
+      const w = win(s.price);
+      const g = (B && B.games || []).find((x) => x.id === s.id);
+      const side = String(s.k).split(":").pop();
+      const k = g && g.pick && g.pick.side === side ? g.pick : null;
+      const past = k && k.kind === "desk" && k.prob_model > 0 && (1 + w) * k.prob_model - 1 < me;
+      const moved = s.added_price != null && s.added_price !== s.price
+        ? ` · added at ${amer(s.added_price)}, <b style="color:${win(s.price) > win(s.added_price) ? "var(--accent)" : "var(--red)"};">now ${amer(s.price)}</b>` : "";
+      return `<div class="it"><span class="sp ${esc(s.sport)}">${esc(s.sport)}</span><span><b>${esc(s.team)}</b> ML <span style="font-family:JetBrains Mono,monospace;color:var(--gold);">${amer(s.price)}</span>${w != null ? ` <span class="muted" style="font-size:11px;">wins ${w.toFixed(2)}u per 1u</span>` : ""}<br><span class="muted" style="font-size:11px;">${esc(s.matchup)} · ${s.ours ? "EdgeStat pick, grade " + esc(s.grade) : "your pick"}${moved}</span>${past ? `<br><b style="color:var(--red);font-size:11px;">Past the desk&#39;s playable price: not a bet at ${amer(s.price)}</b>` : ""}</span><button class="x" data-k="${esc(s.k)}" aria-label="Remove">×</button></div>`;
+    };
+    const tw = slip.reduce((t, s) => t + (win(s.price) || 0), 0);
+    $("slipList").innerHTML = slip.length ? slip.map(line).join("") +
+      `<p class="muted" style="font-size:11px;margin:8px 0 0;">${slip.length} single${slip.length === 1 ? "" : "s"} at 1u each: risk ${slip.length}u, win ${tw.toFixed(2)}u if all win.</p>`
       : `<p class="muted" style="font-size:13px;margin:6px 0;">Tap a team on any game to add it.</p>`;
     $("slipList").querySelectorAll(".x").forEach((b) => b.addEventListener("click", () => { slip = slip.filter((s) => s.k !== b.dataset.k); saveSlip(); render(); }));
   }
@@ -582,7 +598,7 @@
   $("slipClose").addEventListener("click", () => { $("slip").classList.remove("open"); $("slipBtn").setAttribute("aria-expanded", "false"); });
   $("slipClear").addEventListener("click", () => { slip = []; saveSlip(); render(); });
   $("slipCopy").addEventListener("click", () => {
-    const txt = slip.map((s) => `${s.sport} ${s.team} ML ${amer(s.price)} (${s.matchup})`).join("\n") + (slip.length ? "\nDraftKings prices via betting.bpleone.com/board" : "");
+    const txt = slip.map((s) => `${s.sport} ${s.team} ML ${amer(s.price)} (${s.matchup})${s.added_price != null && s.added_price !== s.price ? ` [added at ${amer(s.added_price)}]` : ""}`).join("\n") + (slip.length ? "\nDraftKings prices via betting.bpleone.com/board" : "");
     const done = () => { $("slipCopy").textContent = "Copied"; setTimeout(() => { $("slipCopy").textContent = "Copy"; }, 1500); };
     if (txt && navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(txt).then(done).catch(() => {});
   });
@@ -600,7 +616,8 @@
       const px = side === "home" ? g.odds.ml_home : g.odds.ml_away;
       if (px == null) return null;
       const ours = !!(g.pick && g.pick.side === side);
-      return Object.assign({}, s, { price: px, ours: ours, grade: ours ? g.grade : null, team: side === "home" ? g.home : g.away, matchup: g.matchup, date: g.date });
+      return Object.assign({}, s, { price: px, ours: ours, grade: ours ? g.grade : null, team: side === "home" ? g.home : g.away, matchup: g.matchup, date: g.date,
+                                    added_price: s.added_price != null ? s.added_price : s.price });
     }).filter(Boolean);
     saveSlip();
     const c = B.counts || {};
