@@ -1489,3 +1489,15 @@ def test_review3_signals_use_the_open_price_research_desk_is_no_prior_and_et_dat
     assert gld._et_day(dt.datetime(2026, 11, 15, 4, 30, tzinfo=dt.timezone.utc)) == "2026-11-14"
     assert gld._et_day(dt.datetime(2026, 7, 15, 3, 30, tzinfo=dt.timezone.utc)) == "2026-07-14"
 
+
+
+def test_board_results_split_by_price_taken():
+    import all_picks_tracker as t
+    assert [t._price_bucket(x) for x in (-283, -200, -199, -101, -100, 150, None)] == \
+        ["heavy_fav", "heavy_fav", "fav", "fav", "dog", "dog", None]
+    rows = [{"source": "board_pick", "sport": "NHL", "date": "2026-11-12", "market": "ML_HOME", "book_american": -250,
+             "settled": True, "result": "won", "event_id": "x1"},
+            {"source": "board_pick", "sport": "NHL", "date": "2026-11-12", "market": "ML_HOME", "book_american": 120,
+             "settled": True, "result": "lost", "event_id": "x2"}]
+    b = t._board_block(rows)["by_price"]
+    assert (b["heavy_fav"]["wins"], b["dog"]["losses"], b["fav"]["n_settled"]) == (1, 1, 0)

@@ -449,7 +449,10 @@
       return;
     }
     const pills = [line(R.alpha, "Alpha"), line(R.all_bets, "All bets"), line((R.by_grade || {}).A, "A"), line((R.by_grade || {}).B, "B"), line((R.by_grade || {}).C, "C")].filter(Boolean).join("");
-    $("bdPills").innerHTML = pills;
+    // (2026-11-13) the same bets by the price taken: is the record carried by heavy chalk?
+    const PB = R.by_price || {};
+    const priceRow = [line(PB.heavy_fav, "−200 or shorter"), line(PB.fav, "−199 to −101"), line(PB.dog, "Even or underdog")].filter(Boolean).join("");
+    $("bdPills").innerHTML = pills + (priceRow ? `<div class="muted" style="font-size:11px;margin:8px 0 2px;text-transform:uppercase;letter-spacing:.06em;width:100%;">By price taken</div>${priceRow}` : "");
     const cm = (R.all_bets || {}).median_close_min_before;
     $("resMeta").textContent = "since " + (R.first_date || "—") + " · graded at the price the board showed · not the curated record" +
       (cm != null ? ` · "close" = our last DraftKings snapshot, typically ${cm} min before the start` : "");
