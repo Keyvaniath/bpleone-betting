@@ -993,3 +993,15 @@ starter / who sits. It is NOT fair for any claim about betting before that news 
 open, early-week desk picks): that is what the forward tests (desk picks' CLV on
 played games, line-move signals) are for.
 
+## 2026-11-13: college football on the board (information only)
+
+Saturday's biggest slate was absent from the board. board.build_college adds every
+cfb_model-rated, pre-game NCAAF game that has a DraftKings moneyline (68 of 137 this
+week; the rest have no DK moneyline posted or a placeholder that espn_odds drops):
+moneylines, total, both sides of the spread with prices, hold, fair prices, the college
+model's side and fair spread. Every college game is grade D, "for information only":
+cfb_model's own benchmark has DraftKings' close sharper than the model, so no college
+game is a bet, none is logged, none can be an Alpha pick (bets come from the major-sport
+desks only). It has its own chip and is kept out of "All", so ~55 Saturday games never
+bury the major sports. board.json grows to ~16 KB gzipped.
+
