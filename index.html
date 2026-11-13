@@ -300,37 +300,41 @@ fetch('data/data_health.json?t=' + Date.now()).then(function(r){return r.json();
   <!-- LIVE SCRATCH / REMOVAL ALERTS (NEW) -->
   <section id="scratchAlertsBanner" style="display:none; margin: 0 0 14px 0;"></section>
   <script>
-  fetch("data/scratch_alerts.json?t=" + Date.now(), { cache: "no-cache" })
-    .then(r => r.json())
-    .then(d => {
-      const alerts = d.alerts || [];
-      if (!alerts.length) return;
+  // (2026-11-13) Re-rendered in place, only when the list changes. It used to call
+  // location.reload() every 60 s for as long as ANY alert existed (the homepage reloaded
+  // itself every minute on a night with a scratch), showed a file of any age as live,
+  // and put player names into the page unescaped.
+  (function () {
+    const e = (v) => String(v == null ? "" : v).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c]);
+    const fresh = (d) => { const t = Date.parse(String(d.generated_at || "").replace(/(\.\d+)?(Z|[+-]\d\d:\d\d)?$/, "") + "Z");
+      return !isNaN(t) && Date.now() - t < 3 * 3600e3; };   // generated_at is UTC on CI
+    let last = null;
+    function draw(d) {
+      const alerts = fresh(d) ? (d.alerts || []) : [];
+      const key = JSON.stringify(alerts.map((a) => [a.kind, a.player_id, a.matchup]));
+      if (key === last) return;
+      last = key;
       const b = document.getElementById("scratchAlertsBanner");
-      const items = alerts.map(a => {
+      if (!alerts.length) { b.style.display = "none"; b.innerHTML = ""; return; }
+      b.innerHTML = alerts.map((a) => {
         const c = a.kind === "scratch" ? "#e35a5a" : "#d4a04a";
         const icon = a.kind === "scratch" ? "⚠️" : "🚑";
         const tag = a.kind === "scratch" ? "PRE-GAME SCRATCH" : "IN-GAME REMOVAL";
+        const n = Number(a.n_affected_props) || 0;
         return `<div style="padding: 10px 14px; background: ${c}11; border: 1px solid ${c}55; border-radius: 6px; font-family: 'JetBrains Mono', monospace; font-size: 12px; color: ${c}; margin-bottom: 6px;">
           ${icon} <strong>${tag}:</strong>
-          <a href="player.html?id=${a.player_id}" style="color: ${c}; text-decoration: underline;">${a.player}</a>
-          ${a.matchup ? '· ' + a.matchup : ''}
-          ${a.ab_before_removal !== undefined ? ' (after ' + a.ab_before_removal + ' AB)' : ''}
-          · ${a.n_affected_props} open prop${a.n_affected_props===1?'':'s'} affected
+          <a href="player.html?id=${encodeURIComponent(a.player_id == null ? "" : a.player_id)}" style="color: ${c}; text-decoration: underline;">${e(a.player)}</a>
+          ${a.matchup ? "· " + e(a.matchup) : ""}
+          ${a.ab_before_removal !== undefined ? " (after " + e(a.ab_before_removal) + " AB)" : ""}
+          · ${n} open prop${n === 1 ? "" : "s"} affected
         </div>`;
       }).join("");
       b.style.display = "block";
-      b.innerHTML = items;
-    })
-    .catch(() => {});
-  // Auto-refresh every 60 s to catch new alerts
-  setInterval(() => {
-    fetch("data/scratch_alerts.json?t=" + Date.now(), { cache: "no-cache" })
-      .then(r => r.json())
-      .then(d => {
-        if ((d.alerts || []).length) location.reload();
-      })
-      .catch(() => {});
-  }, 60000);
+    }
+    const load = () => fetch("data/scratch_alerts.json?t=" + Date.now(), { cache: "no-cache" }).then((r) => r.json()).then(draw).catch(() => {});
+    load();
+    setInterval(load, 60000);
+  })();
   </script>
 
   <!-- Odds-source status banner (JS sets color + copy based on actual book in today.json) -->
