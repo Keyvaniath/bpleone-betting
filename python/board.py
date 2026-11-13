@@ -242,12 +242,17 @@ def hold_pct(ml_a, ml_b) -> Optional[float]:
     return round((sum(ps) - 1) * 100, 2)
 
 
-def line_move(open_snap: Dict[str, Any], now_home, now_away) -> Optional[Dict[str, Any]]:
-    """Where the moneyline opened (first snapshot we hold) and how far the no-vig home
-    probability has moved since, in points. + = toward home."""
-    if not open_snap:
+def line_move(open_snap: Dict[str, Any], now_home, now_away, dk_open=None,
+              dk_open_lines: Optional[Dict[str, Any]] = None) -> Optional[Dict[str, Any]]:
+    """Where the moneyline opened and how far the no-vig home probability has moved since, in
+    points. + = toward home. (2026-11-13) The open is DraftKings' own opener when ESPN carries it
+    (dk_open = (home, away)); else the first snapshot we hold. Our first-seen price is kept
+    alongside: it is the first price we could actually have bet (move signals use it)."""
+    dko = dk_open if (dk_open and dk_open[0] is not None and dk_open[1] is not None) else None
+    if not open_snap and not dko:
         return None
-    oh, oa = open_snap.get("ml_home"), open_snap.get("ml_away")
+    open_snap = open_snap or {}
+    oh, oa = (dko if dko else (open_snap.get("ml_home"), open_snap.get("ml_away")))
     try:
         def nv(h, a):
             ph = (100 / (h + 100)) if h > 0 else (-h / (-h + 100))
@@ -257,7 +262,12 @@ def line_move(open_snap: Dict[str, Any], now_home, now_away) -> Optional[Dict[st
     except (TypeError, ValueError, ZeroDivisionError):
         return None
     return {"open_ml_home": oh, "open_ml_away": oa, "open_at": open_snap.get("at"), "move_home_pts": move,
-            "open_total": open_snap.get("total"), "open_spread_home": open_snap.get("spread")}
+            "open_source": "draftkings" if dko else "first_seen",
+            "first_seen_ml_home": open_snap.get("ml_home"), "first_seen_ml_away": open_snap.get("ml_away"),
+            # with DraftKings' opener, the opening total / spread come from the same source (never
+            # a DK opening moneyline beside our first-seen spread: NY -130 opened with IND +2.5, not +7.5)
+            "open_total": ((dk_open_lines or {}).get("total_open") if dko else open_snap.get("total")),
+            "open_spread_home": ((dk_open_lines or {}).get("spread_home_open") if dko else open_snap.get("spread"))}
 
 
 def build_games(gld: Dict[str, Any], odds: Dict[str, Any], now: dt.datetime, today_et: str) -> List[Dict[str, Any]]:
@@ -312,7 +322,8 @@ def build_games(gld: Dict[str, Any], odds: Dict[str, Any], now: dt.datetime, tod
                          "hold_pct": hold_pct(r.get("ml_home"), r.get("ml_away")),
                          "spread_home_line": m.get("spread_home_line"), "spread_home_price": m.get("spread_home_price"),
                          "spread_away_line": m.get("spread_away_line"), "spread_away_price": m.get("spread_away_price"),
-                         "move": line_move(opens.get((sport, eid)), r.get("ml_home"), r.get("ml_away"))},
+                         "move": line_move(opens.get((sport, eid)), r.get("ml_home"), r.get("ml_away"),
+                                           (m.get("ml_home_open"), m.get("ml_away_open")), m)},
                 "model": {"p_home": pm, "p_away": (round(1 - pm, 4) if pm is not None else None)},
                 "market": {"p_home_no_vig": pk, "p_away_no_vig": (round(1 - pk, 4) if pk is not None else None)},
                 "desk_verdict": verdict, "live_quote": bool(ok_game), "quote_issue": None if ok_game else why_game,

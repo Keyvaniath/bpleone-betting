@@ -1559,3 +1559,14 @@ def test_night_before_slate_is_separate_and_deduped():
     # today's consumers read only `games`: the separate key must never be merged into it
     src = open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "espn_odds.py"), encoding="utf-8").read()
     assert '"games_next_day": next_day' in src and "games.extend(next_day)" not in src
+
+
+def test_line_move_uses_draftkings_opener_with_matching_lines():
+    import board
+    first = {"ml_home": 220, "ml_away": -269, "at": "2026-11-13T09:41:52", "spread": 7.5, "total": 220.5}
+    mv = board.line_move(first, 271, -337, (110, -130), {"spread_home_open": 2.5, "total_open": 233.5})
+    assert mv["open_source"] == "draftkings" and mv["open_ml_home"] == 110 and mv["first_seen_ml_home"] == 220
+    assert (mv["open_spread_home"], mv["open_total"]) == (2.5, 233.5)     # never DK's ML beside our spread
+    assert mv["move_home_pts"] < -15                                        # the real move toward the road side
+    fb = board.line_move(first, 271, -337, (None, None), {})
+    assert fb["open_source"] == "first_seen" and fb["open_ml_home"] == 220 and fb["open_spread_home"] == 7.5
