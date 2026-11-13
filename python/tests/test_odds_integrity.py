@@ -1501,3 +1501,14 @@ def test_board_results_split_by_price_taken():
              "settled": True, "result": "lost", "event_id": "x2"}]
     b = t._board_block(rows)["by_price"]
     assert (b["heavy_fav"]["wins"], b["dog"]["losses"], b["fav"]["n_settled"]) == (1, 1, 0)
+
+
+def test_board_results_only_refresh_touches_nothing_else(tmp_path, monkeypatch):
+    import board
+    monkeypatch.setattr(board, "DATA_DIR", str(tmp_path))
+    monkeypatch.setattr(board, "OUT", str(tmp_path / "board.json"))
+    (tmp_path / "board.json").write_text(json.dumps({"date_et": "2026-11-13", "games": [{"id": "1"}], "results": None}))
+    (tmp_path / "ledger_summary.json").write_text(json.dumps({"board": {"all_bets": {"wins": 4, "losses": 2}, "recent": []}}))
+    b = board.refresh_results()
+    out = json.loads((tmp_path / "board.json").read_text())
+    assert out["games"] == [{"id": "1"}] and out["results"]["all_bets"]["wins"] == 4 and b is not None

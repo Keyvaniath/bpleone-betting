@@ -91,6 +91,8 @@ jobs:
           python play_of_day.py || echo "play_of_day.py" >> "$RUNNER_TEMP/failed_steps.txt"
           python board.py || echo "board.py" >> "$RUNNER_TEMP/failed_steps.txt"
           python all_picks_tracker.py || echo "all_picks_tracker.py" >> "$RUNNER_TEMP/failed_steps.txt"
+          # (2026-11-13) the board's results block, from the ledger summary just written
+          python board.py --results-only || echo "board.py --results-only" >> "$RUNNER_TEMP/failed_steps.txt"
       # Self-learn shrinkage weights (per-source feedback loop)
       - name: Self-learn shrinkage weights
         working-directory: python
