@@ -83,6 +83,10 @@ bpleone-site/
   Cards carry a line chart (board.price_series from data/odds_history.json, key
   sport|matchup|UTC-date). Phones get compact cards (details.more). Slip shows to-win, added-at vs
   now, and a past-playable warning. POD shows playable-to / break-even.
+  **SCHEDULER: GitHub fires every cron here ~3x/day (close-capture + alpha-lock-trigger never).**
+  The fix is the staged Worker dispatcher (cloudflare-worker/src/worker.js, fail closed until
+  GH_DISPATCH_TOKEN; Brandon deploys -- TODO_BRANDON.md section 0). Until then, prices on the board
+  are only as fresh as the last heartbeat. b2b counts a game SCHEDULED the day before (night-before rows).
 
 - **2026-11-12 — THE BOARD (board.html, python/board.py -> data/board.json).** Every pre-game
   NFL/NBA/NHL game with DraftKings moneylines + total prices, our side, a GRADE and a SCORE:
