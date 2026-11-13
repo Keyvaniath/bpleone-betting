@@ -57,6 +57,16 @@ bpleone-site/
   noise, NBA worse than a coin flip -> no spread desk yet (rerun with spread prices).
   Homepage + desk pages: last night's finals no longer shown or counted as today's (UTC
   kick-off dating). Board grading verified vs finals 11/12: Alpha 4-1 +1.12u (all leans).
+  Evening adds: cards carry lineups (NHL goalie + backup flag, NFL QB flags, NBA injury list),
+  fair prices + hold for ML / total / spread, total + spread moves, NFL key numbers (3, 7),
+  market-notes strip, team search, day-by-day results, Alpha lineup warnings, and a note on a
+  locked Alpha pick that today's rules no longer make a bet. College on the board under own
+  chips, out of "All": NCAAF info-only (cfb_model side), NCAAB research-only desk
+  (game_lines_desk.RESEARCH_ONLY: w=0, no leans; never a prior/alert/bet). Line-move signals
+  (data/move_signals.json) are a forward test priced at a game's OPEN snapshot. close-capture.yml
+  snapshots DK every 20 min 12-midnight ET and commits only on a price change; the other
+  workflows keep their own dk_lines on a rebase conflict. Eastern dates via zoneinfo.
+  Three independent reviews today (16 defects fixed). Methodology page has a #board section.
 
 - **2026-11-12 — THE BOARD (board.html, python/board.py -> data/board.json).** Every pre-game
   NFL/NBA/NHL game with DraftKings moneylines + total prices, our side, a GRADE and a SCORE:
