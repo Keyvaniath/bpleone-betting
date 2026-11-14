@@ -485,6 +485,17 @@
         const gone = g ? started(g) : true;
         return `<div class="ac"><span class="rk">#${a.rank}</span><span class="sp ${esc(a.sport)}">${esc(a.sport)}</span>
           <div class="tm">${esc(a.team)}</div><div class="mk">moneyline · <span class="px">${amer(a.book_american)}</span></div>
+          ${(() => {
+              // (2026-11-14) a LOCKED pick against DraftKings now (pre-start, price < 30 min old):
+              // + = the market has moved toward our side since the lock
+              if (!a.locked || !g || gone || !g.live_quote) return "";
+              const now = a.side === "home" ? g.odds.ml_home : g.odds.ml_away;
+              const seen = Date.parse(String(g.odds.observed_at || "").replace(" ", "T") + (/[zZ]|[+-]\d\d:?\d\d$/.test(String(g.odds.observed_at || "")) ? "" : "Z"));
+              const dn = decA(now), dl = decA(a.book_american);
+              if (now == null || !dn || !dl || isNaN(seen) || Date.now() - seen > 30 * 60e3 || now === a.book_american) return "";
+              const pts = (1 / dn - 1 / dl) * 100;
+              return `<div class="gm" title="Locked price vs DraftKings now, before the start. The final number is scored at the close.">now ${amer(now)} · <b style="color:${pts > 0 ? "var(--accent)" : "var(--red)"};">${pts > 0 ? "+" : "−"}${Math.abs(pts).toFixed(1)} pts</b> vs the lock</div>`;
+            })()}
           <div class="gm">${esc(a.matchup)} · ${gone ? "started" : tm(a.commence_time)}</div>
           ${a.added_at && B.alpha.locked_at && a.added_at !== B.alpha.locked_at
             ? `<div class="gm" title="The list locks at 11:00 AM ET and only grows: a bet that first qualifies later in the day joins it at that time&#39;s price. Nothing is removed or re-priced.">added ${esc(obs(a.added_at).replace(/^\d+\/\d+, /, ""))}, after the lock</div>` : ""}
