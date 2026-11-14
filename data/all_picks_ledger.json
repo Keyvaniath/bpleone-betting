@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-14T04:51:21",
+  "generated_at": "2026-11-14T04:53:07",
   "stake_assumption": "1u flat per pick",
   "total_picks": 20000,
   "n_settled": 23749,
@@ -899,12 +899,12 @@
     "note": "The headline became ALL-TIME on 2026-10-23. 5,946 settled picks that the old tail-cut eviction had destroyed (May-June 2026, the 07-06 erosion and the run-up to 09-03) were rebuilt from git history at each pick's final state, with today's duplicate-wager rule re-applied, and folded back in. They are mostly the raw May-June MLB prop firehose (2,961-2,983, -1,256.9u), so the firehose ROI fell; the curated record changed by the curated picks among them. Before this date the published numbers covered the working window only -- working_ledger_only keeps that basis.",
     "n_archived_in_headline": 5655
   },
-  "n_added_this_run": 0,
+  "n_added_this_run": 1,
   "n_newly_settled_this_run": 1,
   "n_resettled_this_run": 0,
   "n_voided_this_run": 0,
-  "n_duplicates_collapsed_this_run": 0,
-  "n_duplicate_adds_blocked_this_run": 15,
+  "n_duplicates_collapsed_this_run": 1,
+  "n_duplicate_adds_blocked_this_run": 14,
   "n_reconciled_settled_voids": 0,
   "n_bootstrapped_from_locks_history": 0,
   "by_source": {
@@ -14393,13 +14393,13 @@
       "markets": 8
     },
     "TENNIS": {
-      "n": 168,
+      "n": 167,
       "settled": 138,
       "wins": 70,
       "losses": 68,
       "pushes": 0,
       "pending": 4,
-      "void": 26,
+      "void": 25,
       "net_units": -35.46,
       "hit_rate": 0.5072,
       "roi_pct": -25.7,
@@ -14445,17 +14445,17 @@
       "markets": 11
     },
     "NBA": {
-      "n": 2229,
+      "n": 2230,
       "settled": 1822,
       "wins": 1188,
       "losses": 634,
       "pushes": 0,
       "pending": 87,
-      "void": 320,
+      "void": 321,
       "net_units": -43.651,
       "hit_rate": 0.652,
       "roi_pct": -2.4,
-      "markets": 18
+      "markets": 19
     }
   },
   "nfl_props_by_model": {
@@ -447251,31 +447251,6 @@
       }
     },
     {
-      "source": "tennis_aces_aces_over_5.5",
-      "sport": "TENNIS",
-      "player_or_matchup": "ugo humbert",
-      "market": "ACES_OVER_5.5",
-      "prob": 0.645,
-      "fair_american": -182,
-      "p_predicted": 0.645,
-      "matchup": "Ugo Humbert vs Novak Djokovic",
-      "date": "2026-10-25",
-      "pick_id": "tennis_aces_aces_over_5_5|TENNIS|ugo_humbert|ACES_OVER_5_5|2026-10-25",
-      "settled": false,
-      "result": "pending",
-      "payout_units": null,
-      "recorded_at": "2026-10-25T01:09:00",
-      "p_calibrated": 0.645,
-      "voided": true,
-      "voided_at": "2026-10-30T00:32:23",
-      "voided_reason": "unsettleable: no outcome feed within 4 days",
-      "price_provenance": {
-        "inferred": true,
-        "class": "C",
-        "kind": "model_fair"
-      }
-    },
-    {
       "source": "tennis_aces_aces_under_7.5",
       "sport": "TENNIS",
       "player_or_matchup": "frances tiafoe",
@@ -633904,6 +633879,51 @@
       "payout_units": null,
       "recorded_at": "2026-11-14T02:18:31",
       "p_calibrated": 0.3553
+    },
+    {
+      "source": "board_alpha",
+      "sport": "NBA",
+      "player_or_matchup": "MEM @ NO",
+      "market": "ML_AWAY",
+      "prob": 0.6239,
+      "edge_pct": -4.04,
+      "fair_american": null,
+      "book_american": -162,
+      "event_id": "401909300",
+      "desk_verdict": "lean",
+      "pod_tier": 4,
+      "board_grade": "C",
+      "board_score": 43,
+      "alpha_price": -162,
+      "alpha_grade": "C",
+      "alpha_score": 43,
+      "price_provenance": {
+        "inferred": false,
+        "class": "A",
+        "kind": "book_snapshot",
+        "book": "draftkings",
+        "observed_at": "2026-11-13T20:33:00",
+        "snapshot_id": "espn_odds@2026-11-13T20:33:00#401909300",
+        "event_id": "401909300"
+      },
+      "date": "2026-11-13",
+      "pick_id": "board_alpha|NBA|MEM___NO|ML_AWAY|2026-11-13",
+      "settled": true,
+      "result": "won",
+      "payout_units": 0.6173,
+      "recorded_at": "2026-11-14T04:53:07",
+      "outcome": {
+        "final_score": "MEM 142 @ NO 111",
+        "market": "ML_AWAY",
+        "matched_by": "event_id",
+        "verify": "MEM 142 @ NO 111: ML_AWAY"
+      },
+      "settled_at": "2026-11-14T04:53:08",
+      "settled_by": "event_id",
+      "voided": true,
+      "voided_at": "2026-11-14T04:53:08",
+      "voided_reason": "duplicate wager: same event/bet recorded more than once (event re-add or twin board); collapsed to the first copy",
+      "p_calibrated": 0.5296
     }
   ],
   "note": "Unified pick ledger -- records every pick the model surfaces (top_25 board, whales, consensus, unders, sharp action, locks, POD) and settles each against actual outcomes. Per-source W-L feeds back into calibration so the model learns which modules are reliable. THIS is the training signal."
