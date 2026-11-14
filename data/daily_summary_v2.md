@@ -2,7 +2,7 @@
 
 ## 🏥 Model Health: 64.0/100 [OK]
 - Operational but room to improve - check yellow components
-  - 🟢 Calibration Freshness: 99.9/100
+  - 🟢 Calibration Freshness: 100.0/100
   - 🟡 Hit Rate Trend: 65.0/100
   - 🔴 Brier Trend: 25.7/100
   - 🟢 Pipeline Audit: 100.0/100
@@ -10,12 +10,12 @@
   - 🔴 Edge Count: 0/100
 
 ## 🌐 Slate Overview
-- **Regime today:** BALANCED (avg P(home)=0.544)
-- **Total games on board:** 51
-- **Strong home favorites:** 19 | **Strong road dogs:** 9
+- **Regime today:** BALANCED (avg P(home)=0.541)
+- **Total games on board:** 54
+- **Strong home favorites:** 21 | **Strong road dogs:** 12
 
 ## 🎯 Best Bets (sportsbook-priced only)
-- No best bet today: a best bet needs a real sportsbook price — 18 model-only projections excluded (LOL 4, UCL 4, NHL 4, GOLF 4, NFL 2).
+- No best bet today: a best bet needs a real sportsbook price — 23 model-only projections excluded (NHL 5, LOL 4, UCL 4, GOLF 4, NBA 3, NFL 2, NCAAB 1).
 
 ## 🔒 Locks of the Day -- Track Record
 - Sportsbook-priced: **3-0** (n=3; net +0.05u, ROI +62.0%) -- too few to judge
@@ -29,15 +29,15 @@
 - **[CS]** torzsi OVER 40.5 Kills (BO3) · model 61.0%
 
 ## ⚡ Pre-Game
-- No pre-game alerts: an alert needs a game-lines-desk probability whose verdict passed (not NO EDGE / UNPROVEN) and a DraftKings price. NBA: 5 desk verdict NO EDGE; NHL: 13 desk verdict NO EDGE; WNBA: 1 not pre-game; MLS: 2 no validated model probability (not from the game-lines desk); EPL: 5 not pre-game; UCL: 9 no validated model probability (not from the game-lines desk); NFL: 13 desk verdict UNPROVEN; NCAAF: 13 no validated model probability (not from the game-lines desk); NCAAB: 13 not pre-game; CWS: 1 not pre-game
+- No pre-game alerts: an alert needs a game-lines-desk probability whose verdict passed (not NO EDGE / UNPROVEN) and a DraftKings price. NBA: 5 desk verdict NO EDGE; NHL: 13 desk verdict NO EDGE; WNBA: 1 not pre-game; MLS: 2 no validated model probability (not from the game-lines desk); EPL: 5 not pre-game; UCL: 9 no validated model probability (not from the game-lines desk); NFL: 13 desk verdict UNPROVEN; NCAAF: 14 no validated model probability (not from the game-lines desk); NCAAB: 1 started or no start time; CWS: 1 not pre-game
 
 ## 🔥/❄️ Heat / Cold Signals
 - Hot teams: **14** | Cold teams: **19** | Over-heavy: 0 | Under-heavy: 34
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (107)
+## ⚠️ Anomaly Detector (103)
 - RESIDUAL_DIVERGENCE: **14**
-- STEAM_MOVE: **93**
+- STEAM_MOVE: **89**
   - New Orleans Pelicans (NBA): New Orleans Pelicans UNDERPERFORMING expected margin by 18.7pts in recent games -- model bias may persist
   - Memphis Grizzlies (NBA): Memphis Grizzlies OUTPERFORMING expected margin by 7.1pts in recent games -- model bias may persist
   - Minnesota Timberwolves (NBA): Minnesota Timberwolves OUTPERFORMING expected margin by 10.5pts in recent games -- model bias may persist
@@ -47,12 +47,12 @@
 ## 💰 Today's Portfolio
 - No priced picks: a stake is sized only at an actionable DraftKings quote.
 
-## 🎯 Signal stacking (21 games with 2+ signals) — research, not picks
+## 🎯 Signal stacking (15 games with 2+ signals) — research, not picks
   - Chicago Bulls @ Minnesota Timberwolves : 4 signals (HEAT_COLD, HEAT_COLD, ANOMALY, ANOMALY)
   - Winnipeg Jets @ Chicago Blackhawks : 4 signals (HEAT_COLD, HEAT_COLD, HEAT_COLD, ANOMALY)
   - New Jersey Devils @ Washington Capitals : 4 signals (HEAT_COLD, HEAT_COLD, ANOMALY, ANOMALY)
-  - Memphis Grizzlies @ New Orleans Pelicans : 3 signals (HEAT_COLD, ANOMALY, ANOMALY)
-  - Portland Trail Blazers @ Sacramento Kings : 3 signals (HEAT_COLD, HEAT_COLD, HEAT_COLD)
+  - Brooklyn Nets @ Memphis Grizzlies : 3 signals (HEAT_COLD, HEAT_COLD, ANOMALY)
+  - Colorado Avalanche @ Montreal Canadiens : 3 signals (HEAT_COLD, HEAT_COLD, ANOMALY)
 
 ## 🏀 NBA Player Heat (5 HOT / 5 COLD)
   - 🔥 **LaMelo Ball** (MIN): L5 24.4/3.2/6.2 vs season 19.0/3.7/6.5 [PTS +5.4]
@@ -72,14 +72,14 @@
   - model favourite **Jim Miller** (39-19-0) vs Terrance McKinney
 
 ## ⛳ Golf Player Heat (from Austin Championship pres. by Compliance Solutions)
-  - 🔥 T1 **Trace Crowe** (USA): -13 total -- finished T1
-  - 🔥 T2 **Kevin Yu** (Chinese Taipei): -12 total -- finished T2
-  - 🔥 T3 **Brian Harman** (USA): -11 total -- finished T3
-  - 🔥 T4 **Kristoffer Ventura** (Norway): -11 total -- finished T4
-  - 🔥 T5 **Sami Välimäki** (Finland): -10 total -- finished T5
+  - 🔥 T1 **Erik van Rooyen** (South Africa): -14 total -- finished T1
+  - 🔥 T4 **Miles Russell** (USA): -12 total -- finished T4
+  - 🔥 T5 **Max Greyserman** (USA): -12 total -- finished T5
+  - 🔥 T6 **Sami Välimäki** (Finland): -12 total -- finished T6
+  - 🔥 T8 **Zac Blair** (USA): -11 total -- finished T8, Sunday -1.3 vs tourney avg
+  - ❄️ **Gordon Sargent** (USA): Sunday +6.0 vs tourney avg
   - ❄️ **Jimmy Stanger** (USA): Sunday +6.0 vs tourney avg
-  - ❄️ **David Lipsky** (USA): Sunday +3.7 vs tourney avg
-  - ❄️ **Nick Dunlap** (USA): Sunday +3.5 vs tourney avg
+  - ❄️ **Marcelo Rozo** (Colombia): Sunday +5.7 vs tourney avg
 
 ## 😴 Back-to-back flags (5) — schedule fact, not a pick
 - [NBA] Denver Nuggets @ New Orleans Pelicans (2026-11-14): away team on a back-to-back

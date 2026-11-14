@@ -1,9 +1,9 @@
 **EdgeStat -- Tonight's Slate**
-_NO_ACTION_NIGHT_ | L:0 S:16 F:188
+_NO_ACTION_NIGHT_ | L:0 S:13 F:167
 
 :dart: **Top Picks:**
-1. [GOLF] Trace Crowe -- Trace Crowe (PLAYER_STRONG)
-2. [GOLF] Kevin Yu -- Kevin Yu (PLAYER_STRONG)
+1. [GOLF] Erik van Rooyen -- Erik van Rooyen (PLAYER_STRONG)
+2. [GOLF] Brian Harman -- Brian Harman (PLAYER_STRONG)
 
 :coin: Bankroll Advisory: STAND DOWN. Slate has no aligned conviction. Skip betting tonight or watch only.
 
