@@ -2521,6 +2521,28 @@ def _grade_wnba_team_total(pick: Dict[str, Any], games: List[Dict[str, Any]]) ->
     return None
 
 
+def _grade_ml_by_event_id(pick: Dict[str, Any], games: List[Dict[str, Any]]) -> Optional[str]:
+    """(2026-11-14) A moneyline graded ONLY by its ESPN event id: the final with that id, both scores
+    present and not level; None otherwise (no matchup / date fallback here)."""
+    market = (pick.get("market") or "").upper()
+    eid = str(pick.get("event_id") or (pick.get("quote") or {}).get("event_id") or "").strip()
+    if market not in ("ML_HOME", "ML_AWAY") or not eid:
+        return None
+    g = next((x for x in games or [] if str(x.get("id") or "") == eid), None)
+    if not g or g.get("home_score") is None or g.get("away_score") is None:
+        return None
+    try:
+        hs, as_ = float(g["home_score"]), float(g["away_score"])
+    except (TypeError, ValueError):
+        return None
+    if hs == as_:
+        return None
+    pick["outcome"] = {"final_score": f"{g.get('away_abbrev')} {g['away_score']} @ {g.get('home_abbrev')} {g['home_score']}",
+                       "market": market, "matched_by": "event_id",
+                       "verify": f"{g.get('away_abbrev')} {g['away_score']} @ {g.get('home_abbrev')} {g['home_score']}: {market}"}
+    return "won" if ((hs > as_) if market == "ML_HOME" else (as_ > hs)) else "lost"
+
+
 def _grade_wnba_pick(pick: Dict[str, Any], by_name: Dict[str, Any],
                      games: List[Dict[str, Any]]) -> Optional[str]:
     # Basketball-generic: also used for NBA (sport == "NBA") with NBA gamelogs.
@@ -3551,8 +3573,32 @@ def _settle_picks(history: List[Dict[str, Any]]) -> int:
         # 12-hour cool-off so we don't settle against same-name prior-day game
         try:
             rec_at = dt.datetime.fromisoformat(p.get("recorded_at") or "")
-            if (dt.datetime.now() - rec_at).total_seconds() < 12 * 3600: continue
+            fresh = (dt.datetime.now() - rec_at).total_seconds() < 12 * 3600
         except Exception:
+            continue
+        if fresh:
+            # (2026-11-14) A moneyline carrying an ESPN event id that is in this sport's finals
+            # settles at once: the id rules out the prior-day same-name game the cool-off guards
+            # against. (MEM -162, logged 3:33 PM ET when it joined the Alpha, sat final but
+            # 'pending' until 3:33 AM.) Everything else keeps the cool-off.
+            gl = {"NBA": nba_games, "WNBA": wnba_games, "NHL": nhl_games, "NFL": nfl_games}.get(str(p.get("sport") or "").upper())
+            r_id = _grade_ml_by_event_id(p, gl) if gl is not None else None
+            if r_id is None:
+                continue
+            dec = _american_to_decimal(_price_american(p))
+            if dec is None:            # same rule as below: no price on record -> void, never paid
+                p["voided"] = True
+                p["voided_at"] = dt.datetime.now().isoformat(timespec="seconds")
+                p["voided_reason"] = (f"unpriced: no price on record at settlement (graded {r_id}; "
+                                      "outcome kept, no payout -- never a placeholder -110)")
+                p.setdefault("outcome", {})["graded_result_unpaid"] = r_id
+                continue
+            p["settled"] = True
+            p["result"] = r_id
+            p["settled_at"] = dt.datetime.now().isoformat(timespec="seconds")
+            p["settled_by"] = "event_id"
+            p["payout_units"] = round(dec - 1, 4) if r_id == "won" else -1.0
+            n_settled += 1
             continue
 
         market = (p.get("market") or "").lower()
