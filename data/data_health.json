@@ -1,9 +1,9 @@
 {
-  "generated_at": "2026-11-14T12:00:01",
-  "overall": "red",
-  "n_green": 9,
-  "n_yellow": 1,
-  "n_red": 2,
+  "generated_at": "2026-11-14T18:43:08",
+  "overall": "yellow",
+  "n_green": 10,
+  "n_yellow": 2,
+  "n_red": 0,
   "checks": [
     {
       "feed": "freshness",
@@ -18,7 +18,7 @@
         "sport_coverage.json": 0.0,
         "todays_top_plays.json": 0.0,
         "alpha_pick_of_day.json": 0.0,
-        "alerts_feed.json": 1.1,
+        "alerts_feed.json": 3.5,
         "calibration_map.json": 0.2,
         "espn_odds.json": 0.0
       }
@@ -39,12 +39,12 @@
     },
     {
       "feed": "nba",
-      "status": "red",
+      "status": "green",
       "findings": [
-        "NBA count mismatch: local=14 vs ESPN=9"
+        "5 events matched (0 live)"
       ],
-      "upstream_count": 9,
-      "local_count": 14,
+      "upstream_count": 5,
+      "local_count": 5,
       "upstream_live": 0,
       "local_age_min": 10
     },
@@ -57,17 +57,17 @@
       "upstream_count": 1,
       "local_count": 1,
       "upstream_live": 0,
-      "local_age_min": 214
+      "local_age_min": 403
     },
     {
       "feed": "nhl",
-      "status": "red",
+      "status": "green",
       "findings": [
-        "NHL count mismatch: local=16 vs ESPN=2"
+        "14 events matched (1 live)"
       ],
-      "upstream_count": 2,
-      "local_count": 16,
-      "upstream_live": 0,
+      "upstream_count": 14,
+      "local_count": 14,
+      "upstream_live": 1,
       "local_age_min": 10
     },
     {
@@ -79,7 +79,7 @@
       "upstream_count": 2,
       "local_count": 2,
       "upstream_live": 0,
-      "local_age_min": 214
+      "local_age_min": 403
     },
     {
       "feed": "epl",
@@ -90,7 +90,7 @@
       "upstream_count": 5,
       "local_count": 5,
       "upstream_live": 0,
-      "local_age_min": 214
+      "local_age_min": 403
     },
     {
       "feed": "pitcher_matchup",
@@ -120,7 +120,7 @@
       ],
       "upstream_players": 120,
       "local_players": 120,
-      "local_age_min": 65
+      "local_age_min": 212
     },
     {
       "feed": "desks",
@@ -131,23 +131,23 @@
       "n_stale": 0,
       "ages_h": {
         "tennis_state.json": 0.0,
-        "ufc_state.json": 9.7,
-        "f1_state.json": 9.7,
-        "kbo_state.json": 3.6,
-        "cs_state.json": 3.6,
-        "cws_state.json": 9.7,
+        "ufc_state.json": 6.7,
+        "f1_state.json": 6.7,
+        "kbo_state.json": 6.7,
+        "cs_state.json": 6.7,
+        "cws_state.json": 6.7,
         "worldcup_cards.json": 0.0,
         "cfb_model.json": 0.0,
         "cfb_ratings.json": 0.0,
-        "nfl_dfs.json": 9.7,
-        "nfl_dfs_receipts.json": 9.7,
-        "nfl_dfs_calibration.json": 9.7,
+        "nfl_dfs.json": 6.7,
+        "nfl_dfs_receipts.json": 6.7,
+        "nfl_dfs_calibration.json": 6.7,
         "player_stats_nba.json": 0.2,
         "player_stats_nhl.json": 0.2,
         "player_stats_wnba.json": 0.2,
         "alpha_email.json": 0.0,
         "recent_picks.json": 0.0,
-        "fix_scorecard.json": 9.7,
+        "fix_scorecard.json": 6.7,
         "board.json": 0.0,
         "game_lines_desk.json": 0.0,
         "play_of_day.json": 0.0
@@ -155,13 +155,18 @@
     },
     {
       "feed": "desk_prices",
-      "status": "green",
+      "status": "yellow",
       "findings": [
-        "desk-page prices fresh (oldest, hours: {'nba': 1.1, 'nhl': 0.2})"
+        "nba.html Denver Nuggets @ New Orleans Pelicans: DraftKings price 3.5h old",
+        "nba.html Dallas Mavericks @ Cleveland Cavaliers: DraftKings price 3.5h old",
+        "nba.html Detroit Pistons @ Miami Heat: DraftKings price 3.5h old",
+        "nba.html Brooklyn Nets @ Memphis Grizzlies: DraftKings price 3.5h old",
+        "nba.html Chicago Bulls @ Minnesota Timberwolves: DraftKings price 3.5h old",
+        "Desk pages show old prices: the heartbeat's nfl/nba/nhl_pipeline step may be failing."
       ],
-      "n_stale": 0,
+      "n_stale": 5,
       "worst_age_h": {
-        "nba": 1.1,
+        "nba": 3.5,
         "nhl": 0.2
       }
     }

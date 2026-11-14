@@ -1,5 +1,5 @@
 **EdgeStat -- Tonight's Slate**
-_NO_ACTION_NIGHT_ | L:0 S:16 F:199
+_NO_ACTION_NIGHT_ | L:0 S:16 F:188
 
 :dart: **Top Picks:**
 1. [GOLF] Trace Crowe -- Trace Crowe (PLAYER_STRONG)
