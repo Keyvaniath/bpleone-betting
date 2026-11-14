@@ -1606,3 +1606,14 @@ def test_signal_view_is_labelled_data_not_a_pick():
     assert board._signal_view({"side": None}, -110, -110, {}) is None
     src = open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "..", "board.html"), encoding="utf-8").read()
     assert "Open signal (forward test, not a pick)" in src
+
+
+def test_moneyline_with_event_id_settles_inside_the_cool_off():
+    import all_picks_tracker as t
+    games = [{"id": "401909300", "away_abbrev": "MEM", "home_abbrev": "NO", "away_score": 142, "home_score": 111}]
+    p = {"market": "ML_AWAY", "event_id": "401909300", "book_american": -162}
+    assert t._grade_ml_by_event_id(dict(p), games) == "won"
+    assert t._grade_ml_by_event_id(dict(p, market="ML_HOME"), games) == "lost"
+    assert t._grade_ml_by_event_id(dict(p, event_id="999"), games) is None          # no fallback by name
+    assert t._grade_ml_by_event_id(dict(p, market="TOTAL_OVER"), games) is None
+    assert t._grade_ml_by_event_id(p, [dict(games[0], home_score=None)]) is None     # not final
