@@ -74,12 +74,17 @@ jobs:
       # picks sat ungradeable most of the day. Bounded + non-fatal.
       - name: WNBA box logs (grading inputs for the settle below)
         id: soft_1
-        timeout-minutes: 2
+        timeout-minutes: 3
         continue-on-error: true
         working-directory: python
         run: |
           python espn_box_logs.py wnba || echo "espn_box_logs.py" >> "$RUNNER_TEMP/failed_steps.txt"
           python espn_box_logs.py nba || echo "espn_box_logs.py" >> "$RUNNER_TEMP/failed_steps.txt"
+          # (2026-11-14) NHL + NFL finals too (~18s + ~6s): they ran only in daily-pipeline, which
+          # GitHub fires 2-3x a day, so a night's NHL bets (11/13 NYR, VGK) waited until the next
+          # morning's run to grade while the NBA ones graded within the hour
+          python espn_box_logs.py nhl || echo "espn_box_logs.py nhl" >> "$RUNNER_TEMP/failed_steps.txt"
+          python espn_box_logs.py nfl || echo "espn_box_logs.py nfl" >> "$RUNNER_TEMP/failed_steps.txt"
           python espn_event_results.py soccer || echo "espn_event_results.py" >> "$RUNNER_TEMP/failed_steps.txt"
 
       # World Cup hub stays live through the day: re-price off fresh finals
