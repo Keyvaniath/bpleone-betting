@@ -686,6 +686,12 @@ def recap_post(results: Optional[Dict[str, Any]], today_et: str) -> Optional[Dic
     for r in picks:
         lines.append(f"{mark.get(r['result'], '?')} {r['sport']} {r['team']} ML {pod._amer(r['book_american'])}"
                      + (f" ({r['final']})" if r.get("final") else ""))
+    # (2026-11-13) closing line value: did the locked price beat DraftKings' last pre-start price?
+    cl = [float(r["clv_pts"]) for r in picks if r.get("clv_pts") is not None]
+    if cl:
+        avg = sum(cl) / len(cl)
+        lines.append(f"Beat the DraftKings close on {sum(1 for x in cl if x > 0)} of {len(cl)}"
+                     f" (avg {'+' if avg >= 0 else '-'}{abs(avg):.1f} pts).")
     if tot.get("n_settled"):
         lines.append(f"Alpha since {results.get('first_date')}: {tot['wins']}-{tot['losses']}, {u(tot.get('net_units'))}, graded at the locked DraftKings price.")
     if all(r.get("grade") == "C" for r in picks):
@@ -695,11 +701,14 @@ def recap_post(results: Optional[Dict[str, Any]], today_et: str) -> Optional[Dic
     if len(text) > POST_MAX:
         # never drop a pick (dropping one could hide a loss): shorten every pick to "W MIN -223"
         # on one line, and only then drop the running-record line
-        short = " · ".join(f"{mark.get(r['result'], '?')} {r['team']} {pod._amer(r['book_american'])}" for r in picks)
+        short = " · ".join(f"{mark.get(r['result'], '?')} {r['sport']} {r['team']} {pod._amer(r['book_american'])}" for r in picks)
         lines = [lines[0], short] + lines[1 + len(picks):]
         text = "\n".join(lines + tail)
         if len(text) > POST_MAX:
             lines = [x for x in lines if not x.startswith("Alpha since")]
+            text = "\n".join(lines + tail)
+        if len(text) > POST_MAX:
+            lines = [x for x in lines if not x.startswith("Beat the DraftKings close")]
             text = "\n".join(lines + tail)
     return {"day": day, "text": text, "chars": len(text), "max_chars": POST_MAX, "fits": len(text) <= POST_MAX,
             "note": "Draft only. Nothing posts automatically; a person copies this and presses send."}
