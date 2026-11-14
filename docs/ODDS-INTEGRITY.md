@@ -1150,3 +1150,17 @@ GH_DISPATCH_TOKEN secret and deploys the Worker (TODO_BRANDON.md section 0).
 DraftKings price we record and the close? NFL -0.37 pts (90% CI [-0.84, +0.08], n=163), NBA
 -0.32 ([-0.80, +0.13], n=234), NHL +0.07 ([-0.07, +0.22], n=293). No timing effect in any
 sport, so leans stay logged on game day. Recorded as a negative result.
+
+## 2026-11-13 (late night) -- grading delays found while watching the slate
+
+1. **12-hour settle cool-off held finished id-matched bets.** MEM -162 joined the Alpha at 3:33 PM
+   ET; its game went final (MEM 142 @ NO 111) but it stayed pending until 3:33 AM, because every
+   pick waits 12h after it is recorded (a guard against settling on a prior-day game between the
+   same teams). A moneyline with an ESPN event id that is in the finals now settles at once by id
+   only (`_grade_ml_by_event_id`, no name fallback); unpriced picks still void.
+2. **NHL and NFL finals refreshed only in daily-pipeline** (fired 2-3x/day), so a night's NHL bets
+   graded the next morning while NBA bets graded within the hour. The heartbeat now runs
+   espn_box_logs for NHL (~18s) and NFL (~6s) too.
+Both verified on CI the same night: MEM won +0.62u, NYR (5-1) won +0.44u at the locked prices.
+Closes that night were taken 5-24 min before the early starts (close-capture dispatched every
+20 min by hand until 11:40 PM ET; the Worker dispatcher in TODO_BRANDON.md is the lasting fix).
