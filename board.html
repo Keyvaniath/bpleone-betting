@@ -137,6 +137,7 @@
 
   <section id="alphaSec">
     <div class="bd-h2"><h2>★ Alpha picks</h2><span class="muted" id="alphaMeta"></span></div>
+    <p class="muted" id="alphaYday" style="font-size:12px;margin:0 0 8px;" hidden></p>
     <div class="alpha-strip" id="alphaStrip"></div>
     <div id="alphaShare" hidden style="margin-top:10px;">
       <button class="add" id="shareCopy" type="button">Copy today&#39;s Alpha post</button>
@@ -454,6 +455,19 @@
     $("alphaSec").style.display = showAlpha ? "" : "none";
     if (showAlpha) {
       const Af = A.filter((a) => sport === "ALL" || a.sport === sport);
+      // (2026-11-14) the last graded Alpha day, losses included, above today's list
+      ((R) => {
+        const el = $("alphaYday"); if (!R || !R.by_day) { el.hidden = true; return; }
+        const d = Object.keys(R.by_day).filter((k) => k < B.date_et).sort().reverse()
+          .find((k) => { const a = (R.by_day[k] || {}).alpha || {}; return a.n_settled && !a.n_pending; });
+        const a = d ? R.by_day[d].alpha : null;
+        if (!a) { el.hidden = true; return; }
+        const u = a.net_units, col = u > 0 ? "var(--accent)" : u < 0 ? "var(--red)" : "inherit";
+        el.innerHTML = `Last graded Alpha day (${esc(dayLabel(d, B.date_et))}): <b>${a.wins}-${a.losses}</b>, <b style="color:${col};">${units(u)}</b>` +
+          (a.n_clv ? ` · beat the DraftKings close on ${Math.round(a.beat_close_pct * a.n_clv / 100)} of ${a.n_clv}` : "") +
+          ` · <a href="#results" style="color:#7fb0e8;">every result</a>`;
+        el.hidden = false;
+      })(B.results);
       const nLate = (B.alpha.picks || []).filter((p) => p.added_at && B.alpha.locked_at && p.added_at !== B.alpha.locked_at).length;
       $("alphaMeta").textContent = B.alpha.status === "locked" ? "locked " + obs(B.alpha.locked_at) + (nLate ? ` · ${nLate} added later in the day` : "") + " · top-scored bets of the day"
         : "provisional until " + B.alpha.lock_hour_et + ":00 AM ET" + (() => {
