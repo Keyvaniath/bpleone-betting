@@ -1160,10 +1160,11 @@ def test_alpha_post_is_offered_only_for_a_locked_list_and_names_each_grade(tmp_p
     assert "1. NFL NYJ ML +440 (forward test)" in post["text"] and "2. NBA MIA ML -200 (lean)" in post["text"]
     assert "A lean is not a proven edge." in post["text"] and "not betting advice" in post["text"]
     assert sorted(re.findall(r"(?<![\w/.])[+-]\d{3,}\b", post["text"])) == ["+440", "-200"]
-    # five long picks: the lowest-ranked is dropped before any caveat is
+    # (2026-11-15) five picks: NONE is ever dropped (the post must match the locked list). Absurd
+    # 30-char names cannot fit at all -> every pick and caveat kept, fits=False says so plainly
     a = dict(out["alpha"], picks=[dict(out["alpha"]["picks"][0], rank=i + 1, team="T" * 30) for i in range(5)])
     p = board.alpha_post(a, "2026-11-08", None)
-    assert p["fits"] and p["n_picks"] < 5 and "not betting advice" in p["text"]
+    assert p["n_picks"] == 5 and p["text"].count("T" * 30) == 5 and "not betting advice" in p["text"] and not p["fits"]
 
 
 def test_play_of_day_ranks_edges_by_risk_adjusted_ev_not_raw_ev():
