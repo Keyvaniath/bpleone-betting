@@ -1,7 +1,7 @@
 {
   "phases": {
     "imports": {
-      "duration_s": 2.5,
+      "duration_s": 2.0,
       "exit_code": 0,
       "summary": "SUMMARY: 634 import-ok / 0 import-fail",
       "stderr_truncated": ""
@@ -13,30 +13,30 @@
       "stderr_truncated": ""
     },
     "data": {
-      "duration_s": 2.6,
+      "duration_s": 2.1,
       "exit_code": 0,
-      "summary": "SUMMARY: 395 ok / 3 empty / 312 flagged / 0 stale24h / 0 stale72h",
+      "summary": "SUMMARY: 393 ok / 3 empty / 314 flagged / 0 stale24h / 0 stale72h",
       "stderr_truncated": ""
     },
     "data_health": {
-      "duration_s": 1.1,
+      "duration_s": 0.5,
       "exit_code": 0,
-      "summary": "[WARN] desk_prices        | nfl.html Kansas City Chiefs @ Atlanta Falcons: DraftKings price 6.6h old | nfl.html Houston Texans @ Cleveland Browns: DraftKings price 6.6h old | nfl.html Minnesota Vikings @ Green Bay Packers: DraftKings price 6.6h old | nfl.html Jacksonville Jaguars @ Tennessee Titans: DraftKings price 6.6h old | nfl.html Miami Dolphins @ Indianapolis Colts: DraftKings price 6.6h old | nfl.html Carolina Panthers @ New Orleans Saints: DraftKings price 6.6h old | nfl.html Buffalo Bills @ New York Jets: DraftKings price 6.6h old | nfl.html Seattle Seahawks @ Las Vegas Raiders: DraftKings price 6.6h old | Desk pages show old prices: the heartbeat's nfl/nba/nhl_pipeline step may be failing.",
+      "summary": "[OK] desk_prices        | desk-page prices fresh (oldest, hours: {'nfl': 1.1, 'nba': 1.1, 'nhl': 0.1})",
       "stderr_truncated": ""
     }
   },
-  "generated_at": "2026-11-15T16:13:24",
-  "total_duration_s": 6.2,
+  "generated_at": "2026-11-15T19:44:48",
+  "total_duration_s": 4.6,
   "artifacts": {
     "module_import_audit.json": {
-      "generated_at": "2026-11-15T16:13:20",
+      "generated_at": "2026-11-15T19:44:45",
       "n_total": 634,
       "n_ok": 634,
       "n_fail": 0,
       "failures": []
     },
     "html_audit.json": {
-      "generated_at": "2026-11-15T16:13:20",
+      "generated_at": "2026-11-15T19:44:45",
       "summary": {
         "ok": 0,
         "no_nav_js": 136,
@@ -350,14 +350,14 @@
       }
     },
     "data_stub_audit.json": {
-      "generated_at": "2026-11-15T16:13:23",
+      "generated_at": "2026-11-15T19:44:47",
       "summary": {
         "empty": 3,
         "stub_flagged": 0,
-        "zero_count": 312,
+        "zero_count": 314,
         "stale_24h": 0,
         "stale_72h": 0,
-        "ok": 395
+        "ok": 393
       },
       "empty": [
         [
@@ -473,6 +473,10 @@
         [
           "data_freshness_audit.json",
           "n_stale_or_missing=0"
+        ],
+        [
+          "data_health.json",
+          "n_red=0"
         ],
         [
           "data_source_health.json",
@@ -1359,6 +1363,10 @@
           "n_candidates=0; n_picked=0"
         ],
         [
+          "prediction_log.json",
+          "n_settled_this_run=0"
+        ],
+        [
           "prizepicks_lines.json",
           "n_lines=0"
         ],
@@ -1451,10 +1459,6 @@
           "n_props_tracked=0; n_alerts=0"
         ],
         [
-          "survivor_pool.json",
-          "n_strong=0"
-        ],
-        [
           "tennis_1st_set_winner.json",
           "n_matches=0; n_strong_edges=0"
         ],
@@ -1469,6 +1473,10 @@
         [
           "tennis_dominance_alerts.json",
           "n_alerts=0; n_elite=0"
+        ],
+        [
+          "tennis_double_faults_props.json",
+          "n_strong_edges=0"
         ],
         [
           "tennis_match_preview.json",
@@ -1627,11 +1635,11 @@
       "stale_72h": []
     },
     "data_health.json": {
-      "generated_at": "2026-11-15T16:13:24",
-      "overall": "red",
-      "n_green": 7,
-      "n_yellow": 3,
-      "n_red": 2,
+      "generated_at": "2026-11-15T19:44:48",
+      "overall": "yellow",
+      "n_green": 11,
+      "n_yellow": 1,
+      "n_red": 0,
       "checks": [
         {
           "feed": "freshness",
@@ -1646,8 +1654,8 @@
             "sport_coverage.json": 0.0,
             "todays_top_plays.json": 0.0,
             "alpha_pick_of_day.json": 0.0,
-            "alerts_feed.json": 6.6,
-            "calibration_map.json": 0.3,
+            "alerts_feed.json": 1.1,
+            "calibration_map.json": 0.1,
             "espn_odds.json": 0.0
           }
         },
@@ -1663,18 +1671,18 @@
           "upstream_final": 0,
           "local_count": 0,
           "local_live": 0,
-          "live_state_age_min": 17
+          "live_state_age_min": 10
         },
         {
           "feed": "nba",
-          "status": "red",
+          "status": "green",
           "findings": [
-            "NBA count mismatch: local=14 vs ESPN=9"
+            "9 events matched (1 live)"
           ],
           "upstream_count": 9,
-          "local_count": 14,
-          "upstream_live": 0,
-          "local_age_min": 15
+          "local_count": 9,
+          "upstream_live": 1,
+          "local_age_min": 9
         },
         {
           "feed": "wnba",
@@ -1685,18 +1693,18 @@
           "upstream_count": 1,
           "local_count": 1,
           "upstream_live": 0,
-          "local_age_min": 590
+          "local_age_min": 211
         },
         {
           "feed": "nhl",
-          "status": "red",
+          "status": "green",
           "findings": [
-            "NHL count mismatch: local=19 vs ESPN=5"
+            "5 events matched (0 live)"
           ],
           "upstream_count": 5,
-          "local_count": 19,
+          "local_count": 5,
           "upstream_live": 0,
-          "local_age_min": 15
+          "local_age_min": 8
         },
         {
           "feed": "mls",
@@ -1707,7 +1715,7 @@
           "upstream_count": 2,
           "local_count": 2,
           "upstream_live": 0,
-          "local_age_min": 590
+          "local_age_min": 211
         },
         {
           "feed": "epl",
@@ -1718,7 +1726,7 @@
           "upstream_count": 7,
           "local_count": 7,
           "upstream_live": 0,
-          "local_age_min": 590
+          "local_age_min": 211
         },
         {
           "feed": "pitcher_matchup",
@@ -1742,13 +1750,13 @@
         },
         {
           "feed": "golf",
-          "status": "yellow",
+          "status": "green",
           "findings": [
-            "golf data 397min stale during active tournament"
+            "120 golfers tracked (1 active events)"
           ],
           "upstream_players": 120,
           "local_players": 120,
-          "local_age_min": 397
+          "local_age_min": 64
         },
         {
           "feed": "desks",
@@ -1759,23 +1767,23 @@
           "n_stale": 0,
           "ages_h": {
             "tennis_state.json": 0.0,
-            "ufc_state.json": 14.5,
-            "f1_state.json": 14.5,
-            "kbo_state.json": 9.8,
-            "cs_state.json": 9.8,
-            "cws_state.json": 14.5,
+            "ufc_state.json": 3.5,
+            "f1_state.json": 3.5,
+            "kbo_state.json": 3.5,
+            "cs_state.json": 3.5,
+            "cws_state.json": 3.5,
             "worldcup_cards.json": 0.0,
             "cfb_model.json": 0.0,
             "cfb_ratings.json": 0.0,
-            "nfl_dfs.json": 14.5,
-            "nfl_dfs_receipts.json": 14.5,
-            "nfl_dfs_calibration.json": 14.5,
-            "player_stats_nba.json": 0.2,
-            "player_stats_nhl.json": 0.2,
-            "player_stats_wnba.json": 0.2,
+            "nfl_dfs.json": 3.5,
+            "nfl_dfs_receipts.json": 3.5,
+            "nfl_dfs_calibration.json": 3.5,
+            "player_stats_nba.json": 0.1,
+            "player_stats_nhl.json": 0.1,
+            "player_stats_wnba.json": 0.1,
             "alpha_email.json": 0.0,
             "recent_picks.json": 0.0,
-            "fix_scorecard.json": 14.5,
+            "fix_scorecard.json": 3.5,
             "board.json": 0.0,
             "game_lines_desk.json": 0.0,
             "play_of_day.json": 0.0
@@ -1783,23 +1791,15 @@
         },
         {
           "feed": "desk_prices",
-          "status": "yellow",
+          "status": "green",
           "findings": [
-            "nfl.html Kansas City Chiefs @ Atlanta Falcons: DraftKings price 6.6h old",
-            "nfl.html Houston Texans @ Cleveland Browns: DraftKings price 6.6h old",
-            "nfl.html Minnesota Vikings @ Green Bay Packers: DraftKings price 6.6h old",
-            "nfl.html Jacksonville Jaguars @ Tennessee Titans: DraftKings price 6.6h old",
-            "nfl.html Miami Dolphins @ Indianapolis Colts: DraftKings price 6.6h old",
-            "nfl.html Carolina Panthers @ New Orleans Saints: DraftKings price 6.6h old",
-            "nfl.html Buffalo Bills @ New York Jets: DraftKings price 6.6h old",
-            "nfl.html Seattle Seahawks @ Las Vegas Raiders: DraftKings price 6.6h old",
-            "Desk pages show old prices: the heartbeat's nfl/nba/nhl_pipeline step may be failing."
+            "desk-page prices fresh (oldest, hours: {'nfl': 1.1, 'nba': 1.1, 'nhl': 0.1})"
           ],
-          "n_stale": 20,
+          "n_stale": 0,
           "worst_age_h": {
-            "nfl": 6.6,
-            "nba": 6.6,
-            "nhl": 0.3
+            "nfl": 1.1,
+            "nba": 1.1,
+            "nhl": 0.1
           }
         }
       ]

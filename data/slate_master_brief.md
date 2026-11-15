@@ -1,5 +1,5 @@
 # EdgeStat — Tonight's Master Brief
-_Generated 2026-11-15T16:12:58 UTC_
+_Generated 2026-11-15T19:44:30 UTC_
 
 ## Slate Quality
 - **Tier:** NO_ACTION_NIGHT
@@ -24,7 +24,7 @@ _Generated 2026-11-15T16:12:58 UTC_
 - **GOLF** / ? (TOURNAMENT_STRONG)
   - Trace Crowe top 10 finish
   - Chad Ramey top 10 finish
-  - Sami Välimäki top 10 finish
+  - Erik van Rooyen top 10 finish
 
 ## Slate ROI Projection
 - **Picks:** 0
@@ -37,9 +37,9 @@ _Generated 2026-11-15T16:12:58 UTC_
   - Fade angle: team total UNDER
 - **NBA** / TOR (TEAM_FADE)
   - Fade angle: team total UNDER
-- **NBA** / CHA (TEAM_FADE)
-  - Fade angle: team total UNDER
 - **NBA** / SAC (TEAM_FADE)
   - Fade angle: team total UNDER
-- **NBA** / UTA (TEAM_FADE)
+- **NBA** / CHA (TEAM_FADE)
+  - Fade angle: team total UNDER
+- **NBA** / ATL (TEAM_FADE)
   - Fade angle: team total UNDER
