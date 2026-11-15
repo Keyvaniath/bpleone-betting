@@ -87,6 +87,18 @@ bpleone-site/
   The fix is the staged Worker dispatcher (cloudflare-worker/src/worker.js, fail closed until
   GH_DISPATCH_TOKEN; Brandon deploys -- TODO_BRANDON.md section 0). Until then, prices on the board
   are only as fresh as the last heartbeat. b2b counts a game SCHEDULED the day before (night-before rows).
+- **2026-11-14/15 — GRADING + WORKFLOW TRAPS (each found live, each fixed).**
+  (1) Settle cool-off: every pick waited 12h after recording -> a late-added Alpha pick sat final but
+  pending overnight. Moneylines with an ESPN event id in the finals now settle at once
+  (`_grade_ml_by_event_id`, id only). (2) NHL/NFL finals (espn_box_logs nhl/nfl) ran only in
+  daily-pipeline -> now in the heartbeat. (3) **In a rebase, `git checkout --ours` is MAIN**, not the run:
+  a run that locked the Alpha kept main's provisional board.json; on a conflict every committing
+  workflow now re-runs board.py on the merged files (the lock log keeps main's copy: first lock wins).
+  (4) The Alpha share post dropped picks to fit 280 chars -> now never drops, shortens instead.
+  (5) A test-failure-then-push slip: chain `pytest ... | grep -q failed && exit 1` BEFORE any commit.
+  Closes: with close-capture dispatched every 20 min, NFL closes landed 0-6 min before kickoff (vs
+  32-69 min median before). CLE -142 lean closed +276 (B2B rest): a real -32 pt CLV, recorded, no rule
+  change. Line-move signals first read: 61 scored, -0.24 pts, no edge yet (~100 major-sport to judge).
 
 - **2026-11-12 — THE BOARD (board.html, python/board.py -> data/board.json).** Every pre-game
   NFL/NBA/NHL game with DraftKings moneylines + total prices, our side, a GRADE and a SCORE:
