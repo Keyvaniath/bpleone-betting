@@ -781,6 +781,7 @@ def run(now: Optional[dt.datetime] = None) -> Dict[str, Any]:
         # the desk's bet hurdle (game_lines_desk.MIN_EDGE): a desk pick is a bet only at >= this EV,
         # so its "playable to" price is (1 + min_edge) / p, not the zero-EV price
         "desk_min_edge": _desk_min_edge(),
+        "signal_summary": _signal_summary(),
         "results": (_load("ledger_summary.json") or {}).get("board"),
         "recap": recap_post((_load("ledger_summary.json") or {}).get("board"), today_et),
         "counts": {"games": len(games), "games_today": sum(1 for g in games if g["date"] == today_et and not g.get("college")),
@@ -791,6 +792,20 @@ def run(now: Optional[dt.datetime] = None) -> Dict[str, Any]:
     with open(OUT, "w", encoding="utf-8") as f:
         json.dump(payload, f, indent=1)
     return payload
+
+
+def _signal_summary() -> Dict[str, Any]:
+    """(2026-11-15) The line-move signal forward test, scored against the close, per sport. Not picks."""
+    sigs = (_load("move_signals.json").get("signals") or {}).values()
+    out: Dict[str, Any] = {}
+    for s in sigs:
+        if not s.get("side") or s.get("clv_pts") is None:
+            continue
+        d = out.setdefault(str(s.get("sport") or "").upper(), {"n": 0, "sum": 0.0, "beat": 0})
+        d["n"] += 1
+        d["sum"] += float(s["clv_pts"])
+        d["beat"] += 1 if float(s["clv_pts"]) > 0 else 0
+    return {k: {"n": v["n"], "avg_clv_pts": round(v["sum"] / v["n"], 2), "beat_close": v["beat"]} for k, v in out.items()}
 
 
 def _desk_min_edge() -> float:
