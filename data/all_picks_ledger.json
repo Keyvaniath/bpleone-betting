@@ -1,10 +1,10 @@
 {
-  "generated_at": "2026-11-15T16:38:33",
+  "generated_at": "2026-11-15T16:41:02",
   "stake_assumption": "1u flat per pick",
   "total_picks": 20000,
   "n_settled": 23945,
-  "n_pending": 1003,
-  "n_void": 707,
+  "n_pending": 1006,
+  "n_void": 704,
   "wins": 11737,
   "losses": 12197,
   "pushes": 11,
@@ -15,9 +15,9 @@
   "calibrated_reliability": {
     "n": 18236,
     "ece_raw": 0.0659,
-    "ece_calibrated": 0.009,
+    "ece_calibrated": 0.0089,
     "brier_raw": 0.20973,
-    "brier_calibrated": 0.19636,
+    "brier_calibrated": 0.19637,
     "note": "In-sample over the settled ledger (the isotonic transform is fit on these same outcomes); held-out 70/30 validation is in recalibration_map.json. p_predicted = raw model prob (kept untouched for the learning loop); p_calibrated = honest prob stamped per pick. Lower ECE/Brier on the calibrated column = the displayed % is truer."
   },
   "curated": {
@@ -1383,14 +1383,14 @@
     "note": "The headline became ALL-TIME on 2026-10-23. 5,946 settled picks that the old tail-cut eviction had destroyed (May-June 2026, the 07-06 erosion and the run-up to 09-03) were rebuilt from git history at each pick's final state, with today's duplicate-wager rule re-applied, and folded back in. They are mostly the raw May-June MLB prop firehose (2,961-2,983, -1,256.9u), so the firehose ROI fell; the curated record changed by the curated picks among them. Before this date the published numbers covered the working window only -- working_ledger_only keeps that basis.",
     "n_archived_in_headline": 5655
   },
-  "n_added_this_run": 172,
-  "n_newly_settled_this_run": 7,
+  "n_added_this_run": 3,
+  "n_newly_settled_this_run": 0,
   "n_resettled_this_run": 0,
   "n_voided_this_run": 0,
-  "n_duplicates_collapsed_this_run": 3,
-  "n_duplicate_adds_blocked_this_run": 39,
-  "n_reconciled_settled_voids": 3,
-  "n_bootstrapped_from_locks_history": 0,
+  "n_duplicates_collapsed_this_run": 1,
+  "n_duplicate_adds_blocked_this_run": 35,
+  "n_reconciled_settled_voids": 0,
+  "n_bootstrapped_from_locks_history": 1,
   "by_source": {
     "mlb_bk_k_1plus_yes": {
       "n": 1647,
@@ -14771,13 +14771,13 @@
   },
   "by_sport": {
     "MLB": {
-      "n": 13787,
+      "n": 13788,
       "settled": 13787,
       "wins": 5016,
       "losses": 8760,
       "pushes": 11,
       "pending": 0,
-      "void": 0,
+      "void": 1,
       "net_units": -3620.602,
       "hit_rate": 0.3641,
       "roi_pct": -26.28,
@@ -14836,12 +14836,12 @@
       "markets": 5
     },
     "UFC": {
-      "n": 219,
+      "n": 222,
       "settled": 191,
       "wins": 78,
       "losses": 113,
       "pushes": 0,
-      "pending": 0,
+      "pending": 3,
       "void": 28,
       "net_units": 164.27,
       "hit_rate": 0.4084,
@@ -14953,13 +14953,13 @@
       "markets": 12
     },
     "NBA": {
-      "n": 2251,
+      "n": 2247,
       "settled": 1922,
       "wins": 1243,
       "losses": 679,
       "pushes": 0,
       "pending": 150,
-      "void": 179,
+      "void": 175,
       "net_units": -60.587,
       "hit_rate": 0.6467,
       "roi_pct": -3.15,
@@ -24432,7 +24432,7 @@
       "result": "won",
       "payout_units": 2.94,
       "recorded_at": "2026-06-08T17:18:47",
-      "p_calibrated": 0.4415,
+      "p_calibrated": 0.4353,
       "voided": false,
       "outcome": {
         "fight": "Kyle Daukaus vs Bo Nickal",
@@ -24463,7 +24463,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-06-08T17:18:47",
-      "p_calibrated": 0.3206,
+      "p_calibrated": 0.3174,
       "voided": false,
       "outcome": {
         "fight": "Justin Gaethje vs Ilia Topuria",
@@ -24502,7 +24502,7 @@
         "verify": "Chelsea Chandler def. opponent (ended R1) \u2014 FIGHT_R1_FINISH_YES"
       },
       "settled_at": "2026-06-09T05:52:30",
-      "p_calibrated": 0.3206,
+      "p_calibrated": 0.3174,
       "price_provenance": {
         "inferred": true,
         "class": "C",
@@ -60237,7 +60237,7 @@
       "result": "won",
       "payout_units": 4.13,
       "recorded_at": "2026-06-16T00:01:42",
-      "p_calibrated": 0.3206,
+      "p_calibrated": 0.3174,
       "outcome": {
         "fight": "Michael Chandler vs Mauricio Ruffy",
         "winner": "Mauricio Ruffy",
@@ -60881,7 +60881,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-06-16T15:29:49",
-      "p_calibrated": 0.4415,
+      "p_calibrated": 0.4353,
       "voided": false,
       "outcome": {
         "fight": "Ion Cutelaba vs Navajo Stirling",
@@ -60912,7 +60912,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-06-16T15:29:49",
-      "p_calibrated": 0.3206,
+      "p_calibrated": 0.3174,
       "outcome": {
         "fight": "Brendan Allen vs Edmen Shahbazyan",
         "winner": "Brendan Allen",
@@ -60942,7 +60942,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-06-16T15:29:49",
-      "p_calibrated": 0.3206,
+      "p_calibrated": 0.3174,
       "outcome": {
         "fight": "Otari Tanzilovi vs Shane Collins",
         "winner": "Shane Collins",
@@ -60972,7 +60972,7 @@
       "result": "won",
       "payout_units": 4.44,
       "recorded_at": "2026-06-16T15:29:49",
-      "p_calibrated": 0.3206,
+      "p_calibrated": 0.3174,
       "voided": false,
       "outcome": {
         "fight": "Melsik Baghdasaryan vs Murtazali Magomedov",
@@ -61003,7 +61003,7 @@
       "result": "won",
       "payout_units": 4.54,
       "recorded_at": "2026-06-16T15:29:49",
-      "p_calibrated": 0.3206,
+      "p_calibrated": 0.3174,
       "voided": false,
       "outcome": {
         "fight": "Christian Rodriguez vs Hyder Amil",
@@ -67527,7 +67527,7 @@
       "result": "won",
       "payout_units": 3.74,
       "recorded_at": "2026-06-17T03:26:15",
-      "p_calibrated": 0.3206,
+      "p_calibrated": 0.3174,
       "outcome": {
         "fight": "Leon Shahbazyan vs Levan Chokheli",
         "winner": "Levan Chokheli",
@@ -99367,7 +99367,7 @@
       "result": "won",
       "payout_units": 2.32,
       "recorded_at": "2026-06-22T18:22:33",
-      "p_calibrated": 0.4415,
+      "p_calibrated": 0.4353,
       "voided": false,
       "outcome": {
         "fight": "Julius Walker vs Abdul-Rakhman Yakhyaev",
@@ -99398,7 +99398,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-06-22T18:22:33",
-      "p_calibrated": 0.4415,
+      "p_calibrated": 0.4353,
       "voided": false,
       "outcome": {
         "fight": "Ikram Aliskerov vs Brunno Ferreira",
@@ -99429,7 +99429,7 @@
       "result": "won",
       "payout_units": 2.97,
       "recorded_at": "2026-06-22T18:22:33",
-      "p_calibrated": 0.4365,
+      "p_calibrated": 0.4313,
       "outcome": {
         "fight": "Melsik Baghdasaryan vs Murtazali Magomedov",
         "winner": "Murtazali Magomedov",
@@ -99459,7 +99459,7 @@
       "result": "won",
       "payout_units": 3.04,
       "recorded_at": "2026-06-22T18:22:33",
-      "p_calibrated": 0.4081,
+      "p_calibrated": 0.4045,
       "voided": false,
       "outcome": {
         "fight": "Nursulton Ruziboev vs Andrey Pulyaev",
@@ -99490,7 +99490,7 @@
       "result": "won",
       "payout_units": 3.04,
       "recorded_at": "2026-06-22T18:22:33",
-      "p_calibrated": 0.4081,
+      "p_calibrated": 0.4045,
       "outcome": {
         "fight": "Melsik Baghdasaryan vs Murtazali Magomedov",
         "winner": "Murtazali Magomedov",
@@ -99520,7 +99520,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-06-22T18:22:33",
-      "p_calibrated": 0.3206,
+      "p_calibrated": 0.3174,
       "voided": false,
       "outcome": {
         "fight": "Eric Nolan vs Farman Hasanov",
@@ -99551,7 +99551,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-06-22T18:22:33",
-      "p_calibrated": 0.3206,
+      "p_calibrated": 0.3174,
       "voided": false,
       "outcome": {
         "fight": "Theodor Berggren vs Daniil Donchenko",
@@ -99582,7 +99582,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-06-22T18:22:33",
-      "p_calibrated": 0.3206,
+      "p_calibrated": 0.3174,
       "voided": false,
       "outcome": {
         "fight": "Rafael Fiziev vs Manuel Torres",
@@ -99613,7 +99613,7 @@
       "result": "won",
       "payout_units": 4.14,
       "recorded_at": "2026-06-22T18:22:33",
-      "p_calibrated": 0.3206,
+      "p_calibrated": 0.3174,
       "outcome": {
         "fight": "Christian Rodriguez vs Hyder Amil",
         "winner": "Christian Rodriguez",
@@ -105142,7 +105142,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-06-23T17:48:03",
-      "p_calibrated": 0.3206,
+      "p_calibrated": 0.3174,
       "outcome": {
         "fight": "Allan Nascimento vs Mitch Raposo",
         "winner": "Mitch Raposo",
@@ -120287,7 +120287,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-06-27T02:36:38",
-      "p_calibrated": 0.3206,
+      "p_calibrated": 0.3174,
       "outcome": {
         "fight": "Tahir Abdullayev vs Jefferson Nascimento",
         "winner": "Tahir Abdullayev",
@@ -130427,7 +130427,7 @@
       "result": "won",
       "payout_units": 2.97,
       "recorded_at": "2026-06-28T00:14:10",
-      "p_calibrated": 0.4365,
+      "p_calibrated": 0.4313,
       "outcome": {
         "fight": "Abus Magomedov vs Michal Oleksiejczuk",
         "winner": "Abus Magomedov",
@@ -130457,7 +130457,7 @@
       "result": "won",
       "payout_units": 3.04,
       "recorded_at": "2026-06-28T00:14:10",
-      "p_calibrated": 0.401,
+      "p_calibrated": 0.3978,
       "outcome": {
         "fight": "Abus Magomedov vs Michal Oleksiejczuk",
         "winner": "Abus Magomedov",
@@ -130487,7 +130487,7 @@
       "result": "won",
       "payout_units": 4.16,
       "recorded_at": "2026-06-28T00:14:10",
-      "p_calibrated": 0.3206,
+      "p_calibrated": 0.3174,
       "outcome": {
         "fight": "Nazim Sadykhov vs Matheus Camilo",
         "winner": "Matheus Camilo",
@@ -139427,7 +139427,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-06-29T18:04:59",
-      "p_calibrated": 0.4415,
+      "p_calibrated": 0.4353,
       "voided": false,
       "outcome": {
         "fight": "Robert Whittaker vs Nikita Krylov",
@@ -139458,7 +139458,7 @@
       "result": "won",
       "payout_units": 2.95,
       "recorded_at": "2026-06-29T18:04:59",
-      "p_calibrated": 0.4415,
+      "p_calibrated": 0.4353,
       "voided": false,
       "outcome": {
         "fight": "Cesar Almeida vs Damian Pinas",
@@ -139489,7 +139489,7 @@
       "result": "won",
       "payout_units": 2.95,
       "recorded_at": "2026-06-29T18:04:59",
-      "p_calibrated": 0.4415,
+      "p_calibrated": 0.4353,
       "voided": false,
       "outcome": {
         "fight": "Zach Reese vs Ryan Gandra",
@@ -139520,7 +139520,7 @@
       "result": "won",
       "payout_units": 3.76,
       "recorded_at": "2026-06-29T18:04:59",
-      "p_calibrated": 0.3206,
+      "p_calibrated": 0.3174,
       "voided": false,
       "outcome": {
         "fight": "Max Holloway vs Conor McGregor",
@@ -139551,7 +139551,7 @@
       "result": "won",
       "payout_units": 4.04,
       "recorded_at": "2026-06-29T18:04:59",
-      "p_calibrated": 0.3206,
+      "p_calibrated": 0.3174,
       "voided": false,
       "outcome": {
         "fight": "Paddy Pimblett vs Beno\u00eet Saint Denis",
@@ -139582,7 +139582,7 @@
       "result": "won",
       "payout_units": 4.28,
       "recorded_at": "2026-06-29T18:04:59",
-      "p_calibrated": 0.3206,
+      "p_calibrated": 0.3174,
       "voided": false,
       "outcome": {
         "fight": "King Green vs Terrance McKinney",
@@ -139613,7 +139613,7 @@
       "result": "won",
       "payout_units": 4.47,
       "recorded_at": "2026-06-29T18:04:59",
-      "p_calibrated": 0.3206,
+      "p_calibrated": 0.3174,
       "voided": false,
       "outcome": {
         "fight": "Kai Kamaka III vs Luke Riley",
@@ -180813,7 +180813,7 @@
       "result": "won",
       "payout_units": 2.95,
       "recorded_at": "2026-07-09T16:35:31",
-      "p_calibrated": 0.4415,
+      "p_calibrated": 0.4353,
       "outcome": {
         "fight": "Zach Reese vs Ryan Gandra",
         "winner": "Ryan Gandra",
@@ -187772,7 +187772,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-07-13T16:41:31",
-      "p_calibrated": 0.4415,
+      "p_calibrated": 0.4353,
       "voided": false,
       "outcome": {
         "fight": "Felipe Franco vs Levi Rodrigues Jr.",
@@ -187803,7 +187803,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-07-13T16:41:31",
-      "p_calibrated": 0.4415,
+      "p_calibrated": 0.4353,
       "voided": false,
       "outcome": {
         "fight": "Kamaru Usman vs Dricus Du Plessis",
@@ -187834,7 +187834,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-07-13T16:41:31",
-      "p_calibrated": 0.4152,
+      "p_calibrated": 0.4112,
       "voided": false,
       "outcome": {
         "fight": "Jared Cannonier vs Christian Leroy Duncan",
@@ -187865,7 +187865,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-07-13T16:41:31",
-      "p_calibrated": 0.3206,
+      "p_calibrated": 0.3174,
       "voided": false,
       "outcome": {
         "fight": "Jean-Paul Lebosnoyani vs Seokhyeon Ko",
@@ -187896,7 +187896,7 @@
       "result": "won",
       "payout_units": 4.21,
       "recorded_at": "2026-07-13T16:41:31",
-      "p_calibrated": 0.3206,
+      "p_calibrated": 0.3174,
       "voided": false,
       "outcome": {
         "fight": "Chase Hooper vs Mitch Ramirez",
@@ -187927,7 +187927,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-07-13T16:41:31",
-      "p_calibrated": 0.3206,
+      "p_calibrated": 0.3174,
       "voided": false,
       "outcome": {
         "fight": "Alberto Montes vs Tommy McMillen",
@@ -187958,7 +187958,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-07-13T16:41:31",
-      "p_calibrated": 0.3206,
+      "p_calibrated": 0.3174,
       "voided": false,
       "outcome": {
         "fight": "Austin Bashi vs Jose Miguel Delgado",
@@ -188428,7 +188428,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-07-16T15:49:25",
-      "p_calibrated": 0.3206,
+      "p_calibrated": 0.3174,
       "outcome": {
         "fight": "Damien Anderson vs Ezra Elliott",
         "winner": "Ezra Elliott",
@@ -194580,7 +194580,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-07-20T15:58:01",
-      "p_calibrated": 0.4415,
+      "p_calibrated": 0.4353,
       "outcome": {
         "fight": "Jean-Paul Lebosnoyani vs Seokhyeon Ko",
         "winner": "Jean-Paul Lebosnoyani",
@@ -194610,7 +194610,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-07-20T15:58:01",
-      "p_calibrated": 0.4415,
+      "p_calibrated": 0.4353,
       "voided": false,
       "outcome": {
         "fight": "Brendson Ribeiro vs Magomed Tuchalov",
@@ -194641,7 +194641,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-07-20T15:58:01",
-      "p_calibrated": 0.4415,
+      "p_calibrated": 0.4353,
       "voided": false,
       "outcome": {
         "fight": "Dustin Jacoby vs Muhammad Said",
@@ -194672,7 +194672,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-07-20T15:58:01",
-      "p_calibrated": 0.3206,
+      "p_calibrated": 0.3174,
       "voided": false,
       "outcome": {
         "fight": "Abubakar Vagaev vs Saygid Izagakhmaev",
@@ -194703,7 +194703,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-07-20T15:58:01",
-      "p_calibrated": 0.3206,
+      "p_calibrated": 0.3174,
       "voided": false,
       "outcome": {
         "fight": "Santiago Ponzinibbio vs Sam Patterson",
@@ -194734,7 +194734,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-07-20T15:58:01",
-      "p_calibrated": 0.3206,
+      "p_calibrated": 0.3174,
       "outcome": {
         "fight": "Jean-Paul Lebosnoyani vs Seokhyeon Ko",
         "winner": "Jean-Paul Lebosnoyani",
@@ -194764,7 +194764,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-07-20T15:58:01",
-      "p_calibrated": 0.3206,
+      "p_calibrated": 0.3174,
       "voided": false,
       "outcome": {
         "fight": "Mike Davis vs Nurullo Aliev",
@@ -194795,7 +194795,7 @@
       "result": "won",
       "payout_units": 4.1,
       "recorded_at": "2026-07-20T15:58:01",
-      "p_calibrated": 0.3206,
+      "p_calibrated": 0.3174,
       "voided": false,
       "outcome": {
         "fight": "Ismael Bonfim vs Axel Sola",
@@ -195236,7 +195236,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-07-21T07:55:33",
-      "p_calibrated": 0.4415,
+      "p_calibrated": 0.4353,
       "outcome": {
         "fight": "Dustin Jacoby vs Muhammad Said",
         "winner": "Muhammad Said",
@@ -206250,7 +206250,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-07-26T00:11:49",
-      "p_calibrated": 0.4415,
+      "p_calibrated": 0.4353,
       "outcome": {
         "fight": "Magomed Ankalaev vs Bogdan Guskov",
         "winner": "Magomed Ankalaev",
@@ -206280,7 +206280,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-07-26T00:11:49",
-      "p_calibrated": 0.3206,
+      "p_calibrated": 0.3174,
       "outcome": {
         "fight": "Magomed Zaynukov vs Damian Rzepecki",
         "winner": "Magomed Zaynukov",
@@ -209659,7 +209659,7 @@
       "result": "won",
       "payout_units": 2.35,
       "recorded_at": "2026-07-27T16:24:30",
-      "p_calibrated": 0.4415,
+      "p_calibrated": 0.4353,
       "voided": false,
       "outcome": {
         "fight": "Jan Blachowicz vs Navajo Stirling",
@@ -209690,7 +209690,7 @@
       "result": "won",
       "payout_units": 3.08,
       "recorded_at": "2026-07-27T16:24:30",
-      "p_calibrated": 0.3867,
+      "p_calibrated": 0.3844,
       "voided": false,
       "outcome": {
         "fight": "Gilbert Urbina vs Vlasto \u010cepo",
@@ -209721,7 +209721,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-07-27T16:24:30",
-      "p_calibrated": 0.3796,
+      "p_calibrated": 0.3777,
       "outcome": {
         "fight": "Jean-Paul Lebosnoyani vs Seokhyeon Ko",
         "winner": "Jean-Paul Lebosnoyani",
@@ -209751,7 +209751,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-07-27T16:24:30",
-      "p_calibrated": 0.3206,
+      "p_calibrated": 0.3174,
       "outcome": {
         "fight": "Damien Anderson vs Ezra Elliott",
         "winner": "Ezra Elliott",
@@ -209781,7 +209781,7 @@
       "result": "won",
       "payout_units": 3.72,
       "recorded_at": "2026-07-27T16:24:30",
-      "p_calibrated": 0.3206,
+      "p_calibrated": 0.3174,
       "voided": false,
       "outcome": {
         "fight": "Daniel Rodriguez vs Uro\u0161 Medi\u0107",
@@ -209812,7 +209812,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-07-27T16:24:30",
-      "p_calibrated": 0.3206,
+      "p_calibrated": 0.3174,
       "voided": false,
       "outcome": {
         "fight": "Ludovit Klein vs Tofiq Musayev",
@@ -209843,7 +209843,7 @@
       "result": "won",
       "payout_units": 4.21,
       "recorded_at": "2026-07-27T16:24:30",
-      "p_calibrated": 0.3206,
+      "p_calibrated": 0.3174,
       "voided": false,
       "outcome": {
         "fight": "Kyle Prepolec vs Mateusz R\u0119becki",
@@ -212073,7 +212073,7 @@
       "result": "won",
       "payout_units": 3.1,
       "recorded_at": "2026-07-29T01:08:15",
-      "p_calibrated": 0.3796,
+      "p_calibrated": 0.3777,
       "outcome": {
         "fight": "Du\u0161ko Todorovi\u0107 vs Robert Valentin",
         "winner": "Robert Valentin",
@@ -212103,7 +212103,7 @@
       "result": "won",
       "payout_units": 3.64,
       "recorded_at": "2026-07-29T01:08:15",
-      "p_calibrated": 0.3206,
+      "p_calibrated": 0.3174,
       "outcome": {
         "fight": "Oban Elliott vs Michael Oliveira",
         "winner": "Michael Oliveira",
@@ -212484,7 +212484,7 @@
       "result": "won",
       "payout_units": 4.05,
       "recorded_at": "2026-07-29T16:08:09",
-      "p_calibrated": 0.3206,
+      "p_calibrated": 0.3174,
       "outcome": {
         "fight": "Milos Janicic vs Noah Gugnon",
         "winner": "Noah Gugnon",
@@ -227587,7 +227587,7 @@
       "result": "won",
       "payout_units": 2.36,
       "recorded_at": "2026-08-03T16:37:24",
-      "p_calibrated": 0.4415,
+      "p_calibrated": 0.4353,
       "voided": false,
       "outcome": {
         "fight": "Bruno Lopes vs Diyar Nurgozhay",
@@ -227618,7 +227618,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-08-03T16:37:24",
-      "p_calibrated": 0.3206,
+      "p_calibrated": 0.3174,
       "voided": false,
       "outcome": {
         "fight": "Juliana Miller vs Ravena Oliveira",
@@ -227649,7 +227649,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-08-03T16:37:24",
-      "p_calibrated": 0.3206,
+      "p_calibrated": 0.3174,
       "voided": false,
       "outcome": {
         "fight": "Manoel Sousa vs Richie Miranda",
@@ -227680,7 +227680,7 @@
       "result": "won",
       "payout_units": 3.98,
       "recorded_at": "2026-08-03T16:37:24",
-      "p_calibrated": 0.3206,
+      "p_calibrated": 0.3174,
       "voided": false,
       "outcome": {
         "fight": "Mateusz Gamrot vs Quillan Salkilld",
@@ -227711,7 +227711,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-08-03T16:37:24",
-      "p_calibrated": 0.3206,
+      "p_calibrated": 0.3174,
       "voided": false,
       "outcome": {
         "fight": "Diego Ferreira vs Billy Quarantillo",
@@ -227742,7 +227742,7 @@
       "result": "won",
       "payout_units": 4.51,
       "recorded_at": "2026-08-03T16:37:24",
-      "p_calibrated": 0.3206,
+      "p_calibrated": 0.3174,
       "voided": false,
       "outcome": {
         "fight": "Miles Johns vs Gianni Vazquez",
@@ -227773,7 +227773,7 @@
       "result": "won",
       "payout_units": 4.52,
       "recorded_at": "2026-08-03T16:37:24",
-      "p_calibrated": 0.3206,
+      "p_calibrated": 0.3174,
       "voided": false,
       "outcome": {
         "fight": "Darren Elkins vs Yadier del Valle",
@@ -240501,7 +240501,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-08-10T14:38:59",
-      "p_calibrated": 0.4415,
+      "p_calibrated": 0.4353,
       "outcome": {
         "fight": "Joe Kropschot vs Jon Kunneman",
         "winner": "Joe Kropschot",
@@ -240531,7 +240531,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-08-10T14:38:59",
-      "p_calibrated": 0.3206,
+      "p_calibrated": 0.3174,
       "outcome": {
         "fight": "Abe Alsaghir vs Fabrizio Escarrega",
         "winner": "Abe Alsaghir",
@@ -240561,7 +240561,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-08-10T14:38:59",
-      "p_calibrated": 0.3206,
+      "p_calibrated": 0.3174,
       "outcome": {
         "fight": "Tom Pagliarulo vs Ananias Mulumba",
         "winner": "Tom Pagliarulo",
@@ -248017,7 +248017,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-08-11T23:03:02",
-      "p_calibrated": 0.3206,
+      "p_calibrated": 0.3174,
       "outcome": {
         "fight": "Joe Kropschot vs Jon Kunneman",
         "winner": "Joe Kropschot",
@@ -257182,7 +257182,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-08-13T15:02:25",
-      "p_calibrated": 0.4415,
+      "p_calibrated": 0.4353,
       "outcome": {
         "fight": "Lucas Fernando vs Rafael Tobias",
         "winner": "Lucas Fernando",
@@ -257212,7 +257212,7 @@
       "result": "won",
       "payout_units": 2.94,
       "recorded_at": "2026-08-13T15:02:25",
-      "p_calibrated": 0.4415,
+      "p_calibrated": 0.4353,
       "outcome": {
         "fight": "Miles Johns vs Gianni Vazquez",
         "winner": "Miles Johns",
@@ -257242,7 +257242,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-08-13T15:02:25",
-      "p_calibrated": 0.4081,
+      "p_calibrated": 0.4045,
       "outcome": {
         "fight": "Dustin Stoltzfus vs Mansur Abdul-Malik",
         "winner": "Dustin Stoltzfus",
@@ -257272,7 +257272,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-08-13T15:02:25",
-      "p_calibrated": 0.3654,
+      "p_calibrated": 0.3643,
       "outcome": {
         "fight": "Vicente Luque vs Tresean Gore",
         "winner": "Tresean Gore",
@@ -257302,7 +257302,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-08-13T15:02:25",
-      "p_calibrated": 0.3206,
+      "p_calibrated": 0.3174,
       "outcome": {
         "fight": "Islam Makhachev vs Ian Machado Garry",
         "winner": "Islam Makhachev",
@@ -257332,7 +257332,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-08-13T15:02:25",
-      "p_calibrated": 0.3206,
+      "p_calibrated": 0.3174,
       "outcome": {
         "fight": "Jeremiah Wells vs Myktybek Orolbai",
         "winner": "Jeremiah Wells",
@@ -257362,7 +257362,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-08-13T15:02:25",
-      "p_calibrated": 0.3206,
+      "p_calibrated": 0.3174,
       "outcome": {
         "fight": "Chidi Njokuani vs Joel \u00c1lvarez",
         "winner": "Chidi Njokuani",
@@ -257392,7 +257392,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-08-13T15:02:25",
-      "p_calibrated": 0.3206,
+      "p_calibrated": 0.3174,
       "outcome": {
         "fight": "Neil Magny vs Ramiz Brahimaj",
         "winner": "Neil Magny",
@@ -257422,7 +257422,7 @@
       "result": "won",
       "payout_units": 4.13,
       "recorded_at": "2026-08-13T15:02:25",
-      "p_calibrated": 0.3206,
+      "p_calibrated": 0.3174,
       "outcome": {
         "fight": "Miles Johns vs Gianni Vazquez",
         "winner": "Miles Johns",
@@ -257452,7 +257452,7 @@
       "result": "won",
       "payout_units": 4.19,
       "recorded_at": "2026-08-13T15:02:25",
-      "p_calibrated": 0.3206,
+      "p_calibrated": 0.3174,
       "outcome": {
         "fight": "Jalin Turner vs Kau\u00ea Fernandes",
         "winner": "Jalin Turner",
@@ -257482,7 +257482,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-08-13T15:02:25",
-      "p_calibrated": 0.3206,
+      "p_calibrated": 0.3174,
       "outcome": {
         "fight": "Edson Barboza vs Esteban Ribovics",
         "winner": "Esteban Ribovics",
@@ -270602,7 +270602,7 @@
       "result": "won",
       "payout_units": 2.94,
       "recorded_at": "2026-08-16T01:06:31",
-      "p_calibrated": 0.4415,
+      "p_calibrated": 0.4353,
       "outcome": {
         "fight": "Eric McConico vs Donte Johnson",
         "winner": "Donte Johnson",
@@ -270632,7 +270632,7 @@
       "result": "won",
       "payout_units": 4.13,
       "recorded_at": "2026-08-16T01:06:31",
-      "p_calibrated": 0.3206,
+      "p_calibrated": 0.3174,
       "outcome": {
         "fight": "Eric McConico vs Donte Johnson",
         "winner": "Donte Johnson",
@@ -274226,7 +274226,7 @@
       "result": "won",
       "payout_units": 2.38,
       "recorded_at": "2026-08-17T14:32:16",
-      "p_calibrated": 0.4415,
+      "p_calibrated": 0.4353,
       "outcome": {
         "fight": "Alik Lorenz vs Mahamed Aly",
         "winner": "Alik Lorenz",
@@ -274256,7 +274256,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-08-17T14:32:16",
-      "p_calibrated": 0.3206,
+      "p_calibrated": 0.3174,
       "outcome": {
         "fight": "Juliana Miller vs Ravena Oliveira",
         "winner": "Juliana Miller",
@@ -274286,7 +274286,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-08-17T14:32:16",
-      "p_calibrated": 0.3206,
+      "p_calibrated": 0.3174,
       "outcome": {
         "fight": "Kaik Brito vs Namo Fazil",
         "winner": "Kaik Brito",
@@ -274316,7 +274316,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-08-17T14:32:16",
-      "p_calibrated": 0.3206,
+      "p_calibrated": 0.3174,
       "outcome": {
         "fight": "Logan Paxton vs Cristian P\u00e9rez",
         "winner": "Cristian P\u00e9rez",
@@ -274346,7 +274346,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-08-17T14:32:16",
-      "p_calibrated": 0.3206,
+      "p_calibrated": 0.3174,
       "outcome": {
         "fight": "Roman Puga vs Taner Trembley",
         "winner": "Roman Puga",
@@ -284641,7 +284641,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-08-19T01:27:02",
-      "p_calibrated": 0.4365,
+      "p_calibrated": 0.4313,
       "outcome": {
         "fight": "Trent Miller vs Douglas Rodrigues",
         "winner": "Trent Miller",
@@ -291378,7 +291378,7 @@
       "result": "won",
       "payout_units": 2.39,
       "recorded_at": "2026-08-20T14:44:59",
-      "p_calibrated": 0.4415,
+      "p_calibrated": 0.4353,
       "outcome": {
         "fight": "Roman Dolidze vs Reinier de Ridder",
         "winner": "Reinier de Ridder",
@@ -291408,7 +291408,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-08-20T14:44:59",
-      "p_calibrated": 0.4294,
+      "p_calibrated": 0.4246,
       "outcome": {
         "fight": "Trent Miller vs Douglas Rodrigues",
         "winner": "Trent Miller",
@@ -291438,7 +291438,7 @@
       "result": "won",
       "payout_units": 3.02,
       "recorded_at": "2026-08-20T14:44:59",
-      "p_calibrated": 0.4152,
+      "p_calibrated": 0.4112,
       "outcome": {
         "fight": "Wes Schultz vs Jackson McVey",
         "winner": "Jackson McVey",
@@ -291468,7 +291468,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-08-20T14:44:59",
-      "p_calibrated": 0.3206,
+      "p_calibrated": 0.3174,
       "outcome": {
         "fight": "Gauge Young vs Stan Dorsainvil",
         "winner": "Stan Dorsainvil",
@@ -291498,7 +291498,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-08-20T14:44:59",
-      "p_calibrated": 0.3206,
+      "p_calibrated": 0.3174,
       "outcome": {
         "fight": "Mason Jones vs MarQuel Mederos",
         "winner": "MarQuel Mederos",
@@ -291528,7 +291528,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-08-20T14:44:59",
-      "p_calibrated": 0.3206,
+      "p_calibrated": 0.3174,
       "outcome": {
         "fight": "Chris Padilla vs Nasrat Haqparast",
         "winner": "Chris Padilla",
@@ -291558,7 +291558,7 @@
       "result": "won",
       "payout_units": 4.45,
       "recorded_at": "2026-08-20T14:44:59",
-      "p_calibrated": 0.3206,
+      "p_calibrated": 0.3174,
       "outcome": {
         "fight": "Marcio Barbosa vs Ryan Kuse",
         "winner": "Marcio Barbosa",
@@ -303692,7 +303692,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-08-22T22:22:45",
-      "p_calibrated": 0.4294,
+      "p_calibrated": 0.4246,
       "outcome": {
         "fight": "Anthony Hernandez vs Gregory Rodrigues",
         "winner": "Gregory Rodrigues",
@@ -308432,7 +308432,7 @@
       "result": "won",
       "payout_units": 2.88,
       "recorded_at": "2026-08-24T14:53:58",
-      "p_calibrated": 0.4415,
+      "p_calibrated": 0.4353,
       "outcome": {
         "fight": "Carlos Petruzzella vs Nick Galanti",
         "winner": "Nick Galanti",
@@ -308462,7 +308462,7 @@
       "result": "won",
       "payout_units": 3.6,
       "recorded_at": "2026-08-24T14:53:58",
-      "p_calibrated": 0.3206,
+      "p_calibrated": 0.3174,
       "outcome": {
         "fight": "Ronald Humphrey vs Alexis Miranda",
         "winner": "Ronald Humphrey",
@@ -308492,7 +308492,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-08-24T14:53:58",
-      "p_calibrated": 0.3206,
+      "p_calibrated": 0.3174,
       "outcome": {
         "fight": "Gary Balletto vs Sean Clancy Jr.",
         "winner": "Sean Clancy Jr.",
@@ -321496,7 +321496,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-08-28T00:42:58",
-      "p_calibrated": 0.4415,
+      "p_calibrated": 0.4353,
       "outcome": {
         "fight": "Gary Balletto vs Sean Clancy Jr.",
         "winner": "Sean Clancy Jr.",
@@ -322970,7 +322970,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-09-02T01:24:01",
-      "p_calibrated": 0.3206,
+      "p_calibrated": 0.3174,
       "outcome": {
         "fight": "Ding Meng vs Cam Nelson",
         "winner": "Cam Nelson",
@@ -323000,7 +323000,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-09-02T01:24:01",
-      "p_calibrated": 0.3206,
+      "p_calibrated": 0.3174,
       "outcome": {
         "fight": "Sean Woodson vs Jack Jenkins",
         "winner": "Sean Woodson",
@@ -323703,7 +323703,7 @@
       "result": "won",
       "payout_units": 2.39,
       "recorded_at": "2026-09-02T19:09:14",
-      "p_calibrated": 0.4415,
+      "p_calibrated": 0.4353,
       "outcome": {
         "fight": "Brandon Holmes vs Modestino Rodrigues",
         "winner": "Modestino Rodrigues",
@@ -326048,7 +326048,7 @@
       "result": "won",
       "payout_units": 2.96,
       "recorded_at": "2026-09-03T00:20:52",
-      "p_calibrated": 0.4365,
+      "p_calibrated": 0.4313,
       "outcome": {
         "fight": "Brandon Holmes vs Modestino Rodrigues",
         "winner": "Modestino Rodrigues",
@@ -326078,7 +326078,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-09-03T00:20:52",
-      "p_calibrated": 0.3206,
+      "p_calibrated": 0.3174,
       "outcome": {
         "fight": "Patrick Rivera vs Adam Darby",
         "winner": "Adam Darby",
@@ -326108,7 +326108,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-09-03T00:20:52",
-      "p_calibrated": 0.3206,
+      "p_calibrated": 0.3174,
       "outcome": {
         "fight": "Liam McCracken vs Silvestre Sanchez",
         "winner": "Silvestre Sanchez",
@@ -326138,7 +326138,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-09-03T00:20:52",
-      "p_calibrated": 0.3206,
+      "p_calibrated": 0.3174,
       "outcome": {
         "fight": "Adam Livingston vs Hunter Smith",
         "winner": "Adam Livingston",
@@ -327463,7 +327463,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-09-03T19:01:18",
-      "p_calibrated": 0.4415,
+      "p_calibrated": 0.4353,
       "outcome": {
         "fight": "Modestas Bukauskas vs Oumar Sy",
         "winner": "Modestas Bukauskas",
@@ -327493,7 +327493,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-09-03T19:01:18",
-      "p_calibrated": 0.4415,
+      "p_calibrated": 0.4353,
       "outcome": {
         "fight": "Michael Page vs Nursulton Ruziboev",
         "winner": "Michael Page",
@@ -327523,7 +327523,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-09-03T19:01:18",
-      "p_calibrated": 0.4223,
+      "p_calibrated": 0.4179,
       "outcome": {
         "fight": "Lawrence Lui vs Hector Santiago",
         "winner": "Hector Santiago",
@@ -327553,7 +327553,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-09-03T19:01:18",
-      "p_calibrated": 0.3206,
+      "p_calibrated": 0.3174,
       "outcome": {
         "fight": "Punahele Soriano vs Daniil Donchenko",
         "winner": "Daniil Donchenko",
@@ -327583,7 +327583,7 @@
       "result": "won",
       "payout_units": 4.08,
       "recorded_at": "2026-09-03T19:01:18",
-      "p_calibrated": 0.3206,
+      "p_calibrated": 0.3174,
       "outcome": {
         "fight": "Far\u00e9s Ziam vs Axel Sola",
         "winner": "Axel Sola",
@@ -327613,7 +327613,7 @@
       "result": "won",
       "payout_units": 4.14,
       "recorded_at": "2026-09-03T19:01:18",
-      "p_calibrated": 0.3206,
+      "p_calibrated": 0.3174,
       "outcome": {
         "fight": "Dan Hooker vs Salahdine Parnasse",
         "winner": "Salahdine Parnasse",
@@ -327643,7 +327643,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-09-03T19:01:18",
-      "p_calibrated": 0.3206,
+      "p_calibrated": 0.3174,
       "outcome": {
         "fight": "Nathaniel Wood vs Pavel Andrusca",
         "winner": "Pavel Andrusca",
@@ -327673,7 +327673,7 @@
       "result": "won",
       "payout_units": 4.49,
       "recorded_at": "2026-09-03T19:01:18",
-      "p_calibrated": 0.3206,
+      "p_calibrated": 0.3174,
       "outcome": {
         "fight": "Muhammad Naimov vs Losene Keita",
         "winner": "Losene Keita",
@@ -327703,7 +327703,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-09-03T19:01:18",
-      "p_calibrated": 0.3206,
+      "p_calibrated": 0.3174,
       "outcome": {
         "fight": "Trevor Peek vs Kurtis Campbell",
         "winner": "Kurtis Campbell",
@@ -330515,7 +330515,7 @@
       "result": "won",
       "payout_units": 3.0,
       "recorded_at": "2026-09-05T05:13:03",
-      "p_calibrated": 0.4223,
+      "p_calibrated": 0.4179,
       "outcome": {
         "fight": "Luis Felipe Dias vs Matthieu Letho Duclos",
         "winner": "Matthieu Letho Duclos",
@@ -338963,7 +338963,7 @@
       "result": "won",
       "payout_units": 2.24,
       "recorded_at": "2026-09-07T19:31:56",
-      "p_calibrated": 0.4415,
+      "p_calibrated": 0.4353,
       "outcome": {
         "fight": "Quentin Pasley vs Arlind Berisha",
         "winner": "Quentin Pasley",
@@ -338993,7 +338993,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-09-07T19:31:56",
-      "p_calibrated": 0.4415,
+      "p_calibrated": 0.4353,
       "outcome": {
         "fight": "Christian Echols vs Martin Koz\u00e1k",
         "winner": "Martin Koz\u00e1k",
@@ -339023,7 +339023,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-09-07T19:31:56",
-      "p_calibrated": 0.3206,
+      "p_calibrated": 0.3174,
       "outcome": {
         "fight": "Isaac Moreno vs Reginaldo Junior",
         "winner": "Isaac Moreno",
@@ -356522,7 +356522,7 @@
       "result": "won",
       "payout_units": 3.0,
       "recorded_at": "2026-09-10T18:52:32",
-      "p_calibrated": 0.4223,
+      "p_calibrated": 0.4179,
       "outcome": {
         "fight": "Yousri Belgaroui vs Djorden Santos",
         "winner": "Yousri Belgaroui",
@@ -356552,7 +356552,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-09-10T18:52:32",
-      "p_calibrated": 0.3206,
+      "p_calibrated": 0.3174,
       "outcome": {
         "fight": "Muslim Salikhov vs Ignacio Bahamondes",
         "winner": "Ignacio Bahamondes",
@@ -356582,7 +356582,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-09-10T18:52:32",
-      "p_calibrated": 0.3206,
+      "p_calibrated": 0.3174,
       "outcome": {
         "fight": "Drakkar Klose vs Tommy Gantt",
         "winner": "Tommy Gantt",
@@ -356612,7 +356612,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-09-10T18:52:32",
-      "p_calibrated": 0.3206,
+      "p_calibrated": 0.3174,
       "outcome": {
         "fight": "Rafa Garcia vs Rongzhu",
         "winner": "Rongzhu",
@@ -356642,7 +356642,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-09-10T18:52:32",
-      "p_calibrated": 0.3206,
+      "p_calibrated": 0.3174,
       "outcome": {
         "fight": "Kwon Won Il vs Apollo Gomes",
         "winner": "Apollo Gomes",
@@ -356672,7 +356672,7 @@
       "result": "won",
       "payout_units": 4.32,
       "recorded_at": "2026-09-10T18:52:32",
-      "p_calibrated": 0.3206,
+      "p_calibrated": 0.3174,
       "outcome": {
         "fight": "Jessie Rosas vs Sean King III",
         "winner": "Sean King III",
@@ -356702,7 +356702,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-09-10T18:52:32",
-      "p_calibrated": 0.3206,
+      "p_calibrated": 0.3174,
       "outcome": {
         "fight": "Tim Elliott vs \u00c9dgar Ch\u00e1irez",
         "winner": "Tim Elliott",
@@ -356732,7 +356732,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-09-10T18:52:32",
-      "p_calibrated": 0.3206,
+      "p_calibrated": 0.3174,
       "outcome": {
         "fight": "Kwon Won Il vs Apollo Gomes",
         "winner": "Apollo Gomes",
@@ -362989,7 +362989,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-09-13T00:04:02",
-      "p_calibrated": 0.3206,
+      "p_calibrated": 0.3174,
       "outcome": {
         "fight": "Tommy McMillen vs Marwan Rahiki",
         "winner": "Tommy McMillen",
@@ -363019,7 +363019,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-09-13T00:04:02",
-      "p_calibrated": 0.3206,
+      "p_calibrated": 0.3174,
       "outcome": {
         "fight": "Jean Silva vs Jose Miguel Delgado",
         "winner": "Jean Silva",
@@ -363433,7 +363433,7 @@
       "result": "won",
       "payout_units": 4.39,
       "recorded_at": "2026-09-13T16:26:12",
-      "p_calibrated": 0.3206,
+      "p_calibrated": 0.3174,
       "outcome": {
         "fight": "Jessie Rosas vs Sean King III",
         "winner": "Sean King III",
@@ -366486,7 +366486,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-09-14T19:27:43",
-      "p_calibrated": 0.4415,
+      "p_calibrated": 0.4353,
       "outcome": {
         "fight": "Kwon Won Il vs Apollo Gomes",
         "winner": "Apollo Gomes",
@@ -366516,7 +366516,7 @@
       "result": "won",
       "payout_units": 2.97,
       "recorded_at": "2026-09-14T19:27:43",
-      "p_calibrated": 0.4365,
+      "p_calibrated": 0.4313,
       "outcome": {
         "fight": "Oscar Ravello vs Igor Cavalcanti",
         "winner": "Igor Cavalcanti",
@@ -366546,7 +366546,7 @@
       "result": "won",
       "payout_units": 3.65,
       "recorded_at": "2026-09-14T19:27:43",
-      "p_calibrated": 0.3206,
+      "p_calibrated": 0.3174,
       "outcome": {
         "fight": "Zevan Hunt vs Mayton Perea",
         "winner": "Mayton Perea",
@@ -366576,7 +366576,7 @@
       "result": "won",
       "payout_units": 4.08,
       "recorded_at": "2026-09-14T19:27:43",
-      "p_calibrated": 0.3206,
+      "p_calibrated": 0.3174,
       "outcome": {
         "fight": "Yousri Belgaroui vs Djorden Santos",
         "winner": "Yousri Belgaroui",
@@ -366606,7 +366606,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-09-14T19:27:43",
-      "p_calibrated": 0.3206,
+      "p_calibrated": 0.3174,
       "outcome": {
         "fight": "Kwon Won Il vs Apollo Gomes",
         "winner": "Apollo Gomes",
@@ -367725,7 +367725,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-09-15T14:06:34",
-      "p_calibrated": 0.4415,
+      "p_calibrated": 0.4353,
       "outcome": {
         "fight": "Hugo Guillon vs Luis Hernandez",
         "winner": "Luis Hernandez",
@@ -367755,7 +367755,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-09-15T14:06:34",
-      "p_calibrated": 0.3206,
+      "p_calibrated": 0.3174,
       "outcome": {
         "fight": "Antonio Monteiro vs Tyshawn Williams",
         "winner": "Tyshawn Williams",
@@ -369628,7 +369628,7 @@
       "result": "won",
       "payout_units": 4.08,
       "recorded_at": "2026-09-16T07:45:40",
-      "p_calibrated": 0.3206,
+      "p_calibrated": 0.3174,
       "outcome": {
         "fight": "Ednilson Santos vs Akbar Abdullaev",
         "winner": "Akbar Abdullaev",
@@ -385078,7 +385078,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-09-17T18:19:55",
-      "p_calibrated": 0.4415,
+      "p_calibrated": 0.4353,
       "outcome": {
         "fight": "Alonzo Menifield vs Iwo Baraniewski",
         "winner": "Alonzo Menifield",
@@ -385108,7 +385108,7 @@
       "result": "won",
       "payout_units": 2.97,
       "recorded_at": "2026-09-17T18:19:55",
-      "p_calibrated": 0.4365,
+      "p_calibrated": 0.4313,
       "outcome": {
         "fight": "Ozzy Diaz vs Ryan Gandra",
         "winner": "Ryan Gandra",
@@ -385138,7 +385138,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-09-17T18:19:55",
-      "p_calibrated": 0.4152,
+      "p_calibrated": 0.4112,
       "outcome": {
         "fight": "Edmen Shahbazyan vs Brunno Ferreira",
         "winner": "Edmen Shahbazyan",
@@ -385168,7 +385168,7 @@
       "result": "won",
       "payout_units": 4.0,
       "recorded_at": "2026-09-17T18:19:55",
-      "p_calibrated": 0.3206,
+      "p_calibrated": 0.3174,
       "outcome": {
         "fight": "Arman Tsarukyan vs Mauricio Ruffy",
         "winner": "Arman Tsarukyan",
@@ -385198,7 +385198,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-09-17T18:19:55",
-      "p_calibrated": 0.3206,
+      "p_calibrated": 0.3174,
       "outcome": {
         "fight": "Michael Aswell vs JooSang Yoo",
         "winner": "Michael Aswell",
@@ -385228,7 +385228,7 @@
       "result": "won",
       "payout_units": 4.55,
       "recorded_at": "2026-09-17T18:19:55",
-      "p_calibrated": 0.3206,
+      "p_calibrated": 0.3174,
       "outcome": {
         "fight": "Patricio Pitbull vs Dooho Choi",
         "winner": "Patricio Pitbull",
@@ -401316,7 +401316,7 @@
       "result": "won",
       "payout_units": 2.34,
       "recorded_at": "2026-09-21T19:33:23",
-      "p_calibrated": 0.4415,
+      "p_calibrated": 0.4353,
       "voided": false,
       "outcome": {
         "fight": "Damian Piwowarczyk vs Emilio Quissua",
@@ -401347,7 +401347,7 @@
       "result": "won",
       "payout_units": 2.9,
       "recorded_at": "2026-09-21T19:33:23",
-      "p_calibrated": 0.4415,
+      "p_calibrated": 0.4353,
       "voided": false,
       "outcome": {
         "fight": "Allen Frye Jr. vs RJ Harris",
@@ -401378,7 +401378,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-09-21T19:33:23",
-      "p_calibrated": 0.3206,
+      "p_calibrated": 0.3174,
       "voided": false,
       "outcome": {
         "fight": "Jaden Ortega vs Alvi Dasuyev",
@@ -401409,7 +401409,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-09-21T19:33:23",
-      "p_calibrated": 0.3206,
+      "p_calibrated": 0.3174,
       "voided": false,
       "outcome": {
         "fight": "Callum Connor vs Piero Guaylupo",
@@ -424162,7 +424162,7 @@
       "result": "won",
       "payout_units": 2.35,
       "recorded_at": "2026-10-22T22:45:44",
-      "p_calibrated": 0.4415,
+      "p_calibrated": 0.4353,
       "outcome": {
         "fight": "Azamat Murzakanov vs Dominick Reyes",
         "winner": "Dominick Reyes",
@@ -424192,7 +424192,7 @@
       "result": "won",
       "payout_units": 2.34,
       "recorded_at": "2026-10-22T22:45:44",
-      "p_calibrated": 0.4415,
+      "p_calibrated": 0.4353,
       "outcome": {
         "fight": "Nikita Krylov vs Abdul-Rakhman Yakhyaev",
         "winner": "Abdul-Rakhman Yakhyaev",
@@ -424222,7 +424222,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-10-22T22:45:44",
-      "p_calibrated": 0.4365,
+      "p_calibrated": 0.4313,
       "outcome": {
         "fight": "Abubakar Vagaev vs Jacob Malkoun",
         "winner": "Abubakar Vagaev",
@@ -424252,7 +424252,7 @@
       "result": "won",
       "payout_units": 2.97,
       "recorded_at": "2026-10-22T22:45:44",
-      "p_calibrated": 0.4365,
+      "p_calibrated": 0.4313,
       "outcome": {
         "fight": "Abus Magomedov vs Cam Rowston",
         "winner": "Abus Magomedov",
@@ -424282,7 +424282,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-10-22T22:45:44",
-      "p_calibrated": 0.3206,
+      "p_calibrated": 0.3174,
       "outcome": {
         "fight": "Grant Dawson vs Nurullo Aliev",
         "winner": "Grant Dawson",
@@ -424312,7 +424312,7 @@
       "result": "won",
       "payout_units": 4.02,
       "recorded_at": "2026-10-22T22:45:44",
-      "p_calibrated": 0.3206,
+      "p_calibrated": 0.3174,
       "outcome": {
         "fight": "Noah Gugnon vs Kody Steele",
         "winner": "Kody Steele",
@@ -424342,7 +424342,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-10-22T22:45:44",
-      "p_calibrated": 0.3206,
+      "p_calibrated": 0.3174,
       "outcome": {
         "fight": "Alexander Volkanovski vs Movsar Evloev",
         "winner": "Alexander Volkanovski",
@@ -424372,7 +424372,7 @@
       "result": "won",
       "payout_units": 4.51,
       "recorded_at": "2026-10-22T22:45:44",
-      "p_calibrated": 0.3206,
+      "p_calibrated": 0.3174,
       "outcome": {
         "fight": "Aaron Pico vs Losene Keita",
         "winner": "Aaron Pico",
@@ -451734,7 +451734,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-10-26T16:46:58",
-      "p_calibrated": 0.401,
+      "p_calibrated": 0.3978,
       "voided": false,
       "price_provenance": {
         "inferred": true,
@@ -451765,7 +451765,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-10-26T16:46:58",
-      "p_calibrated": 0.3939,
+      "p_calibrated": 0.3911,
       "voided": false,
       "outcome": {
         "fight": "Joe Kropschot vs Nick Klein",
@@ -451796,7 +451796,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-10-26T16:46:58",
-      "p_calibrated": 0.3512,
+      "p_calibrated": 0.3509,
       "voided": false,
       "outcome": {
         "fight": "Mickey Gall vs Zach Reese",
@@ -451827,7 +451827,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-10-26T16:46:58",
-      "p_calibrated": 0.3206,
+      "p_calibrated": 0.3174,
       "outcome": {
         "fight": "Merab Dvalishvili vs Petr Yan",
         "winner": "Petr Yan",
@@ -451857,7 +451857,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-10-26T16:46:58",
-      "p_calibrated": 0.3206,
+      "p_calibrated": 0.3174,
       "voided": false,
       "outcome": {
         "fight": "Randy Brown vs Jacobe Smith",
@@ -451888,7 +451888,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-10-26T16:46:58",
-      "p_calibrated": 0.3206,
+      "p_calibrated": 0.3174,
       "voided": false,
       "outcome": {
         "fight": "Theodor Berggren vs Rodrigo Sezinando",
@@ -451919,7 +451919,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-10-26T16:46:58",
-      "p_calibrated": 0.3206,
+      "p_calibrated": 0.3174,
       "voided": false,
       "outcome": {
         "fight": "Renato Moicano vs Tom Nolan",
@@ -451950,7 +451950,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-10-26T16:46:58",
-      "p_calibrated": 0.3206,
+      "p_calibrated": 0.3174,
       "voided": false,
       "outcome": {
         "fight": "Dakota Hope vs Francis Marshall",
@@ -495189,7 +495189,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-11-01T00:46:02",
-      "p_calibrated": 0.3206,
+      "p_calibrated": 0.3174,
       "outcome": {
         "fight": "Jean-Paul Lebosnoyani vs Farman Hasanov",
         "winner": "Jean-Paul Lebosnoyani",
@@ -502292,31 +502292,6 @@
     {
       "source": "nba_pa_pa_under_30.5",
       "sport": "NBA",
-      "player_or_matchup": "tyrese haliburton",
-      "market": "PA_UNDER_30.5",
-      "prob": 0.653,
-      "fair_american": -188,
-      "p_predicted": 0.653,
-      "matchup": "ATL @ IND",
-      "date": "2026-11-03",
-      "pick_id": "nba_pa_pa_under_30_5|NBA|tyrese_haliburton|PA_UNDER_30_5|2026-11-03",
-      "settled": false,
-      "result": "pending",
-      "payout_units": null,
-      "recorded_at": "2026-11-02T19:02:04",
-      "p_calibrated": 0.6724,
-      "price_provenance": {
-        "inferred": true,
-        "class": "C",
-        "kind": "model_fair"
-      },
-      "voided": true,
-      "voided_at": "2026-11-08T01:17:43",
-      "voided_reason": "unsettleable: no outcome feed within 4 days"
-    },
-    {
-      "source": "nba_pa_pa_under_30.5",
-      "sport": "NBA",
       "player_or_matchup": "donovan mitchell",
       "market": "PA_UNDER_30.5",
       "prob": 0.656,
@@ -502373,31 +502348,6 @@
         "class": "C",
         "kind": "model_fair"
       }
-    },
-    {
-      "source": "nba_pa_pa_under_28.5",
-      "sport": "NBA",
-      "player_or_matchup": "kyrie irving",
-      "market": "PA_UNDER_28.5",
-      "prob": 0.647,
-      "fair_american": -183,
-      "p_predicted": 0.647,
-      "matchup": "SAC @ DAL",
-      "date": "2026-11-03",
-      "pick_id": "nba_pa_pa_under_28_5|NBA|kyrie_irving|PA_UNDER_28_5|2026-11-03",
-      "settled": false,
-      "result": "pending",
-      "payout_units": null,
-      "recorded_at": "2026-11-02T19:02:04",
-      "p_calibrated": 0.6472,
-      "price_provenance": {
-        "inferred": true,
-        "class": "C",
-        "kind": "model_fair"
-      },
-      "voided": true,
-      "voided_at": "2026-11-08T01:17:43",
-      "voided_reason": "unsettleable: no outcome feed within 4 days"
     },
     {
       "source": "nba_pa_pa_under_27.5",
@@ -502458,31 +502408,6 @@
         "class": "C",
         "kind": "model_fair"
       }
-    },
-    {
-      "source": "nba_pa_pa_under_26.5",
-      "sport": "NBA",
-      "player_or_matchup": "ja morant",
-      "market": "PA_UNDER_26.5",
-      "prob": 0.673,
-      "fair_american": -205,
-      "p_predicted": 0.673,
-      "matchup": "POR @ DEN",
-      "date": "2026-11-03",
-      "pick_id": "nba_pa_pa_under_26_5|NBA|ja_morant|PA_UNDER_26_5|2026-11-03",
-      "settled": false,
-      "result": "pending",
-      "payout_units": null,
-      "recorded_at": "2026-11-02T19:02:04",
-      "p_calibrated": 0.6855,
-      "price_provenance": {
-        "inferred": true,
-        "class": "C",
-        "kind": "model_fair"
-      },
-      "voided": true,
-      "voided_at": "2026-11-08T01:17:43",
-      "voided_reason": "unsettleable: no outcome feed within 4 days"
     },
     {
       "source": "nba_pa_pa_under_25.0",
@@ -502663,31 +502588,6 @@
         "class": "C",
         "kind": "model_fair"
       }
-    },
-    {
-      "source": "nba_pr_pr_under_37.0",
-      "sport": "NBA",
-      "player_or_matchup": "anthony edwards",
-      "market": "PR_UNDER_37.0",
-      "prob": 0.631,
-      "fair_american": -171,
-      "p_predicted": 0.631,
-      "matchup": "MIL @ MIN",
-      "date": "2026-11-03",
-      "pick_id": "nba_pr_pr_under_37_0|NBA|anthony_edwards|PR_UNDER_37_0|2026-11-03",
-      "settled": false,
-      "result": "pending",
-      "payout_units": null,
-      "recorded_at": "2026-11-02T19:02:04",
-      "p_calibrated": 0.5373,
-      "price_provenance": {
-        "inferred": true,
-        "class": "C",
-        "kind": "model_fair"
-      },
-      "voided": true,
-      "voided_at": "2026-11-08T01:17:43",
-      "voided_reason": "unsettleable: no outcome feed within 4 days"
     },
     {
       "source": "nba_pr_pr_under_35.0",
@@ -503174,7 +503074,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-11-02T20:06:37",
-      "p_calibrated": 0.4415,
+      "p_calibrated": 0.4353,
       "price_provenance": {
         "inferred": true,
         "class": "C",
@@ -503205,7 +503105,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-11-02T20:06:37",
-      "p_calibrated": 0.4223,
+      "p_calibrated": 0.4179,
       "price_provenance": {
         "inferred": true,
         "class": "C",
@@ -503236,7 +503136,7 @@
       "result": "won",
       "payout_units": 3.7,
       "recorded_at": "2026-11-02T20:06:37",
-      "p_calibrated": 0.3206,
+      "p_calibrated": 0.3174,
       "price_provenance": {
         "inferred": true,
         "class": "C",
@@ -503267,7 +503167,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-11-02T20:06:37",
-      "p_calibrated": 0.3206,
+      "p_calibrated": 0.3174,
       "price_provenance": {
         "inferred": true,
         "class": "C",
@@ -503298,7 +503198,7 @@
       "result": "won",
       "payout_units": 4.35,
       "recorded_at": "2026-11-02T20:06:37",
-      "p_calibrated": 0.3206,
+      "p_calibrated": 0.3174,
       "outcome": {
         "fight": "Abus Magomedov vs Cam Rowston",
         "winner": "Abus Magomedov",
@@ -503328,7 +503228,7 @@
       "result": "won",
       "payout_units": 4.49,
       "recorded_at": "2026-11-02T20:06:37",
-      "p_calibrated": 0.3206,
+      "p_calibrated": 0.3174,
       "price_provenance": {
         "inferred": true,
         "class": "C",
@@ -505558,7 +505458,7 @@
       "result": "won",
       "payout_units": 4.35,
       "recorded_at": "2026-11-03T12:20:02",
-      "p_calibrated": 0.3206,
+      "p_calibrated": 0.3174,
       "price_provenance": {
         "inferred": true,
         "class": "C",
@@ -505591,7 +505491,7 @@
       "result": "won",
       "payout_units": 3.7,
       "recorded_at": "2026-11-03T16:20:23",
-      "p_calibrated": 0.3206,
+      "p_calibrated": 0.3174,
       "price_provenance": {
         "inferred": true,
         "class": "C",
@@ -514955,7 +514855,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-11-04T01:32:28",
-      "p_calibrated": 0.3206,
+      "p_calibrated": 0.3174,
       "outcome": {
         "fight": "Jose Delano vs Murtazali Magomedov",
         "winner": "Murtazali Magomedov",
@@ -549152,7 +549052,7 @@
       "result": "won",
       "payout_units": 4.53,
       "recorded_at": "2026-11-05T17:01:12",
-      "p_calibrated": 0.3206,
+      "p_calibrated": 0.3174,
       "outcome": {
         "fight": "Austin Bashi vs Carlos Calderon",
         "winner": "Austin Bashi",
@@ -564608,7 +564508,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-11-07T01:42:01",
-      "p_calibrated": 0.4415,
+      "p_calibrated": 0.4353,
       "outcome": {
         "fight": "Billy Elekana vs Lucas Fernando",
         "winner": "Lucas Fernando",
@@ -564641,7 +564541,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-11-07T01:42:01",
-      "p_calibrated": 0.4223,
+      "p_calibrated": 0.4179,
       "outcome": {
         "fight": "Wellington Turman vs Seokhyeon Ko",
         "winner": "Seokhyeon Ko",
@@ -564674,7 +564574,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-11-07T01:42:01",
-      "p_calibrated": 0.3206,
+      "p_calibrated": 0.3174,
       "outcome": {
         "fight": "Wellington Turman vs Seokhyeon Ko",
         "winner": "Seokhyeon Ko",
@@ -570326,7 +570226,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-11-08T01:19:07",
-      "p_calibrated": 0.4223,
+      "p_calibrated": 0.4179,
       "outcome": {
         "fight": "Wellington Turman vs Seokhyeon Ko",
         "winner": "Seokhyeon Ko",
@@ -570359,7 +570259,7 @@
       "result": "won",
       "payout_units": 3.7,
       "recorded_at": "2026-11-08T01:19:07",
-      "p_calibrated": 0.3206,
+      "p_calibrated": 0.3174,
       "outcome": {
         "fight": "Jonny Parsons vs Jos\u00e9 Souza",
         "winner": "Jos\u00e9 Souza",
@@ -570392,7 +570292,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-11-08T01:19:07",
-      "p_calibrated": 0.3206,
+      "p_calibrated": 0.3174,
       "outcome": {
         "fight": "Wellington Turman vs Seokhyeon Ko",
         "winner": "Seokhyeon Ko",
@@ -570425,7 +570325,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-11-08T01:19:07",
-      "p_calibrated": 0.3206,
+      "p_calibrated": 0.3174,
       "outcome": {
         "fight": "Jose Delano vs Murtazali Magomedov",
         "winner": "Murtazali Magomedov",
@@ -570458,7 +570358,7 @@
       "result": "won",
       "payout_units": 4.53,
       "recorded_at": "2026-11-08T01:19:07",
-      "p_calibrated": 0.3206,
+      "p_calibrated": 0.3174,
       "outcome": {
         "fight": "Austin Bashi vs Carlos Calderon",
         "winner": "Austin Bashi",
@@ -574898,7 +574798,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-11-08T18:55:35",
-      "p_calibrated": 0.4415,
+      "p_calibrated": 0.4353,
       "outcome": {
         "fight": "Billy Elekana vs Lucas Fernando",
         "winner": "Lucas Fernando",
@@ -582248,7 +582148,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-11-09T01:31:34",
-      "p_calibrated": 0.4152,
+      "p_calibrated": 0.4112,
       "outcome": {
         "fight": "Wellington Turman vs Seokhyeon Ko",
         "winner": "Seokhyeon Ko",
@@ -582281,7 +582181,7 @@
       "result": "won",
       "payout_units": 3.72,
       "recorded_at": "2026-11-09T01:31:34",
-      "p_calibrated": 0.3206,
+      "p_calibrated": 0.3174,
       "outcome": {
         "fight": "Jonny Parsons vs Jos\u00e9 Souza",
         "winner": "Jos\u00e9 Souza",
@@ -582314,7 +582214,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-11-09T01:31:34",
-      "p_calibrated": 0.3206,
+      "p_calibrated": 0.3174,
       "outcome": {
         "fight": "Wellington Turman vs Seokhyeon Ko",
         "winner": "Seokhyeon Ko",
@@ -582347,7 +582247,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-11-09T01:31:34",
-      "p_calibrated": 0.3206,
+      "p_calibrated": 0.3174,
       "outcome": {
         "fight": "Jose Delano vs Murtazali Magomedov",
         "winner": "Murtazali Magomedov",
@@ -583510,7 +583410,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-11-09T09:55:33",
-      "p_calibrated": 0.4415,
+      "p_calibrated": 0.4353,
       "outcome": {
         "fight": "Billy Elekana vs Lucas Fernando",
         "winner": "Lucas Fernando",
@@ -586991,7 +586891,7 @@
       "result": "won",
       "payout_units": 2.94,
       "recorded_at": "2026-11-09T23:34:22",
-      "p_calibrated": 0.4415,
+      "p_calibrated": 0.4353,
       "voided": false,
       "outcome": {
         "fight": "Cesar Almeida vs Donte Johnson",
@@ -587022,7 +586922,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-11-09T23:34:22",
-      "p_calibrated": 0.4415,
+      "p_calibrated": 0.4353,
       "voided": false,
       "outcome": {
         "fight": "Caio Borralho vs Yousri Belgaroui",
@@ -587053,7 +586953,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-11-09T23:34:22",
-      "p_calibrated": 0.3206,
+      "p_calibrated": 0.3174,
       "voided": false,
       "outcome": {
         "fight": "Kevin Holland vs Uro\u0161 Medi\u0107",
@@ -587084,7 +586984,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-11-09T23:34:22",
-      "p_calibrated": 0.3206,
+      "p_calibrated": 0.3174,
       "voided": false,
       "outcome": {
         "fight": "Stephen Thompson vs Charles Radtke",
@@ -587115,7 +587015,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-11-09T23:34:22",
-      "p_calibrated": 0.3206,
+      "p_calibrated": 0.3174,
       "voided": false,
       "outcome": {
         "fight": "Evan Elder vs Samuel Sanches",
@@ -587146,7 +587046,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-11-09T23:34:22",
-      "p_calibrated": 0.3206,
+      "p_calibrated": 0.3174,
       "voided": false,
       "outcome": {
         "fight": "Drew Dober vs Chris Duncan",
@@ -587177,7 +587077,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-11-09T23:34:22",
-      "p_calibrated": 0.3206,
+      "p_calibrated": 0.3174,
       "voided": false,
       "outcome": {
         "fight": "Jared Gordon vs Melquizael Costa",
@@ -587208,7 +587108,7 @@
       "result": "won",
       "payout_units": 4.29,
       "recorded_at": "2026-11-09T23:34:22",
-      "p_calibrated": 0.3206,
+      "p_calibrated": 0.3174,
       "voided": false,
       "outcome": {
         "fight": "Jim Miller vs Terrance McKinney",
@@ -624253,7 +624153,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-11-14T01:35:55",
-      "p_calibrated": 0.4415,
+      "p_calibrated": 0.4353,
       "outcome": {
         "fight": "Caio Borralho vs Yousri Belgaroui",
         "winner": "Caio Borralho",
@@ -624286,7 +624186,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-11-14T01:35:55",
-      "p_calibrated": 0.3206,
+      "p_calibrated": 0.3174,
       "outcome": {
         "fight": "Kevin Holland vs Uro\u0161 Medi\u0107",
         "winner": "",
@@ -624319,7 +624219,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-11-14T01:35:55",
-      "p_calibrated": 0.3206,
+      "p_calibrated": 0.3174,
       "outcome": {
         "fight": "Stephen Thompson vs Charles Radtke",
         "winner": "Stephen Thompson",
@@ -624352,7 +624252,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-11-14T01:35:55",
-      "p_calibrated": 0.3206,
+      "p_calibrated": 0.3174,
       "outcome": {
         "fight": "Evan Elder vs Samuel Sanches",
         "winner": "Evan Elder",
@@ -624385,7 +624285,7 @@
       "result": "won",
       "payout_units": 4.04,
       "recorded_at": "2026-11-14T01:35:55",
-      "p_calibrated": 0.3206,
+      "p_calibrated": 0.3174,
       "outcome": {
         "fight": "Cesar Almeida vs Donte Johnson",
         "winner": "Cesar Almeida",
@@ -624418,7 +624318,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-11-14T01:35:55",
-      "p_calibrated": 0.3206,
+      "p_calibrated": 0.3174,
       "outcome": {
         "fight": "Drew Dober vs Chris Duncan",
         "winner": "Chris Duncan",
@@ -624451,7 +624351,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-11-14T01:35:55",
-      "p_calibrated": 0.3206,
+      "p_calibrated": 0.3174,
       "outcome": {
         "fight": "Jared Gordon vs Melquizael Costa",
         "winner": "Melquizael Costa",
@@ -624484,7 +624384,7 @@
       "result": "won",
       "payout_units": 4.29,
       "recorded_at": "2026-11-14T01:35:55",
-      "p_calibrated": 0.3206,
+      "p_calibrated": 0.3174,
       "outcome": {
         "fight": "Jim Miller vs Terrance McKinney",
         "winner": "Terrance McKinney",
@@ -630531,7 +630431,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-11-15T01:46:00",
-      "p_calibrated": 0.3206,
+      "p_calibrated": 0.3174,
       "outcome": {
         "fight": "Evan Elder vs Samuel Sanches",
         "winner": "Evan Elder",
@@ -630564,7 +630464,7 @@
       "result": "won",
       "payout_units": 4.04,
       "recorded_at": "2026-11-15T01:46:00",
-      "p_calibrated": 0.3206,
+      "p_calibrated": 0.3174,
       "outcome": {
         "fight": "Cesar Almeida vs Donte Johnson",
         "winner": "Cesar Almeida",
@@ -630597,7 +630497,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-11-15T01:46:00",
-      "p_calibrated": 0.3206,
+      "p_calibrated": 0.3174,
       "outcome": {
         "fight": "Drew Dober vs Chris Duncan",
         "winner": "Chris Duncan",
@@ -630630,7 +630530,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-11-15T01:46:00",
-      "p_calibrated": 0.3206,
+      "p_calibrated": 0.3174,
       "outcome": {
         "fight": "Jared Gordon vs Melquizael Costa",
         "winner": "Melquizael Costa",
@@ -630663,7 +630563,7 @@
       "result": "won",
       "payout_units": 4.29,
       "recorded_at": "2026-11-15T01:46:00",
-      "p_calibrated": 0.3206,
+      "p_calibrated": 0.3174,
       "outcome": {
         "fight": "Jim Miller vs Terrance McKinney",
         "winner": "Terrance McKinney",
@@ -634912,6 +634812,98 @@
       "payout_units": null,
       "recorded_at": "2026-11-15T16:38:33",
       "p_calibrated": 0.7152
+    },
+    {
+      "pick_id": "lock_of_day|MLB|MIL___TBR|MIL_ML|2026-10-28",
+      "source": "lock_of_day",
+      "sport": "MLB",
+      "player_or_matchup": "MIL @ TBR",
+      "market": "MIL_ML",
+      "prob": 0.6609,
+      "edge_pct": 8.2,
+      "fair_american": -157,
+      "date": "2026-10-28",
+      "recorded_at": "2026-10-28T15:36:12",
+      "settled": true,
+      "result": "won",
+      "payout_units": 0.0215,
+      "settled_at": "2026-10-29T16:31:26",
+      "_bootstrapped_from": "locks_history",
+      "voided": true,
+      "voided_at": "2026-11-15T16:41:02",
+      "voided_reason": "duplicate wager: same-day same-result copy (case-variant market); collapsed to the first copy",
+      "price_provenance": {
+        "inferred": true,
+        "class": "C",
+        "kind": "model_fair"
+      },
+      "p_calibrated": 0.6609
+    },
+    {
+      "source": "ufc_r1_fight_r1_finish_yes",
+      "sport": "UFC",
+      "player_or_matchup": "Caio Borralho vs Yousri Belgaroui",
+      "market": "FIGHT_R1_FINISH_YES",
+      "prob": 0.254,
+      "fair_american": 294,
+      "p_predicted": 0.254,
+      "matchup": "Caio Borralho vs Yousri Belgaroui",
+      "price_provenance": {
+        "inferred": false,
+        "class": "C",
+        "kind": "model_fair"
+      },
+      "date": "2026-11-15",
+      "pick_id": "ufc_r1_fight_r1_finish_yes|UFC|Caio_Borralho_vs_Yousri_Belgaroui|FIGHT_R1_FINISH_YES|2026-11-15",
+      "settled": false,
+      "result": "pending",
+      "payout_units": null,
+      "recorded_at": "2026-11-15T16:41:02",
+      "p_calibrated": 0.4353
+    },
+    {
+      "source": "ufc_r1_fight_r1_finish_yes",
+      "sport": "UFC",
+      "player_or_matchup": "Kevin Holland vs Uro\u0161 Medi\u0107",
+      "market": "FIGHT_R1_FINISH_YES",
+      "prob": 0.208,
+      "fair_american": 380,
+      "p_predicted": 0.208,
+      "matchup": "Kevin Holland vs Uro\u0161 Medi\u0107",
+      "price_provenance": {
+        "inferred": false,
+        "class": "C",
+        "kind": "model_fair"
+      },
+      "date": "2026-11-15",
+      "pick_id": "ufc_r1_fight_r1_finish_yes|UFC|Kevin_Holland_vs_Uro__Medi_|FIGHT_R1_FINISH_YES|2026-11-15",
+      "settled": false,
+      "result": "pending",
+      "payout_units": null,
+      "recorded_at": "2026-11-15T16:41:02",
+      "p_calibrated": 0.3174
+    },
+    {
+      "source": "ufc_r1_fight_r1_finish_yes",
+      "sport": "UFC",
+      "player_or_matchup": "Stephen Thompson vs Charles Radtke",
+      "market": "FIGHT_R1_FINISH_YES",
+      "prob": 0.205,
+      "fair_american": 389,
+      "p_predicted": 0.205,
+      "matchup": "Stephen Thompson vs Charles Radtke",
+      "price_provenance": {
+        "inferred": false,
+        "class": "C",
+        "kind": "model_fair"
+      },
+      "date": "2026-11-15",
+      "pick_id": "ufc_r1_fight_r1_finish_yes|UFC|Stephen_Thompson_vs_Charles_Radtke|FIGHT_R1_FINISH_YES|2026-11-15",
+      "settled": false,
+      "result": "pending",
+      "payout_units": null,
+      "recorded_at": "2026-11-15T16:41:02",
+      "p_calibrated": 0.3174
     }
   ],
   "note": "Unified pick ledger -- records every pick the model surfaces (top_25 board, whales, consensus, unders, sharp action, locks, POD) and settles each against actual outcomes. Per-source W-L feeds back into calibration so the model learns which modules are reliable. THIS is the training signal."
