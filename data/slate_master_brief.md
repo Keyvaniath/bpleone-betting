@@ -1,27 +1,30 @@
 # EdgeStat — Tonight's Master Brief
-_Generated 2026-11-15T01:44:39 UTC_
+_Generated 2026-11-15T16:12:58 UTC_
 
 ## Slate Quality
 - **Tier:** NO_ACTION_NIGHT
-- **Score:** -34
+- **Score:** -37
 - **Advisory:** STAND DOWN. Slate has no aligned conviction. Skip betting tonight or watch only.
 - **Total LOCKs:** 0
-- **Total STRONG:** 11
-- **Total FADES:** 78
+- **Total STRONG:** 15
+- **Total FADES:** 97
 
 ## Top 5 Curated Picks
-1. **GOLF / Brian Harman** (GOLF_PLAYER, score=165.07)
-   - Play: Brian Harman (PLAYER_STRONG)
+1. **GOLF / Trace Crowe** (GOLF_PLAYER, score=176.64)
+   - Play: Trace Crowe (PLAYER_STRONG)
    - Rationale: Cross-sport top pick (GOLF_PLAYER)
-2. **GOLF / Erik van Rooyen** (GOLF_PLAYER, score=152.21)
-   - Play: Erik van Rooyen (PLAYER_STRONG)
+2. **GOLF / Chad Ramey** (GOLF_PLAYER, score=145.5)
+   - Play: Chad Ramey (PLAYER_STRONG)
    - Rationale: Cross-sport top pick (GOLF_PLAYER)
+3. **NBA / MIL** (NBA_TEAM, score=60.0)
+   - Play: MIL (TEAM_STRONG)
+   - Rationale: Cross-sport top pick (NBA_TEAM)
 
 ## Top Events Board
 - **GOLF** / ? (TOURNAMENT_STRONG)
-  - Brian Harman top 10 finish
-  - Erik van Rooyen top 10 finish
   - Trace Crowe top 10 finish
+  - Chad Ramey top 10 finish
+  - Sami Välimäki top 10 finish
 
 ## Slate ROI Projection
 - **Picks:** 0
@@ -30,13 +33,13 @@ _Generated 2026-11-15T01:44:39 UTC_
 - **Expected P&L on $100:** $0.0
 
 ## Top Fades
-- **NBA** / CHI (TEAM_FADE)
+- **NBA** / WAS (TEAM_FADE)
   - Fade angle: team total UNDER
-- **NBA** / BKN (TEAM_FADE)
+- **NBA** / TOR (TEAM_FADE)
   - Fade angle: team total UNDER
-- **NBA** / DET (TEAM_FADE)
+- **NBA** / CHA (TEAM_FADE)
   - Fade angle: team total UNDER
-- **NBA** / NOP (TEAM_FADE)
+- **NBA** / SAC (TEAM_FADE)
   - Fade angle: team total UNDER
-- **NBA** / DEN (TEAM_FADE)
+- **NBA** / UTA (TEAM_FADE)
   - Fade angle: team total UNDER
