@@ -320,6 +320,12 @@ jobs:
                 # (2026-11-13) the line histories this run priced its desk from win (in a rebase --theirs
                 # is the commit being replayed): close-capture pushes often and must not swap them out
                 git checkout --theirs -- data/dk_lines_*.json 2>/dev/null || true
+                # (2026-11-15) board.json is DERIVED from the Alpha lock log + desk files. In a rebase, '--ours'
+                # is main, so on 11/15 a run that LOCKED the Alpha (its lock log merged cleanly) kept main's
+                # older provisional board.json: the live board showed a list the log no longer matched.
+                # Rebuild the board from the merged files before continuing (the lock log itself keeps
+                # main's copy on a conflict: the first lock wins, never re-priced).
+                (cd python && python board.py > /dev/null 2>&1 && python board.py --results-only > /dev/null 2>&1) || true
                 git add -A
                 # GUARD: a partial 'checkout --ours' can leave conflict markers in some
                 # files; 'git add -A' would stage them and 'rebase --continue' would COMMIT
