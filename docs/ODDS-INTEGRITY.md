@@ -1164,3 +1164,16 @@ sport, so leans stay logged on game day. Recorded as a negative result.
 Both verified on CI the same night: MEM won +0.62u, NYR (5-1) won +0.44u at the locked prices.
 Closes that night were taken 5-24 min before the early starts (close-capture dispatched every
 20 min by hand until 11:40 PM ET; the Worker dispatcher in TODO_BRANDON.md is the lasting fix).
+
+## 2026-11-15 (NFL Sunday) -- a lock the live board did not show; one real -32 pt CLV
+
+1. **Board out of step with the lock (fixed, main 5c67fe80).** The daily run locked the 11/15 Alpha at
+   11:12 AM ET (ATL +150, BUF -485, GB -142, NY -191, CIN -192); its board_alpha_log merged cleanly,
+   but its board.json conflicted with the 15:53 UTC heartbeat's, and `checkout --ours` in a rebase
+   takes MAIN's copy. The live board showed the provisional list (BUF #1) beside a log locked with
+   ATL #1 for ~25 minutes, until a heartbeat rebuilt it. All three committing workflows now rebuild
+   board.json from the merged files on a rebase conflict; the lock log keeps main's copy (first lock wins).
+2. **CLE -142 lean, close +276 (CLV -32 pts), won anyway.** Not a data error: our snapshots walk the
+   line from CLE -142 (00:58 AM ET) through -105 to +276 at tip, CLE on the second night of a
+   back-to-back with starters resting. A lean logged early on game day is exposed to NBA rest news.
+   One case: recorded, no rule change (the lean rule is not moved after seeing a result).
