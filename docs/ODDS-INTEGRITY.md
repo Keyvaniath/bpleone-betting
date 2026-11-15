@@ -1177,3 +1177,9 @@ Closes that night were taken 5-24 min before the early starts (close-capture dis
    line from CLE -142 (00:58 AM ET) through -105 to +276 at tip, CLE on the second night of a
    back-to-back with starters resting. A lean logged early on game day is exposed to NBA rest news.
    One case: recorded, no rule change (the lean rule is not moved after seeing a result).
+
+**Line-move signals, first read (11/15).** 61 scored against the close: average -0.24 pts (90% CI
+-1.34 to +0.54), beat the close 28 of 61. By sport: NCAAB 49 (+0.15, research-only desk), NHL 7
+(+0.69), NBA 5 (-5.30, one large move). No edge yet; judged at ~100 scored on the major sports. Shown
+on the board's results as a forward test, never picks (main e8bb8dd4). Also 11/15: the Alpha share
+post no longer drops a locked pick to fit 280 characters (it had left out #5 CIN).
