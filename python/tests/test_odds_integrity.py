@@ -1617,3 +1617,12 @@ def test_moneyline_with_event_id_settles_inside_the_cool_off():
     assert t._grade_ml_by_event_id(dict(p, event_id="999"), games) is None          # no fallback by name
     assert t._grade_ml_by_event_id(dict(p, market="TOTAL_OVER"), games) is None
     assert t._grade_ml_by_event_id(p, [dict(games[0], home_score=None)]) is None     # not final
+
+
+def test_alpha_post_never_drops_a_locked_pick():
+    import board
+    picks = [{"rank": i + 1, "sport": "NFL", "team": t, "book_american": px, "grade": g}
+             for i, (t, px, g) in enumerate([("ATL", 150, "B"), ("BUF", -485, "B"), ("GB", -142, "B"),
+                                             ("NY", -191, "C"), ("CIN", -192, "C")])]
+    p = board.alpha_post({"status": "locked", "locked_at": "2026-11-15T16:12:29", "picks": picks}, "2026-11-15", None)
+    assert p["n_picks"] == 5 and p["fits"] and all(t in p["text"] for t in ("ATL", "BUF", "GB", "NY", "CIN"))

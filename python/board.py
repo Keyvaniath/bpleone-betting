@@ -658,11 +658,19 @@ def alpha_post(alpha: Dict[str, Any], today_et: str, odds_observed_at: Optional[
     tail = [((f"DraftKings prices, locked {seen}. " if seen else "DraftKings prices. ") + " ".join(note)).strip(),
             "21+ · not betting advice", SITE_URL]
     text = "\n".join(lines + tail)
-    while len(text) > POST_MAX and len(lines) > 2:        # drop the lowest-ranked pick rather than any caveat
-        lines.pop()
+    if len(text) > POST_MAX:
+        # (2026-11-15) NEVER drop a pick: the post must show the whole locked list (the recap grades
+        # every one of them). 11/15's post silently left out #5 CIN. Shorten instead: grade letters
+        # with a one-line key, then all picks on one line.
+        short = [f"{p['rank']}. {p['sport']} {p['team']} {pod._amer(p['book_american'])} {p['grade']}" for p in picks]
+        key = ", ".join(f"{g} = {GRADE_WORD[g]}" for g in ("A", "B", "C") if any(p["grade"] == g for p in picks))
+        lines = [lines[0]] + short + [key]
         text = "\n".join(lines + tail)
+        if len(text) > POST_MAX:
+            lines = [lines[0], " · ".join(short), key]
+            text = "\n".join(lines + tail)
     return {"text": text, "chars": len(text), "max_chars": POST_MAX, "fits": len(text) <= POST_MAX,
-            "n_picks": len(lines) - 1,
+            "n_picks": len(picks),
             "note": "Draft only. Nothing posts automatically; a person copies this and presses send."}
 
 
