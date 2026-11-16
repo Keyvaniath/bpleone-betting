@@ -1627,3 +1627,19 @@ def test_alpha_post_never_drops_a_locked_pick():
                                              ("NY", -191, "C"), ("CIN", -192, "C")])]
     p = board.alpha_post({"status": "locked", "locked_at": "2026-11-15T16:12:29", "picks": picks}, "2026-11-15", None)
     assert p["n_picks"] == 5 and p["fits"] and all(t in p["text"] for t in ("ATL", "BUF", "GB", "NY", "CIN"))
+
+
+def test_nfl_depth_chart_qb1_lookup(monkeypatch):
+    import nfl_qbs as q
+    q._DEPTH_QB1.clear()
+    def fake_get(url):
+        if url.endswith("/teams/bal"):
+            return {"team": {"id": "33"}}
+        if "depthcharts" in url:
+            return {"items": [{"positions": {"qb": {"athletes": [
+                {"rank": 2, "athlete": {"$ref": "x/fag"}}, {"rank": 1, "athlete": {"$ref": "x/bri"}}]}}}]}
+        return {"displayName": {"x/bri": "Jacoby Brissett", "x/fag": "Joe Fagnano"}.get(url)}
+    monkeypatch.setattr(q, "_get", fake_get)
+    assert q.depth_qb1("BAL", 2026) == "Jacoby Brissett"
+    src = open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "game_lines_desk.py"), encoding="utf-8").read()
+    assert "ESPN's depth chart lists" in src and 'x["qb"] != x["regular"]' in src

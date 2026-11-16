@@ -286,6 +286,36 @@ def injuries(event_id: str) -> Dict[str, Dict[str, str]]:
     return out
 
 
+CORE = "https://sports.core.api.espn.com/v2/sports/football/leagues/nfl"
+_DEPTH_QB1: Dict[Any, Optional[str]] = {}
+
+
+def depth_qb1(team_abbr: str, season: int) -> Optional[str]:
+    """(2026-11-16) ESPN's depth-chart QB1 for a team (display name), or None. Asked only when the
+    model's projected starter is not the team's regular: the starts history cannot see a starter
+    returning from a long absence or a mid-week depth change (11/16 MNF: the model projected BAL's
+    last starter, Joe Fagnano; ESPN's chart listed Jacoby Brissett as QB1). Cached per team/season."""
+    key = (str(team_abbr or "").upper(), int(season))
+    if key in _DEPTH_QB1:
+        return _DEPTH_QB1[key]
+    name = None
+    try:
+        t = _get(f"{SITE}/teams/{key[0].lower()}") or {}
+        tid = ((t.get("team") or {}).get("id"))
+        d = _get(f"{CORE}/seasons/{key[1]}/teams/{tid}/depthcharts") if tid else None
+        for it in (d or {}).get("items") or []:
+            qb = (it.get("positions") or {}).get("qb")
+            ath = [x for x in (qb or {}).get("athletes") or [] if (x.get("athlete") or {}).get("$ref")]
+            if ath:
+                top = min(ath, key=lambda x: x.get("rank", 99))
+                name = (_get(str(top["athlete"]["$ref"])) or {}).get("displayName")
+                break
+    except Exception:
+        name = None
+    _DEPTH_QB1[key] = name
+    return name
+
+
 def project(state: QBState, team: str, inj: Dict[str, str]) -> Dict[str, Any]:
     """Who starts for `team`, given its QB injury lines. Returns the projected
     starter, his edge, and whether the situation is settled enough to bet."""

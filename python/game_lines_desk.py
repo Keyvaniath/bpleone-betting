@@ -968,6 +968,18 @@ def run_sport(sport: str) -> Dict[str, Any]:
             st = qm["state"]
             inj = nq.injuries(str(g["event_id"]))
             qbs = {"home": nq.project(st, h, inj.get(h, {})), "away": nq.project(st, a, inj.get(a, {}))}
+            # (2026-11-16) a projected starter who is NOT the team's regular is checked against ESPN's
+            # depth chart: a different QB1 who is not ruled out leaves the starter unsettled (no pick)
+            for sd, tm in (("home", h), ("away", a)):
+                x = qbs[sd]
+                if x.get("certain") and x.get("regular") and x.get("qb") and x["qb"] != x["regular"] and game_date:
+                    season = int(game_date[:4]) if int(game_date[5:7]) >= 8 else int(game_date[:4]) - 1
+                    qb1 = nq.depth_qb1(str(g.get(sd) or tm), season)
+                    st1 = str((inj.get(tm, {}) or {}).get(str(qb1 or "").lower(), ""))
+                    if qb1 and qb1.lower() != str(x["qb"]).lower() and not any(st1.startswith(s) for s in nq.OUT_STATUSES):
+                        x["certain"] = False
+                        x["note"] = f"ESPN's depth chart lists {qb1} as QB1; the model projects {x['qb']}"
+                        x["depth_qb1"] = qb1
             if qm["betas"]:
                 p_elo = _sig(qm["z"](_logit(p_elo), qbs["home"]["edge"] - qbs["away"]["edge"]))
             unsure = [f"{t}: {qbs[sd]['note']}" for sd, t in (("away", a), ("home", h)) if not qbs[sd]["certain"]]
