@@ -91,6 +91,21 @@ def _side_team(matchup: str, side: str) -> str:
     return parts[1] if side == "home" else parts[0]
 
 
+NBA_LEAN_HOUR_ET = 17      # (2026-11-16, Brandon's call) NBA leans only after the ~5 PM ET injury report
+
+
+def nba_lean_pending(game_date: Optional[str], now: Optional[dt.datetime] = None) -> bool:
+    """True when an NBA lean for `game_date` must wait for the official injury report: game day, before
+    NBA_LEAN_HOUR_ET Eastern. tools/b2b_study.py (11/16): favourites on the 2nd night of a back-to-back lost
+    1.6 pts more than others from our first price to the close (rest news lands late)."""
+    try:
+        from zoneinfo import ZoneInfo
+        e = (now or dt.datetime.now(dt.timezone.utc)).astimezone(ZoneInfo("America/New_York"))
+    except Exception:
+        e = (now or dt.datetime.now(dt.timezone.utc)) - dt.timedelta(hours=5)
+    return bool(game_date) and str(game_date) == e.date().isoformat() and e.hour < NBA_LEAN_HOUR_ET
+
+
 def _dk_only(q: Dict[str, Any], ok: bool, why: Optional[str]):
     """(2026-11-12 review) Every play, lean and board bet is described as a DraftKings
     price. ESPN's feed can name another provider for a game; such a quote is real but is
@@ -160,6 +175,8 @@ def _lean_candidates(gld: Dict[str, Any], now: dt.datetime) -> List[Dict[str, An
             q = dict(r.get("quote") or {}, american=ln["book_american"]) if r.get("quote") else {}
             ok, why = _q.actionable(q, now=now) if q else (False, "no_quote")
             ok, why = _dk_only(q, ok, why)
+            if ok and sport == "NBA" and nba_lean_pending(r.get("game_date"), now):
+                ok, why = False, "nba_lean_before_injury_report"
             out.append({
                 "sport": sport, "page": SPORT_PAGE.get(sport, "index.html"),
                 "matchup": r.get("matchup"), "team": ln.get("team") or _side_team(r.get("matchup"), ln.get("side")),

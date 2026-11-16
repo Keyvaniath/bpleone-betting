@@ -394,7 +394,14 @@ def build_games(gld: Dict[str, Any], odds: Dict[str, Any], now: dt.datetime, tod
                 "signal": _signal_view(sigs.get(f"{sport.lower()}:{eid}"), r.get("ml_home"), r.get("ml_away"), names),
             }
             c = cands.get((sport, eid))
-            if not ok_game:
+            if ok_game and c and c.get("not_actionable_reason") == "nba_lean_before_injury_report":
+                # (2026-11-16) NBA leans wait for the ~5 PM ET injury report: shown, not a bet, not logged,
+                # not eligible for the Alpha list until then
+                g.update(grade="HOLD", hold="NBA lean waits for the 5 PM ET injury report",
+                         reason=f"On hold until the 5 PM ET injury report: model lean {c.get('team')} "
+                                f"{pod._amer(c.get('book_american'))}. NBA leans are logged after the report, "
+                                "because rest news lands late (favourites on a back-to-back lose ~1.6 pts by the close).")
+            elif not ok_game:
                 # no live pre-start quote: say so and grade nothing (a stale price cannot back a bet
                 # OR a "no bet" verdict -- the D text below describes today's price, not an old one)
                 g.update(reason="No live DraftKings quote for this game right now (" + str(why_game).replace("_", " ")

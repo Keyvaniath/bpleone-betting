@@ -1662,3 +1662,14 @@ def test_week_post_counts_only_fully_graded_days_and_fits():
     assert p["days"] == 1 and p["to"] == "2026-11-12" and p["fits"]          # 11/13 still has an open bet
     assert "Alpha picks: 4-1, +1.12u, beat the close 1/5" in p["text"] and "losses included" in p["text"]
     assert board.week_post(None, "2026-11-14") is None
+
+
+def test_nba_leans_wait_for_the_5pm_injury_report(monkeypatch):
+    import play_of_day as pod
+    monkeypatch.setattr(pod, "NBA_LEAN_HOUR_ET", 17)
+    d = "2026-11-16"
+    assert pod.nba_lean_pending(d, dt.datetime(2026, 11, 16, 21, 59, tzinfo=dt.timezone.utc))      # 4:59 PM EST
+    assert not pod.nba_lean_pending(d, dt.datetime(2026, 11, 16, 22, 1, tzinfo=dt.timezone.utc))   # 5:01 PM EST
+    assert not pod.nba_lean_pending("2026-11-17", dt.datetime(2026, 11, 16, 15, 0, tzinfo=dt.timezone.utc))  # not game day
+    src = open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "board.py"), encoding="utf-8").read()
+    assert '"nba_lean_before_injury_report"' in src
