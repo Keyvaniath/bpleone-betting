@@ -1227,7 +1227,7 @@ def test_recap_post_is_the_last_fully_graded_alpha_day_losses_included():
                     {"date": "2026-11-12", "sport": "NHL", "team": "DAL", "book_american": -175, "grade": "C", "is_alpha": False, "result": "lost"}]}
     p = board.recap_post(R, "2026-11-14")            # 11/13 is not fully graded: the recap is 11/12
     assert p["day"] == "2026-11-12" and p["fits"]
-    assert "4-1, +1.12u" in p["text"] and "L NHL BUF ML -155 (BUF 2 @ CHI 3)" in p["text"]      # the loss is in it
+    assert "4-1, +1.12u" in p["text"] and "L NHL BUF ML -155 C (BUF 2 @ CHI 3)" in p["text"]      # the loss is in it
     assert "DAL" not in p["text"]                                                             # not an Alpha pick
     assert "All were leans, not proven edges." in p["text"] and "not betting advice" in p["text"]
     assert board.recap_post(None, "2026-11-14") is None and board.recap_post({"recent": []}, "2026-11-14") is None
