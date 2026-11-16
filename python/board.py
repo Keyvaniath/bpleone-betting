@@ -218,8 +218,12 @@ def lineup(r: Dict[str, Any]) -> Optional[Dict[str, Any]]:
                 continue
             notreg = x.get("regular") and x.get("qb") != x.get("regular")
             stt = "" if (x.get("status") or "active") == "active" else f" ({x['status']})"
+            # (2026-11-16) say when ESPN's depth chart settled or contradicted the projection
+            dq = x.get("depth_qb1")
+            depth = ("" if not dq else (" · ESPN QB1" if str(dq).lower() == str(x.get("qb")).lower()
+                                         else f" · ESPN depth chart: {dq} QB1"))
             out[side] = {"text": f"QB {x['qb']}{stt}" + (f" · not the regular ({x['regular']})" if notreg else "")
-                                 + ("" if x.get("certain", True) else " · uncertain"),
+                                 + depth + ("" if x.get("certain", True) else " · uncertain"),
                          "flag": bool(notreg or not x.get("certain", True))}
         out["kind"] = "qbs"
     elif a:
