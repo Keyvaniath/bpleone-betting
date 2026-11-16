@@ -226,9 +226,12 @@ def lineup(r: Dict[str, Any]) -> Optional[Dict[str, Any]]:
         for side in ("away", "home"):
             x = a.get(side) or {}
             ls = [i for i in (x.get("listed") or []) if abs(float(i.get("value") or 0)) >= 1][:3]
-            out[side] = {"text": ("Injury list: " + ", ".join(
-                f"{i['name']}{' (DTD)' if 'day' in str(i.get('status')).lower() else ''}" for i in ls)) if ls else "no rotation player listed",
-                         "flag": bool(ls) and float(x.get("abnormal") or 0) >= 3}
+            # (2026-11-16) second night of a back-to-back: the rest-risk case (11/14 CLE -142 closed +276
+            # when starters sat). Shown on the card; the Alpha strip warns when it is the pick's own side.
+            out[side] = {"text": (("Injury list: " + ", ".join(
+                f"{i['name']}{' (DTD)' if 'day' in str(i.get('status')).lower() else ''}" for i in ls)) if ls else "no rotation player listed")
+                         + (" · B2B" if x.get("b2b") else ""),
+                         "flag": bool(ls) and float(x.get("abnormal") or 0) >= 3, "b2b": bool(x.get("b2b"))}
         out["kind"] = "injuries"
     return out if any(k in out for k in ("away", "home")) else None
 
