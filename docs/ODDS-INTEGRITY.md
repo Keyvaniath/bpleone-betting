@@ -1195,3 +1195,19 @@ match, or the game is held (no pick, no lean). This week it holds LAC @ BAL and 
 pick is unchanged. **Disclosure:** the forward-test picks already logged on LAC @ BAL (LAC +185, logged
 11/13) stay in the record and are graded -- the ledger is append-only and a pick is never removed
 after the fact, including one made on a QB assumption we now know was wrong.
+
+## 2026-11-16 -- depth chart settles "regular vs last start" (and what that unlocks)
+
+The NFL desk held every game where a team's regular starter and last starter differed and the
+injury report did not settle it. Six such holds for 11/22; in each, ESPN's depth chart lists the last
+starter as QB1. The desk now projects that QB when the depth chart names one of the two and he is not
+questionable or ruled out; a QB1 who is neither stays a hold (main ef2fc87a). Measured first: across
+this week's 14 games, ESPN's QB1 differed from the model's projection in 8 of 28 team slots, mostly
+roster moves the starts history cannot see (Jacoby Brissett now BAL's QB1, Kirk Cousins MIN's).
+
+**Disclosure.** This unlocked four grade-B forward-test picks for 11/22, and each one rests mainly on
+the model's QB adjustment for a QB in a new situation, where the market disagrees sharply:
+PIT -205 (model 83% vs DraftKings 64%, PHI on Joe Milton), MIN +136 (56% vs 41%, Cousins),
+DEN -575 (92% vs 82%, LV on Fernando Mendoza), ARI +950 (13.5% vs 9%, Carson Beck). The EV bar did
+not move. These are exactly what the forward test is for; their closing line value will show whether
+the model or the market priced the quarterback right, and they are flagged here before any result.
