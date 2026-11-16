@@ -99,6 +99,17 @@ bpleone-site/
   Closes: with close-capture dispatched every 20 min, NFL closes landed 0-6 min before kickoff (vs
   32-69 min median before). CLE -142 lean closed +276 (B2B rest): a real -32 pt CLV, recorded, no rule
   change. Line-move signals first read: 61 scored, -0.24 pts, no edge yet (~100 major-sport to judge).
+- **2026-11-16 — NFL QB + NBA LEAN RULES.** (1) NFL QB model sees only regular + last starter; it missed
+  BAL's QB1 (projected Fagnano, ESPN depth chart Brissett) while the desk had LAC +185 at +21.8% EV.
+  `nfl_qbs.depth_qb1` (ESPN core depthcharts, cached): a non-regular projected starter must match ESPN QB1
+  or the game HOLDs; and ESPN QB1 settles "regular vs last start" holds when it names one of the two
+  (unlocked 4 B picks for 11/22, disclosed in docs before results). Cards say "ESPN QB1". (2) **Brandon's
+  call: NBA leans wait for the 5 PM ET injury report** (`play_of_day.NBA_LEAN_HOUR_ET=17`; before it the
+  board shows HOLD, not logged, not Alpha-eligible). Evidence `tools/b2b_study.py`: B2B favourites -1.6 pts
+  CLV vs others. tests/conftest.py turns the gate off for legacy tests. NBA cards flag B2B; Alpha card warns
+  on the pick's side. (3) Weekly scorecard (`board.week_post`), recap grade letters, day-table CLV.
+  (4) Local stopgap timers must poll the wall clock (a `sleep` pauses while the PC sleeps; the 11/16 lock
+  dispatch never fired). The Worker dispatcher (TODO_BRANDON s.0) remains the real fix.
 
 - **2026-11-12 — THE BOARD (board.html, python/board.py -> data/board.json).** Every pre-game
   NFL/NBA/NHL game with DraftKings moneylines + total prices, our side, a GRADE and a SCORE:
