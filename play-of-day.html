@@ -614,7 +614,9 @@ Promise.all([
       `</div></div>`;
   };
   const sportPlays = () => {
-    const sp = P.sport_plays || []; if (!sp.length) return null;
+    const sp = P.sport_plays || [];
+    const waits = Object.entries(P.by_sport || {}).filter(([k, v]) => v && v.lean_waits_for_report).map(([k]) => k);
+    if (!sp.length && !waits.length) return null;
     const sec = document.createElement("section"); sec.className = "card"; sec.style.cssText = "margin-top:22px;";
     sec.innerHTML = `<div class="card-head"><span>Today&#39;s play in each sport</span><span class="muted">${sp.length} sport${sp.length === 1 ? "" : "s"} · DraftKings prices observed ${(P.odds_observed_at || "").replace("T", " ")} UTC</span></div>` +
       sp.map(c => `<div style="padding:12px 14px;border-top:1px solid rgba(255,255,255,.05);">
@@ -626,7 +628,7 @@ Promise.all([
           <a href="${c.page || "#"}" style="color:#7fb0e8;font-size:12px;margin-left:auto;">${c.sport} desk →</a>
         </div>
         <div class="muted" style="font-size:12px;line-height:1.6;margin-top:6px;">${c.why || ""}${c.tier === 4 ? " " + leanRec(c) : ""}</div>${lineupOf(c)}
-      </div>`).join("") +
+      </div>`).join("") + waits.map((k) => `<div class="muted" style="padding:10px 14px;border-top:1px solid rgba(255,255,255,.05);font-size:12px;"><b style="font-family:JetBrains Mono,monospace;">${k}</b> · today&#39;s lean is set after the 5 PM ET injury report (rest news lands late: favourites on a back-to-back lost ~1.6 pts by the close when logged earlier).</div>`).join("") +
       leanFwd() +
       `<p style="font-size:12px;padding:8px 14px 0;margin:0;"><a href="board.html" style="color:#7fb0e8;">Every game today, with odds and a grade, is on The Board →</a></p>` +
       `<p class="muted" style="font-size:11px;padding:8px 14px 12px;margin:0;">One play per major sport at a time, on the days it plays. If the play changes during the day (its price moves past the cap, or a lineup question settles), the earlier play stays in the record and both are graded. A desk pick needs an edge at the DraftKings price. When a desk has none, its play is a <b>model lean</b>: the favourite its model and DraftKings both favour (each at least 55%, no shorter than −200). A lean is not an edge, is tracked on its own and never enters the curated record.</p>`;
