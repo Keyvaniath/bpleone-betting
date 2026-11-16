@@ -1211,3 +1211,11 @@ PIT -205 (model 83% vs DraftKings 64%, PHI on Joe Milton), MIN +136 (56% vs 41%,
 DEN -575 (92% vs 82%, LV on Fernando Mendoza), ARI +950 (13.5% vs 9%, Carson Beck). The EV bar did
 not move. These are exactly what the forward test is for; their closing line value will show whether
 the model or the market priced the quarterback right, and they are flagged here before any result.
+
+**B2B study (tools/b2b_study.py, 11/16).** Do NBA favourites on the second night of a back-to-back
+lose value between our first DraftKings snapshot and the close? Yes, on this season's data: B2B
+favourites moved -1.83 pts (n=38, 19 drifted out) vs -0.21 pts for all other favourites (n=218);
+difference -1.62 pts, 90% CI [-3.53, -0.04] -- just clear of zero. Read written into the script before
+running. Consistent with 11/14 CLE (-142 -> +276) and 11/16 HOU (-148 -> -130). Proposed (Brandon's
+call, not applied): log NBA leans only after the official injury report, or exclude B2B favourites
+from leans. Cards already flag B2B and the Alpha card warns on the pick's side (main d6d8a438).
