@@ -1219,3 +1219,7 @@ difference -1.62 pts, 90% CI [-3.53, -0.04] -- just clear of zero. Read written 
 running. Consistent with 11/14 CLE (-142 -> +276) and 11/16 HOU (-148 -> -130). Proposed (Brandon's
 call, not applied): log NBA leans only after the official injury report, or exclude B2B favourites
 from leans. Cards already flag B2B and the Alpha card warns on the pick's side (main d6d8a438).
+**Applied 11/16 (Brandon's call, main 47d3717d):** NBA leans wait for the 5 PM ET injury report. Before
+5 PM on game day an NBA lean is a HOLD on the board: not a bet, not logged, not eligible for the Alpha
+list. From 5 PM it is a normal grade-C lean at the then-current price. That day's already-locked Alpha
+(GS, MEM, HOU, MIN NBA leans, locked 12:29 PM) is unchanged: locked days are never edited.
