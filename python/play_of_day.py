@@ -446,6 +446,9 @@ def run(now: Optional[dt.datetime] = None) -> Dict[str, Any]:
             "games_today": len(today_rows),
             "picks_today": sum(1 for r in today_rows if r.get("pick")),
             "leans_today": sum(1 for r in today_rows if r.get("lean") and not r.get("pick")),
+            # (2026-11-16) NBA leans wait for the 5 PM ET injury report: say so instead of showing nothing
+            "lean_waits_for_report": bool(sport == "NBA" and nba_lean_pending(today_et, now)
+                                          and any(r.get("lean") and not r.get("pick") for r in today_rows)),
             "lean_record": ((d.get("lean") or {}).get("backtest") or None),
             "blocked_today": [{"matchup": r.get("matchup"), "reason": r.get("pick_blocked")} for r in today_rows if r.get("pick_blocked")],
             "picks_upcoming": sum(1 for r in board if r.get("pick") and (r.get("game_date") or "") > today_et),
@@ -467,7 +470,10 @@ def run(now: Optional[dt.datetime] = None) -> Dict[str, Any]:
             s = by_sport.get(sport)
             if not s:
                 continue
-            if s["verdict"] == "NO EDGE":
+            if s.get("lean_waits_for_report"):
+                reasons.append(f"{sport}: today's lean(s) are set after the 5 PM ET injury report "
+                               f"({s.get('leans_today', 0)} game(s) fit the lean rule; rest news lands late)")
+            elif s["verdict"] == "NO EDGE":
                 reasons.append(f"{sport}: desk verdict NO EDGE -- the model adds nothing to DraftKings' price, so it makes no picks by rule, "
                                f"and no game fit the lean rule with a live price ({s['games_today']} game(s) today)")
             elif sport == "MLB" and not s["eligible"]:
