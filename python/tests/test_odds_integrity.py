@@ -1650,3 +1650,15 @@ def test_depth_chart_settles_regular_vs_last_start_only_when_it_names_one_of_the
     assert '"(regular) vs" in str(x.get("note") or "")' in src
     assert 'qb1.lower() in (str(x["regular"]).lower(), str(x["last_start"]).lower())' in src
     assert 'not st1.startswith("questionable")' in src
+
+
+def test_week_post_counts_only_fully_graded_days_and_fits():
+    import board
+    R = {"by_day": {
+        "2026-11-12": {"n_settled": 6, "wins": 4, "losses": 2, "net_units": 0.09, "n_pending": 0, "n_clv": 6, "avg_clv_pts": -0.3, "beat_close_pct": 0,
+                       "alpha": {"n_settled": 5, "wins": 4, "losses": 1, "net_units": 1.12, "n_clv": 5, "avg_clv_pts": 0.2, "beat_close_pct": 20}},
+        "2026-11-13": {"n_settled": 4, "wins": 2, "losses": 2, "net_units": -1.0, "n_pending": 1, "alpha": {}}}}
+    p = board.week_post(R, "2026-11-14")
+    assert p["days"] == 1 and p["to"] == "2026-11-12" and p["fits"]          # 11/13 still has an open bet
+    assert "Alpha picks: 4-1, +1.12u, beat the close 1/5" in p["text"] and "losses included" in p["text"]
+    assert board.week_post(None, "2026-11-14") is None

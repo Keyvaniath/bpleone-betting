@@ -728,6 +728,49 @@ def recap_post(results: Optional[Dict[str, Any]], today_et: str) -> Optional[Dic
             "note": "Draft only. Nothing posts automatically; a person copies this and presses send."}
 
 
+def week_post(results: Optional[Dict[str, Any]], today_et: str, days: int = 7) -> Optional[Dict[str, Any]]:
+    """(2026-11-16) Copy-ready scorecard of the last `days` FULLY graded days before today (DRAFT ONLY):
+    the Alpha line and every board bet, units and closing line value, losses included. Days with an
+    open bet are left out rather than half-counted. None until there is a fully graded day."""
+    if not results:
+        return None
+    by_day = results.get("by_day") or {}
+    done = sorted(d for d, x in by_day.items() if d < today_et and (x or {}).get("n_settled") and not (x or {}).get("n_pending"))
+    done = done[-days:]
+    if not done:
+        return None
+
+    def tot(key=None):
+        w = l = 0
+        u = clv = 0.0
+        n_clv = beat = 0
+        for d in done:
+            x = by_day[d] if key is None else (by_day[d].get(key) or {})
+            w += x.get("wins") or 0
+            l += x.get("losses") or 0
+            u += x.get("net_units") or 0.0
+            k = x.get("n_clv") or 0
+            if k:
+                n_clv += k
+                clv += (x.get("avg_clv_pts") or 0.0) * k
+                beat += round((x.get("beat_close_pct") or 0.0) * k / 100)
+        return w, l, u, (clv / n_clv if n_clv else None), beat, n_clv
+
+    fmt_u = lambda x: ("+" if x >= 0 else "-") + f"{abs(x):.2f}u"
+    lab = lambda d: f"{int(d[5:7])}/{int(d[8:10])}"
+    aw, al, au, ac, ab, an = tot("alpha")
+    bw, bl, bu, bc, bb, bn = tot()
+    lines = [f"EdgeStat Board, {lab(done[0])}-{lab(done[-1])} ({len(done)} graded days)",
+             f"Alpha picks: {aw}-{al}, {fmt_u(au)}" + (f", beat the close {ab}/{an}" if an else ""),
+             f"Every board bet: {bw}-{bl}, {fmt_u(bu)}" + (f", avg CLV {'+' if bc >= 0 else '-'}{abs(bc):.1f} pts" if bc is not None else ""),
+             "Graded at our posted DraftKings price, losses included. Mostly leans, not proven edges.",
+             "21+ · not betting advice", SITE_URL]
+    text = "\n".join(lines)
+    return {"from": done[0], "to": done[-1], "days": len(done), "text": text, "chars": len(text),
+            "max_chars": POST_MAX, "fits": len(text) <= POST_MAX,
+            "note": "Draft only. Nothing posts automatically; a person copies this and presses send."}
+
+
 def run(now: Optional[dt.datetime] = None) -> Dict[str, Any]:
     now = now or dt.datetime.now(dt.timezone.utc)
     today_et = pod._today_et()
@@ -790,6 +833,7 @@ def run(now: Optional[dt.datetime] = None) -> Dict[str, Any]:
         "signal_summary": _signal_summary(),
         "results": (_load("ledger_summary.json") or {}).get("board"),
         "recap": recap_post((_load("ledger_summary.json") or {}).get("board"), today_et),
+        "week_post": week_post((_load("ledger_summary.json") or {}).get("board"), today_et),
         "counts": {"games": len(games), "games_today": sum(1 for g in games if g["date"] == today_et and not g.get("college")),
                    "college_today": sum(1 for g in games if g["date"] == today_et and g.get("college")),
                    "bets": len(picks), "bets_today": sum(1 for p in picks if p["game_date"] == today_et)},

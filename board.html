@@ -148,6 +148,7 @@
     <div id="recapShare" hidden style="margin-top:8px;">
       <button class="add" id="recapCopy" type="button">Copy yesterday&#39;s results</button>
       <span class="muted" id="recapMeta" style="font-size:11px;margin-left:6px;"></span>
+      <button class="add" id="weekCopy" type="button" hidden style="margin-left:8px;">Copy the week&#39;s scorecard</button>
     </div>
   </section>
 
@@ -512,6 +513,8 @@
       const rc = B.recap;
       $("recapShare").hidden = !(rc && rc.text && sport === "ALL");
       if (rc) $("recapMeta").textContent = "Alpha picks of " + rc.day + ", graded, losses included.";
+      $("weekCopy").hidden = !(B.week_post && B.week_post.text);
+      if (B.week_post) $("weekCopy").title = B.week_post.text;
       const post = B.alpha.post;
       $("alphaShare").hidden = !(post && post.text && sport === "ALL");
       if (post && post.text) {
@@ -624,6 +627,11 @@
     setTimeout(() => URL.revokeObjectURL(a.href), 10000);
   });
 
+  $("weekCopy").addEventListener("click", () => {
+    const wp = B && B.week_post; if (!wp) return;
+    const done = () => { $("weekCopy").textContent = "Copied"; setTimeout(() => { $("weekCopy").textContent = "Copy the week\u2019s scorecard"; }, 1500); };
+    if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(wp.text).then(done).catch(() => {});
+  });
   $("recapCopy").addEventListener("click", () => {
     const rc = B && B.recap; if (!rc) return;
     const done = () => { $("recapCopy").textContent = "Copied"; setTimeout(() => { $("recapCopy").textContent = "Copy yesterday\u2019s results"; }, 1500); };
