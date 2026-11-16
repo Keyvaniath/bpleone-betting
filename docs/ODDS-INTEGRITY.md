@@ -1183,3 +1183,15 @@ Closes that night were taken 5-24 min before the early starts (close-capture dis
 (+0.69), NBA 5 (-5.30, one large move). No edge yet; judged at ~100 scored on the major sports. Shown
 on the board's results as a forward test, never picks (main e8bb8dd4). Also 11/15: the Alpha share
 post no longer drops a locked pick to fit 280 characters (it had left out #5 CIN).
+
+## 2026-11-16 -- NFL QB projection missed the depth chart (MNF LAC @ BAL)
+
+The NFL QB model sees only a team's regular (most starts in its window) and its last starter. For BAL
+it projected Joe Fagnano (last start); ESPN's depth chart lists Jacoby Brissett as QB1 (Fagnano QB2).
+On that basis the desk carried a grade-B LAC +185 pick at +21.8% EV while DraftKings moved LAC from
++120 to +185 -- the market pricing a better BAL quarterback than the model assumed. Fix (main 335f9fa3):
+when the projected starter is not the team's regular, ESPN's depth-chart QB1 (unless ruled out) must
+match, or the game is held (no pick, no lean). This week it holds LAC @ BAL and BAL @ CAR; every other
+pick is unchanged. **Disclosure:** the forward-test picks already logged on LAC @ BAL (LAC +185, logged
+11/13) stay in the record and are graded -- the ledger is append-only and a pick is never removed
+after the fact, including one made on a QB assumption we now know was wrong.
