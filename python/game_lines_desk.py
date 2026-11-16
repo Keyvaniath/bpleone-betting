@@ -972,6 +972,21 @@ def run_sport(sport: str) -> Dict[str, Any]:
             # depth chart: a different QB1 who is not ruled out leaves the starter unsettled (no pick)
             for sd, tm in (("home", h), ("away", a)):
                 x = qbs[sd]
+                # (2026-11-16) "regular vs last start, injury report doesn't settle it": ESPN's depth-chart
+                # QB1 settles it when it names one of the two and he is not questionable / ruled out
+                # (11/16: six such holds this week; in every one ESPN's QB1 was the last starter)
+                if (not x.get("certain") and x.get("regular") and x.get("last_start") and x["regular"] != x["last_start"]
+                        and "(regular) vs" in str(x.get("note") or "") and game_date):
+                    season = int(game_date[:4]) if int(game_date[5:7]) >= 8 else int(game_date[:4]) - 1
+                    qb1 = nq.depth_qb1(str(g.get(sd) or tm), season)
+                    st1 = str((inj.get(tm, {}) or {}).get(str(qb1 or "").lower(), ""))
+                    if (qb1 and qb1.lower() in (str(x["regular"]).lower(), str(x["last_start"]).lower())
+                            and not st1.startswith("questionable") and not any(st1.startswith(s) for s in nq.OUT_STATUSES)):
+                        qid = st.resolve(tm, qb1)
+                        if qid:
+                            x.update(qb=qb1, qb_id=qid, edge=round(st.edge(tm, qid), 3), certain=True, depth_qb1=qb1,
+                                     note=f"{x['regular']} (regular) vs {x['last_start']} (last start): ESPN's depth chart lists {qb1} as QB1")
+                        continue
                 if x.get("certain") and x.get("regular") and x.get("qb") and x["qb"] != x["regular"] and game_date:
                     season = int(game_date[:4]) if int(game_date[5:7]) >= 8 else int(game_date[:4]) - 1
                     qb1 = nq.depth_qb1(str(g.get(sd) or tm), season)

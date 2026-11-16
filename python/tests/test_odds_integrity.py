@@ -1643,3 +1643,10 @@ def test_nfl_depth_chart_qb1_lookup(monkeypatch):
     assert q.depth_qb1("BAL", 2026) == "Jacoby Brissett"
     src = open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "game_lines_desk.py"), encoding="utf-8").read()
     assert "ESPN's depth chart lists" in src and 'x["qb"] != x["regular"]' in src
+
+
+def test_depth_chart_settles_regular_vs_last_start_only_when_it_names_one_of_them():
+    src = open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "game_lines_desk.py"), encoding="utf-8").read()
+    assert '"(regular) vs" in str(x.get("note") or "")' in src
+    assert 'qb1.lower() in (str(x["regular"]).lower(), str(x["last_start"]).lower())' in src
+    assert 'not st1.startswith("questionable")' in src
