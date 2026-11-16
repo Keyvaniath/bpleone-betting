@@ -1,22 +1,22 @@
 {
- "generated_at": "2026-11-16T19:02:08",
+ "generated_at": "2026-11-16T19:44:53",
  "stake_assumption": "1u flat per pick",
  "total_picks": 20000,
- "n_settled": 24667,
- "n_pending": 372,
- "n_void": 616,
+ "n_settled": 24668,
+ "n_pending": 475,
+ "n_void": 512,
  "wins": 12242,
- "losses": 12414,
+ "losses": 12415,
  "pushes": 11,
  "hit_rate": 0.4965,
- "net_units": -3503.492,
+ "net_units": -3504.492,
  "roi_pct": -14.21,
  "n_calibrated_picks": 19952,
  "calibrated_reliability": {
-  "n": 18958,
+  "n": 18959,
   "ece_raw": 0.0639,
   "ece_calibrated": 0.0086,
-  "brier_raw": 0.20971,
+  "brier_raw": 0.20972,
   "brier_calibrated": 0.19675,
   "note": "In-sample over the settled ledger (the isotonic transform is fit on these same outcomes); held-out 70/30 validation is in recalibration_map.json. p_predicted = raw model prob (kept untouched for the learning loop); p_calibrated = honest prob stamped per pick. Lower ECE/Brier on the calibrated column = the displayed % is truer."
  },
@@ -1479,10 +1479,10 @@
  "by_price_class": {
   "all": {
    "C": {
-    "n": 24060,
+    "n": 24061,
     "wins": 11917,
-    "losses": 12143,
-    "net_units": -3497.278,
+    "losses": 12144,
+    "net_units": -3498.278,
     "roi_pct": -14.54
    },
    "B": {
@@ -1532,10 +1532,10 @@
  "headline_basis": "all-time: working ledger + data/ledger_archive.json",
  "working_ledger_only": {
   "all": {
-   "n_settled": 19012,
+   "n_settled": 19013,
    "wins": 9383,
-   "losses": 9618,
-   "net_units": -2340.38,
+   "losses": 9619,
+   "net_units": -2341.38,
    "roi_pct": -12.32
   },
   "curated": {
@@ -1623,7 +1623,7 @@
   }
  ],
  "stale_sources_skipped": [],
- "inactive_player_props_blocked": 0,
+ "inactive_player_props_blocked": 13,
  "started_game_picks_blocked": 0,
  "past_dated_picks_blocked": 0,
  "unpriced_picks_blocked": 0,
@@ -1632,12 +1632,12 @@
   "note": "The headline became ALL-TIME on 2026-10-23. 5,946 settled picks that the old tail-cut eviction had destroyed (May-June 2026, the 07-06 erosion and the run-up to 09-03) were rebuilt from git history at each pick's final state, with today's duplicate-wager rule re-applied, and folded back in. They are mostly the raw May-June MLB prop firehose (2,961-2,983, -1,256.9u), so the firehose ROI fell; the curated record changed by the curated picks among them. Before this date the published numbers covered the working window only -- working_ledger_only keeps that basis.",
   "n_archived_in_headline": 5655
  },
- "n_added_this_run": 0,
- "n_newly_settled_this_run": 0,
+ "n_added_this_run": 104,
+ "n_newly_settled_this_run": 1,
  "n_resettled_this_run": 0,
  "n_voided_this_run": 0,
  "n_duplicates_collapsed_this_run": 0,
- "n_duplicate_adds_blocked_this_run": 37,
+ "n_duplicate_adds_blocked_this_run": 40,
  "n_reconciled_settled_voids": 0,
  "n_bootstrapped_from_locks_history": 0,
  "by_source": {
@@ -12949,6 +12949,30 @@
     "roi_pct": null
    }
   },
+  "tennis_games_total_games_under_15.5": {
+   "n": 1,
+   "wins": 0,
+   "losses": 1,
+   "pushes": 0,
+   "net_units": -1.0,
+   "hit_rate": 0.0,
+   "roi_pct": -100.0,
+   "by_price_class": {
+    "C": {
+     "n": 1,
+     "wins": 0,
+     "losses": 1,
+     "net_units": -1.0,
+     "roi_pct": -100.0
+    }
+   },
+   "sportsbook": {
+    "wins": 0,
+    "losses": 0,
+    "net_units": 0,
+    "roi_pct": null
+   }
+  },
   "nba_ra_ra_over_7.0": {
    "n": 1,
    "wins": 1,
@@ -13440,12 +13464,12 @@
    "hit_rate": 0.625
   },
   "total_games_under": {
-   "n": 64,
+   "n": 65,
    "wins": 19,
-   "losses": 45,
+   "losses": 46,
    "pushes": 0,
-   "net_units": -36.869,
-   "hit_rate": 0.2969
+   "net_units": -37.869,
+   "hit_rate": 0.2923
   },
   "total_games_over": {
    "n": 41,
@@ -14450,12 +14474,12 @@
    "hit_rate": 0.625
   },
   "total_games_under": {
-   "n": 64,
+   "n": 65,
    "wins": 19,
-   "losses": 45,
+   "losses": 46,
    "pushes": 0,
-   "net_units": -36.869,
-   "hit_rate": 0.2969
+   "net_units": -37.869,
+   "hit_rate": 0.2923
   },
   "total_games_over": {
    "n": 41,
@@ -15135,12 +15159,12 @@
    "markets": 4
   },
   "NHL": {
-   "n": 903,
+   "n": 916,
    "settled": 829,
    "wins": 540,
    "losses": 289,
    "pushes": 0,
-   "pending": 2,
+   "pending": 15,
    "void": 72,
    "net_units": -9.831,
    "hit_rate": 0.6514,
@@ -15175,15 +15199,15 @@
   },
   "TENNIS": {
    "n": 151,
-   "settled": 141,
+   "settled": 142,
    "wins": 72,
-   "losses": 69,
+   "losses": 70,
    "pushes": 0,
-   "pending": 4,
+   "pending": 3,
    "void": 6,
-   "net_units": -35.617,
-   "hit_rate": 0.5106,
-   "roi_pct": -25.26,
+   "net_units": -36.617,
+   "hit_rate": 0.507,
+   "roi_pct": -25.79,
    "markets": 6
   },
   "UCL": {
@@ -15213,25 +15237,25 @@
    "markets": 1
   },
   "NFL": {
-   "n": 4750,
+   "n": 4649,
    "settled": 4306,
    "wins": 3159,
    "losses": 1147,
    "pushes": 0,
-   "pending": 193,
-   "void": 251,
+   "pending": 196,
+   "void": 147,
    "net_units": -40.221,
    "hit_rate": 0.7336,
    "roi_pct": -0.93,
    "markets": 13
   },
   "NBA": {
-   "n": 2233,
+   "n": 2321,
    "settled": 2036,
    "wins": 1319,
    "losses": 717,
    "pushes": 0,
-   "pending": 55,
+   "pending": 143,
    "void": 142,
    "net_units": -60.483,
    "hit_rate": 0.6478,
@@ -15274,13 +15298,13 @@
     "label": "10/23-11/2 -- season-to-date form (judged)"
    },
    "form_v3": {
-    "n": 2257,
+    "n": 2156,
     "settled": 1816,
     "wins": 1399,
     "losses": 417,
     "pushes": 0,
-    "pending": 193,
-    "void": 248,
+    "pending": 196,
+    "void": 144,
     "net_units": 50.77,
     "hit_rate": 0.7704,
     "roi_pct": 2.8,
@@ -15293,43 +15317,12 @@
  },
  "last_7_days": {
   "wins": 1057,
-  "losses": 489,
-  "net_units": -20.974,
-  "hit_rate": 0.6837
+  "losses": 490,
+  "net_units": -21.974,
+  "hit_rate": 0.6833
  },
  "note": "Unified pick ledger -- records every pick the model surfaces (top_25 board, whales, consensus, unders, sharp action, locks, POD) and settles each against actual outcomes. Per-source W-L feeds back into calibration so the model learns which modules are reliable. THIS is the training signal.",
  "picks": [
-  {
-   "source": "nfl_rec",
-   "sport": "NFL",
-   "player_or_matchup": "michael mayer",
-   "market": "REC_UNDER_3.5",
-   "prob": 0.604,
-   "fair_american": -152,
-   "p_predicted": 0.701,
-   "matchup": "SEA @ LV",
-   "model_rule": "form_v3",
-   "price_provenance": {
-    "inferred": false,
-    "class": "C",
-    "kind": "model_fair"
-   },
-   "date": "2026-11-15",
-   "pick_id": "nfl_rec|NFL|michael_mayer|REC_UNDER_3_5|2026-11-15",
-   "settled": true,
-   "result": "won",
-   "payout_units": 0.6579,
-   "recorded_at": "2026-11-13T12:56:06",
-   "p_calibrated": 0.6691,
-   "outcome": {
-    "stat": "rec",
-    "actual": 2,
-    "line": 3.5,
-    "side": "UNDER",
-    "verify": "michael mayer \u2014 rec = 2 (line 3.5, bet under) on 2026-11-15"
-   },
-   "settled_at": "2026-11-16T00:41:41"
-  },
   {
    "source": "nfl_rec",
    "sport": "NFL",
@@ -15453,6 +15446,37 @@
     "verify": "devaughn vele \u2014 longest_reception = 8 (line 29.5, bet under) on 2026-11-15"
    },
    "settled_at": "2026-11-15T21:18:44"
+  },
+  {
+   "source": "tennis_games_total_games_under_15.5",
+   "sport": "TENNIS",
+   "player_or_matchup": "Frances Tiafoe vs Carlos Alcaraz",
+   "market": "TOTAL_GAMES_UNDER_15.5",
+   "prob": 0.64,
+   "fair_american": -177,
+   "p_predicted": 0.64,
+   "matchup": "Frances Tiafoe vs Carlos Alcaraz",
+   "price_provenance": {
+    "inferred": false,
+    "class": "C",
+    "kind": "model_fair"
+   },
+   "date": "2026-11-15",
+   "pick_id": "tennis_games_total_games_under_15_5|TENNIS|Frances_Tiafoe_vs_Carlos_Alcaraz|TOTAL_GAMES_UNDER_15_5|2026-11-15",
+   "settled": true,
+   "result": "lost",
+   "payout_units": -1.0,
+   "recorded_at": "2026-11-15T01:46:00",
+   "p_calibrated": 0.3511,
+   "outcome": {
+    "match": "Frances Tiafoe vs Carlos Alcaraz",
+    "winner": "Carlos Alcaraz",
+    "sets": "0-2",
+    "total_games": 16,
+    "market": "TOTAL_GAMES_UNDER_15.5",
+    "verify": "Carlos Alcaraz won 0-2 (16 games) \u2014 TOTAL_GAMES_UNDER_15.5"
+   },
+   "settled_at": "2026-11-16T19:44:53"
   },
   {
    "source": "tennis_games_total_games_over_18.5",
@@ -21450,5 +21474,5 @@
   "2026-05-19",
   "2026-11-15"
  ],
- "digest_generated_at": "2026-11-16T19:02:10"
+ "digest_generated_at": "2026-11-16T19:44:57"
 }
