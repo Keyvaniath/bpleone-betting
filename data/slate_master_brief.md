@@ -1,13 +1,13 @@
 # EdgeStat — Tonight's Master Brief
-_Generated 2026-11-15T19:44:30 UTC_
+_Generated 2026-11-16T01:48:01 UTC_
 
 ## Slate Quality
 - **Tier:** NO_ACTION_NIGHT
-- **Score:** -37
+- **Score:** -4
 - **Advisory:** STAND DOWN. Slate has no aligned conviction. Skip betting tonight or watch only.
 - **Total LOCKs:** 0
 - **Total STRONG:** 15
-- **Total FADES:** 97
+- **Total FADES:** 64
 
 ## Top 5 Curated Picks
 1. **GOLF / Trace Crowe** (GOLF_PLAYER, score=176.64)
@@ -39,7 +39,7 @@ _Generated 2026-11-15T19:44:30 UTC_
   - Fade angle: team total UNDER
 - **NBA** / SAC (TEAM_FADE)
   - Fade angle: team total UNDER
-- **NBA** / CHA (TEAM_FADE)
-  - Fade angle: team total UNDER
 - **NBA** / ATL (TEAM_FADE)
+  - Fade angle: team total UNDER
+- **NBA** / NYK (TEAM_FADE)
   - Fade angle: team total UNDER
