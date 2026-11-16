@@ -1,13 +1,13 @@
 {
-  "generated_at": "2026-11-16T19:14:41",
-  "n_settled": 17030,
+  "generated_at": "2026-11-16T23:28:46",
+  "n_settled": 17096,
   "n_families_transformed": 72,
   "n_families_bucketed": 35,
-  "ece_before": 0.0678,
+  "ece_before": 0.0679,
   "ece_after": 0.0093,
-  "ece_improvement": 0.0585,
-  "brier_before": 0.21003,
-  "brier_after": 0.19613,
+  "ece_improvement": 0.0587,
+  "brier_before": 0.21005,
+  "brier_after": 0.19621,
   "method_note": "Per market family, a monotonic (isotonic) curve maps the model's predicted probability to the realized hit rate, learned from settled outcomes. Bucketed for well-sampled families (preserves ranking), a family-average Bayesian blend for mid-sample, identity below that. ECE = expected calibration error (lower = the displayed % is truer). This makes the model honest at the source; it does not create edge (that needs a market price).",
   "families": [
     {
@@ -638,6 +638,52 @@
       }
     },
     {
+      "family": "top",
+      "n": 1135,
+      "method": "bucketed",
+      "avg_pred_raw": 0.4838,
+      "avg_pred_calibrated": 0.41,
+      "realized": 0.4026,
+      "ece_raw": 0.0885,
+      "ece_calibrated": 0.0123,
+      "transform": {
+        "anchors": [
+          [
+            0.2927,
+            0.2501
+          ],
+          [
+            0.3615,
+            0.2749
+          ],
+          [
+            0.4348,
+            0.3001
+          ],
+          [
+            0.4736,
+            0.394
+          ],
+          [
+            0.5035,
+            0.4709
+          ],
+          [
+            0.5423,
+            0.5274
+          ],
+          [
+            0.5927,
+            0.5274
+          ],
+          [
+            0.6695,
+            0.5274
+          ]
+        ]
+      }
+    },
+    {
       "family": "home_minus",
       "n": 30,
       "method": "family_avg",
@@ -674,52 +720,6 @@
       "ece_calibrated": 0.0219,
       "transform": {
         "realized": 0.7073
-      }
-    },
-    {
-      "family": "top",
-      "n": 1069,
-      "method": "bucketed",
-      "avg_pred_raw": 0.4842,
-      "avg_pred_calibrated": 0.4123,
-      "realized": 0.4041,
-      "ece_raw": 0.0879,
-      "ece_calibrated": 0.014,
-      "transform": {
-        "anchors": [
-          [
-            0.2915,
-            0.2568
-          ],
-          [
-            0.3602,
-            0.2712
-          ],
-          [
-            0.433,
-            0.3027
-          ],
-          [
-            0.474,
-            0.4116
-          ],
-          [
-            0.5059,
-            0.5005
-          ],
-          [
-            0.5462,
-            0.5142
-          ],
-          [
-            0.594,
-            0.5142
-          ],
-          [
-            0.6687,
-            0.5142
-          ]
-        ]
       }
     },
     {
