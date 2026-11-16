@@ -1,10 +1,9 @@
 **EdgeStat -- Tonight's Slate**
-_NO_ACTION_NIGHT_ | L:0 S:15 F:64
+_NO_ACTION_NIGHT_ | L:0 S:14 F:64
 
 :dart: **Top Picks:**
 1. [GOLF] Trace Crowe -- Trace Crowe (PLAYER_STRONG)
 2. [GOLF] Chad Ramey -- Chad Ramey (PLAYER_STRONG)
-3. [NBA] MIL -- MIL (TEAM_STRONG)
 
 :coin: Bankroll Advisory: STAND DOWN. Slate has no aligned conviction. Skip betting tonight or watch only.
 

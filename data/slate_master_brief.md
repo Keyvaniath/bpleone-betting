@@ -1,12 +1,12 @@
 # EdgeStat — Tonight's Master Brief
-_Generated 2026-11-16T01:48:01 UTC_
+_Generated 2026-11-16T19:14:17 UTC_
 
 ## Slate Quality
 - **Tier:** NO_ACTION_NIGHT
-- **Score:** -4
+- **Score:** -8
 - **Advisory:** STAND DOWN. Slate has no aligned conviction. Skip betting tonight or watch only.
 - **Total LOCKs:** 0
-- **Total STRONG:** 15
+- **Total STRONG:** 14
 - **Total FADES:** 64
 
 ## Top 5 Curated Picks
@@ -16,9 +16,6 @@ _Generated 2026-11-16T01:48:01 UTC_
 2. **GOLF / Chad Ramey** (GOLF_PLAYER, score=145.5)
    - Play: Chad Ramey (PLAYER_STRONG)
    - Rationale: Cross-sport top pick (GOLF_PLAYER)
-3. **NBA / MIL** (NBA_TEAM, score=60.0)
-   - Play: MIL (TEAM_STRONG)
-   - Rationale: Cross-sport top pick (NBA_TEAM)
 
 ## Top Events Board
 - **GOLF** / ? (TOURNAMENT_STRONG)
@@ -33,13 +30,13 @@ _Generated 2026-11-16T01:48:01 UTC_
 - **Expected P&L on $100:** $0.0
 
 ## Top Fades
-- **NBA** / WAS (TEAM_FADE)
+- **NBA** / POR (TEAM_FADE)
   - Fade angle: team total UNDER
-- **NBA** / TOR (TEAM_FADE)
+- **NBA** / MIA (TEAM_FADE)
   - Fade angle: team total UNDER
-- **NBA** / SAC (TEAM_FADE)
+- **NBA** / ORL (TEAM_FADE)
   - Fade angle: team total UNDER
-- **NBA** / ATL (TEAM_FADE)
+- **NBA** / CHI (TEAM_FADE)
   - Fade angle: team total UNDER
-- **NBA** / NYK (TEAM_FADE)
+- **NBA** / HOU (TEAM_FADE)
   - Fade angle: team total UNDER
