@@ -157,7 +157,13 @@ fetch("data/board.json?t=" + Date.now(), { cache: "no-cache" }).then((r) => r.js
       <b>${esc(p.team)}</b> moneyline <span style="font-family:JetBrains Mono,monospace;color:#fbbf24;">${am(p.book_american)}</span>
       <span class="muted">${esc(p.matchup)}</span>
       ${!p.logged ? "" : p.still_listed
-        ? (p.now_american != null && p.now_american !== p.book_american ? `<span class="muted" style="font-size:11px;" title="Graded at the price it was logged at; the board's current DraftKings price is shown for comparison.">logged at this price · now ${am(p.now_american)}</span>` : "")
+        ? (p.now_american != null && p.now_american !== p.book_american ? (() => {
+            // CLV so far: + when the market has moved our way (the current price implies a higher win chance
+            // than the price we took), in implied-probability points, as the record's CLV column measures it
+            const ip = (x) => (x > 0 ? 100 / (x + 100) : -x / (-x + 100));
+            const pts = (ip(p.now_american) - ip(p.book_american)) * 100;
+            return `<span class="muted" style="font-size:11px;" title="Graded at the price it was logged at. CLV so far = the current DraftKings price's implied win chance minus ours: positive means the market has moved our way.">logged at this price · now ${am(p.now_american)} · <b style="color:${pts > 0 ? "#4ade80" : pts < 0 ? "#e35a5a" : "inherit"};">${pts > 0 ? "+" : pts < 0 ? "−" : ""}${Math.abs(pts).toFixed(1)} pts</b></span>`;
+          })() : "")
         : p.game_date === B.date_et
           ? `<span class="muted" style="font-size:11px;" title="Today's game has started or is about to: live score in Today's slate above. Graded at the price shown on the final.">in play today · graded at this price</span>`
           : `<span class="muted" style="font-size:11px;" title="Logged at this price earlier. The board no longer lists it (the price moved past the bar, or a lineup hold), but it stays open and is graded at the price shown.">open · no longer listed (price or lineup changed)</span>`}
