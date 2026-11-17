@@ -1,18 +1,18 @@
-# EdgeStat Daily Summary — 2026-11-16
+# EdgeStat Daily Summary — 2026-11-17
 
 ## 🏥 Model Health: 65.5/100 [OK]
 - Operational but room to improve - check yellow components
-  - 🟢 Calibration Freshness: 99.9/100
+  - 🟢 Calibration Freshness: 100.0/100
   - 🟡 Hit Rate Trend: 61.0/100
-  - 🔴 Brier Trend: 20.9/100
+  - 🔴 Brier Trend: 20.8/100
   - 🟢 Pipeline Audit: 100.0/100
   - 🟢 Data Health: 95.8/100
   - 🔴 Edge Count: 0/100
 
 ## 🌐 Slate Overview
-- **Regime today:** BALANCED (avg P(home)=0.544)
-- **Total games on board:** 43
-- **Strong home favorites:** 17 | **Strong road dogs:** 13
+- **Regime today:** BALANCED (avg P(home)=0.513)
+- **Total games on board:** 35
+- **Strong home favorites:** 13 | **Strong road dogs:** 14
 
 ## 🎯 Best Bets (sportsbook-priced only)
 - No best bet today: a best bet needs a real sportsbook price — 18 model-only projections excluded (NBA 4, UCL 4, LOL 3, EPL 3, NCAAF 3, NFL 1).
@@ -29,21 +29,20 @@
 - **[CS]** torzsi OVER 40.5 Kills (BO3) · model 61.0%
 
 ## ⚡ Pre-Game
-- No pre-game alerts: an alert needs a game-lines-desk probability whose verdict passed (not NO EDGE / UNPROVEN) and a DraftKings price. NBA: 8 desk verdict NO EDGE; NHL: 2 desk verdict NO EDGE; WNBA: 1 not pre-game; MLS: 2 no validated model probability (not from the game-lines desk); EPL: 7 no validated model probability (not from the game-lines desk); UCL: 9 no validated model probability (not from the game-lines desk); NFL: 13 not pre-game; NCAAF: 22 no validated model probability (not from the game-lines desk); NCAAB: 1 no validated model probability (not from the game-lines desk); CWS: 1 not pre-game
+- No pre-game alerts: an alert needs a game-lines-desk probability whose verdict passed (not NO EDGE / UNPROVEN) and a DraftKings price. NBA: 8 not pre-game; NHL: 2 not pre-game; WNBA: 1 not pre-game; MLS: 2 no validated model probability (not from the game-lines desk); EPL: 7 no validated model probability (not from the game-lines desk); UCL: 9 no validated model probability (not from the game-lines desk); NFL: 14 not pre-game; NCAAF: 22 no validated model probability (not from the game-lines desk); NCAAB: 1 started or no start time; CWS: 1 not pre-game
 
 ## 🔥/❄️ Heat / Cold Signals
-- Hot teams: **10** | Cold teams: **15** | Over-heavy: 0 | Under-heavy: 29
+- Hot teams: **11** | Cold teams: **14** | Over-heavy: 0 | Under-heavy: 31
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (97)
-- RESIDUAL_DIVERGENCE: **9**
-- STREAK_MISMATCH: **1**
-- STEAM_MOVE: **87**
-  - Boston Celtics (NBA): Boston Celtics OUTPERFORMING expected margin by 9.5pts in recent games -- model bias may persist
-  - Cleveland Cavaliers (NBA): Cleveland Cavaliers OUTPERFORMING expected margin by 9.9pts in recent games -- model bias may persist
-  - Chicago Bulls (NBA): Chicago Bulls OUTPERFORMING expected margin by 8.8pts in recent games -- model bias may persist
-  - Washington Wizards (NBA): Washington Wizards UNDERPERFORMING expected margin by 6.2pts in recent games -- model bias may persist
-  - Memphis Grizzlies (NBA): Memphis Grizzlies OUTPERFORMING expected margin by 10.6pts in recent games -- model bias may persist
+## ⚠️ Anomaly Detector (72)
+- RESIDUAL_DIVERGENCE: **1**
+- STEAM_MOVE: **71**
+  - Vancouver Canucks (NHL): Vancouver Canucks OUTPERFORMING expected margin by 7.4pts in recent games -- model bias may persist
+  - OSU @ NEB (NCAAF): 2026-11-21: ML/TOTAL line moved since open (pre-game DK): ML +4.3pp toward NEB; total -6 (UNDER) (10 snapshots) -- a line move, not a read on who bet
+  - UCLA @ MICH (NCAAF): 2026-11-21: ML/TOTAL line moved since open (pre-game DK): ML +3.5pp toward MICH; total -5 (UNDER) (13 snapshots) -- a line move, not a read on who bet
+  - CLEM @ DUKE (NCAAF): 2026-11-20: ML/TOTAL line moved since open (pre-game DK): ML +6.2pp toward DUKE; total -4 (UNDER) (8 snapshots) -- a line move, not a read on who bet
+  - USF @ FAU (NCAAF): 2026-11-21: TOTAL line moved since open (pre-game DK): ML -1.1pp toward USF; total -4 (UNDER) (8 snapshots) -- a line move, not a read on who bet
 
 ## 💰 Today's Portfolio
 - No priced picks: a stake is sized only at an actionable DraftKings quote.
@@ -55,15 +54,8 @@
   - Memphis Grizzlies @ Washington Wizards : 3 signals (HEAT_COLD, ANOMALY, ANOMALY)
   - Golden State Warriors @ New Orleans Pelicans : 3 signals (HEAT_COLD, HEAT_COLD, ANOMALY)
 
-## 🏀 NBA Player Heat (8 HOT / 6 COLD)
-  - 🔥 **Franz Wagner** (ORL): L5 30.2/7.6/9.2 vs season 23.3/6.3/6.8 [PTS +6.9, AST +2.4]
-  - 🔥 **Tyrese Proctor** (CLE): L5 14.8/4.4/4.2 vs season 8.2/2.9/2.4 [PTS +6.6]
-  - 🔥 **Klay Thompson** (MIA): L5 20.2/1.8/3.2 vs season 14.2/1.7/1.9 [PTS +6.0]
-  - 🔥 **Ayo Dosunmu** (MIN): L5 23.0/2.6/2.4 vs season 17.5/4.3/3.5 [PTS +5.5]
-  - 🔥 **Bones Hyland** (MIN): L5 14.6/1.8/3.2 vs season 9.6/1.5/2.7 [PTS +5.0]
-  - ❄️ **Shaedon Sharpe** (POR): L5 7.2 vs season 20.8 [PTS -13.6, REB -2.7, AST -2.0]
+## 🏀 NBA Player Heat (0 HOT / 1 COLD)
   - ❄️ **Dillon Brooks** (PHX): L5 8.4 vs season 15.7 [PTS -7.3]
-  - ❄️ **Bennedict Mathurin** (NO): L5 3.2 vs season 9.1 [PTS -5.9]
 
 ## 🥊 UFC Fight Matchups (UFC Fight Night: Procházka vs. Stirling) — model projection — unvalidated, no sportsbook price, not a recommendation
   - model favourite **Ikram Aliskerov** (18-2-0) vs Jared Cannonier
@@ -106,7 +98,7 @@
 - ELITE: **0** · HEALTHY: 1 · OK: 0 · DEGRADED: **1**
 
 ## 🤖 Self-Training Status
-- **NBA**: n=105 games · hit rate 62.9% · bias -1.4pp
-- **NHL**: n=99 games · hit rate 59.6% · bias +8.3pp
+- **NBA**: n=97 games · hit rate 68.0% · bias -6.2pp
+- **NHL**: n=96 games · hit rate 63.5% · bias +6.9pp
 - **MLS**: n=44 games · hit rate 45.5% · bias -2.2pp
 - **EPL**: n=20 games · hit rate 50.0% · bias -11.6pp

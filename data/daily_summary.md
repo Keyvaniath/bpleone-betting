@@ -1,10 +1,10 @@
-# EdgeStat Daily Brief - 2026-11-16
+# EdgeStat Daily Brief - 2026-11-17
 
 **Model Confidence: 15.6/100 [RED]** -- Calibration warming up. Research signal only; no real-money sizing yet.
 
 _Pipeline health: **WARNING** (7/15 artifacts ok; 8 empty, 0 stale)._ 
 
-_Generated at 2026-11-16T23:28:35 UTC. Game lines source: **DraftKings via ESPN (98 pre-game priced games, observed 2026-11-16T23:28:25 UTC)**._
+_Generated at 2026-11-17T04:25:07 UTC. Game lines source: **DraftKings via ESPN (76 pre-game priced games, observed 2026-11-17T04:25:00 UTC)**._
 
 ## Self-Learning Loop
 
@@ -13,7 +13,7 @@ _Generated at 2026-11-16T23:28:35 UTC. Game lines source: **DraftKings via ESPN 
 | batter total bases | 30 | 46.7% | 40.2% | 0.866 | 1.129 |
 | batter hits | 140 | 57.1% | 58.0% | 1.014 | 0.987 |
 
-Cumulative graded plays: 24734. Wins: 12273. Hit rate: 49.6%.
+Cumulative graded plays: 24738. Wins: 12275. Hit rate: 49.6%.
 
 ## Loop Activity (since last refresh)
 
@@ -29,4 +29,4 @@ _The model is suggesting 1 parameter tweak based on its own performance. Apply v
 ---
 
 _EdgeStat is a research desk. Bet responsibly. 21+. 1-800-GAMBLER._
-_Source: github.com/Keyvaniath/bpleone-betting - last settled 2026-11-15._
+_Source: github.com/Keyvaniath/bpleone-betting - last settled 2026-11-16._
