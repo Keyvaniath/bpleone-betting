@@ -2535,11 +2535,12 @@ def _grade_ml_by_event_id(pick: Dict[str, Any], games: List[Dict[str, Any]]) -> 
         hs, as_ = float(g["home_score"]), float(g["away_score"])
     except (TypeError, ValueError):
         return None
-    if hs == as_:
-        return None
+    tie = hs == as_            # (2026-11-16 audit) a level final (an NFL tie) is a push: stake back
     pick["outcome"] = {"final_score": f"{g.get('away_abbrev')} {g['away_score']} @ {g.get('home_abbrev')} {g['home_score']}",
                        "market": market, "matched_by": "event_id",
                        "verify": f"{g.get('away_abbrev')} {g['away_score']} @ {g.get('home_abbrev')} {g['home_score']}: {market}"}
+    if tie:
+        return "push"
     return "won" if ((hs > as_) if market == "ML_HOME" else (as_ > hs)) else "lost"
 
 
@@ -2760,6 +2761,8 @@ def _grade_nfl_pick(pick: Dict[str, Any], by_name: Dict[str, Any],
                 if total == line: result = "push"
                 elif (("over_" in m) == (total > line)): result = "won"
                 else: result = "lost"
+            # (2026-11-16 audit) an NFL tie is a PUSH on the moneyline (stake back), not a loss
+            elif hs == aws: result = "push"
             elif "ml_home" in m: result = "won" if hs > aws else "lost"
             else: result = "won" if aws > hs else "lost"
             pick["outcome"] = {"final_score": f"{g.get('away_abbrev')} {aws} @ {g.get('home_abbrev')} {hs}",
@@ -3614,7 +3617,7 @@ def _settle_picks(history: List[Dict[str, Any]]) -> int:
             p["result"] = r_id
             p["settled_at"] = dt.datetime.now().isoformat(timespec="seconds")
             p["settled_by"] = "event_id"
-            p["payout_units"] = round(dec - 1, 4) if r_id == "won" else -1.0
+            p["payout_units"] = round(dec - 1, 4) if r_id == "won" else (0.0 if r_id == "push" else -1.0)
             n_settled += 1
             continue
 

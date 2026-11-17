@@ -1797,3 +1797,18 @@ def test_espn_health_compares_ids_not_counts(monkeypatch):
     local["games"] = [{"id": "1"}, {"id": "3"}]
     r = dh._check_espn("nba", "u", "nba_state.json")
     assert r["status"] == "red" and "1 of ESPN's 2 games missing" in r["findings"][0]
+
+
+def test_nfl_moneyline_tie_is_a_push():
+    """(audit 11/16) a tied NFL final was graded 'lost' on the moneyline; the book rule is a push (stake back)."""
+    import all_picks_tracker as apt
+    g = {"id": "401", "date": "2026-11-16", "home_abbrev": "BAL", "away_abbrev": "LAC", "home_score": 20, "away_score": 20}
+    for mk in ("ML_HOME", "ML_AWAY"):
+        pk = {"sport": "NFL", "market": mk, "event_id": "401", "player_or_matchup": "LAC @ BAL", "date": "2026-11-16"}
+        assert apt._grade_ml_by_event_id(dict(pk), [g]) == "push"
+        assert apt._grade_nfl_pick(dict(pk), {}, [g]) == "push"
+    won = dict(g, away_score=23)
+    pk = {"sport": "NFL", "market": "ML_AWAY", "event_id": "401", "player_or_matchup": "LAC @ BAL", "date": "2026-11-16"}
+    assert apt._grade_ml_by_event_id(dict(pk), [won]) == "won"
+    assert apt._grade_nfl_pick(dict(pk), {}, [won]) == "won"
+    assert apt._grade_nfl_pick(dict(pk, market="ML_HOME"), {}, [won]) == "lost"
