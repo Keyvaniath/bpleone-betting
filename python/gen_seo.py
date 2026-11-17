@@ -13,6 +13,7 @@ from __future__ import annotations
 import os
 import re
 import glob
+import sys
 import html
 import datetime as dt
 
@@ -27,6 +28,35 @@ NOINDEX = {
 BRAND_DESC = ("EdgeStat — quantitative sports-betting analytics: model edges, calibrated "
               "probabilities, and an honest settled track record across MLB, NBA, NHL, golf, "
               "tennis, soccer and more. Informational only, 21+.")
+
+
+# (2026-11-16 audit) the flagship pages, ranked above the long tail
+KEY_PAGES = {"board.html": "0.9", "picks.html": "0.9", "play-of-day.html": "0.9", "tonight.html": "0.8",
+             "track-record.html": "0.8", "proof.html": "0.7", "methodology.html": "0.7",
+             "nfl.html": "0.7", "nba.html": "0.7", "nhl.html": "0.7"}
+
+
+def is_indexable(fname: str, htmltext: str) -> bool:
+    """A page belongs in the sitemap unless it is internal (NOINDEX), a 404, or itself says noindex or
+    redirects (the retired-board stubs do both). (2026-11-16 audit: the old sitemap listed 14 noindex
+    redirect stubs and omitted The Board and Today's Picks, because it was generated once and never again.)"""
+    head = htmltext[:8000]
+    return not (fname in NOINDEX or fname == "404.html"
+                or re.search(r'<meta[^>]+name=["\']robots["\'][^>]+noindex', head, re.I)
+                or re.search(r'http-equiv=["\']refresh["\']', head, re.I))
+
+
+def _lastmod(path: str) -> str:
+    """The page's last commit date (what changed), else its file date."""
+    try:
+        import subprocess
+        out = subprocess.run(["git", "log", "-1", "--format=%cs", "--", os.path.basename(path)], cwd=ROOT,
+                             capture_output=True, text=True, timeout=20).stdout.strip()
+        if out:
+            return out
+    except Exception:
+        pass
+    return dt.date.fromtimestamp(os.path.getmtime(path)).isoformat()
 
 
 def _title(htmltext: str) -> str:
@@ -66,8 +96,8 @@ def inject_meta() -> int:
         fname = os.path.basename(path)
         with open(path, encoding="utf-8") as f:
             t = f.read()
-        if re.search(r'name=["\']description["\']', t, re.I):
-            continue  # already has SEO -> leave it
+        if re.search(r'name=["\']description["\']', t, re.I) or not is_indexable(fname, t):
+            continue  # already has SEO, or a redirect stub / internal page -> leave it
         block = _seo_block(_title(t), fname)
         # Insert after the viewport meta if present, else right after <head>.
         vp = re.search(r'<meta[^>]+name=["\']viewport["\'][^>]*>', t, re.I)
@@ -90,17 +120,23 @@ def gen_robots() -> None:
         f.write("\n".join(lines))
 
 
+def sitemap_pages() -> list:
+    out = []
+    for path in glob.glob(os.path.join(ROOT, "*.html")):
+        with open(path, encoding="utf-8", errors="replace") as f:
+            if is_indexable(os.path.basename(path), f.read()):
+                out.append(os.path.basename(path))
+    # index first, then the flagship pages, then alphabetical
+    return sorted(out, key=lambda p: (p != "index.html", -float(KEY_PAGES.get(p, "0.6")), p))
+
+
 def gen_sitemap() -> int:
-    today = dt.date.today().isoformat()
-    pages = sorted(os.path.basename(p) for p in glob.glob(os.path.join(ROOT, "*.html")))
-    pages = [p for p in pages if p not in NOINDEX]
-    # index first, then alphabetical
-    pages.sort(key=lambda p: (p != "index.html", p))
+    pages = sitemap_pages()
     urls = []
     for p in pages:
         loc = SITE + ("/" if p == "index.html" else "/" + p)
-        pri = "1.0" if p == "index.html" else "0.6"
-        urls.append(f"  <url><loc>{loc}</loc><lastmod>{today}</lastmod><priority>{pri}</priority></url>")
+        pri = "1.0" if p == "index.html" else KEY_PAGES.get(p, "0.6")
+        urls.append(f"  <url><loc>{loc}</loc><lastmod>{_lastmod(os.path.join(ROOT, p))}</lastmod><priority>{pri}</priority></url>")
     xml = ('<?xml version="1.0" encoding="UTF-8"?>\n'
            '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
            + "\n".join(urls) + "\n</urlset>\n")
@@ -110,6 +146,10 @@ def gen_sitemap() -> int:
 
 
 if __name__ == "__main__":
+    if "--sitemap-only" in sys.argv:
+        gen_robots()
+        print(f"[seo] sitemap has {gen_sitemap()} urls; robots.txt written")
+        sys.exit(0)
     injected = inject_meta()
     gen_robots()
     n_pages = gen_sitemap()

@@ -1741,3 +1741,17 @@ def test_board_block_open_lists_every_unsettled_bet():
     b = apt._board_block(hist)
     assert [(r["team"], r["book_american"], r["result"]) for r in b["open"]] == [("CIN", -238, "pending")]
     assert all(r["result"] != "pending" for r in b["recent"]) and len(b["recent"]) == 60   # the old cap hid it
+
+
+def test_sitemap_matches_indexable_pages():
+    """(audit 11/16) sitemap.xml = exactly the indexable pages: no noindex/redirect stubs, nothing missing.
+    Regenerate with: python python/gen_seo.py --sitemap-only"""
+    import os
+    import re
+    import gen_seo
+    root = os.path.join(os.path.dirname(__file__), "..", "..")
+    sm = open(os.path.join(root, "sitemap.xml"), encoding="utf-8").read()
+    listed = {u.rsplit("/", 1)[-1] or "index.html" for u in re.findall(r"<loc>(.*?)</loc>", sm)}
+    want = set(gen_seo.sitemap_pages())
+    assert listed == want, {"stale_or_noindex": sorted(listed - want), "missing": sorted(want - listed)}
+    assert {"board.html", "picks.html", "index.html"} <= listed
