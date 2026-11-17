@@ -406,7 +406,7 @@ fetch('data/data_health.json?t=' + Date.now()).then(function(r){return r.json();
       </div>
       <div style="display:flex; gap:10px; align-items:center;">
         <span id="loopRecsPill" style="display:none; padding:3px 10px; border-radius:4px; font-size:10px; text-transform:uppercase; letter-spacing:0.06em; background:#d4a04a; color:#1a1a1a; font-weight:700;"></span>
-        <a href="training.html" style="font-size:11px; color: var(--text-2, #aaa); text-decoration: underline;">/training</a>
+        <a href="live-learning.html" style="font-size:11px; color: var(--text-2, #aaa); text-decoration: underline;">/training</a>
         <a href="config.html" style="font-size:11px; color: var(--text-2, #aaa); text-decoration: underline;">/config</a>
       </div>
     </div>
@@ -800,7 +800,7 @@ fetch('data/data_health.json?t=' + Date.now()).then(function(r){return r.json();
     <div class="card" id="locksCard" style="border-left: 2px solid rgba(88,200,120,0.4);">
       <div class="card-head">
         <span><strong style="font-size:13px;">🔒 Side: Top 5 Locks</strong></span>
-        <span class="muted" style="font-size:10px;"><a href="locks-of-day.html" style="color:var(--text-2,#aaa);">All →</a></span>
+        <span class="muted" style="font-size:10px;"><a href="picks.html#locks" style="color:var(--text-2,#aaa);">All →</a></span>
       </div>
       <div style="padding: 10px 14px; max-height: 240px; overflow-y: auto;" id="locksHomeBox">
         <p class="muted" style="font-size:11px;">Loading…</p>
@@ -1441,7 +1441,7 @@ fetch("data/today.json", { cache: "no-cache" })
     const summary = document.querySelector(".play-card .play-summary");
     if (summary) {
       const honestNote = isPreCal
-        ? `<br><br><strong style="color:#d4a04a;">Calibration disclaimer:</strong> raw edge is ${pod.edge_pct}%, which is well above what a properly calibrated baseball model produces (most +EV plays sit in the +2% to +8% range). Treat this as a research signal, not a sized bet. The self-learning loop needs ~30 settled records per market before bias correction fires. <a href="learning.html" style="color:#d4a04a; text-decoration: underline;">See per-market progress &rarr;</a>`
+        ? `<br><br><strong style="color:#d4a04a;">Calibration disclaimer:</strong> raw edge is ${pod.edge_pct}%, which is well above what a properly calibrated baseball model produces (most +EV plays sit in the +2% to +8% range). Treat this as a research signal, not a sized bet. The self-learning loop needs ~30 settled records per market before bias correction fires. <a href="live-learning.html" style="color:#d4a04a; text-decoration: underline;">See per-market progress &rarr;</a>`
         : "";
       summary.innerHTML =
         `Highest-edge play on tonight's slate: <strong>${pod.matchup}</strong> ${pod.label} at ${pod.market_price >= 0 ? "+" + pod.market_price : pod.market_price}. ` +
