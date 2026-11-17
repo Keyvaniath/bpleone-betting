@@ -143,7 +143,7 @@ fetch("data/board.json?t=" + Date.now(), { cache: "no-cache" }).then((r) => r.js
   const R = B.results || {};
   const open = (R.open || (R.recent || []).filter((r) => r.result === "pending"));
   const listed = (B.picks || []).filter((p) => new Date(p.commence_time).getTime() > now);
-  const key = (x) => `${x.sport}|${x.matchup}|${x.team}`;
+  const key = (x) => `${x.sport}|${x.matchup}|${x.team}|${x.game_date || x.date}`;   // dated: a pairing can meet on back-to-back nights
   const cur = {}; listed.forEach((p) => { cur[key(p)] = p; });
   const ps = open.map((r) => Object.assign({ game_date: r.date, logged: true, still_listed: !!cur[key(r)] },
                                             r, cur[key(r)] ? { score: cur[key(r)].score, now_american: cur[key(r)].book_american } : {}))
