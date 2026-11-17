@@ -39,7 +39,7 @@
 
   async function fetchSport(sport, day) {
     const u = `https://site.api.espn.com/apis/site/v2/sports/${PATH[sport]}/scoreboard?dates=${day.replace(/-/g, "")}`;
-    const j = await fetch(u, { cache: "no-cache" }).then((r) => r.json());
+    const j = await fetch(u, { cache: "no-cache" }).then((r) => { if (!r.ok) throw new Error("HTTP " + r.status); return r.json(); });
     return (j.events || []).filter((e) => etYmd(new Date(e.date)) === day).map((e) => {
       const c = (e.competitions || [])[0] || {};
       const side = (h) => (c.competitors || []).find((t) => t.homeAway === h) || {};
@@ -88,24 +88,32 @@
     const day = etYmd();
     let board = opts.board || null;
     let filter = "all";
-    let games = [];
+    let games = [], failed = [];
     const draw = () => {
       const bets = betsFor(board || {}, day);
       const show = games.filter((g) => filter === "all" || g.sport === filter);
+      // (2026-11-16 audit) a scoreboard that did not answer is NOT "no games": say so, and still list
+      // today's bets for that sport (without a score) so the page never hides a live bet
+      const down = failed.filter((s) => filter === "all" || s === filter);
+      const orphan = bets.filter((b) => down.includes(b.sport) && !games.some((g) => g.sport === b.sport && g.matchup === b.matchup));
+      const note = down.length ? `<div style="padding:8px 10px;font-size:12px;color:#fbbf24;">Live scores for ${esc(down.join(", "))} are unavailable right now (ESPN's scoreboard did not answer); retrying every 60s.</div>` +
+        orphan.map((b) => `<div style="padding:8px 10px;border-top:1px solid rgba(255,255,255,.06);font-size:13px;"><span style="font-family:JetBrains Mono,monospace;font-size:11px;color:#9fb0c8;margin-right:10px;">${esc(b.sport)}</span><b>${esc(b.matchup)}</b>${betLine({ state: "pre" }, b)}</div>`).join("") : "";
       const counts = sports.map((s) => [s, games.filter((g) => g.sport === s).length]).filter(([, n]) => n);
       const live = games.filter((g) => g.state === "in").length;
       el.innerHTML = `<div style="display:flex;flex-wrap:wrap;gap:8px;align-items:baseline;margin:0 0 4px;">
           <h3 style="font-size:15px;margin:0;">Today's slate</h3>
           <span class="muted" style="font-size:12px;">${esc(new Date(day + "T12:00:00Z").toLocaleDateString("en-US", { weekday: "long", month: "short", day: "numeric", timeZone: "UTC" }))}
-          · ${counts.map(([s, n]) => `${n} ${s}`).join(" · ") || "no games"}${live ? ` · <span style="color:#f87171;">${live} live</span>` : ""}</span>
+          · ${counts.map(([s, n]) => `${n} ${s}`).join(" · ") || (failed.length ? "live scores unavailable" : "no games")}${live ? ` · <span style="color:#f87171;">${live} live</span>` : ""}</span>
           <span class="muted" style="font-size:11px;margin-left:auto;">ESPN scoreboard · refreshes every 60s</span></div>
         <p class="muted" style="font-size:12px;margin:0 0 6px;">Every game today, with our bet on it where The Board has one. Bets are graded on the final at the DraftKings price shown; the live line here is a score, not a result.</p>
-        ${show.length ? show.map((g) => card(g, bets)).join("") : `<div class="muted" style="padding:10px;font-size:13px;">No ${filter === "all" ? "" : esc(filter) + " "}games today.</div>`}`;
+        ${note}${show.length ? show.map((g) => card(g, bets)).join("") : down.length ? "" : `<div class="muted" style="padding:10px;font-size:13px;">No ${filter === "all" ? "" : esc(filter) + " "}games today.</div>`}`;
     };
     const load = async () => {
-      const res = await Promise.all(sports.map((s) => fetchSport(s, day).catch(() => [])));
+      const res = await Promise.all(sports.map((s) => fetchSport(s, day).catch(() => null)));
+      // keep the last good games for a sport whose refresh failed, rather than dropping them
+      failed = sports.filter((s, i) => res[i] === null && !games.some((g) => g.sport === s));
       const order = { in: 0, pre: 1, post: 2 };
-      games = res.flat().sort((a, b) => (order[a.state] ?? 1) - (order[b.state] ?? 1) || (a.start > b.start ? 1 : -1));
+      games = sports.flatMap((s, i) => res[i] === null ? games.filter((g) => g.sport === s) : res[i]).sort((a, b) => (order[a.state] ?? 1) - (order[b.state] ?? 1) || (a.start > b.start ? 1 : -1));
       if (opts.onSports) opts.onSports(sports.filter((s) => games.some((g) => g.sport === s)));
       draw();
     };

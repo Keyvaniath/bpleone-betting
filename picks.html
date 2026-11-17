@@ -131,8 +131,10 @@
 <script>
 let SLATE = null, SLATE_SPORTS = [];
 fetch("data/board.json?t=" + Date.now(), { cache: "no-cache" }).then((r) => r.json()).then((B) => {
-  EdgeSlate.mount(document.getElementById("slate"), { board: B, onSports: (ss) => { SLATE_SPORTS = ss; if (DATA) renderSportSel(); } })
-    .then((c) => { SLATE = c; SLATE.setFilter(SLATE_SPORTS.includes(state.sport) ? state.sport : "all"); });
+  // (audit) a slate.js that failed to load must not take The Board's bets section down with it
+  if (window.EdgeSlate) EdgeSlate.mount(document.getElementById("slate"), { board: B, onSports: (ss) => { SLATE_SPORTS = ss; if (DATA) renderSportSel(); } })
+    .then((c) => { SLATE = c; SLATE.setFilter(SLATE_SPORTS.includes(state.sport) ? state.sport : "all"); }).catch(() => {});
+  else document.getElementById("slate").hidden = true;
   const esc = (v) => String(v == null ? "" : v).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c]);
   const am = (a) => a == null ? "—" : (a >= 0 ? "+" + a : "" + a);
   const now = Date.now();
