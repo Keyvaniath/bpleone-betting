@@ -179,6 +179,14 @@ def _check_props():
         return {"feed": "props", "status": "green",
                 "findings": [f"{len(props)} props across {len(games)} games"],
                 "n_props": len(props), "n_games": len(games)}
+    # (2026-11-16 audit) props_pipeline.py prices MLB props only (pitcher Ks, batter hits/HR/TB): in the MLB
+    # off-season an empty props.json is the expected state, not a degraded feed. A permanent yellow banner
+    # for it taught readers to ignore the page's warnings.
+    t = _load("today.json") or {}
+    if t.get("no_games") or not (t.get("games") or []):
+        return {"feed": "props", "status": "green", "n_props": 0, "n_games": 0,
+                "findings": ["MLB off-season: the props pipeline prices MLB props only, so no prop slate is expected. "
+                             "NBA / NHL / NFL player projections have no sportsbook prop price and are never picks."]}
     # Empty props.json -> classify by the AUTHORITATIVE key state, not a guess.
     ks = _load("odds_key_status.json") or {}
     state = ks.get("state")

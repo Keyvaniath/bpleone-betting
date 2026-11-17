@@ -1770,3 +1770,15 @@ def test_slate_js_bet_matching():
     here = os.path.dirname(__file__)
     r = subprocess.run([node, os.path.join(here, "js", "slate_test.js")], capture_output=True, text=True, timeout=60)
     assert r.returncode == 0 and "slate ok" in r.stdout, r.stdout + r.stderr
+
+
+def test_props_health_is_green_in_mlb_offseason(monkeypatch):
+    """(audit 11/16) the props pipeline is MLB-only: an empty props.json in the off-season is expected (green),
+    but in season with an active key it is still a real gap (yellow)."""
+    import data_health as dh
+    files = {"props.json": {"games": [], "props": []}, "odds_key_status.json": {"state": "active", "key_set": True},
+             "today.json": {"no_games": True, "games": []}}
+    monkeypatch.setattr(dh, "_load", lambda n: files.get(n))
+    assert dh._check_props()["status"] == "green"
+    files["today.json"] = {"no_games": False, "games": [{"id": 1}]}
+    assert dh._check_props()["status"] == "yellow"
