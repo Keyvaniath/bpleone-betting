@@ -1670,6 +1670,7 @@ def test_nba_leans_wait_for_the_5pm_injury_report(monkeypatch):
     d = "2026-11-16"
     assert pod.nba_lean_pending(d, dt.datetime(2026, 11, 16, 21, 59, tzinfo=dt.timezone.utc))      # 4:59 PM EST
     assert not pod.nba_lean_pending(d, dt.datetime(2026, 11, 16, 22, 1, tzinfo=dt.timezone.utc))   # 5:01 PM EST
-    assert not pod.nba_lean_pending("2026-11-17", dt.datetime(2026, 11, 16, 15, 0, tzinfo=dt.timezone.utc))  # not game day
+    assert pod.nba_lean_pending("2026-11-17", dt.datetime(2026, 11, 16, 23, 0, tzinfo=dt.timezone.utc))      # tomorrow waits too
+    assert not pod.nba_lean_pending("2026-11-15", dt.datetime(2026, 11, 16, 15, 0, tzinfo=dt.timezone.utc))  # past date
     src = open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "board.py"), encoding="utf-8").read()
     assert '"nba_lean_before_injury_report"' in src
