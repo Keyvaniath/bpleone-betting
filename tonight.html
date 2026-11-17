@@ -68,6 +68,9 @@
     <div class="card-head"><span>🏟 Tonight's slate</span><span class="muted" id="slateMeta"></span></div>
     <div id="slateBox"><p class="muted" style="padding:14px;">Loading…</p></div>
   </section>
+  <!-- (2026-11-16) live scores and finals for today's games, with our bet on each: the slate above
+       lists only games still to start, so after tip-off this page used to go blank -->
+  <section class="card section" id="slate" data-sports="NFL,NBA,NHL" style="padding:12px 4px 6px;"></section>
   <p class="muted" id="offNote" style="font-size:12px;margin:0 0 14px;" hidden></p>
 
   <!-- WHALE PICKS -->
@@ -126,6 +129,8 @@
   </div>
 </main>
 <script src="js/nav_badge.js"></script>
+<script src="js/slate.js"></script>
+<script>EdgeSlate.mount(document.getElementById("slate"));</script>
 <script>
 function fmtAmer(a) { if (a == null) return '—'; return a >= 0 ? '+'+a : ''+a; }
 
@@ -151,7 +156,7 @@ fetch("data/board.json?t=" + Date.now(), { cache: "no-cache" }).then(r => r.json
       ${big ? ` · moved <strong>${esc(mv.move_home_pts > 0 ? g.home : g.away)} ${Math.abs(mv.move_home_pts).toFixed(1)} pts</strong> since DK opened ${esc(g.away)} ${am(mv.open_ml_away)} / ${esc(g.home)} ${am(mv.open_ml_home)}` : ""}
       ${flag ? `<br><span style="font-size:11px;color:#fbbf24;">⚠ ${flag}</span>` : ""}</div>`;
   }).join("") + `<p class="muted" style="font-size:11px;padding:6px 14px;">Grades, prices and every game: <a href="board.html">The Board →</a>. A grade C is a model lean, not an edge.</p>`
-    : `<p class="muted" style="padding:14px;">No major-sport game left to start today. <a href="board.html">The Board</a> has the next slate.</p>`;
+    : `<p class="muted" style="padding:14px;">No major-sport game left to start today: live scores and finals are just below. <a href="board.html">The Board</a> has the next slate.</p>`;
   // line moves (from DraftKings' own opener where ESPN carries it)
   const sbx = document.getElementById("sharpBox");
   if (!sbx.innerHTML.trim() || /Loading/.test(sbx.innerHTML)) {
