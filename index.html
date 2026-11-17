@@ -88,7 +88,7 @@
   <div id="homeAlphaNote" style="font-size:11px;color:var(--text-3,#6a7a93);margin-top:6px;"></div>
 </section>
 <script>
-fetch("data/board.json?t=" + Date.now(), { cache: "no-cache" }).then(function (r) { return r.json(); }).then(function (B) {
+(window.__edgeBoard || (window.__edgeBoard = fetch("data/board.json?t=" + Date.now(), { cache: "no-cache" }).then((r) => r.json()))).then(function (B) {  /* one shared board.json fetch for the page (audit 11/16) */
   var A = ((B.alpha || {}).picks || []).filter(function (a) { var d = new Date(a.commence_time); return isNaN(d) || d.getTime() > Date.now(); });
   var gen = new Date(String(B.generated_at) + "Z");
   if (!A.length || isNaN(gen) || (Date.now() - gen.getTime()) > 6 * 36e5) return;      // nothing live to show: stay hidden
@@ -194,7 +194,7 @@ fetch('data/data_health.json?t=' + Date.now()).then(function(r){return r.json();
   // (2026-11-13) MLB off-season: the hero's MLB confidence chart is empty, so the card shows the
   // day's biggest line moves since DraftKings opened each game (The Board's data) instead.
   Promise.all([fetch("data/today.json?t=" + Date.now()).then((r) => r.json()).catch(() => ({})),
-               fetch("data/board.json?t=" + Date.now(), { cache: "no-cache" }).then((r) => r.json())]).then(([t, B]) => {
+               (window.__edgeBoard || (window.__edgeBoard = fetch("data/board.json?t=" + Date.now(), { cache: "no-cache" }).then((r) => r.json())))]).then(([t, B]) => {
     if (!t || !t.no_games) return;
     const esc = (v) => String(v == null ? "" : v).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c]);
     const am = (a) => a == null ? "—" : (a >= 0 ? "+" + a : "" + a);
@@ -230,7 +230,7 @@ fetch('data/data_health.json?t=' + Date.now()).then(function(r){return r.json();
   window.boardAlphaToday = (function () {
     let pr = null;
     return function () {
-      if (!pr) pr = fetch("data/board.json?t=" + Date.now(), { cache: "no-cache" }).then((r) => r.json()).then((B) => {
+      if (!pr) pr = (window.__edgeBoard || (window.__edgeBoard = fetch("data/board.json?t=" + Date.now(), { cache: "no-cache" }).then((r) => r.json()))).then((B) => {
         const A = B.alpha || {}, today = new Date().toLocaleDateString("en-CA", { timeZone: "America/New_York" });
         if (B.date_et !== today || A.status !== "locked" || !(A.picks || []).length) return null;
         const t = Date.parse(String(A.locked_at || "").replace(" ", "T") + "Z");
