@@ -1782,3 +1782,18 @@ def test_props_health_is_green_in_mlb_offseason(monkeypatch):
     assert dh._check_props()["status"] == "green"
     files["today.json"] = {"no_games": False, "games": [{"id": 1}]}
     assert dh._check_props()["status"] == "yellow"
+
+
+def test_espn_health_compares_ids_not_counts(monkeypatch):
+    """(audit 11/16) after midnight the local state holds yesterday + today while ESPN's default scoreboard still
+    shows yesterday: extra local games are fine (green); an ESPN game missing locally is red."""
+    import data_health as dh
+    up = {"events": [{"id": "1", "status": {"type": {"state": "post"}}}, {"id": "2", "status": {"type": {"state": "post"}}}]}
+    local = {"games": [{"id": "1"}, {"id": "2"}, {"id": "3"}, {"id": "4"}]}
+    monkeypatch.setattr(dh, "_http", lambda u: up)
+    monkeypatch.setattr(dh, "_load", lambda n: local)
+    monkeypatch.setattr(dh, "_age_min", lambda n: 5)
+    assert dh._check_espn("nba", "u", "nba_state.json")["status"] == "green"
+    local["games"] = [{"id": "1"}, {"id": "3"}]
+    r = dh._check_espn("nba", "u", "nba_state.json")
+    assert r["status"] == "red" and "1 of ESPN's 2 games missing" in r["findings"][0]

@@ -143,7 +143,17 @@ def _check_espn(sport, espn_url, local_file):
 
     findings = []
     status = "green"
-    if n_local != n_up:
+    # (2026-11-16 audit) compare by ESPN event id when the state carries ids: around midnight ET ESPN's default
+    # scoreboard still shows yesterday while the local state already holds yesterday + today, so a raw count
+    # went red every night. The real failure is an ESPN game MISSING locally; extra local games are fine.
+    up_ids = {str(e.get("id")) for e in events if e.get("id")}
+    local_ids = {str(g.get("id")) for g in local_games if g.get("id")}
+    if up_ids and local_ids:
+        missing = up_ids - local_ids
+        if missing:
+            status = "red"
+            findings.append(f"{sport.upper()}: {len(missing)} of ESPN's {n_up} games missing locally")
+    elif n_local != n_up:
         status = "red" if n_up > 0 else "yellow"
         findings.append(f"{sport.upper()} count mismatch: local={n_local} vs ESPN={n_up}")
     if n_up_live > 0 and age > LIVE_RED_MIN:
