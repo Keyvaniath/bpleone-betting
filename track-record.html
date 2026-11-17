@@ -47,6 +47,46 @@
     <p>Every recommendation we've published, logged: posted price, stake, result and profit. When a price or a grade turns out to be wrong we restate it and disclose the before/after numbers (see the price-correction notes under Performance by Sport).</p>
   </section>
 
+  <!-- (2026-11-16 audit) The Board is the live product, so its record leads this page; it was one
+       11px line inside the by-sport card while the page opened on October's MLB Play of the Day list -->
+  <section class="card" id="boardRecCard" hidden style="margin-bottom:18px;border-left:3px solid #fbbf24;">
+    <div class="card-head"><span>★ The Board — every bet, graded at the DraftKings price</span><span class="muted" id="boardRecMeta"></span></div>
+    <div id="boardRecBody" style="padding:6px 16px 14px;"></div>
+  </section>
+  <script>
+  fetch("data/board.json?t=" + Date.now(), { cache: "no-cache" }).then((r) => r.json()).then((B) => {
+    const R = B.results; if (!R || !R.all_bets) return;
+    const esc = (v) => String(v == null ? "" : v).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c]);
+    const u = (x) => x == null ? "—" : `<span style="color:${x > 0 ? "#4ade80" : x < 0 ? "#e35a5a" : "inherit"};">${x > 0 ? "+" : x < 0 ? "−" : ""}${Math.abs(x).toFixed(2)}u</span>`;
+    const pc = (x) => x == null ? "—" : `${x > 0 ? "+" : x < 0 ? "−" : ""}${Math.abs(x).toFixed(1)}%`;
+    const clv = (x) => x == null ? "—" : `<span style="color:${x > 0 ? "#4ade80" : x < 0 ? "#e35a5a" : "inherit"};">${x > 0 ? "+" : x < 0 ? "−" : ""}${Math.abs(x).toFixed(2)} pts</span>`;
+    const tile = (lab, L, note) => `<div style="flex:1 1 220px;border:1px solid rgba(255,255,255,.08);border-radius:10px;padding:10px 12px;">
+        <div class="muted" style="font-size:11px;text-transform:uppercase;letter-spacing:.5px;">${lab}</div>
+        <div style="font-size:22px;font-weight:800;margin:4px 0;">${L.wins}-${L.losses} ${u(L.net_units)}</div>
+        <div class="muted" style="font-size:12px;">ROI ${pc(L.roi_pct)} · ${L.n_pending} open · CLV ${clv(L.avg_clv_pts)} avg, beat the close ${L.beat_close_pct == null ? "—" : L.beat_close_pct.toFixed(0) + "%"} (n=${L.n_clv})</div>
+        ${note ? `<div class="muted" style="font-size:11px;margin-top:4px;">${note}</div>` : ""}</div>`;
+    const G = R.by_grade || {};
+    const grades = ["A", "B", "C"].filter((g) => G[g] && (G[g].n_settled || G[g].n_pending)).map((g) =>
+      `<tr><td>Grade ${g}</td><td>${G[g].wins}-${G[g].losses}</td><td>${u(G[g].net_units)}</td><td>${pc(G[g].roi_pct)}</td><td>${clv(G[g].avg_clv_pts)}</td><td>${G[g].n_pending}</td></tr>`).join("");
+    const days = Object.entries(R.by_day || {}).slice(0, 7).map(([d, L]) =>
+      `<tr><td>${esc(new Date(d + "T12:00:00Z").toLocaleDateString("en-US", { weekday: "short", month: "numeric", day: "numeric", timeZone: "UTC" }))}</td><td>${L.wins}-${L.losses}</td><td>${u(L.net_units)}</td><td>${L.alpha && (L.alpha.n_settled || L.alpha.n_pending) ? `${L.alpha.wins}-${L.alpha.losses} ${u(L.alpha.net_units)}` : "—"}</td><td>${clv(L.avg_clv_pts)}</td><td>${L.n_pending}</td></tr>`).join("");
+    const th = (cols) => `<tr>${cols.map((c) => `<th style="text-align:left;font-weight:600;color:#9fb0c8;padding:4px 10px 4px 0;">${c}</th>`).join("")}</tr>`;
+    const tbl = (head, rows) => `<table style="font-size:12.5px;border-collapse:collapse;margin-top:10px;font-family:JetBrains Mono,monospace;">${th(head)}${rows}</table>`;
+    document.getElementById("boardRecBody").innerHTML =
+      `<div style="display:flex;flex-wrap:wrap;gap:10px;margin-top:6px;">
+        ${tile("Alpha picks (the day's locked top bets)", R.alpha, "Graded at the locked price.")}
+        ${tile("Every board bet (A, B and C)", R.all_bets, "")}
+      </div>
+      <div style="display:flex;flex-wrap:wrap;gap:24px;">
+        <div>${tbl(["Grade", "W-L", "Units", "ROI", "CLV", "Open"], grades)}</div>
+        <div>${tbl(["Day", "W-L", "Units", "Alpha", "CLV", "Open"], days)}</div>
+      </div>
+      <p class="muted" style="font-size:12px;margin:10px 0 0;">Since ${esc(R.first_date)}: a small sample, so no edge is proven by these numbers. CLV (the price we took against DraftKings' last pre-start price) is the faster read on whether a bet was good. Grade C bets are model leans, not edges. Every open bet is listed on <a href="picks.html" style="color:#7fb0e8;">Today's Picks</a>; every graded bet with its price, close and final is on <a href="board.html" style="color:#7fb0e8;">The Board</a>.</p>`;
+    document.getElementById("boardRecMeta").textContent = `updated ${new Date(String(B.generated_at) + "Z").toLocaleString("en-US", { timeZone: "America/New_York", month: "numeric", day: "numeric", hour: "numeric", minute: "2-digit" })} ET`;
+    document.getElementById("boardRecCard").hidden = false;
+  }).catch(() => {});
+  </script>
+
   <!-- (2026-11-03) the strip is the Play of the Day line only, not the curated or all-picks record -->
   <!-- (2026-11-05) the same number the homepage leads with, first; POD is a sub-line -->
   <div id="curatedLead" style="display:none;margin:0 0 14px;padding:12px 16px;border-radius:10px;border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.02);font-family:'JetBrains Mono',monospace;font-size:13px;line-height:1.6;"></div>
