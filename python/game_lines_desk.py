@@ -985,6 +985,7 @@ def run_sport(sport: str) -> Dict[str, Any]:
                         qid = st.resolve(tm, qb1)
                         if qid:
                             x.update(qb=qb1, qb_id=qid, edge=round(st.edge(tm, qid), 3), certain=True, depth_qb1=qb1,
+                                     status=st1 or "active",
                                      note=f"{x['regular']} (regular) vs {x['last_start']} (last start): ESPN's depth chart lists {qb1} as QB1")
                         continue
                 if x.get("certain") and x.get("regular") and x.get("qb") and x["qb"] != x["regular"] and game_date:

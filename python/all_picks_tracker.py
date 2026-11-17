@@ -3307,6 +3307,14 @@ def _grade_nhl_pick(pick: Dict[str, Any], by_name: Dict[str, Any],
     return None
 
 
+def _et_today_str() -> str:
+    try:
+        from zoneinfo import ZoneInfo
+        return dt.datetime.now(ZoneInfo("America/New_York")).date().isoformat()
+    except Exception:
+        return (dt.datetime.now(dt.timezone.utc) - dt.timedelta(hours=5)).date().isoformat()
+
+
 def _price_bucket(american) -> Optional[str]:
     """heavy_fav: -200 or shorter; fav: -199 to -101; dog: -100 (even) or longer."""
     try:
@@ -3427,8 +3435,9 @@ def _board_block(history: List[Dict[str, Any]]) -> Dict[str, Any]:
         "by_price": {k: line([p for p in rows if _price_bucket(price(p)) == k]) for k in ("heavy_fav", "fav", "dog")},
         "by_sport": {sp: line([p for p in rows if str(p.get("sport") or "").upper() == sp])
                      for sp in sorted({str(p.get("sport") or "").upper() for p in rows})},
+        # (2026-11-16 review) today and earlier only: desk picks on future dates took 8 of the 14 slots
         "by_day": {d: dict(line(ps), alpha=line([p for p in ps if "board_alpha" in tags(p)], alpha=True))
-                   for d, ps in sorted(days.items(), reverse=True)[:14]},
+                   for d, ps in sorted(((d, ps) for d, ps in days.items() if d <= _et_today_str()), reverse=True)[:14]},
         "first_date": min((str(p.get("date"))[:10] for p in rows), default=None),
         "recent": [{"date": str(p.get("date") or "")[:10], "sport": p.get("sport"), "grade": grade(p, "board_alpha" in tags(p)),
                     "is_alpha": "board_alpha" in tags(p), "matchup": p.get("player_or_matchup"), "team": team(p),

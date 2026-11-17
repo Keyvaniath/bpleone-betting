@@ -688,7 +688,8 @@ def alpha_post(alpha: Dict[str, Any], today_et: str, odds_observed_at: Optional[
             "note": "Draft only. Nothing posts automatically; a person copies this and presses send."}
 
 
-def recap_post(results: Optional[Dict[str, Any]], today_et: str) -> Optional[Dict[str, Any]]:
+def recap_post(results: Optional[Dict[str, Any]], today_et: str,
+               alpha_days: Optional[Dict[str, Any]] = None) -> Optional[Dict[str, Any]]:
     """Copy-ready recap of the most recent fully graded day's Alpha picks (DRAFT ONLY).
     Every pick with its result, the day's Alpha line and the running Alpha record,
     losses included. None until a day is fully graded."""
@@ -700,13 +701,19 @@ def recap_post(results: Optional[Dict[str, Any]], today_et: str) -> Optional[Dic
     if not day:
         return None
     picks = [r for r in rows if r["date"] == day]
+    # (2026-11-16 review) a pick that joined the list AFTER the 11:00 lock is marked '*': since NBA leans
+    # wait for the 5 PM report, a list copied at the lock can be shorter than the list that is graded
+    lk = (alpha_days or {}).get(day) or {}
+    late = {(str(p.get("sport")), str(p.get("team"))) for p in (lk.get("picks") or [])
+            if p.get("added_at") and lk.get("locked_at") and p.get("added_at") != lk.get("locked_at")}
+    star = lambda r: "*" if (str(r.get("sport")), str(r.get("team"))) in late else ""
     dl = ((results.get("by_day") or {}).get(day) or {}).get("alpha") or {}
     tot = results.get("alpha") or {}
     u = lambda x: ("+" if (x or 0) >= 0 else "-") + f"{abs(x or 0):.2f}u"
     mark = {"won": "W", "lost": "L", "push": "P"}
     lines = [f"EdgeStat Alpha results · {pod._day_label(day)}: {dl.get('wins', 0)}-{dl.get('losses', 0)}, {u(dl.get('net_units'))}"]
     for r in picks:
-        lines.append(f"{mark.get(r['result'], '?')} {r['sport']} {r['team']} ML {pod._amer(r['book_american'])} {r.get('grade') or ''}".rstrip()
+        lines.append(f"{mark.get(r['result'], '?')} {r['sport']} {r['team']}{star(r)} ML {pod._amer(r['book_american'])} {r.get('grade') or ''}".rstrip()
                      + (f" ({r['final']})" if r.get("final") else ""))
     # (2026-11-13) closing line value: did the locked price beat DraftKings' last pre-start price?
     cl = [float(r["clv_pts"]) for r in picks if r.get("clv_pts") is not None]
@@ -718,6 +725,8 @@ def recap_post(results: Optional[Dict[str, Any]], today_et: str) -> Optional[Dic
         fd = str(results.get("first_date") or "")
         fd = f"{int(fd[5:7])}/{int(fd[8:10])}" if len(fd) >= 10 else fd
         lines.append(f"Alpha since {fd}: {tot['wins']}-{tot['losses']}, {u(tot.get('net_units'))} at the locked prices.")
+    if any(star(r) for r in picks):
+        lines.append("* added after the 11:00 AM lock.")
     if all(r.get("grade") == "C" for r in picks):
         lines.append("All were leans, not proven edges.")
     elif any(r.get("grade") == "C" for r in picks):
@@ -729,7 +738,7 @@ def recap_post(results: Optional[Dict[str, Any]], today_et: str) -> Optional[Dic
     if len(text) > POST_MAX:
         # never drop a pick (dropping one could hide a loss): shorten every pick to "W MIN -223"
         # on one line, and only then drop the running-record line
-        short = " · ".join(f"{mark.get(r['result'], '?')} {r['sport']} {r['team']} {pod._amer(r['book_american'])} {r.get('grade') or ''}".rstrip() for r in picks)
+        short = " · ".join(f"{mark.get(r['result'], '?')} {r['sport']} {r['team']}{star(r)} {pod._amer(r['book_american'])} {r.get('grade') or ''}".rstrip() for r in picks)
         lines = [lines[0], short] + lines[1 + len(picks):]
         text = "\n".join(lines + tail)
         if len(text) > POST_MAX:
@@ -777,9 +786,15 @@ def week_post(results: Optional[Dict[str, Any]], today_et: str, days: int = 7) -
     lines = [f"EdgeStat Board, {lab(done[0])}-{lab(done[-1])} ({len(done)} graded days)",
              f"Alpha picks: {aw}-{al}, {fmt_u(au)}" + (f", beat the close {ab}/{an}" if an else ""),
              f"Every board bet: {bw}-{bl}, {fmt_u(bu)}" + (f", avg CLV {'+' if bc >= 0 else '-'}{abs(bc):.1f} pts" if bc is not None else ""),
-             "Graded at our posted DraftKings price, losses included. Mostly leans, not proven edges.",
+             "Graded at our posted DraftKings price, losses included. Grade C bets are leans, not proven edges.",
              "21+ · not betting advice", SITE_URL]
     text = "\n".join(lines)
+    if len(text) > POST_MAX:                     # shorten the header before anything that carries a number
+        lines[0] = f"EdgeStat Board, {lab(done[0])}-{lab(done[-1])}"
+        text = "\n".join(lines)
+    if len(text) > POST_MAX:
+        lines[3] = "At our posted DraftKings price, losses in. C = lean, not an edge."
+        text = "\n".join(lines)
     return {"from": done[0], "to": done[-1], "days": len(done), "text": text, "chars": len(text),
             "max_chars": POST_MAX, "fits": len(text) <= POST_MAX,
             "note": "Draft only. Nothing posts automatically; a person copies this and presses send."}
@@ -846,7 +861,7 @@ def run(now: Optional[dt.datetime] = None) -> Dict[str, Any]:
         "desk_min_edge": _desk_min_edge(),
         "signal_summary": _signal_summary(),
         "results": (_load("ledger_summary.json") or {}).get("board"),
-        "recap": recap_post((_load("ledger_summary.json") or {}).get("board"), today_et),
+        "recap": recap_post((_load("ledger_summary.json") or {}).get("board"), today_et, (_load_alpha_log()[0] or {}).get("days")),
         "week_post": week_post((_load("ledger_summary.json") or {}).get("board"), today_et),
         "counts": {"games": len(games), "games_today": sum(1 for g in games if g["date"] == today_et and not g.get("college")),
                    "college_today": sum(1 for g in games if g["date"] == today_et and g.get("college")),
@@ -890,7 +905,8 @@ def refresh_results() -> Optional[Dict[str, Any]]:
         return None
     summ = (_load("ledger_summary.json") or {}).get("board")
     board["results"] = summ
-    board["recap"] = recap_post(summ, board["date_et"])
+    board["recap"] = recap_post(summ, board["date_et"], (_load_alpha_log()[0] or {}).get("days"))
+    board["week_post"] = week_post(summ, board["date_et"])         # (review) was one run behind the recap
     tmp = OUT + ".tmp"
     with open(tmp, "w", encoding="utf-8") as f:
         json.dump(board, f, indent=1)
