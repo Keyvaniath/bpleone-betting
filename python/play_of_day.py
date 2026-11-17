@@ -103,7 +103,9 @@ def nba_lean_pending(game_date: Optional[str], now: Optional[dt.datetime] = None
         e = (now or dt.datetime.now(dt.timezone.utc)).astimezone(ZoneInfo("America/New_York"))
     except Exception:
         e = (now or dt.datetime.now(dt.timezone.utc)) - dt.timedelta(hours=5)
-    return bool(game_date) and str(game_date) == e.date().isoformat() and e.hour < NBA_LEAN_HOUR_ET
+    today = e.date().isoformat()
+    # a future date waits too (night-before NBA openers): it is a bet only after ITS day's report
+    return bool(game_date) and (str(game_date) > today or (str(game_date) == today and e.hour < NBA_LEAN_HOUR_ET))
 
 
 def _dk_only(q: Dict[str, Any], ok: bool, why: Optional[str]):
