@@ -1755,3 +1755,18 @@ def test_sitemap_matches_indexable_pages():
     want = set(gen_seo.sitemap_pages())
     assert listed == want, {"stale_or_noindex": sorted(listed - want), "missing": sorted(want - listed)}
     assert {"board.html", "picks.html", "index.html"} <= listed
+
+
+def test_slate_js_bet_matching():
+    """(2026-11-16) js/slate.js: Alpha list only on its own date, ledger rows merge, back-to-back pairings
+    never cross dates. Runs python/tests/js/slate_test.js under node (skipped where node is absent)."""
+    import os
+    import shutil
+    import subprocess
+    import pytest
+    node = shutil.which("node")
+    if not node:
+        pytest.skip("node not installed")
+    here = os.path.dirname(__file__)
+    r = subprocess.run([node, os.path.join(here, "js", "slate_test.js")], capture_output=True, text=True, timeout=60)
+    assert r.returncode == 0 and "slate ok" in r.stdout, r.stdout + r.stderr

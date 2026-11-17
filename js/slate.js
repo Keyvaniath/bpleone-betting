@@ -151,5 +151,5 @@
     return { setFilter(s) { filter = s || "all"; draw(); } };
   }
 
-  window.EdgeSlate = { mount, betsFor };
+  window.EdgeSlate = { mount, betsFor, same };
 })();
