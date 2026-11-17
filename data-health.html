@@ -138,7 +138,11 @@ fetch("data/data_health.json?t=" + Date.now(), { cache: "no-cache" })
       <span class="pulse-dot ${overall}"></span>${labelMap[overall] || overall.toUpperCase()}
       <span style="float:right; font-family: 'JetBrains Mono', monospace; font-size: 12px;">${data.n_green}G / ${data.n_yellow}Y / ${data.n_red}R</span>
     </div>`;
-    document.getElementById("status").textContent = `Live source check · ${(data.generated_at || '').slice(0,19).replace('T',' ')}`;
+    // (2026-11-16 audit) the check time in ET with its age: a raw UTC stamp made a 3-hour-old "0 live" read as current
+    const gt = Date.parse(String(data.generated_at || "").replace(" ", "T") + (/[zZ]|[+-]\d\d:?\d\d$/.test(String(data.generated_at || "")) ? "" : "Z"));
+    const gmin = isNaN(gt) ? null : Math.round((Date.now() - gt) / 60000);
+    document.getElementById("status").textContent = isNaN(gt) ? "Live source check · time unknown"
+      : `Live source check · ${new Date(gt).toLocaleString("en-US", { timeZone: "America/New_York", month: "numeric", day: "numeric", hour: "numeric", minute: "2-digit" })} ET (${gmin < 60 ? gmin + " min" : Math.floor(gmin / 60) + "h " + String(gmin % 60).padStart(2, "0") + "m"} ago) · live counts are as of that check`;
     const checks = data.checks || [];
     document.getElementById("checksContainer").innerHTML = checks.map(c => {
       const findings = (c.findings || []).join(' · ');

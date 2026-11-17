@@ -299,7 +299,8 @@ def _gen_age_h(d):
         return None
     try:
         t = dt.datetime.fromisoformat(str(g).replace("Z", "").split("+")[0])
-        return (dt.datetime.now() - t).total_seconds() / 3600
+        # producers stamp naive UTC; compare with UTC, not the machine clock (a PT laptop read -8h)
+        return (dt.datetime.now(dt.timezone.utc).replace(tzinfo=None) - t).total_seconds() / 3600
     except Exception:
         return None
 
@@ -440,7 +441,7 @@ def run() -> Dict[str, Any]:
     n_red = sum(1 for c in checks if c.get("status") == "red")
     overall = "red" if n_red else ("yellow" if n_yellow else "green")
     payload = {
-        "generated_at": dt.datetime.now().isoformat(timespec="seconds"),
+        "generated_at": dt.datetime.now(dt.timezone.utc).replace(tzinfo=None).isoformat(timespec="seconds"),   # UTC (the page appends Z)
         "overall": overall,
         "n_green": n_green, "n_yellow": n_yellow, "n_red": n_red,
         "checks": checks,
