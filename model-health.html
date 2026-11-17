@@ -26,7 +26,7 @@
 <meta name="twitter:description" content="Model Health · EdgeStat — quantitative sports-betting analytics: model edges, calibrated probabilities, and an honest settled track record across MLB, NBA, NHL, golf, tennis, soccer and more. Informational only, 21+.">
 <title>Model Health | EdgeStat</title>
 <link rel="stylesheet" href="css/style.css?v=20261105">
-<script src="js/nav.js?v=20261112"></script>
+<script src="js/nav.js?v=20261116b"></script>
 <style>
   .health-hero { padding: 30px; text-align: center; border-radius: 12px; margin-bottom: 24px; }
   .health-hero.ELITE { background: linear-gradient(135deg, rgba(212,160,74,0.15), rgba(212,160,74,0.05)); border: 2px solid #d4a04a; }
@@ -128,7 +128,7 @@ fetch("data/model_health.json?t=" + Date.now(), { cache: "no-cache" })
   .then(d => {
     const score = d.total_score || 0;
     const tier = d.tier || "OK";
-    document.getElementById("status").textContent = `Generated ${(d.generated_at || '').slice(0, 19).replace('T', ' ')}`;
+    document.getElementById("status").textContent = `Generated ${(window.etStamp || String)(d.generated_at || '')}`;
     document.getElementById("hero").innerHTML = `
       <div class="health-hero ${tier}">
         <p class="health-score">${score}<span style="font-size:36px; opacity:0.5;">/100</span></p>

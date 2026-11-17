@@ -26,7 +26,7 @@
 <meta name="twitter:description" content="B2B Fatigue Tracker · EdgeStat — quantitative sports-betting analytics: model edges, calibrated probabilities, and an honest settled track record across MLB, NBA, NHL, golf, tennis, soccer and more. Informational only, 21+.">
 <title>B2B Fatigue Tracker | EdgeStat</title>
 <link rel="stylesheet" href="css/style.css?v=20261105">
-<script src="js/nav.js?v=20261112"></script>
+<script src="js/nav.js?v=20261116b"></script>
 <style>
   .game-card { padding: 14px 18px; margin-bottom: 14px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.08); }
   .game-card.fatigue-edge { border-left: 4px solid #d4a04a; background: rgba(212,160,74,0.04); }
@@ -78,7 +78,7 @@ fetch("data/b2b_fatigue.json?t=" + Date.now(), { cache: "no-cache" })
     document.getElementById("m_nba").textContent = nba.length;
     document.getElementById("m_nhl").textContent = nhl.length;
     // (2026-11-03) B2B tested against each game's own ET date; a schedule fact, not a pick
-    document.getElementById("status").textContent = `${data.n_fatigued_games_today || 0} games today (${data.date_et || 'ET'}) with one team on the 2nd night of a back-to-back · schedule fact, not a pick · ${(data.generated_at || '').slice(0, 19).replace('T', ' ')}`;
+    document.getElementById("status").textContent = `${data.n_fatigued_games_today || 0} games today (${data.date_et || 'ET'}) with one team on the 2nd night of a back-to-back · schedule fact, not a pick · ${(window.etStamp || String)(data.generated_at || '')}`;
 
     function renderCard(a, sport) {
       const cls = a.fatigue_edge === "BOTH" ? "both-tired" : "fatigue-edge";

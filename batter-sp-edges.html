@@ -26,7 +26,7 @@
 <meta name="twitter:description" content="Batter vs SP Edges · EdgeStat — quantitative sports-betting analytics: model edges, calibrated probabilities, and an honest settled track record across MLB, NBA, NHL, golf, tennis, soccer and more. Informational only, 21+.">
 <title>Batter vs SP Edges | EdgeStat</title>
 <link rel="stylesheet" href="css/style.css?v=20261105">
-<script src="js/nav.js?v=20261112"></script>
+<script src="js/nav.js?v=20261116b"></script>
 <style>
   .bat-row { display: grid; grid-template-columns: 40px 1.4fr 1.2fr 70px 80px 90px 80px 70px; gap: 10px; padding: 10px 14px; align-items: center; font-family: 'JetBrains Mono', monospace; font-size: 12px; border-bottom: 1px solid rgba(255,255,255,0.04); }
   .bat-row.head { background: rgba(255,255,255,0.04); color: var(--muted,#888); font-size: 10px; text-transform: uppercase; padding: 8px 14px; }
@@ -158,7 +158,7 @@ fetch("data/mlb_batter_sp_edges.json?t=" + Date.now(), { cache: "no-cache" })
     const topHr = (d.top_15_hr_boost || [])[0];
     document.getElementById('m_top_hit').textContent = topHit ? '+' + topHit.hit_delta_pp.toFixed(1) + 'pp' : '--';
     document.getElementById('m_top_hr').textContent = topHr ? '+' + topHr.hr_delta_pp.toFixed(1) + 'pp' : '--';
-    document.getElementById('status').textContent = `${d.n_batters_total} batters · ${d.n_games} games · ${(d.generated_at||'').slice(0,19).replace('T',' ')}`;
+    document.getElementById('status').textContent = `${d.n_batters_total} batters · ${d.n_games} games · ${(window.etStamp || String)(d.generated_at || '')}`;
     showTab('hit_boost');
     document.querySelectorAll('.tab').forEach(t => {
       t.addEventListener('click', () => showTab(t.dataset.tab));

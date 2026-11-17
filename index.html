@@ -27,7 +27,7 @@
 <title>EdgeStat | bpleone — Sports Betting Analytics & ML</title>
 <link rel="stylesheet" href="css/style.css?v=20261105">
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
-<script src="js/nav.js?v=20261112"></script>
+<script src="js/nav.js?v=20261116b"></script>
 <style>
 /* 2026-11-03: cards retired from the homepage -- model-only projections shown
    as picks (no sportsbook price), permanently empty panels, a mock newsletter
@@ -1900,7 +1900,7 @@ fetch("data/pipeline_health.json?t=" + Date.now(), { cache: "no-cache" })
       .sort((a,b) => (b[1].age_min || 0) - (a[1].age_min || 0))[0];
     banner.innerHTML = h.overall_status === "CRITICAL"
       ? `⚠️ <strong>Data freshness:</strong> ${oldest ? oldest[0] + ' is ' + Math.round(oldest[1].age_min) + ' min stale' : 'multiple files stale'}. Pipeline may need a manual trigger. <a href="https://github.com/Keyvaniath/bpleone-betting/actions" style="color:${color};">View Actions →</a>`
-      : `⚠️ Some data sources are aging. Last refresh check: ${(h.generated_at||'').slice(0,19).replace('T',' ')}`;
+      : `⚠️ Some data sources are aging. Last refresh check: ${(window.etStamp || String)(h.generated_at || '')}`;
     const main = document.querySelector("main.container");
     if (main && main.parentNode) main.parentNode.insertBefore(banner, main);
   })
@@ -1921,7 +1921,7 @@ fetch("data/pod_pl.json?t=" + Date.now(), { cache: "no-cache" })
       <div style="padding:12px 14px; border-radius:8px; background:rgba(212,160,74,0.06); border:1px solid rgba(212,160,74,0.2); margin-bottom:14px;">
         <div style="font-size:10px; color:#d4a04a; text-transform:uppercase; font-weight:700;">Today's POD (Pending)</div>
         <div style="margin-top:6px;"><strong style="font-size:16px;">${t.matchup}</strong> · <strong style="color:#d4a04a;">${t.label}</strong> @ ${t.market_price > 0 ? '+' : ''}${t.market_price}</div>
-        <div style="margin-top:4px; font-size:11px; color:var(--text-2,#aaa);">Model: ${(t.model_prob*100).toFixed(1)}% · Recorded ${(t.recorded_at||'').slice(0,16).replace('T',' ')}</div>
+        <div style="margin-top:4px; font-size:11px; color:var(--text-2,#aaa);">Model: ${(t.model_prob*100).toFixed(1)}% · Recorded ${(window.etStamp || String)(t.recorded_at || '')}</div>
       </div>` : '<p class="muted">No POD recorded yet today. When the day&#39;s Play of the Day is a model lean it is not added to this record (a lean is not an edge); leans are graded on <a href="board.html" style="color:#7fb0e8;">The Board</a>.</p>';
     box.innerHTML = `
       ${todayRow}

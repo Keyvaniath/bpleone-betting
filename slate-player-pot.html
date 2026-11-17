@@ -26,7 +26,7 @@
 <meta name="twitter:description" content="Slate Player Pot · EdgeStat — quantitative sports-betting analytics: model edges, calibrated probabilities, and an honest settled track record across MLB, NBA, NHL, golf, tennis, soccer and more. Informational only, 21+.">
 <title>Slate Player Pot | EdgeStat</title>
 <link rel="stylesheet" href="css/style.css?v=20261105">
-<script src="js/nav.js?v=20261112"></script>
+<script src="js/nav.js?v=20261116b"></script>
 <style>
   .controls { display: flex; gap: 10px; margin-bottom: 16px; flex-wrap: wrap; align-items: center; }
   .controls select, .controls input { background: #161821; color: #e6e6e6; border: 1px solid rgba(255,255,255,0.1); border-radius: 6px; padding: 6px 10px; font-family: 'JetBrains Mono', monospace; font-size: 12px; }
@@ -155,7 +155,7 @@ fetch("data/slate_player_pot.json?t=" + Date.now(), { cache: "no-cache" })
       opt.value = s; opt.textContent = s;
       sel.appendChild(opt);
     }
-    document.getElementById("status").textContent = `${ALL_PICKS.length} model projections across ${sports.length} sports with games today (${d.date_et || 'ET'}) · generated ${(d.generated_at||'').slice(0,19).replace('T',' ')}`;
+    document.getElementById("status").textContent = `${ALL_PICKS.length} model projections across ${sports.length} sports with games today (${d.date_et || 'ET'}) · generated ${(window.etStamp || String)(d.generated_at || '')}`;
     const g = d.slate_gate || {}, dr = d.dropped_no_slate_today || {};
     const closed = Object.entries(g).filter(([s, v]) => !v.open)
       .map(([s, v]) => `${s}: ${v.reason || 'no games today' + (v.next_game_date ? ' (next ' + v.next_game_date + ')' : '')}${dr[s] ? ' — ' + dr[s] + ' rows withheld' : ''}`);

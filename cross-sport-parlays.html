@@ -26,7 +26,7 @@
 <meta name="twitter:description" content="Cross-Sport Parlays · EdgeStat — quantitative sports-betting analytics: model edges, calibrated probabilities, and an honest settled track record across MLB, NBA, NHL, golf, tennis, soccer and more. Informational only, 21+.">
 <title>Cross-Sport Parlays | EdgeStat</title>
 <link rel="stylesheet" href="css/style.css?v=20261105">
-<script src="js/nav.js?v=20261112"></script>
+<script src="js/nav.js?v=20261116b"></script>
 <style>
   .parlay-card { padding: 14px 16px; margin-bottom: 10px; background: rgba(255,255,255,0.03); border-radius: 8px; border-left: 3px solid #d4a04a; font-family: 'JetBrains Mono', monospace; }
   .parlay-card.balanced { border-left-color: #58c878; background: rgba(88,200,120,0.04); }
@@ -144,7 +144,7 @@ fetch("data/cross_sport_parlays.json?t=" + Date.now(), { cache: "no-cache" })
     document.getElementById('m_2leg').textContent = d.n_2_leg || 0;
     document.getElementById('m_3leg').textContent = d.n_3_leg || 0;
     document.getElementById('m_balanced').textContent = (d.balanced_2_leg_picks || []).length;
-    document.getElementById('status').textContent = `${d.n_2_leg} 2-leg + ${d.n_3_leg} 3-leg parlays from ${d.n_input_legs || 0} input legs · ${(d.generated_at||'').slice(0,19).replace('T',' ')}`;
+    document.getElementById('status').textContent = `${d.n_2_leg} 2-leg + ${d.n_3_leg} 3-leg parlays from ${d.n_input_legs || 0} input legs · ${(window.etStamp || String)(d.generated_at || '')}`;
     showTab('balanced');
     document.querySelectorAll('.tab').forEach(t => t.addEventListener('click', () => showTab(t.dataset.tab)));
     const tog = document.getElementById('showExhibit');

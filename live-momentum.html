@@ -26,7 +26,7 @@
 <meta name="twitter:description" content="Live Momentum · EdgeStat — quantitative sports-betting analytics: model edges, calibrated probabilities, and an honest settled track record across MLB, NBA, NHL, golf, tennis, soccer and more. Informational only, 21+.">
 <title>Live Momentum | EdgeStat</title>
 <link rel="stylesheet" href="css/style.css?v=20261105">
-<script src="js/nav.js?v=20261112"></script>
+<script src="js/nav.js?v=20261116b"></script>
 <style>
   .game-card { padding: 14px 18px; margin-bottom: 12px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.08); display: grid; grid-template-columns: 1.5fr 100px 80px 90px 130px 130px; gap: 14px; align-items: center; font-family: 'JetBrains Mono', monospace; font-size: 12px; }
   .game-card.BIG_SWING_HOME, .game-card.BIG_SWING_AWAY { border-left: 4px solid #d4a04a; background: rgba(212,160,74,0.04); }
@@ -97,11 +97,11 @@ function render() {
       document.getElementById("m_alerts").textContent = alerts.length;
       const max_delta = games.reduce((m, g) => Math.max(m, Math.abs(g.delta_pp || 0)), 0);
       document.getElementById("m_biggest").textContent = max_delta ? max_delta.toFixed(1) + 'pp' : '--';
-      const genAt = (d.generated_at || '').slice(0,19).replace('T',' ');
+      const genAt = (window.etStamp || String)(d.generated_at || '');
       const ageH = d.generated_at ? (Date.now() - new Date(d.generated_at.replace(' ', 'T') + (/[zZ]$/.test(d.generated_at) ? '' : 'Z')).getTime()) / 36e5 : null;
       document.getElementById("status").textContent = games.length
         ? `${games.length} games tracked · ${alerts.length} momentum alerts · ${genAt}`
-        : `No MLB game in progress — the live poller is idle (MLB off-season). Last poll ${genAt} UTC${ageH != null && ageH > 2 ? ' (' + Math.round(ageH) + 'h ago)' : ''}.`;
+        : `No MLB game in progress — the live poller is idle (MLB off-season). Last poll ${genAt}${ageH != null && ageH > 2 ? ' (' + Math.round(ageH) + 'h ago)' : ''}.`;
 
       let html = `<div class="game-card head"><span>Matchup</span><span>Score</span><span>P(H) now</span><span>Δ</span><span>Sustain / Dir</span><span>Alert</span></div>`;
       for (const g of games) {

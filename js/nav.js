@@ -1,3 +1,15 @@
+/* (2026-11-16 audit) one way to show a data timestamp: the pipelines stamp naive UTC (GitHub runners),
+   so a bare "2026-11-16 23:26:35" read as 11:26 PM. etStamp -> "11/16, 6:26 PM ET"; "" if unparseable. */
+window.etStamp = function (v) {
+  var s = String(v == null ? "" : v).trim();
+  if (!s) return "";
+  var dm = /^(\d{4})-(\d\d)-(\d\d)$/.exec(s);         // a bare date is a calendar day, not UTC midnight
+  if (dm) return Number(dm[2]) + "/" + Number(dm[3]);
+  var t = Date.parse(s.replace(" ", "T") + (/[zZ]|[+-]\d\d:?\d\d$/.test(s) || !/T|\d \d/.test(s) ? "" : "Z"));
+  if (isNaN(t)) return s;
+  return new Date(t).toLocaleString("en-US", { timeZone: "America/New_York", month: "numeric", day: "numeric",
+                                                hour: "numeric", minute: "2-digit" }) + " ET";
+};
 // EdgeStat unified nav — DROP-IN REPLACEMENT for js/nav.js
 // FIX: dropdowns were clipped by .mainnav's overflow:auto. Switching .dd-menu
 // to position:fixed (with JS positioning from the button's bounding rect)

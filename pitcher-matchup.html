@@ -26,7 +26,7 @@
 <meta name="twitter:description" content="Pitcher Matchup · EdgeStat — quantitative sports-betting analytics: model edges, calibrated probabilities, and an honest settled track record across MLB, NBA, NHL, golf, tennis, soccer and more. Informational only, 21+.">
 <title>Pitcher Matchup | EdgeStat</title>
 <link rel="stylesheet" href="css/style.css?v=20261105">
-<script src="js/nav.js?v=20261112"></script>
+<script src="js/nav.js?v=20261116b"></script>
 <style>
   .game-card { padding: 16px 18px; margin-bottom: 18px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.08); }
   .game-head { display: flex; justify-content: space-between; align-items: center; padding-bottom: 12px; border-bottom: 1px solid rgba(255,255,255,0.06); margin-bottom: 12px; }
@@ -162,7 +162,7 @@ fetch("data/mlb_pitcher_matchup.json?t=" + Date.now(), { cache: "no-cache" })
     document.getElementById("m_er_plays").textContent = data.n_with_er_play || 0;
     const top = games.filter(g => g.best_k_play).map(g => g.best_k_play.p_over).sort((a, b) => b - a)[0];
     document.getElementById("m_top_p").textContent = top ? (top * 100).toFixed(0) + '%' : '—';
-    document.getElementById("status").textContent = `${games.length} games · last refreshed ${(data.generated_at || '').slice(0, 19).replace('T', ' ')}`;
+    document.getElementById("status").textContent = `${games.length} games · last refreshed ${(window.etStamp || String)(data.generated_at || '')}`;
 
     // Sort: games with best K play first, by p_over desc
     games.sort((a, b) => {
