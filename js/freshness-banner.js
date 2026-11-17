@@ -17,10 +17,15 @@
   var FRESHNESS_WARN_PCT = 70;   // below this -> warn
   var STALE_AGE_HOURS = 30;      // today.json older than this -> warn
 
+  // (2026-11-16) the slate is an EASTERN day: comparing UTC dates flagged every evening slate as
+  // "from yesterday" from 7 PM ET (00:00 UTC) on, with "odds feed reconnects", while odds were live.
   function ymd(d) {
-    return d.getUTCFullYear() + "-" +
-      String(d.getUTCMonth() + 1).padStart(2, "0") + "-" +
-      String(d.getUTCDate()).padStart(2, "0");
+    try {
+      return d.toLocaleDateString("en-CA", { timeZone: "America/New_York" });
+    } catch (e) {
+      var e5 = new Date(d.getTime() - 5 * 3600e3);
+      return e5.getUTCFullYear() + "-" + String(e5.getUTCMonth() + 1).padStart(2, "0") + "-" + String(e5.getUTCDate()).padStart(2, "0");
+    }
   }
 
   function parseTs(s) {
