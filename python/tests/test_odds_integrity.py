@@ -1674,3 +1674,16 @@ def test_nba_leans_wait_for_the_5pm_injury_report(monkeypatch):
     assert not pod.nba_lean_pending("2026-11-15", dt.datetime(2026, 11, 16, 15, 0, tzinfo=dt.timezone.utc))  # past date
     src = open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "board.py"), encoding="utf-8").read()
     assert '"nba_lean_before_injury_report"' in src
+
+
+def test_recap_marks_alpha_picks_added_after_the_lock():
+    import board
+    R = {"recent": [
+        {"date": "2026-11-16", "sport": "NHL", "team": "BOS", "book_american": -155, "grade": "C", "is_alpha": True, "result": "won", "final": None},
+        {"date": "2026-11-16", "sport": "NBA", "team": "MEM", "book_american": -161, "grade": "C", "is_alpha": True, "result": "lost", "final": None}],
+        "by_day": {"2026-11-16": {"alpha": {"wins": 1, "losses": 1, "net_units": -0.35}}}, "alpha": {}, "first_date": "2026-11-12"}
+    days = {"2026-11-16": {"locked_at": "2026-11-16T16:00:00", "picks": [
+        {"sport": "NHL", "team": "BOS", "added_at": "2026-11-16T16:00:00"},
+        {"sport": "NBA", "team": "MEM", "added_at": "2026-11-16T22:02:00"}]}}
+    t = board.recap_post(R, "2026-11-17", days)["text"]
+    assert "MEM*" in t and "BOS*" not in t and "* added after the 11:00 AM lock." in t

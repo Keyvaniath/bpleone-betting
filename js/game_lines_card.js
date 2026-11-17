@@ -132,7 +132,7 @@
           // (2026-11-11) no desk pick: show the lean, if the game has one, labelled as a lean
           const ln = r.lean;
           const pickTxt = pk ? `<strong style="color:#58c878;">${esc(pk.team)} ML ${amer(pk.book_american)}</strong> <span class="muted">EV ${(pk.ev * 100).toFixed(1)}%</span>`
-            : ln ? `<span style="color:#7fb0e8;">lean ${esc(ln.team)} ${amer(ln.book_american)}</span> <span class="muted">no edge</span>`
+            : ln ? `<span style="color:#7fb0e8;">lean ${esc(ln.team)} ${amer(ln.book_american)}</span> <span class="muted">no edge${String(el.dataset.sport || "").toLowerCase() === "nba" ? " · logged after the 5 PM ET injury report" : ""}</span>`
             : `<span class="muted">no pick</span>`;
           return `<div style="display:grid; grid-template-columns: 90px 1.2fr 1fr 1fr 1fr 1.6fr; gap:10px; padding:7px 16px; border-bottom:1px solid rgba(255,255,255,0.04); font-family:'JetBrains Mono',monospace; font-size:11.5px;">
             <span class="muted">${esc(r.game_date || "")}</span><span><strong>${esc(r.matchup)}</strong></span>

@@ -115,6 +115,8 @@
         const lockH = Number(new Date(lk).toLocaleString("en-US", { timeZone: "America/New_York", hour: "numeric", hour12: false })) % 24;
         const lvl = lockH <= 11 ? 0 : 1; worst = Math.max(worst, lvl);
         lockRow = row(lvl ? "#fbbf24" : "#4ade80", "Today's Alpha lock", et(lk), lvl ? "late: target 11:00 AM ET" : "on time");
+      } else if (!(((docs[0] || {}).counts || {}).bets_today)) {
+        lockRow = row("#9fb0c8", "Today's Alpha lock", "no graded bet on the board yet", "the list locks once the day has a bet");
       } else {
         const lvl = h >= 12 ? 2 : 0; worst = Math.max(worst, lvl);
         lockRow = row(lvl ? "#e35a5a" : "#9fb0c8", "Today's Alpha lock", "not locked yet", h >= 12 ? "missed: should lock at 11:00 AM ET" : "locks at 11:00 AM ET");
