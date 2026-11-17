@@ -71,6 +71,60 @@
   <div id="overallBanner"></div>
   <div id="checksContainer"></div>
 </main>
+<script>
+// (2026-11-16) PIPELINE FRESHNESS: how old each of The Board's inputs is right now, against its expected
+// cadence. GitHub's scheduler skips many runs (TODO_BRANDON section 0), so a stale board must be visible.
+(function () {
+  const files = [
+    ["data/board.json", "generated_at", "The Board (prices, grades, Alpha)", 75],
+    ["data/espn_odds.json", "generated_at", "DraftKings odds snapshot", 75],
+    ["data/ledger_summary.json", "generated_at", "Graded results", 120],
+    ["data/dk_lines_nba.json", "generated_at", "NBA line history (open / close)", 75],
+    ["data/dk_lines_nhl.json", "generated_at", "NHL line history (open / close)", 75],
+    ["data/dk_lines_nfl.json", "generated_at", "NFL line history (open / close)", 75],
+  ];
+  const et = (ms) => new Date(ms).toLocaleString("en-US", { timeZone: "America/New_York", month: "numeric", day: "numeric", hour: "numeric", minute: "2-digit" }) + " ET";
+  const parse = (v) => { const s = String(v || ""); const t = Date.parse(s.replace(" ", "T") + (/[zZ]|[+-]\d\d:?\d\d$/.test(s) ? "" : "Z")); return isNaN(t) ? null : t; };
+  const etHour = () => Number(new Date().toLocaleString("en-US", { timeZone: "America/New_York", hour: "numeric", hour12: false })) % 24;
+  const quiet = etHour() < 8;                 // overnight: runs are expected to be sparse
+  const card = document.createElement("section");
+  card.className = "card"; card.style.marginBottom = "18px";
+  card.innerHTML = `<div class="card-head"><span>⏱ Pipeline freshness</span><span class="muted" id="freshMeta"></span></div><div id="freshRows" style="padding:8px 18px 14px;font-size:13px;"></div>`;
+  const anchor = document.getElementById("overallBanner");
+  anchor.parentNode.insertBefore(card, anchor);
+  const dot = (c) => `<span style="display:inline-block;width:9px;height:9px;border-radius:50%;background:${c};margin-right:8px;"></span>`;
+  const row = (c, label, when, note) => `<div style="display:flex;gap:10px;align-items:baseline;padding:5px 0;border-top:1px solid rgba(255,255,255,.05);">${dot(c)}<b style="min-width:240px;">${label}</b><span>${when}</span><span class="muted" style="margin-left:auto;">${note}</span></div>`;
+  Promise.all(files.map(([f]) => fetch(f + "?t=" + Date.now(), { cache: "no-cache" }).then((r) => r.json()).catch(() => null))
+    .concat([fetch("data/board_alpha_log.json?t=" + Date.now(), { cache: "no-cache" }).then((r) => r.json()).catch(() => null)]))
+    .then((docs) => {
+      const now = Date.now(); let worst = 0;
+      const rows = files.map(([f, key, label, okMin], i) => {
+        const t = docs[i] && parse(docs[i][key]);
+        if (!t) { worst = 2; return row("#e35a5a", label, "no timestamp", f); }
+        const mins = Math.round((now - t) / 60000), lim = okMin * (quiet ? 4 : 1);
+        const lvl = mins <= lim ? 0 : mins <= lim * 2.5 ? 1 : 2; worst = Math.max(worst, lvl);
+        return row(["#4ade80", "#fbbf24", "#e35a5a"][lvl], label, `${et(t)} · ${mins < 60 ? mins + " min" : Math.floor(mins / 60) + "h " + String(mins % 60).padStart(2, "0") + "m"} ago`, `expected every ≤${okMin} min`);
+      });
+      // today's Alpha lock (11:00 ET target)
+      const log = docs[files.length] || {}; const days = log.days || {};
+      const today = new Date().toLocaleDateString("en-CA", { timeZone: "America/New_York" });
+      const lk = days[today] && parse(days[today].locked_at);
+      const h = etHour();
+      let lockRow;
+      if (lk) {
+        const lockH = Number(new Date(lk).toLocaleString("en-US", { timeZone: "America/New_York", hour: "numeric", hour12: false })) % 24;
+        const lvl = lockH <= 11 ? 0 : 1; worst = Math.max(worst, lvl);
+        lockRow = row(lvl ? "#fbbf24" : "#4ade80", "Today's Alpha lock", et(lk), lvl ? "late: target 11:00 AM ET" : "on time");
+      } else {
+        const lvl = h >= 12 ? 2 : 0; worst = Math.max(worst, lvl);
+        lockRow = row(lvl ? "#e35a5a" : "#9fb0c8", "Today's Alpha lock", "not locked yet", h >= 12 ? "missed: should lock at 11:00 AM ET" : "locks at 11:00 AM ET");
+      }
+      document.getElementById("freshRows").innerHTML = rows.join("") + lockRow +
+        `<p class="muted" style="font-size:11px;margin:10px 0 0;">${quiet ? "Overnight (before 8 AM ET) the limits are relaxed 4x. " : ""}GitHub's scheduler skips many scheduled runs; a yellow or red row here means the board is serving older prices than intended.</p>`;
+      document.getElementById("freshMeta").textContent = ["all fresh", "some inputs late", "stale inputs"][worst];
+    });
+})();
+</script>
 <script src="js/nav_badge.js"></script>
 <script>
 fetch("data/data_health.json?t=" + Date.now(), { cache: "no-cache" })
