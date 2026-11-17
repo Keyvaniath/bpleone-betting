@@ -1724,3 +1724,20 @@ def test_started_today_counts_games_under_way(tmp_path, monkeypatch):
     assert pod.started_today("NFL", "2026-11-16", now) == 2
     assert pod.started_today("NFL", "2026-11-17", now) == 0
     assert pod.started_today("NBA", "2026-11-16", now) == 0            # no file -> 0
+
+
+def test_board_block_open_lists_every_unsettled_bet():
+    """(audit 11/16) every open board bet is listed, uncapped, whatever the board shows now."""
+    import all_picks_tracker as apt
+    hist = []
+    for i in range(70):          # more than the 60-row 'recent' cap, all settled
+        hist.append({"source": "board_pick", "date": f"2026-10-{(i % 28) + 1:02d}", "sport": "NBA",
+                     "player_or_matchup": f"A{i} @ H{i}", "market": "ML_HOME", "book_american": -110,
+                     "settled": True, "result": "won"})
+    hist.append({"source": "board_pick", "date": "2026-09-01", "sport": "NFL", "player_or_matchup": "CIN @ WSH",
+                 "market": "ML_AWAY", "book_american": -238, "settled": False})
+    hist.append({"source": "board_pick", "date": "2026-11-23", "sport": "NFL", "player_or_matchup": "TB @ DET",
+                 "market": "ML_AWAY", "book_american": 150, "settled": False, "voided": True})
+    b = apt._board_block(hist)
+    assert [(r["team"], r["book_american"], r["result"]) for r in b["open"]] == [("CIN", -238, "pending")]
+    assert all(r["result"] != "pending" for r in b["recent"]) and len(b["recent"]) == 60   # the old cap hid it
