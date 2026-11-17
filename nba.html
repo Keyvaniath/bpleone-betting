@@ -78,6 +78,7 @@
     <p class="muted" style="font-size:11px; padding:8px 16px 0; margin:0;">Projected mean only. Inputs: this season's ESPN per-game averages blended toward last season by games played (early in the season that is mostly last season), times pace and opponent defense. Players with no games this season are left out. No book prop line is compared and no lean is implied.</p>
     <div id="ptsProjList"><p class="muted" style="padding:14px;">Loading projections…</p></div>
   </section>
+  <script src="js/names.js"></script>
   <script>
   Promise.all([
     fetch("data/nba_player_points_distribution_bands.json?t=" + Date.now(), { cache: "no-cache" }).then(r => r.json()).catch(()=>({})),
@@ -101,7 +102,7 @@
     document.getElementById("ptsProjMeta").textContent = `${names.length} players · model projection · ${stamp} UTC`;
     document.getElementById("ptsProjList").innerHTML = names.map(n => {
       const p = ptsIdx[n] || {}; const a = praIdx[n] || {};
-      const name = p.player || a.player || n;
+      const name = (window.EdgeName ? EdgeName.nice : (x) => x)(p.player || a.player || n);
       const matchup = p.matchup || a.matchup || '';
       const ptsVal = p.projected_pts != null ? p.projected_pts : '—';
       const praVal = a.projected_pra != null ? a.projected_pra : '—';
