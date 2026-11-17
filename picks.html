@@ -138,7 +138,17 @@ fetch("data/board.json?t=" + Date.now(), { cache: "no-cache" }).then((r) => r.js
   const esc = (v) => String(v == null ? "" : v).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c]);
   const am = (a) => a == null ? "—" : (a >= 0 ? "+" + a : "" + a);
   const now = Date.now();
-  const ps = (B.picks || []).filter((p) => new Date(p.commence_time).getTime() > now)
+  // (2026-11-16 audit) every OPEN bet in the record, not only the bets the board lists right now: a bet
+  // logged at -238 whose price then moved past the bar left the list while still open (graded at -238)
+  const R = B.results || {};
+  const open = (R.open || (R.recent || []).filter((r) => r.result === "pending"));
+  const listed = (B.picks || []).filter((p) => new Date(p.commence_time).getTime() > now);
+  const key = (x) => `${x.sport}|${x.matchup}|${x.team}`;
+  const cur = {}; listed.forEach((p) => { cur[key(p)] = p; });
+  const ps = open.map((r) => Object.assign({ game_date: r.date, logged: true, still_listed: !!cur[key(r)] },
+                                            r, cur[key(r)] ? { score: cur[key(r)].score, now_american: cur[key(r)].book_american } : {}))
+    .concat(listed.filter((p) => !open.some((r) => key(r) === key(p))))
+    .filter((p) => p.game_date >= B.date_et)
     .sort((a, b) => (a.game_date > b.game_date ? 1 : a.game_date < b.game_date ? -1 : (b.score || 0) - (a.score || 0)));
   if (!ps.length) return;
   const dl = (d) => { const x = new Date(d + "T12:00:00Z"); return d === B.date_et ? "Today" : x.toLocaleDateString("en-US", { weekday: "short", month: "numeric", day: "numeric", timeZone: "UTC" }); };
@@ -146,7 +156,12 @@ fetch("data/board.json?t=" + Date.now(), { cache: "no-cache" }).then((r) => r.js
       <span style="font-family:JetBrains Mono,monospace;font-size:11px;color:#9fb0c8;min-width:84px;">${esc(p.sport)} · ${esc(dl(p.game_date))}</span>
       <b>${esc(p.team)}</b> moneyline <span style="font-family:JetBrains Mono,monospace;color:#fbbf24;">${am(p.book_american)}</span>
       <span class="muted">${esc(p.matchup)}</span>
-      <span style="margin-left:auto;font-family:JetBrains Mono,monospace;font-size:12px;color:${p.grade === "C" ? "#60a5fa" : "#4ade80"};">grade ${esc(p.grade)} · ${p.score != null ? p.score : "—"}</span>
+      ${!p.logged ? "" : p.still_listed
+        ? (p.now_american != null && p.now_american !== p.book_american ? `<span class="muted" style="font-size:11px;" title="Graded at the price it was logged at; the board's current DraftKings price is shown for comparison.">logged at this price · now ${am(p.now_american)}</span>` : "")
+        : p.game_date === B.date_et
+          ? `<span class="muted" style="font-size:11px;" title="Today's game has started or is about to: live score in Today's slate above. Graded at the price shown on the final.">in play today · graded at this price</span>`
+          : `<span class="muted" style="font-size:11px;" title="Logged at this price earlier. The board no longer lists it (the price moved past the bar, or a lineup hold), but it stays open and is graded at the price shown.">open · no longer listed (price or lineup changed)</span>`}
+      <span style="margin-left:auto;font-family:JetBrains Mono,monospace;font-size:12px;color:${p.grade === "C" ? "#60a5fa" : "#4ade80"};">grade ${esc(p.grade)}${p.score != null ? " · " + p.score : ""}</span>
     </div>`).join("") + `<p class="muted" style="font-size:11px;margin:8px 10px 0;">Every game, fair prices, line moves and lineups: <a href="board.html" style="color:#7fb0e8;">The Board →</a></p>`;
   document.getElementById("boardBets").hidden = false;
 }).catch(() => {});

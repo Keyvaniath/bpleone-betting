@@ -3420,6 +3420,17 @@ def _board_block(history: List[Dict[str, Any]]) -> Dict[str, Any]:
             return ""
         return parts[1] if str(p.get("market") or "").upper().endswith("HOME") else parts[0]
 
+    def _row(p):
+        al = "board_alpha" in tags(p)
+        return {"date": str(p.get("date") or "")[:10], "sport": p.get("sport"), "grade": grade(p, al),
+                "is_alpha": al, "matchup": p.get("player_or_matchup"), "team": team(p),
+                "market": p.get("market"), "book_american": price(p, al),
+                "result": p.get("result") if p.get("settled") else "pending",
+                "payout_units": pay(p, al) if p.get("settled") else None,
+                "close_price": (clv(p, al) or {}).get("close_price"),
+                "clv_pts": (clv(p, al) or {}).get("clv_pts"),
+                "final": (p.get("outcome") or {}).get("final_score")}
+
     alpha = [p for p in rows if "board_alpha" in tags(p)]
     recent = sorted(rows, key=lambda p: (str(p.get("date") or ""), "board_alpha" in tags(p), str(p.get("sport") or "")),
                     reverse=True)[:60]
@@ -3439,14 +3450,11 @@ def _board_block(history: List[Dict[str, Any]]) -> Dict[str, Any]:
         "by_day": {d: dict(line(ps), alpha=line([p for p in ps if "board_alpha" in tags(p)], alpha=True))
                    for d, ps in sorted(((d, ps) for d, ps in days.items() if d <= _et_today_str()), reverse=True)[:14]},
         "first_date": min((str(p.get("date"))[:10] for p in rows), default=None),
-        "recent": [{"date": str(p.get("date") or "")[:10], "sport": p.get("sport"), "grade": grade(p, "board_alpha" in tags(p)),
-                    "is_alpha": "board_alpha" in tags(p), "matchup": p.get("player_or_matchup"), "team": team(p),
-                    "market": p.get("market"), "book_american": price(p, "board_alpha" in tags(p)),
-                    "result": p.get("result") if p.get("settled") else "pending",
-                    "payout_units": pay(p, "board_alpha" in tags(p)) if p.get("settled") else None,
-                    "close_price": (clv(p, "board_alpha" in tags(p)) or {}).get("close_price"),
-                    "clv_pts": (clv(p, "board_alpha" in tags(p)) or {}).get("clv_pts"),
-                    "final": (p.get("outcome") or {}).get("final_score")} for p in recent],
+        "recent": [_row(p) for p in recent],
+        # (2026-11-16 audit) EVERY unsettled board bet, uncapped: a logged bet whose price later moved past
+        # the bar leaves the board's live picks but stays open in the record, and must stay visible
+        "open": [_row(p) for p in sorted((p for p in rows if not p.get("settled")),
+                                         key=lambda p: (str(p.get("date") or ""), str(p.get("sport") or "")))],
         "definition": ("Every bet on The Board (grades A, B, C), graded on the final score at the DraftKings price "
                        "the board showed when it first listed the bet: a desk pick (A, B) when its edge first "
                        "appeared, a lean (C) on game day; an Alpha pick at its locked price. Alpha = the day's locked "
