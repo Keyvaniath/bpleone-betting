@@ -22,12 +22,13 @@
       if (!p || !p.team) return;
       const key = `${p.sport}|${p.matchup}`;
       if (out.some((x) => x.key === key && x.team === p.team)) return;
-      out.push({ key, sport: p.sport, matchup: p.matchup, team: p.team, price: p.book_american, grade: p.grade,
+      out.push({ key, day, sport: p.sport, matchup: p.matchup, team: p.team, price: p.book_american, grade: p.grade,
                  alpha: src === "alpha" ? p.rank || (board.alpha.picks.indexOf(p) + 1) : (p.is_alpha ? "✓" : null),
                  result: p.result || null, final: p.final || null });
     };
     const A = (board && board.alpha) || {};
-    if (A.status === "locked") (A.picks || []).forEach((p) => add(p, "alpha"));
+    // the locked list belongs to the board's own date only (after midnight it is yesterday's or not yet set)
+    if (A.status === "locked" && board.date_et === day) (A.picks || []).forEach((p) => add(p, "alpha"));
     ((board && board.picks) || []).filter((p) => p.game_date === day).forEach((p) => add(p, "board"));
     (((board && board.results) || {}).recent || []).filter((r) => r.date === day).forEach((r) => {
       const hit = out.find((x) => x.key === `${r.sport}|${r.matchup}` && x.team === r.team);
@@ -37,6 +38,10 @@
     return out;
   }
 
+  // a bet belongs to a game by sport, matchup AND ET date: the same pairing can meet on back-to-back
+  // nights (POR @ MIN 11/16 and 11/17), and yesterday's bet must never show on tonight's game
+  const same = (b, g) => b.sport === g.sport && b.matchup === g.matchup && (!b.day || !g.day || b.day === g.day);
+
   async function fetchSport(sport, day) {
     const u = `https://site.api.espn.com/apis/site/v2/sports/${PATH[sport]}/scoreboard?dates=${day.replace(/-/g, "")}`;
     const j = await fetch(u, { cache: "no-cache" }).then((r) => { if (!r.ok) throw new Error("HTTP " + r.status); return r.json(); });
@@ -45,7 +50,7 @@
       const side = (h) => (c.competitors || []).find((t) => t.homeAway === h) || {};
       const H = side("home"), Aw = side("away");
       const st = (e.status || {}).type || {};
-      return { sport, id: e.id, start: e.date, matchup: `${(Aw.team || {}).abbreviation} @ ${(H.team || {}).abbreviation}`,
+      return { sport, id: e.id, start: e.date, day: etYmd(new Date(e.date)), matchup: `${(Aw.team || {}).abbreviation} @ ${(H.team || {}).abbreviation}`,
                away: (Aw.team || {}).abbreviation, home: (H.team || {}).abbreviation,
                as: Aw.score, hs: H.score, state: st.state, detail: st.shortDetail, done: !!st.completed };
     });
@@ -75,7 +80,7 @@
     const st = pre ? `<span class="muted">${esc(etTime(g.start))}</span>`
       : live ? `<span style="color:#f87171;font-weight:700;">● LIVE</span> <span class="muted">${esc(g.detail)}</span>`
       : `<span class="muted">${esc(g.detail || "Final")}</span>`;
-    const mine = bets.filter((b) => b.sport === g.sport && (b.matchup === g.matchup));
+    const mine = bets.filter((b) => same(b, g));
     return `<div style="padding:8px 10px;border-top:1px solid rgba(255,255,255,.06);">
       <div style="display:flex;flex-wrap:wrap;gap:10px;align-items:baseline;font-size:13px;">
         <span style="font-family:JetBrains Mono,monospace;font-size:11px;color:#9fb0c8;min-width:34px;">${esc(g.sport)}</span>
@@ -90,13 +95,22 @@
     // data-bets-only="1": only today's games we have a bet on, and hide the whole element when there are
     // none (the homepage uses this so game night shows our live bets and quiet days show nothing)
     const betsOnly = el.dataset.betsOnly === "1";
-    const day = etYmd();
+    // (2026-11-16 audit) the date is re-read on every refresh (a page left open rolls over at midnight), and
+    // until 4 AM ET the previous day's games still in progress stay listed, with our bets on them: a West
+    // Coast puck drop or an overtime Monday night must not vanish from the slate at 12:00 AM
+    let day = etYmd(), yday = null;
+    const roll = () => {
+      day = etYmd();
+      const h = Number(new Date().toLocaleString("en-US", { timeZone: "America/New_York", hour: "numeric", hour12: false })) % 24;
+      yday = h < 4 ? etYmd(new Date(Date.now() - 864e5)) : null;
+    };
+    roll();
     let board = opts.board || null;
     let filter = "all";
     let games = [], failed = [];
     const draw = () => {
-      const bets = betsFor(board || {}, day);
-      const hasBet = (g) => bets.some((b) => b.sport === g.sport && b.matchup === g.matchup);
+      const bets = betsFor(board || {}, day).concat(yday ? betsFor(board || {}, yday) : []);
+      const hasBet = (g) => bets.some((b) => same(b, g));
       const show = games.filter((g) => (filter === "all" || g.sport === filter) && (!betsOnly || (hasBet(g) && g.state !== "pre")));   // pre-game bets are in the Alpha strip
       if (betsOnly) {
         el.hidden = !show.length && !failed.length;
@@ -105,7 +119,7 @@
       // (2026-11-16 audit) a scoreboard that did not answer is NOT "no games": say so, and still list
       // today's bets for that sport (without a score) so the page never hides a live bet
       const down = failed.filter((s) => filter === "all" || s === filter);
-      const orphan = bets.filter((b) => down.includes(b.sport) && !games.some((g) => g.sport === b.sport && g.matchup === b.matchup));
+      const orphan = bets.filter((b) => down.includes(b.sport) && !games.some((g) => same(b, g)));
       const note = down.length ? `<div style="padding:8px 10px;font-size:12px;color:#fbbf24;">Live scores for ${esc(down.join(", "))} are unavailable right now (ESPN's scoreboard did not answer); retrying every 60s.</div>` +
         orphan.map((b) => `<div style="padding:8px 10px;border-top:1px solid rgba(255,255,255,.06);font-size:13px;"><span style="font-family:JetBrains Mono,monospace;font-size:11px;color:#9fb0c8;margin-right:10px;">${esc(b.sport)}</span><b>${esc(b.matchup)}</b>${betLine({ state: "pre" }, b)}</div>`).join("") : "";
       const counts = sports.map((s) => [s, games.filter((g) => g.sport === s).length]).filter(([, n]) => n);
@@ -120,7 +134,10 @@
         ${note}${show.length ? show.map((g) => card(g, bets)).join("") : down.length ? "" : `<div class="muted" style="padding:10px;font-size:13px;">No ${filter === "all" ? "" : esc(filter) + " "}games today.</div>`}`;
     };
     const load = async () => {
-      const res = await Promise.all(sports.map((s) => fetchSport(s, day).catch(() => null)));
+      roll();
+      const late = yday ? await Promise.all(sports.map((s) => fetchSport(s, yday).then((gs) => gs.filter((g) => g.state === "in")).catch(() => []))) : [];
+      const res = (await Promise.all(sports.map((s) => fetchSport(s, day).catch(() => null))))
+        .map((r, i) => (r === null ? null : (late[i] || []).concat(r)));
       // keep the last good games for a sport whose refresh failed, rather than dropping them
       failed = sports.filter((s, i) => res[i] === null && !games.some((g) => g.sport === s));
       const order = { in: 0, pre: 1, post: 2 };
