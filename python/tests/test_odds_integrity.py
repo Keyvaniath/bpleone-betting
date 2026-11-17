@@ -1687,3 +1687,24 @@ def test_recap_marks_alpha_picks_added_after_the_lock():
         {"sport": "NBA", "team": "MEM", "added_at": "2026-11-16T22:02:00"}]}}
     t = board.recap_post(R, "2026-11-17", days)["text"]
     assert "MEM*" in t and "BOS*" not in t and "* added after the 11:00 AM lock." in t
+
+
+def test_to_et_fallback_matches_zoneinfo(monkeypatch):
+    """(review 6) the no-tzdata fallback follows US DST, and naive stamps are UTC."""
+    import builtins
+    import datetime as dt
+    import play_of_day as pod
+    cases = [dt.datetime(2026, 11, 17, 3, 30), dt.datetime(2026, 7, 4, 3, 30), dt.datetime(2026, 3, 8, 6, 59),
+             dt.datetime(2026, 3, 8, 7, 0), dt.datetime(2026, 11, 1, 5, 59), dt.datetime(2026, 11, 1, 6, 0),
+             dt.datetime(2027, 1, 15, 22, 0)]
+    want = [pod._to_et(c).replace(tzinfo=None) for c in cases]
+    real = builtins.__import__
+
+    def no_zi(name, *a, **k):
+        if name == "zoneinfo":
+            raise ImportError("no tzdata")
+        return real(name, *a, **k)
+    monkeypatch.setattr(builtins, "__import__", no_zi)
+    got = [pod._to_et(c).replace(tzinfo=None) for c in cases]
+    assert got == want
+    assert pod._et_date("2026-11-17T03:30:00") == "2026-11-16"   # 10:30 PM ET the night before

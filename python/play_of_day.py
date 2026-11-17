@@ -64,22 +64,33 @@ def _load(name: str) -> Dict[str, Any]:
         return {}
 
 
-def _today_et() -> str:
+def _to_et(d: Optional[dt.datetime] = None) -> dt.datetime:
+    """One Eastern-time conversion for this module (2026-11-16 review 6: three copies used -4h or -5h).
+    A naive datetime is UTC (that is how espn_odds stamps it), never the machine's local zone. Without
+    tzdata the fallback applies the US rule (EDT from the 2nd Sunday of March 2 AM to the 1st Sunday of
+    November 2 AM), so it is right all year instead of an hour off for half of it."""
+    d = d or dt.datetime.now(dt.timezone.utc)
+    if d.tzinfo is None:
+        d = d.replace(tzinfo=dt.timezone.utc)
     try:
         from zoneinfo import ZoneInfo
-        return dt.datetime.now(ZoneInfo("America/New_York")).date().isoformat()
+        return d.astimezone(ZoneInfo("America/New_York"))
     except Exception:
-        return (dt.datetime.utcnow() - dt.timedelta(hours=4)).date().isoformat()
+        u = d.astimezone(dt.timezone.utc).replace(tzinfo=None)
+        mar1, nov1 = dt.datetime(u.year, 3, 1), dt.datetime(u.year, 11, 1)
+        start = mar1 + dt.timedelta(days=(6 - mar1.weekday()) % 7 + 7, hours=7)   # 2 AM EST = 07:00 UTC
+        end = nov1 + dt.timedelta(days=(6 - nov1.weekday()) % 7, hours=6)         # 2 AM EDT = 06:00 UTC
+        off = -4 if start <= u < end else -5
+        return (u + dt.timedelta(hours=off)).replace(tzinfo=dt.timezone(dt.timedelta(hours=off)))
+
+
+def _today_et() -> str:
+    return _to_et().date().isoformat()
 
 
 def _et_date(iso) -> str:
     try:
-        d = dt.datetime.fromisoformat(str(iso).replace("Z", "+00:00"))
-        try:
-            from zoneinfo import ZoneInfo
-            return d.astimezone(ZoneInfo("America/New_York")).date().isoformat()
-        except Exception:
-            return (d - dt.timedelta(hours=4)).date().isoformat()
+        return _to_et(dt.datetime.fromisoformat(str(iso).replace("Z", "+00:00"))).date().isoformat()
     except Exception:
         return ""
 
@@ -98,11 +109,7 @@ def nba_lean_pending(game_date: Optional[str], now: Optional[dt.datetime] = None
     """True when an NBA lean for `game_date` must wait for the official injury report: game day, before
     NBA_LEAN_HOUR_ET Eastern. tools/b2b_study.py (11/16): favourites on the 2nd night of a back-to-back lost
     1.6 pts more than others from our first price to the close (rest news lands late)."""
-    try:
-        from zoneinfo import ZoneInfo
-        e = (now or dt.datetime.now(dt.timezone.utc)).astimezone(ZoneInfo("America/New_York"))
-    except Exception:
-        e = (now or dt.datetime.now(dt.timezone.utc)) - dt.timedelta(hours=5)
+    e = _to_et(now)
     today = e.date().isoformat()
     # a future date waits too (night-before NBA openers): it is a bet only after ITS day's report
     return bool(game_date) and (str(game_date) > today or (str(game_date) == today and e.hour < NBA_LEAN_HOUR_ET))
@@ -318,10 +325,7 @@ def _seen_et(iso) -> str:
     """'2026-11-05T16:59:46' (UTC, as espn_odds stamps it) -> '11:59 AM ET'."""
     try:
         d = dt.datetime.fromisoformat(str(iso).replace("Z", "+00:00"))
-        if d.tzinfo is None:
-            d = d.replace(tzinfo=dt.timezone.utc)
-        from zoneinfo import ZoneInfo
-        e = d.astimezone(ZoneInfo("America/New_York"))
+        e = _to_et(d)
         return f"{e.hour % 12 or 12}:{e.minute:02d} {'AM' if e.hour < 12 else 'PM'} ET"
     except Exception:
         return ""
