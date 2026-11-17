@@ -226,6 +226,19 @@ fetch('data/data_health.json?t=' + Date.now()).then(function(r){return r.json();
     <p class="muted" id="todayStatusProps" style="font-size:11px; margin:4px 0 0;"></p>
   </section>
   <script>
+  // today's locked Alpha list from The Board, or null (shared by the status line and the gold card)
+  window.boardAlphaToday = (function () {
+    let pr = null;
+    return function () {
+      if (!pr) pr = fetch("data/board.json?t=" + Date.now(), { cache: "no-cache" }).then((r) => r.json()).then((B) => {
+        const A = B.alpha || {}, today = new Date().toLocaleDateString("en-CA", { timeZone: "America/New_York" });
+        if (B.date_et !== today || A.status !== "locked" || !(A.picks || []).length) return null;
+        const t = Date.parse(String(A.locked_at || "").replace(" ", "T") + "Z");
+        return { picks: A.picks, lockedEt: isNaN(t) ? "today" : new Date(t).toLocaleTimeString("en-US", { timeZone: "America/New_York", hour: "numeric", minute: "2-digit" }) + " ET" };
+      }).catch(() => null);
+      return pr;
+    };
+  })();
   fetch("data/today_status.json?t=" + Date.now(), { cache: "no-cache" }).then(r => r.json()).then(d => {
     const esc = s => String(s == null ? "" : s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
     const link = { NFL: "nfl.html", NBA: "nba.html", NHL: "nhl.html", MLB: "mlb.html" };
@@ -236,6 +249,14 @@ fetch('data/data_health.json?t=' + Date.now()).then(function(r){return r.json();
          <b style="width:42px; flex:0 0 42px;">${esc(r.sport)}</b><span class="muted">${esc(r.status)}</span></a>`).join("");
     document.getElementById("todayStatusAlpha").innerHTML = d.alpha && d.alpha.has_pick
       ? `<b>Alpha Pick:</b> ${esc(d.alpha.label)}` : `<b>Alpha Pick:</b> ${esc((d.alpha || {}).reason)}`;
+    // (2026-11-16 audit) the line above is the legacy single-play feed; when The Board's Alpha list is
+    // locked for today it IS today's Alpha, so say that instead of "No Alpha Pick today"
+    window.boardAlphaToday().then((A) => {
+      if (!A || (d.alpha && d.alpha.has_pick)) return;
+      document.getElementById("todayStatusAlpha").innerHTML = `<b>Alpha list:</b> ${A.picks.map((p) =>
+        `${esc(p.sport)} ${esc(p.team)} ${p.book_american > 0 ? "+" : ""}${esc(p.book_american)} <span style="opacity:.7">${esc(p.grade)}</span>`).join(" · ")}
+        · <a href="board.html#alphaSec">The Board →</a> <span style="opacity:.7">(locked ${esc(A.lockedEt)}; grade C = a lean, not an edge)</span>`;
+    });
     document.getElementById("todayStatusProps").textContent = d.props_note || "";
     const t = d.odds_snapshot_at ? new Date(d.odds_snapshot_at.replace(/Z?$/, "Z")) : null;
     document.getElementById("todayStatusMeta").textContent = "odds: " + (d.odds_source || "") +
@@ -2040,12 +2061,24 @@ fetch("data/calibration_status.json?t=" + Date.now(), { cache: "no-cache" })
     .then(d => {
       const a = d.alpha_pick;
       if (!a) {
-        document.getElementById('alphaTitle').textContent = 'No Alpha Pick today';
         (function () { const c = document.querySelector('.alpha-card .play-grid'); if (c) c.style.display = 'none'; })();
-        fetch('data/today_status.json?t=' + Date.now()).then(r => r.json()).then(t => {
-          const why = (t.alpha || {}).reason;
-          if (why) document.getElementById('alphaMarket').textContent = why;
-        }).catch(() => {});
+        // (2026-11-16 audit) no legacy single play, but The Board's locked Alpha list is today's Alpha
+        window.boardAlphaToday().then((A) => {
+          if (A) {
+            const am = (x) => (x > 0 ? '+' : '') + x;
+            document.getElementById('alphaTitle').textContent = `Today's Alpha list: ${A.picks.length} bet${A.picks.length === 1 ? '' : 's'} on The Board`;
+            document.getElementById('alphaStamp').textContent = `locked ${A.lockedEt} at DraftKings prices`;
+            const m = document.getElementById('alphaMarket');
+            m.innerHTML = A.picks.map((p, i) => `#${i + 1} ${p.sport} <b>${p.team}</b> ML ${am(p.book_american)} (grade ${p.grade})`).join(' · ') +
+              ' · <a href="board.html#alphaSec" style="color:#d4a04a;">live status on The Board →</a>';
+            return;
+          }
+          document.getElementById('alphaTitle').textContent = 'No Alpha Pick today';
+          fetch('data/today_status.json?t=' + Date.now()).then(r => r.json()).then(t => {
+            const why = (t.alpha || {}).reason;
+            if (why) document.getElementById('alphaMarket').textContent = why;
+          }).catch(() => {});
+        });
         return;
       }
       document.getElementById('alphaTitle').textContent =

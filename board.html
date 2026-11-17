@@ -554,7 +554,7 @@
     $("gamesTitle").textContent = (sport === "ALL" ? "All games" : sport + " games") + " · " + dayLabel(day, today);
     $("gamesMeta").textContent = gs.length + " game" + (gs.length === 1 ? "" : "s") + " · " + gs.filter((g) => g.pick).length + " bet" + (gs.filter((g) => g.pick).length === 1 ? "" : "s");
     $("games").innerHTML = gs.length ? gs.map(gameCard).join("")
-      : `<div class="empty" style="grid-column:1/-1;">${sport !== "ALL" && B.sports[sport] && B.sports[sport].status !== "on" ? esc(sport) + ": " + esc(B.sports[sport].status) + "." : "No games match this view."}</div>`;
+      : `<div class="empty" style="grid-column:1/-1;">${sport !== "ALL" && B.sports[sport] && B.sports[sport].status !== "on" ? esc(sport) + ": " + esc(B.sports[sport].status) + (B.sports[sport].status === "games under way" ? ". Live scores and our bets are in Today's slate above." : ".") : "No games match this view."}</div>`;
     document.querySelectorAll(".side[data-g], .add[data-g]").forEach((b) => b.addEventListener("click", () => {
       const g = B.games.find((x) => x.id === b.dataset.g); if (g) toggle(g, b.dataset.side);
     }));

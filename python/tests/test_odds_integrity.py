@@ -1708,3 +1708,19 @@ def test_to_et_fallback_matches_zoneinfo(monkeypatch):
     got = [pod._to_et(c).replace(tzinfo=None) for c in cases]
     assert got == want
     assert pod._et_date("2026-11-17T03:30:00") == "2026-11-16"   # 10:30 PM ET the night before
+
+
+def test_started_today_counts_games_under_way(tmp_path, monkeypatch):
+    """(audit 11/16) a slate under way is not 'no games today'."""
+    import datetime as dt
+    import json
+    import play_of_day as pod
+    ev = {"1": {"commence": "2026-11-17T01:15Z"},     # MNF, 8:15 PM ET 11/16: started
+          "2": {"commence": "2026-11-17T03:30Z"},     # 10:30 PM ET 11/16: not yet
+          "3": {"commence": "2026-11-16T18:00Z"}}     # 1 PM ET 11/16: started
+    (tmp_path / "dk_lines_nfl.json").write_text(json.dumps({"events": ev}))
+    monkeypatch.setattr(pod, "DATA_DIR", str(tmp_path))
+    now = dt.datetime(2026, 11, 17, 2, 0, tzinfo=dt.timezone.utc)
+    assert pod.started_today("NFL", "2026-11-16", now) == 2
+    assert pod.started_today("NFL", "2026-11-17", now) == 0
+    assert pod.started_today("NBA", "2026-11-16", now) == 0            # no file -> 0

@@ -102,6 +102,25 @@ def _side_team(matchup: str, side: str) -> str:
     return parts[1] if side == "home" else parts[0]
 
 
+def started_today(sport: str, today_et: str, now: Optional[dt.datetime] = None) -> int:
+    """Games of `sport` on today's ET date that have ALREADY STARTED, from the DraftKings line history
+    (data/dk_lines_{sport}.json keeps a game after its start; the desk board does not). (2026-11-16 audit:
+    with Monday Night Football under way the site said "NFL: no games today".)"""
+    now = now or dt.datetime.now(dt.timezone.utc)
+    ev = (_load(f"dk_lines_{str(sport).lower()}.json") or {}).get("events") or {}
+    n = 0
+    for e in ev.values():
+        try:
+            ct = dt.datetime.fromisoformat(str(e.get("commence")).replace("Z", "+00:00"))
+        except Exception:
+            continue
+        if ct.tzinfo is None:
+            ct = ct.replace(tzinfo=dt.timezone.utc)
+        if _et_date(e.get("commence")) == today_et and ct <= now:
+            n += 1
+    return n
+
+
 NBA_LEAN_HOUR_ET = 17      # (2026-11-16, Brandon's call) NBA leans only after the ~5 PM ET injury report
 
 
@@ -485,7 +504,9 @@ def run(now: Optional[dt.datetime] = None) -> Dict[str, Any]:
             elif sport == "MLB" and not s["eligible"]:
                 reasons.append("MLB: off-season")
             elif s["games_today"] == 0:
-                reasons.append(f"{sport}: no games today" + (f"; {s['picks_upcoming']} desk pick(s) on upcoming dates" if s.get("picks_upcoming") else ""))
+                n_on = started_today(sport, today_et, now) if sport in ("NFL", "NBA", "NHL") else 0
+                reasons.append(((f"{sport}: today's game is under way" if n_on == 1 else f"{sport}: today's {n_on} games are under way or final") if n_on else f"{sport}: no games today")
+                               + (f"; {s['picks_upcoming']} desk pick(s) on upcoming dates" if s.get("picks_upcoming") else ""))
             elif s["picks_today"] == 0 and s["blocked_today"]:
                 reasons.append(f"{sport}: {s['games_today']} game(s) today, pick held -- " + "; ".join(b["reason"] for b in s["blocked_today"] if b.get("reason"))[:200])
             elif s["picks_today"] == 0:

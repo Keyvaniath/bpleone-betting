@@ -826,7 +826,10 @@ def run(now: Optional[dt.datetime] = None) -> Dict[str, Any]:
             "games_today": len(gs), "bets_today": sum(1 for g in gs if g.get("pick")),
             "verdict": str(d.get("verdict") or "").split(":")[0].strip().upper() or None,
             "status": ("off-season" if sp == "MLB" and (t.get("no_games") or not (t.get("games") or [])) else
-                       ("no games today" if not gs else "on")),
+                       "on" if gs else
+                       # (2026-11-16 audit) a slate under way is not "no games today"
+                       ("games under way" if pod.started_today(sp, today_et, now) else "no games today")),
+            "started_today": pod.started_today(sp, today_et, now) if sp != "MLB" else 0,
             "page": pod.SPORT_PAGE.get(sp),
         }
     for sp in COLLEGE:
