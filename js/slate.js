@@ -55,8 +55,10 @@
     if (!b) return "";
     const mine = b.team === g.home ? Number(g.hs) : Number(g.as), theirs = b.team === g.home ? Number(g.as) : Number(g.hs);
     let stat, col;
-    if (b.result === "win" || b.result === "loss" || b.result === "push") {
-      stat = { win: "WON", loss: "LOST", push: "PUSH" }[b.result]; col = { win: "#4ade80", loss: "#e35a5a", push: "#9fb0c8" }[b.result];
+    // the ledger writes won / lost / push (the audit caught a check for win / loss that never matched)
+    const res = { win: "won", loss: "lost" }[b.result] || b.result;
+    if (res === "won" || res === "lost" || res === "push") {
+      stat = { won: "WON", lost: "LOST", push: "PUSH" }[res]; col = { won: "#4ade80", lost: "#e35a5a", push: "#9fb0c8" }[res];
     } else if (g.state === "in" || g.done) {
       const lead = mine - theirs;
       stat = g.done ? (lead > 0 ? "won · grading" : lead < 0 ? "lost · grading" : "tied · grading") : (lead > 0 ? `leading by ${lead}` : lead < 0 ? `trailing by ${-lead}` : "tied");
