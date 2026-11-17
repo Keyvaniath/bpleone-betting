@@ -1,18 +1,18 @@
 # EdgeStat Daily Summary — 2026-11-17
 
-## 🏥 Model Health: 66.3/100 [OK]
+## 🏥 Model Health: 63.8/100 [OK]
 - Operational but room to improve - check yellow components
-  - 🟢 Calibration Freshness: 99.9/100
-  - 🟡 Hit Rate Trend: 61.0/100
-  - 🔴 Brier Trend: 20.8/100
+  - 🟢 Calibration Freshness: 100.0/100
+  - 🔴 Hit Rate Trend: 52.9/100
+  - 🔴 Brier Trend: 16.3/100
   - 🟢 Pipeline Audit: 100.0/100
   - 🟢 Data Health: 100.0/100
   - 🔴 Edge Count: 0/100
 
 ## 🌐 Slate Overview
-- **Regime today:** BALANCED (avg P(home)=0.542)
-- **Total games on board:** 48
-- **Strong home favorites:** 16 | **Strong road dogs:** 12
+- **Regime today:** BALANCED (avg P(home)=0.532)
+- **Total games on board:** 47
+- **Strong home favorites:** 15 | **Strong road dogs:** 12
 
 ## 🎯 Best Bets (sportsbook-priced only)
 - No best bet today: a best bet needs a real sportsbook price — 15 model-only projections excluded (UCL 4, LOL 3, EPL 3, NCAAF 3, NHL 2).
@@ -29,16 +29,16 @@
 - **[CS]** torzsi OVER 40.5 Kills (BO3) · model 61.0%
 
 ## ⚡ Pre-Game
-- No pre-game alerts: an alert needs a game-lines-desk probability whose verdict passed (not NO EDGE / UNPROVEN) and a DraftKings price. NBA: 8 not pre-game; NHL: 11 desk verdict NO EDGE; WNBA: 1 not pre-game; MLS: 2 no validated model probability (not from the game-lines desk); EPL: 7 no validated model probability (not from the game-lines desk); UCL: 9 no validated model probability (not from the game-lines desk); NFL: 14 not pre-game; NCAAF: 22 no validated model probability (not from the game-lines desk); NCAAB: 1 not pre-game; CWS: 1 not pre-game
+- No pre-game alerts: an alert needs a game-lines-desk probability whose verdict passed (not NO EDGE / UNPROVEN) and a DraftKings price. NBA: 5 desk verdict NO EDGE; NHL: 11 desk verdict NO EDGE; WNBA: 1 not pre-game; MLS: 2 no validated model probability (not from the game-lines desk); EPL: 7 no validated model probability (not from the game-lines desk); UCL: 9 no validated model probability (not from the game-lines desk); NFL: 14 not pre-game; NCAAF: 22 no validated model probability (not from the game-lines desk); NCAAB: 1 not pre-game; CWS: 1 not pre-game
 
 ## 🔥/❄️ Heat / Cold Signals
 - Hot teams: **11** | Cold teams: **14** | Over-heavy: 0 | Under-heavy: 30
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (111)
+## ⚠️ Anomaly Detector (118)
 - RESIDUAL_DIVERGENCE: **12**
 - STREAK_MISMATCH: **3**
-- STEAM_MOVE: **96**
+- STEAM_MOVE: **103**
   - Portland Trail Blazers (NBA): Portland Trail Blazers OUTPERFORMING expected margin by 6.3pts in recent games -- model bias may persist
   - Boston Bruins (NHL): Boston Bruins UNDERPERFORMING expected margin by 6.3pts in recent games -- model bias may persist
   - Edmonton Oilers (NHL): Edmonton Oilers on W5 streak but model rates as 48% -- may be undervalued
@@ -48,8 +48,12 @@
 ## 💰 Today's Portfolio
 - No priced picks: a stake is sized only at an actionable DraftKings quote.
 
-## 🎯 Signal stacking (1 games with 2+ signals) — research, not picks
-  - Vancouver Canucks @ Utah Mammoth : 4 signals (HEAT_COLD, HEAT_COLD, HEAT_COLD, ANOMALY)
+## 🎯 Signal stacking (12 games with 2+ signals) — research, not picks
+  - Toronto Maple Leafs @ Chicago Blackhawks : 5 signals (HEAT_COLD, HEAT_COLD, ANOMALY, ANOMALY)
+  - Anaheim Ducks @ St. Louis Blues : 4 signals (HEAT_COLD, HEAT_COLD, ANOMALY, ANOMALY)
+  - Nashville Predators @ Minnesota Wild : 4 signals (HEAT_COLD, HEAT_COLD, HEAT_COLD, ANOMALY)
+  - New York Knicks @ Toronto Raptors : 3 signals (HEAT_COLD, HEAT_COLD, HEAT_COLD)
+  - Charlotte Hornets @ Los Angeles Lakers : 3 signals (HEAT_COLD, HEAT_COLD, HEAT_COLD)
 
 ## 🏀 NBA Player Heat (6 HOT / 3 COLD)
   - 🔥 **Darryn Peterson** (UTAH): L5 23.6/5.2/3.8 vs season 17.1/4.3/3.8 [PTS +6.5]
@@ -78,12 +82,12 @@
   - ❄️ **Jimmy Stanger** (USA): Sunday +6.0 vs tourney avg
   - ❄️ **Jeffrey Kang** (USA): Sunday +4.2 vs tourney avg
 
-## 😴 Back-to-back flags (2) — schedule fact, not a pick
-- [NBA] Phoenix Suns @ Denver Nuggets (2026-11-16): home team on a back-to-back
-- [NHL] Vancouver Canucks @ Utah Mammoth (2026-11-16): home team on a back-to-back
-
-## 📈 Streaks (1) — record facts, not picks
-- [NHL] Utah Mammoth on L5 L10 0-5
+## 📈 Streaks (11) — record facts, not picks
+- [NBA] Toronto Raptors on L4 L10 1-4
+- [NBA] San Antonio Spurs on W7 L10 5-0
+- [NBA] Utah Jazz on L7 L10 0-5
+- [NBA] Los Angeles Lakers on W6 L10 5-0
+- [NHL] Los Angeles Kings on L4 L10 1-4
 
 ## 📉 Walk-Forward Trajectory (n_windows=3d × 8 markets)
 - 📈 Improving: **1** · ➖ Flat: 4 · 📉 Degrading: **3**

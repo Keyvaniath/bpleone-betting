@@ -1,5 +1,5 @@
 # EdgeStat — Tonight's Master Brief
-_Generated 2026-11-17T14:03:14 UTC_
+_Generated 2026-11-17T22:13:41 UTC_
 
 ## Slate Quality
 - **Tier:** NO_ACTION_NIGHT
@@ -10,11 +10,11 @@ _Generated 2026-11-17T14:03:14 UTC_
 - **Total FADES:** 129
 
 ## Top 5 Curated Picks
-1. **GOLF / Hayden Springer** (GOLF_PLAYER, score=219.29)
-   - Play: Hayden Springer (PLAYER_STRONG)
+1. **GOLF / Chad Ramey** (GOLF_PLAYER, score=219.29)
+   - Play: Chad Ramey (PLAYER_STRONG)
    - Rationale: Cross-sport top pick (GOLF_PLAYER)
-2. **GOLF / Blades Brown** (GOLF_PLAYER, score=219.29)
-   - Play: Blades Brown (PLAYER_STRONG)
+2. **GOLF / Ben Kohles** (GOLF_PLAYER, score=219.29)
+   - Play: Ben Kohles (PLAYER_STRONG)
    - Rationale: Cross-sport top pick (GOLF_PLAYER)
 3. **NBA / LAC** (NBA_TEAM, score=60.0)
    - Play: LAC (TEAM_STRONG)
@@ -22,9 +22,9 @@ _Generated 2026-11-17T14:03:14 UTC_
 
 ## Top Events Board
 - **GOLF** / ? (TOURNAMENT_STRONG)
-  - Hayden Springer top 10 finish
-  - Blades Brown top 10 finish
+  - Chad Ramey top 10 finish
   - Ben Kohles top 10 finish
+  - Trace Crowe top 10 finish
 
 ## Slate ROI Projection
 - **Picks:** 0
@@ -37,9 +37,9 @@ _Generated 2026-11-17T14:03:14 UTC_
   - Fade angle: PTS UNDER + PRA UNDER (multi-prop)
 - **NBA** / POR (TEAM_FADE)
   - Fade angle: team total UNDER
-- **NBA** / CHA (TEAM_FADE)
+- **NBA** / TOR (TEAM_FADE)
   - Fade angle: team total UNDER
 - **NBA** / DET (TEAM_FADE)
   - Fade angle: team total UNDER
-- **NBA** / UTA (TEAM_FADE)
+- **NBA** / CHA (TEAM_FADE)
   - Fade angle: team total UNDER

@@ -5,18 +5,18 @@
 - **No best bet today:** a best bet needs a real sportsbook price — 15 model-only projections excluded (UCL 4, LOL 3, EPL 3, NCAAF 3, NHL 2)
 
 ## NBA -- REGULAR
-- 11/16 07:00 PM ET: Orlando Magic @ Boston Celtics (6-7 vs 11-3) 115-105 | no DK price | no validated model probability | Final
-- 11/16 07:00 PM ET: Chicago Bulls @ Cleveland Cavaliers (3-10 vs 8-7) 115-126 | no DK price | no validated model probability | Final
-- 11/16 07:00 PM ET: Memphis Grizzlies @ Washington Wizards (10-4 vs 4-11) 136-120 | no DK price | no validated model probability | Final
-- 11/16 07:30 PM ET: Philadelphia 76ers @ Brooklyn Nets (12-3 vs 3-10) 135-123 | no DK price | no validated model probability | Final
-- 11/16 07:30 PM ET: Houston Rockets @ Miami Heat (11-4 vs 8-6) 110-128 | no DK price | no validated model probability | Final
+- 11/17 07:30 PM ET: New York Knicks @ Toronto Raptors (7-6 vs 5-8)  | DK -148/+125 | desk P(home) 42.7% (NO EDGE) | Scheduled
+- 11/17 08:00 PM ET: Portland Trail Blazers @ Minnesota Timberwolves (9-4 vs 10-4)  | DK +114/-135 | desk P(home) 55.1% (NO EDGE) | Scheduled
+- 11/17 08:00 PM ET: Detroit Pistons @ San Antonio Spurs (8-4 vs 12-2)  | DK +312/-396 | desk P(home) 76.7% (NO EDGE) | Scheduled
+- 11/17 10:30 PM ET: Utah Jazz @ LA Clippers (1-13 vs 4-8)  | DK +197/-238 | desk P(home) 67.7% (NO EDGE) | Scheduled
+- 11/17 11:00 PM ET: Charlotte Hornets @ Los Angeles Lakers (4-9 vs 12-2)  | DK +248/-306 | desk P(home) 72.4% (NO EDGE) | Scheduled
 
 ## NHL -- REGULAR
-- 11/16 07:30 PM ET: Montreal Canadiens @ New York Rangers (0-0-0 vs 0-0-0) 1-3 | no DK price | no validated model probability | Final
-- 11/16 09:30 PM ET: Vancouver Canucks @ Utah Mammoth (0-0-0 vs 0-0-0) 3-2 | no DK price | no validated model probability | Final
-- 11/17 07:00 PM ET: Los Angeles Kings @ Boston Bruins (5-11-2 vs 13-6-1)  | DK +130/-155 | desk P(home) 58.3% (NO EDGE) | Scheduled
-- 11/17 07:00 PM ET: Edmonton Oilers @ Florida Panthers (16-3-3 vs 12-7-3)  | DK +100/-120 | desk P(home) 52.2% (NO EDGE) | Scheduled
-- 11/17 07:00 PM ET: Columbus Blue Jackets @ New York Islanders (7-11-0 vs 9-6-4)  | DK +120/-142 | desk P(home) 56.4% (NO EDGE) | Scheduled
+- 11/17 07:00 PM ET: Los Angeles Kings @ Boston Bruins (5-11-2 vs 13-6-1)  | DK +136/-162 | desk P(home) 59.3% (NO EDGE) | Scheduled
+- 11/17 07:00 PM ET: Edmonton Oilers @ Florida Panthers (16-3-3 vs 12-7-3)  | DK +105/-125 | desk P(home) 53.2% (NO EDGE) | Scheduled
+- 11/17 07:00 PM ET: Columbus Blue Jackets @ New York Islanders (7-11-0 vs 9-6-4)  | DK +114/-135 | desk P(home) 55.1% (NO EDGE) | Scheduled
+- 11/17 07:00 PM ET: Buffalo Sabres @ Philadelphia Flyers (8-8-4 vs 6-11-6)  | DK -130/+110 | desk P(home) 45.7% (NO EDGE) | Scheduled
+- 11/17 07:00 PM ET: Ottawa Senators @ Winnipeg Jets (13-6-2 vs 10-8-3)  | DK -130/+110 | desk P(home) 45.7% (NO EDGE) | Scheduled
 
 ## Player projections -- across all sports — model projection — unvalidated, no sportsbook price, not a recommendation
 - **[LOL]** Inspired UNDER 3.5 Kills | model 61.7%
