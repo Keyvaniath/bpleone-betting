@@ -77,6 +77,13 @@
        now (fed by site_directory.json), plus the full directory. -->
   <div id="liveNowStrip" style="display:none;flex-wrap:wrap;gap:8px;margin-top:10px;align-items:center;"></div>
 </section>
+<!-- (2026-11-16) tonight's bets with live scores once games start (the Alpha strip below hides at the start) -->
+<section id="homeSlate" data-sports="NFL,NBA,NHL" data-bets-only="1" hidden style="margin:14px 0 6px;padding:12px 4px 6px;border:1px solid rgba(255,255,255,.08);border-radius:12px;"></section>
+<script src="js/slate.js"></script>
+<script>
+if (window.EdgeSlate) (window.__edgeBoard || (window.__edgeBoard = fetch("data/board.json?t=" + Date.now(), { cache: "no-cache" }).then((r) => r.json())))
+  .then((B) => EdgeSlate.mount(document.getElementById("homeSlate"), { board: B })).catch(() => {});
+</script>
 <!-- (2026-11-12) Today's Alpha picks from The Board: the day's top-scored bets,
      each with its DraftKings price and grade. Hidden when the board has none. -->
 <section id="homeAlpha" aria-label="Today's Alpha picks" style="display:none;margin:14px 0 6px;">

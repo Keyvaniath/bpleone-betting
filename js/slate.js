@@ -87,13 +87,21 @@
   async function mount(el, opts) {
     opts = opts || {};
     const sports = String(el.dataset.sports || "NFL,NBA,NHL").split(",").map((s) => s.trim()).filter((s) => PATH[s]);
+    // data-bets-only="1": only today's games we have a bet on, and hide the whole element when there are
+    // none (the homepage uses this so game night shows our live bets and quiet days show nothing)
+    const betsOnly = el.dataset.betsOnly === "1";
     const day = etYmd();
     let board = opts.board || null;
     let filter = "all";
     let games = [], failed = [];
     const draw = () => {
       const bets = betsFor(board || {}, day);
-      const show = games.filter((g) => filter === "all" || g.sport === filter);
+      const hasBet = (g) => bets.some((b) => b.sport === g.sport && b.matchup === g.matchup);
+      const show = games.filter((g) => (filter === "all" || g.sport === filter) && (!betsOnly || (hasBet(g) && g.state !== "pre")));   // pre-game bets are in the Alpha strip
+      if (betsOnly) {
+        el.hidden = !show.length && !failed.length;
+        if (el.hidden) return;
+      }
       // (2026-11-16 audit) a scoreboard that did not answer is NOT "no games": say so, and still list
       // today's bets for that sport (without a score) so the page never hides a live bet
       const down = failed.filter((s) => filter === "all" || s === filter);
@@ -103,11 +111,12 @@
       const counts = sports.map((s) => [s, games.filter((g) => g.sport === s).length]).filter(([, n]) => n);
       const live = games.filter((g) => g.state === "in").length;
       el.innerHTML = `<div style="display:flex;flex-wrap:wrap;gap:8px;align-items:baseline;margin:0 0 4px;">
-          <h3 style="font-size:15px;margin:0;">Today's slate</h3>
+          <h3 style="font-size:15px;margin:0;">${betsOnly ? "Tonight's bets, live" : "Today's slate"}</h3>
           <span class="muted" style="font-size:12px;">${esc(new Date(day + "T12:00:00Z").toLocaleDateString("en-US", { weekday: "long", month: "short", day: "numeric", timeZone: "UTC" }))}
-          · ${counts.map(([s, n]) => `${n} ${s}`).join(" · ") || (failed.length ? "live scores unavailable" : "no games")}${live ? ` · <span style="color:#f87171;">${live} live</span>` : ""}</span>
+          · ${betsOnly ? `${show.length} bet${show.length === 1 ? "" : "s"} · ${show.filter((g) => g.state === "in").length} live · ${show.filter((g) => g.state === "post").length} final`
+              : (counts.map(([s, n]) => `${n} ${s}`).join(" · ") || (failed.length ? "live scores unavailable" : "no games")) + (live ? ` · <span style="color:#f87171;">${live} live</span>` : "")}</span>
           <span class="muted" style="font-size:11px;margin-left:auto;">ESPN scoreboard · refreshes every 60s</span></div>
-        <p class="muted" style="font-size:12px;margin:0 0 6px;">Every game today, with our bet on it where The Board has one. Bets are graded on the final at the DraftKings price shown; the live line here is a score, not a result.</p>
+        <p class="muted" style="font-size:12px;margin:0 0 6px;">${betsOnly ? `Every game today that we have a bet on, with the live score. <a href="board.html" style="color:#7fb0e8;">All games on The Board →</a>` : "Every game today, with our bet on it where The Board has one."} Bets are graded on the final at the DraftKings price shown; the live line here is a score, not a result.</p>
         ${note}${show.length ? show.map((g) => card(g, bets)).join("") : down.length ? "" : `<div class="muted" style="padding:10px;font-size:13px;">No ${filter === "all" ? "" : esc(filter) + " "}games today.</div>`}`;
     };
     const load = async () => {
