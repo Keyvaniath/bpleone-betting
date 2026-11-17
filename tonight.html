@@ -180,8 +180,9 @@ Promise.all([
   fetch("data/cross_sport_parlays.json?t=" + Date.now()).then(r => r.json()).catch(() => null),
   fetch("data/whale_picks.json?t=" + Date.now()).then(r => r.json()).catch(() => null),
 ]).then(([locks, sharp, consensus, unders, lineup, pitch, parlays, whales]) => {
-  const stamp = (locks && locks.generated_at || '').slice(0,19).replace('T',' ');
-  document.getElementById('status').textContent = `All signals · ${stamp}`;
+  // (audit 11/16) the producers stamp naive UTC: show it in ET, labelled (a bare "23:26" read as 11:26 PM)
+  const g = String(locks && locks.generated_at || ''), gt = Date.parse(g.replace(' ', 'T') + (/[zZ]|[+-]\d\d:?\d\d$/.test(g) ? '' : 'Z'));
+  document.getElementById('status').textContent = isNaN(gt) ? 'All signals' : `All signals · updated ${new Date(gt).toLocaleString('en-US', { timeZone: 'America/New_York', month: 'numeric', day: 'numeric', hour: 'numeric', minute: '2-digit' })} ET · live scores below refresh every minute`;
 
   // WHALES (top section)
   const wb = document.getElementById('whaleBox');
