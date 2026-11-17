@@ -90,6 +90,10 @@
     </div>
   </section>
 
+  <!-- (2026-11-16) every game today, live scores and our bet on each: the curated boards below only
+       hold priced props, and The Board's open bets drop off at the start, so a busy night read "0 picks" -->
+  <section id="slate" data-sports="NFL,NBA,NHL" style="margin:0 0 20px;padding:12px 4px 6px;border:1px solid rgba(255,255,255,.08);border-radius:10px;"><div class="muted" style="padding:6px 10px;font-size:13px;">Loading today's games…</div></section>
+
   <div class="filterbar" id="catChips"></div>
   <div class="controls">
     <label style="font-size:11px;color:var(--muted,#888);">Sport
@@ -123,8 +127,12 @@
     performance does not guarantee future results. 21+. If gambling is a problem, call 1-800-GAMBLER.
   </p>
 </main>
+<script src="js/slate.js"></script>
 <script>
+let SLATE = null, SLATE_SPORTS = [];
 fetch("data/board.json?t=" + Date.now(), { cache: "no-cache" }).then((r) => r.json()).then((B) => {
+  EdgeSlate.mount(document.getElementById("slate"), { board: B, onSports: (ss) => { SLATE_SPORTS = ss; if (DATA) renderSportSel(); } })
+    .then((c) => { SLATE = c; SLATE.setFilter(SLATE_SPORTS.includes(state.sport) ? state.sport : "all"); });
   const esc = (v) => String(v == null ? "" : v).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c]);
   const am = (a) => a == null ? "—" : (a >= 0 ? "+" + a : "" + a);
   const now = Date.now();
@@ -171,12 +179,13 @@ function renderChips(){
 }
 
 function renderSportSel(){
-  const sports = Array.from(new Set((DATA.picks || []).map(p => p.sport))).sort();
+  // (2026-11-16) today's slate sports too: the curated list alone left "All sports" as the only option
+  const sports = Array.from(new Set((DATA.picks || []).map(p => p.sport).concat(SLATE_SPORTS))).sort();
   const sel = document.getElementById("sportSel");
   sel.innerHTML = '<option value="all">All sports</option>' +
     sports.map(s => `<option value="${s}">${s}</option>`).join("");
-  sel.value = state.sport;
-  sel.onchange = () => { state.sport = sel.value; renderRows(); };
+  sel.value = sports.includes(state.sport) ? state.sport : "all";
+  sel.onchange = () => { state.sport = sel.value; renderRows(); if (SLATE) SLATE.setFilter(state.sport); };
 }
 
 function renderSummary(picks){
