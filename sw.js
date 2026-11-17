@@ -3,7 +3,7 @@
    goes to the network, because a stale pick or line shown as current is
    exactly the failure this site exists to avoid. Only static shell assets
    (HTML/CSS/JS/icons) are cached, network-first, so a fresh deploy wins. */
-const VERSION = 'edgestat-shell-20261113';
+const VERSION = 'edgestat-shell-20261116';
 const SHELL = ['/', '/index.html', '/css/style.css?v=20261105', '/js/nav.js?v=20261112', '/manifest.json',
                '/assets/icons/icon-192.png', '/assets/icons/icon-512.png'];
 self.addEventListener('install', e => {
@@ -21,7 +21,11 @@ self.addEventListener('fetch', e => {
     // (2026-11-13) page loads revalidate with the server (a cheap 304 when unchanged), so a fresh
     // deploy shows at once instead of after the HTTP cache's 10 minutes
     // (a navigate-mode Request cannot take an init object, so a page load is re-fetched by URL)
-    (e.request.mode === 'navigate' ? fetch(e.request.url, { cache: 'no-cache', credentials: 'same-origin', redirect: 'manual' }) : fetch(e.request)).then(r => {
+    // (2026-11-16) the site's own scripts and styles revalidate too (a 304 when unchanged): with the
+    // HTTP cache alone a fix could run as the OLD script for up to Pages' 10-minute max-age
+    (e.request.mode === 'navigate' ? fetch(e.request.url, { cache: 'no-cache', credentials: 'same-origin', redirect: 'manual' })
+      : /\.(js|css)$/.test(url.pathname) ? fetch(e.request.url, { cache: 'no-cache', credentials: 'same-origin' })
+      : fetch(e.request)).then(r => {
       if (r.ok) { const copy = r.clone(); caches.open(VERSION).then(c => c.put(e.request, copy)); }
       return r;
     }).catch(() => caches.match(e.request).then(m => m || caches.match('/index.html')))
