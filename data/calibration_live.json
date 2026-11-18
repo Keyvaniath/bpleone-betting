@@ -1,11 +1,37 @@
 {
-  "generated_at": "2026-11-18T20:02:13",
+  "generated_at": "2026-11-18T21:46:15",
   "lookback_days": 30,
   "shrinkage_n_prior": 5,
   "shrinkage_min_n": 1,
   "shrinkage_note": "Per-market correction = data_weight * raw_correction + (1 - data_weight) * 1.0; data_weight = n / (n + 5). Below n=1 the factor is forced to 1.0. Caps at +/- 25%.",
   "markets": {
-    "batter_rbis": {
+    "batter_hits": {
+      "n": 105,
+      "n_with_projection": 105,
+      "implied_over_rate": 0.5799,
+      "actual_over_rate": 0.5619,
+      "bias": 1.0317,
+      "brier": 0.2376,
+      "log_loss": 0.668,
+      "ece": 0.0362,
+      "rmse": 0.919,
+      "plays_n": 27,
+      "plays_won": 8,
+      "plays_lost": 19,
+      "roi_pct": -35.83,
+      "correction_factor": 0.9709,
+      "n_prior_used": 6,
+      "data_weight": 0.9459,
+      "raw_correction": 0.9693
+    },
+    "batter_singles": {
+      "n": 0,
+      "correction_factor": 1.0,
+      "n_prior_used": 6,
+      "data_weight": 0.0,
+      "raw_correction": 1.0
+    },
+    "pitcher_strikeouts": {
       "n": 0,
       "correction_factor": 1.0,
       "n_prior_used": 10,
@@ -26,31 +52,12 @@
       "data_weight": 0.0,
       "raw_correction": 1.0
     },
-    "batter_singles": {
+    "batter_rbis": {
       "n": 0,
       "correction_factor": 1.0,
-      "n_prior_used": 6,
+      "n_prior_used": 10,
       "data_weight": 0.0,
       "raw_correction": 1.0
-    },
-    "batter_hits": {
-      "n": 105,
-      "n_with_projection": 105,
-      "implied_over_rate": 0.5799,
-      "actual_over_rate": 0.5619,
-      "bias": 1.0317,
-      "brier": 0.2376,
-      "log_loss": 0.668,
-      "ece": 0.0362,
-      "rmse": 0.919,
-      "plays_n": 27,
-      "plays_won": 8,
-      "plays_lost": 19,
-      "roi_pct": -35.83,
-      "correction_factor": 0.9709,
-      "n_prior_used": 6,
-      "data_weight": 0.9459,
-      "raw_correction": 0.9693
     },
     "batter_doubles": {
       "n": 0,
@@ -77,13 +84,6 @@
       "n_prior_used": 6,
       "data_weight": 0.7857,
       "raw_correction": 1.1999
-    },
-    "pitcher_strikeouts": {
-      "n": 0,
-      "correction_factor": 1.0,
-      "n_prior_used": 10,
-      "data_weight": 0.0,
-      "raw_correction": 1.0
     }
   },
   "games_overall": {
