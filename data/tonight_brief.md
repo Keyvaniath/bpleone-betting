@@ -1,7 +1,7 @@
-# 🌙 Tonight's Brief — 2026-11-17
+# 🌙 Tonight's Brief — 2026-11-18
 
 _60-second read. Calibration tier: **PRODUCTION** (100% progress)._
 
 ---
-_Generated 2026-11-17T22:13:35_
+_Generated 2026-11-18T03:31:13_
 _Full breakdown: /tonight · Full history: /locks-of-day_

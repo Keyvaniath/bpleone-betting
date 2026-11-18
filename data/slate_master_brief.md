@@ -1,30 +1,27 @@
 # EdgeStat — Tonight's Master Brief
-_Generated 2026-11-17T22:13:41 UTC_
+_Generated 2026-11-18T03:31:19 UTC_
 
 ## Slate Quality
-- **Tier:** NO_ACTION_NIGHT
-- **Score:** -105
-- **Advisory:** STAND DOWN. Slate has no aligned conviction. Skip betting tonight or watch only.
+- **Tier:** STRONG_NIGHT
+- **Score:** 94
+- **Advisory:** Solid slate. Pick top STRONG/LOCK picks; consider Kelly 25-50% sizing.
 - **Total LOCKs:** 0
-- **Total STRONG:** 6
-- **Total FADES:** 129
+- **Total STRONG:** 45
+- **Total FADES:** 86
 
 ## Top 5 Curated Picks
-1. **GOLF / Chad Ramey** (GOLF_PLAYER, score=219.29)
-   - Play: Chad Ramey (PLAYER_STRONG)
+1. **GOLF / David Skinns** (GOLF_PLAYER, score=136.07)
+   - Play: David Skinns (PLAYER_STRONG)
    - Rationale: Cross-sport top pick (GOLF_PLAYER)
-2. **GOLF / Ben Kohles** (GOLF_PLAYER, score=219.29)
-   - Play: Ben Kohles (PLAYER_STRONG)
+2. **GOLF / John Parry** (GOLF_PLAYER, score=133.79)
+   - Play: John Parry (PLAYER_STRONG)
    - Rationale: Cross-sport top pick (GOLF_PLAYER)
-3. **NBA / LAC** (NBA_TEAM, score=60.0)
-   - Play: LAC (TEAM_STRONG)
-   - Rationale: Cross-sport top pick (NBA_TEAM)
 
 ## Top Events Board
 - **GOLF** / ? (TOURNAMENT_STRONG)
-  - Chad Ramey top 10 finish
-  - Ben Kohles top 10 finish
-  - Trace Crowe top 10 finish
+  - David Skinns top 10 finish
+  - John Parry top 10 finish
+  - Robert Streb top 10 finish
 
 ## Slate ROI Projection
 - **Picks:** 0
@@ -33,13 +30,13 @@ _Generated 2026-11-17T22:13:41 UTC_
 - **Expected P&L on $100:** $0.0
 
 ## Top Fades
-- **NBA** / victor wembanyama (PLAYER_FADE)
-  - Fade angle: PTS UNDER + PRA UNDER (multi-prop)
 - **NBA** / POR (TEAM_FADE)
   - Fade angle: team total UNDER
-- **NBA** / TOR (TEAM_FADE)
+- **NBA** / CHA (TEAM_FADE)
   - Fade angle: team total UNDER
 - **NBA** / DET (TEAM_FADE)
   - Fade angle: team total UNDER
-- **NBA** / CHA (TEAM_FADE)
+- **NBA** / UTA (TEAM_FADE)
+  - Fade angle: team total UNDER
+- **NBA** / SAS (TEAM_FADE)
   - Fade angle: team total UNDER
