@@ -1,25 +1,23 @@
 # EdgeStat Daily Brief - 2026-11-18
 
-**Model Confidence: 13.4/100 [RED]** -- Calibration warming up. Research signal only; no real-money sizing yet.
+**Model Confidence: 13.8/100 [RED]** -- Calibration warming up. Research signal only; no real-money sizing yet.
 
 _Pipeline health: **WARNING** (7/15 artifacts ok; 8 empty, 0 stale)._ 
 
-_Generated at 2026-11-18T03:31:28 UTC. Game lines source: **DraftKings via ESPN (78 pre-game priced games, observed 2026-11-18T03:31:19 UTC)**._
+_Generated at 2026-11-18T17:46:07 UTC. Game lines source: **DraftKings via ESPN (147 pre-game priced games, observed 2026-11-18T17:45:58 UTC)**._
 
 ## Self-Learning Loop
 
 | Market | n settled | Hit rate | Model implied | Bias | Correction |
 |---|---|---|---|---|---|
-| batter total bases | 22 | 50.0% | 41.3% | 0.833 | 1.157 |
 | batter hits | 105 | 56.2% | 58.0% | 1.032 | 0.971 |
+| batter total bases | 22 | 50.0% | 41.3% | 0.833 | 1.157 |
 
-Cumulative graded plays: 24986. Wins: 12438. Hit rate: 49.8%.
+Cumulative graded plays: 25035. Wins: 12472. Hit rate: 49.8%.
 
 ## Loop Activity (since last refresh)
 
-- Confidence delta: **+0.0**
-- batter hits: cf +0.0073 (-17 new settled)
-- batter total bases: cf -0.0011 (-2 new settled)
+- Confidence delta: **+0.4**
 
 ## Model Recommendations (operator review)
 

@@ -1,5 +1,5 @@
 **EdgeStat -- Tonight's Slate**
-_STRONG_NIGHT_ | L:0 S:45 F:86
+_STRONG_NIGHT_ | L:0 S:47 F:123
 
 :dart: **Top Picks:**
 1. [GOLF] David Skinns -- David Skinns (PLAYER_STRONG)

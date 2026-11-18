@@ -1,22 +1,23 @@
-# Tonight's Slate Brief — 2026-11-17
+# Tonight's Slate Brief — 2026-11-18
 
 ## Slate
 - **0 games** scheduled
-- **No best bet today:** a best bet needs a real sportsbook price — 15 model-only projections excluded (UCL 4, LOL 3, EPL 3, NCAAF 3, NHL 2)
+- **No best bet today:** a best bet needs a real sportsbook price — 19 model-only projections excluded (NBA 5, UCL 4, LOL 3, EPL 3, NCAAF 2, NFL 1, NHL 1)
+
+## Golf -- The RSM Classic
+- **Field:** 147 players  |  Status: Scheduled (starts 2026-11-19)
 
 ## NBA -- REGULAR
-- 11/17 07:30 PM ET: New York Knicks @ Toronto Raptors (7-6 vs 5-8)  | DK -148/+125 | desk P(home) 42.7% (NO EDGE) | Scheduled
-- 11/17 08:00 PM ET: Portland Trail Blazers @ Minnesota Timberwolves (9-4 vs 10-4)  | DK +114/-135 | desk P(home) 55.1% (NO EDGE) | Scheduled
-- 11/17 08:00 PM ET: Detroit Pistons @ San Antonio Spurs (8-4 vs 12-2)  | DK +312/-396 | desk P(home) 76.7% (NO EDGE) | Scheduled
-- 11/17 10:30 PM ET: Utah Jazz @ LA Clippers (1-13 vs 4-8)  | DK +197/-238 | desk P(home) 67.7% (NO EDGE) | Scheduled
-- 11/17 11:00 PM ET: Charlotte Hornets @ Los Angeles Lakers (4-9 vs 12-2)  | DK +248/-306 | desk P(home) 72.4% (NO EDGE) | Scheduled
+- 11/18 07:00 PM ET: Memphis Grizzlies @ Cleveland Cavaliers (10-4 vs 8-7)  | DK +164/-196 | desk P(home) 63.6% (NO EDGE) | Scheduled
+- 11/18 07:00 PM ET: Houston Rockets @ Indiana Pacers (11-4 vs 5-9)  | DK -304/+247 | desk P(home) 27.7% (NO EDGE) | Scheduled
+- 11/18 07:00 PM ET: Milwaukee Bucks @ Miami Heat (1-13 vs 8-6)  | DK +505/-700 | desk P(home) 84.1% (NO EDGE) | Scheduled
+- 11/18 07:00 PM ET: Philadelphia 76ers @ Orlando Magic (12-3 vs 6-7)  | DK -117/-101 | desk P(home) 48.2% (NO EDGE) | Scheduled
+- 11/18 07:30 PM ET: Chicago Bulls @ Brooklyn Nets (3-10 vs 3-10)  | DK +128/-152 | desk P(home) 57.9% (NO EDGE) | Scheduled
 
 ## NHL -- REGULAR
-- 11/17 07:00 PM ET: Los Angeles Kings @ Boston Bruins (5-11-2 vs 13-6-1)  | DK +136/-162 | desk P(home) 59.3% (NO EDGE) | Scheduled
-- 11/17 07:00 PM ET: Edmonton Oilers @ Florida Panthers (16-3-3 vs 12-7-3)  | DK +105/-125 | desk P(home) 53.2% (NO EDGE) | Scheduled
-- 11/17 07:00 PM ET: Columbus Blue Jackets @ New York Islanders (7-11-0 vs 9-6-4)  | DK +114/-135 | desk P(home) 55.1% (NO EDGE) | Scheduled
-- 11/17 07:00 PM ET: Buffalo Sabres @ Philadelphia Flyers (8-8-4 vs 6-11-6)  | DK -130/+110 | desk P(home) 45.7% (NO EDGE) | Scheduled
-- 11/17 07:00 PM ET: Ottawa Senators @ Winnipeg Jets (13-6-2 vs 10-8-3)  | DK -130/+110 | desk P(home) 45.7% (NO EDGE) | Scheduled
+- 11/18 07:30 PM ET: Boston Bruins @ Detroit Red Wings (13-7-1 vs 8-10-3)  | DK -110/-110 | desk P(home) 50.0% (NO EDGE) | Scheduled
+- 11/18 07:30 PM ET: Montreal Canadiens @ New Jersey Devils (12-5-4 vs 15-6-0)  | DK +142/-170 | desk P(home) 60.4% (NO EDGE) | Scheduled
+- 11/18 10:00 PM ET: Colorado Avalanche @ Utah Mammoth (12-6-3 vs 10-9-3)  | DK -105/-115 | desk P(home) 51.1% (NO EDGE) | Scheduled
 
 ## Player projections -- across all sports — model projection — unvalidated, no sportsbook price, not a recommendation
 - **[LOL]** Inspired UNDER 3.5 Kills | model 61.7%
