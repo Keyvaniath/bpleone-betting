@@ -1,13 +1,13 @@
 # EdgeStat — Tonight's Master Brief
-_Generated 2026-11-18T21:56:20 UTC_
+_Generated 2026-11-19T03:12:39 UTC_
 
 ## Slate Quality
 - **Tier:** STRONG_NIGHT
-- **Score:** 65
+- **Score:** 93
 - **Advisory:** Solid slate. Pick top STRONG/LOCK picks; consider Kelly 25-50% sizing.
 - **Total LOCKs:** 0
 - **Total STRONG:** 47
-- **Total FADES:** 123
+- **Total FADES:** 95
 
 ## Top 5 Curated Picks
 1. **GOLF / David Skinns** (GOLF_PLAYER, score=136.07)
@@ -30,13 +30,13 @@ _Generated 2026-11-18T21:56:20 UTC_
 - **Expected P&L on $100:** $0.0
 
 ## Top Fades
-- **NBA** / ATL (TEAM_FADE)
-  - Fade angle: team total UNDER
 - **NBA** / DET (TEAM_FADE)
   - Fade angle: team total UNDER
-- **NBA** / MIA (TEAM_FADE)
+- **NBA** / ATL (TEAM_FADE)
   - Fade angle: team total UNDER
-- **NBA** / BKN (TEAM_FADE)
+- **NBA** / WAS (TEAM_FADE)
   - Fade angle: team total UNDER
-- **NBA** / CHI (TEAM_FADE)
+- **NBA** / DEN (TEAM_FADE)
+  - Fade angle: team total UNDER
+- **NBA** / UTA (TEAM_FADE)
   - Fade angle: team total UNDER
