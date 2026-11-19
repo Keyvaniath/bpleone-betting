@@ -2,24 +2,25 @@
 
 ## Slate
 - **0 games** scheduled
-- **No best bet today:** a best bet needs a real sportsbook price — 14 model-only projections excluded (UCL 4, LOL 3, EPL 3, NCAAF 2, NFL 1, NHL 1)
+- **No best bet today:** a best bet needs a real sportsbook price — 20 model-only projections excluded (UCL 4, GOLF 4, LOL 3, EPL 3, NCAAF 2, NHL 2, NBA 1, NFL 1)
 
 ## Golf -- The RSM Classic
-- **Field:** 147 players  |  Status: Scheduled (starts 2026-11-19)
+- **Leader:** Jesper Svensson (-8) at #1
+- **Field:** 147 players  |  Status: In Progress
+- **Model projection:** Max Greyserman TOP10 (model 14.9%) — model projection — unvalidated, no sportsbook price, not a recommendation
 
 ## NBA -- REGULAR
-- 11/18 07:00 PM ET: Memphis Grizzlies @ Cleveland Cavaliers (11-4 vs 8-8) 124-121 | no DK price | no validated model probability | Final
-- 11/18 07:00 PM ET: Houston Rockets @ Indiana Pacers (12-4 vs 5-10) 119-104 | no DK price | no validated model probability | Final
-- 11/18 07:00 PM ET: Milwaukee Bucks @ Miami Heat (1-14 vs 9-6) 130-137 | no DK price | no validated model probability | Final
-- 11/18 07:00 PM ET: Philadelphia 76ers @ Orlando Magic (13-3 vs 6-8) 121-116 | no DK price | no validated model probability | Final
-- 11/18 07:30 PM ET: Chicago Bulls @ Brooklyn Nets (4-10 vs 3-11) 137-107 | no DK price | no validated model probability | Final
+- 11/19 08:00 PM ET: Golden State Warriors @ Memphis Grizzlies (8-7 vs 11-4)  | DK +180/-217 | desk P(home) 65.7% (NO EDGE) | Scheduled
+- 11/19 08:00 PM ET: Portland Trail Blazers @ Milwaukee Bucks (9-5 vs 1-14)  | DK -494/+378 | desk P(home) 20.1% (NO EDGE) | Scheduled
+- 11/19 08:00 PM ET: New York Knicks @ Minnesota Timberwolves (8-6 vs 11-4)  | DK -113/-104 | desk P(home) 49.0% (NO EDGE) | Scheduled
+- 11/19 08:00 PM ET: LA Clippers @ San Antonio Spurs (4-9 vs 12-3)  | DK +670/-1040 | desk P(home) 87.5% (NO EDGE) | Scheduled
 
 ## NHL -- REGULAR
-- 11/18 07:30 PM ET: Boston Bruins @ Detroit Red Wings (0-0-0 vs 0-0-0) 4-1 | no DK price | no validated model probability | Final
-- 11/18 07:30 PM ET: Montreal Canadiens @ New Jersey Devils (0-0-0 vs 0-0-0) 3-2 | no DK price | no validated model probability | Final
-- 11/18 10:00 PM ET: Colorado Avalanche @ Utah Mammoth (0-0-0 vs 0-0-0) 1-4 | no DK price | no validated model probability | Final
-- 11/19 07:00 PM ET: Los Angeles Kings @ Toronto Maple Leafs (6-11-2 vs 8-13-2)  | DK -105/-115 | desk P(home) 51.1% (NO EDGE) | Scheduled
-- 11/19 07:00 PM ET: Philadelphia Flyers @ Ottawa Senators (7-11-6 vs 14-6-2)  | DK +150/-180 | desk P(home) 61.6% (NO EDGE) | Scheduled
+- 11/19 07:00 PM ET: Los Angeles Kings @ Toronto Maple Leafs (6-11-2 vs 8-13-2)  | DK +100/-120 | desk P(home) 52.2% (NO EDGE) | Scheduled
+- 11/19 07:00 PM ET: Philadelphia Flyers @ Ottawa Senators (7-11-6 vs 14-6-2)  | DK +140/-166 | desk P(home) 60.0% (NO EDGE) | Scheduled
+- 11/19 07:00 PM ET: St. Louis Blues @ Pittsburgh Penguins (10-9-2 vs 7-11-2)  | DK -112/-108 | desk P(home) 49.6% (NO EDGE) | Scheduled
+- 11/19 07:00 PM ET: Buffalo Sabres @ Washington Capitals (8-9-4 vs 10-9-0)  | DK +120/-142 | desk P(home) 56.4% (NO EDGE) | Scheduled
+- 11/19 07:00 PM ET: Montreal Canadiens @ Carolina Hurricanes (13-5-4 vs 16-3-2)  | DK +280/-355 | desk P(home) 74.8% (NO EDGE) | Scheduled
 
 ## Player projections -- across all sports — model projection — unvalidated, no sportsbook price, not a recommendation
 - **[LOL]** Inspired UNDER 3.5 Kills | model 61.7%

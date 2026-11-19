@@ -1,27 +1,13 @@
 # EdgeStat — Tonight's Master Brief
-_Generated 2026-11-19T14:11:52 UTC_
+_Generated 2026-11-19T22:10:38 UTC_
 
 ## Slate Quality
 - **Tier:** NO_ACTION_NIGHT
-- **Score:** -26
+- **Score:** -280
 - **Advisory:** STAND DOWN. Slate has no aligned conviction. Skip betting tonight or watch only.
 - **Total LOCKs:** 0
-- **Total STRONG:** 44
-- **Total FADES:** 202
-
-## Top 5 Curated Picks
-1. **GOLF / David Skinns** (GOLF_PLAYER, score=136.07)
-   - Play: David Skinns (PLAYER_STRONG)
-   - Rationale: Cross-sport top pick (GOLF_PLAYER)
-2. **GOLF / John Parry** (GOLF_PLAYER, score=133.79)
-   - Play: John Parry (PLAYER_STRONG)
-   - Rationale: Cross-sport top pick (GOLF_PLAYER)
-
-## Top Events Board
-- **GOLF** / ? (TOURNAMENT_STRONG)
-  - David Skinns top 10 finish
-  - John Parry top 10 finish
-  - Robert Streb top 10 finish
+- **Total STRONG:** 0
+- **Total FADES:** 280
 
 ## Slate ROI Projection
 - **Picks:** 0
@@ -36,7 +22,7 @@ _Generated 2026-11-19T14:11:52 UTC_
   - Fade angle: team total UNDER
 - **NBA** / NYK (TEAM_FADE)
   - Fade angle: team total UNDER
-- **NBA** / MIN (TEAM_FADE)
-  - Fade angle: team total UNDER
 - **NBA** / LAC (TEAM_FADE)
+  - Fade angle: team total UNDER
+- **NBA** / MIN (TEAM_FADE)
   - Fade angle: team total UNDER

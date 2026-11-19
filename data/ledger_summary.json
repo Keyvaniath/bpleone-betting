@@ -1,23 +1,23 @@
 {
-  "generated_at": "2026-11-19T20:47:02",
+  "generated_at": "2026-11-19T22:13:25",
   "stake_assumption": "1u flat per pick",
   "total_picks": 20000,
-  "n_settled": 25179,
-  "n_pending": 925,
+  "n_settled": 25185,
+  "n_pending": 930,
   "n_void": 0,
-  "wins": 12568,
-  "losses": 12600,
+  "wins": 12572,
+  "losses": 12602,
   "pushes": 11,
   "hit_rate": 0.4994,
-  "net_units": -3516.289,
-  "roi_pct": -13.97,
+  "net_units": -3515.348,
+  "roi_pct": -13.96,
   "n_calibrated_picks": 19954,
   "calibrated_reliability": {
-    "n": 19022,
+    "n": 19017,
     "ece_raw": 0.062,
-    "ece_calibrated": 0.0085,
-    "brier_raw": 0.20955,
-    "brier_calibrated": 0.19719,
+    "ece_calibrated": 0.0079,
+    "brier_raw": 0.20952,
+    "brier_calibrated": 0.19711,
     "note": "In-sample over the settled ledger (the isotonic transform is fit on these same outcomes); held-out 70/30 validation is in recalibration_map.json. p_predicted = raw model prob (kept untouched for the learning loop); p_calibrated = honest prob stamped per pick. Lower ECE/Brier on the calibrated column = the displayed % is truer."
   },
   "curated": {
@@ -49,12 +49,12 @@
     }
   },
   "prizepicks": {
-    "n_settled": 590,
-    "wins": 498,
-    "losses": 92,
-    "hit_rate": 0.8441,
-    "net_units": 274.179,
-    "roi_pct": 46.47,
+    "n_settled": 595,
+    "wins": 502,
+    "losses": 93,
+    "hit_rate": 0.8437,
+    "net_units": 276.121,
+    "roi_pct": 46.41,
     "first_date": "2026-05-19",
     "last_date": "2026-07-09",
     "definition": "Curated PrizePicks props (Lock of the Day / Top 25), graded at PrizePicks' per-leg break-even of -136 (a 2-pick Power Play pays 3x). Not a sportsbook price, and a single leg cannot be bet alone -- so this is its own line, never part of the curated headline (split out 2026-11-03)."
@@ -1886,10 +1886,10 @@
   "by_price_class": {
     "all": {
       "C": {
-        "n": 24559,
-        "wins": 12237,
-        "losses": 12322,
-        "net_units": -3508.012,
+        "n": 24565,
+        "wins": 12241,
+        "losses": 12324,
+        "net_units": -3507.07,
         "roi_pct": -14.28
       },
       "B": {
@@ -1939,11 +1939,11 @@
   "headline_basis": "all-time: working ledger + data/ledger_archive.json",
   "working_ledger_only": {
     "all": {
-      "n_settled": 19075,
-      "wins": 9505,
-      "losses": 9559,
-      "net_units": -2298.203,
-      "roi_pct": -12.06
+      "n_settled": 19070,
+      "wins": 9507,
+      "losses": 9552,
+      "net_units": -2295.296,
+      "roi_pct": -12.04
     },
     "curated": {
       "n_settled": 514,
@@ -1969,7 +1969,7 @@
       "label": "PrizePicks split out + flat 1u stakes",
       "n_repriced": 0,
       "n_voided": 0,
-      "counts_text": "587 PrizePicks props moved to their own line; 249 locks-history picks rescaled from a ~0.06u stake to the flat 1u",
+      "counts_text": "587 PrizePicks props moved to their own line; 257 locks-history picks rescaled from a ~0.06u stake to the flat 1u",
       "curated_before": "785-335 (+13.54%, +151.66u)",
       "curated_after": "290-243 (-0.74%, -3.92u)",
       "note": "The curated headline is now graded at real sportsbook prices only. 587 curated PrizePicks props (May 19 - July 9) had been graded at PrizePicks' per-leg break-even (-136, a 2-pick Power Play) -- not a sportsbook line, and a single leg cannot be bet alone -- and they were almost all of the curated profit. They keep their own labelled line (495-92, +271.97u at a flat 1u: 249 of them had been imported from the old locks history at a ~0.06u stake and were rescaled). Its 84% hit rate is far above anything else on the site and comes from that import; treat it as unverified."
@@ -2037,16 +2037,16 @@
   "restatement": {
     "date": "2026-10-23",
     "note": "The headline became ALL-TIME on 2026-10-23. 5,946 settled picks that the old tail-cut eviction had destroyed (May-June 2026, the 07-06 erosion and the run-up to 09-03) were rebuilt from git history at each pick's final state, with today's duplicate-wager rule re-applied, and folded back in. They are mostly the raw May-June MLB prop firehose (2,961-2,983, -1,256.9u), so the firehose ROI fell; the curated record changed by the curated picks among them. Before this date the published numbers covered the working window only -- working_ledger_only keeps that basis.",
-    "n_archived_in_headline": 6104
+    "n_archived_in_headline": 6115
   },
-  "n_added_this_run": 117,
+  "n_added_this_run": 6,
   "n_newly_settled_this_run": 0,
   "n_resettled_this_run": 0,
   "n_voided_this_run": 0,
-  "n_duplicates_collapsed_this_run": 85,
-  "n_duplicate_adds_blocked_this_run": 63,
+  "n_duplicates_collapsed_this_run": 91,
+  "n_duplicate_adds_blocked_this_run": 62,
   "n_reconciled_settled_voids": 0,
-  "n_bootstrapped_from_locks_history": 85,
+  "n_bootstrapped_from_locks_history": 91,
   "by_source": {
     "mlb_xbh_1_plus_xbh": {
       "n": 3762,
@@ -2344,20 +2344,20 @@
       }
     },
     "lock_of_day": {
-      "n": 401,
-      "wins": 341,
-      "losses": 60,
+      "n": 406,
+      "wins": 345,
+      "losses": 61,
       "pushes": 0,
-      "net_units": 190.307,
-      "hit_rate": 0.8504,
-      "roi_pct": 47.46,
+      "net_units": 192.247,
+      "hit_rate": 0.8498,
+      "roi_pct": 47.35,
       "by_price_class": {
         "C": {
-          "n": 399,
-          "wins": 339,
-          "losses": 60,
-          "net_units": 189.267,
-          "roi_pct": 47.44
+          "n": 404,
+          "wins": 343,
+          "losses": 61,
+          "net_units": 191.208,
+          "roi_pct": 47.33
         },
         "B": {
           "n": 2,
@@ -5759,20 +5759,20 @@
       }
     },
     "tennis_games_total_games_under_17.5": {
-      "n": 5,
+      "n": 6,
       "wins": 1,
-      "losses": 4,
+      "losses": 5,
       "pushes": 0,
-      "net_units": -3.554,
-      "hit_rate": 0.2,
-      "roi_pct": -71.08,
+      "net_units": -4.554,
+      "hit_rate": 0.1667,
+      "roi_pct": -75.9,
       "by_price_class": {
         "C": {
-          "n": 5,
+          "n": 6,
           "wins": 1,
-          "losses": 4,
-          "net_units": -3.554,
-          "roi_pct": -71.08
+          "losses": 5,
+          "net_units": -4.554,
+          "roi_pct": -75.9
         }
       },
       "sportsbook": {
@@ -13599,12 +13599,12 @@
   },
   "by_market_family": {
     "1_plus_xbh": {
-      "n": 3174,
-      "wins": 907,
-      "losses": 2267,
+      "n": 3160,
+      "wins": 902,
+      "losses": 2258,
       "pushes": 0,
-      "net_units": -736.19,
-      "hit_rate": 0.2858
+      "net_units": -736.43,
+      "hit_rate": 0.2854
     },
     "3_plus_hrr": {
       "n": 714,
@@ -13639,12 +13639,12 @@
       "hit_rate": 0.5761
     },
     "pp_batter_hrr": {
-      "n": 448,
-      "wins": 375,
-      "losses": 73,
+      "n": 453,
+      "wins": 379,
+      "losses": 74,
       "pushes": 0,
-      "net_units": 202.625,
-      "hit_rate": 0.8371
+      "net_units": 204.565,
+      "hit_rate": 0.8366
     },
     "home_total_over": {
       "n": 353,
@@ -13727,11 +13727,11 @@
       "hit_rate": 0.589
     },
     "pp_batter_home_runs": {
-      "n": 2,
-      "wins": 2,
+      "n": 3,
+      "wins": 3,
       "losses": 0,
       "pushes": 0,
-      "net_units": 1.47,
+      "net_units": 2.205,
       "hit_rate": 1.0
     },
     "ml_away": {
@@ -13759,12 +13759,12 @@
       "hit_rate": 0.6538
     },
     "pp_batter_total_bases": {
-      "n": 18,
-      "wins": 16,
+      "n": 20,
+      "wins": 18,
       "losses": 2,
       "pushes": 0,
-      "net_units": 9.76,
-      "hit_rate": 0.8889
+      "net_units": 11.23,
+      "hit_rate": 0.9
     },
     "pole": {
       "n": 5,
@@ -13887,12 +13887,12 @@
       "hit_rate": 0.625
     },
     "total_games_under": {
-      "n": 65,
+      "n": 66,
       "wins": 19,
-      "losses": 46,
+      "losses": 47,
       "pushes": 0,
-      "net_units": -37.869,
-      "hit_rate": 0.2923
+      "net_units": -38.869,
+      "hit_rate": 0.2879
     },
     "total_games_over": {
       "n": 43,
@@ -14489,12 +14489,12 @@
   },
   "by_canonical": {
     "mlb_xbh_0.5_over": {
-      "n": 3174,
-      "wins": 907,
-      "losses": 2267,
+      "n": 3160,
+      "wins": 902,
+      "losses": 2258,
       "pushes": 0,
-      "net_units": -736.19,
-      "hit_rate": 0.2858
+      "net_units": -736.43,
+      "hit_rate": 0.2854
     },
     "mlb_hrr_2.5_over": {
       "n": 714,
@@ -14529,12 +14529,12 @@
       "hit_rate": 0.5761
     },
     "mlb_hrr_3.5_under": {
-      "n": 394,
-      "wins": 328,
-      "losses": 66,
+      "n": 399,
+      "wins": 332,
+      "losses": 67,
       "pushes": 0,
-      "net_units": 175.08,
-      "hit_rate": 0.8325
+      "net_units": 177.02,
+      "hit_rate": 0.8321
     },
     "home_total_over": {
       "n": 353,
@@ -14625,11 +14625,11 @@
       "hit_rate": 0.75
     },
     "mlb_hr_0.5_under": {
-      "n": 2,
-      "wins": 2,
+      "n": 3,
+      "wins": 3,
       "losses": 0,
       "pushes": 0,
-      "net_units": 1.47,
+      "net_units": 2.205,
       "hit_rate": 1.0
     },
     "mlb_hrr_4.5_under": {
@@ -14665,12 +14665,12 @@
       "hit_rate": 0.6538
     },
     "mlb_tb_3.5_under": {
-      "n": 16,
-      "wins": 14,
+      "n": 18,
+      "wins": 16,
       "losses": 2,
       "pushes": 0,
-      "net_units": 8.29,
-      "hit_rate": 0.875
+      "net_units": 9.76,
+      "hit_rate": 0.8889
     },
     "pole": {
       "n": 5,
@@ -14793,12 +14793,12 @@
       "hit_rate": 0.625
     },
     "total_games_under": {
-      "n": 65,
+      "n": 66,
       "wins": 19,
-      "losses": 46,
+      "losses": 47,
       "pushes": 0,
-      "net_units": -37.869,
-      "hit_rate": 0.2923
+      "net_units": -38.869,
+      "hit_rate": 0.2879
     },
     "total_games_over": {
       "n": 43,
@@ -15437,16 +15437,16 @@
       "markets": 4
     },
     "MLB-PP": {
-      "n": 590,
-      "settled": 590,
-      "wins": 498,
-      "losses": 92,
+      "n": 595,
+      "settled": 595,
+      "wins": 502,
+      "losses": 93,
       "pushes": 0,
       "pending": 0,
       "void": 0,
-      "net_units": 274.03,
-      "hit_rate": 0.8441,
-      "roi_pct": 46.45,
+      "net_units": 275.97,
+      "hit_rate": 0.8437,
+      "roi_pct": 46.38,
       "markets": 2
     },
     "WNBA": {
@@ -15463,12 +15463,12 @@
       "markets": 4
     },
     "NHL": {
-      "n": 998,
+      "n": 1000,
       "settled": 929,
       "wins": 608,
       "losses": 321,
       "pushes": 0,
-      "pending": 69,
+      "pending": 71,
       "void": 0,
       "net_units": -8.09,
       "hit_rate": 0.6545,
@@ -15529,15 +15529,15 @@
     },
     "TENNIS": {
       "n": 147,
-      "settled": 144,
+      "settled": 145,
       "wins": 74,
-      "losses": 70,
+      "losses": 71,
       "pushes": 0,
-      "pending": 3,
+      "pending": 2,
       "void": 0,
-      "net_units": -35.725,
-      "hit_rate": 0.5139,
-      "roi_pct": -24.81,
+      "net_units": -36.725,
+      "hit_rate": 0.5103,
+      "roi_pct": -25.33,
       "markets": 4
     },
     "EPL": {
@@ -15593,12 +15593,12 @@
       "markets": 12
     },
     "NBA": {
-      "n": 2402,
+      "n": 2406,
       "settled": 2313,
       "wins": 1507,
       "losses": 806,
       "pushes": 0,
-      "pending": 89,
+      "pending": 93,
       "void": 0,
       "net_units": -53.672,
       "hit_rate": 0.6515,
@@ -15660,16 +15660,16 @@
   },
   "last_7_days": {
     "wins": 1055,
-    "losses": 543,
-    "net_units": -58.549,
-    "hit_rate": 0.6602
+    "losses": 544,
+    "net_units": -59.549,
+    "hit_rate": 0.6598
   },
   "note": "Unified pick ledger -- records every pick the model surfaces (top_25 board, whales, consensus, unders, sharp action, locks, POD) and settles each against actual outcomes. Per-source W-L feeds back into calibration so the model learns which modules are reliable. THIS is the training signal.",
   "archived_history": {
-    "n_settled": 6403,
-    "wins": 3172,
-    "losses": 3229,
-    "net_units": -1308.54,
+    "n_settled": 6417,
+    "wins": 3177,
+    "losses": 3238,
+    "net_units": -1308.3,
     "oldest": "2026-05-20",
     "newest": "2026-06-09",
     "note": "Settled picks no longer in the working ledger (recovered tail-cut history + lossless evictions). INCLUDED in the all-time headline since 2026-10-23 (see restatement); kept in full at data/ledger_archive.json."
