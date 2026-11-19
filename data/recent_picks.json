@@ -1,10 +1,10 @@
 {
- "generated_at": "2026-11-18T21:57:57",
+ "generated_at": "2026-11-19T00:30:29",
  "stake_assumption": "1u flat per pick",
  "total_picks": 20000,
  "n_settled": 25038,
- "n_pending": 957,
- "n_void": 0,
+ "n_pending": 956,
+ "n_void": 4,
  "wins": 12470,
  "losses": 12557,
  "pushes": 11,
@@ -13,10 +13,10 @@
  "roi_pct": -14.08,
  "n_calibrated_picks": 19954,
  "calibrated_reliability": {
-  "n": 18990,
+  "n": 18987,
   "ece_raw": 0.0623,
   "ece_calibrated": 0.0082,
-  "brier_raw": 0.20973,
+  "brier_raw": 0.20972,
   "brier_calibrated": 0.1974,
   "note": "In-sample over the settled ledger (the isotonic transform is fit on these same outcomes); held-out 70/30 validation is in recalibration_map.json. p_predicted = raw model prob (kept untouched for the learning loop); p_calibrated = honest prob stamped per pick. Lower ECE/Brier on the calibrated column = the displayed % is truer."
  },
@@ -41,11 +41,11 @@
   ],
   "definition": "Featured/recommended plays only -- Lock of the Day, Top 25, Whale, Sharp, Consensus (hit), Under Alerts, POD. Excludes the experimental prop feeds, which are tracked to train the model, not bet.",
   "last_30": {
-   "wins": 9,
+   "wins": 7,
    "losses": 4,
-   "net_units": 2.968,
-   "roi_pct": 22.83,
-   "hit_rate": 0.6923
+   "net_units": 1.502,
+   "roi_pct": 13.65,
+   "hit_rate": 0.6364
   }
  },
  "prizepicks": {
@@ -65,7 +65,7 @@
   "losses": 2,
   "net_units": 5.159,
   "roi_pct": 34.39,
-  "n_pending": 1,
+  "n_pending": 2,
   "first_date": "2026-11-11",
   "last_date": "2026-11-18",
   "by_sport": {
@@ -75,7 +75,7 @@
     "losses": 1,
     "net_units": 2.727,
     "roi_pct": 34.09,
-    "n_pending": 0
+    "n_pending": 1
    },
    "NHL": {
     "n_settled": 7,
@@ -94,6 +94,17 @@
     "team": "NJ",
     "market": "ML_HOME",
     "book_american": -162,
+    "result": "pending",
+    "payout_units": null,
+    "final": null
+   },
+   {
+    "date": "2026-11-18",
+    "sport": "NBA",
+    "matchup": "MEM @ CLE",
+    "team": "CLE",
+    "market": "ML_HOME",
+    "book_american": -196,
     "result": "pending",
     "payout_units": null,
     "final": null
@@ -207,17 +218,6 @@
     "result": "lost",
     "payout_units": -1.0,
     "final": "NY 104 @ IND 106"
-   },
-   {
-    "date": "2026-11-13",
-    "sport": "NBA",
-    "matchup": "MEM @ NO",
-    "team": "MEM",
-    "market": "ML_AWAY",
-    "book_american": -162,
-    "result": "won",
-    "payout_units": 0.6173,
-    "final": "MEM 142 @ NO 111"
    }
   ],
   "definition": "Model leans: the per-sport play on a day a desk has no pick with an edge -- the favourite its model and DraftKings both favour. Logged at the DraftKings price, graded on the final score. Not an edge (expected value is the book's margin) and never part of the curated record."
@@ -229,7 +229,7 @@
    "losses": 2,
    "net_units": 5.159,
    "roi_pct": 34.39,
-   "n_pending": 1
+   "n_pending": 2
   },
   "desk_picks": {
    "n_settled": 3,
@@ -249,6 +249,18 @@
     "team": "NJ",
     "market": "ML_HOME",
     "book_american": -162,
+    "result": "pending",
+    "payout_units": null,
+    "final": null
+   },
+   {
+    "date": "2026-11-18",
+    "sport": "NBA",
+    "kind": "lean",
+    "matchup": "MEM @ CLE",
+    "team": "CLE",
+    "market": "ML_HOME",
+    "book_american": -196,
     "result": "pending",
     "payout_units": null,
     "final": null
@@ -420,18 +432,6 @@
     "result": "won",
     "payout_units": 0.6173,
     "final": "MEM 142 @ NO 111"
-   },
-   {
-    "date": "2026-11-12",
-    "sport": "NHL",
-    "kind": "lean",
-    "matchup": "MIN @ TOR",
-    "team": "MIN",
-    "market": "ML_AWAY",
-    "book_american": -170,
-    "result": "won",
-    "payout_units": 0.5882,
-    "final": "MIN 5 @ TOR 2"
    }
   ],
   "definition": "The play shown for each major sport on each day, graded at the DraftKings price it was logged at. 'desk pick' = a pick with an edge under the desk's rule; 'lean' = the favourite the model and DraftKings both favour on a day the desk has no pick (not an edge). The two are counted separately and are never summed."
@@ -443,11 +443,11 @@
    "losses": 15,
    "net_units": -0.389,
    "roi_pct": -1.02,
-   "n_pending": 11,
-   "n_clv": 38,
-   "avg_clv_pts": -1.09,
-   "beat_close_pct": 26.3,
-   "avg_clv_ev_pct": -5.75,
+   "n_pending": 14,
+   "n_clv": 40,
+   "avg_clv_pts": -1.04,
+   "beat_close_pct": 27.5,
+   "avg_clv_ev_pct": -5.67,
    "median_close_min_before": 5
   },
   "alpha": {
@@ -456,11 +456,11 @@
    "losses": 9,
    "net_units": 0.828,
    "roi_pct": 3.18,
-   "n_pending": 1,
-   "n_clv": 26,
-   "avg_clv_pts": -0.12,
-   "beat_close_pct": 38.5,
-   "avg_clv_ev_pct": -4.12,
+   "n_pending": 4,
+   "n_clv": 28,
+   "avg_clv_pts": -0.16,
+   "beat_close_pct": 35.7,
+   "avg_clv_ev_pct": -4.18,
    "median_close_min_before": 0
   },
   "by_grade": {
@@ -496,11 +496,11 @@
     "losses": 12,
     "net_units": 0.038,
     "roi_pct": 0.12,
-    "n_pending": 1,
-    "n_clv": 32,
-    "avg_clv_pts": -1.43,
-    "beat_close_pct": 21.9,
-    "avg_clv_ev_pct": -6.29,
+    "n_pending": 4,
+    "n_clv": 34,
+    "avg_clv_pts": -1.35,
+    "beat_close_pct": 23.5,
+    "avg_clv_ev_pct": -6.16,
     "median_close_min_before": 5
    }
   },
@@ -524,11 +524,11 @@
     "losses": 11,
     "net_units": -0.292,
     "roi_pct": -1.04,
-    "n_pending": 2,
-    "n_clv": 28,
-    "avg_clv_pts": -1.52,
-    "beat_close_pct": 25.0,
-    "avg_clv_ev_pct": -6.46,
+    "n_pending": 5,
+    "n_clv": 30,
+    "avg_clv_pts": -1.42,
+    "beat_close_pct": 26.7,
+    "avg_clv_ev_pct": -6.31,
     "median_close_min_before": 5
    },
    "dog": {
@@ -552,12 +552,12 @@
     "losses": 5,
     "net_units": 0.907,
     "roi_pct": 6.05,
-    "n_pending": 0,
-    "n_clv": 15,
-    "avg_clv_pts": -2.84,
-    "beat_close_pct": 26.7,
-    "avg_clv_ev_pct": -8.52,
-    "median_close_min_before": -1
+    "n_pending": 3,
+    "n_clv": 16,
+    "avg_clv_pts": -2.74,
+    "beat_close_pct": 25.0,
+    "avg_clv_ev_pct": -8.36,
+    "median_close_min_before": 0
    },
    "NFL": {
     "n_settled": 8,
@@ -579,10 +579,10 @@
     "net_units": -2.086,
     "roi_pct": -13.91,
     "n_pending": 1,
-    "n_clv": 15,
-    "avg_clv_pts": -0.45,
-    "beat_close_pct": 13.3,
-    "avg_clv_ev_pct": -4.71,
+    "n_clv": 16,
+    "avg_clv_pts": -0.35,
+    "beat_close_pct": 18.8,
+    "avg_clv_ev_pct": -4.56,
     "median_close_min_before": 12
    }
   },
@@ -593,24 +593,24 @@
     "losses": 0,
     "net_units": 0,
     "roi_pct": null,
-    "n_pending": 1,
-    "n_clv": 0,
-    "avg_clv_pts": null,
-    "beat_close_pct": null,
-    "avg_clv_ev_pct": null,
-    "median_close_min_before": null,
+    "n_pending": 4,
+    "n_clv": 2,
+    "avg_clv_pts": -0.09,
+    "beat_close_pct": 50.0,
+    "avg_clv_ev_pct": -4.11,
+    "median_close_min_before": 39,
     "alpha": {
      "n_settled": 0,
      "wins": 0,
      "losses": 0,
      "net_units": 0,
      "roi_pct": null,
-     "n_pending": 1,
-     "n_clv": 0,
-     "avg_clv_pts": null,
-     "beat_close_pct": null,
-     "avg_clv_ev_pct": null,
-     "median_close_min_before": null
+     "n_pending": 4,
+     "n_clv": 2,
+     "avg_clv_pts": -0.65,
+     "beat_close_pct": 0.0,
+     "avg_clv_ev_pct": -4.98,
+     "median_close_min_before": 39
     }
    },
    "2026-11-17": {
@@ -931,6 +931,51 @@
     "team": "NJ",
     "market": "ML_HOME",
     "book_american": -170,
+    "result": "pending",
+    "payout_units": null,
+    "close_price": -170,
+    "clv_pts": 0.0,
+    "final": null
+   },
+   {
+    "date": "2026-11-18",
+    "sport": "NBA",
+    "grade": "C",
+    "is_alpha": true,
+    "matchup": "MEM @ CLE",
+    "team": "CLE",
+    "market": "ML_HOME",
+    "book_american": -196,
+    "result": "pending",
+    "payout_units": null,
+    "close_price": -185,
+    "clv_pts": -1.3,
+    "final": null
+   },
+   {
+    "date": "2026-11-18",
+    "sport": "NBA",
+    "grade": "C",
+    "is_alpha": true,
+    "matchup": "GS @ DAL",
+    "team": "DAL",
+    "market": "ML_HOME",
+    "book_american": -197,
+    "result": "pending",
+    "payout_units": null,
+    "close_price": null,
+    "clv_pts": null,
+    "final": null
+   },
+   {
+    "date": "2026-11-18",
+    "sport": "NBA",
+    "grade": "C",
+    "is_alpha": true,
+    "matchup": "BOS @ DEN",
+    "team": "BOS",
+    "market": "ML_AWAY",
+    "book_american": -142,
     "result": "pending",
     "payout_units": null,
     "close_price": null,
@@ -1511,6 +1556,51 @@
   "open": [
    {
     "date": "2026-11-18",
+    "sport": "NBA",
+    "grade": "C",
+    "is_alpha": true,
+    "matchup": "MEM @ CLE",
+    "team": "CLE",
+    "market": "ML_HOME",
+    "book_american": -196,
+    "result": "pending",
+    "payout_units": null,
+    "close_price": -185,
+    "clv_pts": -1.3,
+    "final": null
+   },
+   {
+    "date": "2026-11-18",
+    "sport": "NBA",
+    "grade": "C",
+    "is_alpha": true,
+    "matchup": "GS @ DAL",
+    "team": "DAL",
+    "market": "ML_HOME",
+    "book_american": -197,
+    "result": "pending",
+    "payout_units": null,
+    "close_price": null,
+    "clv_pts": null,
+    "final": null
+   },
+   {
+    "date": "2026-11-18",
+    "sport": "NBA",
+    "grade": "C",
+    "is_alpha": true,
+    "matchup": "BOS @ DEN",
+    "team": "BOS",
+    "market": "ML_AWAY",
+    "book_american": -142,
+    "result": "pending",
+    "payout_units": null,
+    "close_price": null,
+    "clv_pts": null,
+    "final": null
+   },
+   {
+    "date": "2026-11-18",
     "sport": "NHL",
     "grade": "C",
     "is_alpha": true,
@@ -1520,8 +1610,8 @@
     "book_american": -170,
     "result": "pending",
     "payout_units": null,
-    "close_price": null,
-    "clv_pts": null,
+    "close_price": -170,
+    "clv_pts": 0.0,
     "final": null
    },
    {
@@ -1733,10 +1823,10 @@
  "headline_basis": "all-time: working ledger + data/ledger_archive.json",
  "working_ledger_only": {
   "all": {
-   "n_settled": 19043,
-   "wins": 9453,
-   "losses": 9579,
-   "net_units": -2291.983,
+   "n_settled": 19040,
+   "wins": 9452,
+   "losses": 9577,
+   "net_units": -2290.9,
    "roi_pct": -12.04
   },
   "curated": {
@@ -1824,48 +1914,24 @@
   }
  ],
  "stale_sources_skipped": [],
- "inactive_player_props_blocked": 28,
- "started_game_picks_blocked": 0,
+ "inactive_player_props_blocked": 31,
+ "started_game_picks_blocked": 15,
  "past_dated_picks_blocked": 0,
  "unpriced_picks_blocked": 0,
  "restatement": {
   "date": "2026-10-23",
   "note": "The headline became ALL-TIME on 2026-10-23. 5,946 settled picks that the old tail-cut eviction had destroyed (May-June 2026, the 07-06 erosion and the run-up to 09-03) were rebuilt from git history at each pick's final state, with today's duplicate-wager rule re-applied, and folded back in. They are mostly the raw May-June MLB prop firehose (2,961-2,983, -1,256.9u), so the firehose ROI fell; the curated record changed by the curated picks among them. Before this date the published numbers covered the working window only -- working_ledger_only keeps that basis.",
-  "n_archived_in_headline": 5995
+  "n_archived_in_headline": 5998
  },
- "n_added_this_run": 12,
+ "n_added_this_run": 0,
  "n_newly_settled_this_run": 0,
  "n_resettled_this_run": 0,
- "n_voided_this_run": 0,
+ "n_voided_this_run": 4,
  "n_duplicates_collapsed_this_run": 96,
- "n_duplicate_adds_blocked_this_run": 64,
+ "n_duplicate_adds_blocked_this_run": 67,
  "n_reconciled_settled_voids": 0,
  "n_bootstrapped_from_locks_history": 96,
  "by_source": {
-  "mlb_hrr_3_plus_hrr": {
-   "n": 969,
-   "wins": 198,
-   "losses": 771,
-   "pushes": 0,
-   "net_units": -608.635,
-   "hit_rate": 0.2043,
-   "roi_pct": -62.81,
-   "by_price_class": {
-    "C": {
-     "n": 969,
-     "wins": 198,
-     "losses": 771,
-     "net_units": -608.619,
-     "roi_pct": -62.81
-    }
-   },
-   "sportsbook": {
-    "wins": 0,
-    "losses": 0,
-    "net_units": 0,
-    "roi_pct": null
-   }
-  },
   "mlb_hit_to_record_hit_no": {
    "n": 645,
    "wins": 285,
@@ -1953,6 +2019,30 @@
      "losses": 2688,
      "net_units": -879.31,
      "roi_pct": -23.37
+    }
+   },
+   "sportsbook": {
+    "wins": 0,
+    "losses": 0,
+    "net_units": 0,
+    "roi_pct": null
+   }
+  },
+  "mlb_hrr_3_plus_hrr": {
+   "n": 969,
+   "wins": 198,
+   "losses": 771,
+   "pushes": 0,
+   "net_units": -608.636,
+   "hit_rate": 0.2043,
+   "roi_pct": -62.81,
+   "by_price_class": {
+    "C": {
+     "n": 969,
+     "wins": 198,
+     "losses": 771,
+     "net_units": -608.619,
+     "roi_pct": -62.81
     }
    },
    "sportsbook": {
@@ -13344,14 +13434,6 @@
   }
  },
  "by_market_family": {
-  "3_plus_hrr": {
-   "n": 720,
-   "wins": 151,
-   "losses": 569,
-   "pushes": 0,
-   "net_units": -442.705,
-   "hit_rate": 0.2097
-  },
   "to_record_hit_no": {
    "n": 458,
    "wins": 194,
@@ -13383,6 +13465,14 @@
    "pushes": 0,
    "net_units": -736.47,
    "hit_rate": 0.2867
+  },
+  "3_plus_hrr": {
+   "n": 717,
+   "wins": 150,
+   "losses": 567,
+   "pushes": 0,
+   "net_units": -441.621,
+   "hit_rate": 0.2092
   },
   "pp_batter_total_bases": {
    "n": 20,
@@ -14234,14 +14324,6 @@
   }
  },
  "by_canonical": {
-  "mlb_hrr_2.5_over": {
-   "n": 720,
-   "wins": 151,
-   "losses": 569,
-   "pushes": 0,
-   "net_units": -442.705,
-   "hit_rate": 0.2097
-  },
   "mlb_hit_0.5_under": {
    "n": 458,
    "wins": 194,
@@ -14273,6 +14355,14 @@
    "pushes": 0,
    "net_units": -736.47,
    "hit_rate": 0.2867
+  },
+  "mlb_hrr_2.5_over": {
+   "n": 717,
+   "wins": 150,
+   "losses": 567,
+   "pushes": 0,
+   "net_units": -441.621,
+   "hit_rate": 0.2092
   },
   "mlb_tb_3.5_under": {
    "n": 18,
@@ -15157,26 +15247,26 @@
  },
  "by_sport": {
   "MLB": {
-   "n": 13787,
+   "n": 13788,
    "settled": 13787,
    "wins": 5016,
    "losses": 8760,
    "pushes": 11,
    "pending": 0,
-   "void": 0,
-   "net_units": -3620.6,
+   "void": 1,
+   "net_units": -3620.611,
    "hit_rate": 0.3641,
    "roi_pct": -26.28,
    "markets": 30
   },
   "MLB-PP": {
-   "n": 590,
+   "n": 593,
    "settled": 590,
    "wins": 498,
    "losses": 92,
    "pushes": 0,
    "pending": 0,
-   "void": 0,
+   "void": 3,
    "net_units": 274.03,
    "hit_rate": 0.8441,
    "roi_pct": 46.45,
@@ -15339,17 +15429,17 @@
    "markets": 12
   },
   "NBA": {
-   "n": 2362,
+   "n": 2361,
    "settled": 2193,
    "wins": 1425,
    "losses": 768,
    "pushes": 0,
-   "pending": 169,
+   "pending": 168,
    "void": 0,
    "net_units": -57.669,
    "hit_rate": 0.6498,
    "roi_pct": -2.63,
-   "markets": 18
+   "markets": 17
   }
  },
  "nfl_props_by_model": {
@@ -15405,10 +15495,10 @@
   "note": "NFL props are judged from 10/23 forward: the simulator's form rule changed, so earlier picks are a different model. They stay on the record as their own line and never feed a family verdict."
  },
  "last_7_days": {
-  "wins": 1047,
-  "losses": 543,
-  "net_units": -63.746,
-  "hit_rate": 0.6585
+  "wins": 957,
+  "losses": 500,
+  "net_units": -65.708,
+  "hit_rate": 0.6568
  },
  "note": "Unified pick ledger -- records every pick the model surfaces (top_25 board, whales, consensus, unders, sharp action, locks, POD) and settles each against actual outcomes. Per-source W-L feeds back into calibration so the model learns which modules are reliable. THIS is the training signal.",
  "picks": [
@@ -21527,5 +21617,5 @@
   "2026-05-19",
   "2026-11-17"
  ],
- "digest_generated_at": "2026-11-18T21:58:01"
+ "digest_generated_at": "2026-11-19T00:30:34"
 }
