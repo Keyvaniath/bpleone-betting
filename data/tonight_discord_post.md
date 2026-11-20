@@ -1,5 +1,9 @@
 **EdgeStat -- Tonight's Slate**
-_NO_ACTION_NIGHT_ | L:0 S:0 F:280
+_NO_ACTION_NIGHT_ | L:0 S:9 F:106
+
+:dart: **Top Picks:**
+1. [GOLF] Jesper Svensson -- Jesper Svensson (PLAYER_STRONG)
+2. [GOLF] Garrick Higgo -- Garrick Higgo (PLAYER_STRONG)
 
 :coin: Bankroll Advisory: STAND DOWN. Slate has no aligned conviction. Skip betting tonight or watch only.
 
