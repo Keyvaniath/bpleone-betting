@@ -1,20 +1,20 @@
 # EdgeStat — Tonight's Master Brief
-_Generated 2026-11-20T17:31:00 UTC_
+_Generated 2026-11-20T21:59:44 UTC_
 
 ## Slate Quality
 - **Tier:** NO_ACTION_NIGHT
-- **Score:** -190
+- **Score:** -156
 - **Advisory:** STAND DOWN. Slate has no aligned conviction. Skip betting tonight or watch only.
 - **Total LOCKs:** 0
-- **Total STRONG:** 11
-- **Total FADES:** 234
+- **Total STRONG:** 13
+- **Total FADES:** 208
 
 ## Top 5 Curated Picks
-1. **GOLF / Jesper Svensson** (GOLF_PLAYER, score=137.71)
-   - Play: Jesper Svensson (PLAYER_STRONG)
+1. **GOLF / Rasmus Neergaard-Petersen** (GOLF_PLAYER, score=106.14)
+   - Play: Rasmus Neergaard-Petersen (PLAYER_STRONG)
    - Rationale: Cross-sport top pick (GOLF_PLAYER)
-2. **GOLF / Garrick Higgo** (GOLF_PLAYER, score=103.21)
-   - Play: Garrick Higgo (PLAYER_STRONG)
+2. **GOLF / Michael Thorbjornsen** (GOLF_PLAYER, score=105.36)
+   - Play: Michael Thorbjornsen (PLAYER_STRONG)
    - Rationale: Cross-sport top pick (GOLF_PLAYER)
 3. **NBA / LAL** (NBA_TEAM, score=60.0)
    - Play: LAL (TEAM_STRONG)
@@ -25,9 +25,9 @@ _Generated 2026-11-20T17:31:00 UTC_
 
 ## Top Events Board
 - **GOLF** / ? (TOURNAMENT_STRONG)
+  - Rasmus Neergaard-Petersen top 10 finish
+  - Michael Thorbjornsen top 10 finish
   - Jesper Svensson top 10 finish
-  - Garrick Higgo top 10 finish
-  - Max Greyserman top 10 finish
 
 ## Slate ROI Projection
 - **Picks:** 0
@@ -42,7 +42,7 @@ _Generated 2026-11-20T17:31:00 UTC_
   - Fade angle: team total UNDER
 - **NBA** / HOU (TEAM_FADE)
   - Fade angle: team total UNDER
-- **NBA** / DEN (TEAM_FADE)
+- **NBA** / ORL (TEAM_FADE)
   - Fade angle: team total UNDER
-- **NBA** / DET (TEAM_FADE)
+- **NBA** / DEN (TEAM_FADE)
   - Fade angle: team total UNDER

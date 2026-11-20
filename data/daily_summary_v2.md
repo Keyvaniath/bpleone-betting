@@ -1,21 +1,21 @@
 # EdgeStat Daily Summary — 2026-11-20
 
-## 🏥 Model Health: 63.2/100 [OK]
+## 🏥 Model Health: 68.7/100 [OK]
 - Operational but room to improve - check yellow components
-  - 🟢 Calibration Freshness: 99.9/100
-  - 🔴 Hit Rate Trend: 53.3/100
-  - 🔴 Brier Trend: 17.0/100
+  - 🟢 Calibration Freshness: 100.0/100
+  - 🟡 Hit Rate Trend: 67.7/100
+  - 🔴 Brier Trend: 26.0/100
   - 🟢 Pipeline Audit: 100.0/100
-  - 🟢 Data Health: 95.8/100
+  - 🟢 Data Health: 100.0/100
   - 🔴 Edge Count: 0/100
 
 ## 🌐 Slate Overview
-- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.57)
-- **Total games on board:** 73
-- **Strong home favorites:** 29 | **Strong road dogs:** 18
+- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.589)
+- **Total games on board:** 75
+- **Strong home favorites:** 33 | **Strong road dogs:** 18
 
 ## 🎯 Best Bets (sportsbook-priced only)
-- No best bet today: a best bet needs a real sportsbook price — 23 model-only projections excluded (NBA 4, UCL 4, GOLF 4, LOL 3, EPL 3, NCAAF 2, NCAAB 2, NFL 1).
+- No best bet today: a best bet needs a real sportsbook price — 27 model-only projections excluded (NBA 6, UCL 4, NHL 4, GOLF 4, LOL 3, EPL 3, NCAAF 2, NFL 1).
 
 ## 🔒 Locks of the Day -- Track Record
 - Sportsbook-priced: **3-0** (n=3; net +0.05u, ROI +60.8%) -- too few to judge
@@ -29,15 +29,16 @@
 - **[CS]** torzsi OVER 40.5 Kills (BO3) · model 61.0%
 
 ## ⚡ Pre-Game
-- No pre-game alerts: an alert needs a game-lines-desk probability whose verdict passed (not NO EDGE / UNPROVEN) and a DraftKings price. NBA: 9 desk verdict NO EDGE; NHL: 14 desk verdict NO EDGE; WNBA: 1 not pre-game; MLS: 3 no validated model probability (not from the game-lines desk); EPL: 7 no validated model probability (not from the game-lines desk); UCL: 9 no validated model probability (not from the game-lines desk); NFL: 12 desk verdict UNPROVEN; NCAAF: 24 no validated model probability (not from the game-lines desk); NCAAB: 3 not pre-game; CWS: 1 not pre-game
+- No pre-game alerts: an alert needs a game-lines-desk probability whose verdict passed (not NO EDGE / UNPROVEN) and a DraftKings price. NBA: 9 desk verdict NO EDGE; NHL: 14 desk verdict NO EDGE; WNBA: 1 not pre-game; MLS: 3 no validated model probability (not from the game-lines desk); EPL: 7 no validated model probability (not from the game-lines desk); UCL: 9 no validated model probability (not from the game-lines desk); NFL: 12 desk verdict UNPROVEN; NCAAF: 24 no validated model probability (not from the game-lines desk); NCAAB: 6 no validated model probability (not from the game-lines desk); CWS: 1 not pre-game
 
 ## 🔥/❄️ Heat / Cold Signals
 - Hot teams: **5** | Cold teams: **7** | Over-heavy: 0 | Under-heavy: 36
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (89)
-- RESIDUAL_DIVERGENCE: **5**
-- STEAM_MOVE: **84**
+## ⚠️ Anomaly Detector (124)
+- RESIDUAL_DIVERGENCE: **10**
+- STREAK_MISMATCH: **1**
+- STEAM_MOVE: **113**
   - Chicago Bulls (NBA): Chicago Bulls OUTPERFORMING expected margin by 10.0pts in recent games -- model bias may persist
   - Washington Wizards (NBA): Washington Wizards UNDERPERFORMING expected margin by 6.8pts in recent games -- model bias may persist
   - New Orleans Pelicans (NBA): New Orleans Pelicans UNDERPERFORMING expected margin by 7.8pts in recent games -- model bias may persist
@@ -47,12 +48,12 @@
 ## 💰 Today's Portfolio
 - No priced picks: a stake is sized only at an actionable DraftKings quote.
 
-## 🎯 Signal stacking (14 games with 2+ signals) — research, not picks
-  - Edmonton Oilers @ Tampa Bay Lightning : 4 signals (HEAT_COLD, HEAT_COLD, HEAT_COLD, ANOMALY)
-  - Golden State Warriors @ Memphis Grizzlies : 3 signals (HEAT_COLD, ANOMALY, ANOMALY)
-  - Los Angeles Kings @ Toronto Maple Leafs : 3 signals (HEAT_COLD, HEAT_COLD, ANOMALY)
-  - Minnesota Wild @ Calgary Flames : 3 signals (HEAT_COLD, HEAT_COLD, HEAT_COLD)
-  - Vancouver Canucks @ Seattle Kraken : 3 signals (HEAT_COLD, HEAT_COLD, ANOMALY)
+## 🎯 Signal stacking (17 games with 2+ signals) — research, not picks
+  - Columbus Blue Jackets @ Toronto Maple Leafs : 4 signals (HEAT_COLD, HEAT_COLD, HEAT_COLD, ANOMALY)
+  - Orlando Magic @ Brooklyn Nets : 3 signals (HEAT_COLD, HEAT_COLD, HEAT_COLD)
+  - Toronto Raptors @ Detroit Pistons : 3 signals (HEAT_COLD, HEAT_COLD, HEAT_COLD)
+  - Washington Wizards @ Chicago Bulls : 3 signals (HEAT_COLD, ANOMALY, ANOMALY)
+  - Sacramento Kings @ Los Angeles Lakers : 3 signals (HEAT_COLD, HEAT_COLD, ANOMALY)
 
 ## 🏀 NBA Player Heat (8 HOT / 5 COLD)
   - 🔥 **Tyrese Proctor** (CLE): L5 17.2/4.4/3.4 vs season 8.6/2.8/2.4 [PTS +8.6]
@@ -72,22 +73,21 @@
   - model favourite **Brian Ortega** (16-5-0) vs Dan Hooker
 
 ## ⛳ Golf Player Heat (from The RSM Classic)
-  - 🔥 T1 **Jesper Svensson** (Sweden): -8 total -- finished T1
-  - 🔥 T2 **Max Greyserman** (USA): -7 total -- finished T2
-  - 🔥 T3 **Garrick Higgo** (South Africa): -7 total -- finished T3
-  - 🔥 T4 **Michael Thorbjornsen** (USA): -6 total -- finished T4
-  - 🔥 T5 **Emiliano Grillo** (Argentina): -6 total -- finished T5
+  - 🔥 T1 **Rasmus Neergaard-Petersen** (Denmark): -7 total -- finished T1
+  - 🔥 T2 **Michael Thorbjornsen** (USA): -7 total -- finished T2
+  - 🔥 T3 **Chris Kirk** (USA): -7 total -- finished T3
+  - 🔥 T5 **Marco Penge** (England): -7 total -- finished T5
+  - 🔥 T6 **Ricky Castillo** (USA): -6 total -- finished T6
+  - ❄️ **Jesper Svensson** (Sweden): Sunday +4.5 vs tourney avg
+  - ❄️ **Max Greyserman** (USA): Sunday +4.5 vs tourney avg
+  - ❄️ **Garrick Higgo** (South Africa): Sunday +4.5 vs tourney avg
 
-## 😴 Back-to-back flags (2) — schedule fact, not a pick
-- [NBA] Portland Trail Blazers @ Milwaukee Bucks (2026-11-19): away team on a back-to-back
-- [NHL] Anaheim Ducks @ Colorado Avalanche (2026-11-19): away team on a back-to-back
-
-## 📈 Streaks (10) — record facts, not picks
-- [NBA] Memphis Grizzlies on W4 L10 4-1
-- [NBA] Golden State Warriors on L4 L10 1-4
-- [NBA] Milwaukee Bucks on L7 L10 0-5
-- [NHL] Toronto Maple Leafs on L6 L10 0-5
-- [NHL] Edmonton Oilers on W6 L10 5-0
+## 📈 Streaks (8) — record facts, not picks
+- [NBA] Charlotte Hornets on L3 L10 1-4
+- [NBA] Brooklyn Nets on L3 L10 1-4
+- [NBA] Toronto Raptors on L6 L10 0-5
+- [NBA] Sacramento Kings on L6 L10 0-5
+- [NHL] Washington Capitals on L4 L10 1-4
 
 ## 📉 Walk-Forward Trajectory (n_windows=3d × 8 markets)
 - 📈 Improving: **1** · ➖ Flat: 4 · 📉 Degrading: **3**
