@@ -1,13 +1,13 @@
 # EdgeStat — Tonight's Master Brief
-_Generated 2026-11-21T03:16:52 UTC_
+_Generated 2026-11-21T13:12:31 UTC_
 
 ## Slate Quality
 - **Tier:** NO_ACTION_NIGHT
-- **Score:** -131
+- **Score:** -138
 - **Advisory:** STAND DOWN. Slate has no aligned conviction. Skip betting tonight or watch only.
 - **Total LOCKs:** 0
-- **Total STRONG:** 18
-- **Total FADES:** 203
+- **Total STRONG:** 16
+- **Total FADES:** 202
 
 ## Top 5 Curated Picks
 1. **GOLF / Rasmus Neergaard-Petersen** (GOLF_PLAYER, score=127.5)
@@ -16,12 +16,6 @@ _Generated 2026-11-21T03:16:52 UTC_
 2. **GOLF / Marco Penge** (GOLF_PLAYER, score=124.93)
    - Play: Marco Penge (PLAYER_STRONG)
    - Rationale: Cross-sport top pick (GOLF_PLAYER)
-3. **NBA / LAL** (NBA_TEAM, score=60.0)
-   - Play: LAL (TEAM_STRONG)
-   - Rationale: Cross-sport top pick (NBA_TEAM)
-4. **NBA / CHI** (NBA_TEAM, score=60.0)
-   - Play: CHI (TEAM_STRONG)
-   - Rationale: Cross-sport top pick (NBA_TEAM)
 
 ## Top Events Board
 - **GOLF** / ? (TOURNAMENT_STRONG)
@@ -36,13 +30,13 @@ _Generated 2026-11-21T03:16:52 UTC_
 - **Expected P&L on $100:** $0.0
 
 ## Top Fades
-- **NBA** / NOP (TEAM_FADE)
+- **NBA** / SAS (TEAM_FADE)
   - Fade angle: team total UNDER
-- **NBA** / BKN (TEAM_FADE)
+- **NBA** / POR (TEAM_FADE)
   - Fade angle: team total UNDER
-- **NBA** / DEN (TEAM_FADE)
+- **NBA** / SAC (TEAM_FADE)
   - Fade angle: team total UNDER
-- **NBA** / DET (TEAM_FADE)
+- **NBA** / MIL (TEAM_FADE)
   - Fade angle: team total UNDER
-- **NBA** / ORL (TEAM_FADE)
+- **NBA** / NYK (TEAM_FADE)
   - Fade angle: team total UNDER
