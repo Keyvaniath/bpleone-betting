@@ -1,9 +1,9 @@
 {
- "generated_at": "2026-11-22T22:01:48",
+ "generated_at": "2026-11-22T23:39:55",
  "stake_assumption": "1u flat per pick",
  "total_picks": 20000,
  "n_settled": 25922,
- "n_pending": 598,
+ "n_pending": 599,
  "n_void": 0,
  "wins": 13086,
  "losses": 12825,
@@ -13,11 +13,11 @@
  "roi_pct": -13.54,
  "n_calibrated_picks": 19962,
  "calibrated_reliability": {
-  "n": 19356,
-  "ece_raw": 0.0592,
+  "n": 19355,
+  "ece_raw": 0.0593,
   "ece_calibrated": 0.0076,
-  "brier_raw": 0.2089,
-  "brier_calibrated": 0.19676,
+  "brier_raw": 0.20889,
+  "brier_calibrated": 0.19661,
   "note": "In-sample over the settled ledger (the isotonic transform is fit on these same outcomes); held-out 70/30 validation is in recalibration_map.json. p_predicted = raw model prob (kept untouched for the learning loop); p_calibrated = honest prob stamped per pick. Lower ECE/Brier on the calibrated column = the displayed % is truer."
  },
  "curated": {
@@ -443,7 +443,7 @@
    "losses": 27,
    "net_units": -5.208,
    "roi_pct": -8.4,
-   "n_pending": 15,
+   "n_pending": 16,
    "n_clv": 65,
    "avg_clv_pts": -0.67,
    "beat_close_pct": 29.2,
@@ -483,7 +483,7 @@
     "losses": 8,
     "net_units": -4.394,
     "roi_pct": -33.8,
-    "n_pending": 12,
+    "n_pending": 13,
     "n_clv": 15,
     "avg_clv_pts": 0.03,
     "beat_close_pct": 46.7,
@@ -537,7 +537,7 @@
     "losses": 6,
     "net_units": -4.15,
     "roi_pct": -59.29,
-    "n_pending": 4,
+    "n_pending": 5,
     "n_clv": 8,
     "avg_clv_pts": -1.31,
     "beat_close_pct": 25.0,
@@ -565,7 +565,7 @@
     "losses": 8,
     "net_units": -3.178,
     "roi_pct": -21.19,
-    "n_pending": 13,
+    "n_pending": 14,
     "n_clv": 18,
     "avg_clv_pts": 0.3,
     "beat_close_pct": 50.0,
@@ -945,6 +945,21 @@
     "team": "SF",
     "market": "ML_HOME",
     "book_american": -136,
+    "result": "pending",
+    "payout_units": null,
+    "close_price": null,
+    "clv_pts": null,
+    "final": null
+   },
+   {
+    "date": "2026-11-29",
+    "sport": "NFL",
+    "grade": "B",
+    "is_alpha": false,
+    "matchup": "NYG @ IND",
+    "team": "IND",
+    "market": "ML_HOME",
+    "book_american": 276,
     "result": "pending",
     "payout_units": null,
     "close_price": null,
@@ -1760,21 +1775,6 @@
     "close_price": -162,
     "clv_pts": 0.0,
     "final": "WPG 5 @ CHI 4"
-   },
-   {
-    "date": "2026-11-14",
-    "sport": "NHL",
-    "grade": "C",
-    "is_alpha": true,
-    "matchup": "EDM @ TOR",
-    "team": "EDM",
-    "market": "ML_AWAY",
-    "book_american": -148,
-    "result": "won",
-    "payout_units": 0.6757,
-    "close_price": -142,
-    "clv_pts": -1.0,
-    "final": "EDM 1 @ TOR 0"
    }
   ],
   "open": [
@@ -2002,6 +2002,21 @@
     "close_price": null,
     "clv_pts": null,
     "final": null
+   },
+   {
+    "date": "2026-11-29",
+    "sport": "NFL",
+    "grade": "B",
+    "is_alpha": false,
+    "matchup": "NYG @ IND",
+    "team": "IND",
+    "market": "ML_HOME",
+    "book_american": 276,
+    "result": "pending",
+    "payout_units": null,
+    "close_price": null,
+    "clv_pts": null,
+    "final": null
    }
   ],
   "definition": "Every bet on The Board (grades A, B, C), graded on the final score at the DraftKings price the board showed when it first listed the bet: a desk pick (A, B) when its edge first appeared, a lean (C) on game day; an Alpha pick at its locked price. Alpha = the day's locked top-scored picks. Grade C bets are model leans: not an edge, expected to run near the book's margin. None of this is part of the curated record."
@@ -2062,11 +2077,11 @@
  "headline_basis": "all-time: working ledger + data/ledger_archive.json",
  "working_ledger_only": {
   "all": {
-   "n_settled": 19402,
-   "wins": 9857,
+   "n_settled": 19401,
+   "wins": 9856,
    "losses": 9536,
-   "net_units": -2244.883,
-   "roi_pct": -11.58
+   "net_units": -2246.973,
+   "roi_pct": -11.59
   },
   "curated": {
    "n_settled": 494,
@@ -2154,20 +2169,20 @@
  ],
  "stale_sources_skipped": [],
  "inactive_player_props_blocked": 27,
- "started_game_picks_blocked": 4,
+ "started_game_picks_blocked": 16,
  "past_dated_picks_blocked": 0,
  "unpriced_picks_blocked": 0,
  "restatement": {
   "date": "2026-10-23",
   "note": "The headline became ALL-TIME on 2026-10-23. 5,946 settled picks that the old tail-cut eviction had destroyed (May-June 2026, the 07-06 erosion and the run-up to 09-03) were rebuilt from git history at each pick's final state, with today's duplicate-wager rule re-applied, and folded back in. They are mostly the raw May-June MLB prop firehose (2,961-2,983, -1,256.9u), so the firehose ROI fell; the curated record changed by the curated picks among them. Before this date the published numbers covered the working window only -- working_ledger_only keeps that basis.",
-  "n_archived_in_headline": 6520
+  "n_archived_in_headline": 6521
  },
- "n_added_this_run": 5,
- "n_newly_settled_this_run": 245,
+ "n_added_this_run": 4,
+ "n_newly_settled_this_run": 3,
  "n_resettled_this_run": 0,
  "n_voided_this_run": 0,
- "n_duplicates_collapsed_this_run": 76,
- "n_duplicate_adds_blocked_this_run": 33,
+ "n_duplicates_collapsed_this_run": 78,
+ "n_duplicate_adds_blocked_this_run": 35,
  "n_reconciled_settled_voids": 0,
  "n_bootstrapped_from_locks_history": 75,
  "by_source": {
@@ -13866,12 +13881,12 @@
  },
  "by_market_family": {
   "to_hit_hr_yes": {
-   "n": 1267,
-   "wins": 176,
+   "n": 1266,
+   "wins": 175,
    "losses": 1091,
    "pushes": 0,
-   "net_units": -485.456,
-   "hit_rate": 0.1389
+   "net_units": -487.546,
+   "hit_rate": 0.1382
   },
   "hits_2plus_yes": {
    "n": 211,
@@ -14748,12 +14763,12 @@
  },
  "by_canonical": {
   "mlb_hr_0.5_over": {
-   "n": 1267,
-   "wins": 176,
+   "n": 1266,
+   "wins": 175,
    "losses": 1091,
    "pushes": 0,
-   "net_units": -485.456,
-   "hit_rate": 0.1389
+   "net_units": -487.546,
+   "hit_rate": 0.1382
   },
   "mlb_hit_1.5_over": {
    "n": 542,
@@ -15669,7 +15684,7 @@
    "pushes": 11,
    "pending": 0,
    "void": 0,
-   "net_units": -3620.601,
+   "net_units": -3620.615,
    "hit_rate": 0.3641,
    "roi_pct": -26.28,
    "markets": 30
@@ -15831,12 +15846,12 @@
    "markets": 1
   },
   "NFL": {
-   "n": 5058,
+   "n": 5059,
    "settled": 4690,
    "wins": 3441,
    "losses": 1249,
    "pushes": 0,
-   "pending": 368,
+   "pending": 369,
    "void": 0,
    "net_units": -40.359,
    "hit_rate": 0.7337,
@@ -15892,12 +15907,12 @@
     "label": "10/23-11/2 -- season-to-date form (judged)"
    },
    "form_v3": {
-    "n": 2567,
+    "n": 2568,
     "settled": 2200,
     "wins": 1681,
     "losses": 519,
     "pushes": 0,
-    "pending": 367,
+    "pending": 368,
     "void": 0,
     "net_units": 50.629,
     "hit_rate": 0.7641,
@@ -15938,7 +15953,7 @@
    "result": "won",
    "payout_units": 0.2924,
    "recorded_at": "2026-11-18T17:47:37",
-   "p_calibrated": 0.7528,
+   "p_calibrated": 0.7658,
    "outcome": {
     "stat": "rush_yds",
     "actual": 16,
@@ -15969,7 +15984,7 @@
    "result": "won",
    "payout_units": 0.2915,
    "recorded_at": "2026-11-18T17:47:37",
-   "p_calibrated": 0.7862,
+   "p_calibrated": 0.7899,
    "outcome": {
     "stat": "rec_yds",
     "actual": 17,
@@ -16000,7 +16015,7 @@
    "result": "won",
    "payout_units": 0.2915,
    "recorded_at": "2026-11-18T17:47:37",
-   "p_calibrated": 0.7862,
+   "p_calibrated": 0.7899,
    "outcome": {
     "stat": "rec_yds",
     "actual": 8,
@@ -16031,7 +16046,7 @@
    "result": "won",
    "payout_units": 0.2915,
    "recorded_at": "2026-11-18T17:47:37",
-   "p_calibrated": 0.7862,
+   "p_calibrated": 0.7899,
    "outcome": {
     "stat": "rec_yds",
     "actual": 38,
@@ -16062,7 +16077,7 @@
    "result": "won",
    "payout_units": 0.2915,
    "recorded_at": "2026-11-18T17:47:37",
-   "p_calibrated": 0.7862,
+   "p_calibrated": 0.7899,
    "outcome": {
     "stat": "rec_yds",
     "actual": 74,
@@ -16093,7 +16108,7 @@
    "result": "won",
    "payout_units": 0.2915,
    "recorded_at": "2026-11-18T17:47:37",
-   "p_calibrated": 0.7862,
+   "p_calibrated": 0.7965,
    "outcome": {
     "stat": "rec_yds",
     "actual": 38,
@@ -16124,7 +16139,7 @@
    "result": "won",
    "payout_units": 0.2915,
    "recorded_at": "2026-11-18T17:47:37",
-   "p_calibrated": 0.7862,
+   "p_calibrated": 0.7899,
    "outcome": {
     "stat": "rec_yds",
     "actual": 40,
@@ -16155,7 +16170,7 @@
    "result": "won",
    "payout_units": 0.2915,
    "recorded_at": "2026-11-18T17:47:37",
-   "p_calibrated": 0.7862,
+   "p_calibrated": 0.7899,
    "outcome": {
     "stat": "rec_yds",
     "actual": 39,
@@ -16186,7 +16201,7 @@
    "result": "won",
    "payout_units": 0.2915,
    "recorded_at": "2026-11-18T17:47:37",
-   "p_calibrated": 0.7862,
+   "p_calibrated": 0.7899,
    "outcome": {
     "stat": "rec_yds",
     "actual": 2,
@@ -16217,7 +16232,7 @@
    "result": "won",
    "payout_units": 0.2915,
    "recorded_at": "2026-11-18T17:47:37",
-   "p_calibrated": 0.7862,
+   "p_calibrated": 0.7899,
    "outcome": {
     "stat": "rec_yds",
     "actual": 1,
@@ -16248,7 +16263,7 @@
    "result": "won",
    "payout_units": 0.2915,
    "recorded_at": "2026-11-18T17:47:37",
-   "p_calibrated": 0.7862,
+   "p_calibrated": 0.7899,
    "outcome": {
     "stat": "rec_yds",
     "actual": 22,
@@ -16279,7 +16294,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-11-18T17:47:37",
-   "p_calibrated": 0.7862,
+   "p_calibrated": 0.7899,
    "outcome": {
     "stat": "rec_yds",
     "actual": 59,
@@ -16310,7 +16325,7 @@
    "result": "won",
    "payout_units": 0.2915,
    "recorded_at": "2026-11-18T17:47:37",
-   "p_calibrated": 0.7862,
+   "p_calibrated": 0.7899,
    "outcome": {
     "stat": "rec_yds",
     "actual": 38,
@@ -16341,7 +16356,7 @@
    "result": "won",
    "payout_units": 0.2915,
    "recorded_at": "2026-11-18T17:47:37",
-   "p_calibrated": 0.7862,
+   "p_calibrated": 0.7899,
    "outcome": {
     "stat": "rec_yds",
     "actual": 47,
@@ -16372,7 +16387,7 @@
    "result": "won",
    "payout_units": 0.2915,
    "recorded_at": "2026-11-18T17:47:37",
-   "p_calibrated": 0.7862,
+   "p_calibrated": 0.7899,
    "outcome": {
     "stat": "rec_yds",
     "actual": 42,
@@ -16403,7 +16418,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-11-18T17:47:37",
-   "p_calibrated": 0.7862,
+   "p_calibrated": 0.7899,
    "outcome": {
     "stat": "rec_yds",
     "actual": 67,
@@ -16434,7 +16449,7 @@
    "result": "won",
    "payout_units": 0.2915,
    "recorded_at": "2026-11-18T17:47:37",
-   "p_calibrated": 0.7862,
+   "p_calibrated": 0.7899,
    "outcome": {
     "stat": "rec_yds",
     "actual": 8,
@@ -16465,7 +16480,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-11-18T17:47:37",
-   "p_calibrated": 0.7528,
+   "p_calibrated": 0.7658,
    "outcome": {
     "stat": "rush_yds",
     "actual": 69,
@@ -16496,7 +16511,7 @@
    "result": "won",
    "payout_units": 0.2941,
    "recorded_at": "2026-11-18T17:47:37",
-   "p_calibrated": 0.7722,
+   "p_calibrated": 0.7899,
    "outcome": {
     "stat": "longest_reception",
     "actual": 17,
@@ -16527,7 +16542,7 @@
    "result": "won",
    "payout_units": 0.2941,
    "recorded_at": "2026-11-18T17:47:37",
-   "p_calibrated": 0.7722,
+   "p_calibrated": 0.8037,
    "outcome": {
     "stat": "longest_reception",
     "actual": 19,
@@ -16558,7 +16573,7 @@
    "result": "won",
    "payout_units": 0.2941,
    "recorded_at": "2026-11-18T17:47:37",
-   "p_calibrated": 0.7722,
+   "p_calibrated": 0.8037,
    "outcome": {
     "stat": "longest_reception",
     "actual": 12,
@@ -16589,7 +16604,7 @@
    "result": "won",
    "payout_units": 0.2941,
    "recorded_at": "2026-11-18T17:47:37",
-   "p_calibrated": 0.7722,
+   "p_calibrated": 0.7993,
    "outcome": {
     "stat": "longest_reception",
     "actual": 9,
@@ -16620,7 +16635,7 @@
    "result": "won",
    "payout_units": 0.2933,
    "recorded_at": "2026-11-18T17:47:37",
-   "p_calibrated": 0.7788,
+   "p_calibrated": 0.7591,
    "outcome": {
     "stat": "rec",
     "actual": 1,
@@ -16651,7 +16666,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-11-18T17:47:37",
-   "p_calibrated": 0.7749,
+   "p_calibrated": 0.6519,
    "outcome": {
     "stat": "pass_cmp",
     "actual": 28,
@@ -16682,7 +16697,7 @@
    "result": "won",
    "payout_units": 0.2941,
    "recorded_at": "2026-11-18T17:47:37",
-   "p_calibrated": 0.7722,
+   "p_calibrated": 0.7962,
    "outcome": {
     "stat": "longest_reception",
     "actual": 3,
@@ -16713,7 +16728,7 @@
    "result": "won",
    "payout_units": 0.2941,
    "recorded_at": "2026-11-18T17:47:37",
-   "p_calibrated": 0.7722,
+   "p_calibrated": 0.7968,
    "outcome": {
     "stat": "longest_reception",
     "actual": 10,
@@ -16744,7 +16759,7 @@
    "result": "won",
    "payout_units": 0.2941,
    "recorded_at": "2026-11-18T17:47:37",
-   "p_calibrated": 0.7722,
+   "p_calibrated": 0.8037,
    "outcome": {
     "stat": "longest_reception",
     "actual": 0,
@@ -16775,7 +16790,7 @@
    "result": "won",
    "payout_units": 0.2941,
    "recorded_at": "2026-11-18T17:47:37",
-   "p_calibrated": 0.7722,
+   "p_calibrated": 0.8031,
    "outcome": {
     "stat": "longest_reception",
     "actual": 12,
@@ -16806,7 +16821,7 @@
    "result": "won",
    "payout_units": 0.2941,
    "recorded_at": "2026-11-18T17:47:37",
-   "p_calibrated": 0.7728,
+   "p_calibrated": 0.8062,
    "outcome": {
     "stat": "longest_reception",
     "actual": 8,
@@ -16837,7 +16852,7 @@
    "result": "won",
    "payout_units": 0.2941,
    "recorded_at": "2026-11-18T17:47:37",
-   "p_calibrated": 0.7722,
+   "p_calibrated": 0.788,
    "outcome": {
     "stat": "longest_reception",
     "actual": 20,
@@ -16868,7 +16883,7 @@
    "result": "won",
    "payout_units": 0.2941,
    "recorded_at": "2026-11-18T17:47:37",
-   "p_calibrated": 0.7722,
+   "p_calibrated": 0.788,
    "outcome": {
     "stat": "longest_reception",
     "actual": 2,
@@ -16899,7 +16914,7 @@
    "result": "won",
    "payout_units": 0.2941,
    "recorded_at": "2026-11-18T17:47:37",
-   "p_calibrated": 0.7722,
+   "p_calibrated": 0.7981,
    "outcome": {
     "stat": "longest_reception",
     "actual": 29,
@@ -16930,7 +16945,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-11-18T17:47:37",
-   "p_calibrated": 0.7722,
+   "p_calibrated": 0.7865,
    "outcome": {
     "stat": "longest_reception",
     "actual": 23,
@@ -16961,7 +16976,7 @@
    "result": "won",
    "payout_units": 0.2941,
    "recorded_at": "2026-11-18T17:47:37",
-   "p_calibrated": 0.7722,
+   "p_calibrated": 0.8006,
    "outcome": {
     "stat": "longest_reception",
     "actual": 0,
@@ -16992,7 +17007,7 @@
    "result": "won",
    "payout_units": 0.2941,
    "recorded_at": "2026-11-18T17:47:37",
-   "p_calibrated": 0.7722,
+   "p_calibrated": 0.788,
    "outcome": {
     "stat": "longest_reception",
     "actual": 19,
@@ -17023,7 +17038,7 @@
    "result": "won",
    "payout_units": 0.2941,
    "recorded_at": "2026-11-18T17:47:37",
-   "p_calibrated": 0.7722,
+   "p_calibrated": 0.7918,
    "outcome": {
     "stat": "longest_reception",
     "actual": 9,
@@ -17054,7 +17069,7 @@
    "result": "won",
    "payout_units": 0.2959,
    "recorded_at": "2026-11-18T17:47:37",
-   "p_calibrated": 0.7705,
+   "p_calibrated": 0.784,
    "outcome": {
     "stat": "longest_reception",
     "actual": 14,
@@ -17085,7 +17100,7 @@
    "result": "won",
    "payout_units": 0.2959,
    "recorded_at": "2026-11-18T17:47:37",
-   "p_calibrated": 0.7705,
+   "p_calibrated": 0.784,
    "outcome": {
     "stat": "longest_reception",
     "actual": 9,
@@ -17116,7 +17131,7 @@
    "result": "won",
    "payout_units": 0.295,
    "recorded_at": "2026-11-18T17:47:37",
-   "p_calibrated": 0.7739,
+   "p_calibrated": 0.6519,
    "outcome": {
     "stat": "pass_cmp",
     "actual": 24,
@@ -17147,7 +17162,7 @@
    "result": "won",
    "payout_units": 0.2976,
    "recorded_at": "2026-11-18T17:47:37",
-   "p_calibrated": 0.7691,
+   "p_calibrated": 0.7823,
    "outcome": {
     "stat": "longest_reception",
     "actual": 13,
@@ -17178,7 +17193,7 @@
    "result": "won",
    "payout_units": 0.2994,
    "recorded_at": "2026-11-18T17:47:37",
-   "p_calibrated": 0.7683,
+   "p_calibrated": 0.7814,
    "outcome": {
     "stat": "longest_reception",
     "actual": 3,
@@ -17209,7 +17224,7 @@
    "result": "won",
    "payout_units": 0.3012,
    "recorded_at": "2026-11-18T17:47:37",
-   "p_calibrated": 0.7669,
+   "p_calibrated": 0.7797,
    "outcome": {
     "stat": "longest_reception",
     "actual": 12,
@@ -17240,7 +17255,7 @@
    "result": "won",
    "payout_units": 0.303,
    "recorded_at": "2026-11-18T17:47:37",
-   "p_calibrated": 0.7691,
+   "p_calibrated": 0.6519,
    "outcome": {
     "stat": "pass_cmp",
     "actual": 25,
@@ -17271,7 +17286,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-11-18T17:47:37",
-   "p_calibrated": 0.6784,
+   "p_calibrated": 0.6692,
    "outcome": {
     "stat": "pass_td",
     "actual": 2,
@@ -17302,7 +17317,7 @@
    "result": "won",
    "payout_units": 0.304,
    "recorded_at": "2026-11-18T17:47:37",
-   "p_calibrated": 0.7654,
+   "p_calibrated": 0.778,
    "outcome": {
     "stat": "longest_reception",
     "actual": 18,
@@ -17333,7 +17348,7 @@
    "result": "won",
    "payout_units": 0.3058,
    "recorded_at": "2026-11-18T17:47:37",
-   "p_calibrated": 0.7647,
+   "p_calibrated": 0.7771,
    "outcome": {
     "stat": "longest_reception",
     "actual": 14,
@@ -17364,7 +17379,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-11-18T17:47:37",
-   "p_calibrated": 0.76,
+   "p_calibrated": 0.7451,
    "outcome": {
     "stat": "longest_rush",
     "actual": 24,
@@ -17395,7 +17410,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-11-18T17:47:37",
-   "p_calibrated": 0.76,
+   "p_calibrated": 0.7451,
    "outcome": {
     "stat": "longest_rush",
     "actual": 46,
@@ -17426,7 +17441,7 @@
    "result": "won",
    "payout_units": 0.3077,
    "recorded_at": "2026-11-18T17:47:37",
-   "p_calibrated": 0.76,
+   "p_calibrated": 0.7451,
    "outcome": {
     "stat": "longest_rush",
     "actual": 2,
@@ -17457,7 +17472,7 @@
    "result": "won",
    "payout_units": 0.3077,
    "recorded_at": "2026-11-18T17:47:37",
-   "p_calibrated": 0.76,
+   "p_calibrated": 0.7451,
    "outcome": {
     "stat": "longest_rush",
     "actual": 23,
@@ -17488,7 +17503,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-11-18T17:47:37",
-   "p_calibrated": 0.76,
+   "p_calibrated": 0.7451,
    "outcome": {
     "stat": "longest_rush",
     "actual": 14,
@@ -17519,7 +17534,7 @@
    "result": "won",
    "payout_units": 0.3077,
    "recorded_at": "2026-11-18T17:47:37",
-   "p_calibrated": 0.76,
+   "p_calibrated": 0.7451,
    "outcome": {
     "stat": "longest_rush",
     "actual": 0,
@@ -17550,7 +17565,7 @@
    "result": "won",
    "payout_units": 0.3077,
    "recorded_at": "2026-11-18T17:47:37",
-   "p_calibrated": 0.76,
+   "p_calibrated": 0.7451,
    "outcome": {
     "stat": "longest_rush",
     "actual": 13,
@@ -17581,7 +17596,7 @@
    "result": "won",
    "payout_units": 0.3077,
    "recorded_at": "2026-11-18T17:47:37",
-   "p_calibrated": 0.76,
+   "p_calibrated": 0.7451,
    "outcome": {
     "stat": "longest_rush",
     "actual": 11,
@@ -17612,7 +17627,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-11-18T17:47:37",
-   "p_calibrated": 0.76,
+   "p_calibrated": 0.7451,
    "outcome": {
     "stat": "longest_rush",
     "actual": 36,
@@ -17643,7 +17658,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-11-18T17:47:37",
-   "p_calibrated": 0.76,
+   "p_calibrated": 0.7451,
    "outcome": {
     "stat": "longest_rush",
     "actual": 38,
@@ -17674,7 +17689,7 @@
    "result": "won",
    "payout_units": 0.3106,
    "recorded_at": "2026-11-18T17:47:37",
-   "p_calibrated": 0.76,
+   "p_calibrated": 0.7451,
    "outcome": {
     "stat": "longest_rush",
     "actual": 0,
@@ -17705,7 +17720,7 @@
    "result": "won",
    "payout_units": 0.3115,
    "recorded_at": "2026-11-18T17:47:37",
-   "p_calibrated": 0.761,
+   "p_calibrated": 0.7728,
    "outcome": {
     "stat": "longest_reception",
     "actual": 12,
@@ -17736,7 +17751,7 @@
    "result": "won",
    "payout_units": 0.3135,
    "recorded_at": "2026-11-18T17:47:37",
-   "p_calibrated": 0.7594,
+   "p_calibrated": 0.7451,
    "outcome": {
     "stat": "longest_rush",
     "actual": 16,
@@ -17767,7 +17782,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-11-18T17:47:37",
-   "p_calibrated": 0.77,
+   "p_calibrated": 0.7623,
    "outcome": {
     "stat": "rec_yds",
     "actual": 55,
@@ -17798,7 +17813,7 @@
    "result": "won",
    "payout_units": 0.3155,
    "recorded_at": "2026-11-18T17:47:37",
-   "p_calibrated": 0.7589,
+   "p_calibrated": 0.7703,
    "outcome": {
     "stat": "longest_reception",
     "actual": 21,
@@ -17829,7 +17844,7 @@
    "result": "won",
    "payout_units": 0.3205,
    "recorded_at": "2026-11-18T17:47:37",
-   "p_calibrated": 0.756,
+   "p_calibrated": 0.7451,
    "outcome": {
     "stat": "longest_rush",
     "actual": 13,
@@ -17860,7 +17875,7 @@
    "result": "won",
    "payout_units": 0.3236,
    "recorded_at": "2026-11-18T17:47:37",
-   "p_calibrated": 0.7537,
+   "p_calibrated": 0.7643,
    "outcome": {
     "stat": "longest_reception",
     "actual": 24,
@@ -17891,7 +17906,7 @@
    "result": "won",
    "payout_units": 0.3226,
    "recorded_at": "2026-11-18T17:47:37",
-   "p_calibrated": 0.7604,
+   "p_calibrated": 0.7552,
    "outcome": {
     "stat": "rec_yds",
     "actual": 132,
@@ -17922,7 +17937,7 @@
    "result": "won",
    "payout_units": 0.3236,
    "recorded_at": "2026-11-18T17:47:37",
-   "p_calibrated": 0.7537,
+   "p_calibrated": 0.7643,
    "outcome": {
     "stat": "longest_reception",
     "actual": 8,
@@ -17953,7 +17968,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-11-18T17:47:37",
-   "p_calibrated": 0.7528,
+   "p_calibrated": 0.7555,
    "outcome": {
     "stat": "rush_yds",
     "actual": 120,
@@ -17984,7 +17999,7 @@
    "result": "won",
    "payout_units": 0.33,
    "recorded_at": "2026-11-18T17:47:37",
-   "p_calibrated": 0.7509,
+   "p_calibrated": 0.7579,
    "outcome": {
     "stat": "longest_reception",
     "actual": 19,
@@ -18015,7 +18030,7 @@
    "result": "won",
    "payout_units": 0.33,
    "recorded_at": "2026-11-18T17:47:37",
-   "p_calibrated": 0.7509,
+   "p_calibrated": 0.7603,
    "outcome": {
     "stat": "longest_reception",
     "actual": 0,
@@ -18046,7 +18061,7 @@
    "result": "won",
    "payout_units": 0.33,
    "recorded_at": "2026-11-18T17:47:37",
-   "p_calibrated": 0.7509,
+   "p_calibrated": 0.7535,
    "outcome": {
     "stat": "longest_reception",
     "actual": 11,
@@ -18077,7 +18092,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-11-18T17:47:37",
-   "p_calibrated": 0.7509,
+   "p_calibrated": 0.7491,
    "outcome": {
     "stat": "longest_reception",
     "actual": 57,
@@ -18108,7 +18123,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-11-18T17:47:37",
-   "p_calibrated": 0.7509,
+   "p_calibrated": 0.7568,
    "outcome": {
     "stat": "longest_reception",
     "actual": 26,
@@ -18139,7 +18154,7 @@
    "result": "won",
    "payout_units": 0.33,
    "recorded_at": "2026-11-18T17:47:37",
-   "p_calibrated": 0.7509,
+   "p_calibrated": 0.7568,
    "outcome": {
     "stat": "longest_reception",
     "actual": 12,
@@ -18170,7 +18185,7 @@
    "result": "won",
    "payout_units": 0.33,
    "recorded_at": "2026-11-18T17:47:37",
-   "p_calibrated": 0.7509,
+   "p_calibrated": 0.7616,
    "outcome": {
     "stat": "longest_reception",
     "actual": 22,
@@ -18201,7 +18216,7 @@
    "result": "won",
    "payout_units": 0.33,
    "recorded_at": "2026-11-18T17:47:37",
-   "p_calibrated": 0.7509,
+   "p_calibrated": 0.7459,
    "outcome": {
     "stat": "longest_reception",
     "actual": 15,
@@ -18232,7 +18247,7 @@
    "result": "won",
    "payout_units": 0.33,
    "recorded_at": "2026-11-18T17:47:37",
-   "p_calibrated": 0.7509,
+   "p_calibrated": 0.7557,
    "outcome": {
     "stat": "longest_reception",
     "actual": 11,
@@ -18263,7 +18278,7 @@
    "result": "won",
    "payout_units": 0.33,
    "recorded_at": "2026-11-18T17:47:37",
-   "p_calibrated": 0.7518,
+   "p_calibrated": 0.7405,
    "outcome": {
     "stat": "longest_rush",
     "actual": 10,
@@ -18294,7 +18309,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-11-18T17:47:37",
-   "p_calibrated": 0.7509,
+   "p_calibrated": 0.7622,
    "outcome": {
     "stat": "longest_reception",
     "actual": 38,
@@ -18325,7 +18340,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-11-18T17:47:37",
-   "p_calibrated": 0.7509,
+   "p_calibrated": 0.7623,
    "outcome": {
     "stat": "longest_reception",
     "actual": 27,
@@ -18356,7 +18371,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-11-18T17:47:37",
-   "p_calibrated": 0.7509,
+   "p_calibrated": 0.7546,
    "outcome": {
     "stat": "longest_reception",
     "actual": 52,
@@ -18387,7 +18402,7 @@
    "result": "won",
    "payout_units": 0.3322,
    "recorded_at": "2026-11-18T17:47:37",
-   "p_calibrated": 0.7487,
+   "p_calibrated": 0.7431,
    "outcome": {
     "stat": "longest_reception",
     "actual": 16,
@@ -18418,7 +18433,7 @@
    "result": "won",
    "payout_units": 0.3322,
    "recorded_at": "2026-11-18T17:47:37",
-   "p_calibrated": 0.7551,
+   "p_calibrated": 0.7422,
    "outcome": {
     "stat": "rec",
     "actual": 9,
@@ -18449,7 +18464,7 @@
    "result": "won",
    "payout_units": 0.3322,
    "recorded_at": "2026-11-18T17:47:37",
-   "p_calibrated": 0.7508,
+   "p_calibrated": 0.7389,
    "outcome": {
     "stat": "longest_rush",
     "actual": -1,
@@ -18480,7 +18495,7 @@
    "result": "won",
    "payout_units": 0.3333,
    "recorded_at": "2026-11-18T17:47:37",
-   "p_calibrated": 0.7504,
+   "p_calibrated": 0.7384,
    "outcome": {
     "stat": "longest_rush",
     "actual": 6,
@@ -18511,7 +18526,7 @@
    "result": "won",
    "payout_units": 0.3356,
    "recorded_at": "2026-11-18T17:47:37",
-   "p_calibrated": 0.7471,
+   "p_calibrated": 0.7422,
    "outcome": {
     "stat": "longest_reception",
     "actual": 19,
@@ -18542,7 +18557,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-11-18T17:47:37",
-   "p_calibrated": 0.7497,
+   "p_calibrated": 0.7373,
    "outcome": {
     "stat": "longest_rush",
     "actual": 26,
@@ -18573,7 +18588,7 @@
    "result": "won",
    "payout_units": 0.3344,
    "recorded_at": "2026-11-18T17:47:37",
-   "p_calibrated": 0.7516,
+   "p_calibrated": 0.7395,
    "outcome": {
     "stat": "rec",
     "actual": 6,
@@ -18604,7 +18619,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-11-18T17:47:37",
-   "p_calibrated": 0.753,
+   "p_calibrated": 0.7486,
    "outcome": {
     "stat": "rec_yds",
     "actual": 37,
@@ -18635,7 +18650,7 @@
    "result": "won",
    "payout_units": 0.3367,
    "recorded_at": "2026-11-18T17:47:37",
-   "p_calibrated": 0.7552,
+   "p_calibrated": 0.7442,
    "outcome": {
     "stat": "rec_yds",
     "actual": 54,
@@ -18666,7 +18681,7 @@
    "result": "won",
    "payout_units": 0.3401,
    "recorded_at": "2026-11-18T17:47:37",
-   "p_calibrated": 0.7506,
+   "p_calibrated": 0.7465,
    "outcome": {
     "stat": "rec_yds",
     "actual": 102,
@@ -18697,7 +18712,7 @@
    "result": "won",
    "payout_units": 0.3401,
    "recorded_at": "2026-11-18T17:47:37",
-   "p_calibrated": 0.7447,
+   "p_calibrated": 0.7341,
    "outcome": {
     "stat": "rec",
     "actual": 9,
@@ -18728,7 +18743,7 @@
    "result": "won",
    "payout_units": 0.3401,
    "recorded_at": "2026-11-18T17:47:37",
-   "p_calibrated": 0.7528,
+   "p_calibrated": 0.7534,
    "outcome": {
     "stat": "rush_yds",
     "actual": 67,
@@ -18759,7 +18774,7 @@
    "result": "won",
    "payout_units": 0.3401,
    "recorded_at": "2026-11-18T17:47:37",
-   "p_calibrated": 0.7477,
+   "p_calibrated": 0.7341,
    "outcome": {
     "stat": "longest_rush",
     "actual": -1,
@@ -18790,7 +18805,7 @@
    "result": "won",
    "payout_units": 0.3436,
    "recorded_at": "2026-11-18T17:47:37",
-   "p_calibrated": 0.6747,
+   "p_calibrated": 0.6658,
    "outcome": {
     "stat": "pass_td",
     "actual": 1,
@@ -18821,7 +18836,7 @@
    "result": "won",
    "payout_units": 0.3448,
    "recorded_at": "2026-11-18T17:47:37",
-   "p_calibrated": 0.7493,
+   "p_calibrated": 0.737,
    "outcome": {
     "stat": "rec_yds",
     "actual": 0,
@@ -18852,7 +18867,7 @@
    "result": "won",
    "payout_units": 0.3472,
    "recorded_at": "2026-11-18T17:47:37",
-   "p_calibrated": 0.747,
+   "p_calibrated": 0.7431,
    "outcome": {
     "stat": "rec",
     "actual": 0,
@@ -18883,7 +18898,7 @@
    "result": "won",
    "payout_units": 0.3497,
    "recorded_at": "2026-11-18T17:47:37",
-   "p_calibrated": 0.7407,
+   "p_calibrated": 0.7389,
    "outcome": {
     "stat": "longest_reception",
     "actual": 31,
@@ -18914,7 +18929,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-11-18T17:47:37",
-   "p_calibrated": 0.7464,
+   "p_calibrated": 0.7333,
    "outcome": {
     "stat": "rec_yds",
     "actual": 93,
@@ -18945,7 +18960,7 @@
    "result": "won",
    "payout_units": 0.3534,
    "recorded_at": "2026-11-18T17:47:37",
-   "p_calibrated": 0.7418,
+   "p_calibrated": 0.7251,
    "outcome": {
     "stat": "longest_rush",
     "actual": 13,
@@ -18976,7 +18991,7 @@
    "result": "won",
    "payout_units": 0.3546,
    "recorded_at": "2026-11-18T17:47:37",
-   "p_calibrated": 0.7427,
+   "p_calibrated": 0.7395,
    "outcome": {
     "stat": "rec_yds",
     "actual": 102,
@@ -19007,7 +19022,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-11-18T17:47:37",
-   "p_calibrated": 0.7394,
+   "p_calibrated": 0.7214,
    "outcome": {
     "stat": "longest_rush",
     "actual": 30,
@@ -19038,7 +19053,7 @@
    "result": "won",
    "payout_units": 0.3584,
    "recorded_at": "2026-11-18T17:47:37",
-   "p_calibrated": 0.7367,
+   "p_calibrated": 0.7369,
    "outcome": {
     "stat": "longest_reception",
     "actual": 29,
@@ -19069,7 +19084,7 @@
    "result": "won",
    "payout_units": 0.3676,
    "recorded_at": "2026-11-18T17:47:37",
-   "p_calibrated": 0.7346,
+   "p_calibrated": 0.7188,
    "outcome": {
     "stat": "rec_yds",
     "actual": 53,
@@ -19100,7 +19115,7 @@
    "result": "won",
    "payout_units": 0.3663,
    "recorded_at": "2026-11-18T17:47:37",
-   "p_calibrated": 0.7371,
+   "p_calibrated": 0.7345,
    "outcome": {
     "stat": "rec_yds",
     "actual": 97,
@@ -19131,7 +19146,7 @@
    "result": "won",
    "payout_units": 0.369,
    "recorded_at": "2026-11-18T17:47:37",
-   "p_calibrated": 0.7319,
+   "p_calibrated": 0.7344,
    "outcome": {
     "stat": "longest_reception",
     "actual": 29,
@@ -19162,7 +19177,7 @@
    "result": "won",
    "payout_units": 0.3704,
    "recorded_at": "2026-11-18T17:47:37",
-   "p_calibrated": 0.7308,
+   "p_calibrated": 0.9051,
    "outcome": {
     "stat": "pass_yds",
     "actual": 248,
@@ -19193,7 +19208,7 @@
    "result": "won",
    "payout_units": 0.3745,
    "recorded_at": "2026-11-18T17:47:37",
-   "p_calibrated": 0.7328,
+   "p_calibrated": 0.7114,
    "outcome": {
     "stat": "longest_rush",
     "actual": 1,
@@ -19224,7 +19239,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-11-18T17:47:37",
-   "p_calibrated": 0.7456,
+   "p_calibrated": 0.7421,
    "outcome": {
     "stat": "rush_yds",
     "actual": 110,
@@ -19255,7 +19270,7 @@
    "result": "won",
    "payout_units": 0.3759,
    "recorded_at": "2026-11-18T17:47:37",
-   "p_calibrated": 0.7287,
+   "p_calibrated": 0.7116,
    "outcome": {
     "stat": "rec_yds",
     "actual": 13,
@@ -19286,7 +19301,7 @@
    "result": "won",
    "payout_units": 0.3745,
    "recorded_at": "2026-11-18T17:47:37",
-   "p_calibrated": 0.7465,
+   "p_calibrated": 0.7431,
    "outcome": {
     "stat": "rush_yds",
     "actual": 28,
@@ -19317,7 +19332,7 @@
    "result": "won",
    "payout_units": 0.3774,
    "recorded_at": "2026-11-18T17:47:37",
-   "p_calibrated": 0.7278,
+   "p_calibrated": 0.7458,
    "outcome": {
     "stat": "rush_yds",
     "actual": 89,
@@ -19348,7 +19363,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-11-18T17:47:37",
-   "p_calibrated": 0.731,
+   "p_calibrated": 0.7087,
    "outcome": {
     "stat": "longest_rush",
     "actual": 26,
@@ -19379,7 +19394,7 @@
    "result": "won",
    "payout_units": 0.3817,
    "recorded_at": "2026-11-18T17:47:37",
-   "p_calibrated": 0.7311,
+   "p_calibrated": 0.7339,
    "outcome": {
     "stat": "rec",
     "actual": 2,
@@ -19410,7 +19425,7 @@
    "result": "won",
    "payout_units": 0.3817,
    "recorded_at": "2026-11-18T17:47:37",
-   "p_calibrated": 0.73,
+   "p_calibrated": 0.7071,
    "outcome": {
     "stat": "longest_rush",
     "actual": 11,
@@ -19441,7 +19456,7 @@
    "result": "won",
    "payout_units": 0.3802,
    "recorded_at": "2026-11-18T17:47:37",
-   "p_calibrated": 0.7259,
+   "p_calibrated": 0.744,
    "outcome": {
     "stat": "rush_yds",
     "actual": 98,
@@ -19472,7 +19487,7 @@
    "result": "won",
    "payout_units": 0.3846,
    "recorded_at": "2026-11-18T17:47:37",
-   "p_calibrated": 0.7289,
+   "p_calibrated": 0.7032,
    "outcome": {
     "stat": "longest_rush",
     "actual": 14,
@@ -19503,7 +19518,7 @@
    "result": "won",
    "payout_units": 0.3817,
    "recorded_at": "2026-11-18T17:47:37",
-   "p_calibrated": 0.7246,
+   "p_calibrated": 0.9051,
    "outcome": {
     "stat": "pass_yds",
     "actual": 227,
@@ -19534,7 +19549,7 @@
    "result": "won",
    "payout_units": 0.3846,
    "recorded_at": "2026-11-18T17:47:37",
-   "p_calibrated": 0.7289,
+   "p_calibrated": 0.7034,
    "outcome": {
     "stat": "longest_rush",
     "actual": 19,
@@ -19565,7 +19580,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-11-18T17:47:37",
-   "p_calibrated": 0.7069,
+   "p_calibrated": 0.7002,
    "outcome": {
     "stat": "rush_yds",
     "actual": 94,
@@ -19596,7 +19611,7 @@
    "result": "won",
    "payout_units": 0.4016,
    "recorded_at": "2026-11-18T17:47:37",
-   "p_calibrated": 0.7185,
+   "p_calibrated": 0.7181,
    "outcome": {
     "stat": "rec_yds",
     "actual": 71,
@@ -19627,7 +19642,7 @@
    "result": "won",
    "payout_units": 0.4065,
    "recorded_at": "2026-11-18T17:47:37",
-   "p_calibrated": 0.7131,
+   "p_calibrated": 0.8316,
    "outcome": {
     "stat": "pass_yds",
     "actual": 222,
@@ -19658,7 +19673,7 @@
    "result": "won",
    "payout_units": 0.4098,
    "recorded_at": "2026-11-18T17:47:37",
-   "p_calibrated": 0.7115,
+   "p_calibrated": 0.8073,
    "outcome": {
     "stat": "pass_yds",
     "actual": 254,
@@ -19689,7 +19704,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-11-18T17:47:37",
-   "p_calibrated": 0.669,
+   "p_calibrated": 0.6606,
    "outcome": {
     "stat": "pass_td",
     "actual": 4,
@@ -19720,7 +19735,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-11-18T17:47:37",
-   "p_calibrated": 0.6534,
+   "p_calibrated": 0.6618,
    "outcome": {
     "stat": "rec",
     "actual": 2,
@@ -19751,7 +19766,7 @@
    "result": "won",
    "payout_units": 0.4149,
    "recorded_at": "2026-11-18T17:47:37",
-   "p_calibrated": 0.689,
+   "p_calibrated": 0.6794,
    "outcome": {
     "stat": "rush_yds",
     "actual": 68,
@@ -19782,7 +19797,7 @@
    "result": "won",
    "payout_units": 0.4149,
    "recorded_at": "2026-11-18T17:47:37",
-   "p_calibrated": 0.7088,
+   "p_calibrated": 0.7654,
    "outcome": {
     "stat": "pass_yds",
     "actual": 276,
@@ -19813,7 +19828,7 @@
    "result": "won",
    "payout_units": 0.4149,
    "recorded_at": "2026-11-18T17:47:37",
-   "p_calibrated": 0.7111,
+   "p_calibrated": 0.7236,
    "outcome": {
     "stat": "longest_reception",
     "actual": 26,
@@ -19844,7 +19859,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-11-18T17:47:37",
-   "p_calibrated": 0.7076,
+   "p_calibrated": 0.7084,
    "outcome": {
     "stat": "rec_yds",
     "actual": 10,
@@ -19875,7 +19890,7 @@
    "result": "won",
    "payout_units": 0.4274,
    "recorded_at": "2026-11-18T17:47:37",
-   "p_calibrated": 0.6962,
+   "p_calibrated": 0.6717,
    "outcome": {
     "stat": "rec_yds",
     "actual": 14,
@@ -19906,7 +19921,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-11-18T17:47:37",
-   "p_calibrated": 0.7003,
+   "p_calibrated": 0.6506,
    "outcome": {
     "stat": "pass_yds",
     "actual": 304,
@@ -19937,7 +19952,7 @@
    "result": "won",
    "payout_units": 0.4329,
    "recorded_at": "2026-11-18T17:47:37",
-   "p_calibrated": 0.7001,
+   "p_calibrated": 0.6484,
    "outcome": {
     "stat": "pass_yds",
     "actual": 181,
@@ -19968,7 +19983,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-11-18T17:47:37",
-   "p_calibrated": 0.6673,
+   "p_calibrated": 0.659,
    "outcome": {
     "stat": "pass_td",
     "actual": 3,
@@ -19999,7 +20014,7 @@
    "result": "won",
    "payout_units": 0.4484,
    "recorded_at": "2026-11-18T17:47:37",
-   "p_calibrated": 0.694,
+   "p_calibrated": 0.7124,
    "outcome": {
     "stat": "rec",
     "actual": 3,
@@ -20030,7 +20045,7 @@
    "result": "won",
    "payout_units": 0.4566,
    "recorded_at": "2026-11-18T17:47:37",
-   "p_calibrated": 0.6898,
+   "p_calibrated": 0.5962,
    "outcome": {
     "stat": "pass_yds",
     "actual": 279,
@@ -20061,7 +20076,7 @@
    "result": "won",
    "payout_units": 0.4566,
    "recorded_at": "2026-11-18T17:47:37",
-   "p_calibrated": 0.6655,
+   "p_calibrated": 0.6574,
    "outcome": {
     "stat": "pass_td",
     "actual": 2,
@@ -20092,7 +20107,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-11-18T17:47:37",
-   "p_calibrated": 0.6899,
+   "p_calibrated": 0.5962,
    "outcome": {
     "stat": "pass_yds",
     "actual": 324,
@@ -20123,7 +20138,7 @@
    "result": "won",
    "payout_units": 0.4587,
    "recorded_at": "2026-11-18T17:47:37",
-   "p_calibrated": 0.694,
+   "p_calibrated": 0.7124,
    "outcome": {
     "stat": "rec",
     "actual": 2,
@@ -20154,7 +20169,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-11-18T17:47:37",
-   "p_calibrated": 0.6756,
+   "p_calibrated": 0.6601,
    "outcome": {
     "stat": "rec_yds",
     "actual": 59,
@@ -20185,7 +20200,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-11-18T17:47:37",
-   "p_calibrated": 0.6849,
+   "p_calibrated": 0.5962,
    "outcome": {
     "stat": "pass_yds",
     "actual": 325,
@@ -20216,7 +20231,7 @@
    "result": "won",
    "payout_units": 0.4785,
    "recorded_at": "2026-11-18T17:47:37",
-   "p_calibrated": 0.6847,
+   "p_calibrated": 0.7102,
    "outcome": {
     "stat": "longest_reception",
     "actual": 20,
@@ -20247,7 +20262,7 @@
    "result": "won",
    "payout_units": 0.4785,
    "recorded_at": "2026-11-18T17:47:37",
-   "p_calibrated": 0.6847,
+   "p_calibrated": 0.7102,
    "outcome": {
     "stat": "longest_reception",
     "actual": 6,
@@ -20278,7 +20293,7 @@
    "result": "won",
    "payout_units": 0.4975,
    "recorded_at": "2026-11-18T17:47:37",
-   "p_calibrated": 0.6634,
+   "p_calibrated": 0.6569,
    "outcome": {
     "stat": "rec_yds",
     "actual": 3,
@@ -20309,7 +20324,7 @@
    "result": "won",
    "payout_units": 0.5181,
    "recorded_at": "2026-11-18T17:47:37",
-   "p_calibrated": 0.6303,
+   "p_calibrated": 0.6348,
    "outcome": {
     "stat": "rec",
     "actual": 11,
@@ -20340,7 +20355,7 @@
    "result": "won",
    "payout_units": 0.5236,
    "recorded_at": "2026-11-18T17:47:37",
-   "p_calibrated": 0.6543,
+   "p_calibrated": 0.6789,
    "outcome": {
     "stat": "rec",
     "actual": 2,
@@ -20371,7 +20386,7 @@
    "result": "won",
    "payout_units": 0.5236,
    "recorded_at": "2026-11-18T17:47:37",
-   "p_calibrated": 0.6543,
+   "p_calibrated": 0.6789,
    "outcome": {
     "stat": "rec",
     "actual": 5,
@@ -20402,7 +20417,7 @@
    "result": "won",
    "payout_units": 0.5236,
    "recorded_at": "2026-11-18T17:47:37",
-   "p_calibrated": 0.6543,
+   "p_calibrated": 0.6789,
    "outcome": {
     "stat": "rec",
     "actual": 2,
@@ -20433,7 +20448,7 @@
    "result": "won",
    "payout_units": 0.5236,
    "recorded_at": "2026-11-18T17:47:37",
-   "p_calibrated": 0.6543,
+   "p_calibrated": 0.6789,
    "outcome": {
     "stat": "rec",
     "actual": 3,
@@ -20464,7 +20479,7 @@
    "result": "won",
    "payout_units": 0.5236,
    "recorded_at": "2026-11-18T17:47:37",
-   "p_calibrated": 0.6543,
+   "p_calibrated": 0.6789,
    "outcome": {
     "stat": "rec",
     "actual": 3,
@@ -20495,7 +20510,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-11-18T17:47:37",
-   "p_calibrated": 0.6543,
+   "p_calibrated": 0.6817,
    "outcome": {
     "stat": "rec",
     "actual": 6,
@@ -20526,7 +20541,7 @@
    "result": "won",
    "payout_units": 0.5236,
    "recorded_at": "2026-11-18T17:47:37",
-   "p_calibrated": 0.6534,
+   "p_calibrated": 0.6789,
    "outcome": {
     "stat": "rec",
     "actual": 2,
@@ -20557,7 +20572,7 @@
    "result": "won",
    "payout_units": 0.5236,
    "recorded_at": "2026-11-18T17:47:37",
-   "p_calibrated": 0.6543,
+   "p_calibrated": 0.6789,
    "outcome": {
     "stat": "rec",
     "actual": 0,
@@ -20588,7 +20603,7 @@
    "result": "won",
    "payout_units": 0.5236,
    "recorded_at": "2026-11-18T17:47:37",
-   "p_calibrated": 0.6543,
+   "p_calibrated": 0.6789,
    "outcome": {
     "stat": "rec",
     "actual": 3,
@@ -20619,7 +20634,7 @@
    "result": "won",
    "payout_units": 0.5236,
    "recorded_at": "2026-11-18T17:47:37",
-   "p_calibrated": 0.6543,
+   "p_calibrated": 0.6817,
    "outcome": {
     "stat": "rec",
     "actual": 2,
@@ -20650,7 +20665,7 @@
    "result": "won",
    "payout_units": 0.5236,
    "recorded_at": "2026-11-18T17:47:37",
-   "p_calibrated": 0.6543,
+   "p_calibrated": 0.6789,
    "outcome": {
     "stat": "rec",
     "actual": 1,
@@ -20681,7 +20696,7 @@
    "result": "won",
    "payout_units": 0.5236,
    "recorded_at": "2026-11-18T17:47:37",
-   "p_calibrated": 0.6543,
+   "p_calibrated": 0.6789,
    "outcome": {
     "stat": "rec",
     "actual": 4,
@@ -20712,7 +20727,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-11-18T17:47:37",
-   "p_calibrated": 0.6543,
+   "p_calibrated": 0.6789,
    "outcome": {
     "stat": "rec",
     "actual": 6,
@@ -20743,7 +20758,7 @@
    "result": "won",
    "payout_units": 0.5236,
    "recorded_at": "2026-11-18T17:47:37",
-   "p_calibrated": 0.6543,
+   "p_calibrated": 0.6789,
    "outcome": {
     "stat": "rec",
     "actual": 1,
@@ -20774,7 +20789,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-11-18T17:47:37",
-   "p_calibrated": 0.6543,
+   "p_calibrated": 0.6789,
    "outcome": {
     "stat": "rec",
     "actual": 3,
@@ -20805,7 +20820,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-11-18T17:47:37",
-   "p_calibrated": 0.6569,
+   "p_calibrated": 0.6909,
    "outcome": {
     "stat": "rec",
     "actual": 4,
@@ -20836,7 +20851,7 @@
    "result": "won",
    "payout_units": 0.5236,
    "recorded_at": "2026-11-18T17:47:37",
-   "p_calibrated": 0.6543,
+   "p_calibrated": 0.6789,
    "outcome": {
     "stat": "rec",
     "actual": 2,
@@ -20867,7 +20882,7 @@
    "result": "won",
    "payout_units": 0.5291,
    "recorded_at": "2026-11-18T17:47:37",
-   "p_calibrated": 0.6523,
+   "p_calibrated": 0.6789,
    "outcome": {
     "stat": "rec",
     "actual": 4,
@@ -20898,7 +20913,7 @@
    "result": "won",
    "payout_units": 0.5291,
    "recorded_at": "2026-11-18T17:47:37",
-   "p_calibrated": 0.6512,
+   "p_calibrated": 0.6778,
    "outcome": {
     "stat": "rec",
     "actual": 3,
@@ -20929,7 +20944,7 @@
    "result": "won",
    "payout_units": 0.5405,
    "recorded_at": "2026-11-18T17:47:37",
-   "p_calibrated": 0.6456,
+   "p_calibrated": 0.6701,
    "outcome": {
     "stat": "rec",
     "actual": 2,
@@ -20960,7 +20975,7 @@
    "result": "won",
    "payout_units": 0.5525,
    "recorded_at": "2026-11-18T17:47:37",
-   "p_calibrated": 0.6412,
+   "p_calibrated": 0.6639,
    "outcome": {
     "stat": "rec",
     "actual": 0,
@@ -21022,7 +21037,7 @@
    "result": "won",
    "payout_units": 0.5587,
    "recorded_at": "2026-11-18T17:47:37",
-   "p_calibrated": 0.6368,
+   "p_calibrated": 0.6577,
    "outcome": {
     "stat": "rec",
     "actual": 1,
@@ -21084,7 +21099,7 @@
    "result": "won",
    "payout_units": 0.5988,
    "recorded_at": "2026-11-18T17:47:37",
-   "p_calibrated": 0.619,
+   "p_calibrated": 0.633,
    "outcome": {
     "stat": "rec",
     "actual": 2,
@@ -21115,7 +21130,7 @@
    "result": "won",
    "payout_units": 0.6098,
    "recorded_at": "2026-11-18T17:47:37",
-   "p_calibrated": 0.6157,
+   "p_calibrated": 0.6284,
    "outcome": {
     "stat": "rec",
     "actual": 1,
@@ -21146,7 +21161,7 @@
    "result": "won",
    "payout_units": 0.6098,
    "recorded_at": "2026-11-18T17:47:37",
-   "p_calibrated": 0.6146,
+   "p_calibrated": 0.6268,
    "outcome": {
     "stat": "rec",
     "actual": 1,
@@ -21177,7 +21192,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-11-18T17:47:37",
-   "p_calibrated": 0.6134,
+   "p_calibrated": 0.6253,
    "outcome": {
     "stat": "rec",
     "actual": 4,
@@ -21208,7 +21223,7 @@
    "result": "won",
    "payout_units": 0.6173,
    "recorded_at": "2026-11-18T17:47:37",
-   "p_calibrated": 0.6112,
+   "p_calibrated": 0.6222,
    "outcome": {
     "stat": "rec",
     "actual": 2,
@@ -21239,7 +21254,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-11-18T17:47:37",
-   "p_calibrated": 0.609,
+   "p_calibrated": 0.6191,
    "outcome": {
     "stat": "rec",
     "actual": 8,
@@ -21270,7 +21285,7 @@
    "result": "won",
    "payout_units": 0.6369,
    "recorded_at": "2026-11-18T17:47:37",
-   "p_calibrated": 0.6046,
+   "p_calibrated": 0.6129,
    "outcome": {
     "stat": "rec",
     "actual": 0,
@@ -21301,7 +21316,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-11-18T17:47:37",
-   "p_calibrated": 0.6531,
+   "p_calibrated": 0.6461,
    "outcome": {
     "stat": "pass_td",
     "actual": 2,
@@ -21332,7 +21347,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-11-18T17:47:37",
-   "p_calibrated": 0.6046,
+   "p_calibrated": 0.6047,
    "outcome": {
     "stat": "rec",
     "actual": 5,
@@ -21363,7 +21378,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-11-18T17:47:37",
-   "p_calibrated": 0.5878,
+   "p_calibrated": 0.5919,
    "outcome": {
     "stat": "rec",
     "actual": 4,
@@ -21394,7 +21409,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-11-18T17:47:37",
-   "p_calibrated": 0.5438,
+   "p_calibrated": 0.5194,
    "outcome": {
     "stat": "pass_td",
     "actual": 1,
@@ -21425,7 +21440,7 @@
    "result": "won",
    "payout_units": 0.6944,
    "recorded_at": "2026-11-18T17:47:37",
-   "p_calibrated": 0.6193,
+   "p_calibrated": 0.6317,
    "outcome": {
     "stat": "pass_int",
     "actual": 1,
@@ -21456,7 +21471,7 @@
    "result": "won",
    "payout_units": 0.7874,
    "recorded_at": "2026-11-18T17:47:37",
-   "p_calibrated": 0.4942,
+   "p_calibrated": 0.5222,
    "outcome": {
     "stat": "anytime_td",
     "actual": 1,
@@ -21487,7 +21502,7 @@
    "result": "won",
    "payout_units": 0.7874,
    "recorded_at": "2026-11-18T17:47:37",
-   "p_calibrated": 0.4942,
+   "p_calibrated": 0.5222,
    "outcome": {
     "stat": "anytime_td",
     "actual": 2,
@@ -21518,7 +21533,7 @@
    "result": "won",
    "payout_units": 0.7937,
    "recorded_at": "2026-11-18T17:47:37",
-   "p_calibrated": 0.4937,
+   "p_calibrated": 0.5217,
    "outcome": {
     "stat": "anytime_td",
     "actual": 1,
@@ -21549,7 +21564,7 @@
    "result": "won",
    "payout_units": 0.8,
    "recorded_at": "2026-11-18T17:47:37",
-   "p_calibrated": 0.4932,
+   "p_calibrated": 0.5213,
    "outcome": {
     "stat": "anytime_td",
     "actual": 1,
@@ -21580,7 +21595,7 @@
    "result": "won",
    "payout_units": 0.8065,
    "recorded_at": "2026-11-18T17:47:37",
-   "p_calibrated": 0.4924,
+   "p_calibrated": 0.5206,
    "outcome": {
     "stat": "anytime_td",
     "actual": 2,
@@ -21611,7 +21626,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-11-18T17:47:37",
-   "p_calibrated": 0.4842,
+   "p_calibrated": 0.5134,
    "outcome": {
     "stat": "anytime_td",
     "actual": 0,
@@ -21642,7 +21657,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-11-18T17:47:37",
-   "p_calibrated": 0.4837,
+   "p_calibrated": 0.513,
    "outcome": {
     "stat": "anytime_td",
     "actual": 0,
@@ -21673,7 +21688,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-11-18T17:47:37",
-   "p_calibrated": 0.4829,
+   "p_calibrated": 0.5123,
    "outcome": {
     "stat": "anytime_td",
     "actual": 0,
@@ -21704,7 +21719,7 @@
    "result": "won",
    "payout_units": 0.2519,
    "recorded_at": "2026-11-20T03:03:35",
-   "p_calibrated": 0.7988,
+   "p_calibrated": 0.8419,
    "outcome": {
     "stat": "pass_cmp",
     "actual": 0,
@@ -21735,7 +21750,7 @@
    "result": "won",
    "payout_units": 0.2545,
    "recorded_at": "2026-11-20T03:03:35",
-   "p_calibrated": 0.8007,
+   "p_calibrated": 0.8165,
    "outcome": {
     "stat": "longest_reception",
     "actual": 8,
@@ -21766,7 +21781,7 @@
    "result": "won",
    "payout_units": 0.2762,
    "recorded_at": "2026-11-20T03:03:35",
-   "p_calibrated": 0.7894,
+   "p_calibrated": 0.7591,
    "outcome": {
     "stat": "rec",
     "actual": 1,
@@ -21797,7 +21812,7 @@
    "result": "won",
    "payout_units": 0.2915,
    "recorded_at": "2026-11-20T03:03:35",
-   "p_calibrated": 0.7862,
+   "p_calibrated": 0.7899,
    "outcome": {
     "stat": "rec_yds",
     "actual": 6,
@@ -21828,7 +21843,7 @@
    "result": "won",
    "payout_units": 0.2941,
    "recorded_at": "2026-11-20T03:03:35",
-   "p_calibrated": 0.7728,
+   "p_calibrated": 0.8062,
    "outcome": {
     "stat": "longest_reception",
     "actual": 4,
@@ -21859,7 +21874,7 @@
    "result": "won",
    "payout_units": 0.2941,
    "recorded_at": "2026-11-20T03:03:35",
-   "p_calibrated": 0.7722,
+   "p_calibrated": 0.7918,
    "outcome": {
     "stat": "longest_reception",
     "actual": 6,
@@ -21890,7 +21905,7 @@
    "result": "won",
    "payout_units": 0.3571,
    "recorded_at": "2026-11-20T03:03:35",
-   "p_calibrated": 0.7375,
+   "p_calibrated": 0.9051,
    "outcome": {
     "stat": "pass_yds",
     "actual": 0,
@@ -21921,7 +21936,7 @@
    "result": "won",
    "payout_units": 0.2703,
    "recorded_at": "2026-11-20T21:52:41",
-   "p_calibrated": 0.7829,
+   "p_calibrated": 0.657,
    "outcome": {
     "stat": "pass_cmp",
     "actual": 0,
@@ -21952,7 +21967,7 @@
    "result": "won",
    "payout_units": 0.4695,
    "recorded_at": "2026-11-20T21:52:41",
-   "p_calibrated": 0.6847,
+   "p_calibrated": 0.7102,
    "outcome": {
     "stat": "longest_reception",
     "actual": 20,
@@ -21983,7 +21998,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-11-20T21:52:41",
-   "p_calibrated": 0.589,
+   "p_calibrated": 0.5919,
    "outcome": {
     "stat": "rec",
     "actual": 7,
@@ -22014,7 +22029,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-11-20T21:52:41",
-   "p_calibrated": 0.5878,
+   "p_calibrated": 0.5919,
    "outcome": {
     "stat": "rec",
     "actual": 4,
@@ -22045,7 +22060,7 @@
    "result": "won",
    "payout_units": 0.3268,
    "recorded_at": "2026-11-21T03:16:59",
-   "p_calibrated": 0.7537,
+   "p_calibrated": 0.7643,
    "outcome": {
     "stat": "longest_reception",
     "actual": 8,
@@ -22119,7 +22134,7 @@
    "board_price": -155,
    "board_grade": "C",
    "board_score": 43,
-   "p_calibrated": 0.5431,
+   "p_calibrated": 0.5249,
    "outcome": {
     "final_score": "CAR 5 @ NYR 2",
     "market": "ML_AWAY",
@@ -22133,5 +22148,5 @@
   "2026-05-19",
   "2026-11-22"
  ],
- "digest_generated_at": "2026-11-22T22:01:54"
+ "digest_generated_at": "2026-11-22T23:40:00"
 }
