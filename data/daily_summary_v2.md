@@ -10,12 +10,12 @@
   - 🔴 Edge Count: 0/100
 
 ## 🌐 Slate Overview
-- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.587)
-- **Total games on board:** 48
-- **Strong home favorites:** 23 | **Strong road dogs:** 14
+- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.581)
+- **Total games on board:** 40
+- **Strong home favorites:** 18 | **Strong road dogs:** 11
 
 ## 🎯 Best Bets (sportsbook-priced only)
-- No best bet today: a best bet needs a real sportsbook price — 23 model-only projections excluded (EPL 4, UCL 4, NHL 4, GOLF 4, LOL 3, NCAAF 3, NFL 1).
+- No best bet today: a best bet needs a real sportsbook price — 15 model-only projections excluded (UCL 4, GOLF 4, LOL 3, NCAAF 2, NBA 1, NFL 1).
 
 ## 🔒 Locks of the Day -- Track Record
 - Sportsbook-priced: **3-0** (n=3; net +0.05u, ROI +60.8%) -- too few to judge
@@ -29,41 +29,39 @@
 - **[CS]** torzsi OVER 40.5 Kills (BO3) · model 61.0%
 
 ## ⚡ Pre-Game
-- No pre-game alerts: an alert needs a game-lines-desk probability whose verdict passed (not NO EDGE / UNPROVEN) and a DraftKings price. NBA: 5 not pre-game; NHL: 11 not pre-game; WNBA: 1 not pre-game; MLS: 3 not pre-game; EPL: 7 not pre-game; UCL: 9 no validated model probability (not from the game-lines desk); NFL: 12 desk verdict UNPROVEN; NCAAF: 11 not pre-game; NCAAB: 2 not pre-game; CWS: 1 not pre-game
+- No pre-game alerts: an alert needs a game-lines-desk probability whose verdict passed (not NO EDGE / UNPROVEN) and a DraftKings price. NBA: 7 desk verdict NO EDGE; NHL: 5 desk verdict NO EDGE; WNBA: 1 not pre-game; MLS: 3 no validated model probability (not from the game-lines desk); EPL: 2 started or no start time; UCL: 9 no validated model probability (not from the game-lines desk); NFL: 12 desk verdict UNPROVEN; NCAAF: 22 not pre-game; NCAAB: 3 not pre-game; CWS: 1 not pre-game
 
 ## 🔥/❄️ Heat / Cold Signals
-- Hot teams: **6** | Cold teams: **9** | Over-heavy: 0 | Under-heavy: 30
+- Hot teams: **5** | Cold teams: **10** | Over-heavy: 0 | Under-heavy: 31
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (76)
-- STREAK_MISMATCH: **1**
-- RESIDUAL_DIVERGENCE: **8**
-- STEAM_MOVE: **67**
-  - Milwaukee Bucks (NBA): Milwaukee Bucks on L7 streak but model still favors them (50%) -- may be overvalued
-  - Dallas Mavericks (NBA): Dallas Mavericks UNDERPERFORMING expected margin by 9.4pts in recent games -- model bias may persist
-  - LA Clippers (NBA): LA Clippers UNDERPERFORMING expected margin by 10.7pts in recent games -- model bias may persist
-  - New Orleans Pelicans (NBA): New Orleans Pelicans UNDERPERFORMING expected margin by 7.7pts in recent games -- model bias may persist
-  - Carolina Hurricanes (NHL): Carolina Hurricanes UNDERPERFORMING expected margin by 9.2pts in recent games -- model bias may persist
+## ⚠️ Anomaly Detector (45)
+- RESIDUAL_DIVERGENCE: **7**
+- STEAM_MOVE: **38**
+  - Utah Jazz (NBA): Utah Jazz OUTPERFORMING expected margin by 13.2pts in recent games -- model bias may persist
+  - Dallas Mavericks (NBA): Dallas Mavericks UNDERPERFORMING expected margin by 6.4pts in recent games -- model bias may persist
+  - Golden State Warriors (NBA): Golden State Warriors UNDERPERFORMING expected margin by 7.4pts in recent games -- model bias may persist
+  - St. Louis Blues (NHL): St. Louis Blues UNDERPERFORMING expected margin by 7.7pts in recent games -- model bias may persist
+  - Edmonton Oilers (NHL): Edmonton Oilers UNDERPERFORMING expected margin by 8.0pts in recent games -- model bias may persist
 
 ## 💰 Today's Portfolio
 - No priced picks: a stake is sized only at an actionable DraftKings quote.
 
-## 🎯 Signal stacking (16 games with 2+ signals) — research, not picks
+## 🎯 Signal stacking (13 games with 2+ signals) — research, not picks
+  - Columbus Blue Jackets @ Toronto Maple Leafs : 5 signals (HEAT_COLD, HEAT_COLD, HEAT_COLD, ANOMALY)
   - LA Clippers @ Dallas Mavericks : 4 signals (HEAT_COLD, HEAT_COLD, ANOMALY, ANOMALY)
-  - Columbus Blue Jackets @ Toronto Maple Leafs : 4 signals (HEAT_COLD, HEAT_COLD, HEAT_COLD, ANOMALY)
-  - Milwaukee Bucks @ Philadelphia 76ers : 3 signals (HEAT_COLD, HEAT_COLD, HEAT_COLD)
+  - Memphis Grizzlies @ Minnesota Timberwolves : 3 signals (HEAT_COLD, HEAT_COLD, ANOMALY)
   - Boston Celtics @ Sacramento Kings : 3 signals (HEAT_COLD, HEAT_COLD, HEAT_COLD)
-  - Anaheim Ducks @ Utah Mammoth : 3 signals (HEAT_COLD, HEAT_COLD, ANOMALY)
+  - Pittsburgh Penguins @ Nashville Predators : 3 signals (HEAT_COLD, HEAT_COLD, HEAT_COLD)
 
-## 🏀 NBA Player Heat (5 HOT / 6 COLD)
-  - 🔥 **Maxime Raynaud** (SAC): L5 20.0/9.8/2.6 vs season 12.5/7.5/1.4 [PTS +7.5, REB +2.3]
-  - 🔥 **Taylor Hendricks** (MEM): L5 14.0/5.4/1.8 vs season 8.3/3.5/0.9 [PTS +5.7]
-  - 🔥 **Cam Spencer** (MEM): L5 15.6/2.4/8.0 vs season 11.3/2.9/5.8 [AST +2.2]
-  - 🔥 **Saddiq Bey** (NO): L5 20.0/7.2/3.2 vs season 17.0/4.8/2.6 [REB +2.5]
-  - 🔥 **LaMelo Ball** (MIN): L5 16.0/6.6/5.0 vs season 18.2/4.4/6.0 [REB +2.2]
-  - ❄️ **Shaedon Sharpe** (POR): L5 7.2 vs season 20.8 [PTS -13.6, REB -2.7, AST -2.0]
-  - ❄️ **Brandon Ingram** (LAC): L5 12.0 vs season 21.5 [PTS -9.5, REB -2.4]
-  - ❄️ **Bennedict Mathurin** (NO): L5 3.2 vs season 9.1 [PTS -5.9]
+## 🏀 NBA Player Heat (5 HOT / 2 COLD)
+  - 🔥 **Franz Wagner** (ORL): L5 31.2/7.6/8.0 vs season 24.0/6.4/7.1 [PTS +7.2]
+  - 🔥 **Brice Sensabaugh** (UTAH): L5 17.4/5.4/2.2 vs season 11.7/3.5/1.7 [PTS +5.7]
+  - 🔥 **Cade Cunningham** (DET): L5 30.4/4.6/8.2 vs season 25.2/5.2/8.4 [PTS +5.2]
+  - 🔥 **Isaiah Hartenstein** (OKC): L5 11.0/12.6/4.8 vs season 8.4/10.5/3.8 [REB +2.1]
+  - 🔥 **Ausar Thompson** (DET): L5 12.8/8.2/7.0 vs season 10.4/7.7/4.8 [AST +2.2]
+  - ❄️ **Santi Aldama** (DAL): L5 4.0 vs season 9.2 [PTS -5.2, REB -2.8]
+  - ❄️ **Bobby Portis** (MIA): L5 8.4 vs season 9.1 [REB -2.2]
 
 ## 🥊 UFC Fight Matchups (UFC Fight Night: Procházka vs. Stirling) — model projection — unvalidated, no sportsbook price, not a recommendation
   - model favourite **Ikram Aliskerov** (19-2-0) vs Jared Cannonier
@@ -86,12 +84,12 @@
 - [NBA] New Orleans Pelicans @ San Antonio Spurs (2026-11-21): home team on a back-to-back
 - [NBA] Boston Celtics @ Sacramento Kings (2026-11-21): away team on a back-to-back
 
-## 📈 Streaks (9) — record facts, not picks
-- [NBA] Philadelphia 76ers on W4 L10 4-1
-- [NBA] Milwaukee Bucks on L7 L10 0-5
+## 📈 Streaks (7) — record facts, not picks
 - [NBA] New York Knicks on W3 L10 3-2
 - [NBA] Memphis Grizzlies on W5 L10 5-0
 - [NBA] Sacramento Kings on L6 L10 0-5
+- [NHL] Washington Capitals on L4 L10 1-4
+- [NHL] Toronto Maple Leafs on L6 L10 0-5
 
 ## 📉 Walk-Forward Trajectory (n_windows=3d × 8 markets)
 - 📈 Improving: **1** · ➖ Flat: 4 · 📉 Degrading: **3**
@@ -104,7 +102,7 @@
 - ELITE: **0** · HEALTHY: 1 · OK: 0 · DEGRADED: **1**
 
 ## 🤖 Self-Training Status
-- **NBA**: n=97 games · hit rate 68.0% · bias +4.3pp
-- **NHL**: n=86 games · hit rate 52.3% · bias +13.6pp [calibration applied]
+- **NBA**: n=102 games · hit rate 67.7% · bias +1.7pp
+- **NHL**: n=96 games · hit rate 53.1% · bias +11.8pp [calibration applied]
 - **MLS**: n=26 games · hit rate 57.7% · bias -0.4pp
 - **EPL**: n=19 games · hit rate 52.6% · bias -4.5pp

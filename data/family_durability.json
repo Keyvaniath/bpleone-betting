@@ -1,16 +1,16 @@
 {
  "durable_book": null,
- "generated_at": "2026-11-22T02:05:33",
- "n_settled_total": 570,
+ "generated_at": "2026-11-22T16:52:23",
+ "n_settled_total": 574,
  "price_classes": [
   "A",
   "B"
  ],
- "n_settled_all_classes": 19165,
+ "n_settled_all_classes": 19259,
  "n_excluded_prizepicks": 474,
- "n_excluded_class_c": 18121,
+ "n_excluded_class_c": 18211,
  "no_durable_note": "no durable family at sportsbook prices",
- "n_families_cut": 31,
+ "n_families_cut": 30,
  "n_families_evaluated": 3,
  "min_n": 40,
  "durable_n": 100,
@@ -21,14 +21,27 @@
  "families": [
   {
    "family": "ml_away",
-   "n": 97,
-   "hit": 0.536,
-   "net_units": -0.9,
-   "roi": -0.9,
-   "ci_lo": -20.3,
-   "ci_hi": 19.2,
-   "h1_roi": 6.8,
-   "h2_roi": -8.5,
+   "n": 99,
+   "hit": 0.535,
+   "net_units": -1.1,
+   "roi": -1.1,
+   "ci_lo": -20.5,
+   "ci_hi": 18.3,
+   "h1_roi": 4.7,
+   "h2_roi": -6.8,
+   "both_halves_positive": false,
+   "tier": "NEGATIVE"
+  },
+  {
+   "family": "ml_home",
+   "n": 80,
+   "hit": 0.575,
+   "net_units": -2.1,
+   "roi": -2.6,
+   "ci_lo": -20.8,
+   "ci_hi": 15.3,
+   "h1_roi": -0.5,
+   "h2_roi": -4.7,
    "both_halves_positive": false,
    "tier": "NEGATIVE"
   },
@@ -44,19 +57,6 @@
    "h2_roi": -23.9,
    "both_halves_positive": false,
    "tier": "FRAGILE"
-  },
-  {
-   "family": "ml_home",
-   "n": 78,
-   "hit": 0.564,
-   "net_units": -3.4,
-   "roi": -4.3,
-   "ci_lo": -23.5,
-   "ci_hi": 15.7,
-   "h1_roi": -1.8,
-   "h2_roi": -6.9,
-   "both_halves_positive": false,
-   "tier": "NEGATIVE"
   }
  ],
  "method_note": "Sportsbook-priced picks only (price class A/B); PrizePicks (MLB-PP, unverified) and class-C rows graded at the model's own odds are excluded. Every surviving (non-cut) family with n >= 40 graded picks, ranked by the LOWER bound of a 1000-resample bootstrap 95% CI on ROI. DURABLE = CI floor above zero AND positive in both chronological halves AND n >= 100. A big headline ROI with a CI spanning zero or a losing second half is FRAGILE, not edge.",

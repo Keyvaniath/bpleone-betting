@@ -1,5 +1,5 @@
 **EdgeStat -- Tonight's Slate**
-_NO_ACTION_NIGHT_ | L:0 S:16 F:100
+_NO_ACTION_NIGHT_ | L:0 S:16 F:121
 
 :dart: **Top Picks:**
 1. [GOLF] Marco Penge -- Marco Penge (PLAYER_STRONG)
