@@ -1,33 +1,33 @@
 {
-  "generated_at": "2026-11-22T21:27:08",
+  "generated_at": "2026-11-22T22:01:48",
   "stake_assumption": "1u flat per pick",
   "total_picks": 20000,
-  "n_settled": 25678,
-  "n_pending": 838,
+  "n_settled": 25922,
+  "n_pending": 598,
   "n_void": 0,
-  "wins": 12903,
-  "losses": 12764,
+  "wins": 13086,
+  "losses": 12825,
   "pushes": 11,
-  "hit_rate": 0.5027,
-  "net_units": -3513.003,
-  "roi_pct": -13.69,
+  "hit_rate": 0.505,
+  "net_units": -3507.629,
+  "roi_pct": -13.54,
   "n_calibrated_picks": 19962,
   "calibrated_reliability": {
-    "n": 19116,
-    "ece_raw": 0.0601,
-    "ece_calibrated": 0.0073,
-    "brier_raw": 0.20928,
-    "brier_calibrated": 0.19694,
+    "n": 19356,
+    "ece_raw": 0.0592,
+    "ece_calibrated": 0.0076,
+    "brier_raw": 0.2089,
+    "brier_calibrated": 0.19676,
     "note": "In-sample over the settled ledger (the isotonic transform is fit on these same outcomes); held-out 70/30 validation is in recalibration_map.json. p_predicted = raw model prob (kept untouched for the learning loop); p_calibrated = honest prob stamped per pick. Lower ECE/Brier on the calibrated column = the displayed % is truer."
   },
   "curated": {
-    "n_settled": 549,
+    "n_settled": 550,
     "wins": 293,
-    "losses": 245,
+    "losses": 246,
     "pushes": 11,
-    "hit_rate": 0.5446,
-    "net_units": -3.105,
-    "roi_pct": -0.58,
+    "hit_rate": 0.5436,
+    "net_units": -4.105,
+    "roi_pct": -0.76,
     "sources": [
       "cfb_model",
       "lock_of_day",
@@ -42,10 +42,10 @@
     "definition": "Featured/recommended plays only -- Lock of the Day, Top 25, Whale, Sharp, Consensus (hit), Under Alerts, POD. Excludes the experimental prop feeds, which are tracked to train the model, not bet.",
     "last_30": {
       "wins": 7,
-      "losses": 5,
-      "net_units": 0.502,
-      "roi_pct": 4.18,
-      "hit_rate": 0.5833
+      "losses": 6,
+      "net_units": -0.498,
+      "roi_pct": -3.83,
+      "hit_rate": 0.5385
     }
   },
   "prizepicks": {
@@ -65,7 +65,7 @@
     "losses": 4,
     "net_units": 5.486,
     "roi_pct": 26.12,
-    "n_pending": 0,
+    "n_pending": 1,
     "first_date": "2026-11-11",
     "last_date": "2026-11-22",
     "by_sport": {
@@ -75,7 +75,7 @@
         "losses": 2,
         "net_units": 2.27,
         "roi_pct": 22.7,
-        "n_pending": 0
+        "n_pending": 1
       },
       "NHL": {
         "n_settled": 11,
@@ -97,6 +97,17 @@
         "result": "won",
         "payout_units": 0.6452,
         "final": "CAR 5 @ NYR 2"
+      },
+      {
+        "date": "2026-11-22",
+        "sport": "NBA",
+        "matchup": "ORL @ WSH",
+        "team": "ORL",
+        "market": "ML_AWAY",
+        "book_american": -197,
+        "result": "pending",
+        "payout_units": null,
+        "final": null
       },
       {
         "date": "2026-11-21",
@@ -207,17 +218,6 @@
         "result": "won",
         "payout_units": 0.5208,
         "final": "NY 112 @ TOR 108"
-      },
-      {
-        "date": "2026-11-14",
-        "sport": "NHL",
-        "matchup": "WPG @ CHI",
-        "team": "WPG",
-        "market": "ML_AWAY",
-        "book_american": -155,
-        "result": "won",
-        "payout_units": 0.6452,
-        "final": "WPG 5 @ CHI 4"
       }
     ],
     "definition": "Model leans: the per-sport play on a day a desk has no pick with an edge -- the favourite its model and DraftKings both favour. Logged at the DraftKings price, graded on the final score. Not an edge (expected value is the book's margin) and never part of the curated record."
@@ -229,15 +229,15 @@
       "losses": 4,
       "net_units": 5.486,
       "roi_pct": 26.12,
-      "n_pending": 0
+      "n_pending": 1
     },
     "desk_picks": {
-      "n_settled": 4,
+      "n_settled": 5,
       "wins": 2,
-      "losses": 2,
-      "net_units": -1.26,
-      "roi_pct": -31.5,
-      "n_pending": 2
+      "losses": 3,
+      "net_units": -2.26,
+      "roi_pct": -45.2,
+      "n_pending": 1
     },
     "first_date": "2026-11-11",
     "recent": [
@@ -261,9 +261,9 @@
         "team": "PIT",
         "market": "ML_AWAY",
         "book_american": -205,
-        "result": "pending",
-        "payout_units": null,
-        "final": null
+        "result": "lost",
+        "payout_units": -1.0,
+        "final": "PIT 16 @ PHI 19"
       },
       {
         "date": "2026-11-22",
@@ -273,6 +273,18 @@
         "team": "MIN",
         "market": "ML_AWAY",
         "book_american": 136,
+        "result": "pending",
+        "payout_units": null,
+        "final": null
+      },
+      {
+        "date": "2026-11-22",
+        "sport": "NBA",
+        "kind": "lean",
+        "matchup": "ORL @ WSH",
+        "team": "ORL",
+        "market": "ML_AWAY",
+        "book_american": -197,
         "result": "pending",
         "payout_units": null,
         "final": null
@@ -420,30 +432,18 @@
         "result": "won",
         "payout_units": 0.2353,
         "final": "BUF 31 @ NYJ 12"
-      },
-      {
-        "date": "2026-11-15",
-        "sport": "NFL",
-        "kind": "desk pick",
-        "matchup": "SF @ DAL",
-        "team": "SF",
-        "market": "ML_AWAY",
-        "book_american": -198,
-        "result": "won",
-        "payout_units": 0.5051,
-        "final": "SF 46 @ DAL 40"
       }
     ],
     "definition": "The play shown for each major sport on each day, graded at the DraftKings price it was logged at. 'desk pick' = a pick with an edge under the desk's rule; 'lean' = the favourite the model and DraftKings both favour on a day the desk has no pick (not an edge). The two are counted separately and are never summed."
   },
   "board": {
     "all_bets": {
-      "n_settled": 57,
-      "wins": 33,
-      "losses": 24,
-      "net_units": -3.24,
-      "roi_pct": -5.68,
-      "n_pending": 18,
+      "n_settled": 62,
+      "wins": 35,
+      "losses": 27,
+      "net_units": -5.208,
+      "roi_pct": -8.4,
+      "n_pending": 15,
       "n_clv": 65,
       "avg_clv_pts": -0.67,
       "beat_close_pct": 29.2,
@@ -451,12 +451,12 @@
       "median_close_min_before": 12
     },
     "alpha": {
-      "n_settled": 40,
+      "n_settled": 42,
       "wins": 25,
-      "losses": 15,
-      "net_units": -0.189,
-      "roi_pct": -0.47,
-      "n_pending": 4,
+      "losses": 17,
+      "net_units": -2.189,
+      "roi_pct": -5.21,
+      "n_pending": 2,
       "n_clv": 43,
       "avg_clv_pts": -0.06,
       "beat_close_pct": 30.2,
@@ -478,12 +478,12 @@
         "median_close_min_before": null
       },
       "B": {
-        "n_settled": 8,
-        "wins": 3,
-        "losses": 5,
-        "net_units": -2.427,
-        "roi_pct": -30.34,
-        "n_pending": 17,
+        "n_settled": 13,
+        "wins": 5,
+        "losses": 8,
+        "net_units": -4.394,
+        "roi_pct": -33.8,
+        "n_pending": 12,
         "n_clv": 15,
         "avg_clv_pts": 0.03,
         "beat_close_pct": 46.7,
@@ -496,7 +496,7 @@
         "losses": 19,
         "net_units": -0.813,
         "roi_pct": -1.66,
-        "n_pending": 1,
+        "n_pending": 3,
         "n_clv": 50,
         "avg_clv_pts": -0.88,
         "beat_close_pct": 24.0,
@@ -506,12 +506,12 @@
     },
     "by_price": {
       "heavy_fav": {
-        "n_settled": 7,
-        "wins": 5,
-        "losses": 2,
-        "net_units": 0.053,
-        "roi_pct": 0.76,
-        "n_pending": 5,
+        "n_settled": 9,
+        "wins": 6,
+        "losses": 3,
+        "net_units": -0.735,
+        "roi_pct": -8.17,
+        "n_pending": 3,
         "n_clv": 10,
         "avg_clv_pts": 0.41,
         "beat_close_pct": 40.0,
@@ -519,12 +519,12 @@
         "median_close_min_before": 6
       },
       "fav": {
-        "n_settled": 45,
-        "wins": 27,
+        "n_settled": 46,
+        "wins": 28,
         "losses": 18,
-        "net_units": -1.143,
-        "roi_pct": -2.54,
-        "n_pending": 7,
+        "net_units": -0.323,
+        "roi_pct": -0.7,
+        "n_pending": 8,
         "n_clv": 47,
         "avg_clv_pts": -0.79,
         "beat_close_pct": 27.7,
@@ -532,12 +532,12 @@
         "median_close_min_before": 14
       },
       "dog": {
-        "n_settled": 5,
+        "n_settled": 7,
         "wins": 1,
-        "losses": 4,
-        "net_units": -2.15,
-        "roi_pct": -43.0,
-        "n_pending": 6,
+        "losses": 6,
+        "net_units": -4.15,
+        "roi_pct": -59.29,
+        "n_pending": 4,
         "n_clv": 8,
         "avg_clv_pts": -1.31,
         "beat_close_pct": 25.0,
@@ -552,7 +552,7 @@
         "losses": 7,
         "net_units": -0.042,
         "roi_pct": -0.22,
-        "n_pending": 0,
+        "n_pending": 2,
         "n_clv": 19,
         "avg_clv_pts": -2.26,
         "beat_close_pct": 26.3,
@@ -560,12 +560,12 @@
         "median_close_min_before": 5
       },
       "NFL": {
-        "n_settled": 10,
-        "wins": 5,
-        "losses": 5,
-        "net_units": -1.211,
-        "roi_pct": -12.11,
-        "n_pending": 18,
+        "n_settled": 15,
+        "wins": 7,
+        "losses": 8,
+        "net_units": -3.178,
+        "roi_pct": -21.19,
+        "n_pending": 13,
         "n_clv": 18,
         "avg_clv_pts": 0.3,
         "beat_close_pct": 50.0,
@@ -588,24 +588,24 @@
     },
     "by_day": {
       "2026-11-22": {
-        "n_settled": 2,
-        "wins": 1,
-        "losses": 1,
-        "net_units": -0.355,
-        "roi_pct": -17.75,
-        "n_pending": 9,
+        "n_settled": 7,
+        "wins": 3,
+        "losses": 4,
+        "net_units": -2.322,
+        "roi_pct": -33.17,
+        "n_pending": 6,
         "n_clv": 10,
         "avg_clv_pts": 0.39,
         "beat_close_pct": 60.0,
         "avg_clv_ev_pct": -5.14,
         "median_close_min_before": 6,
         "alpha": {
-          "n_settled": 1,
+          "n_settled": 3,
           "wins": 0,
-          "losses": 1,
-          "net_units": -1.0,
+          "losses": 3,
+          "net_units": -3.0,
           "roi_pct": -100.0,
-          "n_pending": 4,
+          "n_pending": 2,
           "n_clv": 4,
           "avg_clv_pts": 0.24,
           "beat_close_pct": 50.0,
@@ -1020,11 +1020,11 @@
         "team": "TEN",
         "market": "ML_AWAY",
         "book_american": 309,
-        "result": "pending",
-        "payout_units": null,
+        "result": "lost",
+        "payout_units": -1.0,
         "close_price": 287,
         "clv_pts": 1.39,
-        "final": null
+        "final": "TEN 30 @ DAL 51"
       },
       {
         "date": "2026-11-22",
@@ -1050,11 +1050,11 @@
         "team": "PIT",
         "market": "ML_AWAY",
         "book_american": -199,
-        "result": "pending",
-        "payout_units": null,
+        "result": "lost",
+        "payout_units": -1.0,
         "close_price": -196,
         "clv_pts": -0.34,
-        "final": null
+        "final": "PIT 16 @ PHI 19"
       },
       {
         "date": "2026-11-22",
@@ -1110,11 +1110,11 @@
         "team": "TB",
         "market": "ML_AWAY",
         "book_american": 150,
-        "result": "pending",
-        "payout_units": null,
+        "result": "lost",
+        "payout_units": -1.0,
         "close_price": 184,
         "clv_pts": -4.79,
-        "final": null
+        "final": "TB 21 @ DET 31"
       },
       {
         "date": "2026-11-22",
@@ -1125,11 +1125,11 @@
         "team": "CAR",
         "market": "ML_HOME",
         "book_american": -122,
-        "result": "pending",
-        "payout_units": null,
+        "result": "won",
+        "payout_units": 0.8197,
         "close_price": -141,
         "clv_pts": 3.55,
-        "final": null
+        "final": "BAL 33 @ CAR 35"
       },
       {
         "date": "2026-11-22",
@@ -1140,11 +1140,11 @@
         "team": "CHI",
         "market": "ML_HOME",
         "book_american": -470,
-        "result": "pending",
-        "payout_units": null,
+        "result": "won",
+        "payout_units": 0.2128,
         "close_price": -670,
         "clv_pts": 4.56,
-        "final": null
+        "final": "NO 13 @ CHI 21"
       },
       {
         "date": "2026-11-22",
@@ -1174,6 +1174,36 @@
         "payout_units": null,
         "close_price": 152,
         "clv_pts": -0.32,
+        "final": null
+      },
+      {
+        "date": "2026-11-22",
+        "sport": "NBA",
+        "grade": "C",
+        "is_alpha": false,
+        "matchup": "ORL @ WSH",
+        "team": "ORL",
+        "market": "ML_AWAY",
+        "book_american": -197,
+        "result": "pending",
+        "payout_units": null,
+        "close_price": null,
+        "clv_pts": null,
+        "final": null
+      },
+      {
+        "date": "2026-11-22",
+        "sport": "NBA",
+        "grade": "C",
+        "is_alpha": false,
+        "matchup": "DAL @ UTAH",
+        "team": "DAL",
+        "market": "ML_AWAY",
+        "book_american": -135,
+        "result": "pending",
+        "payout_units": null,
+        "close_price": null,
+        "clv_pts": null,
         "final": null
       },
       {
@@ -1745,112 +1775,37 @@
         "close_price": -142,
         "clv_pts": -1.0,
         "final": "EDM 1 @ TOR 0"
-      },
-      {
-        "date": "2026-11-14",
-        "sport": "NHL",
-        "grade": "C",
-        "is_alpha": true,
-        "matchup": "SJ @ UTA",
-        "team": "UTA",
-        "market": "ML_HOME",
-        "book_american": -198,
-        "result": "lost",
-        "payout_units": -1.0,
-        "close_price": -185,
-        "clv_pts": -1.53,
-        "final": "SJ 6 @ UTA 5"
-      },
-      {
-        "date": "2026-11-14",
-        "sport": "NHL",
-        "grade": "C",
-        "is_alpha": true,
-        "matchup": "NJ @ WSH",
-        "team": "NJ",
-        "market": "ML_AWAY",
-        "book_american": -135,
-        "result": "won",
-        "payout_units": 0.7407,
-        "close_price": -135,
-        "clv_pts": 0.0,
-        "final": "NJ 7 @ WSH 4"
       }
     ],
     "open": [
       {
         "date": "2026-11-22",
-        "sport": "NFL",
-        "grade": "B",
-        "is_alpha": true,
-        "matchup": "TEN @ DAL",
-        "team": "TEN",
-        "market": "ML_AWAY",
-        "book_american": 309,
-        "result": "pending",
-        "payout_units": null,
-        "close_price": 287,
-        "clv_pts": 1.39,
-        "final": null
-      },
-      {
-        "date": "2026-11-22",
-        "sport": "NFL",
-        "grade": "B",
+        "sport": "NBA",
+        "grade": "C",
         "is_alpha": false,
-        "matchup": "TB @ DET",
-        "team": "TB",
+        "matchup": "ORL @ WSH",
+        "team": "ORL",
         "market": "ML_AWAY",
-        "book_american": 150,
+        "book_american": -197,
         "result": "pending",
         "payout_units": null,
-        "close_price": 184,
-        "clv_pts": -4.79,
+        "close_price": null,
+        "clv_pts": null,
         "final": null
       },
       {
         "date": "2026-11-22",
-        "sport": "NFL",
-        "grade": "B",
+        "sport": "NBA",
+        "grade": "C",
         "is_alpha": false,
-        "matchup": "BAL @ CAR",
-        "team": "CAR",
-        "market": "ML_HOME",
-        "book_american": -122,
-        "result": "pending",
-        "payout_units": null,
-        "close_price": -141,
-        "clv_pts": 3.55,
-        "final": null
-      },
-      {
-        "date": "2026-11-22",
-        "sport": "NFL",
-        "grade": "B",
-        "is_alpha": false,
-        "matchup": "NO @ CHI",
-        "team": "CHI",
-        "market": "ML_HOME",
-        "book_american": -470,
-        "result": "pending",
-        "payout_units": null,
-        "close_price": -670,
-        "clv_pts": 4.56,
-        "final": null
-      },
-      {
-        "date": "2026-11-22",
-        "sport": "NFL",
-        "grade": "B",
-        "is_alpha": true,
-        "matchup": "PIT @ PHI",
-        "team": "PIT",
+        "matchup": "DAL @ UTAH",
+        "team": "DAL",
         "market": "ML_AWAY",
-        "book_american": -199,
+        "book_american": -135,
         "result": "pending",
         "payout_units": null,
-        "close_price": -196,
-        "clv_pts": -0.34,
+        "close_price": null,
+        "clv_pts": null,
         "final": null
       },
       {
@@ -2054,11 +2009,11 @@
   "by_price_class": {
     "all": {
       "C": {
-        "n": 25043,
-        "wins": 12563,
-        "losses": 12480,
-        "net_units": -3504.367,
-        "roi_pct": -13.99
+        "n": 25282,
+        "wins": 12744,
+        "losses": 12538,
+        "net_units": -3497.006,
+        "roi_pct": -13.83
       },
       "B": {
         "n": 562,
@@ -2068,11 +2023,11 @@
         "roi_pct": -0.74
       },
       "A": {
-        "n": 73,
-        "wins": 41,
-        "losses": 32,
-        "net_units": -4.544,
-        "roi_pct": -6.22
+        "n": 78,
+        "wins": 43,
+        "losses": 35,
+        "net_units": -6.531,
+        "roi_pct": -8.37
       }
     },
     "curated": {
@@ -2084,11 +2039,11 @@
         "roi_pct": -0.86
       },
       "A": {
-        "n": 4,
+        "n": 5,
         "wins": 2,
-        "losses": 2,
-        "net_units": -1.26,
-        "roi_pct": -31.5
+        "losses": 3,
+        "net_units": -2.26,
+        "roi_pct": -45.2
       },
       "C": {
         "n": 2,
@@ -2107,18 +2062,18 @@
   "headline_basis": "all-time: working ledger + data/ledger_archive.json",
   "working_ledger_only": {
     "all": {
-      "n_settled": 19162,
-      "wins": 9676,
-      "losses": 9477,
-      "net_units": -2248.287,
-      "roi_pct": -11.74
+      "n_settled": 19402,
+      "wins": 9857,
+      "losses": 9536,
+      "net_units": -2244.883,
+      "roi_pct": -11.58
     },
     "curated": {
-      "n_settled": 493,
+      "n_settled": 494,
       "wins": 260,
-      "losses": 224,
-      "net_units": -9.277,
-      "roi_pct": -1.92
+      "losses": 225,
+      "net_units": -10.277,
+      "roi_pct": -2.12
     }
   },
   "price_corrections": [
@@ -2198,23 +2153,23 @@
     }
   ],
   "stale_sources_skipped": [],
-  "inactive_player_props_blocked": 30,
+  "inactive_player_props_blocked": 27,
   "started_game_picks_blocked": 4,
   "past_dated_picks_blocked": 0,
   "unpriced_picks_blocked": 0,
   "restatement": {
     "date": "2026-10-23",
     "note": "The headline became ALL-TIME on 2026-10-23. 5,946 settled picks that the old tail-cut eviction had destroyed (May-June 2026, the 07-06 erosion and the run-up to 09-03) were rebuilt from git history at each pick's final state, with today's duplicate-wager rule re-applied, and folded back in. They are mostly the raw May-June MLB prop firehose (2,961-2,983, -1,256.9u), so the firehose ROI fell; the curated record changed by the curated picks among them. Before this date the published numbers covered the working window only -- working_ledger_only keeps that basis.",
-    "n_archived_in_headline": 6516
+    "n_archived_in_headline": 6520
   },
-  "n_added_this_run": 1,
-  "n_newly_settled_this_run": 1,
+  "n_added_this_run": 5,
+  "n_newly_settled_this_run": 245,
   "n_resettled_this_run": 0,
   "n_voided_this_run": 0,
   "n_duplicates_collapsed_this_run": 76,
-  "n_duplicate_adds_blocked_this_run": 32,
+  "n_duplicate_adds_blocked_this_run": 33,
   "n_reconciled_settled_voids": 0,
-  "n_bootstrapped_from_locks_history": 76,
+  "n_bootstrapped_from_locks_history": 75,
   "by_source": {
     "mlb_hr_yn_to_hit_hr_yes": {
       "n": 1780,
@@ -6174,20 +6129,20 @@
       }
     },
     "nfl_rush_yds": {
-      "n": 407,
-      "wins": 300,
-      "losses": 107,
+      "n": 426,
+      "wins": 314,
+      "losses": 112,
       "pushes": 0,
-      "net_units": -14.232,
+      "net_units": -14.839,
       "hit_rate": 0.7371,
-      "roi_pct": -3.5,
+      "roi_pct": -3.48,
       "by_price_class": {
         "C": {
-          "n": 407,
-          "wins": 300,
-          "losses": 107,
-          "net_units": -14.249,
-          "roi_pct": -3.5
+          "n": 426,
+          "wins": 314,
+          "losses": 112,
+          "net_units": -14.856,
+          "roi_pct": -3.49
         }
       },
       "sportsbook": {
@@ -6198,20 +6153,20 @@
       }
     },
     "nfl_pass_yds": {
-      "n": 180,
-      "wins": 118,
-      "losses": 62,
+      "n": 189,
+      "wins": 125,
+      "losses": 64,
       "pushes": 0,
-      "net_units": -21.018,
-      "hit_rate": 0.6556,
-      "roi_pct": -11.68,
+      "net_units": -20.143,
+      "hit_rate": 0.6614,
+      "roi_pct": -10.66,
       "by_price_class": {
         "C": {
-          "n": 180,
-          "wins": 118,
-          "losses": 62,
-          "net_units": -21.026,
-          "roi_pct": -11.68
+          "n": 189,
+          "wins": 125,
+          "losses": 64,
+          "net_units": -20.154,
+          "roi_pct": -10.66
         }
       },
       "sportsbook": {
@@ -6222,20 +6177,20 @@
       }
     },
     "nfl_pass_cmp": {
-      "n": 194,
-      "wins": 134,
-      "losses": 60,
+      "n": 203,
+      "wins": 140,
+      "losses": 63,
       "pushes": 0,
-      "net_units": -15.536,
-      "hit_rate": 0.6907,
-      "roi_pct": -8.01,
+      "net_units": -16.881,
+      "hit_rate": 0.6897,
+      "roi_pct": -8.32,
       "by_price_class": {
         "C": {
-          "n": 194,
-          "wins": 134,
-          "losses": 60,
-          "net_units": -15.542,
-          "roi_pct": -8.01
+          "n": 203,
+          "wins": 140,
+          "losses": 63,
+          "net_units": -16.887,
+          "roi_pct": -8.32
         }
       },
       "sportsbook": {
@@ -6246,20 +6201,20 @@
       }
     },
     "nfl_rec": {
-      "n": 1071,
-      "wins": 782,
-      "losses": 289,
+      "n": 1134,
+      "wins": 829,
+      "losses": 305,
       "pushes": 0,
-      "net_units": -6.046,
-      "hit_rate": 0.7302,
-      "roi_pct": -0.56,
+      "net_units": -2.63,
+      "hit_rate": 0.731,
+      "roi_pct": -0.23,
       "by_price_class": {
         "C": {
-          "n": 1071,
-          "wins": 782,
-          "losses": 289,
-          "net_units": -6.033,
-          "roi_pct": -0.56
+          "n": 1134,
+          "wins": 829,
+          "losses": 305,
+          "net_units": -2.617,
+          "roi_pct": -0.23
         }
       },
       "sportsbook": {
@@ -6270,20 +6225,20 @@
       }
     },
     "nfl_rec_yds": {
-      "n": 828,
-      "wins": 628,
-      "losses": 200,
+      "n": 872,
+      "wins": 662,
+      "losses": 210,
       "pushes": 0,
-      "net_units": 1.297,
-      "hit_rate": 0.7585,
-      "roi_pct": 0.16,
+      "net_units": 2.018,
+      "hit_rate": 0.7592,
+      "roi_pct": 0.23,
       "by_price_class": {
         "C": {
-          "n": 828,
-          "wins": 628,
-          "losses": 200,
-          "net_units": 1.284,
-          "roi_pct": 0.16
+          "n": 872,
+          "wins": 662,
+          "losses": 210,
+          "net_units": 2.002,
+          "roi_pct": 0.23
         }
       },
       "sportsbook": {
@@ -6294,20 +6249,20 @@
       }
     },
     "nfl_longest_reception": {
-      "n": 931,
-      "wins": 698,
-      "losses": 233,
+      "n": 987,
+      "wins": 746,
+      "losses": 241,
       "pushes": 0,
-      "net_units": 5.931,
-      "hit_rate": 0.7497,
-      "roi_pct": 0.64,
+      "net_units": 13.015,
+      "hit_rate": 0.7558,
+      "roi_pct": 1.32,
       "by_price_class": {
         "C": {
-          "n": 931,
-          "wins": 698,
-          "losses": 233,
-          "net_units": 5.85,
-          "roi_pct": 0.63
+          "n": 987,
+          "wins": 746,
+          "losses": 241,
+          "net_units": 12.93,
+          "roi_pct": 1.31
         }
       },
       "sportsbook": {
@@ -6318,20 +6273,20 @@
       }
     },
     "nfl_pass_td": {
-      "n": 136,
-      "wins": 97,
-      "losses": 39,
+      "n": 144,
+      "wins": 101,
+      "losses": 43,
       "pushes": 0,
-      "net_units": 0.029,
-      "hit_rate": 0.7132,
-      "roi_pct": 0.02,
+      "net_units": -2.623,
+      "hit_rate": 0.7014,
+      "roi_pct": -1.82,
       "by_price_class": {
         "C": {
-          "n": 136,
-          "wins": 97,
-          "losses": 39,
-          "net_units": 0.029,
-          "roi_pct": 0.02
+          "n": 144,
+          "wins": 101,
+          "losses": 43,
+          "net_units": -2.623,
+          "roi_pct": -1.82
         }
       },
       "sportsbook": {
@@ -6342,20 +6297,20 @@
       }
     },
     "nfl_longest_rush": {
-      "n": 513,
-      "wins": 404,
-      "losses": 109,
+      "n": 535,
+      "wins": 418,
+      "losses": 117,
       "pushes": 0,
-      "net_units": 22.539,
-      "hit_rate": 0.7875,
-      "roi_pct": 4.39,
+      "net_units": 19.185,
+      "hit_rate": 0.7813,
+      "roi_pct": 3.59,
       "by_price_class": {
         "C": {
-          "n": 513,
-          "wins": 404,
-          "losses": 109,
-          "net_units": 22.545,
-          "roi_pct": 4.39
+          "n": 535,
+          "wins": 418,
+          "losses": 117,
+          "net_units": 19.189,
+          "roi_pct": 3.59
         }
       },
       "sportsbook": {
@@ -6366,20 +6321,20 @@
       }
     },
     "nfl_anytime_td": {
-      "n": 78,
-      "wins": 41,
-      "losses": 37,
+      "n": 85,
+      "wins": 46,
+      "losses": 39,
       "pushes": 0,
-      "net_units": -3.059,
-      "hit_rate": 0.5256,
-      "roi_pct": -3.92,
+      "net_units": -1.085,
+      "hit_rate": 0.5412,
+      "roi_pct": -1.28,
       "by_price_class": {
         "C": {
-          "n": 78,
-          "wins": 41,
-          "losses": 37,
-          "net_units": -3.055,
-          "roi_pct": -3.92
+          "n": 85,
+          "wins": 46,
+          "losses": 39,
+          "net_units": -1.08,
+          "roi_pct": -1.27
         }
       },
       "sportsbook": {
@@ -6438,20 +6393,20 @@
       }
     },
     "nfl_pass_int": {
-      "n": 74,
-      "wins": 39,
+      "n": 76,
+      "wins": 41,
       "losses": 35,
       "pushes": 0,
-      "net_units": -14.667,
-      "hit_rate": 0.527,
-      "roi_pct": -19.82,
+      "net_units": -13.408,
+      "hit_rate": 0.5395,
+      "roi_pct": -17.64,
       "by_price_class": {
         "C": {
-          "n": 74,
-          "wins": 39,
+          "n": 76,
+          "wins": 41,
           "losses": 35,
-          "net_units": -14.67,
-          "roi_pct": -19.82
+          "net_units": -13.411,
+          "roi_pct": -17.65
         }
       },
       "sportsbook": {
@@ -10926,13 +10881,13 @@
       }
     },
     "nfl_game_ml": {
-      "n": 33,
-      "wins": 16,
-      "losses": 17,
+      "n": 38,
+      "wins": 18,
+      "losses": 20,
       "pushes": 0,
-      "net_units": -1.517,
-      "hit_rate": 0.4848,
-      "roi_pct": -4.6,
+      "net_units": -3.504,
+      "hit_rate": 0.4737,
+      "roi_pct": -9.22,
       "by_price_class": {
         "B": {
           "n": 10,
@@ -10942,18 +10897,18 @@
           "roi_pct": 24.1
         },
         "A": {
-          "n": 23,
-          "wins": 10,
-          "losses": 13,
-          "net_units": -3.927,
-          "roi_pct": -17.07
+          "n": 28,
+          "wins": 12,
+          "losses": 16,
+          "net_units": -5.915,
+          "roi_pct": -21.12
         }
       },
       "sportsbook": {
-        "wins": 16,
-        "losses": 17,
-        "net_units": -1.517,
-        "roi_pct": -4.6
+        "wins": 18,
+        "losses": 20,
+        "net_units": -3.505,
+        "roi_pct": -9.22
       }
     },
     "nba_fta_fta_under_5.5": {
@@ -13911,12 +13866,12 @@
   },
   "by_market_family": {
     "to_hit_hr_yes": {
-      "n": 1271,
-      "wins": 178,
-      "losses": 1093,
+      "n": 1267,
+      "wins": 176,
+      "losses": 1091,
       "pushes": 0,
-      "net_units": -483.486,
-      "hit_rate": 0.14
+      "net_units": -485.456,
+      "hit_rate": 0.1389
     },
     "hits_2plus_yes": {
       "n": 211,
@@ -13959,12 +13914,12 @@
       "hit_rate": 0.8356
     },
     "ml_away": {
-      "n": 74,
+      "n": 77,
       "wins": 39,
-      "losses": 35,
+      "losses": 38,
       "pushes": 0,
-      "net_units": 1.228,
-      "hit_rate": 0.527
+      "net_units": -1.772,
+      "hit_rate": 0.5065
     },
     "to_record_hit_no": {
       "n": 432,
@@ -14111,12 +14066,12 @@
       "hit_rate": 0.8333
     },
     "ml_home": {
-      "n": 53,
-      "wins": 29,
+      "n": 55,
+      "wins": 31,
       "losses": 24,
       "pushes": 0,
-      "net_units": -1.782,
-      "hit_rate": 0.5472
+      "net_units": -0.769,
+      "hit_rate": 0.5636
     },
     "anytime_goal": {
       "n": 17,
@@ -14583,12 +14538,12 @@
       "hit_rate": 0.5877
     },
     "rec_yds_under": {
-      "n": 427,
-      "wins": 332,
-      "losses": 95,
+      "n": 464,
+      "wins": 361,
+      "losses": 103,
       "pushes": 0,
-      "net_units": 7.761,
-      "hit_rate": 0.7775
+      "net_units": 8.69,
+      "hit_rate": 0.778
     },
     "pass_yds_over": {
       "n": 12,
@@ -14647,60 +14602,60 @@
       "hit_rate": 0.6687
     },
     "pass_int_under": {
-      "n": 23,
-      "wins": 10,
+      "n": 24,
+      "wins": 11,
       "losses": 13,
       "pushes": 0,
-      "net_units": -8.032,
-      "hit_rate": 0.4348
+      "net_units": -7.467,
+      "hit_rate": 0.4583
     },
     "rec_under": {
-      "n": 458,
-      "wins": 338,
-      "losses": 120,
+      "n": 517,
+      "wins": 383,
+      "losses": 134,
       "pushes": 0,
-      "net_units": 3.271,
-      "hit_rate": 0.738
+      "net_units": 7.829,
+      "hit_rate": 0.7408
     },
     "longest_rec_under": {
-      "n": 549,
-      "wins": 432,
-      "losses": 117,
+      "n": 605,
+      "wins": 480,
+      "losses": 125,
       "pushes": 0,
-      "net_units": 25.791,
-      "hit_rate": 0.7869
+      "net_units": 32.872,
+      "hit_rate": 0.7934
     },
     "rec_over": {
-      "n": 164,
-      "wins": 111,
-      "losses": 53,
+      "n": 168,
+      "wins": 113,
+      "losses": 55,
       "pushes": 0,
-      "net_units": -15.251,
-      "hit_rate": 0.6768
+      "net_units": -16.393,
+      "hit_rate": 0.6726
     },
     "pass_td_under": {
-      "n": 62,
-      "wins": 41,
-      "losses": 21,
+      "n": 69,
+      "wins": 45,
+      "losses": 24,
       "pushes": 0,
-      "net_units": -5.185,
-      "hit_rate": 0.6613
+      "net_units": -6.837,
+      "hit_rate": 0.6522
     },
     "rush_yds_over": {
-      "n": 19,
-      "wins": 13,
+      "n": 21,
+      "wins": 15,
       "losses": 6,
       "pushes": 0,
-      "net_units": -1.014,
-      "hit_rate": 0.6842
+      "net_units": -0.257,
+      "hit_rate": 0.7143
     },
     "rec_yds_over": {
-      "n": 43,
-      "wins": 31,
-      "losses": 12,
+      "n": 50,
+      "wins": 36,
+      "losses": 14,
       "pushes": 0,
-      "net_units": -0.114,
-      "hit_rate": 0.7209
+      "net_units": -0.328,
+      "hit_rate": 0.72
     },
     "longest_rush_over": {
       "n": 24,
@@ -14719,28 +14674,28 @@
       "hit_rate": 0.6154
     },
     "pass_cmp_under": {
-      "n": 75,
-      "wins": 60,
-      "losses": 15,
+      "n": 84,
+      "wins": 66,
+      "losses": 18,
       "pushes": 0,
-      "net_units": 4.326,
-      "hit_rate": 0.8
+      "net_units": 2.981,
+      "hit_rate": 0.7857
     },
     "pass_yds_under": {
-      "n": 72,
-      "wins": 50,
-      "losses": 22,
+      "n": 81,
+      "wins": 57,
+      "losses": 24,
       "pushes": 0,
-      "net_units": -4.105,
-      "hit_rate": 0.6944
+      "net_units": -3.232,
+      "hit_rate": 0.7037
     },
     "longest_rush_under": {
-      "n": 263,
-      "wins": 221,
-      "losses": 42,
+      "n": 285,
+      "wins": 235,
+      "losses": 50,
       "pushes": 0,
-      "net_units": 23.103,
-      "hit_rate": 0.8403
+      "net_units": 19.749,
+      "hit_rate": 0.8246
     },
     "longest_rec_over": {
       "n": 22,
@@ -14751,36 +14706,36 @@
       "hit_rate": 0.5455
     },
     "rush_yds_under": {
-      "n": 219,
-      "wins": 181,
-      "losses": 38,
+      "n": 236,
+      "wins": 193,
+      "losses": 43,
       "pushes": 0,
-      "net_units": 15.509,
-      "hit_rate": 0.8265
+      "net_units": 14.145,
+      "hit_rate": 0.8178
     },
     "pass_td_over": {
-      "n": 8,
+      "n": 9,
       "wins": 5,
-      "losses": 3,
+      "losses": 4,
       "pushes": 0,
-      "net_units": -0.17,
-      "hit_rate": 0.625
+      "net_units": -1.17,
+      "hit_rate": 0.5556
     },
     "pass_int_over": {
-      "n": 20,
-      "wins": 14,
+      "n": 21,
+      "wins": 15,
       "losses": 6,
       "pushes": 0,
-      "net_units": 1.504,
-      "hit_rate": 0.7
+      "net_units": 2.198,
+      "hit_rate": 0.7143
     },
     "anytime_td_yes": {
-      "n": 36,
-      "wins": 17,
-      "losses": 19,
+      "n": 43,
+      "wins": 22,
+      "losses": 21,
       "pushes": 0,
-      "net_units": -4.653,
-      "hit_rate": 0.4722
+      "net_units": -2.678,
+      "hit_rate": 0.5116
     },
     "fta_over": {
       "n": 2,
@@ -14793,12 +14748,12 @@
   },
   "by_canonical": {
     "mlb_hr_0.5_over": {
-      "n": 1271,
-      "wins": 178,
-      "losses": 1093,
+      "n": 1267,
+      "wins": 176,
+      "losses": 1091,
       "pushes": 0,
-      "net_units": -483.486,
-      "hit_rate": 0.14
+      "net_units": -485.456,
+      "hit_rate": 0.1389
     },
     "mlb_hit_1.5_over": {
       "n": 542,
@@ -14841,12 +14796,12 @@
       "hit_rate": 0.8307
     },
     "ml_away": {
-      "n": 74,
+      "n": 77,
       "wins": 39,
-      "losses": 35,
+      "losses": 38,
       "pushes": 0,
-      "net_units": 1.228,
-      "hit_rate": 0.527
+      "net_units": -1.772,
+      "hit_rate": 0.5065
     },
     "mlb_hit_0.5_under": {
       "n": 432,
@@ -15001,12 +14956,12 @@
       "hit_rate": 0.8333
     },
     "ml_home": {
-      "n": 53,
-      "wins": 29,
+      "n": 55,
+      "wins": 31,
       "losses": 24,
       "pushes": 0,
-      "net_units": -1.782,
-      "hit_rate": 0.5472
+      "net_units": -0.769,
+      "hit_rate": 0.5636
     },
     "anytime_goal": {
       "n": 17,
@@ -15497,12 +15452,12 @@
       "hit_rate": 0.5877
     },
     "rec_yds_under": {
-      "n": 427,
-      "wins": 332,
-      "losses": 95,
+      "n": 464,
+      "wins": 361,
+      "losses": 103,
       "pushes": 0,
-      "net_units": 7.761,
-      "hit_rate": 0.7775
+      "net_units": 8.69,
+      "hit_rate": 0.778
     },
     "pass_yds_over": {
       "n": 12,
@@ -15561,60 +15516,60 @@
       "hit_rate": 0.6687
     },
     "pass_int_under": {
-      "n": 23,
-      "wins": 10,
+      "n": 24,
+      "wins": 11,
       "losses": 13,
       "pushes": 0,
-      "net_units": -8.032,
-      "hit_rate": 0.4348
+      "net_units": -7.467,
+      "hit_rate": 0.4583
     },
     "rec_under": {
-      "n": 458,
-      "wins": 338,
-      "losses": 120,
+      "n": 517,
+      "wins": 383,
+      "losses": 134,
       "pushes": 0,
-      "net_units": 3.271,
-      "hit_rate": 0.738
+      "net_units": 7.829,
+      "hit_rate": 0.7408
     },
     "longest_rec_under": {
-      "n": 549,
-      "wins": 432,
-      "losses": 117,
+      "n": 605,
+      "wins": 480,
+      "losses": 125,
       "pushes": 0,
-      "net_units": 25.791,
-      "hit_rate": 0.7869
+      "net_units": 32.872,
+      "hit_rate": 0.7934
     },
     "rec_over": {
-      "n": 164,
-      "wins": 111,
-      "losses": 53,
+      "n": 168,
+      "wins": 113,
+      "losses": 55,
       "pushes": 0,
-      "net_units": -15.251,
-      "hit_rate": 0.6768
+      "net_units": -16.393,
+      "hit_rate": 0.6726
     },
     "pass_td_under": {
-      "n": 62,
-      "wins": 41,
-      "losses": 21,
+      "n": 69,
+      "wins": 45,
+      "losses": 24,
       "pushes": 0,
-      "net_units": -5.185,
-      "hit_rate": 0.6613
+      "net_units": -6.837,
+      "hit_rate": 0.6522
     },
     "rush_yds_over": {
-      "n": 19,
-      "wins": 13,
+      "n": 21,
+      "wins": 15,
       "losses": 6,
       "pushes": 0,
-      "net_units": -1.014,
-      "hit_rate": 0.6842
+      "net_units": -0.257,
+      "hit_rate": 0.7143
     },
     "rec_yds_over": {
-      "n": 43,
-      "wins": 31,
-      "losses": 12,
+      "n": 50,
+      "wins": 36,
+      "losses": 14,
       "pushes": 0,
-      "net_units": -0.114,
-      "hit_rate": 0.7209
+      "net_units": -0.328,
+      "hit_rate": 0.72
     },
     "longest_rush_over": {
       "n": 24,
@@ -15633,28 +15588,28 @@
       "hit_rate": 0.6154
     },
     "pass_cmp_under": {
-      "n": 75,
-      "wins": 60,
-      "losses": 15,
+      "n": 84,
+      "wins": 66,
+      "losses": 18,
       "pushes": 0,
-      "net_units": 4.326,
-      "hit_rate": 0.8
+      "net_units": 2.981,
+      "hit_rate": 0.7857
     },
     "pass_yds_under": {
-      "n": 72,
-      "wins": 50,
-      "losses": 22,
+      "n": 81,
+      "wins": 57,
+      "losses": 24,
       "pushes": 0,
-      "net_units": -4.105,
-      "hit_rate": 0.6944
+      "net_units": -3.232,
+      "hit_rate": 0.7037
     },
     "longest_rush_under": {
-      "n": 263,
-      "wins": 221,
-      "losses": 42,
+      "n": 285,
+      "wins": 235,
+      "losses": 50,
       "pushes": 0,
-      "net_units": 23.103,
-      "hit_rate": 0.8403
+      "net_units": 19.749,
+      "hit_rate": 0.8246
     },
     "longest_rec_over": {
       "n": 22,
@@ -15665,36 +15620,36 @@
       "hit_rate": 0.5455
     },
     "rush_yds_under": {
-      "n": 219,
-      "wins": 181,
-      "losses": 38,
+      "n": 236,
+      "wins": 193,
+      "losses": 43,
       "pushes": 0,
-      "net_units": 15.509,
-      "hit_rate": 0.8265
+      "net_units": 14.145,
+      "hit_rate": 0.8178
     },
     "pass_td_over": {
-      "n": 8,
+      "n": 9,
       "wins": 5,
-      "losses": 3,
+      "losses": 4,
       "pushes": 0,
-      "net_units": -0.17,
-      "hit_rate": 0.625
+      "net_units": -1.17,
+      "hit_rate": 0.5556
     },
     "pass_int_over": {
-      "n": 20,
-      "wins": 14,
+      "n": 21,
+      "wins": 15,
       "losses": 6,
       "pushes": 0,
-      "net_units": 1.504,
-      "hit_rate": 0.7
+      "net_units": 2.198,
+      "hit_rate": 0.7143
     },
     "anytime_td_yes": {
-      "n": 36,
-      "wins": 17,
-      "losses": 19,
+      "n": 43,
+      "wins": 22,
+      "losses": 21,
       "pushes": 0,
-      "net_units": -4.653,
-      "hit_rate": 0.4722
+      "net_units": -2.678,
+      "hit_rate": 0.5116
     },
     "fta_over": {
       "n": 2,
@@ -15714,7 +15669,7 @@
       "pushes": 11,
       "pending": 0,
       "void": 0,
-      "net_units": -3620.6,
+      "net_units": -3620.601,
       "hit_rate": 0.3641,
       "roi_pct": -26.28,
       "markets": 30
@@ -15876,25 +15831,25 @@
       "markets": 1
     },
     "NFL": {
-      "n": 5056,
-      "settled": 4446,
-      "wins": 3258,
-      "losses": 1188,
+      "n": 5058,
+      "settled": 4690,
+      "wins": 3441,
+      "losses": 1249,
       "pushes": 0,
-      "pending": 610,
+      "pending": 368,
       "void": 0,
-      "net_units": -45.751,
-      "hit_rate": 0.7328,
-      "roi_pct": -1.03,
+      "net_units": -40.359,
+      "hit_rate": 0.7337,
+      "roi_pct": -0.86,
       "markets": 12
     },
     "NBA": {
-      "n": 2649,
+      "n": 2651,
       "settled": 2526,
       "wins": 1648,
       "losses": 878,
       "pushes": 0,
-      "pending": 123,
+      "pending": 125,
       "void": 0,
       "net_units": -53.315,
       "hit_rate": 0.6524,
@@ -15937,35 +15892,35 @@
         "label": "10/23-11/2 -- season-to-date form (judged)"
       },
       "form_v3": {
-        "n": 2565,
-        "settled": 1956,
-        "wins": 1498,
-        "losses": 458,
+        "n": 2567,
+        "settled": 2200,
+        "wins": 1681,
+        "losses": 519,
         "pushes": 0,
-        "pending": 609,
+        "pending": 367,
         "void": 0,
-        "net_units": 45.252,
-        "hit_rate": 0.7658,
-        "roi_pct": 2.31,
-        "n_with_p": 1933,
-        "avg_p_predicted": 0.7731,
+        "net_units": 50.629,
+        "hit_rate": 0.7641,
+        "roi_pct": 2.3,
+        "n_with_p": 2172,
+        "avg_p_predicted": 0.7693,
         "label": "from 11/3 -- calibrated line selection (judged)"
       }
     },
     "note": "NFL props are judged from 10/23 forward: the simulator's form rule changed, so earlier picks are a different model. They stay on the record as their own line and never feed a family verdict."
   },
   "last_7_days": {
-    "wins": 1130,
-    "losses": 525,
-    "net_units": -16.083,
-    "hit_rate": 0.6828
+    "wins": 1313,
+    "losses": 586,
+    "net_units": -10.709,
+    "hit_rate": 0.6914
   },
   "note": "Unified pick ledger -- records every pick the model surfaces (top_25 board, whales, consensus, unders, sharp action, locks, POD) and settles each against actual outcomes. Per-source W-L feeds back into calibration so the model learns which modules are reliable. THIS is the training signal.",
   "archived_history": {
-    "n_settled": 6829,
-    "wins": 3349,
-    "losses": 3476,
-    "net_units": -1346.61,
+    "n_settled": 6833,
+    "wins": 3351,
+    "losses": 3478,
+    "net_units": -1344.64,
     "oldest": "2026-05-20",
     "newest": "2026-06-16",
     "note": "Settled picks no longer in the working ledger (recovered tail-cut history + lossless evictions). INCLUDED in the all-time headline since 2026-10-23 (see restatement); kept in full at data/ledger_archive.json."
