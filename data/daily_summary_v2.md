@@ -1,18 +1,18 @@
-# EdgeStat Daily Summary — 2026-11-21
+# EdgeStat Daily Summary — 2026-11-22
 
-## 🏥 Model Health: 71.4/100 [HEALTHY]
-- Solid health - some minor issues to monitor
+## 🏥 Model Health: 64.2/100 [OK]
+- Operational but room to improve - check yellow components
   - 🟢 Calibration Freshness: 100.0/100
-  - 🟡 Hit Rate Trend: 79.7/100
-  - 🔴 Brier Trend: 31.5/100
+  - 🔴 Hit Rate Trend: 57.1/100
+  - 🔴 Brier Trend: 14.0/100
   - 🟢 Pipeline Audit: 100.0/100
-  - 🟢 Data Health: 95.8/100
+  - 🟢 Data Health: 100.0/100
   - 🔴 Edge Count: 0/100
 
 ## 🌐 Slate Overview
-- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.565)
-- **Total games on board:** 65
-- **Strong home favorites:** 28 | **Strong road dogs:** 16
+- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.587)
+- **Total games on board:** 48
+- **Strong home favorites:** 23 | **Strong road dogs:** 14
 
 ## 🎯 Best Bets (sportsbook-priced only)
 - No best bet today: a best bet needs a real sportsbook price — 23 model-only projections excluded (EPL 4, UCL 4, NHL 4, GOLF 4, LOL 3, NCAAF 3, NFL 1).
@@ -29,57 +29,58 @@
 - **[CS]** torzsi OVER 40.5 Kills (BO3) · model 61.0%
 
 ## ⚡ Pre-Game
-- No pre-game alerts: an alert needs a game-lines-desk probability whose verdict passed (not NO EDGE / UNPROVEN) and a DraftKings price. NBA: 5 desk verdict NO EDGE; NHL: 12 desk verdict NO EDGE; WNBA: 1 not pre-game; MLS: 2 no validated model probability (not from the game-lines desk); EPL: 6 started or no start time; UCL: 9 no validated model probability (not from the game-lines desk); NFL: 12 desk verdict UNPROVEN; NCAAF: 13 started or no start time; NCAAB: 6 not pre-game; CWS: 1 not pre-game
+- No pre-game alerts: an alert needs a game-lines-desk probability whose verdict passed (not NO EDGE / UNPROVEN) and a DraftKings price. NBA: 5 not pre-game; NHL: 11 not pre-game; WNBA: 1 not pre-game; MLS: 3 not pre-game; EPL: 7 not pre-game; UCL: 9 no validated model probability (not from the game-lines desk); NFL: 12 desk verdict UNPROVEN; NCAAF: 11 not pre-game; NCAAB: 2 not pre-game; CWS: 1 not pre-game
 
 ## 🔥/❄️ Heat / Cold Signals
-- Hot teams: **7** | Cold teams: **7** | Over-heavy: 0 | Under-heavy: 34
+- Hot teams: **6** | Cold teams: **9** | Over-heavy: 0 | Under-heavy: 30
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (82)
+## ⚠️ Anomaly Detector (76)
+- STREAK_MISMATCH: **1**
 - RESIDUAL_DIVERGENCE: **8**
-- STEAM_MOVE: **74**
+- STEAM_MOVE: **67**
+  - Milwaukee Bucks (NBA): Milwaukee Bucks on L7 streak but model still favors them (50%) -- may be overvalued
   - Dallas Mavericks (NBA): Dallas Mavericks UNDERPERFORMING expected margin by 9.4pts in recent games -- model bias may persist
   - LA Clippers (NBA): LA Clippers UNDERPERFORMING expected margin by 10.7pts in recent games -- model bias may persist
   - New Orleans Pelicans (NBA): New Orleans Pelicans UNDERPERFORMING expected margin by 7.7pts in recent games -- model bias may persist
   - Carolina Hurricanes (NHL): Carolina Hurricanes UNDERPERFORMING expected margin by 9.2pts in recent games -- model bias may persist
-  - Edmonton Oilers (NHL): Edmonton Oilers UNDERPERFORMING expected margin by 6.5pts in recent games -- model bias may persist
 
 ## 💰 Today's Portfolio
 - No priced picks: a stake is sized only at an actionable DraftKings quote.
 
-## 🎯 Signal stacking (18 games with 2+ signals) — research, not picks
+## 🎯 Signal stacking (16 games with 2+ signals) — research, not picks
   - LA Clippers @ Dallas Mavericks : 4 signals (HEAT_COLD, HEAT_COLD, ANOMALY, ANOMALY)
   - Columbus Blue Jackets @ Toronto Maple Leafs : 4 signals (HEAT_COLD, HEAT_COLD, HEAT_COLD, ANOMALY)
   - Milwaukee Bucks @ Philadelphia 76ers : 3 signals (HEAT_COLD, HEAT_COLD, HEAT_COLD)
   - Boston Celtics @ Sacramento Kings : 3 signals (HEAT_COLD, HEAT_COLD, HEAT_COLD)
   - Anaheim Ducks @ Utah Mammoth : 3 signals (HEAT_COLD, HEAT_COLD, ANOMALY)
 
-## 🏀 NBA Player Heat (7 HOT / 6 COLD)
+## 🏀 NBA Player Heat (5 HOT / 6 COLD)
   - 🔥 **Maxime Raynaud** (SAC): L5 20.0/9.8/2.6 vs season 12.5/7.5/1.4 [PTS +7.5, REB +2.3]
-  - 🔥 **Kasparas Jakucionis** (MIL): L5 15.6/2.6/3.2 vs season 8.7/2.5/3.1 [PTS +6.9]
-  - 🔥 **Cormac Ryan** (MIL): L5 20.2/4.8/2.4 vs season 14.3/2.5/1.7 [PTS +5.9, REB +2.3]
   - 🔥 **Taylor Hendricks** (MEM): L5 14.0/5.4/1.8 vs season 8.3/3.5/0.9 [PTS +5.7]
   - 🔥 **Cam Spencer** (MEM): L5 15.6/2.4/8.0 vs season 11.3/2.9/5.8 [AST +2.2]
+  - 🔥 **Saddiq Bey** (NO): L5 20.0/7.2/3.2 vs season 17.0/4.8/2.6 [REB +2.5]
+  - 🔥 **LaMelo Ball** (MIN): L5 16.0/6.6/5.0 vs season 18.2/4.4/6.0 [REB +2.2]
   - ❄️ **Shaedon Sharpe** (POR): L5 7.2 vs season 20.8 [PTS -13.6, REB -2.7, AST -2.0]
   - ❄️ **Brandon Ingram** (LAC): L5 12.0 vs season 21.5 [PTS -9.5, REB -2.4]
   - ❄️ **Bennedict Mathurin** (NO): L5 3.2 vs season 9.1 [PTS -5.9]
 
 ## 🥊 UFC Fight Matchups (UFC Fight Night: Procházka vs. Stirling) — model projection — unvalidated, no sportsbook price, not a recommendation
-  - model favourite **Ikram Aliskerov** (18-2-0) vs Jared Cannonier
-  - model favourite **Tahir Abdullayev** (20-3-0) vs Jake Matthews
-  - model favourite **Diyar Nurgozhay** (12-2-0) vs Alik Lorenz
-  - model favourite **Amir Albazi** (17-3-0) vs Alessandro Costa
-  - model favourite **Brian Ortega** (16-5-0) vs Dan Hooker
+  - model favourite **Ikram Aliskerov** (19-2-0) vs Jared Cannonier
+  - model favourite **Diyar Nurgozhay** (13-2-0) vs Alik Lorenz
+  - model favourite **Kevin Vallejos** (19-1-0) vs Aljamain Sterling
+  - model favourite **Santiago Luna** (9-1-0) vs Aleksandre Topuria
+  - model favourite **Tahir Abdullayev** (21-3-0) vs Jake Matthews
 
 ## ⛳ Golf Player Heat (from The RSM Classic)
-  - 🔥 T1 **Marco Penge** (England): -9 total -- finished T1, Sunday -0.5 vs tourney avg
-  - 🔥 T2 **Rasmus Neergaard-Petersen** (Denmark): -9 total -- finished T2, Sunday -0.5 vs tourney avg
+  - 🔥 T1 **Marco Penge** (England): -9 total -- finished T1
+  - 🔥 T2 **Rasmus Neergaard-Petersen** (Denmark): -9 total -- finished T2
   - 🔥 T3 **Michael Thorbjornsen** (USA): -9 total -- finished T3
-  - 🔥 T4 **Max McGreevy** (USA): -8 total -- finished T4, Sunday -1.0 vs tourney avg
+  - 🔥 T4 **Max McGreevy** (USA): -8 total -- finished T4
   - 🔥 T5 **Lee Hodges** (USA): -8 total -- finished T5
   - ❄️ **Francisco Bidé** (Argentina): Sunday +5.5 vs tourney avg
-  - ❄️ **Garrick Higgo** (South Africa): Sunday +5.0 vs tourney avg
   - ❄️ **Matt Atkins** (USA): Sunday +5.0 vs tourney avg
+  - ❄️ **Ryan Brehm** (USA): Sunday +5.0 vs tourney avg
 
 ## 😴 Back-to-back flags (2) — schedule fact, not a pick
 - [NBA] New Orleans Pelicans @ San Antonio Spurs (2026-11-21): home team on a back-to-back
@@ -103,7 +104,7 @@
 - ELITE: **0** · HEALTHY: 1 · OK: 0 · DEGRADED: **1**
 
 ## 🤖 Self-Training Status
-- **NBA**: n=103 games · hit rate 62.1% · bias +3.7pp
-- **NHL**: n=94 games · hit rate 54.3% · bias +10.2pp [calibration applied]
-- **MLS**: n=32 games · hit rate 53.1% · bias -2.9pp
-- **EPL**: n=20 games · hit rate 50.0% · bias -11.6pp
+- **NBA**: n=97 games · hit rate 68.0% · bias +4.3pp
+- **NHL**: n=86 games · hit rate 52.3% · bias +13.6pp [calibration applied]
+- **MLS**: n=26 games · hit rate 57.7% · bias -0.4pp
+- **EPL**: n=19 games · hit rate 52.6% · bias -4.5pp

@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-21T20:41:12",
+  "generated_at": "2026-11-22T02:06:23",
   "fixes": [
     {
       "fix": "NFL DFS lineups on calibrated xFP (optimizer's curse) + form rule v2",
@@ -7,10 +7,10 @@
       "expected": "backtest: bias -64.6 -> ~+11 pts/slate, actual 106 -> ~131",
       "status": "graded",
       "new": {
-        "n_slates": 9,
-        "avg_projected": 120.71,
-        "avg_actual": 120.96,
-        "avg_bias": 0.25
+        "n_slates": 10,
+        "avg_projected": 119.65,
+        "avg_actual": 117.09,
+        "avg_bias": -2.56
       },
       "old": {
         "n_slates": 5,
@@ -18,7 +18,7 @@
         "avg_actual": 108.16,
         "avg_bias": -65.56
       },
-      "read": "calibrated: proj 120.71 -> actual 120.96 (bias 0.25) over 9 slate(s) vs raw-model bias -65.56 over 5"
+      "read": "calibrated: proj 119.65 -> actual 117.09 (bias -2.56) over 10 slate(s) vs raw-model bias -65.56 over 5"
     },
     {
       "fix": "NFL props priced on season-to-date form (v2) instead of last week's game (v1)",
@@ -53,12 +53,12 @@
       "expected": "next-10-game RMSE after 1 game: 6.45 -> 3.57 pts (K=5)",
       "status": "graded",
       "new": {
-        "n": 2400,
-        "wins": 1566,
-        "losses": 834,
-        "net_units": -51.02,
-        "roi_pct": -2.13,
-        "hit_rate": 0.6525,
+        "n": 2418,
+        "wins": 1577,
+        "losses": 841,
+        "net_units": -52.74,
+        "roi_pct": -2.18,
+        "hit_rate": 0.6522,
         "brier": 0.2269,
         "log_loss": 0.6463
       },
@@ -72,7 +72,7 @@
         "brier": 0.2421,
         "log_loss": 0.6768
       },
-      "read": "new 1566-834 Brier 0.2269 vs old 7-5 Brier 0.2421"
+      "read": "new 1577-841 Brier 0.2269 vs old 7-5 Brier 0.2421"
     },
     {
       "fix": "NHL props on live blended baselines + current teams (was 2024-25 tables)",
@@ -80,14 +80,14 @@
       "expected": "skater stat RMSE 2-3x lower early season (K=30)",
       "status": "graded",
       "new": {
-        "n": 858,
-        "wins": 580,
-        "losses": 278,
-        "net_units": 20.66,
-        "roi_pct": 2.41,
-        "hit_rate": 0.676,
-        "brier": 0.22,
-        "log_loss": 0.6317
+        "n": 872,
+        "wins": 592,
+        "losses": 280,
+        "net_units": 24.28,
+        "roi_pct": 2.78,
+        "hit_rate": 0.6789,
+        "brier": 0.2188,
+        "log_loss": 0.6292
       },
       "old": {
         "n": 109,
@@ -99,7 +99,7 @@
         "brier": 0.26,
         "log_loss": 0.7248
       },
-      "read": "new 580-278 Brier 0.22 vs old 63-46 Brier 0.26"
+      "read": "new 592-280 Brier 0.2188 vs old 63-46 Brier 0.26"
     },
     {
       "fix": "Outage backfill + NFL/NHL/MLB grader repairs",
