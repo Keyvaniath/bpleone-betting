@@ -16,6 +16,12 @@ happens. The `edgestat-live` Worker's cron is reliable; its code (staged on main
 now dispatches the heartbeat every 15 min (9 AM-1 AM ET, hourly overnight) and close-capture
 every 20 min (noon-midnight ET). It does nothing until the token below exists.
 
+**Measured 11/17-11/23 (no local stopgap running):** GitHub started the four `alpha-lock-trigger` runs scheduled
+for 10:07 AM-12:29 PM ET at **3:35-6:54 PM ET every day** (a 5-7 hour queue delay), so the Alpha list locked at
+5:13 PM, 12:20 PM, 3:47 PM, 5:01 PM, 3:35 PM and 11:38 AM, and 11/23 not at all until a manual run at 12:11 PM.
+12 of 33 closing prices were taken 1-5 hours before the start (now excluded from CLV as early closes). More
+GitHub crons cannot fix a queue delay; a dispatcher outside GitHub (the Worker) can.
+
 1. GitHub → your avatar → **Settings → Developer settings → Fine-grained tokens → Generate new token**.
    Repository access: **Only select repositories → bpleone-betting**. Permissions → Repository →
    **Actions: Read and write** (nothing else). Expiry: your choice.
