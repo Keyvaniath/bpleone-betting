@@ -1,27 +1,27 @@
 # EdgeStat — Tonight's Master Brief
-_Generated 2026-11-22T20:52:51 UTC_
+_Generated 2026-11-23T02:19:31 UTC_
 
 ## Slate Quality
 - **Tier:** NO_ACTION_NIGHT
-- **Score:** -39
+- **Score:** -17
 - **Advisory:** STAND DOWN. Slate has no aligned conviction. Skip betting tonight or watch only.
 - **Total LOCKs:** 0
-- **Total STRONG:** 14
-- **Total FADES:** 95
+- **Total STRONG:** 11
+- **Total FADES:** 61
 
 ## Top 5 Curated Picks
-1. **GOLF / Michael Thorbjornsen** (GOLF_PLAYER, score=167.0)
-   - Play: Michael Thorbjornsen (PLAYER_STRONG)
+1. **GOLF / Rasmus Højgaard** (GOLF_PLAYER, score=195.5)
+   - Play: Rasmus Højgaard (PLAYER_STRONG)
    - Rationale: Cross-sport top pick (GOLF_PLAYER)
-2. **GOLF / Max Greyserman** (GOLF_PLAYER, score=129.29)
+2. **GOLF / Max Greyserman** (GOLF_PLAYER, score=169.93)
    - Play: Max Greyserman (PLAYER_STRONG)
    - Rationale: Cross-sport top pick (GOLF_PLAYER)
 
 ## Top Events Board
 - **GOLF** / ? (TOURNAMENT_STRONG)
-  - Michael Thorbjornsen top 10 finish
+  - Rasmus Højgaard top 10 finish
   - Max Greyserman top 10 finish
-  - Max McGreevy top 10 finish
+  - Michael Thorbjornsen top 10 finish
 
 ## Slate ROI Projection
 - **Picks:** 0
@@ -30,13 +30,13 @@ _Generated 2026-11-22T20:52:51 UTC_
 - **Expected P&L on $100:** $0.0
 
 ## Top Fades
-- **NBA** / MIA (TEAM_FADE)
-  - Fade angle: team total UNDER
 - **NBA** / WAS (TEAM_FADE)
   - Fade angle: team total UNDER
 - **NBA** / CHI (TEAM_FADE)
   - Fade angle: team total UNDER
-- **NBA** / UTA (TEAM_FADE)
+- **NBA** / GSW (TEAM_FADE)
   - Fade angle: team total UNDER
-- **NBA** / DET (TEAM_FADE)
+- **NBA** / NYK (TEAM_FADE)
+  - Fade angle: team total UNDER
+- **NBA** / UTA (TEAM_FADE)
   - Fade angle: team total UNDER
