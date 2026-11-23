@@ -1812,3 +1812,21 @@ def test_nfl_moneyline_tie_is_a_push():
     assert apt._grade_ml_by_event_id(dict(pk), [won]) == "won"
     assert apt._grade_nfl_pick(dict(pk), {}, [won]) == "won"
     assert apt._grade_nfl_pick(dict(pk, market="ML_HOME"), {}, [won]) == "lost"
+
+
+def test_early_close_is_flagged_and_excluded_from_clv(monkeypatch):
+    """(audit 11/23) a 'close' taken > 60 min before the start is not a closing line: flagged, kept on the row,
+    excluded from the CLV averages and counted separately."""
+    import all_picks_tracker as apt
+    ev = {"1": {"commence": "2026-11-20T00:00Z", "close": {"at": "2026-11-19T23:50:00", "ml_home": -150, "ml_away": 130}},
+          "2": {"commence": "2026-11-20T00:00Z", "close": {"at": "2026-11-19T21:00:00", "ml_home": -150, "ml_away": 130}}}
+    real = apt._load
+    monkeypatch.setattr(apt, "_load", lambda p: {"events": ev} if str(p).endswith("dk_lines_nba.json") else
+                        ({"events": {}} if "dk_lines_" in str(p) else real(p)))
+    mk = lambda eid: {"source": "board_pick", "sport": "NBA", "event_id": eid, "date": "2026-11-19",
+                      "player_or_matchup": "A @ B", "market": "ML_HOME", "book_american": -140,
+                      "settled": True, "result": "won"}
+    b = apt._board_block([mk("1"), mk("2")])
+    assert b["all_bets"]["n_clv"] == 1 and b["all_bets"]["n_clv_early_close"] == 1
+    early = [r for r in b["recent"] if r["close_early"]]
+    assert len(early) == 1 and early[0]["close_min_before"] == 180

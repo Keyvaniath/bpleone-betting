@@ -3331,6 +3331,9 @@ def _price_bucket(american) -> Optional[str]:
     return "dog"
 
 
+CLOSE_STALE_MIN = 60     # a close snapshot older than this before the start is not counted as the closing line
+
+
 def _board_block(history: List[Dict[str, Any]]) -> Dict[str, Any]:
     """Results of The Board: every graded bet (A/B/C) logged from board.json, at
     the DraftKings price it was logged at. A row is a board bet if its source is
@@ -3399,18 +3402,24 @@ def _board_block(history: List[Dict[str, Any]]) -> Dict[str, Any]:
             mins = None
         return {"close_price": cp, "clv_pts": round((1 / d_close - 1 / d_ours) * 100, 2),     # + = we beat the close
                 "clv_ev": round(pf * d_ours - 1, 4),                                             # EV of our price at the no-vig close
-                "close_min_before": round(mins) if mins is not None else None}
+                "close_min_before": round(mins) if mins is not None else None,
+                # (2026-11-23 audit) a "close" snapshot taken more than CLOSE_STALE_MIN before the start is not a
+                # closing line: with GitHub's scheduler skipping runs, 12 of 33 closes 11/17-11/22 were taken
+                # 1-5 hours early. Kept on the row, flagged, and left out of the CLV averages.
+                "stale": mins is not None and mins > CLOSE_STALE_MIN}
 
     def line(ps: List[Dict[str, Any]], alpha: bool = False) -> Dict[str, Any]:
         done = [p for p in ps if p.get("settled") and p.get("result") in ("won", "lost", "push")]
         w = sum(1 for p in done if p["result"] == "won")
         l = sum(1 for p in done if p["result"] == "lost")
         net = round(sum(pay(p, alpha) for p in done), 3)
-        cl = [x for x in (clv(p, alpha) for p in ps) if x]
+        cl_all = [x for x in (clv(p, alpha) for p in ps) if x]
+        cl = [x for x in cl_all if not x.get("stale")]
         return {"n_settled": len(done), "wins": w, "losses": l, "net_units": net,
                 "roi_pct": round(net / (w + l) * 100, 2) if (w + l) else None,
                 "n_pending": sum(1 for p in ps if not p.get("settled")),
                 "n_clv": len(cl),
+                "n_clv_early_close": len(cl_all) - len(cl),
                 "avg_clv_pts": round(sum(x["clv_pts"] for x in cl) / len(cl), 2) if cl else None,
                 "beat_close_pct": round(sum(1 for x in cl if x["clv_pts"] > 0) / len(cl) * 100, 1) if cl else None,
                 "avg_clv_ev_pct": round(sum(x["clv_ev"] for x in cl) / len(cl) * 100, 2) if cl else None,
@@ -3432,6 +3441,8 @@ def _board_block(history: List[Dict[str, Any]]) -> Dict[str, Any]:
                 "payout_units": pay(p, al) if p.get("settled") else None,
                 "close_price": (clv(p, al) or {}).get("close_price"),
                 "clv_pts": (clv(p, al) or {}).get("clv_pts"),
+                "close_early": bool((clv(p, al) or {}).get("stale")),
+                "close_min_before": (clv(p, al) or {}).get("close_min_before"),
                 "final": (p.get("outcome") or {}).get("final_score")}
 
     alpha = [p for p in rows if "board_alpha" in tags(p)]

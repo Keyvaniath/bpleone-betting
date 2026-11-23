@@ -581,7 +581,8 @@
 
   function results() {
     const R = B.results;
-    const clvTxt = (x) => (x && x.n_clv) ? ` · CLV <b style="color:${x.avg_clv_pts > 0 ? "var(--accent)" : x.avg_clv_pts < 0 ? "var(--red)" : "inherit"};">${x.avg_clv_pts > 0 ? "+" : x.avg_clv_pts < 0 ? "−" : ""}${Math.abs(x.avg_clv_pts).toFixed(1)} pts</b>, beat close ${Math.round(x.beat_close_pct)}%` : "";
+    const clvTxt = (x) => (x && x.n_clv) ? ` · CLV <b style="color:${x.avg_clv_pts > 0 ? "var(--accent)" : x.avg_clv_pts < 0 ? "var(--red)" : "inherit"};">${x.avg_clv_pts > 0 ? "+" : x.avg_clv_pts < 0 ? "−" : ""}${Math.abs(x.avg_clv_pts).toFixed(1)} pts</b>, beat close ${Math.round(x.beat_close_pct)}%` +
+      (x.n_clv_early_close ? ` <span class="muted" title="Closes captured more than 60 minutes before the start are not closing lines; they are excluded from CLV.">(${x.n_clv} closes; ${x.n_clv_early_close} early, excluded)</span>` : "") : "";
     const line = (x, name) => (x && (x.n_settled || x.n_pending)) ? `<span class="bd-pill">${name} <b>${x.wins}-${x.losses}</b> <b style="color:${x.net_units > 0 ? "var(--accent)" : x.net_units < 0 ? "var(--red)" : "inherit"};">${units(x.net_units)}</b>${x.n_pending ? " · " + x.n_pending + " pending" : ""}${clvTxt(x)}</span>` : "";
     if (!R || !(R.recent || []).length) {
       $("results").innerHTML = `<p class="muted" style="font-size:13px;">No board bet has been graded yet. Every A, B and C bet is logged at the DraftKings price shown and graded on the final score; results appear here the morning after.</p>`;
@@ -622,7 +623,9 @@
       const res = r.result === "won" ? `<span class="w">won ${units(r.payout_units)}</span>` : r.result === "lost" ? `<span class="l">lost ${units(r.payout_units)}</span>` : `<span class="muted">${esc(r.result)}</span>`;
       const rc = runClv(r);
       const run = rc ? ` <span title="DraftKings now, before the start: has the market moved toward our side since we logged it?" style="color:${rc.pts > 0.05 ? "var(--accent)" : rc.pts < -0.05 ? "var(--red)" : "var(--muted)"};">now ${amer(rc.now)} (${rc.pts > 0.05 ? "+" : rc.pts < -0.05 ? "−" : ""}${Math.abs(rc.pts).toFixed(1)} pts)</span>` : "";
-      const cl = r.clv_pts != null ? ` <span class="muted" title="DraftKings' last price before the start">close ${amer(r.close_price)} (${r.clv_pts > 0 ? "+" : r.clv_pts < 0 ? "−" : ""}${Math.abs(r.clv_pts).toFixed(1)} pts)</span>` : "";
+      const cl = r.clv_pts != null ? (r.close_early
+        ? ` <span class="muted" title="Our last DraftKings snapshot came ${r.close_min_before} minutes before the start: too early to count as the closing line, so it is left out of the CLV averages.">last seen ${amer(r.close_price)} · early close, not counted</span>`
+        : ` <span class="muted" title="DraftKings' last price before the start">close ${amer(r.close_price)} (${r.clv_pts > 0 ? "+" : r.clv_pts < 0 ? "−" : ""}${Math.abs(r.clv_pts).toFixed(1)} pts)</span>`) : "";
       return head + `<div class="res-row"><span class="sp ${esc(r.sport)}">${esc(r.sport)}</span><span><b>${esc(r.team || r.matchup)}</b> ML ${amer(r.book_american)}${cl}${run}</span><span class="gr ${esc(r.grade)}" style="margin-left:0;padding:1px 7px;">${esc(r.grade)}</span>${r.is_alpha ? `<span style="color:var(--gold);">★ alpha</span>` : ""}<span style="margin-left:auto;">${res}${r.final ? ` <span class="muted">(${esc(r.final)})</span>` : ""}</span></div>`;
     }).join("");
   }
