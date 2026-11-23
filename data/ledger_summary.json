@@ -1,9 +1,9 @@
 {
-  "generated_at": "2026-11-23T21:06:34",
+  "generated_at": "2026-11-23T22:06:30",
   "stake_assumption": "1u flat per pick",
   "total_picks": 20000,
   "n_settled": 26328,
-  "n_pending": 379,
+  "n_pending": 380,
   "n_void": 0,
   "wins": 13374,
   "losses": 12943,
@@ -13,11 +13,11 @@
   "roi_pct": -13.25,
   "n_calibrated_picks": 19962,
   "calibrated_reliability": {
-    "n": 19574,
+    "n": 19573,
     "ece_raw": 0.0574,
     "ece_calibrated": 0.0077,
-    "brier_raw": 0.20893,
-    "brier_calibrated": 0.1968,
+    "brier_raw": 0.20891,
+    "brier_calibrated": 0.19677,
     "note": "In-sample over the settled ledger (the isotonic transform is fit on these same outcomes); held-out 70/30 validation is in recalibration_map.json. p_predicted = raw model prob (kept untouched for the learning loop); p_calibrated = honest prob stamped per pick. Lower ECE/Brier on the calibrated column = the displayed % is truer."
   },
   "curated": {
@@ -65,7 +65,7 @@
     "losses": 5,
     "net_units": 4.486,
     "roi_pct": 20.39,
-    "n_pending": 2,
+    "n_pending": 3,
     "first_date": "2026-11-11",
     "last_date": "2026-11-23",
     "by_sport": {
@@ -75,7 +75,7 @@
         "losses": 3,
         "net_units": 1.27,
         "roi_pct": 11.55,
-        "n_pending": 0
+        "n_pending": 1
       },
       "NHL": {
         "n_settled": 11,
@@ -105,6 +105,17 @@
         "team": "MIN",
         "market": "ML_AWAY",
         "book_american": -192,
+        "result": "pending",
+        "payout_units": null,
+        "final": null
+      },
+      {
+        "date": "2026-11-23",
+        "sport": "NBA",
+        "matchup": "MEM @ CHA",
+        "team": "MEM",
+        "market": "ML_AWAY",
+        "book_american": -148,
         "result": "pending",
         "payout_units": null,
         "final": null
@@ -207,17 +218,6 @@
         "result": "won",
         "payout_units": 0.7092,
         "final": "NY 111 @ TOR 102"
-      },
-      {
-        "date": "2026-11-16",
-        "sport": "NBA",
-        "matchup": "MEM @ WSH",
-        "team": "MEM",
-        "market": "ML_AWAY",
-        "book_american": -173,
-        "result": "won",
-        "payout_units": 0.578,
-        "final": "MEM 136 @ WSH 120"
       }
     ],
     "definition": "Model leans: the per-sport play on a day a desk has no pick with an edge -- the favourite its model and DraftKings both favour. Logged at the DraftKings price, graded on the final score. Not an edge (expected value is the book's margin) and never part of the curated record."
@@ -229,7 +229,7 @@
       "losses": 5,
       "net_units": 4.486,
       "roi_pct": 20.39,
-      "n_pending": 2
+      "n_pending": 3
     },
     "desk_picks": {
       "n_settled": 6,
@@ -261,6 +261,18 @@
         "team": "MIN",
         "market": "ML_AWAY",
         "book_american": -192,
+        "result": "pending",
+        "payout_units": null,
+        "final": null
+      },
+      {
+        "date": "2026-11-23",
+        "sport": "NBA",
+        "kind": "lean",
+        "matchup": "MEM @ CHA",
+        "team": "MEM",
+        "market": "ML_AWAY",
+        "book_american": -148,
         "result": "pending",
         "payout_units": null,
         "final": null
@@ -420,18 +432,6 @@
         "result": "won",
         "payout_units": 0.578,
         "final": "MEM 136 @ WSH 120"
-      },
-      {
-        "date": "2026-11-15",
-        "sport": "NHL",
-        "kind": "lean",
-        "matchup": "CGY @ ANA",
-        "team": "ANA",
-        "market": "ML_HOME",
-        "book_american": -155,
-        "result": "won",
-        "payout_units": 0.6452,
-        "final": "CGY 1 @ ANA 6"
       }
     ],
     "definition": "The play shown for each major sport on each day, graded at the DraftKings price it was logged at. 'desk pick' = a pick with an edge under the desk's rule; 'lean' = the favourite the model and DraftKings both favour on a day the desk has no pick (not an edge). The two are counted separately and are never summed."
@@ -443,7 +443,7 @@
       "losses": 31,
       "net_units": -6.785,
       "roi_pct": -9.83,
-      "n_pending": 14,
+      "n_pending": 15,
       "n_clv": 49,
       "n_clv_early_close": 19,
       "avg_clv_pts": -0.75,
@@ -457,7 +457,7 @@
       "losses": 19,
       "net_units": -4.021,
       "roi_pct": -8.94,
-      "n_pending": 3,
+      "n_pending": 4,
       "n_clv": 30,
       "n_clv_early_close": 14,
       "avg_clv_pts": -0.12,
@@ -500,7 +500,7 @@
         "losses": 22,
         "net_units": -3.073,
         "roi_pct": -5.8,
-        "n_pending": 3,
+        "n_pending": 4,
         "n_clv": 35,
         "n_clv_early_close": 17,
         "avg_clv_pts": -1.22,
@@ -530,7 +530,7 @@
         "losses": 21,
         "net_units": -2.583,
         "roi_pct": -5.17,
-        "n_pending": 9,
+        "n_pending": 10,
         "n_clv": 33,
         "n_clv_early_close": 16,
         "avg_clv_pts": -1.09,
@@ -574,7 +574,7 @@
         "losses": 8,
         "net_units": -0.301,
         "roi_pct": -1.43,
-        "n_pending": 0,
+        "n_pending": 1,
         "n_clv": 19,
         "n_clv_early_close": 2,
         "avg_clv_pts": -2.27,
@@ -618,7 +618,7 @@
         "losses": 1,
         "net_units": -1.0,
         "roi_pct": -100.0,
-        "n_pending": 4,
+        "n_pending": 5,
         "n_clv": 0,
         "n_clv_early_close": 0,
         "avg_clv_pts": null,
@@ -631,7 +631,7 @@
           "losses": 1,
           "net_units": -1.0,
           "roi_pct": -100.0,
-          "n_pending": 3,
+          "n_pending": 4,
           "n_clv": 0,
           "n_clv_early_close": 0,
           "avg_clv_pts": null,
@@ -1181,6 +1181,23 @@
         "team": "MTL",
         "market": "ML_HOME",
         "book_american": -155,
+        "result": "pending",
+        "payout_units": null,
+        "close_price": null,
+        "clv_pts": null,
+        "close_early": false,
+        "close_min_before": null,
+        "final": null
+      },
+      {
+        "date": "2026-11-23",
+        "sport": "NBA",
+        "grade": "C",
+        "is_alpha": true,
+        "matchup": "MEM @ CHA",
+        "team": "MEM",
+        "market": "ML_AWAY",
+        "book_american": -148,
         "result": "pending",
         "payout_units": null,
         "close_price": null,
@@ -1953,26 +1970,26 @@
         "close_early": false,
         "close_min_before": -1,
         "final": "CGY 1 @ ANA 6"
-      },
-      {
-        "date": "2026-11-15",
-        "sport": "NHL",
-        "grade": "C",
-        "is_alpha": false,
-        "matchup": "NSH @ SJ",
-        "team": "NSH",
-        "market": "ML_AWAY",
-        "book_american": -170,
-        "result": "lost",
-        "payout_units": -1.0,
-        "close_price": -170,
-        "clv_pts": 0.0,
-        "close_early": false,
-        "close_min_before": 12,
-        "final": "NSH 2 @ SJ 4"
       }
     ],
     "open": [
+      {
+        "date": "2026-11-23",
+        "sport": "NBA",
+        "grade": "C",
+        "is_alpha": true,
+        "matchup": "MEM @ CHA",
+        "team": "MEM",
+        "market": "ML_AWAY",
+        "book_american": -148,
+        "result": "pending",
+        "payout_units": null,
+        "close_price": null,
+        "clv_pts": null,
+        "close_early": false,
+        "close_min_before": null,
+        "final": null
+      },
       {
         "date": "2026-11-23",
         "sport": "NFL",
@@ -2270,11 +2287,11 @@
   "headline_basis": "all-time: working ledger + data/ledger_archive.json",
   "working_ledger_only": {
     "all": {
-      "n_settled": 19621,
-      "wins": 10094,
+      "n_settled": 19620,
+      "wins": 10093,
       "losses": 9518,
-      "net_units": -2184.329,
-      "roi_pct": -11.14
+      "net_units": -2190.449,
+      "roi_pct": -11.17
     },
     "curated": {
       "n_settled": 494,
@@ -2368,41 +2385,17 @@
   "restatement": {
     "date": "2026-10-23",
     "note": "The headline became ALL-TIME on 2026-10-23. 5,946 settled picks that the old tail-cut eviction had destroyed (May-June 2026, the 07-06 erosion and the run-up to 09-03) were rebuilt from git history at each pick's final state, with today's duplicate-wager rule re-applied, and folded back in. They are mostly the raw May-June MLB prop firehose (2,961-2,983, -1,256.9u), so the firehose ROI fell; the curated record changed by the curated picks among them. Before this date the published numbers covered the working window only -- working_ledger_only keeps that basis.",
-    "n_archived_in_headline": 6707
+    "n_archived_in_headline": 6708
   },
-  "n_added_this_run": 0,
+  "n_added_this_run": 1,
   "n_newly_settled_this_run": 0,
   "n_resettled_this_run": 0,
   "n_voided_this_run": 0,
   "n_duplicates_collapsed_this_run": 70,
-  "n_duplicate_adds_blocked_this_run": 17,
+  "n_duplicate_adds_blocked_this_run": 19,
   "n_reconciled_settled_voids": 0,
   "n_bootstrapped_from_locks_history": 70,
   "by_source": {
-    "mlb_hr_yn_to_hit_hr_yes": {
-      "n": 1780,
-      "wins": 249,
-      "losses": 1531,
-      "pushes": 0,
-      "net_units": -667.386,
-      "hit_rate": 0.1399,
-      "roi_pct": -37.49,
-      "by_price_class": {
-        "C": {
-          "n": 1780,
-          "wins": 249,
-          "losses": 1531,
-          "net_units": -667.386,
-          "roi_pct": -37.49
-        }
-      },
-      "sportsbook": {
-        "wins": 0,
-        "losses": 0,
-        "net_units": 0,
-        "roi_pct": null
-      }
-    },
     "mlb_2plus_hits_hits_2plus_yes": {
       "n": 232,
       "wins": 63,
@@ -3200,6 +3193,30 @@
           "losses": 360,
           "net_units": -139.168,
           "roi_pct": -21.58
+        }
+      },
+      "sportsbook": {
+        "wins": 0,
+        "losses": 0,
+        "net_units": 0,
+        "roi_pct": null
+      }
+    },
+    "mlb_hr_yn_to_hit_hr_yes": {
+      "n": 1780,
+      "wins": 249,
+      "losses": 1531,
+      "pushes": 0,
+      "net_units": -667.386,
+      "hit_rate": 0.1399,
+      "roi_pct": -37.49,
+      "by_price_class": {
+        "C": {
+          "n": 1780,
+          "wins": 249,
+          "losses": 1531,
+          "net_units": -667.386,
+          "roi_pct": -37.49
         }
       },
       "sportsbook": {
@@ -14073,14 +14090,6 @@
     }
   },
   "by_market_family": {
-    "to_hit_hr_yes": {
-      "n": 1162,
-      "wins": 160,
-      "losses": 1002,
-      "pushes": 0,
-      "net_units": -448.546,
-      "hit_rate": 0.1377
-    },
     "hits_2plus_yes": {
       "n": 208,
       "wins": 55,
@@ -14256,6 +14265,14 @@
       "pushes": 0,
       "net_units": -97.474,
       "hit_rate": 0.4177
+    },
+    "to_hit_hr_yes": {
+      "n": 1161,
+      "wins": 159,
+      "losses": 1002,
+      "pushes": 0,
+      "net_units": -454.666,
+      "hit_rate": 0.137
     },
     "pp_batter_rbis": {
       "n": 6,
@@ -14955,14 +14972,6 @@
     }
   },
   "by_canonical": {
-    "mlb_hr_0.5_over": {
-      "n": 1162,
-      "wins": 160,
-      "losses": 1002,
-      "pushes": 0,
-      "net_units": -448.546,
-      "hit_rate": 0.1377
-    },
     "mlb_hit_1.5_over": {
       "n": 567,
       "wins": 313,
@@ -15146,6 +15155,14 @@
       "pushes": 0,
       "net_units": -97.474,
       "hit_rate": 0.4177
+    },
+    "mlb_hr_0.5_over": {
+      "n": 1161,
+      "wins": 159,
+      "losses": 1002,
+      "pushes": 0,
+      "net_units": -454.666,
+      "hit_rate": 0.137
     },
     "mlb_rbi_1.5_under": {
       "n": 6,
@@ -15877,7 +15894,7 @@
       "pushes": 11,
       "pending": 0,
       "void": 0,
-      "net_units": -3620.615,
+      "net_units": -3620.596,
       "hit_rate": 0.3641,
       "roi_pct": -26.28,
       "markets": 30
@@ -16052,12 +16069,12 @@
       "markets": 12
     },
     "NBA": {
-      "n": 2746,
+      "n": 2747,
       "settled": 2585,
       "wins": 1693,
       "losses": 892,
       "pushes": 0,
-      "pending": 161,
+      "pending": 162,
       "void": 0,
       "net_units": -44.392,
       "hit_rate": 0.6549,
@@ -16125,10 +16142,10 @@
   },
   "note": "Unified pick ledger -- records every pick the model surfaces (top_25 board, whales, consensus, unders, sharp action, locks, POD) and settles each against actual outcomes. Per-source W-L feeds back into calibration so the model learns which modules are reliable. THIS is the training signal.",
   "archived_history": {
-    "n_settled": 7024,
-    "wins": 3406,
+    "n_settled": 7025,
+    "wins": 3407,
     "losses": 3614,
-    "net_units": -1382.54,
+    "net_units": -1376.42,
     "oldest": "2026-05-20",
     "newest": "2026-06-16",
     "note": "Settled picks no longer in the working ledger (recovered tail-cut history + lossless evictions). INCLUDED in the all-time headline since 2026-10-23 (see restatement); kept in full at data/ledger_archive.json."
