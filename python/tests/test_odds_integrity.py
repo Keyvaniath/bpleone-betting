@@ -1494,8 +1494,8 @@ def test_review3_signals_use_the_open_price_research_desk_is_no_prior_and_et_dat
 
 def test_board_results_split_by_price_taken():
     import all_picks_tracker as t
-    assert [t._price_bucket(x) for x in (-283, -200, -199, -101, -100, 150, None)] == \
-        ["heavy_fav", "heavy_fav", "fav", "fav", "dog", "dog", None]
+    assert [t._price_bucket(x) for x in (-283, -200, -199, -101, -100, 150, 199, 200, 860, None)] == \
+        ["heavy_fav", "heavy_fav", "fav", "fav", "dog", "dog", "dog", "longshot", "longshot", None]
     rows = [{"source": "board_pick", "sport": "NHL", "date": "2026-11-12", "market": "ML_HOME", "book_american": -250,
              "settled": True, "result": "won", "event_id": "x1"},
             {"source": "board_pick", "sport": "NHL", "date": "2026-11-12", "market": "ML_HOME", "book_american": 120,

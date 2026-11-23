@@ -3319,7 +3319,9 @@ def _et_today_str() -> str:
 
 
 def _price_bucket(american) -> Optional[str]:
-    """heavy_fav: -200 or shorter; fav: -199 to -101; dog: -100 (even) or longer."""
+    """heavy_fav: -200 or shorter; fav: -199 to -101; dog: -100 (even) to +199; longshot: +200 or longer.
+    (2026-11-23) longshots split out of 'dog': NFL desk picks at +200 or longer went 0-4 with flat CLV while
+    shorter prices beat the close, the classic sign of a model overstating long underdogs."""
     try:
         a = float(american)
     except (TypeError, ValueError):
@@ -3328,6 +3330,8 @@ def _price_bucket(american) -> Optional[str]:
         return "heavy_fav"
     if a < -100:
         return "fav"
+    if a >= 200:
+        return "longshot"
     return "dog"
 
 
@@ -3457,7 +3461,7 @@ def _board_block(history: List[Dict[str, Any]]) -> Dict[str, Any]:
         "alpha": line(alpha, alpha=True),
         "by_grade": {g: line([p for p in rows if grade(p) == g]) for g in ("A", "B", "C")},
         # (2026-11-13) by the price we took: is the record carried by heavy chalk?
-        "by_price": {k: line([p for p in rows if _price_bucket(price(p)) == k]) for k in ("heavy_fav", "fav", "dog")},
+        "by_price": {k: line([p for p in rows if _price_bucket(price(p)) == k]) for k in ("heavy_fav", "fav", "dog", "longshot")},
         "by_sport": {sp: line([p for p in rows if str(p.get("sport") or "").upper() == sp])
                      for sp in sorted({str(p.get("sport") or "").upper() for p in rows})},
         # (2026-11-16 review) today and earlier only: desk picks on future dates took 8 of the 14 slots
