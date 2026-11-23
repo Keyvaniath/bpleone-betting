@@ -1,5 +1,5 @@
 # EdgeStat — Tonight's Master Brief
-_Generated 2026-11-23T08:23:31 UTC_
+_Generated 2026-11-23T20:50:03 UTC_
 
 ## Slate Quality
 - **Tier:** NO_ACTION_NIGHT
@@ -33,13 +33,13 @@ _Generated 2026-11-23T08:23:31 UTC_
 - **Expected P&L on $100:** $0.0
 
 ## Top Fades
-- **NBA** / HOU (TEAM_FADE)
-  - Fade angle: team total UNDER
 - **NBA** / BKN (TEAM_FADE)
   - Fade angle: team total UNDER
-- **NBA** / TOR (TEAM_FADE)
+- **NBA** / HOU (TEAM_FADE)
   - Fade angle: team total UNDER
-- **NBA** / CHI (TEAM_FADE)
+- **NBA** / LAC (TEAM_FADE)
   - Fade angle: team total UNDER
 - **NBA** / POR (TEAM_FADE)
+  - Fade angle: team total UNDER
+- **NBA** / TOR (TEAM_FADE)
   - Fade angle: team total UNDER

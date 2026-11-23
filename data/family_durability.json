@@ -1,50 +1,24 @@
 {
  "durable_book": null,
- "generated_at": "2026-11-23T08:23:25",
+ "generated_at": "2026-11-23T20:49:57",
  "n_settled_total": 581,
  "price_classes": [
   "A",
   "B"
  ],
- "n_settled_all_classes": 19655,
- "n_excluded_prizepicks": 468,
- "n_excluded_class_c": 18606,
+ "n_settled_all_classes": 19633,
+ "n_excluded_prizepicks": 464,
+ "n_excluded_class_c": 18588,
  "no_durable_note": "no durable family at sportsbook prices",
  "n_families_cut": 32,
  "n_families_evaluated": 3,
  "min_n": 40,
  "durable_n": 100,
  "tiers": {
-  "NEGATIVE": 2,
-  "FRAGILE": 1
+  "FRAGILE": 1,
+  "NEGATIVE": 2
  },
  "families": [
-  {
-   "family": "ml_away",
-   "n": 104,
-   "hit": 0.529,
-   "net_units": -1.8,
-   "roi": -1.7,
-   "ci_lo": -20.4,
-   "ci_hi": 18.1,
-   "h1_roi": -0.6,
-   "h2_roi": -2.9,
-   "both_halves_positive": false,
-   "tier": "NEGATIVE"
-  },
-  {
-   "family": "ml_home",
-   "n": 84,
-   "hit": 0.583,
-   "net_units": -1.9,
-   "roi": -2.3,
-   "ci_lo": -21.2,
-   "ci_hi": 14.5,
-   "h1_roi": 1.7,
-   "h2_roi": -6.2,
-   "both_halves_positive": false,
-   "tier": "NEGATIVE"
-  },
   {
    "family": "under",
    "n": 63,
@@ -57,6 +31,32 @@
    "h2_roi": -23.9,
    "both_halves_positive": false,
    "tier": "FRAGILE"
+  },
+  {
+   "family": "ml_home",
+   "n": 85,
+   "hit": 0.576,
+   "net_units": -2.9,
+   "roi": -3.4,
+   "ci_lo": -22.5,
+   "ci_hi": 14.0,
+   "h1_roi": 1.7,
+   "h2_roi": -8.4,
+   "both_halves_positive": false,
+   "tier": "NEGATIVE"
+  },
+  {
+   "family": "ml_away",
+   "n": 103,
+   "hit": 0.524,
+   "net_units": -2.7,
+   "roi": -2.6,
+   "ci_lo": -22.6,
+   "ci_hi": 16.0,
+   "h1_roi": -2.4,
+   "h2_roi": -2.9,
+   "both_halves_positive": false,
+   "tier": "NEGATIVE"
   }
  ],
  "method_note": "Sportsbook-priced picks only (price class A/B); PrizePicks (MLB-PP, unverified) and class-C rows graded at the model's own odds are excluded. Every surviving (non-cut) family with n >= 40 graded picks, ranked by the LOWER bound of a 1000-resample bootstrap 95% CI on ROI. DURABLE = CI floor above zero AND positive in both chronological halves AND n >= 100. A big headline ROI with a CI spanning zero or a losing second half is FRAGILE, not edge.",
