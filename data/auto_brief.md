@@ -2,10 +2,10 @@
 
 ## Slate
 - **0 games** scheduled
-- **No best bet today:** a best bet needs a real sportsbook price — 11 model-only projections excluded (UCL 4, LOL 3, NCAAF 2, NBA 1, EPL 1)
+- **No best bet today:** a best bet needs a real sportsbook price — 12 model-only projections excluded (LOL 3, NCAAB 3, UCL 2, NCAAF 2, NBA 1, EPL 1)
 
 ## NBA -- REGULAR
-- 11/24 07:00 PM ET: Detroit Pistons @ Orlando Magic (10-6 vs 7-9)  | DK -135/+114 | desk P(home) 44.9% (NO EDGE) | Scheduled
+- 11/24 07:00 PM ET: Detroit Pistons @ Orlando Magic (10-6 vs 7-9)  | DK -130/+110 | desk P(home) 45.7% (NO EDGE) | Scheduled
 - 11/24 08:00 PM ET: Boston Celtics @ Washington Wizards (11-6 vs 7-11)  | DK -453/+351 | desk P(home) 21.3% (NO EDGE) | Scheduled
 - 11/24 10:00 PM ET: Dallas Mavericks @ Denver Nuggets (10-7 vs 10-5)  | DK +251/-310 | desk P(home) 72.6% (NO EDGE) | Scheduled
 

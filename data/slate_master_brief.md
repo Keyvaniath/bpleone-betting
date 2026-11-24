@@ -1,27 +1,13 @@
 # EdgeStat — Tonight's Master Brief
-_Generated 2026-11-24T19:57:11 UTC_
+_Generated 2026-11-24T23:37:06 UTC_
 
 ## Slate Quality
 - **Tier:** NO_ACTION_NIGHT
-- **Score:** -12
+- **Score:** -32
 - **Advisory:** STAND DOWN. Slate has no aligned conviction. Skip betting tonight or watch only.
 - **Total LOCKs:** 0
-- **Total STRONG:** 5
+- **Total STRONG:** 0
 - **Total FADES:** 32
-
-## Top 5 Curated Picks
-1. **GOLF / Haotong Li** (GOLF_PLAYER, score=219.29)
-   - Play: Haotong Li (PLAYER_STRONG)
-   - Rationale: Cross-sport top pick (GOLF_PLAYER)
-2. **GOLF / Marco Penge** (GOLF_PLAYER, score=219.29)
-   - Play: Marco Penge (PLAYER_STRONG)
-   - Rationale: Cross-sport top pick (GOLF_PLAYER)
-
-## Top Events Board
-- **GOLF** / ? (TOURNAMENT_STRONG)
-  - Haotong Li top 10 finish
-  - Marco Penge top 10 finish
-  - Michael Thorbjornsen top 10 finish
 
 ## Slate ROI Projection
 - **Picks:** 0
