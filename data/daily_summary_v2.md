@@ -1,21 +1,21 @@
-# EdgeStat Daily Summary — 2026-11-23
+# EdgeStat Daily Summary — 2026-11-24
 
-## 🏥 Model Health: 56.6/100 [OK]
+## 🏥 Model Health: 58.1/100 [OK]
 - Operational but room to improve - check yellow components
-  - 🟢 Calibration Freshness: 100.0/100
-  - 🔴 Hit Rate Trend: 40.7/100
-  - 🔴 Brier Trend: 0.8/100
+  - 🟢 Calibration Freshness: 99.9/100
+  - 🔴 Hit Rate Trend: 40.3/100
+  - 🔴 Brier Trend: 0.3/100
   - 🟢 Pipeline Audit: 100.0/100
-  - 🟢 Data Health: 91.7/100
+  - 🟢 Data Health: 100.0/100
   - 🔴 Edge Count: 0/100
 
 ## 🌐 Slate Overview
-- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.572)
-- **Total games on board:** 43
-- **Strong home favorites:** 20 | **Strong road dogs:** 12
+- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.639)
+- **Total games on board:** 47
+- **Strong home favorites:** 28 | **Strong road dogs:** 12
 
 ## 🎯 Best Bets (sportsbook-priced only)
-- No best bet today: a best bet needs a real sportsbook price — 21 model-only projections excluded (NHL 6, NBA 4, UCL 4, LOL 3, NCAAF 2, CS 1, EPL 1).
+- No best bet today: a best bet needs a real sportsbook price — 16 model-only projections excluded (UCL 4, NBA 3, LOL 3, NHL 3, NCAAF 2, CS 1).
 
 ## 🔒 Locks of the Day -- Track Record
 - Sportsbook-priced: **3-0** (n=3; net +0.05u, ROI +60.8%) -- too few to judge
@@ -29,15 +29,15 @@
 - **[CS]** torzsi OVER 40.5 Kills (BO3) · model 61.0%
 
 ## ⚡ Pre-Game
-- No pre-game alerts: an alert needs a game-lines-desk probability whose verdict passed (not NO EDGE / UNPROVEN) and a DraftKings price. NBA: 10 desk verdict NO EDGE; NHL: 7 desk verdict NO EDGE; WNBA: 1 not pre-game; MLS: 1 no validated model probability (not from the game-lines desk); EPL: 1 started or no start time; UCL: 9 no validated model probability (not from the game-lines desk); NFL: 12 not pre-game; NCAAF: 23 no validated model probability (not from the game-lines desk); NCAAB: 4 not pre-game; CWS: 1 not pre-game
+- No pre-game alerts: an alert needs a game-lines-desk probability whose verdict passed (not NO EDGE / UNPROVEN) and a DraftKings price. NBA: 7 not pre-game; NHL: 5 not pre-game; WNBA: 1 not pre-game; MLS: 1 started or no start time; EPL: 1 not pre-game; UCL: 9 no validated model probability (not from the game-lines desk); NFL: 12 not pre-game; NCAAF: 23 no validated model probability (not from the game-lines desk); NCAAB: 3 started or no start time; CWS: 1 not pre-game
 
 ## 🔥/❄️ Heat / Cold Signals
-- Hot teams: **5** | Cold teams: **10** | Over-heavy: 0 | Under-heavy: 30
+- Hot teams: **8** | Cold teams: **8** | Over-heavy: 0 | Under-heavy: 39
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (114)
+## ⚠️ Anomaly Detector (96)
 - RESIDUAL_DIVERGENCE: **14**
-- STEAM_MOVE: **100**
+- STEAM_MOVE: **82**
   - Minnesota Timberwolves (NBA): Minnesota Timberwolves OUTPERFORMING expected margin by 10.1pts in recent games -- model bias may persist
   - Cleveland Cavaliers (NBA): Cleveland Cavaliers OUTPERFORMING expected margin by 7.8pts in recent games -- model bias may persist
   - New Orleans Pelicans (NBA): New Orleans Pelicans UNDERPERFORMING expected margin by 8.4pts in recent games -- model bias may persist
@@ -47,7 +47,7 @@
 ## 💰 Today's Portfolio
 - No priced picks: a stake is sized only at an actionable DraftKings quote.
 
-## 🎯 Signal stacking (17 games with 2+ signals) — research, not picks
+## 🎯 Signal stacking (12 games with 2+ signals) — research, not picks
   - Toronto Maple Leafs @ New York Islanders : 4 signals (HEAT_COLD, HEAT_COLD, HEAT_COLD, ANOMALY)
   - Anaheim Ducks @ Seattle Kraken : 4 signals (HEAT_COLD, HEAT_COLD, ANOMALY, ANOMALY)
   - Portland Trail Blazers @ Philadelphia 76ers : 3 signals (HEAT_COLD, HEAT_COLD, HEAT_COLD)
@@ -104,7 +104,7 @@
   - ⚠️ **batter_total_bases**: DIVERGENT - consistent same-sign moves (structural issue) (cf=1.0617)
 
 ## 🤖 Self-Training Status
-- **NBA**: n=102 games · hit rate 62.7% · bias -2.4pp
-- **NHL**: n=95 games · hit rate 53.7% · bias +12.9pp [calibration applied]
+- **NBA**: n=94 games · hit rate 62.8% · bias +1.9pp
+- **NHL**: n=92 games · hit rate 50.0% · bias +13.0pp [calibration applied]
 - **MLS**: n=23 games · hit rate 47.8% · bias +8.8pp
-- **EPL**: n=20 games · hit rate 55.0% · bias -15.2pp
+- **EPL**: n=20 games · hit rate 55.0% · bias -24.7pp

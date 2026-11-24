@@ -1,8 +1,8 @@
 **EdgeStat -- Tonight's Slate**
-_NO_ACTION_NIGHT_ | L:0 S:12 F:122
+_NO_ACTION_NIGHT_ | L:0 S:6 F:57
 
 :dart: **Top Picks:**
-1. [GOLF] Rasmus Højgaard -- Rasmus Højgaard (PLAYER_STRONG)
+1. [GOLF] Jackson Koivun -- Jackson Koivun (PLAYER_STRONG)
 2. [GOLF] Michael Thorbjornsen -- Michael Thorbjornsen (PLAYER_STRONG)
 3. [NBA] LAL -- LAL (TEAM_STRONG)
 
