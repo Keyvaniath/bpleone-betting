@@ -4,7 +4,7 @@
 
 _Pipeline health: **WARNING** (7/15 artifacts ok; 8 empty, 0 stale)._ 
 
-_Generated at 2026-11-24T05:58:17 UTC. Game lines source: **DraftKings via ESPN (152 pre-game priced games, observed 2026-11-24T05:58:08 UTC)**._
+_Generated at 2026-11-24T19:57:19 UTC. Game lines source: **DraftKings via ESPN (147 pre-game priced games, observed 2026-11-24T19:57:11 UTC)**._
 
 ## Self-Learning Loop
 
@@ -13,13 +13,11 @@ _Generated at 2026-11-24T05:58:17 UTC. Game lines source: **DraftKings via ESPN 
 | batter total bases | 12 | 50.0% | 43.1% | 0.874 | 1.097 |
 | batter hits | 52 | 48.1% | 58.0% | 1.202 | 0.849 |
 
-Cumulative graded plays: 26491. Wins: 13484. Hit rate: 50.9%.
+Cumulative graded plays: 26521. Wins: 13502. Hit rate: 50.9%.
 
 ## Loop Activity (since last refresh)
 
-- Confidence delta: **-1.6**
-- batter hits: cf -0.1134 (-18 new settled)
-- batter total bases: cf +0.0348 (-3 new settled)
+- Confidence delta: **+0.0**
 
 ## Model Recommendations (operator review)
 
@@ -31,4 +29,4 @@ _The model is suggesting 1 parameter tweak based on its own performance. Apply v
 ---
 
 _EdgeStat is a research desk. Bet responsibly. 21+. 1-800-GAMBLER._
-_Source: github.com/Keyvaniath/bpleone-betting - last settled 2026-11-23._
+_Source: github.com/Keyvaniath/bpleone-betting - last settled 2026-11-24._

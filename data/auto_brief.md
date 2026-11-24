@@ -2,21 +2,15 @@
 
 ## Slate
 - **0 games** scheduled
-- **No best bet today:** a best bet needs a real sportsbook price — 16 model-only projections excluded (UCL 4, NBA 3, LOL 3, NHL 3, NCAAF 2, CS 1)
+- **No best bet today:** a best bet needs a real sportsbook price — 11 model-only projections excluded (UCL 4, LOL 3, NCAAF 2, NBA 1, EPL 1)
 
 ## NBA -- REGULAR
-- 11/23 07:00 PM ET: Memphis Grizzlies @ Charlotte Hornets (12-5 vs 4-11) 69-70 | no DK price | no validated model probability | In Progress
-- 11/23 07:00 PM ET: Portland Trail Blazers @ Philadelphia 76ers (10-6 vs 14-3) 76-76 | no DK price | no validated model probability | In Progress
-- 11/23 07:30 PM ET: Oklahoma City Thunder @ Indiana Pacers (10-7 vs 5-12) 48-56 | no DK price | no validated model probability | In Progress
-- 11/23 07:30 PM ET: Milwaukee Bucks @ Toronto Raptors (1-16 vs 6-10) 41-43 | no DK price | no validated model probability | In Progress
-- 11/23 07:30 PM ET: Brooklyn Nets @ Minnesota Timberwolves (3-12 vs 12-5) 55-62 | no DK price | no validated model probability | In Progress
+- 11/24 07:00 PM ET: Detroit Pistons @ Orlando Magic (10-6 vs 7-9)  | DK -135/+114 | desk P(home) 44.9% (NO EDGE) | Scheduled
+- 11/24 08:00 PM ET: Boston Celtics @ Washington Wizards (11-6 vs 7-11)  | DK -453/+351 | desk P(home) 21.3% (NO EDGE) | Scheduled
+- 11/24 10:00 PM ET: Dallas Mavericks @ Denver Nuggets (10-7 vs 10-5)  | DK +251/-310 | desk P(home) 72.6% (NO EDGE) | Scheduled
 
 ## NHL -- REGULAR
-- 11/23 07:00 PM ET: Columbus Blue Jackets @ New Jersey Devils (9-12-0 vs 15-8-0) 1-3 | no DK price | no validated model probability | In Progress
-- 11/23 07:30 PM ET: Los Angeles Kings @ Montreal Canadiens (7-12-2 vs 14-6-4) 1-0 | no DK price | no validated model probability | End of Period
-- 11/23 07:30 PM ET: Calgary Flames @ Ottawa Senators (10-12-2 vs 15-6-3) 0-2 | no DK price | no validated model probability | End of Period
-- 11/23 07:30 PM ET: Toronto Maple Leafs @ New York Islanders (8-14-3 vs 11-6-5) 0-1 | no DK price | no validated model probability | In Progress
-- 11/23 07:30 PM ET: Utah Mammoth @ Winnipeg Jets (12-9-3 vs 11-9-4) 2-3 | no DK price | no validated model probability | End of Period
+- 11/24 08:00 PM ET: Vegas Golden Knights @ Edmonton Oilers (14-6-5 vs 17-5-4)  | DK -125/+105 | desk P(home) 46.8% (NO EDGE) | Scheduled
 
 ## Player projections -- across all sports — model projection — unvalidated, no sportsbook price, not a recommendation
 - **[LOL]** Inspired UNDER 3.5 Kills | model 61.7%
