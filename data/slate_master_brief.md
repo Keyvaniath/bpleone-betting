@@ -1,30 +1,27 @@
 # EdgeStat — Tonight's Master Brief
-_Generated 2026-11-24T01:42:38 UTC_
+_Generated 2026-11-24T05:58:08 UTC_
 
 ## Slate Quality
 - **Tier:** NO_ACTION_NIGHT
-- **Score:** -33
+- **Score:** -13
 - **Advisory:** STAND DOWN. Slate has no aligned conviction. Skip betting tonight or watch only.
 - **Total LOCKs:** 0
-- **Total STRONG:** 6
-- **Total FADES:** 57
+- **Total STRONG:** 5
+- **Total FADES:** 33
 
 ## Top 5 Curated Picks
 1. **GOLF / Jackson Koivun** (GOLF_PLAYER, score=219.29)
    - Play: Jackson Koivun (PLAYER_STRONG)
    - Rationale: Cross-sport top pick (GOLF_PLAYER)
-2. **GOLF / Michael Thorbjornsen** (GOLF_PLAYER, score=219.29)
-   - Play: Michael Thorbjornsen (PLAYER_STRONG)
+2. **GOLF / Haotong Li** (GOLF_PLAYER, score=219.29)
+   - Play: Haotong Li (PLAYER_STRONG)
    - Rationale: Cross-sport top pick (GOLF_PLAYER)
-3. **NBA / LAL** (NBA_TEAM, score=60.0)
-   - Play: LAL (TEAM_STRONG)
-   - Rationale: Cross-sport top pick (NBA_TEAM)
 
 ## Top Events Board
 - **GOLF** / ? (TOURNAMENT_STRONG)
   - Jackson Koivun top 10 finish
-  - Michael Thorbjornsen top 10 finish
-  - Max Greyserman top 10 finish
+  - Haotong Li top 10 finish
+  - Marco Penge top 10 finish
 
 ## Slate ROI Projection
 - **Picks:** 0
@@ -33,13 +30,13 @@ _Generated 2026-11-24T01:42:38 UTC_
 - **Expected P&L on $100:** $0.0
 
 ## Top Fades
-- **NBA** / HOU (TEAM_FADE)
+- **NBA** / DET (TEAM_FADE)
   - Fade angle: team total UNDER
-- **NBA** / BKN (TEAM_FADE)
+- **NBA** / WAS (TEAM_FADE)
   - Fade angle: team total UNDER
-- **NBA** / TOR (TEAM_FADE)
+- **NBA** / DAL (TEAM_FADE)
   - Fade angle: team total UNDER
-- **NBA** / POR (TEAM_FADE)
+- **NBA** / DEN (TEAM_FADE)
   - Fade angle: team total UNDER
-- **NBA** / LAC (TEAM_FADE)
+- **NBA** / ORL (TEAM_FADE)
   - Fade angle: team total UNDER
