@@ -1,23 +1,23 @@
 {
-  "generated_at": "2026-11-25T04:57:27",
+  "generated_at": "2026-11-25T08:57:24",
   "stake_assumption": "1u flat per pick",
   "total_picks": 20000,
-  "n_settled": 26565,
-  "n_pending": 176,
-  "n_void": 8,
-  "wins": 13520,
-  "losses": 13034,
+  "n_settled": 26570,
+  "n_pending": 172,
+  "n_void": 7,
+  "wins": 13523,
+  "losses": 13036,
   "pushes": 11,
   "hit_rate": 0.5092,
-  "net_units": -3510.685,
+  "net_units": -3511.416,
   "roi_pct": -13.22,
   "n_calibrated_picks": 19962,
   "calibrated_reliability": {
-    "n": 19769,
+    "n": 19774,
     "ece_raw": 0.0577,
     "ece_calibrated": 0.0076,
-    "brier_raw": 0.20921,
-    "brier_calibrated": 0.19717,
+    "brier_raw": 0.20922,
+    "brier_calibrated": 0.19718,
     "note": "In-sample over the settled ledger (the isotonic transform is fit on these same outcomes); held-out 70/30 validation is in recalibration_map.json. p_predicted = raw model prob (kept untouched for the learning loop); p_calibrated = honest prob stamped per pick. Lower ECE/Brier on the calibrated column = the displayed % is truer."
   },
   "curated": {
@@ -65,9 +65,9 @@
     "losses": 7,
     "net_units": 3.682,
     "roi_pct": 14.16,
-    "n_pending": 0,
+    "n_pending": 1,
     "first_date": "2026-11-11",
-    "last_date": "2026-11-23",
+    "last_date": "2026-11-25",
     "by_sport": {
       "NBA": {
         "n_settled": 13,
@@ -83,10 +83,21 @@
         "losses": 3,
         "net_units": 2.736,
         "roi_pct": 21.05,
-        "n_pending": 0
+        "n_pending": 1
       }
     },
     "recent": [
+      {
+        "date": "2026-11-25",
+        "sport": "NHL",
+        "matchup": "NJ @ CBJ",
+        "team": "NJ",
+        "market": "ML_AWAY",
+        "book_american": -162,
+        "result": "pending",
+        "payout_units": null,
+        "final": null
+      },
       {
         "date": "2026-11-23",
         "sport": "NHL",
@@ -207,17 +218,6 @@
         "result": "lost",
         "payout_units": -1.0,
         "final": "MEM 124 @ CLE 121"
-      },
-      {
-        "date": "2026-11-17",
-        "sport": "NHL",
-        "matchup": "WSH @ TB",
-        "team": "TB",
-        "market": "ML_HOME",
-        "book_american": -170,
-        "result": "won",
-        "payout_units": 0.5882,
-        "final": "WSH 2 @ TB 5"
       }
     ],
     "definition": "Model leans: the per-sport play on a day a desk has no pick with an edge -- the favourite its model and DraftKings both favour. Logged at the DraftKings price, graded on the final score. Not an edge (expected value is the book's margin) and never part of the curated record."
@@ -229,7 +229,7 @@
       "losses": 7,
       "net_units": 3.682,
       "roi_pct": 14.16,
-      "n_pending": 0
+      "n_pending": 1
     },
     "desk_picks": {
       "n_settled": 6,
@@ -237,10 +237,34 @@
       "losses": 4,
       "net_units": -3.26,
       "roi_pct": -54.33,
-      "n_pending": 0
+      "n_pending": 1
     },
     "first_date": "2026-11-11",
     "recent": [
+      {
+        "date": "2026-11-25",
+        "sport": "NHL",
+        "kind": "lean",
+        "matchup": "NJ @ CBJ",
+        "team": "NJ",
+        "market": "ML_AWAY",
+        "book_american": -162,
+        "result": "pending",
+        "payout_units": null,
+        "final": null
+      },
+      {
+        "date": "2026-11-25",
+        "sport": "NFL",
+        "kind": "desk pick",
+        "matchup": "GB @ LAR",
+        "team": "LAR",
+        "market": "ML_HOME",
+        "book_american": -178,
+        "result": "pending",
+        "payout_units": null,
+        "final": null
+      },
       {
         "date": "2026-11-23",
         "sport": "NHL",
@@ -408,30 +432,6 @@
         "result": "lost",
         "payout_units": -1.0,
         "final": "MEM 124 @ CLE 121"
-      },
-      {
-        "date": "2026-11-17",
-        "sport": "NHL",
-        "kind": "lean",
-        "matchup": "WSH @ TB",
-        "team": "TB",
-        "market": "ML_HOME",
-        "book_american": -170,
-        "result": "won",
-        "payout_units": 0.5882,
-        "final": "WSH 2 @ TB 5"
-      },
-      {
-        "date": "2026-11-17",
-        "sport": "NBA",
-        "kind": "lean",
-        "matchup": "NY @ TOR",
-        "team": "NY",
-        "market": "ML_AWAY",
-        "book_american": -141,
-        "result": "won",
-        "payout_units": 0.7092,
-        "final": "NY 111 @ TOR 102"
       }
     ],
     "definition": "The play shown for each major sport on each day, graded at the DraftKings price it was logged at. 'desk pick' = a pick with an edge under the desk's rule; 'lean' = the favourite the model and DraftKings both favour on a day the desk has no pick (not an edge). The two are counted separately and are never summed."
@@ -443,7 +443,7 @@
       "losses": 34,
       "net_units": -8.589,
       "roi_pct": -11.61,
-      "n_pending": 10,
+      "n_pending": 17,
       "n_clv": 55,
       "n_clv_early_close": 19,
       "avg_clv_pts": -0.6,
@@ -500,7 +500,7 @@
         "losses": 24,
         "net_units": -3.876,
         "roi_pct": -6.8,
-        "n_pending": 0,
+        "n_pending": 7,
         "n_clv": 40,
         "n_clv_early_close": 17,
         "avg_clv_pts": -1.08,
@@ -530,7 +530,7 @@
         "losses": 23,
         "net_units": -3.386,
         "roi_pct": -6.27,
-        "n_pending": 6,
+        "n_pending": 13,
         "n_clv": 38,
         "n_clv_early_close": 16,
         "avg_clv_pts": -0.96,
@@ -602,7 +602,7 @@
         "losses": 14,
         "net_units": -3.467,
         "roi_pct": -11.18,
-        "n_pending": 0,
+        "n_pending": 7,
         "n_clv": 17,
         "n_clv_early_close": 14,
         "avg_clv_pts": -0.3,
@@ -612,6 +612,34 @@
       }
     },
     "by_day": {
+      "2026-11-25": {
+        "n_settled": 0,
+        "wins": 0,
+        "losses": 0,
+        "net_units": 0,
+        "roi_pct": null,
+        "n_pending": 8,
+        "n_clv": 0,
+        "n_clv_early_close": 0,
+        "avg_clv_pts": null,
+        "beat_close_pct": null,
+        "avg_clv_ev_pct": null,
+        "median_close_min_before": null,
+        "alpha": {
+          "n_settled": 0,
+          "wins": 0,
+          "losses": 0,
+          "net_units": 0,
+          "roi_pct": null,
+          "n_pending": 0,
+          "n_clv": 0,
+          "n_clv_early_close": 0,
+          "avg_clv_pts": null,
+          "beat_close_pct": null,
+          "avg_clv_ev_pct": null,
+          "median_close_min_before": null
+        }
+      },
       "2026-11-23": {
         "n_settled": 6,
         "wins": 2,
@@ -1096,6 +1124,125 @@
         "team": "BUF",
         "market": "ML_HOME",
         "book_american": -162,
+        "result": "pending",
+        "payout_units": null,
+        "close_price": null,
+        "clv_pts": null,
+        "close_early": false,
+        "close_min_before": null,
+        "final": null
+      },
+      {
+        "date": "2026-11-25",
+        "sport": "NHL",
+        "grade": "C",
+        "is_alpha": false,
+        "matchup": "NJ @ CBJ",
+        "team": "NJ",
+        "market": "ML_AWAY",
+        "book_american": -162,
+        "result": "pending",
+        "payout_units": null,
+        "close_price": null,
+        "clv_pts": null,
+        "close_early": false,
+        "close_min_before": null,
+        "final": null
+      },
+      {
+        "date": "2026-11-25",
+        "sport": "NHL",
+        "grade": "C",
+        "is_alpha": false,
+        "matchup": "PHI @ WSH",
+        "team": "WSH",
+        "market": "ML_HOME",
+        "book_american": -162,
+        "result": "pending",
+        "payout_units": null,
+        "close_price": null,
+        "clv_pts": null,
+        "close_early": false,
+        "close_min_before": null,
+        "final": null
+      },
+      {
+        "date": "2026-11-25",
+        "sport": "NHL",
+        "grade": "C",
+        "is_alpha": false,
+        "matchup": "WPG @ BOS",
+        "team": "BOS",
+        "market": "ML_HOME",
+        "book_american": -162,
+        "result": "pending",
+        "payout_units": null,
+        "close_price": null,
+        "clv_pts": null,
+        "close_early": false,
+        "close_min_before": null,
+        "final": null
+      },
+      {
+        "date": "2026-11-25",
+        "sport": "NHL",
+        "grade": "C",
+        "is_alpha": false,
+        "matchup": "NSH @ DAL",
+        "team": "DAL",
+        "market": "ML_HOME",
+        "book_american": -170,
+        "result": "pending",
+        "payout_units": null,
+        "close_price": null,
+        "clv_pts": null,
+        "close_early": false,
+        "close_min_before": null,
+        "final": null
+      },
+      {
+        "date": "2026-11-25",
+        "sport": "NHL",
+        "grade": "C",
+        "is_alpha": false,
+        "matchup": "UTA @ MIN",
+        "team": "MIN",
+        "market": "ML_HOME",
+        "book_american": -148,
+        "result": "pending",
+        "payout_units": null,
+        "close_price": null,
+        "clv_pts": null,
+        "close_early": false,
+        "close_min_before": null,
+        "final": null
+      },
+      {
+        "date": "2026-11-25",
+        "sport": "NHL",
+        "grade": "C",
+        "is_alpha": false,
+        "matchup": "CHI @ SEA",
+        "team": "SEA",
+        "market": "ML_HOME",
+        "book_american": -166,
+        "result": "pending",
+        "payout_units": null,
+        "close_price": null,
+        "clv_pts": null,
+        "close_early": false,
+        "close_min_before": null,
+        "final": null
+      },
+      {
+        "date": "2026-11-25",
+        "sport": "NHL",
+        "grade": "C",
+        "is_alpha": false,
+        "matchup": "SJ @ ANA",
+        "team": "ANA",
+        "market": "ML_HOME",
+        "book_american": -148,
         "result": "pending",
         "payout_units": null,
         "close_price": null,
@@ -1851,125 +1998,6 @@
         "close_early": false,
         "close_min_before": -3,
         "final": "POR 98 @ MIN 106"
-      },
-      {
-        "date": "2026-11-16",
-        "sport": "NFL",
-        "grade": "B",
-        "is_alpha": false,
-        "matchup": "LAC @ BAL",
-        "team": "LAC",
-        "market": "ML_AWAY",
-        "book_american": 185,
-        "result": "won",
-        "payout_units": 1.85,
-        "close_price": 185,
-        "clv_pts": 0.0,
-        "close_early": false,
-        "close_min_before": 12,
-        "final": "LAC 23 @ BAL 20"
-      },
-      {
-        "date": "2026-11-15",
-        "sport": "NFL",
-        "grade": "B",
-        "is_alpha": true,
-        "matchup": "KC @ ATL",
-        "team": "ATL",
-        "market": "ML_HOME",
-        "book_american": 150,
-        "result": "lost",
-        "payout_units": -1.0,
-        "close_price": 145,
-        "clv_pts": 0.82,
-        "close_early": false,
-        "close_min_before": 0,
-        "final": "KC 35 @ ATL 13"
-      },
-      {
-        "date": "2026-11-15",
-        "sport": "NFL",
-        "grade": "B",
-        "is_alpha": true,
-        "matchup": "BUF @ NYJ",
-        "team": "BUF",
-        "market": "ML_AWAY",
-        "book_american": -485,
-        "result": "won",
-        "payout_units": 0.2062,
-        "close_price": -485,
-        "clv_pts": 0.0,
-        "close_early": false,
-        "close_min_before": 0,
-        "final": "BUF 31 @ NYJ 12"
-      },
-      {
-        "date": "2026-11-15",
-        "sport": "NFL",
-        "grade": "B",
-        "is_alpha": true,
-        "matchup": "MIN @ GB",
-        "team": "GB",
-        "market": "ML_HOME",
-        "book_american": -142,
-        "result": "lost",
-        "payout_units": -1.0,
-        "close_price": -148,
-        "clv_pts": 1.0,
-        "close_early": false,
-        "close_min_before": 0,
-        "final": "MIN 30 @ GB 10"
-      },
-      {
-        "date": "2026-11-15",
-        "sport": "NFL",
-        "grade": "C",
-        "is_alpha": true,
-        "matchup": "PIT @ CIN",
-        "team": "CIN",
-        "market": "ML_HOME",
-        "book_american": -192,
-        "result": "won",
-        "payout_units": 0.5208,
-        "close_price": -218,
-        "clv_pts": 2.8,
-        "close_early": false,
-        "close_min_before": -1,
-        "final": "PIT 18 @ CIN 38"
-      },
-      {
-        "date": "2026-11-15",
-        "sport": "NBA",
-        "grade": "C",
-        "is_alpha": true,
-        "matchup": "NY @ TOR",
-        "team": "NY",
-        "market": "ML_AWAY",
-        "book_american": -191,
-        "result": "won",
-        "payout_units": 0.5236,
-        "close_price": -157,
-        "clv_pts": -4.55,
-        "close_early": false,
-        "close_min_before": -1,
-        "final": "NY 112 @ TOR 108"
-      },
-      {
-        "date": "2026-11-15",
-        "sport": "NHL",
-        "grade": "C",
-        "is_alpha": false,
-        "matchup": "CGY @ ANA",
-        "team": "ANA",
-        "market": "ML_HOME",
-        "book_american": -155,
-        "result": "won",
-        "payout_units": 0.6452,
-        "close_price": -155,
-        "clv_pts": 0.0,
-        "close_early": false,
-        "close_min_before": -1,
-        "final": "CGY 1 @ ANA 6"
       }
     ],
     "open": [
@@ -1982,6 +2010,125 @@
         "team": "LAR",
         "market": "ML_HOME",
         "book_american": -178,
+        "result": "pending",
+        "payout_units": null,
+        "close_price": null,
+        "clv_pts": null,
+        "close_early": false,
+        "close_min_before": null,
+        "final": null
+      },
+      {
+        "date": "2026-11-25",
+        "sport": "NHL",
+        "grade": "C",
+        "is_alpha": false,
+        "matchup": "NJ @ CBJ",
+        "team": "NJ",
+        "market": "ML_AWAY",
+        "book_american": -162,
+        "result": "pending",
+        "payout_units": null,
+        "close_price": null,
+        "clv_pts": null,
+        "close_early": false,
+        "close_min_before": null,
+        "final": null
+      },
+      {
+        "date": "2026-11-25",
+        "sport": "NHL",
+        "grade": "C",
+        "is_alpha": false,
+        "matchup": "PHI @ WSH",
+        "team": "WSH",
+        "market": "ML_HOME",
+        "book_american": -162,
+        "result": "pending",
+        "payout_units": null,
+        "close_price": null,
+        "clv_pts": null,
+        "close_early": false,
+        "close_min_before": null,
+        "final": null
+      },
+      {
+        "date": "2026-11-25",
+        "sport": "NHL",
+        "grade": "C",
+        "is_alpha": false,
+        "matchup": "WPG @ BOS",
+        "team": "BOS",
+        "market": "ML_HOME",
+        "book_american": -162,
+        "result": "pending",
+        "payout_units": null,
+        "close_price": null,
+        "clv_pts": null,
+        "close_early": false,
+        "close_min_before": null,
+        "final": null
+      },
+      {
+        "date": "2026-11-25",
+        "sport": "NHL",
+        "grade": "C",
+        "is_alpha": false,
+        "matchup": "NSH @ DAL",
+        "team": "DAL",
+        "market": "ML_HOME",
+        "book_american": -170,
+        "result": "pending",
+        "payout_units": null,
+        "close_price": null,
+        "clv_pts": null,
+        "close_early": false,
+        "close_min_before": null,
+        "final": null
+      },
+      {
+        "date": "2026-11-25",
+        "sport": "NHL",
+        "grade": "C",
+        "is_alpha": false,
+        "matchup": "UTA @ MIN",
+        "team": "MIN",
+        "market": "ML_HOME",
+        "book_american": -148,
+        "result": "pending",
+        "payout_units": null,
+        "close_price": null,
+        "clv_pts": null,
+        "close_early": false,
+        "close_min_before": null,
+        "final": null
+      },
+      {
+        "date": "2026-11-25",
+        "sport": "NHL",
+        "grade": "C",
+        "is_alpha": false,
+        "matchup": "CHI @ SEA",
+        "team": "SEA",
+        "market": "ML_HOME",
+        "book_american": -166,
+        "result": "pending",
+        "payout_units": null,
+        "close_price": null,
+        "clv_pts": null,
+        "close_early": false,
+        "close_min_before": null,
+        "final": null
+      },
+      {
+        "date": "2026-11-25",
+        "sport": "NHL",
+        "grade": "C",
+        "is_alpha": false,
+        "matchup": "SJ @ ANA",
+        "team": "ANA",
+        "market": "ML_HOME",
+        "book_american": -148,
         "result": "pending",
         "payout_units": null,
         "close_price": null,
@@ -2149,10 +2296,10 @@
   "by_price_class": {
     "all": {
       "C": {
-        "n": 25913,
-        "wins": 13173,
-        "losses": 12740,
-        "net_units": -3496.68,
+        "n": 25918,
+        "wins": 13176,
+        "losses": 12742,
+        "net_units": -3497.412,
         "roi_pct": -13.49
       },
       "B": {
@@ -2202,10 +2349,10 @@
   "headline_basis": "all-time: working ledger + data/ledger_archive.json",
   "working_ledger_only": {
     "all": {
-      "n_settled": 19816,
-      "wins": 10223,
-      "losses": 9584,
-      "net_units": -2213.965,
+      "n_settled": 19821,
+      "wins": 10226,
+      "losses": 9586,
+      "net_units": -2214.697,
       "roi_pct": -11.18
     },
     "curated": {
@@ -2295,19 +2442,19 @@
   "stale_sources_skipped": [],
   "inactive_player_props_blocked": 0,
   "started_game_picks_blocked": 7,
-  "past_dated_picks_blocked": 7,
+  "past_dated_picks_blocked": 25,
   "unpriced_picks_blocked": 0,
   "restatement": {
     "date": "2026-10-23",
     "note": "The headline became ALL-TIME on 2026-10-23. 5,946 settled picks that the old tail-cut eviction had destroyed (May-June 2026, the 07-06 erosion and the run-up to 09-03) were rebuilt from git history at each pick's final state, with today's duplicate-wager rule re-applied, and folded back in. They are mostly the raw May-June MLB prop firehose (2,961-2,983, -1,256.9u), so the firehose ROI fell; the curated record changed by the curated picks among them. Before this date the published numbers covered the working window only -- working_ledger_only keeps that basis.",
     "n_archived_in_headline": 6749
   },
-  "n_added_this_run": 0,
-  "n_newly_settled_this_run": 0,
+  "n_added_this_run": 11,
+  "n_newly_settled_this_run": 15,
   "n_resettled_this_run": 0,
   "n_voided_this_run": 0,
-  "n_duplicates_collapsed_this_run": 62,
-  "n_duplicate_adds_blocked_this_run": 15,
+  "n_duplicates_collapsed_this_run": 72,
+  "n_duplicate_adds_blocked_this_run": 18,
   "n_reconciled_settled_voids": 0,
   "n_bootstrapped_from_locks_history": 62,
   "by_source": {
@@ -6725,20 +6872,20 @@
       }
     },
     "nhl_skater_hits_over_1.5": {
-      "n": 368,
-      "wins": 263,
-      "losses": 105,
+      "n": 371,
+      "wins": 265,
+      "losses": 106,
       "pushes": 0,
-      "net_units": 23.368,
-      "hit_rate": 0.7147,
-      "roi_pct": 6.35,
+      "net_units": 23.19,
+      "hit_rate": 0.7143,
+      "roi_pct": 6.25,
       "by_price_class": {
         "C": {
-          "n": 368,
-          "wins": 263,
-          "losses": 105,
-          "net_units": 23.358,
-          "roi_pct": 6.35
+          "n": 371,
+          "wins": 265,
+          "losses": 106,
+          "net_units": 23.18,
+          "roi_pct": 6.25
         }
       },
       "sportsbook": {
@@ -10229,20 +10376,20 @@
       }
     },
     "nba_alts_home_total_over_109.7": {
-      "n": 214,
-      "wins": 132,
-      "losses": 82,
+      "n": 216,
+      "wins": 133,
+      "losses": 83,
       "pushes": 0,
-      "net_units": -23.128,
-      "hit_rate": 0.6168,
-      "roi_pct": -10.81,
+      "net_units": -23.682,
+      "hit_rate": 0.6157,
+      "roi_pct": -10.96,
       "by_price_class": {
         "C": {
-          "n": 214,
-          "wins": 132,
-          "losses": 82,
-          "net_units": -23.075,
-          "roi_pct": -10.78
+          "n": 216,
+          "wins": 133,
+          "losses": 83,
+          "net_units": -23.629,
+          "roi_pct": -10.94
         }
       },
       "sportsbook": {
@@ -14118,12 +14265,12 @@
       "hit_rate": 0.2634
     },
     "home_total_over": {
-      "n": 378,
-      "wins": 268,
-      "losses": 110,
+      "n": 380,
+      "wins": 269,
+      "losses": 111,
       "pushes": 0,
-      "net_units": 21.632,
-      "hit_rate": 0.709
+      "net_units": 21.078,
+      "hit_rate": 0.7079
     },
     "3pm_over": {
       "n": 57,
@@ -14630,12 +14777,12 @@
       "hit_rate": 0.5
     },
     "hits_over": {
-      "n": 463,
-      "wins": 327,
-      "losses": 136,
+      "n": 466,
+      "wins": 329,
+      "losses": 137,
       "pushes": 0,
-      "net_units": 22.661,
-      "hit_rate": 0.7063
+      "net_units": 22.483,
+      "hit_rate": 0.706
     },
     "anytime_goal_no": {
       "n": 22,
@@ -14992,20 +15139,20 @@
       "hit_rate": 0.7189
     },
     "mlb_hit_1.5_over": {
-      "n": 573,
-      "wins": 317,
-      "losses": 256,
+      "n": 576,
+      "wins": 319,
+      "losses": 257,
       "pushes": 0,
-      "net_units": -64.498,
-      "hit_rate": 0.5532
+      "net_units": -64.676,
+      "hit_rate": 0.5538
     },
     "home_total_over": {
-      "n": 378,
-      "wins": 268,
-      "losses": 110,
+      "n": 380,
+      "wins": 269,
+      "losses": 111,
       "pushes": 0,
-      "net_units": 21.632,
-      "hit_rate": 0.709
+      "net_units": 21.078,
+      "hit_rate": 0.7079
     },
     "3pm_over": {
       "n": 57,
@@ -15850,13 +15997,13 @@
   },
   "by_sport": {
     "MLB": {
-      "n": 13788,
+      "n": 13787,
       "settled": 13787,
       "wins": 5016,
       "losses": 8760,
       "pushes": 11,
       "pending": 0,
-      "void": 1,
+      "void": 0,
       "net_units": -3620.614,
       "hit_rate": 0.3641,
       "roi_pct": -26.28,
@@ -15915,16 +16062,16 @@
       "markets": 2
     },
     "NHL": {
-      "n": 1145,
-      "settled": 1139,
-      "wins": 761,
-      "losses": 378,
+      "n": 1152,
+      "settled": 1142,
+      "wins": 763,
+      "losses": 379,
       "pushes": 0,
-      "pending": 6,
+      "pending": 10,
       "void": 0,
-      "net_units": 13.041,
+      "net_units": 12.863,
       "hit_rate": 0.6681,
-      "roi_pct": 1.14,
+      "roi_pct": 1.13,
       "markets": 12
     },
     "UFC": {
@@ -16019,12 +16166,12 @@
       "markets": 1
     },
     "NFL": {
-      "n": 5065,
+      "n": 5069,
       "settled": 4981,
       "wins": 3653,
       "losses": 1328,
       "pushes": 0,
-      "pending": 84,
+      "pending": 88,
       "void": 0,
       "net_units": -41.141,
       "hit_rate": 0.7334,
@@ -16032,16 +16179,16 @@
       "markets": 12
     },
     "NBA": {
-      "n": 2776,
-      "settled": 2707,
-      "wins": 1773,
-      "losses": 934,
+      "n": 2766,
+      "settled": 2709,
+      "wins": 1774,
+      "losses": 935,
       "pushes": 0,
-      "pending": 69,
+      "pending": 57,
       "void": 0,
-      "net_units": -46.151,
-      "hit_rate": 0.655,
-      "roi_pct": -1.7,
+      "net_units": -46.706,
+      "hit_rate": 0.6549,
+      "roi_pct": -1.72,
       "markets": 18
     }
   },
@@ -16080,12 +16227,12 @@
         "label": "10/23-11/2 -- season-to-date form (judged)"
       },
       "form_v3": {
-        "n": 2574,
+        "n": 2578,
         "settled": 2490,
         "wins": 1893,
         "losses": 597,
         "pushes": 0,
-        "pending": 84,
+        "pending": 88,
         "void": 0,
         "net_units": 50.844,
         "hit_rate": 0.7602,
@@ -16098,10 +16245,10 @@
     "note": "NFL props are judged from 10/23 forward: the simulator's form rule changed, so earlier picks are a different model. They stay on the record as their own line and never feed a family verdict."
   },
   "last_7_days": {
-    "wins": 1029,
-    "losses": 470,
-    "net_units": 4.66,
-    "hit_rate": 0.6865
+    "wins": 1032,
+    "losses": 472,
+    "net_units": 3.928,
+    "hit_rate": 0.6862
   },
   "note": "Unified pick ledger -- records every pick the model surfaces (top_25 board, whales, consensus, unders, sharp action, locks, POD) and settles each against actual outcomes. Per-source W-L feeds back into calibration so the model learns which modules are reliable. THIS is the training signal.",
   "archived_history": {
