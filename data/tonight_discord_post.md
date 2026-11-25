@@ -1,5 +1,8 @@
 **EdgeStat -- Tonight's Slate**
-_NO_ACTION_NIGHT_ | L:0 S:0 F:14
+_NO_ACTION_NIGHT_ | L:0 S:1 F:176
+
+:dart: **Top Picks:**
+1. [NBA] GSW -- GSW (TEAM_STRONG)
 
 :coin: Bankroll Advisory: STAND DOWN. Slate has no aligned conviction. Skip betting tonight or watch only.
 
