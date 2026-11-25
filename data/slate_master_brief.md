@@ -1,13 +1,13 @@
 # EdgeStat — Tonight's Master Brief
-_Generated 2026-11-24T23:37:06 UTC_
+_Generated 2026-11-25T04:56:24 UTC_
 
 ## Slate Quality
 - **Tier:** NO_ACTION_NIGHT
-- **Score:** -32
+- **Score:** -14
 - **Advisory:** STAND DOWN. Slate has no aligned conviction. Skip betting tonight or watch only.
 - **Total LOCKs:** 0
 - **Total STRONG:** 0
-- **Total FADES:** 32
+- **Total FADES:** 14
 
 ## Slate ROI Projection
 - **Picks:** 0
@@ -16,13 +16,13 @@ _Generated 2026-11-24T23:37:06 UTC_
 - **Expected P&L on $100:** $0.0
 
 ## Top Fades
-- **NBA** / DET (TEAM_FADE)
-  - Fade angle: team total UNDER
-- **NBA** / WAS (TEAM_FADE)
-  - Fade angle: team total UNDER
 - **NBA** / DAL (TEAM_FADE)
   - Fade angle: team total UNDER
 - **NBA** / DEN (TEAM_FADE)
   - Fade angle: team total UNDER
-- **NBA** / ORL (TEAM_FADE)
-  - Fade angle: team total UNDER
+- **F1** / logan sargeant (DRIVER_FADE)
+  - Fade angle: non-podium / outside top 10
+- **F1** / oliver bearman (DRIVER_FADE)
+  - Fade angle: non-podium / outside top 10
+- **F1** / guanyu zhou (DRIVER_FADE)
+  - Fade angle: non-podium / outside top 10
