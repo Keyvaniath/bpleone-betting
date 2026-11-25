@@ -3,5 +3,5 @@
 _60-second read. Calibration tier: **PRODUCTION** (100% progress)._
 
 ---
-_Generated 2026-11-25T15:10:22_
+_Generated 2026-11-25T23:14:48_
 _Full breakdown: /tonight · Full history: /locks-of-day_

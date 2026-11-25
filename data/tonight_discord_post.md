@@ -1,5 +1,5 @@
 **EdgeStat -- Tonight's Slate**
-_NO_ACTION_NIGHT_ | L:0 S:1 F:176
+_NO_ACTION_NIGHT_ | L:0 S:1 F:175
 
 :dart: **Top Picks:**
 1. [NBA] GSW -- GSW (TEAM_STRONG)

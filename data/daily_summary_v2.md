@@ -1,21 +1,21 @@
 # EdgeStat Daily Summary — 2026-11-25
 
-## 🏥 Model Health: 63.2/100 [OK]
+## 🏥 Model Health: 63.6/100 [OK]
 - Operational but room to improve - check yellow components
   - 🟢 Calibration Freshness: 100.0/100
-  - 🔴 Hit Rate Trend: 53.2/100
-  - 🔴 Brier Trend: 17.0/100
+  - 🔴 Hit Rate Trend: 50.1/100
+  - 🔴 Brier Trend: 17.7/100
   - 🟢 Pipeline Audit: 100.0/100
-  - 🟢 Data Health: 95.8/100
+  - 🟢 Data Health: 100.0/100
   - 🔴 Edge Count: 0/100
 
 ## 🌐 Slate Overview
-- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.585)
-- **Total games on board:** 66
-- **Strong home favorites:** 30 | **Strong road dogs:** 13
+- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.6)
+- **Total games on board:** 63
+- **Strong home favorites:** 29 | **Strong road dogs:** 12
 
 ## 🎯 Best Bets (sportsbook-priced only)
-- No best bet today: a best bet needs a real sportsbook price — 15 model-only projections excluded (NBA 3, LOL 3, NFL 3, NHL 3, NCAAF 2, EPL 1).
+- No best bet today: a best bet needs a real sportsbook price — 18 model-only projections excluded (NBA 3, LOL 3, UCL 3, NFL 3, NHL 3, NCAAF 2, EPL 1).
 
 ## 🔒 Locks of the Day -- Track Record
 - Sportsbook-priced: **3-0** (n=3; net +0.05u, ROI +60.8%) -- too few to judge
@@ -29,16 +29,16 @@
 - **[CS]** torzsi OVER 40.5 Kills (BO3) · model 61.0%
 
 ## ⚡ Pre-Game
-- No pre-game alerts: an alert needs a game-lines-desk probability whose verdict passed (not NO EDGE / UNPROVEN) and a DraftKings price. NBA: 9 desk verdict NO EDGE; NHL: 14 desk verdict NO EDGE; WNBA: 1 not pre-game; MLS: 2 no validated model probability (not from the game-lines desk); EPL: 1 no validated model probability (not from the game-lines desk); UCL: 9 not pre-game; NFL: 16 desk verdict UNPROVEN; NCAAF: 21 no validated model probability (not from the game-lines desk); NCAAB: 10 not pre-game; CWS: 1 not pre-game
+- No pre-game alerts: an alert needs a game-lines-desk probability whose verdict passed (not NO EDGE / UNPROVEN) and a DraftKings price. NBA: 8 desk verdict NO EDGE; NHL: 14 desk verdict NO EDGE; WNBA: 1 not pre-game; MLS: 2 no validated model probability (not from the game-lines desk); EPL: 1 no validated model probability (not from the game-lines desk); UCL: 9 started or no start time; NFL: 16 desk verdict UNPROVEN; NCAAF: 21 no validated model probability (not from the game-lines desk); NCAAB: 11 not pre-game; CWS: 1 not pre-game
 
 ## 🔥/❄️ Heat / Cold Signals
 - Hot teams: **6** | Cold teams: **8** | Over-heavy: 0 | Under-heavy: 26
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (122)
+## ⚠️ Anomaly Detector (131)
 - STREAK_MISMATCH: **3**
 - RESIDUAL_DIVERGENCE: **13**
-- STEAM_MOVE: **106**
+- STEAM_MOVE: **115**
   - Miami Heat (NBA): Miami Heat on W5 streak but model rates as 47% -- may be undervalued
   - Miami Heat (NBA): Miami Heat OUTPERFORMING expected margin by 8.8pts in recent games -- model bias may persist
   - Charlotte Hornets (NBA): Charlotte Hornets on L5 streak but model still favors them (58%) -- may be overvalued
@@ -48,8 +48,12 @@
 ## 💰 Today's Portfolio
 - No priced picks: a stake is sized only at an actionable DraftKings quote.
 
-## 🎯 Signal stacking (1 games with 2+ signals) — research, not picks
-  - Dallas Mavericks @ Denver Nuggets : 3 signals (HEAT_COLD, HEAT_COLD, HEAT_COLD)
+## 🎯 Signal stacking (16 games with 2+ signals) — research, not picks
+  - Miami Heat @ Philadelphia 76ers : 5 signals (HEAT_COLD, HEAT_COLD, HEAT_COLD, ANOMALY)
+  - Chicago Bulls @ Charlotte Hornets : 4 signals (HEAT_COLD, ANOMALY, ANOMALY, ANOMALY)
+  - St. Louis Blues @ New York Islanders : 4 signals (HEAT_COLD, HEAT_COLD, HEAT_COLD, ANOMALY)
+  - Sacramento Kings @ Golden State Warriors : 3 signals (HEAT_COLD, HEAT_COLD, ANOMALY)
+  - Philadelphia Flyers @ Washington Capitals : 3 signals (HEAT_COLD, HEAT_COLD, ANOMALY)
 
 ## 🏀 NBA Player Heat (11 HOT / 5 COLD)
   - 🔥 **Maxime Raynaud** (SAC): L5 20.0/9.8/2.6 vs season 12.5/7.5/1.4 [PTS +7.5, REB +2.3]
@@ -68,9 +72,12 @@
   - model favourite **Yaroslav Amosov** (30-1-0) vs Ian Machado Garry
   - model favourite **Luke Riley** (14-0-0) vs Gabriel Santos
 
-## 📈 Streaks (2) — record facts, not picks
-- [NBA] Denver Nuggets on W3 L10 4-1
-- [NBA] Dallas Mavericks on W3 L10 3-2
+## 📈 Streaks (14) — record facts, not picks
+- [NBA] Miami Heat on W5 L10 5-0
+- [NBA] Charlotte Hornets on L5 L10 0-5
+- [NBA] New York Knicks on W5 L10 5-0
+- [NBA] LA Clippers on L4 L10 1-4
+- [NBA] Brooklyn Nets on L5 L10 0-5
 
 ## 📉 Walk-Forward Trajectory (n_windows=3d × 8 markets)
 - 📈 Improving: **1** · ➖ Flat: 4 · 📉 Degrading: **3**
