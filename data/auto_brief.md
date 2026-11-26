@@ -2,7 +2,7 @@
 
 ## Slate
 - **0 games** scheduled
-- **No best bet today:** a best bet needs a real sportsbook price — 16 model-only projections excluded (NBA 5, LOL 3, NHL 3, NFL 2, NCAAF 2, EPL 1)
+- **No best bet today:** a best bet needs a real sportsbook price — 18 model-only projections excluded (NBA 5, LOL 3, NHL 3, NFL 2, NCAAF 2, NCAAB 2, EPL 1)
 
 ## NBA -- REGULAR
 - 11/27 07:00 PM ET: Miami Heat @ New York Knicks (10-7 vs 12-6)  | DK +142/-169 | desk P(home) 60.3% (NO EDGE) | Scheduled
