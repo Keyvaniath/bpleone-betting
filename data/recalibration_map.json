@@ -1,13 +1,13 @@
 {
-  "generated_at": "2026-11-26T04:15:30",
-  "n_settled": 17079,
+  "generated_at": "2026-11-26T22:13:40",
+  "n_settled": 17207,
   "n_families_transformed": 65,
-  "n_families_bucketed": 38,
+  "n_families_bucketed": 39,
   "ece_before": 0.0581,
-  "ece_after": 0.0078,
-  "ece_improvement": 0.0503,
-  "brier_before": 0.20904,
-  "brier_after": 0.19673,
+  "ece_after": 0.0079,
+  "ece_improvement": 0.0502,
+  "brier_before": 0.2091,
+  "brier_after": 0.19683,
   "method_note": "Per market family, a monotonic (isotonic) curve maps the model's predicted probability to the realized hit rate, learned from settled outcomes. Bucketed for well-sampled families (preserves ranking), a family-average Bayesian blend for mid-sample, identity below that. ECE = expected calibration error (lower = the displayed % is truer). This makes the model honest at the source; it does not create edge (that needs a market price).",
   "families": [
     {
@@ -74,63 +74,63 @@
       "n": 24,
       "method": "parent_ratio",
       "avg_pred_raw": 0.8014,
-      "avg_pred_calibrated": 0.6136,
+      "avg_pred_calibrated": 0.6132,
       "realized": 0.5833,
       "ece_raw": 0.2181,
-      "ece_calibrated": 0.0303,
+      "ece_calibrated": 0.0299,
       "transform": {
         "realized": 0.5833,
         "parent": "parent:NFL:over",
-        "parent_n": 130,
-        "ratio": 0.8267
-      }
-    },
-    {
-      "family": "longest_rec_over",
-      "n": 24,
-      "method": "parent_ratio",
-      "avg_pred_raw": 0.791,
-      "avg_pred_calibrated": 0.6107,
-      "realized": 0.5833,
-      "ece_raw": 0.2076,
-      "ece_calibrated": 0.0274,
-      "transform": {
-        "realized": 0.5833,
-        "parent": "parent:NFL:over",
-        "parent_n": 130,
-        "ratio": 0.8267
+        "parent_n": 139,
+        "ratio": 0.826
       }
     },
     {
       "family": "pass_cmp_over",
-      "n": 14,
+      "n": 16,
       "method": "parent_ratio",
-      "avg_pred_raw": 0.834,
-      "avg_pred_calibrated": 0.67,
-      "realized": 0.6429,
-      "ece_raw": 0.1911,
-      "ece_calibrated": 0.0272,
+      "avg_pred_raw": 0.8354,
+      "avg_pred_calibrated": 0.6578,
+      "realized": 0.625,
+      "ece_raw": 0.2104,
+      "ece_calibrated": 0.0328,
       "transform": {
-        "realized": 0.6429,
+        "realized": 0.625,
         "parent": "parent:NFL:over",
-        "parent_n": 130,
-        "ratio": 0.8267
+        "parent_n": 139,
+        "ratio": 0.826
+      }
+    },
+    {
+      "family": "longest_rec_over",
+      "n": 26,
+      "method": "parent_ratio",
+      "avg_pred_raw": 0.7965,
+      "avg_pred_calibrated": 0.6323,
+      "realized": 0.6154,
+      "ece_raw": 0.1811,
+      "ece_calibrated": 0.0169,
+      "transform": {
+        "realized": 0.6154,
+        "parent": "parent:NFL:over",
+        "parent_n": 139,
+        "ratio": 0.826
       }
     },
     {
       "family": "pass_yds_over",
-      "n": 13,
+      "n": 15,
       "method": "parent_ratio",
-      "avg_pred_raw": 0.788,
-      "avg_pred_calibrated": 0.6382,
-      "realized": 0.6154,
-      "ece_raw": 0.1726,
-      "ece_calibrated": 0.0229,
+      "avg_pred_raw": 0.79,
+      "avg_pred_calibrated": 0.6282,
+      "realized": 0.6,
+      "ece_raw": 0.19,
+      "ece_calibrated": 0.0282,
       "transform": {
-        "realized": 0.6154,
+        "realized": 0.6,
         "parent": "parent:NFL:over",
-        "parent_n": 130,
-        "ratio": 0.8267
+        "parent_n": 139,
+        "ratio": 0.826
       }
     },
     {
@@ -204,22 +204,6 @@
             0.6481
           ]
         ]
-      }
-    },
-    {
-      "family": "rush_yds_over",
-      "n": 22,
-      "method": "parent_ratio",
-      "avg_pred_raw": 0.8499,
-      "avg_pred_calibrated": 0.723,
-      "realized": 0.7273,
-      "ece_raw": 0.1226,
-      "ece_calibrated": 0.0043,
-      "transform": {
-        "realized": 0.7273,
-        "parent": "parent:NFL:over",
-        "parent_n": 130,
-        "ratio": 0.8267
       }
     },
     {
@@ -312,15 +296,47 @@
     },
     {
       "family": "ast_over",
-      "n": 49,
+      "n": 50,
       "method": "family_avg",
-      "avg_pred_raw": 0.6404,
-      "avg_pred_calibrated": 0.5358,
-      "realized": 0.5102,
-      "ece_raw": 0.1302,
-      "ece_calibrated": 0.0256,
+      "avg_pred_raw": 0.6402,
+      "avg_pred_calibrated": 0.5271,
+      "realized": 0.5,
+      "ece_raw": 0.1402,
+      "ece_calibrated": 0.0271,
       "transform": {
-        "realized": 0.5102
+        "realized": 0.5
+      }
+    },
+    {
+      "family": "pass_td_over",
+      "n": 11,
+      "method": "parent_ratio",
+      "avg_pred_raw": 0.6626,
+      "avg_pred_calibrated": 0.5512,
+      "realized": 0.5455,
+      "ece_raw": 0.1172,
+      "ece_calibrated": 0.0058,
+      "transform": {
+        "realized": 0.5455,
+        "parent": "parent:NFL:over",
+        "parent_n": 139,
+        "ratio": 0.826
+      }
+    },
+    {
+      "family": "rush_yds_over",
+      "n": 23,
+      "method": "parent_ratio",
+      "avg_pred_raw": 0.8548,
+      "avg_pred_calibrated": 0.7318,
+      "realized": 0.7391,
+      "ece_raw": 0.1157,
+      "ece_calibrated": 0.0073,
+      "transform": {
+        "realized": 0.7391,
+        "parent": "parent:NFL:over",
+        "parent_n": 139,
+        "ratio": 0.826
       }
     },
     {
@@ -443,76 +459,80 @@
     },
     {
       "family": "mlb_xbh_0.5_over",
-      "n": 2680,
+      "n": 2662,
       "method": "bucketed",
       "avg_pred_raw": 0.3751,
-      "avg_pred_calibrated": 0.2823,
-      "realized": 0.2791,
-      "ece_raw": 0.096,
-      "ece_calibrated": 0.0032,
+      "avg_pred_calibrated": 0.2809,
+      "realized": 0.2776,
+      "ece_raw": 0.0975,
+      "ece_calibrated": 0.0033,
       "transform": {
         "anchors": [
           [
             0.3258,
-            0.262
+            0.2635
           ],
           [
-            0.3381,
-            0.2624
+            0.3379,
+            0.2639
           ],
           [
-            0.3506,
-            0.2873
+            0.3504,
+            0.2836
           ],
           [
-            0.3638,
-            0.2873
+            0.3636,
+            0.2836
           ],
           [
             0.3775,
-            0.2873
+            0.2836
           ],
           [
-            0.3937,
-            0.2873
+            0.3939,
+            0.2836
           ],
           [
-            0.4146,
-            0.2881
+            0.4148,
+            0.2869
           ],
           [
             0.437,
-            0.2975
+            0.2993
           ]
         ]
       }
     },
     {
       "family": "btts_yes",
-      "n": 121,
+      "n": 130,
       "method": "bucketed",
-      "avg_pred_raw": 0.6415,
-      "avg_pred_calibrated": 0.565,
-      "realized": 0.5289,
-      "ece_raw": 0.118,
-      "ece_calibrated": 0.0361,
+      "avg_pred_raw": 0.643,
+      "avg_pred_calibrated": 0.563,
+      "realized": 0.5231,
+      "ece_raw": 0.1199,
+      "ece_calibrated": 0.0399,
       "transform": {
         "anchors": [
           [
-            0.6218,
-            0.5114
+            0.6216,
+            0.5256
           ],
           [
-            0.6248,
-            0.5114
+            0.6241,
+            0.5256
           ],
           [
-            0.6535,
-            0.5777
+            0.6401,
+            0.5442
           ],
           [
-            0.6655,
-            0.6425
+            0.6632,
+            0.6042
+          ],
+          [
+            0.6661,
+            0.6051
           ]
         ]
       }
@@ -578,59 +598,59 @@
     },
     {
       "family": "rec_yds_over",
-      "n": 56,
+      "n": 62,
       "method": "family_avg",
-      "avg_pred_raw": 0.8018,
-      "avg_pred_calibrated": 0.7297,
-      "realized": 0.7143,
-      "ece_raw": 0.0875,
-      "ece_calibrated": 0.0155,
+      "avg_pred_raw": 0.794,
+      "avg_pred_calibrated": 0.7369,
+      "realized": 0.7258,
+      "ece_raw": 0.0834,
+      "ece_calibrated": 0.0111,
       "transform": {
-        "realized": 0.7143
+        "realized": 0.7258
       }
     },
     {
       "family": "longest_rush_under",
-      "n": 313,
+      "n": 323,
       "method": "bucketed",
-      "avg_pred_raw": 0.729,
-      "avg_pred_calibrated": 0.7943,
-      "realized": 0.8147,
-      "ece_raw": 0.0857,
-      "ece_calibrated": 0.0204,
+      "avg_pred_raw": 0.7262,
+      "avg_pred_calibrated": 0.7915,
+      "realized": 0.8111,
+      "ece_raw": 0.0849,
+      "ece_calibrated": 0.0196,
       "transform": {
         "anchors": [
           [
-            0.5633,
-            0.7208
+            0.5621,
+            0.7066
           ],
           [
-            0.6347,
-            0.7222
+            0.631,
+            0.7123
           ],
           [
-            0.6874,
-            0.7222
+            0.6834,
+            0.7123
           ],
           [
-            0.7189,
-            0.7222
+            0.7159,
+            0.7281
           ],
           [
-            0.7421,
-            0.827
+            0.7398,
+            0.828
           ],
           [
-            0.7722,
-            0.827
+            0.7693,
+            0.828
           ],
           [
-            0.8245,
-            0.8999
+            0.8208,
+            0.9028
           ],
           [
-            0.8883,
-            0.9149
+            0.8876,
+            0.9164
           ]
         ]
       }
@@ -650,13 +670,13 @@
     },
     {
       "family": "mlb_hit_1.5_over",
-      "n": 582,
+      "n": 583,
       "method": "bucketed",
-      "avg_pred_raw": 0.6092,
-      "avg_pred_calibrated": 0.5827,
-      "realized": 0.5756,
-      "ece_raw": 0.0893,
-      "ece_calibrated": 0.0307,
+      "avg_pred_raw": 0.6093,
+      "avg_pred_calibrated": 0.5824,
+      "realized": 0.5763,
+      "ece_raw": 0.0897,
+      "ece_calibrated": 0.0331,
       "transform": {
         "anchors": [
           [
@@ -668,117 +688,71 @@
             0.3047
           ],
           [
-            0.5722,
-            0.5341
+            0.573,
+            0.5397
           ],
           [
-            0.6376,
-            0.69
+            0.6379,
+            0.6783
           ],
           [
-            0.6582,
-            0.7026
+            0.658,
+            0.7055
           ],
           [
-            0.6783,
-            0.7026
+            0.6782,
+            0.7055
           ],
           [
             0.6999,
-            0.7026
+            0.7055
           ],
           [
             0.7281,
-            0.7026
+            0.7055
           ]
         ]
       }
     },
     {
       "family": "ml_home",
-      "n": 53,
+      "n": 54,
       "method": "family_avg",
-      "avg_pred_raw": 0.6318,
-      "avg_pred_calibrated": 0.5781,
-      "realized": 0.566,
-      "ece_raw": 0.0658,
-      "ece_calibrated": 0.0121,
+      "avg_pred_raw": 0.6324,
+      "avg_pred_calibrated": 0.5847,
+      "realized": 0.5741,
+      "ece_raw": 0.0584,
+      "ece_calibrated": 0.0106,
       "transform": {
-        "realized": 0.566
+        "realized": 0.5741
       }
     },
     {
       "family": "steals_over",
-      "n": 122,
+      "n": 123,
       "method": "bucketed",
-      "avg_pred_raw": 0.6757,
-      "avg_pred_calibrated": 0.7261,
-      "realized": 0.7459,
-      "ece_raw": 0.0702,
-      "ece_calibrated": 0.0198,
+      "avg_pred_raw": 0.676,
+      "avg_pred_calibrated": 0.7227,
+      "realized": 0.7398,
+      "ece_raw": 0.0639,
+      "ece_calibrated": 0.0171,
       "transform": {
         "anchors": [
           [
-            0.6389,
-            0.7018
+            0.6394,
+            0.6939
           ],
           [
-            0.6658,
-            0.7018
+            0.6666,
+            0.6939
           ],
           [
-            0.6874,
-            0.7267
+            0.6877,
+            0.7441
           ],
           [
             0.7106,
-            0.7744
-          ]
-        ]
-      }
-    },
-    {
-      "family": "cards_under",
-      "n": 247,
-      "method": "bucketed",
-      "avg_pred_raw": 0.6776,
-      "avg_pred_calibrated": 0.6275,
-      "realized": 0.6073,
-      "ece_raw": 0.0703,
-      "ece_calibrated": 0.0202,
-      "transform": {
-        "anchors": [
-          [
-            0.6416,
-            0.6082
-          ],
-          [
-            0.6541,
-            0.6082
-          ],
-          [
-            0.664,
-            0.6082
-          ],
-          [
-            0.6746,
-            0.6082
-          ],
-          [
-            0.6826,
-            0.6456
-          ],
-          [
-            0.6879,
-            0.6456
-          ],
-          [
-            0.7021,
-            0.6456
-          ],
-          [
-            0.714,
-            0.6456
+            0.7565
           ]
         ]
       }
@@ -794,6 +768,52 @@
       "ece_calibrated": 0.01,
       "transform": {
         "realized": 0.6964
+      }
+    },
+    {
+      "family": "cards_under",
+      "n": 251,
+      "method": "bucketed",
+      "avg_pred_raw": 0.6777,
+      "avg_pred_calibrated": 0.632,
+      "realized": 0.6135,
+      "ece_raw": 0.0641,
+      "ece_calibrated": 0.0184,
+      "transform": {
+        "anchors": [
+          [
+            0.6416,
+            0.6117
+          ],
+          [
+            0.6542,
+            0.6117
+          ],
+          [
+            0.6643,
+            0.6117
+          ],
+          [
+            0.6752,
+            0.616
+          ],
+          [
+            0.6827,
+            0.6499
+          ],
+          [
+            0.6876,
+            0.6499
+          ],
+          [
+            0.7018,
+            0.6499
+          ],
+          [
+            0.714,
+            0.6499
+          ]
+        ]
       }
     },
     {
@@ -840,32 +860,6 @@
       }
     },
     {
-      "family": "pass_yds_under",
-      "n": 94,
-      "method": "bucketed",
-      "avg_pred_raw": 0.7808,
-      "avg_pred_calibrated": 0.7303,
-      "realized": 0.7234,
-      "ece_raw": 0.0684,
-      "ece_calibrated": 0.0305,
-      "transform": {
-        "anchors": [
-          [
-            0.6935,
-            0.6121
-          ],
-          [
-            0.7584,
-            0.6841
-          ],
-          [
-            0.8914,
-            0.9232
-          ]
-        ]
-      }
-    },
-    {
       "family": "pr_under",
       "n": 119,
       "method": "bucketed",
@@ -896,60 +890,73 @@
       }
     },
     {
-      "family": "total_over",
-      "n": 47,
-      "method": "family_avg",
-      "avg_pred_raw": 0.66,
-      "avg_pred_calibrated": 0.6935,
-      "realized": 0.7021,
-      "ece_raw": 0.0421,
-      "ece_calibrated": 0.0086,
+      "family": "pass_yds_under",
+      "n": 96,
+      "method": "bucketed",
+      "avg_pred_raw": 0.7801,
+      "avg_pred_calibrated": 0.7228,
+      "realized": 0.7188,
+      "ece_raw": 0.0614,
+      "ece_calibrated": 0.0276,
       "transform": {
-        "realized": 0.7021
+        "anchors": [
+          [
+            0.6947,
+            0.6213
+          ],
+          [
+            0.7574,
+            0.6611
+          ],
+          [
+            0.8882,
+            0.9241
+          ]
+        ]
       }
     },
     {
       "family": "longest_rec_under",
-      "n": 648,
+      "n": 664,
       "method": "bucketed",
-      "avg_pred_raw": 0.8028,
-      "avg_pred_calibrated": 0.7907,
-      "realized": 0.7886,
-      "ece_raw": 0.0387,
-      "ece_calibrated": 0.0061,
+      "avg_pred_raw": 0.8016,
+      "avg_pred_calibrated": 0.7918,
+      "realized": 0.7907,
+      "ece_raw": 0.0363,
+      "ece_calibrated": 0.0038,
       "transform": {
         "anchors": [
           [
-            0.6451,
-            0.7176
+            0.6443,
+            0.7235
           ],
           [
             0.7319,
-            0.7396
+            0.7346
           ],
           [
-            0.7596,
-            0.7539
+            0.7593,
+            0.7604
           ],
           [
-            0.7814,
-            0.7675
+            0.7804,
+            0.7604
           ],
           [
-            0.8096,
-            0.7819
+            0.8076,
+            0.7932
           ],
           [
-            0.8365,
-            0.7961
+            0.8351,
+            0.7932
           ],
           [
-            0.8818,
-            0.8342
+            0.8789,
+            0.8373
           ],
           [
-            0.9764,
-            0.9324
+            0.9754,
+            0.9337
           ]
         ]
       }
@@ -1015,64 +1022,94 @@
     },
     {
       "family": "rec_yds_under",
-      "n": 496,
+      "n": 506,
       "method": "bucketed",
-      "avg_pred_raw": 0.7475,
-      "avg_pred_calibrated": 0.7705,
-      "realized": 0.7742,
-      "ece_raw": 0.0378,
-      "ece_calibrated": 0.0073,
+      "avg_pred_raw": 0.7469,
+      "avg_pred_calibrated": 0.7707,
+      "realized": 0.7747,
+      "ece_raw": 0.0387,
+      "ece_calibrated": 0.0092,
       "transform": {
         "anchors": [
           [
-            0.5742,
-            0.6364
+            0.5755,
+            0.648
           ],
           [
-            0.6918,
-            0.6364
+            0.6911,
+            0.648
           ],
           [
-            0.7249,
-            0.7881
+            0.724,
+            0.779
           ],
           [
-            0.7455,
-            0.7881
+            0.745,
+            0.779
           ],
           [
-            0.763,
-            0.8005
+            0.762,
+            0.8043
           ],
           [
-            0.777,
-            0.8005
+            0.7763,
+            0.8043
           ],
           [
-            0.8018,
-            0.8543
+            0.8009,
+            0.8481
           ],
           [
-            0.9016,
-            0.8543
+            0.9004,
+            0.8507
           ]
         ]
       }
     },
     {
-      "family": "pass_td_over",
-      "n": 10,
-      "method": "parent_ratio",
-      "avg_pred_raw": 0.6547,
-      "avg_pred_calibrated": 0.5732,
-      "realized": 0.6,
-      "ece_raw": 0.0547,
-      "ece_calibrated": 0.0268,
+      "family": "pra_under",
+      "n": 515,
+      "method": "bucketed",
+      "avg_pred_raw": 0.6766,
+      "avg_pred_calibrated": 0.6494,
+      "realized": 0.6447,
+      "ece_raw": 0.0319,
+      "ece_calibrated": 0.0047,
       "transform": {
-        "realized": 0.6,
-        "parent": "parent:NFL:over",
-        "parent_n": 130,
-        "ratio": 0.8267
+        "anchors": [
+          [
+            0.6423,
+            0.605
+          ],
+          [
+            0.655,
+            0.605
+          ],
+          [
+            0.6634,
+            0.6276
+          ],
+          [
+            0.6726,
+            0.6276
+          ],
+          [
+            0.6793,
+            0.6831
+          ],
+          [
+            0.6881,
+            0.6831
+          ],
+          [
+            0.6987,
+            0.6831
+          ],
+          [
+            0.7133,
+            0.6831
+          ]
+        ]
       }
     },
     {
@@ -1114,152 +1151,136 @@
       }
     },
     {
-      "family": "anytime_td_yes",
-      "n": 48,
+      "family": "total_over",
+      "n": 55,
       "method": "family_avg",
-      "avg_pred_raw": 0.5533,
-      "avg_pred_calibrated": 0.5273,
-      "realized": 0.5208,
-      "ece_raw": 0.0325,
-      "ece_calibrated": 0.0065,
+      "avg_pred_raw": 0.66,
+      "avg_pred_calibrated": 0.6854,
+      "realized": 0.6909,
+      "ece_raw": 0.0309,
+      "ece_calibrated": 0.0055,
       "transform": {
-        "realized": 0.5208
-      }
-    },
-    {
-      "family": "pra_under",
-      "n": 511,
-      "method": "bucketed",
-      "avg_pred_raw": 0.6766,
-      "avg_pred_calibrated": 0.6537,
-      "realized": 0.6497,
-      "ece_raw": 0.0269,
-      "ece_calibrated": 0.004,
-      "transform": {
-        "anchors": [
-          [
-            0.6423,
-            0.609
-          ],
-          [
-            0.655,
-            0.609
-          ],
-          [
-            0.6636,
-            0.6384
-          ],
-          [
-            0.6727,
-            0.6384
-          ],
-          [
-            0.6793,
-            0.6843
-          ],
-          [
-            0.6881,
-            0.6843
-          ],
-          [
-            0.6988,
-            0.6843
-          ],
-          [
-            0.7133,
-            0.6843
-          ]
-        ]
-      }
-    },
-    {
-      "family": "rush_yds_under",
-      "n": 266,
-      "method": "bucketed",
-      "avg_pred_raw": 0.82,
-      "avg_pred_calibrated": 0.8082,
-      "realized": 0.8045,
-      "ece_raw": 0.0315,
-      "ece_calibrated": 0.0096,
-      "transform": {
-        "anchors": [
-          [
-            0.6613,
-            0.6875
-          ],
-          [
-            0.7305,
-            0.7452
-          ],
-          [
-            0.7583,
-            0.7452
-          ],
-          [
-            0.7907,
-            0.7452
-          ],
-          [
-            0.8299,
-            0.7952
-          ],
-          [
-            0.8672,
-            0.7952
-          ],
-          [
-            0.9273,
-            0.9584
-          ],
-          [
-            0.995,
-            0.99
-          ]
-        ]
+        "realized": 0.6909
       }
     },
     {
       "family": "home_total_over",
-      "n": 365,
+      "n": 373,
       "method": "bucketed",
-      "avg_pred_raw": 0.6748,
-      "avg_pred_calibrated": 0.6958,
-      "realized": 0.7014,
-      "ece_raw": 0.0266,
-      "ece_calibrated": 0.0056,
+      "avg_pred_raw": 0.6751,
+      "avg_pred_calibrated": 0.6947,
+      "realized": 0.6997,
+      "ece_raw": 0.0246,
+      "ece_calibrated": 0.005,
       "transform": {
         "anchors": [
           [
             0.651,
-            0.6958
+            0.6947
           ],
           [
             0.651,
-            0.6958
+            0.6947
           ],
           [
             0.651,
-            0.6958
+            0.6947
+          ],
+          [
+            0.684,
+            0.6947
+          ],
+          [
+            0.691,
+            0.6947
+          ],
+          [
+            0.691,
+            0.6947
+          ],
+          [
+            0.691,
+            0.6947
+          ],
+          [
+            0.691,
+            0.6947
+          ]
+        ]
+      }
+    },
+    {
+      "family": "rec_under",
+      "n": 600,
+      "method": "bucketed",
+      "avg_pred_raw": 0.7498,
+      "avg_pred_calibrated": 0.743,
+      "realized": 0.74,
+      "ece_raw": 0.026,
+      "ece_calibrated": 0.0074,
+      "transform": {
+        "anchors": [
+          [
+            0.6261,
+            0.5691
           ],
           [
             0.6812,
-            0.6958
+            0.6802
           ],
           [
-            0.691,
-            0.6958
+            0.7136,
+            0.6846
           ],
           [
-            0.691,
-            0.6958
+            0.741,
+            0.7703
           ],
           [
-            0.691,
-            0.6958
+            0.7612,
+            0.7703
           ],
           [
-            0.691,
-            0.6958
+            0.784,
+            0.8113
+          ],
+          [
+            0.8139,
+            0.8113
+          ],
+          [
+            0.8776,
+            0.8337
+          ]
+        ]
+      }
+    },
+    {
+      "family": "pass_cmp_under",
+      "n": 101,
+      "method": "bucketed",
+      "avg_pred_raw": 0.7422,
+      "avg_pred_calibrated": 0.7607,
+      "realized": 0.7723,
+      "ece_raw": 0.03,
+      "ece_calibrated": 0.0116,
+      "transform": {
+        "anchors": [
+          [
+            0.6515,
+            0.6708
+          ],
+          [
+            0.7234,
+            0.7481
+          ],
+          [
+            0.7566,
+            0.7652
+          ],
+          [
+            0.8369,
+            0.866
           ]
         ]
       }
@@ -1278,47 +1299,224 @@
       }
     },
     {
-      "family": "rec_under",
-      "n": 586,
+      "family": "anytime_td_yes",
+      "n": 51,
+      "method": "family_avg",
+      "avg_pred_raw": 0.5518,
+      "avg_pred_calibrated": 0.5337,
+      "realized": 0.5294,
+      "ece_raw": 0.0224,
+      "ece_calibrated": 0.0043,
+      "transform": {
+        "realized": 0.5294
+      }
+    },
+    {
+      "family": "fta_under",
+      "n": 341,
       "method": "bucketed",
-      "avg_pred_raw": 0.7506,
-      "avg_pred_calibrated": 0.7451,
-      "realized": 0.7423,
-      "ece_raw": 0.0255,
-      "ece_calibrated": 0.0074,
+      "avg_pred_raw": 0.6609,
+      "avg_pred_calibrated": 0.644,
+      "realized": 0.6393,
+      "ece_raw": 0.0216,
+      "ece_calibrated": 0.0047,
       "transform": {
         "anchors": [
           [
-            0.6252,
-            0.5706
+            0.6248,
+            0.6394
           ],
           [
-            0.6805,
-            0.6769
+            0.6353,
+            0.6394
           ],
           [
-            0.7149,
-            0.6769
+            0.6448,
+            0.6394
           ],
           [
-            0.7424,
-            0.7768
+            0.6535,
+            0.6394
           ],
           [
-            0.7626,
-            0.7768
+            0.6618,
+            0.6394
           ],
           [
-            0.7853,
-            0.82
+            0.6734,
+            0.6394
           ],
           [
-            0.8158,
-            0.82
+            0.688,
+            0.658
           ],
           [
-            0.8784,
-            0.8299
+            0.7057,
+            0.658
+          ]
+        ]
+      }
+    },
+    {
+      "family": "away_plus",
+      "n": 138,
+      "method": "bucketed",
+      "avg_pred_raw": 0.699,
+      "avg_pred_calibrated": 0.6827,
+      "realized": 0.6739,
+      "ece_raw": 0.0251,
+      "ece_calibrated": 0.0088,
+      "transform": {
+        "anchors": [
+          [
+            0.6639,
+            0.5992
+          ],
+          [
+            0.6884,
+            0.6413
+          ],
+          [
+            0.7014,
+            0.6413
+          ],
+          [
+            0.7164,
+            0.7589
+          ],
+          [
+            0.7251,
+            0.7675
+          ]
+        ]
+      }
+    },
+    {
+      "family": "rush_yds_under",
+      "n": 272,
+      "method": "bucketed",
+      "avg_pred_raw": 0.82,
+      "avg_pred_calibrated": 0.8087,
+      "realized": 0.8051,
+      "ece_raw": 0.0305,
+      "ece_calibrated": 0.0147,
+      "transform": {
+        "anchors": [
+          [
+            0.6627,
+            0.6946
+          ],
+          [
+            0.7321,
+            0.7272
+          ],
+          [
+            0.7596,
+            0.7272
+          ],
+          [
+            0.7934,
+            0.7722
+          ],
+          [
+            0.8298,
+            0.8034
+          ],
+          [
+            0.8642,
+            0.8341
+          ],
+          [
+            0.9241,
+            0.915
+          ],
+          [
+            0.9944,
+            0.99
+          ]
+        ]
+      }
+    },
+    {
+      "family": "pa_under",
+      "n": 168,
+      "method": "bucketed",
+      "avg_pred_raw": 0.6496,
+      "avg_pred_calibrated": 0.648,
+      "realized": 0.6488,
+      "ece_raw": 0.0165,
+      "ece_calibrated": 0.0008,
+      "transform": {
+        "anchors": [
+          [
+            0.6228,
+            0.6058
+          ],
+          [
+            0.6297,
+            0.6058
+          ],
+          [
+            0.6391,
+            0.6058
+          ],
+          [
+            0.6512,
+            0.6849
+          ],
+          [
+            0.6646,
+            0.6849
+          ],
+          [
+            0.6904,
+            0.7071
+          ]
+        ]
+      }
+    },
+    {
+      "family": "home_clean_sheet_no",
+      "n": 409,
+      "method": "bucketed",
+      "avg_pred_raw": 0.7476,
+      "avg_pred_calibrated": 0.7304,
+      "realized": 0.7237,
+      "ece_raw": 0.0238,
+      "ece_calibrated": 0.0096,
+      "transform": {
+        "anchors": [
+          [
+            0.7251,
+            0.6302
+          ],
+          [
+            0.7347,
+            0.7114
+          ],
+          [
+            0.74,
+            0.7473
+          ],
+          [
+            0.7438,
+            0.7473
+          ],
+          [
+            0.75,
+            0.7473
+          ],
+          [
+            0.7532,
+            0.7473
+          ],
+          [
+            0.7602,
+            0.7473
+          ],
+          [
+            0.7734,
+            0.7473
           ]
         ]
       }
@@ -1337,85 +1535,85 @@
       }
     },
     {
-      "family": "home_clean_sheet_no",
-      "n": 406,
+      "family": "tov_under",
+      "n": 230,
       "method": "bucketed",
-      "avg_pred_raw": 0.7474,
-      "avg_pred_calibrated": 0.7307,
-      "realized": 0.7241,
-      "ece_raw": 0.0232,
-      "ece_calibrated": 0.0098,
+      "avg_pred_raw": 0.6712,
+      "avg_pred_calibrated": 0.6849,
+      "realized": 0.6913,
+      "ece_raw": 0.0201,
+      "ece_calibrated": 0.0079,
       "transform": {
         "anchors": [
           [
-            0.7251,
-            0.6302
+            0.633,
+            0.6243
           ],
           [
-            0.7347,
-            0.7114
+            0.6446,
+            0.6683
           ],
           [
-            0.74,
-            0.7479
+            0.6531,
+            0.6683
           ],
           [
-            0.7437,
-            0.7479
+            0.6638,
+            0.6683
           ],
           [
-            0.7498,
-            0.7479
+            0.6765,
+            0.6858
           ],
           [
-            0.7531,
-            0.7479
+            0.6877,
+            0.6868
           ],
           [
-            0.7595,
-            0.7479
+            0.6992,
+            0.6868
           ],
           [
-            0.7729,
-            0.7479
+            0.7117,
+            0.7937
           ]
         ]
       }
     },
     {
       "family": "rec_over",
-      "n": 180,
+      "n": 181,
       "method": "bucketed",
-      "avg_pred_raw": 0.6837,
-      "avg_pred_calibrated": 0.6683,
-      "realized": 0.6611,
-      "ece_raw": 0.0413,
-      "ece_calibrated": 0.0287,
+      "avg_pred_raw": 0.6838,
+      "avg_pred_calibrated": 0.6695,
+      "realized": 0.663,
+      "ece_raw": 0.0394,
+      "ece_calibrated": 0.0272,
       "transform": {
         "anchors": [
           [
             0.5407,
-            0.5538
+            0.5584
           ],
           [
-            0.6013,
-            0.5538
+            0.6029,
+            0.5584
           ],
           [
-            0.6595,
-            0.5538
+            0.6608,
+            0.5584
           ],
           [
             0.6936,
-            0.6725
+            0.6809
           ],
           [
-            0.7322,
-            0.6725
+            0.731,
+            0.6809
           ],
           [
-            0.7586,
-            0.8136
+            0.7579,
+            0.792
           ],
           [
             0.7998,
@@ -1425,127 +1623,73 @@
       }
     },
     {
-      "family": "fta_under",
-      "n": 338,
+      "family": "ra_under",
+      "n": 88,
       "method": "bucketed",
-      "avg_pred_raw": 0.6609,
-      "avg_pred_calibrated": 0.6484,
-      "realized": 0.645,
-      "ece_raw": 0.016,
-      "ece_calibrated": 0.0035,
+      "avg_pred_raw": 0.6886,
+      "avg_pred_calibrated": 0.7162,
+      "realized": 0.7273,
+      "ece_raw": 0.0386,
+      "ece_calibrated": 0.0268,
       "transform": {
         "anchors": [
           [
-            0.6247,
-            0.6388
+            0.6667,
+            0.6902
           ],
           [
-            0.635,
-            0.6454
+            0.6907,
+            0.6902
           ],
           [
-            0.6446,
-            0.6454
-          ],
-          [
-            0.6533,
-            0.6454
-          ],
-          [
-            0.6618,
-            0.6515
-          ],
-          [
-            0.6737,
-            0.6515
-          ],
-          [
-            0.6884,
-            0.653
-          ],
-          [
-            0.706,
-            0.6569
-          ]
-        ]
-      }
-    },
-    {
-      "family": "away_plus",
-      "n": 135,
-      "method": "bucketed",
-      "avg_pred_raw": 0.6991,
-      "avg_pred_calibrated": 0.6882,
-      "realized": 0.6815,
-      "ece_raw": 0.0176,
-      "ece_calibrated": 0.0067,
-      "transform": {
-        "anchors": [
-          [
-            0.6634,
-            0.6144
-          ],
-          [
-            0.688,
-            0.6497
-          ],
-          [
-            0.7018,
-            0.6497
-          ],
-          [
-            0.7167,
-            0.759
-          ],
-          [
-            0.7253,
-            0.7616
+            0.7084,
+            0.7683
           ]
         ]
       }
     },
     {
       "family": "team_pts_under",
-      "n": 376,
+      "n": 378,
       "method": "bucketed",
-      "avg_pred_raw": 0.6578,
-      "avg_pred_calibrated": 0.6676,
-      "realized": 0.6702,
-      "ece_raw": 0.0124,
-      "ece_calibrated": 0.0027,
+      "avg_pred_raw": 0.6577,
+      "avg_pred_calibrated": 0.6689,
+      "realized": 0.672,
+      "ece_raw": 0.0143,
+      "ece_calibrated": 0.003,
       "transform": {
         "anchors": [
           [
             0.6411,
-            0.6531
+            0.6545
           ],
           [
-            0.6466,
-            0.6531
+            0.6464,
+            0.6545
           ],
           [
-            0.6513,
-            0.6531
+            0.6511,
+            0.6545
           ],
           [
-            0.655,
-            0.6531
+            0.6549,
+            0.6545
           ],
           [
-            0.6594,
-            0.6823
+            0.6593,
+            0.6836
           ],
           [
-            0.6642,
-            0.6823
+            0.6641,
+            0.6836
           ],
           [
             0.6692,
-            0.6823
+            0.6836
           ],
           [
             0.6754,
-            0.6823
+            0.6836
           ]
         ]
       }
@@ -1561,52 +1705,6 @@
       "ece_calibrated": 0.0036,
       "transform": {
         "realized": 0.6452
-      }
-    },
-    {
-      "family": "tov_under",
-      "n": 224,
-      "method": "bucketed",
-      "avg_pred_raw": 0.6714,
-      "avg_pred_calibrated": 0.6818,
-      "realized": 0.6875,
-      "ece_raw": 0.0161,
-      "ece_calibrated": 0.0081,
-      "transform": {
-        "anchors": [
-          [
-            0.6333,
-            0.64
-          ],
-          [
-            0.6444,
-            0.6545
-          ],
-          [
-            0.6532,
-            0.6545
-          ],
-          [
-            0.6644,
-            0.6545
-          ],
-          [
-            0.677,
-            0.6898
-          ],
-          [
-            0.6881,
-            0.6898
-          ],
-          [
-            0.6994,
-            0.6898
-          ],
-          [
-            0.7115,
-            0.7884
-          ]
-        ]
       }
     },
     {
@@ -1652,78 +1750,14 @@
       }
     },
     {
-      "family": "ra_under",
-      "n": 87,
-      "method": "bucketed",
-      "avg_pred_raw": 0.6888,
-      "avg_pred_calibrated": 0.714,
-      "realized": 0.7241,
-      "ece_raw": 0.0353,
-      "ece_calibrated": 0.0281,
-      "transform": {
-        "anchors": [
-          [
-            0.6669,
-            0.683
-          ],
-          [
-            0.6911,
-            0.6901
-          ],
-          [
-            0.7084,
-            0.7683
-          ]
-        ]
-      }
-    },
-    {
-      "family": "pa_under",
-      "n": 167,
-      "method": "bucketed",
-      "avg_pred_raw": 0.6498,
-      "avg_pred_calibrated": 0.6508,
-      "realized": 0.6527,
-      "ece_raw": 0.0203,
-      "ece_calibrated": 0.0137,
-      "transform": {
-        "anchors": [
-          [
-            0.623,
-            0.6142
-          ],
-          [
-            0.63,
-            0.6142
-          ],
-          [
-            0.6395,
-            0.6142
-          ],
-          [
-            0.6514,
-            0.6807
-          ],
-          [
-            0.6646,
-            0.6807
-          ],
-          [
-            0.6904,
-            0.7071
-          ]
-        ]
-      }
-    },
-    {
       "family": "3pm_under",
-      "n": 254,
+      "n": 256,
       "method": "bucketed",
       "avg_pred_raw": 0.6772,
-      "avg_pred_calibrated": 0.6603,
-      "realized": 0.6535,
-      "ece_raw": 0.0236,
-      "ece_calibrated": 0.0188,
+      "avg_pred_calibrated": 0.6564,
+      "realized": 0.6484,
+      "ece_raw": 0.0288,
+      "ece_calibrated": 0.022,
       "transform": {
         "anchors": [
           [
@@ -1735,28 +1769,28 @@
             0.5714
           ],
           [
-            0.6609,
-            0.6496
+            0.6608,
+            0.6348
           ],
           [
             0.6751,
-            0.6978
+            0.6944
           ],
           [
             0.6872,
-            0.6978
+            0.6944
           ],
           [
-            0.6981,
-            0.6978
+            0.6982,
+            0.6944
           ],
           [
             0.7072,
-            0.6978
+            0.6944
           ],
           [
             0.7155,
-            0.6978
+            0.6951
           ]
         ]
       }
@@ -1789,6 +1823,22 @@
             0.7823
           ]
         ]
+      }
+    },
+    {
+      "family": "pass_int_over",
+      "n": 24,
+      "method": "parent_ratio",
+      "avg_pred_raw": 0.6518,
+      "avg_pred_calibrated": 0.6547,
+      "realized": 0.7083,
+      "ece_raw": 0.0565,
+      "ece_calibrated": 0.0537,
+      "transform": {
+        "realized": 0.7083,
+        "parent": "parent:NFL:over",
+        "parent_n": 139,
+        "ratio": 0.826
       }
     },
     {
@@ -1829,6 +1879,32 @@
           [
             0.647,
             0.6512
+          ]
+        ]
+      }
+    },
+    {
+      "family": "pass_td_under",
+      "n": 81,
+      "method": "bucketed",
+      "avg_pred_raw": 0.7204,
+      "avg_pred_calibrated": 0.6953,
+      "realized": 0.679,
+      "ece_raw": 0.049,
+      "ece_calibrated": 0.0489,
+      "transform": {
+        "anchors": [
+          [
+            0.6523,
+            0.611
+          ],
+          [
+            0.7333,
+            0.6872
+          ],
+          [
+            0.7756,
+            0.7771
           ]
         ]
       }
@@ -1934,13 +2010,13 @@
     },
     {
       "family": "anytime_goal",
-      "n": 17,
+      "n": 19,
       "method": "identity",
-      "avg_pred_raw": 0.6247,
-      "avg_pred_calibrated": 0.6247,
-      "realized": 0.4118,
-      "ece_raw": 0.2129,
-      "ece_calibrated": 0.2129,
+      "avg_pred_raw": 0.6242,
+      "avg_pred_calibrated": 0.6242,
+      "realized": 0.3684,
+      "ece_raw": 0.2558,
+      "ece_calibrated": 0.2558,
       "transform": null
     },
     {
@@ -2319,13 +2395,13 @@
     },
     {
       "family": "pass_int_under",
-      "n": 28,
+      "n": 29,
       "method": "identity",
-      "avg_pred_raw": 0.6927,
-      "avg_pred_calibrated": 0.6927,
-      "realized": 0.5,
-      "ece_raw": 0.1927,
-      "ece_calibrated": 0.1927,
+      "avg_pred_raw": 0.6918,
+      "avg_pred_calibrated": 0.6918,
+      "realized": 0.4828,
+      "ece_raw": 0.2091,
+      "ece_calibrated": 0.2091,
       "transform": null
     },
     {
@@ -2351,102 +2427,47 @@
       "transform": null
     },
     {
-      "family": "pass_cmp_under",
-      "n": 99,
-      "method": "bucketed",
-      "avg_pred_raw": 0.7427,
-      "avg_pred_calibrated": 0.7616,
-      "realized": 0.7677,
-      "ece_raw": 0.025,
-      "ece_calibrated": 0.03,
-      "transform": {
-        "anchors": [
-          [
-            0.6654,
-            0.6441
-          ],
-          [
-            0.7421,
-            0.7757
-          ],
-          [
-            0.8205,
-            0.8632
-          ]
-        ]
-      }
-    },
-    {
-      "family": "pass_int_over",
-      "n": 23,
-      "method": "parent_ratio",
-      "avg_pred_raw": 0.6527,
-      "avg_pred_calibrated": 0.6455,
-      "realized": 0.6957,
-      "ece_raw": 0.0429,
-      "ece_calibrated": 0.0502,
-      "transform": {
-        "realized": 0.6957,
-        "parent": "parent:NFL:over",
-        "parent_n": 130,
-        "ratio": 0.8267
-      }
-    },
-    {
-      "family": "pass_td_under",
-      "n": 78,
-      "method": "family_avg",
-      "avg_pred_raw": 0.7196,
-      "avg_pred_calibrated": 0.6738,
-      "realized": 0.6667,
-      "ece_raw": 0.0529,
-      "ece_calibrated": 0.0758,
-      "transform": {
-        "realized": 0.6667
-      }
-    },
-    {
       "family": "p3_over",
-      "n": 244,
+      "n": 247,
       "method": "bucketed",
       "avg_pred_raw": 0.636,
-      "avg_pred_calibrated": 0.6103,
-      "realized": 0.6803,
-      "ece_raw": 0.0443,
-      "ece_calibrated": 0.07,
+      "avg_pred_calibrated": 0.5961,
+      "realized": 0.6842,
+      "ece_raw": 0.0482,
+      "ece_calibrated": 0.0881,
       "transform": {
         "anchors": [
           [
             0.636,
-            0.6103
+            0.5961
           ],
           [
             0.636,
-            0.6659
+            0.6814
           ],
           [
             0.636,
-            0.6776
+            0.6814
           ],
           [
             0.636,
-            0.6776
+            0.6814
           ],
           [
             0.636,
-            0.6776
+            0.6814
           ],
           [
             0.636,
-            0.6776
+            0.6814
           ],
           [
             0.636,
-            0.6776
+            0.6814
           ],
           [
             0.636,
-            0.6776
+            0.6814
           ]
         ]
       }

@@ -1,17 +1,17 @@
 # EdgeStat — Tonight's Master Brief
-_Generated 2026-11-26T04:15:07 UTC_
+_Generated 2026-11-26T22:13:21 UTC_
 
 ## Slate Quality
 - **Tier:** NO_ACTION_NIGHT
-- **Score:** -15
+- **Score:** -190
 - **Advisory:** STAND DOWN. Slate has no aligned conviction. Skip betting tonight or watch only.
 - **Total LOCKs:** 0
 - **Total STRONG:** 1
-- **Total FADES:** 19
+- **Total FADES:** 194
 
 ## Top 5 Curated Picks
-1. **NBA / GSW** (NBA_TEAM, score=70.0)
-   - Play: GSW (TEAM_STRONG)
+1. **NBA / BOS** (NBA_TEAM, score=70.0)
+   - Play: BOS (TEAM_STRONG)
    - Rationale: Cross-sport top pick (NBA_TEAM)
 
 ## Slate ROI Projection
@@ -21,13 +21,13 @@ _Generated 2026-11-26T04:15:07 UTC_
 - **Expected P&L on $100:** $0.0
 
 ## Top Fades
-- **NBA** / PHX (TEAM_FADE)
+- **NBA** / TOR (TEAM_FADE)
   - Fade angle: team total UNDER
 - **NBA** / POR (TEAM_FADE)
   - Fade angle: team total UNDER
 - **NBA** / SAS (TEAM_FADE)
   - Fade angle: team total UNDER
-- **NBA** / HOU (TEAM_FADE)
+- **NBA** / BKN (TEAM_FADE)
   - Fade angle: team total UNDER
-- **NHL** / mackenzie blackwood (GOALIE_FADE)
-  - Fade angle: saves UNDER + win NO
+- **NBA** / MIA (TEAM_FADE)
+  - Fade angle: team total UNDER
