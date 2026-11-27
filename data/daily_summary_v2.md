@@ -10,12 +10,12 @@
   - 🔴 Edge Count: 0/100
 
 ## 🌐 Slate Overview
-- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.586)
-- **Total games on board:** 73
-- **Strong home favorites:** 35 | **Strong road dogs:** 15
+- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.571)
+- **Total games on board:** 62
+- **Strong home favorites:** 31 | **Strong road dogs:** 17
 
 ## 🎯 Best Bets (sportsbook-priced only)
-- No best bet today: a best bet needs a real sportsbook price — 18 model-only projections excluded (NBA 5, LOL 3, NHL 3, NFL 2, NCAAF 2, NCAAB 2, EPL 1).
+- No best bet today: a best bet needs a real sportsbook price — 15 model-only projections excluded (NBA 5, LOL 3, NHL 3, NCAAF 2, EPL 1, NFL 1).
 
 ## 🔒 Locks of the Day -- Track Record
 - Sportsbook-priced: **3-0** (n=3; net +0.05u, ROI +60.8%) -- too few to judge
@@ -29,31 +29,31 @@
 - **[CS]** torzsi OVER 40.5 Kills (BO3) · model 61.0%
 
 ## ⚡ Pre-Game
-- No pre-game alerts: an alert needs a game-lines-desk probability whose verdict passed (not NO EDGE / UNPROVEN) and a DraftKings price. NBA: 11 desk verdict NO EDGE; NHL: 15 desk verdict NO EDGE; WNBA: 1 not pre-game; MLS: 2 no validated model probability (not from the game-lines desk); EPL: 1 no validated model probability (not from the game-lines desk); UCL: 9 not pre-game; NFL: 12 desk verdict UNPROVEN; NCAAF: 20 no validated model probability (not from the game-lines desk); NCAAB: 6 not pre-game; CWS: 1 not pre-game
+- No pre-game alerts: an alert needs a game-lines-desk probability whose verdict passed (not NO EDGE / UNPROVEN) and a DraftKings price. NBA: 11 desk verdict NO EDGE; NHL: 11 not pre-game; WNBA: 1 not pre-game; MLS: 2 no validated model probability (not from the game-lines desk); EPL: 1 started or no start time; UCL: 9 not pre-game; NFL: 11 desk verdict UNPROVEN; NCAAF: 17 no validated model probability (not from the game-lines desk); NCAAB: 9 not pre-game; CWS: 1 not pre-game
 
 ## 🔥/❄️ Heat / Cold Signals
 - Hot teams: **3** | Cold teams: **7** | Over-heavy: 0 | Under-heavy: 33
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (114)
-- RESIDUAL_DIVERGENCE: **23**
+## ⚠️ Anomaly Detector (117)
+- RESIDUAL_DIVERGENCE: **14**
 - STREAK_MISMATCH: **1**
-- STEAM_MOVE: **90**
-  - Minnesota Timberwolves (NBA): Minnesota Timberwolves OUTPERFORMING expected margin by 7.4pts in recent games -- model bias may persist
-  - Los Angeles Lakers (NBA): Los Angeles Lakers UNDERPERFORMING expected margin by 7.0pts in recent games -- model bias may persist
+- STEAM_MOVE: **102**
+  - Minnesota Timberwolves (NBA): Minnesota Timberwolves OUTPERFORMING expected margin by 7.8pts in recent games -- model bias may persist
+  - Los Angeles Lakers (NBA): Los Angeles Lakers UNDERPERFORMING expected margin by 9.0pts in recent games -- model bias may persist
   - Utah Jazz (NBA): Utah Jazz OUTPERFORMING expected margin by 10.0pts in recent games -- model bias may persist
+  - Denver Nuggets (NBA): Denver Nuggets UNDERPERFORMING expected margin by 7.1pts in recent games -- model bias may persist
   - LA Clippers (NBA): LA Clippers on L5 streak but model still favors them (59%) -- may be overvalued
-  - LA Clippers (NBA): LA Clippers UNDERPERFORMING expected margin by 13.2pts in recent games -- model bias may persist
 
 ## 💰 Today's Portfolio
 - No priced picks: a stake is sized only at an actionable DraftKings quote.
 
-## 🎯 Signal stacking (18 games with 2+ signals) — research, not picks
-  - Pittsburgh Penguins @ Buffalo Sabres : 5 signals (HEAT_COLD, HEAT_COLD, HEAT_COLD, ANOMALY)
+## 🎯 Signal stacking (14 games with 2+ signals) — research, not picks
+  - Denver Nuggets @ Utah Jazz : 4 signals (HEAT_COLD, HEAT_COLD, ANOMALY, ANOMALY)
   - New Orleans Pelicans @ LA Clippers : 4 signals (HEAT_COLD, HEAT_COLD, ANOMALY, ANOMALY)
-  - Golden State Warriors @ Portland Trail Blazers : 4 signals (HEAT_COLD, HEAT_COLD, ANOMALY, ANOMALY)
   - Vegas Golden Knights @ San Jose Sharks : 4 signals (HEAT_COLD, HEAT_COLD, ANOMALY, ANOMALY)
-  - Denver Nuggets @ Utah Jazz : 3 signals (HEAT_COLD, HEAT_COLD, ANOMALY)
+  - Pittsburgh Penguins @ Buffalo Sabres : 4 signals (HEAT_COLD, HEAT_COLD, HEAT_COLD, ANOMALY)
+  - Golden State Warriors @ Portland Trail Blazers : 3 signals (HEAT_COLD, HEAT_COLD, ANOMALY)
 
 ## 🏀 NBA Player Heat (11 HOT / 8 COLD)
   - 🔥 **Quentin Grimes** (LAL): L5 22.2/5.4/4.6 vs season 12.6/3.4/3.2 [PTS +9.6]

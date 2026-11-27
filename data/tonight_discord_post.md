@@ -1,5 +1,5 @@
 **EdgeStat -- Tonight's Slate**
-_NO_ACTION_NIGHT_ | L:0 S:1 F:194
+_NO_ACTION_NIGHT_ | L:0 S:1 F:84
 
 :dart: **Top Picks:**
 1. [NBA] BOS -- BOS (TEAM_STRONG)
