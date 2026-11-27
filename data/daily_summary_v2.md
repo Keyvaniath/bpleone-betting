@@ -1,21 +1,21 @@
 # EdgeStat Daily Summary — 2026-11-27
 
-## 🏥 Model Health: 65.9/100 [OK]
+## 🏥 Model Health: 63.4/100 [OK]
 - Operational but room to improve - check yellow components
   - 🟢 Calibration Freshness: 100.0/100
   - 🔴 Hit Rate Trend: 58.6/100
   - 🔴 Brier Trend: 21.1/100
   - 🟢 Pipeline Audit: 100.0/100
-  - 🟢 Data Health: 100.0/100
+  - 🟢 Data Health: 87.5/100
   - 🔴 Edge Count: 0/100
 
 ## 🌐 Slate Overview
-- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.571)
-- **Total games on board:** 62
-- **Strong home favorites:** 31 | **Strong road dogs:** 17
+- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.606)
+- **Total games on board:** 63
+- **Strong home favorites:** 34 | **Strong road dogs:** 14
 
 ## 🎯 Best Bets (sportsbook-priced only)
-- No best bet today: a best bet needs a real sportsbook price — 15 model-only projections excluded (NBA 5, LOL 3, NHL 3, NCAAF 2, EPL 1, NFL 1).
+- No best bet today: a best bet needs a real sportsbook price — 9 model-only projections excluded (NBA 5, LOL 3, NHL 1).
 
 ## 🔒 Locks of the Day -- Track Record
 - Sportsbook-priced: **3-0** (n=3; net +0.05u, ROI +60.8%) -- too few to judge
@@ -29,26 +29,26 @@
 - **[CS]** torzsi OVER 40.5 Kills (BO3) · model 61.0%
 
 ## ⚡ Pre-Game
-- No pre-game alerts: an alert needs a game-lines-desk probability whose verdict passed (not NO EDGE / UNPROVEN) and a DraftKings price. NBA: 11 desk verdict NO EDGE; NHL: 11 not pre-game; WNBA: 1 not pre-game; MLS: 2 no validated model probability (not from the game-lines desk); EPL: 1 started or no start time; UCL: 9 not pre-game; NFL: 11 desk verdict UNPROVEN; NCAAF: 17 no validated model probability (not from the game-lines desk); NCAAB: 9 not pre-game; CWS: 1 not pre-game
+- No pre-game alerts: an alert needs a game-lines-desk probability whose verdict passed (not NO EDGE / UNPROVEN) and a DraftKings price. NBA: 11 desk verdict NO EDGE; NHL: 11 not pre-game; WNBA: 1 not pre-game; MLS: 2 no validated model probability (not from the game-lines desk); EPL: 1 not pre-game; UCL: 9 not pre-game; NFL: 11 desk verdict UNPROVEN; NCAAF: 17 no validated model probability (not from the game-lines desk); NCAAB: 7 no validated model probability (not from the game-lines desk); CWS: 1 not pre-game
 
 ## 🔥/❄️ Heat / Cold Signals
 - Hot teams: **3** | Cold teams: **7** | Over-heavy: 0 | Under-heavy: 33
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (117)
-- RESIDUAL_DIVERGENCE: **14**
+## ⚠️ Anomaly Detector (106)
+- RESIDUAL_DIVERGENCE: **12**
 - STREAK_MISMATCH: **1**
-- STEAM_MOVE: **102**
+- STEAM_MOVE: **93**
   - Minnesota Timberwolves (NBA): Minnesota Timberwolves OUTPERFORMING expected margin by 7.8pts in recent games -- model bias may persist
   - Los Angeles Lakers (NBA): Los Angeles Lakers UNDERPERFORMING expected margin by 9.0pts in recent games -- model bias may persist
   - Utah Jazz (NBA): Utah Jazz OUTPERFORMING expected margin by 10.0pts in recent games -- model bias may persist
   - Denver Nuggets (NBA): Denver Nuggets UNDERPERFORMING expected margin by 7.1pts in recent games -- model bias may persist
-  - LA Clippers (NBA): LA Clippers on L5 streak but model still favors them (59%) -- may be overvalued
+  - LA Clippers (NBA): LA Clippers on L5 streak but model still favors them (55%) -- may be overvalued
 
 ## 💰 Today's Portfolio
 - No priced picks: a stake is sized only at an actionable DraftKings quote.
 
-## 🎯 Signal stacking (14 games with 2+ signals) — research, not picks
+## 🎯 Signal stacking (13 games with 2+ signals) — research, not picks
   - Denver Nuggets @ Utah Jazz : 4 signals (HEAT_COLD, HEAT_COLD, ANOMALY, ANOMALY)
   - New Orleans Pelicans @ LA Clippers : 4 signals (HEAT_COLD, HEAT_COLD, ANOMALY, ANOMALY)
   - Vegas Golden Knights @ San Jose Sharks : 4 signals (HEAT_COLD, HEAT_COLD, ANOMALY, ANOMALY)
