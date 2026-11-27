@@ -1,8 +1,8 @@
-# EdgeStat Daily Summary — 2026-11-26
+# EdgeStat Daily Summary — 2026-11-27
 
 ## 🏥 Model Health: 65.9/100 [OK]
 - Operational but room to improve - check yellow components
-  - 🟢 Calibration Freshness: 99.5/100
+  - 🟢 Calibration Freshness: 100.0/100
   - 🔴 Hit Rate Trend: 58.6/100
   - 🔴 Brier Trend: 21.1/100
   - 🟢 Pipeline Audit: 100.0/100
@@ -10,9 +10,9 @@
   - 🔴 Edge Count: 0/100
 
 ## 🌐 Slate Overview
-- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.571)
-- **Total games on board:** 74
-- **Strong home favorites:** 35 | **Strong road dogs:** 17
+- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.586)
+- **Total games on board:** 73
+- **Strong home favorites:** 35 | **Strong road dogs:** 15
 
 ## 🎯 Best Bets (sportsbook-priced only)
 - No best bet today: a best bet needs a real sportsbook price — 18 model-only projections excluded (NBA 5, LOL 3, NHL 3, NFL 2, NCAAF 2, NCAAB 2, EPL 1).
@@ -29,16 +29,16 @@
 - **[CS]** torzsi OVER 40.5 Kills (BO3) · model 61.0%
 
 ## ⚡ Pre-Game
-- No pre-game alerts: an alert needs a game-lines-desk probability whose verdict passed (not NO EDGE / UNPROVEN) and a DraftKings price. NBA: 11 desk verdict NO EDGE; NHL: 15 desk verdict NO EDGE; WNBA: 1 not pre-game; MLS: 2 no validated model probability (not from the game-lines desk); EPL: 1 no validated model probability (not from the game-lines desk); UCL: 9 not pre-game; NFL: 13 desk verdict UNPROVEN; NCAAF: 21 no validated model probability (not from the game-lines desk); NCAAB: 5 not pre-game; CWS: 1 not pre-game
+- No pre-game alerts: an alert needs a game-lines-desk probability whose verdict passed (not NO EDGE / UNPROVEN) and a DraftKings price. NBA: 11 desk verdict NO EDGE; NHL: 15 desk verdict NO EDGE; WNBA: 1 not pre-game; MLS: 2 no validated model probability (not from the game-lines desk); EPL: 1 no validated model probability (not from the game-lines desk); UCL: 9 not pre-game; NFL: 12 desk verdict UNPROVEN; NCAAF: 20 no validated model probability (not from the game-lines desk); NCAAB: 6 not pre-game; CWS: 1 not pre-game
 
 ## 🔥/❄️ Heat / Cold Signals
-- Hot teams: **4** | Cold teams: **6** | Over-heavy: 0 | Under-heavy: 28
+- Hot teams: **3** | Cold teams: **7** | Over-heavy: 0 | Under-heavy: 33
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (113)
+## ⚠️ Anomaly Detector (114)
 - RESIDUAL_DIVERGENCE: **23**
 - STREAK_MISMATCH: **1**
-- STEAM_MOVE: **89**
+- STEAM_MOVE: **90**
   - Minnesota Timberwolves (NBA): Minnesota Timberwolves OUTPERFORMING expected margin by 7.4pts in recent games -- model bias may persist
   - Los Angeles Lakers (NBA): Los Angeles Lakers UNDERPERFORMING expected margin by 7.0pts in recent games -- model bias may persist
   - Utah Jazz (NBA): Utah Jazz OUTPERFORMING expected margin by 10.0pts in recent games -- model bias may persist
@@ -91,7 +91,7 @@
   - ⚠️ **batter_hits**: DIVERGENT - consistent same-sign moves (structural issue) (cf=0.8331)
 
 ## 🤖 Self-Training Status
-- **NBA**: n=100 games · hit rate 62.0% · bias +1.2pp
-- **NHL**: n=101 games · hit rate 52.5% · bias +9.2pp
+- **NBA**: n=96 games · hit rate 61.5% · bias +1.8pp
+- **NHL**: n=90 games · hit rate 44.4% · bias +9.0pp
 - **MLS**: n=25 games · hit rate 52.0% · bias +6.2pp
 - **EPL**: n=20 games · hit rate 55.0% · bias -24.7pp

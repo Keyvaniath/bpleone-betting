@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-26T23:00:21",
+  "generated_at": "2026-11-27T04:04:58",
   "min_prob": 0.55,
   "min_edge_pct": 1.0,
   "max_picks_per_sport": 6,
@@ -29,15 +29,15 @@
     "note": "All displayed probabilities are post-shrinkage. Raw model outputs are mixed with a 0.55 baseline weighted by source reliability -- shrinkage_w in each pick = weight on raw."
   },
   "funnel": {
-    "n_input": 163,
+    "n_input": 162,
     "n_curated_out": 18,
     "n_ungradeable_out": 0,
     "rejected": {
-      "market_prob": 20,
-      "desk_unproven": 13,
+      "market_prob": 17,
+      "desk_unproven": 12,
+      "no_quote": 24,
       "unsupported_market": 70,
-      "desk_no_edge": 21,
-      "no_quote": 21
+      "desk_no_edge": 21
     },
     "n_actionable_candidates": 0,
     "n_after_dedupe": 0
@@ -72,7 +72,7 @@
       "model_fair_american": -733,
       "source": "ncaab_state.json",
       "actionable": false,
-      "reason": "market_prob"
+      "reason": "no_quote"
     },
     {
       "sport": "F1",
@@ -172,7 +172,7 @@
       "model_fair_american": -478,
       "source": "ncaaf_state.json",
       "actionable": false,
-      "reason": "market_prob"
+      "reason": "no_quote"
     },
     {
       "sport": "NCAAF",
@@ -323,16 +323,6 @@
       "source": "nhl_goalie",
       "actionable": false,
       "reason": "unsupported_market"
-    },
-    {
-      "sport": "NBA",
-      "player_or_matchup": "Milwaukee Bucks @ Detroit Pistons",
-      "market": "ML_HOME",
-      "model_prob_raw": 0.7961,
-      "model_fair_american": -390,
-      "source": "nba_state.json",
-      "actionable": false,
-      "reason": "desk_no_edge"
     },
     {
       "sport": "NHL",
@@ -565,6 +555,26 @@
       "reason": "unsupported_market"
     },
     {
+      "sport": "NBA",
+      "player_or_matchup": "Atlanta Hawks @ Boston Celtics",
+      "market": "ML_HOME",
+      "model_prob_raw": 0.7821,
+      "model_fair_american": -359,
+      "source": "nba_state.json",
+      "actionable": false,
+      "reason": "desk_no_edge"
+    },
+    {
+      "sport": "NBA",
+      "player_or_matchup": "Denver Nuggets @ Utah Jazz",
+      "market": "ML_AWAY",
+      "model_prob_raw": 0.7821,
+      "model_fair_american": -359,
+      "source": "nba_state.json",
+      "actionable": false,
+      "reason": "desk_no_edge"
+    },
+    {
       "sport": "NHL",
       "player_or_matchup": "DAL @ STL",
       "market": "STL_team_total_under_3.5",
@@ -606,20 +616,10 @@
     },
     {
       "sport": "NBA",
-      "player_or_matchup": "Denver Nuggets @ Utah Jazz",
-      "market": "ML_AWAY",
-      "model_prob_raw": 0.7745,
-      "model_fair_american": -343,
-      "source": "nba_state.json",
-      "actionable": false,
-      "reason": "desk_no_edge"
-    },
-    {
-      "sport": "NBA",
-      "player_or_matchup": "Atlanta Hawks @ Boston Celtics",
+      "player_or_matchup": "Milwaukee Bucks @ Detroit Pistons",
       "market": "ML_HOME",
-      "model_prob_raw": 0.7723,
-      "model_fair_american": -339,
+      "model_prob_raw": 0.7713,
+      "model_fair_american": -337,
       "source": "nba_state.json",
       "actionable": false,
       "reason": "desk_no_edge"
