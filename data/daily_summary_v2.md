@@ -1,18 +1,18 @@
-# EdgeStat Daily Summary — 2026-11-27
+# EdgeStat Daily Summary — 2026-11-28
 
-## 🏥 Model Health: 63.4/100 [OK]
+## 🏥 Model Health: 69.0/100 [OK]
 - Operational but room to improve - check yellow components
   - 🟢 Calibration Freshness: 100.0/100
-  - 🔴 Hit Rate Trend: 58.6/100
-  - 🔴 Brier Trend: 21.1/100
+  - 🟡 Hit Rate Trend: 67.2/100
+  - 🔴 Brier Trend: 28.0/100
   - 🟢 Pipeline Audit: 100.0/100
-  - 🟢 Data Health: 87.5/100
+  - 🟢 Data Health: 100.0/100
   - 🔴 Edge Count: 0/100
 
 ## 🌐 Slate Overview
-- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.606)
-- **Total games on board:** 63
-- **Strong home favorites:** 34 | **Strong road dogs:** 14
+- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.596)
+- **Total games on board:** 49
+- **Strong home favorites:** 28 | **Strong road dogs:** 13
 
 ## 🎯 Best Bets (sportsbook-priced only)
 - No best bet today: a best bet needs a real sportsbook price — 9 model-only projections excluded (NBA 5, LOL 3, NHL 1).
@@ -29,16 +29,16 @@
 - **[CS]** torzsi OVER 40.5 Kills (BO3) · model 61.0%
 
 ## ⚡ Pre-Game
-- No pre-game alerts: an alert needs a game-lines-desk probability whose verdict passed (not NO EDGE / UNPROVEN) and a DraftKings price. NBA: 11 desk verdict NO EDGE; NHL: 11 not pre-game; WNBA: 1 not pre-game; MLS: 2 no validated model probability (not from the game-lines desk); EPL: 1 not pre-game; UCL: 9 not pre-game; NFL: 11 desk verdict UNPROVEN; NCAAF: 17 no validated model probability (not from the game-lines desk); NCAAB: 7 no validated model probability (not from the game-lines desk); CWS: 1 not pre-game
+- No pre-game alerts: an alert needs a game-lines-desk probability whose verdict passed (not NO EDGE / UNPROVEN) and a DraftKings price. NBA: 11 not pre-game; NHL: 15 not pre-game; WNBA: 1 not pre-game; MLS: 2 started or no start time; EPL: 1 not pre-game; UCL: 9 not pre-game; NFL: 11 desk verdict UNPROVEN; NCAAF: 15 no validated model probability (not from the game-lines desk); NCAAB: 7 not pre-game; CWS: 1 not pre-game
 
 ## 🔥/❄️ Heat / Cold Signals
-- Hot teams: **3** | Cold teams: **7** | Over-heavy: 0 | Under-heavy: 33
+- Hot teams: **4** | Cold teams: **9** | Over-heavy: 0 | Under-heavy: 36
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (106)
+## ⚠️ Anomaly Detector (101)
 - RESIDUAL_DIVERGENCE: **12**
 - STREAK_MISMATCH: **1**
-- STEAM_MOVE: **93**
+- STEAM_MOVE: **88**
   - Minnesota Timberwolves (NBA): Minnesota Timberwolves OUTPERFORMING expected margin by 7.8pts in recent games -- model bias may persist
   - Los Angeles Lakers (NBA): Los Angeles Lakers UNDERPERFORMING expected margin by 9.0pts in recent games -- model bias may persist
   - Utah Jazz (NBA): Utah Jazz OUTPERFORMING expected margin by 10.0pts in recent games -- model bias may persist
@@ -55,15 +55,15 @@
   - Pittsburgh Penguins @ Buffalo Sabres : 4 signals (HEAT_COLD, HEAT_COLD, HEAT_COLD, ANOMALY)
   - Golden State Warriors @ Portland Trail Blazers : 3 signals (HEAT_COLD, HEAT_COLD, ANOMALY)
 
-## 🏀 NBA Player Heat (11 HOT / 8 COLD)
+## 🏀 NBA Player Heat (7 HOT / 7 COLD)
   - 🔥 **Quentin Grimes** (LAL): L5 22.2/5.4/4.6 vs season 12.6/3.4/3.2 [PTS +9.6]
   - 🔥 **Jaden McDaniels** (MIN): L5 26.0/6.8/4.0 vs season 18.3/5.9/3.6 [PTS +7.7]
   - 🔥 **Victor Wembanyama** (SA): L5 35.4/14.6/3.4 vs season 29.5/12.3/3.2 [PTS +5.9, REB +2.3]
-  - 🔥 **Cormac Ryan** (MIL): L5 20.2/4.8/2.4 vs season 14.3/2.5/1.7 [PTS +5.9, REB +2.3]
   - 🔥 **Jordan Poole** (NO): L5 18.4/1.2/3.2 vs season 12.8/1.7/3.2 [PTS +5.6]
+  - 🔥 **Stephon Castle** (SA): L5 19.6/5.0/9.0 vs season 16.7/5.3/6.5 [AST +2.5]
   - ❄️ **Shaedon Sharpe** (POR): L5 7.2 vs season 20.8 [PTS -13.6, REB -2.7, AST -2.0]
-  - ❄️ **Michael Porter Jr.** (BKN): L5 13.8 vs season 20.3 [PTS -6.5]
   - ❄️ **Bennedict Mathurin** (NO): L5 3.2 vs season 9.1 [PTS -5.9]
+  - ❄️ **Santi Aldama** (DAL): L5 3.8 vs season 8.7 [REB -2.5]
 
 ## 🥊 UFC Fight Matchups (UFC Fight Night: Adesanya vs Magomedov) — model projection — unvalidated, no sportsbook price, not a recommendation
   - model favourite **Magomed Tuchalov** (7-0-0) vs Ion Cutelaba
@@ -88,10 +88,9 @@
 
 ## 🧠 Training Convergence
 - ELITE: **0** · HEALTHY: 0 · OK: 0 · DEGRADED: **2**
-  - ⚠️ **batter_hits**: DIVERGENT - consistent same-sign moves (structural issue) (cf=0.8331)
 
 ## 🤖 Self-Training Status
-- **NBA**: n=96 games · hit rate 61.5% · bias +1.8pp
-- **NHL**: n=90 games · hit rate 44.4% · bias +9.0pp
-- **MLS**: n=25 games · hit rate 52.0% · bias +6.2pp
-- **EPL**: n=20 games · hit rate 55.0% · bias -24.7pp
+- **NBA**: n=92 games · hit rate 56.5% · bias +6.9pp
+- **NHL**: n=101 games · hit rate 48.5% · bias +8.6pp
+- **MLS**: n=26 games · hit rate 53.8% · bias +5.8pp
+- **EPL**: n=20 games · hit rate 55.0% · bias -21.1pp
